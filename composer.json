@@ -11,7 +11,8 @@
     "minimum-stability": "dev",
     "require": {
         "composer/installers": "~1.0.0",
-        "xrstf/composer-php52": "1.*"
+        "xrstf/composer-php52": "1.*",
+        "ruckusing/ruckusing-migrations": "~1.0"
     },
     "require-dev": {
         "wpreadme2markdown/wpreadme2markdown": "*"
@@ -25,6 +26,11 @@
         ],
         "post-autoload-dump": [
             "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ]
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
         ]
     }
 }
