@@ -1,2 +1,3 @@
 /db/log/*.log
 /vendor/
+/ruckusing.conf.local.php
