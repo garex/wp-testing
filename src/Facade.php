@@ -3,6 +3,11 @@
 class WpTesting_Facade
 {
 
+    /**
+     * @var WpTesting_ShortcodeProcessor
+     */
+    private $shortcodeProcessor = null;
+
     public static function onPluginActivate()
     {
         $me = new self();
@@ -20,6 +25,23 @@ class WpTesting_Facade
         $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
+    }
+
+    public function shortcodeList()
+    {
+        return $this->getShortcodeProcessor()->getList();
+    }
+
+    protected function getShortcodeProcessor()
+    {
+        if (!is_null($this->shortcodeProcessor)) {
+            return $this->shortcodeProcessor;
+        }
+
+        require_once dirname(__FILE__) . '/ShortcodeProcessor.php';
+        $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor();
+
+        return $this->shortcodeProcessor;
     }
 
     /**

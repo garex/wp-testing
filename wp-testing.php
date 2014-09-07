@@ -14,3 +14,7 @@ require_once dirname(__FILE__) . '/src/Facade.php';
 register_activation_hook   (__FILE__, array('WpTesting_Facade', 'onPluginActivate'));
 register_deactivation_hook (__FILE__, array('WpTesting_Facade', 'onPluginDeactivate'));
 register_uninstall_hook    (__FILE__, array('WpTesting_Facade', 'onPluginUninstall'));
+
+$wptFacade = new WpTesting_Facade();
+
+add_shortcode('wptlist', array($wptFacade, 'shortcodeList'));
