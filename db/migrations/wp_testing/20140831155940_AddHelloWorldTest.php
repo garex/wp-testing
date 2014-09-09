@@ -5,51 +5,51 @@ class AddHelloWorldTest extends Ruckusing_Migration_Base
     public function up()
     {
         $this->execute('
-            INSERT INTO ' . WPT_DB_PREFIX . 'scale (id, title, created, modified)
+            INSERT INTO ' . WPT_DB_PREFIX . 'scales (id, title, created, modified)
             VALUES (1, "Correct?", NOW(), NOW());
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'parameter (id, title, created, modified, scale_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'parameters (id, title, created, modified, scale_id)
             VALUES (1, "Yes", NOW(), NOW(), 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'parameter (id, title, created, modified, scale_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'parameters (id, title, created, modified, scale_id)
             VALUES (2, "No",  NOW(), NOW(), 1);
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'test (id, title, created, modified)
+            INSERT INTO ' . WPT_DB_PREFIX . 'tests (id, title, created, modified)
             VALUES (1, "Hello world!", NOW(), NOW());
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'scale_test (scale_id, test_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'scales_tests (scale_id, test_id)
             VALUES (1, 1);
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'question (id, title, created, modified, test_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'questions (id, title, created, modified, test_id)
             VALUES (1, "2 + 2 = 5", NOW(), NOW(), 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'question (id, title, created, modified, test_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'questions (id, title, created, modified, test_id)
             VALUES (2, "Sun in the sky", NOW(), NOW(), 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'question (id, title, created, modified, test_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'questions (id, title, created, modified, test_id)
             VALUES (3, "The world is mine", NOW(), NOW(), 1);
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (1, "Yes", NOW(), NOW(), 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (2, "No", NOW(), NOW(),  1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (3, "Yes", NOW(), NOW(), 2);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (4, "No", NOW(), NOW(),  2);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (5, "Yes", NOW(), NOW(), 3);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer (id, title, created, modified, question_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers (id, title, created, modified, question_id)
             VALUES (6, "No", NOW(), NOW(),  3);
 
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (1, 2);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (2, 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (3, 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (4, 2);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (5, 1);
-            INSERT INTO ' . WPT_DB_PREFIX . 'answer_parameter (answer_id, parameter_id)
+            INSERT INTO ' . WPT_DB_PREFIX . 'answers_parameters (answer_id, parameter_id)
             VALUES (6, 2);
         ');
     }
@@ -57,13 +57,13 @@ class AddHelloWorldTest extends Ruckusing_Migration_Base
     public function down()
     {
         $this
-            ->clearTable('answer_parameter')
-            ->clearTable('answer')
-            ->clearTable('question')
-            ->clearTable('test')
-            ->clearTable('parameter')
-            ->clearTable('scale_test')
-            ->clearTable('scale')
+            ->clearTable('answers_parameters')
+            ->clearTable('answers')
+            ->clearTable('questions')
+            ->clearTable('tests')
+            ->clearTable('parameters')
+            ->clearTable('scales_tests')
+            ->clearTable('scales')
         ;
     }
 

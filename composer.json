@@ -13,6 +13,7 @@
         "composer/installers": "~1.0.0"
         , "xrstf/composer-php52": "1.*"
         , "ruckusing/ruckusing-migrations": "~1.0"
+        , "flourish/flourish": "*"
     },
     "require-dev": {
         "wpreadme2markdown/wpreadme2markdown": "*"
