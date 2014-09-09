@@ -16,22 +16,22 @@ class CreateTestEntities extends Ruckusing_Migration_Base
         $this->drop_table(WPT_DB_PREFIX . 'tests');
 
         $this
-            ->createEntityTable('scale')
+            ->createEntityTable('scales')
                 ->finishTable()
-            ->createEntityTable('test')
+            ->createEntityTable('tests')
                 ->finishTable()
-            ->createManyToManyTable('scale', 'test')
+            ->createManyToManyTable('scales', 'tests')
                 ->finishTable()
-            ->createEntityTable('parameter')
-                ->addForeignKeyTo('scale')
+            ->createEntityTable('parameters')
+                ->addForeignKeyTo('scales')
                 ->finishTable()
-            ->createEntityTable('question')
-                ->addForeignKeyTo('test')
+            ->createEntityTable('questions')
+                ->addForeignKeyTo('tests')
                 ->finishTable()
-            ->createEntityTable('answer')
-                ->addForeignKeyTo('question')
+            ->createEntityTable('answers')
+                ->addForeignKeyTo('questions')
                 ->finishTable()
-            ->createManyToManyTable('answer', 'parameter')
+            ->createManyToManyTable('answers', 'parameters')
                 ->finishTable()
         ;
 
@@ -40,13 +40,13 @@ class CreateTestEntities extends Ruckusing_Migration_Base
 
     public function down()
     {
-        $this->drop_table(WPT_DB_PREFIX . 'answer_parameter');
-        $this->drop_table(WPT_DB_PREFIX . 'answer');
-        $this->drop_table(WPT_DB_PREFIX . 'question');
-        $this->drop_table(WPT_DB_PREFIX . 'scale_test');
-        $this->drop_table(WPT_DB_PREFIX . 'test');
-        $this->drop_table(WPT_DB_PREFIX . 'parameter');
-        $this->drop_table(WPT_DB_PREFIX . 'scale');
+        $this->drop_table(WPT_DB_PREFIX . 'answers_parameters');
+        $this->drop_table(WPT_DB_PREFIX . 'answers');
+        $this->drop_table(WPT_DB_PREFIX . 'questions');
+        $this->drop_table(WPT_DB_PREFIX . 'scales_tests');
+        $this->drop_table(WPT_DB_PREFIX . 'tests');
+        $this->drop_table(WPT_DB_PREFIX . 'parameters');
+        $this->drop_table(WPT_DB_PREFIX . 'scales');
     }
 
     protected function createTable($name, array $options = array())
@@ -76,7 +76,8 @@ class CreateTestEntities extends Ruckusing_Migration_Base
 
     protected function addForeignKeyTo($name, $options = array())
     {
-        $this->currentTable->column($name . '_id', 'integer', array(
+        $singularName = preg_replace('/s$/', '', $name);
+        $this->currentTable->column($singularName . '_id', 'integer', array(
             'unsigned' => true,
             'null'     => false,
         ) + $options);
@@ -84,11 +85,11 @@ class CreateTestEntities extends Ruckusing_Migration_Base
         $this->buffer("
             ALTER TABLE {$prefix}{$this->currentTableName}
             ADD CONSTRAINT fk_{$this->currentTableName}_{$name}
-            FOREIGN KEY ({$name}_id)
+            FOREIGN KEY ({$singularName}_id)
             REFERENCES {$prefix}{$name} (id)
             ON DELETE RESTRICT
             ON UPDATE RESTRICT,
-            ADD INDEX fk_{$this->currentTableName}_{$name} ({$name}_id)
+            ADD INDEX fk_{$this->currentTableName}_{$name} ({$singularName}_id)
         ");
         return $this;
     }

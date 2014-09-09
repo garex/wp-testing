@@ -1,0 +1,10 @@
+set FOREIGN_KEY_CHECKS = 0;
+drop table if exists `wp_testing`.`wp_t_answers`;
+drop table if exists `wp_testing`.`wp_t_answers_parameters`;
+drop table if exists `wp_testing`.`wp_t_parameters`;
+drop table if exists `wp_testing`.`wp_t_questions`;
+drop table if exists `wp_testing`.`wp_t_scales`;
+drop table if exists `wp_testing`.`wp_t_scales_tests`;
+drop table if exists `wp_testing`.`wp_t_schema_migrations`;
+drop table if exists `wp_testing`.`wp_t_tests`;
+set FOREIGN_KEY_CHECKS = 1;
