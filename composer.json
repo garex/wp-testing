@@ -8,12 +8,11 @@
             "email": "a@ustimen.co"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "composer/installers": "~1.0.0"
         , "xrstf/composer-php52": "1.*"
         , "ruckusing/ruckusing-migrations": "~1.0"
-        , "flourish/flourish": "*"
+        , "flourish/flourish": "0.9.*@dev"
     },
     "require-dev": {
         "wpreadme2markdown/wpreadme2markdown": "*"
