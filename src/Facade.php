@@ -38,10 +38,33 @@ class WpTesting_Facade
             return $this->shortcodeProcessor;
         }
 
+        $this->setupORM();
         require_once dirname(__FILE__) . '/ShortcodeProcessor.php';
         $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor();
 
         return $this->shortcodeProcessor;
+    }
+
+    protected function setupORM()
+    {
+        $this->autoloadComposer();
+
+        // Extract port from host. See wpdb::db_connect
+        $port = null;
+        $host = DB_HOST;
+        if (preg_match('/^(.+):(\d+)$/', trim($host), $m)) {
+            $host = $m[1];
+            $port = $m[2];
+        }
+        $database = new fDatabase('mysql', DB_NAME, DB_USER, DB_PASSWORD, $host, $port);
+        fORMDatabase::attach($database);
+
+        require_once dirname(__FILE__) . '/Model/AbstractModel.php';
+        require_once dirname(__FILE__) . '/Model/Test.php';
+        require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
+        require_once dirname(__FILE__) . '/Query/Test.php';
+
+        fORM::mapClassToTable('WpTesting_Model_Test', 'wp_t_tests');
     }
 
     /**
