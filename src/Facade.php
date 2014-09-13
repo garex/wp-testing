@@ -48,6 +48,7 @@ class WpTesting_Facade
     protected function setupORM()
     {
         $this->autoloadComposer();
+        $this->defineConstants();
 
         // Extract port from host. See wpdb::db_connect
         $port = null;
@@ -64,7 +65,7 @@ class WpTesting_Facade
         require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
         require_once dirname(__FILE__) . '/Query/Test.php';
 
-        fORM::mapClassToTable('WpTesting_Model_Test', 'wp_t_tests');
+        fORM::mapClassToTable('WpTesting_Model_Test', WP_DB_PREFIX . 'posts');
     }
 
     /**
@@ -74,11 +75,9 @@ class WpTesting_Facade
     protected function migrateDatabase($argv)
     {
         $this->autoloadComposer();
+        $this->defineConstants();
 
         $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $GLOBALS['table_prefix']);
-        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
-        defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
         defined('RUCKUSING_SCHEMA_TBL_NAME')    or define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
         defined('RUCKUSING_TS_SCHEMA_TBL_NAME') or define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
         defined('RUCKUSING_WORKING_BASE')       or define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
@@ -143,6 +142,13 @@ class WpTesting_Facade
 
         $autoloadPath = implode(DIRECTORY_SEPARATOR, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
         require_once ($autoloadPath);
+    }
+
+    protected function defineConstants()
+    {
+        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $GLOBALS['table_prefix']);
+        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
+        defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
     }
 
 }

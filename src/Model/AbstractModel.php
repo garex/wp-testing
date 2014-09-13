@@ -3,6 +3,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 {
 
     /**
+     * Allows to use column aliases on model, regarding real column values
+     *
+     * Structure is: array(alias_name => real_name)
+     *
+     * @var array
+     */
+    protected $columnAliases = array();
+
+
+    /**
      * Generates phpdoc for class
      * @return string
      */
@@ -55,4 +65,34 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return " * @method $returnType $methodName() $methodName($paramsDoc) $commentDoc";
     }
 
+    protected function loadFromResult($result, $ignore_identity_map=FALSE)
+    {
+        $row = $result->current();
+        foreach ($row as $key => $value) {
+            $row[strtolower($key)] = $value;
+        }
+        return parent::loadFromResult(new ArrayIterator(array($row)), $ignore_identity_map);
+    }
+
+    /**
+     * @see fActiveRecord::get()
+     */
+    protected function get($column)
+    {
+        if (isset($this->columnAliases[$column])) {
+            $column = $this->columnAliases[$column];
+        }
+        return parent::get($column);
+    }
+
+    /**
+     * @see fActiveRecord::set()
+     */
+    protected function set($column, $value)
+    {
+        if (isset($this->columnAliases[$column])) {
+            $column = $this->columnAliases[$column];
+        }
+        return parent::set($column, $value);
+    }
 }
