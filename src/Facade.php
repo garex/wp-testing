@@ -13,6 +13,8 @@ class WpTesting_Facade
      */
     private $wp = null;
 
+    private $isWordPressEntitiesRegistered = false;
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
@@ -22,6 +24,7 @@ class WpTesting_Facade
     public function onPluginActivate()
     {
         $this->migrateDatabase(array(__FILE__, 'db:migrate'));
+        $this->registerWordPressEntities();
     }
 
     public function onPluginDeactivate()
@@ -48,8 +51,21 @@ class WpTesting_Facade
             ->registerActivationHook(    array($this,  'onPluginActivate'))
             ->registerDeactivationHook(  array($this,  'onPluginDeactivate'))
             ->registerUninstallHook(     array($class, 'onPluginUninstall'))
+            ->addAction('init',          array($this,  'registerWordPressEntities'))
             ->addShortcode('wptlist',    array($this,  'shortcodeList'))
         ;
+    }
+
+    public function registerWordPressEntities()
+    {
+        if ($this->isWordPressEntitiesRegistered) {
+            return;
+        }
+
+        require_once dirname(__FILE__) . '/WordPressEntitiesRegistrator.php';
+        new WpTesting_WordPressEntitiesRegistrator($this->wp);
+
+        $this->isWordPressEntitiesRegistered = true;
     }
 
     protected function getShortcodeProcessor()
