@@ -8,21 +8,30 @@ class WpTesting_Facade
      */
     private $shortcodeProcessor = null;
 
-    public static function onPluginActivate()
+    /**
+     * @var WpTesting_WordPressFacade
+     */
+    private $wp = null;
+
+    public function __construct(WpTesting_WordPressFacade $wp)
     {
-        $me = new self();
-        $me->migrateDatabase(array(__FILE__, 'db:migrate'));
+        $this->wp = $wp;
+        $this->registerWordPressHooks();
     }
 
-    public static function onPluginDeactivate()
+    public function onPluginActivate()
     {
-        $me = new self();
-   }
+        $this->migrateDatabase(array(__FILE__, 'db:migrate'));
+    }
+
+    public function onPluginDeactivate()
+    {
+        // do nothing currently
+    }
 
     public static function onPluginUninstall()
     {
-        $me = new self();
-        $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
+        $adapter = $this->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
     }
@@ -30,6 +39,17 @@ class WpTesting_Facade
     public function shortcodeList()
     {
         return $this->getShortcodeProcessor()->getList();
+    }
+
+    protected function registerWordPressHooks()
+    {
+        $class = get_class($this);
+        $this->wp
+            ->registerActivationHook(    array($this,  'onPluginActivate'))
+            ->registerDeactivationHook(  array($this,  'onPluginDeactivate'))
+            ->registerUninstallHook(     array($class, 'onPluginUninstall'))
+            ->addShortcode('wptlist',    array($this,  'shortcodeList'))
+        ;
     }
 
     protected function getShortcodeProcessor()
@@ -52,12 +72,12 @@ class WpTesting_Facade
 
         // Extract port from host. See wpdb::db_connect
         $port = null;
-        $host = DB_HOST;
+        $host = $this->wp->getDbHost();
         if (preg_match('/^(.+):(\d+)$/', trim($host), $m)) {
             $host = $m[1];
             $port = $m[2];
         }
-        $database = new fDatabase('mysql', DB_NAME, DB_USER, DB_PASSWORD, $host, $port);
+        $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
         fORMDatabase::attach($database);
 
         require_once dirname(__FILE__) . '/Model/AbstractModel.php';
@@ -88,12 +108,12 @@ class WpTesting_Facade
             'db' => array(
                 'development' => array(
                     'type'     => DB_TYPE,
-                    'host'     => reset(explode(':', DB_HOST)),
-                    'port'     => next(explode(':', DB_HOST . ':3306')),
-                    'database' => DB_NAME,
-                    'user'     => DB_USER,
-                    'password' => DB_PASSWORD,
-                    'charset'  => DB_CHARSET,
+                    'host'     => reset(explode(':', $this->wp->getDbHost())),
+                    'port'     => next(explode(':', $this->wp->getDbHost() . ':3306')),
+                    'database' => $this->wp->getDbName(),
+                    'user'     => $this->wp->getDbUser(),
+                    'password' => $this->wp->getDbPassword(),
+                    'charset'  => $this->wp->getDbCharset(),
                 ),
             ),
             'db_dir'         => $databaseDirectory,
@@ -116,7 +136,7 @@ class WpTesting_Facade
     {
         // 1. Try to find composer.json
         $composerFullName = null;
-        foreach (array(ABSPATH, dirname(dirname(WP_PLUGIN_DIR))) as $path) {
+        foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
             $candidateFile = $path . DIRECTORY_SEPARATOR . 'composer.json';
             if (file_exists($candidateFile)) {
                 $composerFullName = $candidateFile;
@@ -146,7 +166,7 @@ class WpTesting_Facade
 
     protected function defineConstants()
     {
-        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $GLOBALS['table_prefix']);
+        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
         defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
         defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
     }
