@@ -12,4 +12,10 @@
 class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
 
+    protected $columnAliases = array(
+        'title'     => 'post_title',
+        'created'   => 'post_date',
+        'modified'  => 'post_modified',
+    );
+
 }

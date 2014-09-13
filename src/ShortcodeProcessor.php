@@ -5,7 +5,7 @@ class WpTesting_ShortcodeProcessor
 
     public function getList()
     {
-        $tests = WpTesting_Query_Test::create()->findAll();
+        $tests = WpTesting_Query_Test::create()->findAllPublished();
         return $this->render('Shortcode/list', array(
             'tests' => $tests,
         ));
