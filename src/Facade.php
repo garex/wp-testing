@@ -76,7 +76,8 @@ class WpTesting_Facade
         $this->autoloadComposer();
 
         $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  $GLOBALS['table_prefix'] . 't_');
+        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $GLOBALS['table_prefix']);
+        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
         defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
         defined('RUCKUSING_SCHEMA_TBL_NAME')    or define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
         defined('RUCKUSING_TS_SCHEMA_TBL_NAME') or define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
