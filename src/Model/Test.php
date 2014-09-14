@@ -18,4 +18,17 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'modified'  => 'post_modified',
     );
 
+    public function __construct($key = null)
+    {
+        if ($key instanceof WP_Post) {
+            if ($key->post_type != 'wpt_test') {
+                return;
+            }
+            $postAsArray = (array)$key;
+            unset($postAsArray['filter']);
+            return parent::__construct(new ArrayIterator(array($postAsArray)));
+        }
+        return parent::__construct($key);
+    }
+
 }
