@@ -80,6 +80,22 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Enqueue a CSS stylesheet related to plugin path.
+     *
+     * Registers the style if source provided (does NOT overwrite) and enqueues.
+     *
+     * @since 2.6.0
+     *
+     * @param unknown $name Name of the stylesheet.
+     * @param unknown $pluginRelatedPath
+     * @return WpTesting_WordPressFacade
+     */
+    public function enqueuePluginStyle($name, $pluginRelatedPath)
+    {
+        wp_enqueue_style($name, plugins_url($pluginRelatedPath, $this->pluginFile));
+    }
+
+    /**
      * Hooks a function on to a specific action.
      *
      * @since 1.2.0
@@ -110,6 +126,36 @@ class WpTesting_WordPressFacade
     public function addShortcode($tag, callable $function)
     {
         add_shortcode($tag, $function);
+        return $this;
+    }
+
+    /**
+     * Add a meta box to an edit form.
+     *
+     * @since 2.5.0
+     *
+     * @param string           $id            String for use in the 'id' attribute of tags.
+     * @param string           $title         Title of the meta box.
+     * @param callable         $function      Function that fills the box with the desired content.
+     *                                        The function should echo its output.
+     * @param string|WP_Screen $screen        Optional. The screen on which to show the box (like a post
+     *                                        type, 'link', or 'comment'). Default is the current screen.
+     * @param string           $context       Optional. The context within the screen where the boxes
+     *                                        should display. Available contexts vary from screen to
+     *                                        screen. Post edit screen contexts include 'normal', 'side',
+     *                                        and 'advanced'. Comments screen contexts include 'normal'
+     *                                        and 'side'. Menus meta boxes (accordion sections) all use
+     *                                        the 'side' context. Global default is 'advanced'.
+     * @param string           $priority      Optional. The priority within the context where the boxes
+     *                                        should show ('high', 'low'). Default 'default'.
+     * @param array            $functionArgs  Optional. Data that should be set as the $args property
+     *                                        of the box array (which is the second parameter passed
+     *                                        to your callback). Default null.
+     * @return WpTesting_WordPressFacade
+     */
+    public function addMetaBox($id, $title, callable $function, $screen = null, $context = 'advanced', $priority = 'default', $functionArgs = null)
+    {
+        add_meta_box($id, $title, $function, $screen, $context, $priority, $functionArgs);
         return $this;
     }
 

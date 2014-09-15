@@ -18,4 +18,42 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'modified'  => 'post_modified',
     );
 
+    public function __construct($key = null)
+    {
+        if ($key instanceof WP_Post) {
+            if ($key->post_type != 'wpt_test') {
+                return;
+            }
+            $postAsArray = (array)$key;
+            unset($postAsArray['filter']);
+            return parent::__construct(new ArrayIterator(array($postAsArray)));
+        }
+        return parent::__construct($key);
+    }
+
+    /**
+     * @return WpTesting_Model_Question
+     */
+    public function buildQuestions()
+    {
+        return $this->buildWpTesting_Model_Questions();
+    }
+
+    public function getQuestionsPrefix()
+    {
+        return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Question', 'test_id');
+    }
+
+    /**
+     * @return WpTesting_Model_Test
+     */
+    public function populateQuestions()
+    {
+        $this->populateWpTesting_Model_Questions();
+        $table     = fORM::tablize('WpTesting_Model_Question');
+        $questions =& $this->related_records[$table]['test_id']['record_set'];
+        $questions = $questions->filter(array('getTitle!=' => ''));
+        return $this;
+    }
+
 }

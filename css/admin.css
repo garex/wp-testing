@@ -1,0 +1,12 @@
+#wpt_questions table {
+    width: 100%;
+}
+
+#wpt_questions .wpt_number {
+    width: 1em;
+    text-align: right;
+}
+
+#wpt_questions .wpt_title input {
+    width: 100%;
+}

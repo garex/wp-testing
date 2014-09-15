@@ -59,6 +59,7 @@ class WpTesting_WordPressEntitiesRegistrator
     {
         $name       = ucfirst($name);
         $pluralName = ($pluralName) ? $pluralName : $name . 's';
+        $pluralName = ucfirst($pluralName);
         return array(
             'name'               => "Test $pluralName",
             'singular_name'      => "Test $name",
