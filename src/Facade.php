@@ -136,13 +136,37 @@ class WpTesting_Facade
         require_once dirname(__FILE__) . '/Model/AbstractModel.php';
         require_once dirname(__FILE__) . '/Model/Test.php';
         require_once dirname(__FILE__) . '/Model/Question.php';
+        require_once dirname(__FILE__) . '/Model/Taxonomy.php';
+        require_once dirname(__FILE__) . '/Model/Scale.php';
         require_once dirname(__FILE__) . '/Model/Score.php';
         require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
         require_once dirname(__FILE__) . '/Query/Test.php';
 
         fORM::mapClassToTable('WpTesting_Model_Test',        WP_DB_PREFIX . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',    WPT_DB_PREFIX . 'questions');
+        fORM::mapClassToTable('WpTesting_Model_Taxonomy',    WP_DB_PREFIX . 'term_taxonomy');
+        fORM::mapClassToTable('WpTesting_Model_Scale',       WP_DB_PREFIX . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Score',       WPT_DB_PREFIX . 'scores');
+
+        fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
+        $schema = fORMSchema::retrieve('name:default');
+        $schema->setColumnInfoOverride(null, WP_DB_PREFIX . 'term_relationships', 'term_order');
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'object_id',
+                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_column' => 'id',
+                'on_delete'      => 'cascade',
+                'on_update'      => 'cascade',
+            ),
+            array(
+                'column'         => 'term_taxonomy_id',
+                'foreign_table'  => WP_DB_PREFIX . 'term_taxonomy',
+                'foreign_column' => 'term_taxonomy_id',
+                'on_delete'      => 'cascade',
+                'on_update'      => 'cascade',
+            ),
+        ), WP_DB_PREFIX . 'term_relationships', 'foreign');
 
         $this->isOrmSettedUp = true;
     }
