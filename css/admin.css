@@ -1,21 +1,21 @@
-#wpt_questions table {
+table.wpt_questions {
     width: 100%;
 }
 
-#wpt_questions .wpt_title input {
+.wpt_questions .wpt_title input {
     width: 100%;
 }
 
-#wpt_questions .wpt_number {
+.wpt_questions .wpt_number {
     width: 1em;
     text-align: right;
 }
 
-#wpt_questions .wpt_scale {
+.wpt_questions .wpt_scale {
     text-align: center;
 }
 
-#wpt_questions .wpt_scale input {
+.wpt_questions .wpt_scale input {
     text-align: center;
     width: 100%;
 }
