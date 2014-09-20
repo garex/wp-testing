@@ -96,7 +96,7 @@ class WpTesting_Facade
         $this->setupORM();
         require_once dirname(__FILE__) . '/Doer.php';
         require_once dirname(__FILE__) . '/ShortcodeProcessor.php';
-        $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor();
+        $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor($this->wp);
 
         return $this->shortcodeProcessor;
     }

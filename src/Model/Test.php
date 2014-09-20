@@ -120,4 +120,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $questions = $questions->filter(array('getTitle!=' => ''));
         return $this;
     }
+
+    /**
+     * Export as WP native content entity object
+     *
+     * @return WP_Post
+     */
+    public function toWpPost()
+    {
+        $post = new WP_Post(new stdClass());
+        $post->filter = 'raw';
+        foreach ($this->values as $key => $value) {
+            $post->$key = (string)$value;
+        }
+        return $post;
+    }
 }

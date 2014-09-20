@@ -96,6 +96,20 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve full permalink for post by ID or current post
+     *
+     * @since 1.0.0
+     *
+     * @param number|WP_Post $id
+     * @param string $isLeaveName
+     * @return string|bool
+     */
+    public function getPermalink($id = 0, $isLeaveName = false)
+    {
+        return get_permalink($id, $isLeaveName);
+    }
+
+    /**
      * Hooks a function on to a specific action.
      *
      * @since 1.2.0
