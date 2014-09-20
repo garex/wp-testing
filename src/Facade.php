@@ -152,6 +152,7 @@ class WpTesting_Facade
         fORM::mapClassToTable('WpTesting_Model_Score',       WPT_DB_PREFIX . 'scores');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
+        fGrammar::addSingularPluralRule('Score',    'Score');
         $schema = fORMSchema::retrieve('name:default');
         $schema->setColumnInfoOverride(null, WP_DB_PREFIX . 'term_relationships', 'term_order');
         $schema->setKeysOverride(array(

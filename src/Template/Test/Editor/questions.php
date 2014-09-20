@@ -24,6 +24,7 @@
         <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <td class="wpt_scale <?php echo ($i%2) ? '' :'alternate' ?>">
                 <input placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
+                    value="<?php echo $question->getScoreByAnswerAndScale($answer, $scale)->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
             </td>
         <?php endforeach ?>

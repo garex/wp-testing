@@ -7,6 +7,7 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
 {
 
     protected $columnAliases = array(
+        'id'    => 'term_id',
         'title' => 'name',
     );
 

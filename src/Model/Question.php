@@ -12,4 +12,40 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
         'id'     => 'question_id',
     );
 
+    /**
+     * @var WpTesting_Model_Score[]
+     */
+    protected $scores = null;
+
+    /**
+     * Get score anyway (even if it doesn't exists)
+     *
+     * @param WpTesting_Model_Answer $answer
+     * @param WpTesting_Model_Scale $scale
+     * @return WpTesting_Model_Score
+     */
+    public function getScoreByAnswerAndScale(WpTesting_Model_Answer $answer, WpTesting_Model_Scale $scale)
+    {
+        $result = $this->buildScoresOnce()->filter(array(
+            'getAnswerId=' => $answer->getId(),
+            'getScaleId='  => $scale->getId(),
+        ));
+        if ($result->count()) {
+            return $result->getRecord(0);
+        }
+        return new WpTesting_Model_Score();
+    }
+
+
+    /**
+     * @return fRecordSet of WpTesting_Model_Score
+     */
+    protected function buildScoresOnce()
+    {
+        if (is_null($this->scores)) {
+            $this->scores = $this->buildWpTesting_Model_Score();
+        }
+        return $this->scores;
+    }
+
 }
