@@ -18,6 +18,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'modified'  => 'post_modified',
     );
 
+    /**
+     * @var WpTesting_Model_Taxonomy[]
+     */
+    protected $taxonomies = null;
+
     public function __construct($key = null)
     {
         if ($key instanceof WP_Post) {
@@ -32,11 +37,64 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return WpTesting_Model_Question
+     * @return WpTesting_Model_Question[]
      */
     public function buildQuestions()
     {
         return $this->buildWpTesting_Model_Questions();
+    }
+
+    /**
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScales()
+    {
+        return fRecordSet::build('WpTesting_Model_Scale', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_scale'),
+        ));
+    }
+
+    /**
+     * @return WpTesting_Model_Answer[]
+     */
+    public function buildAnswers()
+    {
+        return fRecordSet::build('WpTesting_Model_Answer', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
+        ));
+    }
+
+    /**
+     * @return WpTesting_Model_Taxonomy[]
+     */
+    protected function buildTaxonomies()
+    {
+        return $this->buildWpTesting_Model_Taxonomy();
+    }
+
+    /**
+     * @return fRecordSet of WpTesting_Model_Taxonomy
+     */
+    protected function buildTaxonomiesOnce()
+    {
+        if (is_null($this->taxonomies)) {
+            $this->taxonomies = $this->buildTaxonomies();
+        }
+        return $this->taxonomies;
+    }
+
+    /**
+     * Filter related taxonomies and return term id from they
+     * @param string $taxonomy One of wpt_answer|wpt_scale|wpt_result|wpt_category
+     * @return array
+     */
+    protected function getTermIdFromFilteredTaxonomies($taxonomy)
+    {
+        $ids = array();
+        foreach ($this->buildTaxonomiesOnce()->filter(array('getTaxonomy=' => $taxonomy)) as $taxonomy) {
+            $ids[] = $taxonomy->getTermId();
+        }
+        return $ids;
     }
 
     public function getQuestionsPrefix()
@@ -44,16 +102,22 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Question', 'test_id');
     }
 
+    public function getScorePrefix()
+    {
+        return $this->getQuestionsPrefix() .
+            fORMRelated::determineRequestFilter('WpTesting_Model_Question', 'WpTesting_Model_Score', 'question_id');
+    }
+
     /**
+     * @param bool $isRecursive
      * @return WpTesting_Model_Test
      */
-    public function populateQuestions()
+    public function populateQuestions($isRecursive = false)
     {
-        $this->populateWpTesting_Model_Questions();
+        $this->populateWpTesting_Model_Questions($isRecursive);
         $table     = fORM::tablize('WpTesting_Model_Question');
         $questions =& $this->related_records[$table]['test_id']['record_set'];
         $questions = $questions->filter(array('getTitle!=' => ''));
         return $this;
     }
-
 }

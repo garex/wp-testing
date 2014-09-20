@@ -15,17 +15,31 @@ class WpTesting_TestEditor extends WpTesting_Doer
 
     public function customizeUi()
     {
-        $this->wp->addMetaBox('wpt_questions', 'Questions', array($this, 'renderQuestions'), 'wpt_test');
+        $this->wp->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test');
+        $this->wp->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test');
     }
 
-    public function renderQuestions(WP_Post $item)
+    public function renderEditQuestions(WP_Post $item)
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
-        $this->output('Test/Editor/questions', array(
+        $this->output('Test/Editor/edit_questions', array(
+            'answers'     => $test->buildAnswers(),
+            'scales'      => $test->buildScales(),
             'questions'   => $test->buildQuestions(),
             'prefix'      => $test->getQuestionsPrefix(),
+            'scorePrefix' => $test->getScorePrefix(),
+        ));
+    }
+
+    public function renderAddQuestions(WP_Post $item)
+    {
+        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
+        $test = new WpTesting_Model_Test($item);
+        $this->output('Test/Editor/add_questions', array(
             'addNewCount' => 10,
+            'scales'      => $test->buildScales(),
+            'prefix'      => $test->getQuestionsPrefix(),
         ));
     }
 
@@ -35,8 +49,8 @@ class WpTesting_TestEditor extends WpTesting_Doer
         if (!$test->getId()) {
             return;
         }
-        $test->populateQuestions();
-        $test->store();
+        $test->populateQuestions(true);
+        $test->store(true);
     }
 
 }
