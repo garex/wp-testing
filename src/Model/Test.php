@@ -55,6 +55,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return WpTesting_Model_Answer[]
+     */
+    public function buildAnswers()
+    {
+        return fRecordSet::build('WpTesting_Model_Answer', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
+        ));
+    }
+
+    /**
      * @return WpTesting_Model_Taxonomy[]
      */
     protected function buildTaxonomies()
@@ -63,7 +73,6 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @param strnig $taxonomyFilter
      * @return fRecordSet of WpTesting_Model_Taxonomy
      */
     protected function buildTaxonomiesOnce()

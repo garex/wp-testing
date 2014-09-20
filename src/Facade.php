@@ -137,6 +137,8 @@ class WpTesting_Facade
         require_once dirname(__FILE__) . '/Model/Test.php';
         require_once dirname(__FILE__) . '/Model/Question.php';
         require_once dirname(__FILE__) . '/Model/Taxonomy.php';
+        require_once dirname(__FILE__) . '/Model/AbstractTerm.php';
+        require_once dirname(__FILE__) . '/Model/Answer.php';
         require_once dirname(__FILE__) . '/Model/Scale.php';
         require_once dirname(__FILE__) . '/Model/Score.php';
         require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
@@ -145,6 +147,7 @@ class WpTesting_Facade
         fORM::mapClassToTable('WpTesting_Model_Test',        WP_DB_PREFIX . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',    WPT_DB_PREFIX . 'questions');
         fORM::mapClassToTable('WpTesting_Model_Taxonomy',    WP_DB_PREFIX . 'term_taxonomy');
+        fORM::mapClassToTable('WpTesting_Model_Answer',      WP_DB_PREFIX . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Scale',       WP_DB_PREFIX . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Score',       WPT_DB_PREFIX . 'scores');
 
