@@ -28,6 +28,7 @@ class WpTesting_TestEditor extends WpTesting_Doer
             'scales'      => $test->buildScales(),
             'questions'   => $test->buildQuestions(),
             'prefix'      => $test->getQuestionsPrefix(),
+            'scorePrefix' => $test->getScorePrefix(),
         ));
     }
 
@@ -48,8 +49,8 @@ class WpTesting_TestEditor extends WpTesting_Doer
         if (!$test->getId()) {
             return;
         }
-        $test->populateQuestions();
-        $test->store();
+        $test->populateQuestions(true);
+        $test->store(true);
     }
 
 }

@@ -102,16 +102,22 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Question', 'test_id');
     }
 
+    public function getScorePrefix()
+    {
+        return $this->getQuestionsPrefix() .
+            fORMRelated::determineRequestFilter('WpTesting_Model_Question', 'WpTesting_Model_Score', 'question_id');
+    }
+
     /**
+     * @param bool $isRecursive
      * @return WpTesting_Model_Test
      */
-    public function populateQuestions()
+    public function populateQuestions($isRecursive = false)
     {
-        $this->populateWpTesting_Model_Questions();
+        $this->populateWpTesting_Model_Questions($isRecursive);
         $table     = fORM::tablize('WpTesting_Model_Question');
         $questions =& $this->related_records[$table]['test_id']['record_set'];
         $questions = $questions->filter(array('getTitle!=' => ''));
         return $this;
     }
-
 }

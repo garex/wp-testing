@@ -16,7 +16,8 @@ class AddTestScoresTable extends Ruckusing_Migration_Base
         $table->column('question_id', 'biginteger',  $pkOptions);
         $table->column('scale_id',    'biginteger',  $pkOptions);
         $table->column('score_value', 'tinyinteger', array(
-            'null' => true,
+            'null'    => false,
+            'default' => 0,
         ));
         $table->finish();
 

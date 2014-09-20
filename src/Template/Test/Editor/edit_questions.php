@@ -21,9 +21,19 @@
         <tr>
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <td class="wpt_scale <?php echo ($s%2) ? '' :'alternate' ?>">
+            <?php $score = $question->getScoreByAnswerAndScale($answer, $scale) ?>
+            <?php $scorePrefix  = $prefix . 'wp_testing_model_score::' ?>
+            <?php $scorePostfix = '[' . $q . '][]' ?>
+            <td class="wpt_scale <?php echo ($s%2) ? '' : 'alternate' ?>">
+                <input type="hidden"
+                    name="<?php echo $scorePrefix ?>answer_id<?php echo $scorePostfix ?>"
+                    value="<?php echo $answer->getId() ?>" />
+                <input type="hidden"
+                    name="<?php echo $scorePrefix ?>scale_id<?php echo $scorePostfix ?>"
+                    value="<?php echo $scale->getId() ?>" />
                 <input placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
-                    value="<?php echo $question->getScoreByAnswerAndScale($answer, $scale)->getValueWithoutZeros() ?>"
+                    name="<?php echo $scorePrefix ?>score_value<?php echo $scorePostfix ?>"
+                    value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
             </td>
         <?php endforeach ?>
