@@ -13,6 +13,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
 
     protected $columnAliases = array(
+        'id'        => 'ID',
         'title'     => 'post_title',
         'created'   => 'post_date',
         'modified'  => 'post_modified',
@@ -27,6 +28,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     {
         if ($key instanceof WP_Post) {
             if ($key->post_type != 'wpt_test') {
+                $this->values['ID'] = null;
                 return;
             }
             $postAsArray = (array)$key;
