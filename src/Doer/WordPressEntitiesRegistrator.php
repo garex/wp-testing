@@ -1,16 +1,11 @@
 <?php
 
-class WpTesting_WordPressEntitiesRegistrator
+class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_AbstractDoer
 {
-
-    /**
-     * @var WpTesting_WordPressFacade
-     */
-    private $wp = null;
 
     public function __construct(WpTesting_WordPressFacade $wp)
     {
-        $this->wp = $wp;
+        parent::__construct($wp);
 
         $wp->registerPostType('wpt_test', array(
             'labels'   => $this->generateLabels('test'),

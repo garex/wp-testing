@@ -4,17 +4,17 @@ class WpTesting_Facade
 {
 
     /**
-     * @var WpTesting_ShortcodeProcessor
+     * @var WpTesting_Doer_ShortcodeProcessor
      */
     private $shortcodeProcessor = null;
 
     /**
-     * @var WpTesting_TestEditor
+     * @var WpTesting_Doer_TestEditor
      */
     private $testEditor = null;
 
     /**
-     * @var WpTesting_TestPasser
+     * @var WpTesting_Doer_TestPasser
      */
     private $testPasser = null;
 
@@ -76,8 +76,9 @@ class WpTesting_Facade
             return;
         }
 
-        require_once dirname(__FILE__) . '/WordPressEntitiesRegistrator.php';
-        new WpTesting_WordPressEntitiesRegistrator($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/WordPressEntitiesRegistrator.php';
+        new WpTesting_Doer_WordPressEntitiesRegistrator($this->wp);
 
         $this->isWordPressEntitiesRegistered = true;
     }
@@ -100,9 +101,9 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer.php';
-        require_once dirname(__FILE__) . '/ShortcodeProcessor.php';
-        $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/ShortcodeProcessor.php';
+        $this->shortcodeProcessor = new WpTesting_Doer_ShortcodeProcessor($this->wp);
 
         return $this->shortcodeProcessor;
     }
@@ -114,9 +115,9 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer.php';
-        require_once dirname(__FILE__) . '/TestEditor.php';
-        $this->testEditor = new WpTesting_TestEditor($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/TestEditor.php';
+        $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
 
         return $this->testEditor;
     }
@@ -128,9 +129,9 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer.php';
-        require_once dirname(__FILE__) . '/TestPasser.php';
-        $this->testPasser = new WpTesting_TestPasser($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/TestPasser.php';
+        $this->testPasser = new WpTesting_Doer_TestPasser($this->wp);
 
         return $this->testPasser;
     }

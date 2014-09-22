@@ -1,16 +1,7 @@
 <?php
 
-class WpTesting_ShortcodeProcessor extends WpTesting_Doer
+class WpTesting_Doer_ShortcodeProcessor extends WpTesting_Doer_AbstractDoer
 {
-    /**
-     * @var WpTesting_WordPressFacade
-     */
-    private $wp = null;
-
-    public function __construct(WpTesting_WordPressFacade $wp)
-    {
-        $this->wp = $wp;
-    }
 
     public function getList()
     {
