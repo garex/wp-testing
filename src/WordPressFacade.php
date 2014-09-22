@@ -80,6 +80,18 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * WordPress Query API
+     *
+     * @since 1.5.0
+     *
+     * @return WP_Query
+     */
+    public function getQuery()
+    {
+        return $GLOBALS['wp_query'];
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * Registers the style if source provided (does NOT overwrite) and enqueues.
@@ -93,6 +105,21 @@ class WpTesting_WordPressFacade
     public function enqueuePluginStyle($name, $pluginRelatedPath)
     {
         wp_enqueue_style($name, plugins_url($pluginRelatedPath, $this->pluginFile));
+    }
+
+    /**
+     * Retrieve the name of the highest priority template file that exists.
+     *
+     * @since 2.7.0
+     *
+     * @param string|array $templateNames Template file(s) to search for, in order.
+     * @param string $isLoad  If true the template file will be loaded if it is found.
+     * @param string $isRequireOnce Whether to require_once or require. Default true. Has no effect if $isLoad is false.
+     * @return string The template filename if one is located.
+     */
+    public function locateTemplate($templateNames, $isLoad = false, $isRequireOnce = true )
+    {
+        return locate_template($templateNames, $isLoad, $isRequireOnce);
     }
 
     /**
@@ -124,6 +151,23 @@ class WpTesting_WordPressFacade
     public function addAction($tag, callable $function, $priority = 10, $functionArgsCount = 1)
     {
         add_action($tag, $function, $priority, $functionArgsCount);
+        return $this;
+    }
+
+    /**
+     * Hooks a function or method to a specific filter action.
+     *
+     * @since 0.71
+     *
+     * @param string $tag The name of the action to which the $function is hooked.
+     * @param callback $function The name of the function you wish to be called.
+     * @param int $priority optional. Used to specify the order in which the functions associated with a particular action are executed (default: 10). Lower numbers correspond with earlier execution, and functions with the same priority are executed in the order in which they were added to the action.
+     * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
+     * @return WpTesting_WordPressFacade
+     */
+    public function addFilter($tag, callable $function, $priority = 10, $functionArgsCount = 1)
+    {
+        add_filter($tag, $function, $priority, $functionArgsCount);
         return $this;
     }
 

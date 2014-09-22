@@ -1,29 +1,22 @@
 <?php
 
-class WpTesting_TestEditor extends WpTesting_Doer
+class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
-
-    /**
-     * @var WpTesting_WordPressFacade
-     */
-    private $wp = null;
-
-    public function __construct(WpTesting_WordPressFacade $wp)
-    {
-        $this->wp = $wp;
-    }
 
     public function customizeUi()
     {
-        $this->wp->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test');
-        $this->wp->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test');
+        $this->wp
+            ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
+            ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
+            ->addAction('save_post', array($this,  'saveTest'), 10, 3)
+        ;
     }
 
     public function renderEditQuestions(WP_Post $item)
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
-        $this->output('Test/Editor/edit_questions', array(
+        $this->output('Test/Editor/edit-questions', array(
             'answers'     => $test->buildAnswers(),
             'scales'      => $test->buildScales(),
             'questions'   => $test->buildQuestions(),
@@ -36,7 +29,7 @@ class WpTesting_TestEditor extends WpTesting_Doer
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
-        $this->output('Test/Editor/add_questions', array(
+        $this->output('Test/Editor/add-questions', array(
             'addNewCount' => 10,
             'scales'      => $test->buildScales(),
             'prefix'      => $test->getQuestionsPrefix(),

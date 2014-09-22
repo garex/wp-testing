@@ -4,14 +4,19 @@ class WpTesting_Facade
 {
 
     /**
-     * @var WpTesting_ShortcodeProcessor
+     * @var WpTesting_Doer_ShortcodeProcessor
      */
     private $shortcodeProcessor = null;
 
     /**
-     * @var WpTesting_TestEditor
+     * @var WpTesting_Doer_TestEditor
      */
     private $testEditor = null;
+
+    /**
+     * @var WpTesting_Doer_TestPasser
+     */
+    private $testPasser = null;
 
     /**
      * @var WpTesting_WordPressFacade
@@ -55,13 +60,13 @@ class WpTesting_Facade
     {
         $class = get_class($this);
         $this->wp
-            ->registerActivationHook(    array($this,  'onPluginActivate'))
-            ->registerDeactivationHook(  array($this,  'onPluginDeactivate'))
-            ->registerUninstallHook(     array($class, 'onPluginUninstall'))
-            ->addAction('init',          array($this,  'registerWordPressEntities'))
-            ->addShortcode('wptlist',    array($this,  'shortcodeList'))
-            ->addAction('admin_init',    array($this,  'setupTestEditor'))
-            ->addAction('save_post',     array($this,  'saveTest'), 10, 3)
+            ->registerActivationHook(        array($this,  'onPluginActivate'))
+            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
+            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
+            ->addAction('init',              array($this,  'registerWordPressEntities'))
+            ->addShortcode('wptlist',        array($this,  'shortcodeList'))
+            ->addAction('admin_init',        array($this,  'setupTestEditor'))
+            ->addFilter('single_template',   array($this,  'setupTestPasser'))
         ;
     }
 
@@ -71,8 +76,9 @@ class WpTesting_Facade
             return;
         }
 
-        require_once dirname(__FILE__) . '/WordPressEntitiesRegistrator.php';
-        new WpTesting_WordPressEntitiesRegistrator($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/WordPressEntitiesRegistrator.php';
+        new WpTesting_Doer_WordPressEntitiesRegistrator($this->wp);
 
         $this->isWordPressEntitiesRegistered = true;
     }
@@ -82,9 +88,10 @@ class WpTesting_Facade
         $this->getTestEditor()->customizeUi();
     }
 
-    public function saveTest($id, $item, $isUpdate)
+    public function setupTestPasser($template)
     {
-        $this->getTestEditor()->saveTest($id, $item, $isUpdate);
+        $this->getTestPasser()->addContentFilter();
+        return $template;
     }
 
     protected function getShortcodeProcessor()
@@ -94,9 +101,9 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer.php';
-        require_once dirname(__FILE__) . '/ShortcodeProcessor.php';
-        $this->shortcodeProcessor = new WpTesting_ShortcodeProcessor($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/ShortcodeProcessor.php';
+        $this->shortcodeProcessor = new WpTesting_Doer_ShortcodeProcessor($this->wp);
 
         return $this->shortcodeProcessor;
     }
@@ -108,11 +115,25 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer.php';
-        require_once dirname(__FILE__) . '/TestEditor.php';
-        $this->testEditor = new WpTesting_TestEditor($this->wp);
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/TestEditor.php';
+        $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
 
         return $this->testEditor;
+    }
+
+    protected function getTestPasser()
+    {
+        if (!is_null($this->testPasser)) {
+            return $this->testPasser;
+        }
+
+        $this->setupORM();
+        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
+        require_once dirname(__FILE__) . '/Doer/TestPasser.php';
+        $this->testPasser = new WpTesting_Doer_TestPasser($this->wp);
+
+        return $this->testPasser;
     }
 
     protected function setupORM()
