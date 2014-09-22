@@ -108,6 +108,21 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve the name of the highest priority template file that exists.
+     *
+     * @since 2.7.0
+     *
+     * @param string|array $templateNames Template file(s) to search for, in order.
+     * @param string $isLoad  If true the template file will be loaded if it is found.
+     * @param string $isRequireOnce Whether to require_once or require. Default true. Has no effect if $isLoad is false.
+     * @return string The template filename if one is located.
+     */
+    public function locateTemplate($templateNames, $isLoad = false, $isRequireOnce = true )
+    {
+        return locate_template($templateNames, $isLoad, $isRequireOnce);
+    }
+
+    /**
      * Retrieve full permalink for post by ID or current post
      *
      * @since 1.0.0
