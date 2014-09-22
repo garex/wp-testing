@@ -16,7 +16,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
-        $this->output('Test/Editor/edit_questions', array(
+        $this->output('Test/Editor/edit-questions', array(
             'answers'     => $test->buildAnswers(),
             'scales'      => $test->buildScales(),
             'questions'   => $test->buildQuestions(),
@@ -29,7 +29,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
-        $this->output('Test/Editor/add_questions', array(
+        $this->output('Test/Editor/add-questions', array(
             'addNewCount' => 10,
             'scales'      => $test->buildScales(),
             'prefix'      => $test->getQuestionsPrefix(),
