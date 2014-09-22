@@ -15,8 +15,11 @@ class WpTesting_TestEditor extends WpTesting_Doer
 
     public function customizeUi()
     {
-        $this->wp->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test');
-        $this->wp->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test');
+        $this->wp
+            ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
+            ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
+            ->addAction('save_post', array($this,  'saveTest'), 10, 3)
+        ;
     }
 
     public function renderEditQuestions(WP_Post $item)

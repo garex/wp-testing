@@ -14,6 +14,11 @@ class WpTesting_Facade
     private $testEditor = null;
 
     /**
+     * @var WpTesting_TestPasser
+     */
+    private $testPasser = null;
+
+    /**
      * @var WpTesting_WordPressFacade
      */
     private $wp = null;
@@ -55,13 +60,13 @@ class WpTesting_Facade
     {
         $class = get_class($this);
         $this->wp
-            ->registerActivationHook(    array($this,  'onPluginActivate'))
-            ->registerDeactivationHook(  array($this,  'onPluginDeactivate'))
-            ->registerUninstallHook(     array($class, 'onPluginUninstall'))
-            ->addAction('init',          array($this,  'registerWordPressEntities'))
-            ->addShortcode('wptlist',    array($this,  'shortcodeList'))
-            ->addAction('admin_init',    array($this,  'setupTestEditor'))
-            ->addAction('save_post',     array($this,  'saveTest'), 10, 3)
+            ->registerActivationHook(        array($this,  'onPluginActivate'))
+            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
+            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
+            ->addAction('init',              array($this,  'registerWordPressEntities'))
+            ->addShortcode('wptlist',        array($this,  'shortcodeList'))
+            ->addAction('admin_init',        array($this,  'setupTestEditor'))
+            ->addFilter('single_template',   array($this,  'setupTestPasser'))
         ;
     }
 
@@ -82,9 +87,10 @@ class WpTesting_Facade
         $this->getTestEditor()->customizeUi();
     }
 
-    public function saveTest($id, $item, $isUpdate)
+    public function setupTestPasser($template)
     {
-        $this->getTestEditor()->saveTest($id, $item, $isUpdate);
+        $this->getTestPasser()->addContentFilter();
+        return $template;
     }
 
     protected function getShortcodeProcessor()
@@ -113,6 +119,20 @@ class WpTesting_Facade
         $this->testEditor = new WpTesting_TestEditor($this->wp);
 
         return $this->testEditor;
+    }
+
+    protected function getTestPasser()
+    {
+        if (!is_null($this->testPasser)) {
+            return $this->testPasser;
+        }
+
+        $this->setupORM();
+        require_once dirname(__FILE__) . '/Doer.php';
+        require_once dirname(__FILE__) . '/TestPasser.php';
+        $this->testPasser = new WpTesting_TestPasser($this->wp);
+
+        return $this->testPasser;
     }
 
     protected function setupORM()
