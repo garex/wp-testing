@@ -11,6 +11,17 @@ abstract class WpTesting_Doer_AbstractDoer
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
+        $this->registerScripts();
+    }
+
+    /**
+     * Register common used scripts for future dependencies
+     */
+    protected function registerScripts()
+    {
+        $this->wp
+            ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
+        ;
     }
 
     protected function output($__template, $__params = array())

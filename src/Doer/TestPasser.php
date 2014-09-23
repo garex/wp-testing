@@ -20,10 +20,14 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     public function renderTestContent($content)
     {
-        $this->wp->enqueuePluginStyle('wpt_public', 'css/public.css');
         $action   = 'fill-form';
         $template = $this->wp->locateTemplate('entry-content-wpt-test-' . $action . '.php');
         $template = ($template) ? $template : 'Test/Passer/' . $action;
+
+        $this->wp
+            ->enqueuePluginStyle('wpt_public', 'css/public.css')
+            ->enqueuePluginScript('wpt_test_pass_' . $action, 'js/test-pass-' . $action . '.js', array('jquery', 'lodash'), false, true)
+        ;
 
         return $this->render($template, array(
             'content'    => $content,

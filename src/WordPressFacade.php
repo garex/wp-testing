@@ -94,17 +94,57 @@ class WpTesting_WordPressFacade
     /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
-     * Registers the style if source provided (does NOT overwrite) and enqueues.
-     *
      * @since 2.6.0
      *
-     * @param unknown $name Name of the stylesheet.
-     * @param unknown $pluginRelatedPath
+     * @param string $name Name of the stylesheet.
+     * @param string $pluginRelatedPath
      * @return WpTesting_WordPressFacade
      */
     public function enqueuePluginStyle($name, $pluginRelatedPath)
     {
         wp_enqueue_style($name, plugins_url($pluginRelatedPath, $this->pluginFile));
+        return $this;
+    }
+
+    /**
+     * Enqueue an JS script related to plugin path.
+     *
+     * @since 2.6.0
+     *
+     * @param string $name Name of the script.
+     * @param string $pluginRelatedPath
+     * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
+     * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
+     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @return WpTesting_WordPressFacade
+     */
+    public function enqueuePluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
+    {
+        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        wp_enqueue_script($name, $path, $dependencies, $version, $isInFooter);
+        return $this;
+    }
+
+
+    /**
+     * Register an JS script related to plugin path.
+     *
+     * Mainly to use in later dependencies.
+     *
+     * @since 2.6.0
+     *
+     * @param string $name Name of the script.
+     * @param string $pluginRelatedPath
+     * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
+     * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
+     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @return WpTesting_WordPressFacade
+     */
+    public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
+    {
+        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        wp_register_script($name, $path, $dependencies, $version, $isInFooter);
+        return $this;
     }
 
     /**
