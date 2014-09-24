@@ -33,7 +33,6 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             'content'    => $content,
             'test'       => $this->test,
             'questions'  => $this->test->buildQuestions(),
-            'answers'    => $this->test->buildAnswers(),
         ));
     }
 

@@ -17,7 +17,7 @@
             <input name="<?php echo $prefix ?>question_title[]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
     </tr>
-    <?php foreach($answers as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>

@@ -4,7 +4,6 @@
 /* @var $content string */
 /* @var $test WpTesting_Model_Test */
 /* @var $questions WpTesting_Model_Question[] */
-/* @var $answers WpTesting_Model_Answer[] */
 ?>
 <div class="wpt_test fill_form">
 
@@ -22,7 +21,7 @@
             <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?></span>
         </div>
 
-    <?php foreach($answers as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
         <div class="answer">

@@ -18,6 +18,29 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     protected $scores = null;
 
     /**
+     * @var WpTesting_Model_Answer[]
+     */
+    protected $answers = null;
+
+    /**
+     * @param fRecordSet $answers
+     * @return WpTesting_Model_Question
+     */
+    public function setAnswers(fRecordSet $answers)
+    {
+        if (count($answers) == 0 || !($answers[0] instanceof WpTesting_Model_Answer)) {
+            return $this;
+        }
+        $this->answers = $answers;
+        return $this;
+    }
+
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+
+    /**
      * Get score anyway (even if it doesn't exists)
      *
      * @param WpTesting_Model_Answer $answer
@@ -35,7 +58,6 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
         }
         return new WpTesting_Model_Score();
     }
-
 
     /**
      * @return fRecordSet of WpTesting_Model_Score

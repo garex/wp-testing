@@ -43,7 +43,14 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildQuestions()
     {
-        return $this->buildWpTesting_Model_Questions();
+        $answers   = $this->buildAnswers();
+        $questions = $this->buildWpTesting_Model_Questions();
+        if (count($answers)) {
+            foreach ($questions as $question) { /* @var $question WpTesting_Model_Question */
+                $question->setAnswers($answers);
+            }
+        }
+        return $questions;
     }
 
     /**
@@ -59,7 +66,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     /**
      * @return WpTesting_Model_Answer[]
      */
-    public function buildAnswers()
+    protected function buildAnswers()
     {
         return fRecordSet::build('WpTesting_Model_Answer', array(
             'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
