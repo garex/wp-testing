@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @method integer getId() getId() Gets the current value of id
  * @method string getTitle() getTitle() Gets the current value of title
  */
 abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel

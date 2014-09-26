@@ -39,4 +39,9 @@ abstract class WpTesting_Doer_AbstractDoer
         $this->output($__template, $__params);
         return ob_get_clean();
     }
+
+    protected function isPost()
+    {
+        return fRequest::isPost();
+    }
 }

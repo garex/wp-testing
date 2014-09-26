@@ -60,6 +60,19 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Get scores by answer
+     *
+     * @param WpTesting_Model_Answer $answer
+     * @return WpTesting_Model_Score[]
+     */
+    public function getScoresByAnswer(WpTesting_Model_Answer $answer)
+    {
+        return $this->buildScoresOnce()->filter(array(
+            'getAnswerId=' => $answer->getId(),
+        ));
+    }
+
+    /**
      * @return fRecordSet of WpTesting_Model_Score
      */
     protected function buildScoresOnce()

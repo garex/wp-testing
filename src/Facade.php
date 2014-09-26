@@ -152,6 +152,7 @@ class WpTesting_Facade
             $port = $m[2];
         }
         $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
+        // $database->enableDebugging(true);
         fORMDatabase::attach($database);
 
         require_once dirname(__FILE__) . '/Model/AbstractModel.php';
@@ -162,15 +163,19 @@ class WpTesting_Facade
         require_once dirname(__FILE__) . '/Model/Answer.php';
         require_once dirname(__FILE__) . '/Model/Scale.php';
         require_once dirname(__FILE__) . '/Model/Score.php';
+        require_once dirname(__FILE__) . '/Model/Passing.php';
+        require_once dirname(__FILE__) . '/Model/PassingAnswer.php';
         require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
         require_once dirname(__FILE__) . '/Query/Test.php';
 
-        fORM::mapClassToTable('WpTesting_Model_Test',        WP_DB_PREFIX . 'posts');
-        fORM::mapClassToTable('WpTesting_Model_Question',    WPT_DB_PREFIX . 'questions');
-        fORM::mapClassToTable('WpTesting_Model_Taxonomy',    WP_DB_PREFIX . 'term_taxonomy');
-        fORM::mapClassToTable('WpTesting_Model_Answer',      WP_DB_PREFIX . 'terms');
-        fORM::mapClassToTable('WpTesting_Model_Scale',       WP_DB_PREFIX . 'terms');
-        fORM::mapClassToTable('WpTesting_Model_Score',       WPT_DB_PREFIX . 'scores');
+        fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
+        fORM::mapClassToTable('WpTesting_Model_Question',      WPT_DB_PREFIX  . 'questions');
+        fORM::mapClassToTable('WpTesting_Model_Taxonomy',      WP_DB_PREFIX   . 'term_taxonomy');
+        fORM::mapClassToTable('WpTesting_Model_Answer',        WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Scale',         WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Score',         WPT_DB_PREFIX  . 'scores');
+        fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');
+        fORM::mapClassToTable('WpTesting_Model_PassingAnswer',  WPT_DB_PREFIX . 'passing_answers');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');

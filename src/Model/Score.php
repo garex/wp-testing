@@ -16,4 +16,11 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
         return empty($value) ? '' : $value;
     }
 
+    /**
+     * @return WpTesting_Model_Scale
+     */
+    public function createScale()
+    {
+        return $this->createWpTesting_Model_Scale('scale_id');
+    }
 }
