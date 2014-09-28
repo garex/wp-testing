@@ -198,6 +198,16 @@ class WpTesting_Facade
             ),
         ), WP_DB_PREFIX . 'term_relationships', 'foreign');
 
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'term_id',
+                'foreign_table'  => WP_DB_PREFIX . 'terms',
+                'foreign_column' => 'term_id',
+                'on_delete'      => 'cascade',
+                'on_update'      => 'cascade',
+            ),
+        ), WP_DB_PREFIX . 'term_taxonomy', 'foreign');
+
         $this->isOrmSettedUp = true;
     }
 

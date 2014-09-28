@@ -1,3 +1,25 @@
+<?php if ($isWarnOfSettings): ?>
+<div class="error">
+    <h2>Settings of your server are too low — form values could be cropped!</h2>
+
+    <p>Add this into your php.ini:</p>
+    <pre>
+    max_input_vars=5000
+    suhosin.get.max_vars=5000
+    suhosin.post.max_vars=5000
+    suhosin.request.max_vars=5000</pre>
+
+    .. or .htaccess
+
+    <pre>
+    php_value max_input_vars 5000
+    php_value suhosin.get.max_vars 5000
+    php_value suhosin.post.max_vars 5000
+    php_value suhosin.request.max_vars 5000</pre>
+
+    .. and reload (restart) server.
+</div>
+<?php endif ?>
 <table class="widefat wpt_questions">
     <tr>
         <th></th>
@@ -11,19 +33,20 @@
     <tr class="wpt_question">
         <th class="wpt_number bar">
             <?php echo $q+1 ?>
-            <input type="hidden" name="<?php echo $prefix ?>question_id[]" value="<?php echo $question->getId() ?>" />
+            <input type="hidden" name="<?php echo $prefix ?>question_id[<?php echo $q ?>]" value="<?php echo $question->getId() ?>" />
         </th>
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
-            <input name="<?php echo $prefix ?>question_title[]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
+            <input name="<?php echo $prefix ?>question_title[<?php echo $q ?>]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
     </tr>
-    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php $scoreIndex = 0 ?>
+    <?php foreach($question->getAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <?php $score = $question->getScoreByAnswerAndScale($answer, $scale) ?>
             <?php $scorePrefix  = $prefix . 'wp_testing_model_score::' ?>
-            <?php $scorePostfix = '[' . $q . '][]' ?>
+            <?php $scorePostfix = '[' . $q . '][' . ($scoreIndex++) . ']' ?>
             <td class="wpt_scale <?php echo ($s%2) ? '' : 'alternate' ?>">
                 <input type="hidden"
                     name="<?php echo $scorePrefix ?>answer_id<?php echo $scorePostfix ?>"

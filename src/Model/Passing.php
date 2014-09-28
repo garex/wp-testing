@@ -46,6 +46,31 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
             }
         }
 
+        if (empty($results)) {
+            return $results;
+        }
+
+        // Calculate scales global totals (not from respondent answers)
+        $globalTotals = array();
+        /* @var $test WpTesting_Model_Test */
+        $test = $passingAnswer->createQuestion()->createTest();
+        foreach ($test->buildQuestions() as $i => $question) {
+            foreach ($question->buildScores() as $score) {
+                $scale = $score->createScale();
+                if (!isset($results[$scale->getId()])) {
+                    continue;
+                }
+                if (!isset($globalTotals[$scale->getId()])) {
+                    $globalTotals[$scale->getId()] = $scale->resetScore();
+                }
+                $globalTotals[$scale->getId()]->addScore($score);
+            }
+        }
+
+        foreach ($results as $id => $result) {
+            $results[$id]->setTotalScale($globalTotals[$id]);
+        }
+
         return $results;
     }
 

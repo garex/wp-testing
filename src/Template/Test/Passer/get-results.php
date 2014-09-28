@@ -12,13 +12,20 @@
 
     <h2><?php echo 'Results' ?></h2>
 
-    <ul>
     <?php foreach ($scales as $scale): /* @var $scale WpTesting_Model_Scale */ ?>
 
-        <li><?php echo $scale->getTitle() ?>: <?php echo $scale->getScoresTotal() ?></li>
+        <h3 class="scale title"><?php echo $scale->getTitle() ?></h3>
+
+        <div class="scale scores">
+            <?php echo $scale->getScoresTotal() ?> <?php echo 'out of' ?> <?php echo $scale->getTotalScale()->getScoresTotal() ?>
+        </div>
+        <div class="meter">
+            <span style="width: <?php echo $scale->getScoresTotalPercent() ?>%"></span>
+        </div>
+
+        <p class="scale description"><?php echo nl2br($scale->getDescription()) ?></p>
 
     <?php endforeach ?>
-    </ul>
 
 </div>
 

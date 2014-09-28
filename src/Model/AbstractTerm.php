@@ -22,4 +22,14 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return mb_substr($this->getTitle(), 0, 1, 'UTF-8');
     }
 
+    public function getDescription()
+    {
+        /* @var $result fRecordset */
+        $result = $this->buildWpTesting_Model_Taxonomy();
+        if (!$result->count()) {
+            return null;
+        }
+        return $result->getRecord(0)->getDescription();
+    }
+
 }
