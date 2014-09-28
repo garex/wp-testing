@@ -21,6 +21,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'questions'   => $test->buildQuestions(),
             'prefix'      => $test->getQuestionsPrefix(),
             'scorePrefix' => $test->getScorePrefix(),
+            'isWarnOfSettings' => $test->isWarnOfSettings(),
         ));
     }
 
@@ -30,6 +31,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/add-questions', array(
             'addNewCount' => 10,
+            'startFrom'   => $test->buildQuestions()->count(),
             'scales'      => $test->buildScales(),
             'prefix'      => $test->getQuestionsPrefix(),
         ));

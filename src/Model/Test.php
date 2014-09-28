@@ -118,6 +118,43 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @see http://stackoverflow.com/questions/10303714/php-max-input-vars
+     * @return boolean
+     */
+    public function isWarnOfSettings()
+    {
+        $scalesCount = count($this->buildScales());
+        if (!$scalesCount) {
+            return false;
+        }
+        $questions      = $this->buildQuestions();
+        $questionsCount = count($questions);
+        if (!$questionsCount) {
+            return false;
+        }
+        $answersCount = count($questions[0]->getAnswers());
+        if (!$answersCount) {
+            return false;
+        }
+
+        $iniKeys = array(
+            'max_input_vars',
+            'suhosin.get.max_vars',
+            'suhosin.post.max_vars',
+            'suhosin.request.max_vars',
+        );
+        $values = array();
+        foreach ($iniKeys as $iniKey) {
+            $value = ini_get($iniKey);
+            if ($value !== false) {
+                $values[] = (int)$value;
+            }
+        }
+
+        return $scalesCount * $questionsCount * $answersCount * 3 > (min($values) - 150);
+    }
+
+    /**
      * @param bool $isRecursive
      * @return WpTesting_Model_Test
      */
