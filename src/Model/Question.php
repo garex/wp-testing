@@ -20,7 +20,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     /**
      * @var WpTesting_Model_Answer[]
      */
-    protected $answers = null;
+    protected $answers = array();
 
     /**
      * @param fRecordSet $answers
@@ -70,6 +70,22 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
         return $this->buildScoresOnce()->filter(array(
             'getAnswerId=' => $answer->getId(),
         ));
+    }
+
+    /**
+     * @return WpTesting_Model_Test
+     */
+    public function createTest()
+    {
+        return $this->createWpTesting_Model_Test();
+    }
+
+    /**
+     * @return WpTesting_Model_Score[]
+     */
+    public function buildScores()
+    {
+        return $this->buildScoresOnce();
     }
 
     /**
