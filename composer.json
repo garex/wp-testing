@@ -15,7 +15,6 @@
         , "flourish/flourish": "0.9.*@dev"
     },
     "require-dev": {
-        "wpreadme2markdown/wpreadme2markdown": "*"
     },
     "scripts": {
         "post-install-cmd": [
