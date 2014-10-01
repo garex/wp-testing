@@ -1,0 +1,184 @@
+<?php
+/**
+ * @method integer getId() getId() Gets the current value of id
+ * @method WpTesting_Model_Test setId() setId(integer $id) Sets the value for id
+ * @method string getTitle() getTitle() Gets the current value of title
+ * @method WpTesting_Model_Test setTitle() setTitle(string $title) Sets the value for title
+ * @method fTimestamp getCreated() getCreated() Gets the current value of created
+ * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
+ * @method fTimestamp getModified() getModified() Gets the current value of modified
+ * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
+ */
+class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
+{
+
+    protected $columnAliases = array(
+        'id'        => 'ID',
+        'title'     => 'post_title',
+        'created'   => 'post_date',
+        'modified'  => 'post_modified',
+    );
+
+    /**
+     * @var WpTesting_Model_Taxonomy[]
+     */
+    protected $taxonomies = null;
+
+    public function __construct($key = null)
+    {
+        if ($key instanceof WP_Post) {
+            if ($key->post_type != 'wpt_test') {
+                $this->values['ID'] = null;
+                return;
+            }
+            $postAsArray = (array)$key;
+            unset($postAsArray['filter']);
+            return parent::__construct(new ArrayIterator(array($postAsArray)));
+        }
+        return parent::__construct($key);
+    }
+
+    /**
+     * @return WpTesting_Model_Question[]
+     */
+    public function buildQuestions()
+    {
+        $answers   = $this->buildAnswers();
+        $questions = $this->buildWpTesting_Model_Questions();
+        if (count($answers)) {
+            foreach ($questions as $question) { /* @var $question WpTesting_Model_Question */
+                $question->setAnswers($answers);
+            }
+        }
+        return $questions;
+    }
+
+    /**
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScales()
+    {
+        return fRecordSet::build('WpTesting_Model_Scale', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_scale'),
+        ));
+    }
+
+    /**
+     * @return WpTesting_Model_Answer[]
+     */
+    protected function buildAnswers()
+    {
+        return fRecordSet::build('WpTesting_Model_Answer', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
+        ));
+    }
+
+    /**
+     * @return WpTesting_Model_Taxonomy[]
+     */
+    protected function buildTaxonomies()
+    {
+        return $this->buildWpTesting_Model_Taxonomy();
+    }
+
+    /**
+     * @return fRecordSet of WpTesting_Model_Taxonomy
+     */
+    protected function buildTaxonomiesOnce()
+    {
+        if (is_null($this->taxonomies)) {
+            $this->taxonomies = $this->buildTaxonomies();
+        }
+        return $this->taxonomies;
+    }
+
+    /**
+     * Filter related taxonomies and return term id from they
+     * @param string $taxonomy One of wpt_answer|wpt_scale|wpt_result|wpt_category
+     * @return array
+     */
+    protected function getTermIdFromFilteredTaxonomies($taxonomy)
+    {
+        $ids = array();
+        foreach ($this->buildTaxonomiesOnce()->filter(array('getTaxonomy=' => $taxonomy)) as $taxonomy) {
+            $ids[] = $taxonomy->getTermId();
+        }
+        return $ids;
+    }
+
+    public function getQuestionsPrefix()
+    {
+        return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Question', 'test_id');
+    }
+
+    public function getScorePrefix()
+    {
+        return $this->getQuestionsPrefix() .
+            fORMRelated::determineRequestFilter('WpTesting_Model_Question', 'WpTesting_Model_Score', 'question_id');
+    }
+
+    /**
+     * @see http://stackoverflow.com/questions/10303714/php-max-input-vars
+     * @return boolean
+     */
+    public function isWarnOfSettings()
+    {
+        $scalesCount = count($this->buildScales());
+        if (!$scalesCount) {
+            return false;
+        }
+        $questions      = $this->buildQuestions();
+        $questionsCount = count($questions);
+        if (!$questionsCount) {
+            return false;
+        }
+        $answersCount = count($questions[0]->getAnswers());
+        if (!$answersCount) {
+            return false;
+        }
+
+        $iniKeys = array(
+            'max_input_vars',
+            'suhosin.get.max_vars',
+            'suhosin.post.max_vars',
+            'suhosin.request.max_vars',
+        );
+        $values = array();
+        foreach ($iniKeys as $iniKey) {
+            $value = ini_get($iniKey);
+            if ($value !== false) {
+                $values[] = (int)$value;
+            }
+        }
+
+        return $scalesCount * $questionsCount * $answersCount * 3 > (min($values) - 150);
+    }
+
+    /**
+     * @param bool $isRecursive
+     * @return WpTesting_Model_Test
+     */
+    public function populateQuestions($isRecursive = false)
+    {
+        $this->populateWpTesting_Model_Questions($isRecursive);
+        $table     = fORM::tablize('WpTesting_Model_Question');
+        $questions =& $this->related_records[$table]['test_id']['record_set'];
+        $questions = $questions->filter(array('getTitle!=' => ''));
+        return $this;
+    }
+
+    /**
+     * Export as WP native content entity object
+     *
+     * @return WP_Post
+     */
+    public function toWpPost()
+    {
+        $post = new WP_Post(new stdClass());
+        $post->filter = 'raw';
+        foreach ($this->values as $key => $value) {
+            $post->$key = (string)$value;
+        }
+        return $post;
+    }
+}

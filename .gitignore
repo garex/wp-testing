@@ -1,0 +1,4 @@
+/db/log/*.log
+/db/sql/*.bak
+/vendor/
+/ruckusing.conf.local.php

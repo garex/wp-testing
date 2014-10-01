@@ -1,0 +1,69 @@
+.wpt_test .question {
+    margin-bottom: 1.25em;
+}
+
+.wpt_test .question .title {
+    font-weight: bold;
+}
+
+.wpt_test .question .title .number {
+    font-weight: normal;
+    display: inline-block;
+    width: 3em;
+    margin-left: -3.5em;
+    padding-right: 0.5em;
+    text-align: right;
+}
+
+.wpt_test .answer {
+    padding-top: 0.25em;
+    padding-left: 0.5em;
+}
+
+.wpt_test .answer label {
+    margin-left: 0.25em;
+}
+
+.wpt_test .answer input {
+    margin-top: -2px;
+    vertical-align: middle;
+}
+
+.wpt_test .button {
+    margin-top: 0.75em;
+}
+
+.wpt_test .button.disabled {
+    opacity: 0.5;
+}
+
+.wpt_test .get_results .meter,
+.wpt_test .get_results .meter > span {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    position: relative;
+}
+.wpt_test .get_results .meter {
+    height: 1.5em;
+    margin-bottom: 1em;
+    padding: 2px 1px;
+    border: 1px solid highlight;
+}
+.wpt_test .get_results .meter > span {
+    display: block;
+    height: 100%;
+    background: highlight;
+    overflow: hidden;
+}
+.wpt_test .get_results .scale.scores {
+    padding-left: 7px;
+    padding-top: 2px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 1;
+}
+
+.wpt_test .get_results .content {
+    color: gray;
+}

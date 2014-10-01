@@ -1,0 +1,35 @@
+{
+    "name": "garex/wp-testing",
+    "description": "Helps to create psychological tests",
+    "type": "wordpress-plugin",
+    "license": "GPLv3",
+    "authors": [{
+            "name": "Ustimenko Alexander",
+            "email": "a@ustimen.co"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0.0"
+        , "xrstf/composer-php52": "1.*"
+        , "ruckusing/ruckusing-migrations": "~1.0"
+        , "flourish/flourish": "0.9.*@dev"
+    },
+    "require-dev": {
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-update-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-autoload-dump": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ]
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
