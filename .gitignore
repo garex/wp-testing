@@ -2,3 +2,4 @@
 /db/sql/*.bak
 /vendor/
 /db/ruckusing.conf.local.php
+/phpunit.xml
