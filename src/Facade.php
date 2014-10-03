@@ -30,6 +30,7 @@ class WpTesting_Facade
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
+        $this->autoloadComposer();
         $this->registerWordPressHooks();
     }
 
@@ -76,8 +77,6 @@ class WpTesting_Facade
             return;
         }
 
-        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
-        require_once dirname(__FILE__) . '/Doer/WordPressEntitiesRegistrator.php';
         new WpTesting_Doer_WordPressEntitiesRegistrator($this->wp);
 
         $this->isWordPressEntitiesRegistered = true;
@@ -101,8 +100,6 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
-        require_once dirname(__FILE__) . '/Doer/ShortcodeProcessor.php';
         $this->shortcodeProcessor = new WpTesting_Doer_ShortcodeProcessor($this->wp);
 
         return $this->shortcodeProcessor;
@@ -115,8 +112,6 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
-        require_once dirname(__FILE__) . '/Doer/TestEditor.php';
         $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
 
         return $this->testEditor;
@@ -129,8 +124,6 @@ class WpTesting_Facade
         }
 
         $this->setupORM();
-        require_once dirname(__FILE__) . '/Doer/AbstractDoer.php';
-        require_once dirname(__FILE__) . '/Doer/TestPasser.php';
         $this->testPasser = new WpTesting_Doer_TestPasser($this->wp);
 
         return $this->testPasser;
@@ -141,7 +134,6 @@ class WpTesting_Facade
         if ($this->isOrmSettedUp) {
             return;
         }
-        $this->autoloadComposer();
         $this->defineConstants();
 
         // Extract port from host. See wpdb::db_connect
@@ -154,19 +146,6 @@ class WpTesting_Facade
         $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
         // $database->enableDebugging(true);
         fORMDatabase::attach($database);
-
-        require_once dirname(__FILE__) . '/Model/AbstractModel.php';
-        require_once dirname(__FILE__) . '/Model/Test.php';
-        require_once dirname(__FILE__) . '/Model/Question.php';
-        require_once dirname(__FILE__) . '/Model/Taxonomy.php';
-        require_once dirname(__FILE__) . '/Model/AbstractTerm.php';
-        require_once dirname(__FILE__) . '/Model/Answer.php';
-        require_once dirname(__FILE__) . '/Model/Scale.php';
-        require_once dirname(__FILE__) . '/Model/Score.php';
-        require_once dirname(__FILE__) . '/Model/Passing.php';
-        require_once dirname(__FILE__) . '/Model/PassingAnswer.php';
-        require_once dirname(__FILE__) . '/Query/AbstractQuery.php';
-        require_once dirname(__FILE__) . '/Query/Test.php';
 
         fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',      WPT_DB_PREFIX  . 'questions');
@@ -217,7 +196,6 @@ class WpTesting_Facade
      */
     protected function migrateDatabase($argv)
     {
-        $this->autoloadComposer();
         $this->defineConstants();
 
         $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
@@ -257,13 +235,15 @@ class WpTesting_Facade
 
     protected function autoloadComposer()
     {
-        // 1. Try to find composer.json
+        // 1. Try to find composer.json if PHP is 5.3 and up
         $composerFullName = null;
-        foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
-            $candidateFile = $path . DIRECTORY_SEPARATOR . 'composer.json';
-            if (file_exists($candidateFile)) {
-                $composerFullName = $candidateFile;
-                break;
+        if (version_compare(PHP_VERSION, '5.3', '>=')) {
+            foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
+                $candidateFile = $path . DIRECTORY_SEPARATOR . 'composer.json';
+                if (file_exists($candidateFile)) {
+                    $composerFullName = $candidateFile;
+                    break;
+                }
             }
         }
 
