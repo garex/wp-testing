@@ -14,6 +14,7 @@
         , "xrstf/composer-php52": "1.*"
         , "ruckusing/ruckusing-migrations": "~1.0"
         , "flourish/flourish": "0.9.*@dev"
+        , "nikic/php-parser": "0.9.5"
     },
     "scripts": {
         "post-install-cmd": [

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.2/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/3.7/phpunit.xsd"
     backupStaticAttributes="false"
     colors="true"
     convertErrorsToExceptions="true"
@@ -11,6 +11,7 @@
     stopOnFailure="false"
     syntaxCheck="false"
     verbose="true"
+    bootstrap="vendor/autoload_52.php"
 >
     <testsuites>
         <testsuite name="Default">
