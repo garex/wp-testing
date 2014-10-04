@@ -154,7 +154,9 @@ class WpTesting_Facade
         fORM::mapClassToTable('WpTesting_Model_Scale',         WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Score',         WPT_DB_PREFIX  . 'scores');
         fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');
-        fORM::mapClassToTable('WpTesting_Model_PassingAnswer',  WPT_DB_PREFIX . 'passing_answers');
+        fORM::mapClassToTable('WpTesting_Model_PassingAnswer', WPT_DB_PREFIX  . 'passing_answers');
+        fORM::mapClassToTable('WpTesting_Model_Result',        WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Formula',       WPT_DB_PREFIX  . 'formulas');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');

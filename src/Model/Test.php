@@ -64,6 +64,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return WpTesting_Model_Result[]
+     */
+    public function buildResults()
+    {
+        return fRecordSet::build('WpTesting_Model_Result', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_result'),
+        ));
+    }
+
+    /**
      * @return WpTesting_Model_Answer[]
      */
     protected function buildAnswers()
