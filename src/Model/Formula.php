@@ -137,6 +137,21 @@ class WpTesting_Model_Formula
         return $result;
     }
 
+    /**
+     * Shortcut method for addValue
+     *
+     * @param array $values
+     * @throws InvalidArgumentException
+     * @return WpTesting_Model_Formula
+     */
+    public function addValues(array $values)
+    {
+        foreach ($values as $params) {
+            call_user_method_array('addValue', $this, $params);
+        }
+        return $this;
+    }
+
     protected function transformPercent($matches)
     {
         return $matches[1] / 100;

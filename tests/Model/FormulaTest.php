@@ -95,4 +95,71 @@ class FormulaTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('0.46>0.5', $formula->substitute());
     }
+
+    /**
+     * @dataProvider formulaIsTrueOrNotProvider
+     * @param string $formula
+     * @param boolean $isTrue
+     * @param array $values
+     */
+    public function testFormulaIsTrueOrNot($formula, $isTrue, $values)
+    {
+        $formula = new WpTesting_Model_Formula($formula);
+        $this->assertEquals($isTrue, $formula->addValues($values)->isTrue());
+    }
+
+    public function formulaIsTrueOrNotProvider()
+    {
+        return array(
+            array('scale 1 > 34 scale 4 < 45', true, array(
+                array('scale 1', 36, 0.3),
+                array('scale 4', 30, 0.3),
+            )),
+
+            array('scale 1 < 34 scale 3 < 30 scale2 > 21', false, array(
+                array('scale 1', 32, 0.3),
+                array('scale 3', 25, 0.3),
+                array('scale2',  21, 0.3),
+            )),
+
+            array('scale55 > 2 scale0 < 1', true, array(
+                array('scale55',  3, 0.3),
+                array('scale0',   0, 0.3),
+            )),
+
+            array('scale 121<=121 scale211 =>211', true, array(
+                array('scale 121',  121, 0.3),
+                array('scale211',   211, 0.3),
+            )),
+
+            array('scale11 == 15 or scale 18 => 11', false, array(
+                array('scale11',  11, 0.3),
+                array('scale 18', 10, 0.3),
+            )),
+
+            array('scale18 => 18 scale 288 => 11 or scale30 => 18', true, array(
+                array('scale18',   19, 0.3),
+                array('scale 288', 12, 0.3),
+                array('scale 30',  3, 0.3),
+            )),
+
+            array('scale18 => 18 and (scale 288 => 11 or scale30 => 18)', true, array(
+                array('scale18',   19, 0.3),
+                array('scale 288', 12, 0.3),
+                array('scale 30',  3, 0.3),
+            )),
+
+            array('scale18 > 15% or scale30 < 19%', false, array(
+                array('scale18', 1, 0.13),
+                array('scale30', 1, 0.19),
+            )),
+
+            array('scale3 > 150% or scale20 > 18% or scale40 > 40% and scale10 <= 3%', true, array(
+                array('scale3',  1, 1.51),
+                array('scale20', 1, 0.20),
+                array('scale40', 1, 0.35),
+                array('scale10', 1, 0.02),
+            )),
+        );
+    }
 }
