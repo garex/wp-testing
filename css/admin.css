@@ -1,3 +1,10 @@
+.wp-media-buttons .wpt-button.add {
+    padding-left: 1px;
+}
+.wp-media-buttons .wpt-button.edit {
+    padding-left: 3px;
+}
+
 table.wpt_questions {
     width: 100%;
 }

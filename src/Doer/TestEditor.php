@@ -6,11 +6,22 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function customizeUi()
     {
         $this->wp
+            ->addAction('media_buttons', array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  'Edit Formulas',     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post', array($this,  'saveTest'), 10, 3)
         ;
+    }
+
+    public function renderContentEditorButtons($editorId)
+    {
+        if ('content' != $editorId) {
+            return;
+        }
+        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
+
+        $this->output('Test/Editor/content-editor-buttons');
     }
 
     public function renderEditQuestions(WP_Post $item)
