@@ -72,6 +72,36 @@ class WpTesting_Model_Formula
     }
 
     /**
+     * Tests formula, knowing it's possible values for correctnes.
+     *
+     * @param array $valueNames If not provided, tries to get current values if they are exists.
+     * @throws InvalidArgumentException
+     * @return boolean
+     */
+    public function isCorrect(array $valueNames = array())
+    {
+        $experiment = new self($this->source);
+
+        if (empty($valueNames)) {
+            $experiment->addValues($this->values);
+        } else {
+            foreach (array_unique($valueNames) as $name) {
+                $experiment->addValue($name, 12, 0.34);
+            }
+        }
+
+        if (empty($experiment->values)) {
+            throw new InvalidArgumentException('Value names are required when own values are empty');
+        }
+
+        try {
+            return !empty($experiment->substitute());
+        } catch (PHPParser_Error $e) {
+            return false;
+        }
+    }
+
+    /**
      * Evaluates formula with values and checks if it's true or not.
      *
      * Currently most dangerous part.

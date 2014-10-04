@@ -183,4 +183,28 @@ class FormulaTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('10==10||10==20', $formula->substitute());
     }
+
+    /**
+     * @dataProvider formulaIsCorrectOrNotProvider
+     * @param string $formula
+     * @param boolean $isCorrect
+     * @param array $valueNames
+     */
+    public function testFormulaIsCorrect($formula, $isCorrect, $valueNames)
+    {
+        $formula = new WpTesting_Model_Formula($formula);
+        $this->assertEquals($isCorrect, $formula->isCorrect($valueNames));
+    }
+
+    public function formulaIsCorrectOrNotProvider()
+    {
+        return array(
+            array('Scale A > 34 Scale B < 45',     true,  array('Scale A', 'Scale B')),
+            array('Scale A > 34 Scale B < 45',     false, array('Scale X')),
+            array('',                              false, array('Scale X')),
+            array(' something empty?    ',         false, array('Scale X')),
+            array('<><>',                          false, array('Scale X')),
+            array('var_dump(file("/etc/passwd"))', false, array('Scale X')),
+        );
+    }
 }
