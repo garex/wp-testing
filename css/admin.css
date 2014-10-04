@@ -19,3 +19,17 @@ table.wpt_questions {
     text-align: center;
     width: 100%;
 }
+
+table.wpt_formulas,
+table.wpt_formulas_helper {
+    margin-top: 1em;
+}
+
+.wpt_formulas .wpt_title {
+    width: 1em;
+    white-space: nowrap;
+}
+
+.wpt_formulas .wpt_formula input {
+    width: 100%;   
+}

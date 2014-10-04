@@ -8,7 +8,7 @@
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
  */
-class WpTesting_Model_Formula
+class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 {
 
     /**

@@ -8,6 +8,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->wp
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
+            ->addMetaBox('wpt_edit_formulas',  'Edit Formulas',     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post', array($this,  'saveTest'), 10, 3)
         ;
     }
@@ -34,6 +35,19 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'startFrom'   => $test->buildQuestions()->count(),
             'scales'      => $test->buildScales(),
             'prefix'      => $test->getQuestionsPrefix(),
+        ));
+    }
+
+    public function renderEditFormulas(WP_Post $item)
+    {
+        $this->wp
+            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
+            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
+        ;
+        $test = new WpTesting_Model_Test($item);
+        $this->output('Test/Editor/edit-formulas', array(
+            'results'  => $test->buildResults(),
+            'scales'   => $test->buildScales(),
         ));
     }
 
