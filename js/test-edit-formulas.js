@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
-    var box      		= $('#wpt_edit_formulas'),
-        formulas 		= box.find('.wpt_formulas input'),
-        activeFormula	= formulas.length > 0 ? $(formulas[0]) : $('<input/>'),
+    var box             = $('#wpt_edit_formulas'),
+        formulas        = box.find('.wpt_formulas input'),
+        activeFormula   = formulas.length > 0 ? $(formulas[0]) : $('<input/>'),
         helpers         = box.find('.wpt_formulas_helper input[type=button]');
 
     formulas.focus(function() {
@@ -9,21 +9,21 @@ jQuery(document).ready(function($) {
     });
 
     helpers.click(function() {
-        var currentValue = activeFormula.val(),
-            newValue     = currentValue,
-            helper       = $(this);
+        var helper       = $(this),
+            insertValue  = helper.data('source'),
+            isSelected   = activeFormula.fieldSelection().length > 0;
 
-        if (newValue.length > 0 && newValue.substring(newValue.length - 1) != ' ') {
-            newValue += ' ';
-        }
-        if (typeof helper.data == 'undefined') {
-            newValue += helper.val();
+        if (isSelected) {
+            activeFormula.fieldSelection(insertValue);
         } else {
-            newValue += helper.data('source');
-        }
-        newValue += ' ';
+            var value       = activeFormula.val(),
+                isEmpty     = value.length == 0,
+                endsOnSpace = value.substring(value.length - 1) == ' ',
+                prefix      = (isEmpty || endsOnSpace) ? '' : ' ';
 
-        activeFormula.val(newValue);
+            activeFormula.val(value + prefix + insertValue + ' ');
+        }
+
         activeFormula.focus();
     });
 

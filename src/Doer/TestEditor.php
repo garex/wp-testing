@@ -53,6 +53,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     {
         $this->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
+            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
             ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
         ;
         $test = new WpTesting_Model_Test($item);
@@ -71,5 +72,4 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $test->populateQuestions(true);
         $test->store(true);
     }
-
 }
