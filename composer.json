@@ -3,7 +3,8 @@
     "description": "Helps to create psychological tests",
     "type": "wordpress-plugin",
     "license": "GPLv3",
-    "authors": [{
+    "authors": [
+        {
             "name": "Ustimenko Alexander",
             "email": "a@ustimen.co"
         }
@@ -13,8 +14,7 @@
         , "xrstf/composer-php52": "1.*"
         , "ruckusing/ruckusing-migrations": "~1.0"
         , "flourish/flourish": "0.9.*@dev"
-    },
-    "require-dev": {
+        , "nikic/php-parser": "0.9.5"
     },
     "scripts": {
         "post-install-cmd": [
@@ -31,5 +31,19 @@
         "classmap": [
             "src/"
         ]
-    }
+    },
+    "require-dev": {
+        "phpunit/phpunit-php52": "dev-3.6.12-php52",
+        "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/garex/phpunit"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/garex/phpunit-mock-objects"
+        }
+    ]
 }
