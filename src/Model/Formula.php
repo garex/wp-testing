@@ -94,8 +94,11 @@ class WpTesting_Model_Formula
     {
         $result = $this->source;
 
+        $values = $this->values;
+        uksort($values, array($this, 'compareValueNamesInverted'));
+
         // Replace all values
-        $result = str_replace(array_keys($this->values), array_values($this->values), $result);
+        $result = str_replace(array_keys($values), array_values($values), $result);
 
         // Lowercase
         $result = strtolower($result);
@@ -108,6 +111,10 @@ class WpTesting_Model_Formula
 
         // Normalize comparisions
         $result = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
+
+        // Normalize equalities
+        $result = preg_replace('/=+/', '=', $result);
+        $result = preg_replace('/([^!<>])=([^!<>])/', '$1==$2', $result);
 
         // Normalize percents
         $result = preg_replace('/%+/', '%', $result);
@@ -150,6 +157,40 @@ class WpTesting_Model_Formula
             call_user_method_array('addValue', $this, $params);
         }
         return $this;
+    }
+
+    /**
+     * Compares values' names to sort by longest length then by traditional strings comparing
+     *
+     * @param string $name1
+     * @param string $name2
+     * @return number
+     */
+    protected function compareValueNames($name1, $name2)
+    {
+        if (mb_strlen($name1) < mb_strlen($name2)) {
+            return -1;
+        } elseif (mb_strlen($name1) > mb_strlen($name2)) {
+            return 1;
+        } elseif ($name1 < $name2) {
+            return -1;
+        } elseif ($name1 > $name2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Compares values' names inverted
+     *
+     * @param string $name1
+     * @param string $name2
+     * @return number
+     */
+    protected function compareValueNamesInverted($name1, $name2)
+    {
+        return $this->compareValueNames($name1, $name2) * -1;
     }
 
     protected function transformPercent($matches)

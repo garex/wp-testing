@@ -132,7 +132,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
                 array('scale211',   211, 0.3),
             )),
 
-            array('scale11 == 15 or scale 18 => 11', false, array(
+            array('scale11 = 15 or scale 18 => 11', false, array(
                 array('scale11',  11, 0.3),
                 array('scale 18', 10, 0.3),
             )),
@@ -161,5 +161,26 @@ class FormulaTest extends PHPUnit_Framework_TestCase
                 array('scale10', 1, 0.02),
             )),
         );
+    }
+
+    public function testSimilarScaleNamesSubstitutesCorrectly()
+    {
+        $formula = new WpTesting_Model_Formula('ascale55 > 10 ascale555 > 20');
+        $formula
+            ->addValue('ascale55',  11)
+            ->addValue('ascale555', 22)
+            ->addValue('cale55',    33)
+            ->addValue('le',        44)
+        ;
+
+        $this->assertEquals('11>10&&22>20', $formula->substitute());
+    }
+
+    public function testSingleEqualityOperatorReplacedIntoDouble()
+    {
+        $formula = new WpTesting_Model_Formula('somescale = 10 or somescale == 20');
+        $formula->addValue('somescale',  10);
+
+        $this->assertEquals('10==10||10==20', $formula->substitute());
     }
 }
