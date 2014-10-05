@@ -1,3 +1,11 @@
+.error.wpt_test_editor > ul {
+    margin-left: 1em;
+}
+.error.wpt_test_editor ul {
+    list-style: circle;
+    padding-left: 1em;
+}
+
 .wp-media-buttons .wpt-button.add {
     padding-left: 1px;
 }
