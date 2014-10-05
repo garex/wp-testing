@@ -1,4 +1,3 @@
-<?php $prefix = '' ?>
 <table class="widefat wpt_formulas">
     <tr>
         <th class="bar"><?php echo 'Result' ?></th>
@@ -10,7 +9,11 @@
             <?php echo $result->getTitle() ?>
         </td>
         <td class="wpt_formula">
-            <input name="<?php echo $prefix ?>formula_source[<?php echo $r ?>]" value="<?php echo htmlspecialchars('') ?>" />
+            <?php $formula = $result->getFormula() ?>
+            <input name="<?php echo $prefix ?>test_id[<?php echo $r ?>]"        value="<?php echo $formula->getTestId() ?>" type="hidden" />
+            <input name="<?php echo $prefix ?>formula_id[<?php echo $r ?>]"     value="<?php echo $formula->getId() ?>" type="hidden" />
+            <input name="<?php echo $prefix ?>result_id[<?php echo $r ?>]"      value="<?php echo $formula->getResultId() ?>" type="hidden" />
+            <input name="<?php echo $prefix ?>formula_source[<?php echo $r ?>]" value="<?php echo htmlspecialchars($formula->getSource()) ?>" type="text" />
         </td>
     </tr>
 <?php endforeach ?>
@@ -23,8 +26,8 @@
     </tr>
     <tr>
         <td>
-        <?php foreach($scales as $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <input type="button" data-source="<?php echo htmlspecialchars($scale->getSlug()) ?>" title="<?php echo 'Scale Variable' ?>" value="<?php echo htmlspecialchars($scale->getTitle()) ?>"/>
+        <?php foreach($variables as $variable): /* @var $variable WpTesting_Model_FormulaVariable */ ?>
+            <input type="button" data-source="<?php echo htmlspecialchars($variable->getSource()) ?>" title="<?php echo $variable->getTitle() ?>" value="<?php echo htmlspecialchars($variable->getValue()) ?>"/>
         <?php endforeach ?>
         </td>
         <td>

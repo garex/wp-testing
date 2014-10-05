@@ -7,28 +7,37 @@
  *
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
+ * @method integer getId() getId() Gets the current value of id
+ * @method integer getTestId() getTestId() Gets the current value of test id
+ * @method integer getResultId() getResultId() Gets the current value of result id
+ * @method WpTesting_Model_Formula setResultId() setResultId(integer $id) Sets the value for result id
+ * @method string getSource() getSource() Gets the current value of source
  */
 class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 {
 
-    /**
-     * Formula's source — some kind of "source code"
-     * @var string
-     */
-    private $source = null;
+    protected $columnAliases = array(
+        'id'        => 'formula_id',
+        'source'    => 'formula_source',
+    );
 
     /**
      * Values, that are substitutes in formula during comparing
      * @var array
      */
-    private $values = array();
+    private $substituteValues = array();
 
     /**
-     * @param string $source Formula's source — some kind of "source code"
+     * @param string $key Key or formula's source — some kind of "source code"
      */
-    public function __construct($source)
+    public function __construct($key = null)
     {
-        $this->setSource($source);
+        if (is_string($key) && !is_numeric($key)) {
+            parent::__construct(null);
+            $this->setSource($key);
+        } else {
+            parent::__construct($key);
+        }
     }
 
     /**
@@ -42,21 +51,21 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function addValue($name, $value, $percentageValue = null)
     {
-        if (isset($this->values[$name])) {
+        if (isset($this->substituteValues[$name])) {
             throw new InvalidArgumentException('Value ' . $name . ' can not be added twice');
         }
         if (is_null($value)) {
             throw new InvalidArgumentException('Value ' . $name . ' can not be null');
         }
 
-        if (strpos($this->source, '%')) {
+        if (strpos($this->getSource(), '%')) {
             if (is_null($percentageValue)) {
                 throw new InvalidArgumentException('Percentage value ' . $name . ' can not be null when source contains percentage');
             }
             if (!is_numeric($percentageValue)) {
                 throw new InvalidArgumentException('Percentage value ' . $name . ' must be numeric. Provided: ' . var_export($percentageValue, true));
             }
-            $this->values[$name] = floatval($percentageValue);
+            $this->substituteValues[$name] = floatval($percentageValue);
             return $this;
         }
 
@@ -66,7 +75,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 
         $intValue   = intval($value);
         $floatValue = floatval($value);
-        $this->values[$name] = ($intValue == $floatValue) ? $intValue : $floatValue;
+        $this->substituteValues[$name] = ($intValue == $floatValue) ? $intValue : $floatValue;
 
         return $this;
     }
@@ -80,17 +89,17 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function isCorrect(array $valueNames = array())
     {
-        $experiment = new self($this->source);
+        $experiment = new self($this->getSource());
 
         if (empty($valueNames)) {
-            $experiment->addValues($this->values);
+            $experiment->addValues($this->substituteValues);
         } else {
             foreach (array_unique($valueNames) as $name) {
                 $experiment->addValue($name, 12, 0.34);
             }
         }
 
-        if (empty($experiment->values)) {
+        if (empty($experiment->substituteValues)) {
             throw new InvalidArgumentException('Value names are required when own values are empty');
         }
 
@@ -122,9 +131,9 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function substitute()
     {
-        $result = $this->source;
+        $result = $this->getSource();
 
-        $values = $this->values;
+        $values = $this->substituteValues;
         uksort($values, array($this, 'compareValueNamesInverted'));
 
         // Replace all values
@@ -189,6 +198,28 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         return $this;
     }
 
+    public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
+    {
+        /* @var $test WpTesting_Model_Test */
+        $test = $me->createWpTesting_Model_Test();
+        $varNames = array();
+        foreach ($test->buildFormulaVariables() as $var) {
+            $varNames[] = $var->getSource();
+        }
+        if ($me->isCorrect($varNames)) {
+            return;
+        }
+        /* @var $result WpTesting_Model_Result */
+        $result = $me->createWpTesting_Model_Result();
+        $validationMessages['formula_source'] = 'Formula for ' . $result->getTitle() . ' has error';
+    }
+
+    protected function configure()
+    {
+        parent::configure();
+        fORM::registerHookCallback($this, 'post::validate()', array($this, 'validateSource'));
+    }
+
     /**
      * Compares values' names to sort by longest length then by traditional strings comparing
      *
@@ -226,24 +257,5 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     protected function transformPercent($matches)
     {
         return $matches[1] / 100;
-    }
-
-    /**
-     * Formula's source — some kind of "source code"
-     *
-     * @param string $source
-     * @throws InvalidArgumentException
-     * @return WpTesting_Model_Formula
-     */
-    protected function setSource($source)
-    {
-        if (is_null($source)) {
-            throw new InvalidArgumentException('Formula source can not be null');
-        }
-        if (!is_null($this->source)) {
-            throw new InvalidArgumentException('Formula source can not be rewritten');
-        }
-        $this->source = $source;
-        return $this;
     }
 }

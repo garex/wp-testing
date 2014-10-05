@@ -58,8 +58,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ;
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-formulas', array(
-            'results'  => $test->buildResults(),
-            'scales'   => $test->buildScales(),
+            'results'    => $test->buildResults(),
+            'variables'  => $test->buildFormulaVariables(),
+            'prefix'     => $test->getFormulasPrefix(),
         ));
     }
 
@@ -70,6 +71,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return;
         }
         $test->populateQuestions(true);
+        $test->populateFormulas();
         $test->store(true);
     }
 }
