@@ -17,10 +17,10 @@
         <h3 class="scale title"><?php echo $scale->getTitle() ?></h3>
 
         <div class="scale scores">
-            <?php echo $scale->getScoresTotal() ?> <?php echo 'out of' ?> <?php echo $scale->getTotalScale()->getScoresTotal() ?>
+            <?php echo $scale->getValue() ?> <?php echo 'out of' ?> <?php echo $scale->getMaximum() ?>
         </div>
         <div class="meter">
-            <span style="width: <?php echo $scale->getScoresTotalPercent() ?>%"></span>
+            <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>
         </div>
 
         <p class="scale description"><?php echo nl2br($scale->getDescription()) ?></p>

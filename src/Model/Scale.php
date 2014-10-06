@@ -3,51 +3,112 @@
 class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm
 {
 
-    protected $scoreTotal = 0;
+    private $minimum = null;
+    private $maximum = null;
+    private $value   = null;
 
     /**
-     * Scale for total values
-     * @var WpTesting_Model_Scale
+     * Sets scale range to non-null integer values
+     *
+     * @param integer $minimum
+     * @param integer $maximum
+     * @throws InvalidArgumentException
+     * @return WpTesting_Model_Scale
      */
-    protected $totalScale = null;
-
-    public function resetScore()
+    public function setRange($minimum, $maximum)
     {
-        $this->scoreTotal = 0;
+        if ($minimum instanceof WpTesting_Model_Scale) {
+            $another = $minimum;
+            $minimum = $another->minimum;
+            $maximum = $another->maximum;
+        }
+        $minimum = $this->filterValue($minimum, 'minimum');
+        $maximum = $this->filterValue($maximum, 'maximum');
+        if (!($minimum < $maximum)) {
+            throw new InvalidArgumentException('Scale minimum ' . $minimum . ' must be less than maximum ' . $maximum);
+        }
+        if (!is_null($this->value) && !($minimum <= $this->value) || !($this->value <= $maximum)) {
+            throw new InvalidArgumentException('Scale range from ' . $minimum . ' to ' . $maximum . ' must include value ' . $this->value);
+        }
+        $this->minimum = $minimum;
+        $this->maximum = $maximum;
         return $this;
     }
 
-    public function addScore(WpTesting_Model_Score $score)
+    /**
+     * Sets scale range from another scale
+     *
+     * @param WpTesting_Model_Scale $another
+     * @throws InvalidArgumentException
+     * @return WpTesting_Model_Scale
+     */
+    public function extractRangeFrom(WpTesting_Model_Scale $another)
     {
-        $this->scoreTotal += $score->getValue();
+        return $this->setRange($another->minimum, $another->maximum);
+    }
+
+    public function setValue($value)
+    {
+        $value = $this->filterValue($value, 'value');
+        if (!($this->minimum <= $value) || !($value <= $this->maximum)) {
+            throw new InvalidArgumentException('Scale value ' . $value . ' must be within range from ' . $this->minimum . ' to ' . $this->maximum);
+        }
+        $this->value = $value;
         return $this;
     }
 
-    public function getScoresTotal()
+    /**
+     * @return number
+     */
+    public function getValue()
     {
-        return $this->scoreTotal;
+        return $this->value;
     }
 
-    public function getScoresTotalPercent()
+    /**
+     * @return number
+     */
+    public function getMaximum()
     {
-        $totalTotal = $this->getTotalScale()->getScoresTotal();
-        if (!$totalTotal) {
+        return $this->maximum;
+    }
+
+    /**
+     * @return float
+     */
+    public function getValueAsRatio()
+    {
+        if (empty($this->maximum)) {
             return 0;
         }
-        return round($this->scoreTotal / $totalTotal * 100);
+        return round($this->value / $this->maximum, 2);
     }
 
-    public function setTotalScale(WpTesting_Model_Scale $scale)
+    /**
+     * @return string
+     */
+    public function getValueAsPercentage()
     {
-        $this->totalScale = $scale;
+        return sprintf("%u%%", $this->getValueAsRatio() * 100);
     }
 
-    public function getTotalScale()
+    /**
+     * @param mixed $value
+     * @param string $name
+     * @throws InvalidArgumentException
+     * @return number
+     */
+    private function filterValue($value, $name)
     {
-        if ($this->totalScale instanceof WpTesting_Model_Scale) {
-            return $this->totalScale;
+        if (is_null($value)) {
+            throw new InvalidArgumentException('Scale ' . $name . ' must be not null');
         }
-        return new WpTesting_Model_Scale();
+        if (!is_numeric($value)) {
+            throw new InvalidArgumentException('Scale ' . $name . ' ' . $value . ' must be numeric');
+        }
+        if (intval($value) != $value) {
+            throw new InvalidArgumentException('Scale ' . $name . ' ' . $value . ' must be integer');
+        }
+        return intval($value);
     }
-
 }

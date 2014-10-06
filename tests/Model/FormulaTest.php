@@ -3,19 +3,30 @@
 class FormulaTest extends PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @var WpTesting_Model_Formula
+     */
+    private $formula = null;
+
+    protected function setUp()
+    {
+        $this->formula = new WpTesting_Model_Formula();
+    }
+
     public function testSlugsAndNamesTranslatedIntoValues()
     {
-        $formula = new WpTesting_Model_Formula('Introversion/Extraversion scale > 12 and slug-neurothism < 12');
-        $formula->addValue('Introversion/Extraversion scale', 12)->addValue('slug-neurothism', 12);
-
-        $this->assertEquals('12>12&&12<12', $formula->substitute());
+        $this->assertEquals('12>12&&12<12', $this->formula
+            ->setSource('Introversion/Extraversion scale > 12 and slug-neurothism < 12')
+            ->addValue('Introversion/Extraversion scale', 12)
+            ->addValue('slug-neurothism', 12)
+            ->substitute()
+        );
     }
 
     public function testOnlyNumbersAllowedAsRealValuesOfVars()
     {
         $this->setExpectedException('InvalidArgumentException', 'must be numeric');
-        $formula = new WpTesting_Model_Formula('-');
-        $formula->addValue('key', 'value');
+        $this->formula->setSource('-')->addValue('key', 'value');
     }
 
     /**
@@ -25,8 +36,10 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     public function testOnlyAllowedSymbolsLeft($passedFormula, $expectedResult)
     {
-        $formula = new WpTesting_Model_Formula($passedFormula);
-        $this->assertEquals($expectedResult, $formula->substitute());
+        $this->assertEquals($expectedResult, $this->formula
+            ->setSource($passedFormula)
+            ->substitute()
+        );
     }
 
     public function onlyAllowedSymbolsLeftProvider()
@@ -45,8 +58,10 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     public function testOperatorsNormalized($passedFormula, $expectedResult)
     {
-        $formula = new WpTesting_Model_Formula($passedFormula);
-        $this->assertEquals($expectedResult, $formula->substitute());
+        $this->assertEquals($expectedResult, $this->formula
+            ->setSource($passedFormula)
+            ->substitute()
+        );
     }
 
     public function operatorsNormalizedProvider()
@@ -69,8 +84,10 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     public function testLogicalAndsPlacedAutomatically($passedFormula, $expectedResult)
     {
-        $formula = new WpTesting_Model_Formula($passedFormula);
-        $this->assertEquals($expectedResult, $formula->substitute());
+        $this->assertEquals($expectedResult, $this->formula
+            ->setSource($passedFormula)
+            ->substitute()
+        );
     }
 
     public function logicalAndsPlacedAutomaticallyProvider()
@@ -84,16 +101,16 @@ class FormulaTest extends PHPUnit_Framework_TestCase
     public function testRequirePercentage()
     {
         $this->setExpectedException('InvalidArgumentException', 'can not be null when source contains percentage');
-        $formula = new WpTesting_Model_Formula('something > 50%');
-        $formula->addValue('something', '23');
+        $this->formula->setSource('something > 50%')->addValue('something', '23');
     }
 
     public function testValuesReplacedByPercentageInPercentageFormulas()
     {
-        $formula = new WpTesting_Model_Formula('something > 50%');
-        $formula->addValue('something', '23', 0.46);
-
-        $this->assertEquals('0.46>0.5', $formula->substitute());
+        $this->assertEquals('0.46>0.5', $this->formula
+            ->setSource('something > 50%')
+            ->addValue('something', '23', 0.46)
+            ->substitute()
+        );
     }
 
     /**
@@ -104,8 +121,11 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     public function testFormulaIsTrueOrNot($formula, $isTrue, $values)
     {
-        $formula = new WpTesting_Model_Formula($formula);
-        $this->assertEquals($isTrue, $formula->addValues($values)->isTrue());
+        $this->assertEquals($isTrue, $this->formula
+            ->setSource($formula)
+            ->addValues($values)
+            ->isTrue()
+        );
     }
 
     public function formulaIsTrueOrNotProvider()
@@ -165,23 +185,23 @@ class FormulaTest extends PHPUnit_Framework_TestCase
 
     public function testSimilarScaleNamesSubstitutesCorrectly()
     {
-        $formula = new WpTesting_Model_Formula('ascale55 > 10 ascale555 > 20');
-        $formula
+        $this->assertEquals('11>10&&22>20', $this->formula
+            ->setSource('ascale55 > 10 ascale555 > 20')
             ->addValue('ascale55',  11)
             ->addValue('ascale555', 22)
             ->addValue('cale55',    33)
             ->addValue('le',        44)
-        ;
-
-        $this->assertEquals('11>10&&22>20', $formula->substitute());
+            ->substitute()
+        );
     }
 
     public function testSingleEqualityOperatorReplacedIntoDouble()
     {
-        $formula = new WpTesting_Model_Formula('somescale = 10 or somescale == 20');
-        $formula->addValue('somescale',  10);
-
-        $this->assertEquals('10==10||10==20', $formula->substitute());
+        $this->assertEquals('10==10||10==20', $this->formula
+            ->setSource('somescale = 10 or somescale == 20')
+            ->addValue('somescale',  10)
+            ->substitute()
+        );
     }
 
     /**
@@ -192,8 +212,10 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     public function testFormulaIsCorrect($formula, $isCorrect, $valueNames)
     {
-        $formula = new WpTesting_Model_Formula($formula);
-        $this->assertEquals($isCorrect, $formula->isCorrect($valueNames));
+        $this->assertEquals($isCorrect, $this->formula
+            ->setSource($formula)
+            ->isCorrect($valueNames)
+        );
     }
 
     public function formulaIsCorrectOrNotProvider()

@@ -19,6 +19,6 @@ jQuery(document).ready(function($) {
             return;
         }
         button.removeAttr('disabled').removeClass('disabled');
-    });
+    }).first().change();
 
 });

@@ -25,13 +25,13 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $template = ($template) ? $template : 'Test/Passer/' . $action;
 
         if ($this->isPost()) {
-        	$passing = new WpTesting_Model_Passing();
+            $passing = new WpTesting_Model_Passing();
             $passing->populate($this->test);
             $params = array(
                 'content'    => $content,
                 'test'       => $this->test,
                 'passing'    => $passing,
-                'scales'     => $passing->calculateScalesTotals(),
+                'scales'     => $passing->buildScalesWithRange(),
             );
         } else {
             $params = array(

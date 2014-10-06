@@ -1,0 +1,1 @@
+SELECT scale_id, SUM(score_value) FROM wp_t_scores WHERE question_id IN (1, 2, 3) GROUP BY scale_id;

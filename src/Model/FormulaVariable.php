@@ -14,7 +14,7 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return $model->getTitle();
+            return $model->getTitle() . ', ∑ ' . $model->getMaximum();
         }
         return null;
     }

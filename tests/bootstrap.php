@@ -6,3 +6,4 @@ $database  = new fDatabase('mysql', $db['database'], $db['user'], $db['password'
 // $database->enableDebugging(true);
 fORMDatabase::attach($database);
 fORM::mapClassToTable('WpTesting_Model_Formula', WPT_DB_PREFIX  . 'formulas');
+fORM::mapClassToTable('WpTesting_Model_Scale',   WP_DB_PREFIX   . 'terms');

@@ -64,6 +64,33 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Build scales and setup their ranges from test's questions
+     *
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScalesWithRange()
+    {
+        $questionIds = implode(',', $this->listWpTesting_Model_Questions());
+        $questionIds = empty($questionIds) ? '0' : $questionIds;
+        $scales      = $this->buildScales();
+        $scoresTable = fORM::tablize('WpTesting_Model_Score');
+        foreach ($scales as $scale) {
+            $db     = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
+            $result = $db->translatedQuery('
+                SELECT SUM(score_value) FROM ' . $scoresTable . '
+                WHERE question_id IN (' . $questionIds . ') AND scale_id = ' . intval($scale->getId()) . '
+                GROUP BY scale_id
+            ');
+            $sum = $result->fetchScalar();
+            if ($sum) {
+                $range = array(0, $sum);
+                $scale->setRange(min($range), max($range));
+            }
+        }
+        return $scales;
+    }
+
+    /**
      * @return WpTesting_Model_Result[]
      */
     public function buildResults()
@@ -86,7 +113,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function buildFormulaVariables()
     {
         $variables = array();
-        foreach ($this->buildScales() as $scale) {
+        foreach ($this->buildScalesWithRange() as $scale) {
             $variables[] = new WpTesting_Model_FormulaVariable($scale);
         }
         return $variables;

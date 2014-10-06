@@ -3,8 +3,6 @@
 /**
  * Formula that translates passed values into true or false
  *
- * Formula text and values are immutable — can be set only once.
- *
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
  * @method integer getId() getId() Gets the current value of id
@@ -12,6 +10,7 @@
  * @method integer getResultId() getResultId() Gets the current value of result id
  * @method WpTesting_Model_Formula setResultId() setResultId(integer $id) Sets the value for result id
  * @method string getSource() getSource() Gets the current value of source
+ * @method WpTesting_Model_Formula setSource() setSource(string $source) Sets the value for source
  */
 class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 {
@@ -26,19 +25,6 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      * @var array
      */
     private $substituteValues = array();
-
-    /**
-     * @param string $key Key or formula's source — some kind of "source code"
-     */
-    public function __construct($key = null)
-    {
-        if (is_string($key) && !is_numeric($key)) {
-            parent::__construct(null);
-            $this->setSource($key);
-        } else {
-            parent::__construct($key);
-        }
-    }
 
     /**
      * Adds value to values list without rewriting. Converts value type to integer if it's not double.
@@ -89,7 +75,8 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function isCorrect(array $valueNames = array())
     {
-        $experiment = new self($this->getSource());
+        $experiment = new WpTesting_Model_Formula();
+        $experiment->setSource($this->getSource());
 
         if (empty($valueNames)) {
             $experiment->addValues($this->substituteValues);
