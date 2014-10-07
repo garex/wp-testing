@@ -110,10 +110,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     /**
      * @return WpTesting_Model_FormulaVariable[]
      */
-    public function buildFormulaVariables()
+    public function buildFormulaVariables($scalesWithRange = null)
     {
         $variables = array();
-        foreach ($this->buildScalesWithRange() as $scale) {
+        if (is_null($scalesWithRange)) {
+            $scalesWithRange = $this->buildScalesWithRange();
+        }
+        foreach ($scalesWithRange as $scale) {
             $variables[] = new WpTesting_Model_FormulaVariable($scale);
         }
         return $variables;

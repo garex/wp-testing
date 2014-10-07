@@ -185,6 +185,14 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         return $this;
     }
 
+    /**
+     * @return WpTesting_Model_Result
+     */
+    public function createResult()
+    {
+        return $this->createWpTesting_Model_Result();
+    }
+
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
     {
         /* @var $test WpTesting_Model_Test */
