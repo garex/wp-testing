@@ -16,6 +16,7 @@ return array(
             'host'     => 'localhost',
             'port'     => 3306,
             'database' => 'wordpress',
+            'directory'=> 'wp_testing',
             'user'     => 'root',
             'password' => '',
             'charset'  => 'utf8',

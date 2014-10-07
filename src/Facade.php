@@ -234,6 +234,7 @@ class WpTesting_Facade
                     'host'     => reset(explode(':', $this->wp->getDbHost())),
                     'port'     => next(explode(':', $this->wp->getDbHost() . ':3306')),
                     'database' => $this->wp->getDbName(),
+                    'directory'=> 'wp_testing',
                     'user'     => $this->wp->getDbUser(),
                     'password' => $this->wp->getDbPassword(),
                     'charset'  => $this->wp->getDbCharset(),
