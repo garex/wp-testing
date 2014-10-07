@@ -25,6 +25,9 @@ Plugin activation hotfix
 Locally all was ok as always, but not on your wordpresses :(
 * Upgrade notice added
 
+### 0.1.2 ###
+Bump stable tag to apply previous hotfix on wordpress plugins
+
 
 == Upgrade Notice ==
 
