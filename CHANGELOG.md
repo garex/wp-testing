@@ -1,3 +1,4 @@
+
 ## Changelog ##
 
 
@@ -15,4 +16,18 @@ Initial release
 * Allow to send test form only when all questions selected
 * Show test results by scales totals
 * Add eysenck personality inventory example
+
+
+### 0.1.1 ###
+Plugin activation hotfix
+
+* In initial release migrations dir taken from wordpress dir rather than be hardcoded.
+Locally all was ok as always, but not on your wordpresses :(
+* Upgrade notice added
+
+
+== Upgrade Notice ==
+
+### 0.1.1 ###
+Plugin activation fatal error found and fixed. Please upgrade, deactivate and active plugin.
 

@@ -1,10 +1,33 @@
-set FOREIGN_KEY_CHECKS = 0;
-drop table if exists `wp_testing`.`wp_t_answers`;
-drop table if exists `wp_testing`.`wp_t_answers_parameters`;
-drop table if exists `wp_testing`.`wp_t_parameters`;
-drop table if exists `wp_testing`.`wp_t_questions`;
-drop table if exists `wp_testing`.`wp_t_scales`;
-drop table if exists `wp_testing`.`wp_t_scales_tests`;
-drop table if exists `wp_testing`.`wp_t_schema_migrations`;
-drop table if exists `wp_testing`.`wp_t_tests`;
-set FOREIGN_KEY_CHECKS = 1;
+-- DROP SCHEMA IF EXISTS wp_testing2; CREATE SCHEMA wp_testing2;
+
+USE wp_testing;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS wp_t_answers;
+DROP TABLE IF EXISTS wp_t_answers_parameters;
+DROP TABLE IF EXISTS wp_t_parameters;
+DROP TABLE IF EXISTS wp_t_questions;
+DROP TABLE IF EXISTS wp_t_scales;
+DROP TABLE IF EXISTS wp_t_scales_tests;
+DROP TABLE IF EXISTS wp_t_schema_migrations;
+DROP TABLE IF EXISTS wp_t_tests;
+
+DROP TABLE IF EXISTS wp_t_formulas;
+DROP TABLE IF EXISTS wp_t_passing_answers;
+DROP TABLE IF EXISTS wp_t_passings;
+DROP TABLE IF EXISTS wp_t_scores;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+DELETE FROM wp_posts WHERE post_title LIKE '%EPI%';
+DELETE FROM wp_terms WHERE slug RLIKE 'answer|scale';
+DELETE FROM wp_postmeta WHERE post_id NOT IN (
+	SELECT ID FROM wp_posts
+);
+
+DELETE FROM wp_term_relationships WHERE object_id NOT IN (
+	SELECT ID FROM wp_posts
+);
+DELETE FROM wp_term_taxonomy where taxonomy like 'wpt\_%';
+
