@@ -31,7 +31,8 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'content'    => $content,
                 'test'       => $this->test,
                 'passing'    => $passing,
-                'scales'     => $passing->buildScalesWithRange(),
+                'scales'     => $passing->buildScalesWithRangeOnce(),
+                'results'    => $passing->buildResults(),
             );
         } else {
             $params = array(

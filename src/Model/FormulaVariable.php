@@ -10,7 +10,7 @@ class WpTesting_Model_FormulaVariable
         $this->model = $model;
     }
 
-    public function getValue()
+    public function getTitle()
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
@@ -19,7 +19,7 @@ class WpTesting_Model_FormulaVariable
         return null;
     }
 
-    public function getTitle()
+    public function getTypeLabel()
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_Scale) {
@@ -35,5 +35,23 @@ class WpTesting_Model_FormulaVariable
             return $model->getSlug();
         }
         return null;
+    }
+
+    public function getValue()
+    {
+        $model = $this->model;
+        if ($model instanceof WpTesting_Model_Scale) {
+            return $model->getValue();
+        }
+        return 0;
+    }
+
+    public function getValueAsRatio()
+    {
+        $model = $this->model;
+        if ($model instanceof WpTesting_Model_Scale) {
+            return $model->getValueAsRatio();
+        }
+        return 0;
     }
 }

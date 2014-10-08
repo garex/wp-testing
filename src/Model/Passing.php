@@ -4,6 +4,11 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 {
 
     /**
+     * @var WpTesting_Model_Scale[]
+     */
+    protected $scalesWithRange = null;
+
+    /**
      * @param WpTesting_Model_Test $test
      * @return WpTesting_Model_Passing
      */
@@ -54,6 +59,41 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         }
 
         return fRecordSet::buildFromArray('WpTesting_Model_Scale', $result);
+    }
+
+    /**
+     * Build scales and setup their ranges from test's questions.
+     * Cached version.
+     *
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScalesWithRangeOnce()
+    {
+        if (is_null($this->scalesWithRange)) {
+            $this->scalesWithRange = $this->buildScalesWithRange();
+        }
+        return $this->scalesWithRange;
+    }
+
+    /**
+     * Prepare results through test, that has true formulas, using current test variables
+     *
+     * @return WpTesting_Model_Result[]
+     */
+    public function buildResults()
+    {
+        $test      = $this->createTest();
+        $variables = $test->buildFormulaVariables($this->buildScalesWithRangeOnce());
+        $result    = array();
+        foreach ($test->buildFormulas() as $formula) {
+            foreach ($variables as $variable) {
+                $formula->addValue($variable->getSource(), $variable->getValue(), $variable->getValueAsRatio());
+            }
+            if ($formula->isTrue()) {
+                $result[] = $formula->createResult();
+            }
+        }
+        return fRecordSet::buildFromArray('WpTesting_Model_Result', $result);
     }
 
     /**

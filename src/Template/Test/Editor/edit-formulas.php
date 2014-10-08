@@ -27,7 +27,7 @@
     <tr>
         <td>
         <?php foreach($variables as $variable): /* @var $variable WpTesting_Model_FormulaVariable */ ?>
-            <input type="button" data-source="<?php echo htmlspecialchars($variable->getSource()) ?>" title="<?php echo $variable->getTitle() ?>" value="<?php echo htmlspecialchars($variable->getValue()) ?>"/>
+            <input type="button" data-source="<?php echo htmlspecialchars($variable->getSource()) ?>" title="<?php echo $variable->getTypeLabel() ?>" value="<?php echo htmlspecialchars($variable->getTitle()) ?>"/>
         <?php endforeach ?>
         </td>
         <td>
