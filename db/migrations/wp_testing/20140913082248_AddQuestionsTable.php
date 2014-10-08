@@ -1,11 +1,15 @@
 <?php
 
-class AddQuestionsTable extends Ruckusing_Migration_Base
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
+
+class AddQuestionsTable extends BaseMigration
 {
     public function up()
     {
+        $this->drop_table(WPT_DB_PREFIX . 'questions');
         $table = $this->create_table(WPT_DB_PREFIX . 'questions', array(
-            'id' => false,
+            'id'      => false,
+            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
         ));
         $table->column('question_id',    'biginteger', array(
             'unsigned'       => true,

@@ -1,6 +1,8 @@
 <?php
 
-class AddExampleTest extends Ruckusing_Migration_Base
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
+
+class AddExampleTest extends BaseMigration
 {
     public function up()
     {
@@ -171,22 +173,6 @@ class AddExampleTest extends Ruckusing_Migration_Base
             ($yesId, 56, $eiId,  1),
             ($yesId, 57, $nsId,  1);
         ");
-    }
-
-    /**
-     * Select first field value
-     *
-     * @param string $sql the query to run
-     *
-     * @return string
-     */
-    protected function field($sql)
-    {
-        $result = $this->select_one($sql);
-        if (empty($result)) {
-            return null;
-        }
-        return reset($result);
     }
 
     public function down()

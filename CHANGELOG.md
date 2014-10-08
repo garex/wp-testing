@@ -28,9 +28,15 @@ Locally all was ok as always, but not on your wordpresses :(
 ### 0.1.2 ###
 Bump stable tag to apply previous hotfix on wordpress plugins
 
+### 0.1.3 ###
+Another plugin activation problems fixed
+
+* Permissions on migrations directory
+* Working under MySQL engine named MyISAM and in mixed InnoDB/MyISAM cases
+
 
 == Upgrade Notice ==
 
-### 0.1.1 ###
-Plugin activation fatal error found and fixed. Please upgrade, deactivate and active plugin.
+### 0.1.3 ###
+Plugin activation fatal error found and fixed
 

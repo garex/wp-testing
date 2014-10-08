@@ -1,11 +1,14 @@
 <?php
 
-class AddTestScoresTable extends Ruckusing_Migration_Base
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
+
+class AddTestScoresTable extends BaseMigration
 {
     public function up()
     {
         $table = $this->create_table(WPT_DB_PREFIX . 'scores', array(
-            'id' => false,
+            'id'      => false,
+            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
         ));
         $pkOptions = array(
             'unsigned'       => true,
