@@ -1,6 +1,8 @@
+-- SHOW TABLE STATUS;
+
 -- DROP SCHEMA IF EXISTS wp_testing2; CREATE SCHEMA wp_testing2;
 
-USE wp_testing;
+-- USE wp_testing;
 
 SET FOREIGN_KEY_CHECKS = 0;
 

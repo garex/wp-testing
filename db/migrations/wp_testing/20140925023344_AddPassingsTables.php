@@ -1,11 +1,14 @@
 <?php
 
-class AddPassingsTables extends Ruckusing_Migration_Base
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
+
+class AddPassingsTables extends BaseMigration
 {
     public function up()
     {
         $table = $this->create_table(WPT_DB_PREFIX . 'passings', array(
-            'id' => false,
+            'id'      => false,
+            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
         ));
         $table->column('passing_id',    'biginteger', array(
             'unsigned'       => true,
@@ -49,7 +52,8 @@ class AddPassingsTables extends Ruckusing_Migration_Base
         ");
 
         $table = $this->create_table(WPT_DB_PREFIX . 'passing_answers', array(
-            'id' => false,
+            'id'      => false,
+            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
         ));
         $pkOptions = array(
             'unsigned'       => true,

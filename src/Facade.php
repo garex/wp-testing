@@ -180,22 +180,80 @@ class WpTesting_Facade
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');
         $schema = fORMSchema::retrieve('name:default');
+        $fkOptions = array(
+            'on_delete'      => 'cascade',
+            'on_update'      => 'cascade',
+        );
+
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'test_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'posts',
+                'foreign_column' => 'ID',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX . 'questions', 'foreign');
+
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'answer_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_column' => 'term_id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'question_id',
+                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
+                'foreign_column' => 'question_id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'scale_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_column' => 'term_id',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX  . 'scores', 'foreign');
+
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'test_id',
+                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_column' => 'ID',
+            ) + $fkOptions,
+            array(
+                'column'         => 'respondent_id',
+                'foreign_table'  => WP_DB_PREFIX . 'users',
+                'foreign_column' => 'ID',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX . 'passings', 'foreign');
+
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'answer_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_column' => 'term_id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'question_id',
+                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
+                'foreign_column' => 'question_id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'passing_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'passings',
+                'foreign_column' => 'passing_id',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX  . 'passing_answers', 'foreign');
+
         $schema->setColumnInfoOverride(null, WP_DB_PREFIX . 'term_relationships', 'term_order');
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'object_id',
                 'foreign_table'  => WP_DB_PREFIX . 'posts',
                 'foreign_column' => 'id',
-                'on_delete'      => 'cascade',
-                'on_update'      => 'cascade',
-            ),
+            ) + $fkOptions,
             array(
                 'column'         => 'term_taxonomy_id',
                 'foreign_table'  => WP_DB_PREFIX . 'term_taxonomy',
                 'foreign_column' => 'term_taxonomy_id',
-                'on_delete'      => 'cascade',
-                'on_update'      => 'cascade',
-            ),
+            ) + $fkOptions,
         ), WP_DB_PREFIX . 'term_relationships', 'foreign');
 
         $schema->setKeysOverride(array(
@@ -203,9 +261,7 @@ class WpTesting_Facade
                 'column'         => 'term_id',
                 'foreign_table'  => WP_DB_PREFIX . 'terms',
                 'foreign_column' => 'term_id',
-                'on_delete'      => 'cascade',
-                'on_update'      => 'cascade',
-            ),
+            ) + $fkOptions,
         ), WP_DB_PREFIX . 'term_taxonomy', 'foreign');
 
         $this->isOrmSettedUp = true;
@@ -242,7 +298,7 @@ class WpTesting_Facade
             ),
             'db_dir'         => $databaseDirectory,
             'migrations_dir' => array('default' => $databaseDirectory . DIRECTORY_SEPARATOR . 'migrations'),
-            'log_dir'        => $databaseDirectory . DIRECTORY_SEPARATOR . 'log',
+            'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
         );
 
         $runner = new Ruckusing_FrameworkRunner($config, $argv);

@@ -69,6 +69,18 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Determines a writable directory for temporary files (with trailing slahs added).
+     *
+     * @since 2.5.0
+     *
+     * @return string Writable temporary directory
+     */
+    public function getTempDir()
+    {
+        return get_temp_dir();
+    }
+
+    /**
      * Holds the WordPress Rewrite object for creating pretty URLs
      *
      * @since 1.5.0
