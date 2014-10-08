@@ -34,9 +34,18 @@ Another plugin activation problems fixed
 * Permissions on migrations directory
 * Working under MySQL engine named MyISAM and in mixed InnoDB/MyISAM cases
 
+### 0.1.4 ###
+Test passing error fixed
+
+* Manual relashionships naming
+* Misspell in one of tables names
+
 
 == Upgrade Notice ==
 
 ### 0.1.3 ###
 Plugin activation fatal error found and fixed
+
+### 0.1.4 ###
+Test passing fatal error found and fixed
 
