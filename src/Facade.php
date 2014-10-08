@@ -223,6 +223,19 @@ class WpTesting_Facade
             ) + $fkOptions,
         ), WPT_DB_PREFIX  . 'passing_answers', 'foreign');
 
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'test_id',
+                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_column' => 'id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'result_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_column' => 'term_id',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX . 'formulas', 'foreign');
+
         $schema->setColumnInfoOverride(null, WP_DB_PREFIX . 'term_relationships', 'term_order');
         $schema->setKeysOverride(array(
             array(
