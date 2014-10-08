@@ -189,7 +189,7 @@ class WpTesting_Facade
             array(
                 'column'         => 'test_id',
                 'foreign_table'  => WP_DB_PREFIX   . 'posts',
-                'foreign_column' => 'ID',
+                'foreign_column' => 'id',
             ) + $fkOptions,
         ), WPT_DB_PREFIX . 'questions', 'foreign');
 
@@ -215,12 +215,12 @@ class WpTesting_Facade
             array(
                 'column'         => 'test_id',
                 'foreign_table'  => WP_DB_PREFIX . 'posts',
-                'foreign_column' => 'ID',
+                'foreign_column' => 'id',
             ) + $fkOptions,
             array(
                 'column'         => 'respondent_id',
                 'foreign_table'  => WP_DB_PREFIX . 'users',
-                'foreign_column' => 'ID',
+                'foreign_column' => 'id',
             ) + $fkOptions,
         ), WPT_DB_PREFIX . 'passings', 'foreign');
 
@@ -232,12 +232,12 @@ class WpTesting_Facade
             ) + $fkOptions,
             array(
                 'column'         => 'question_id',
-                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
+                'foreign_table'  => WPT_DB_PREFIX  . 'questions',
                 'foreign_column' => 'question_id',
             ) + $fkOptions,
             array(
                 'column'         => 'passing_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'passings',
+                'foreign_table'  => WPT_DB_PREFIX  . 'passings',
                 'foreign_column' => 'passing_id',
             ) + $fkOptions,
         ), WPT_DB_PREFIX  . 'passing_answers', 'foreign');
