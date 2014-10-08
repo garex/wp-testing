@@ -12,7 +12,7 @@
     "require": {
         "composer/installers": "~1.0.0"
         , "xrstf/composer-php52": "1.*"
-        , "ruckusing/ruckusing-migrations": "~1.0"
+        , "ruckusing/ruckusing-migrations": "dev-issue/work-in-non-writable-environment"
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
     },
@@ -37,6 +37,10 @@
         "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52"
     },
     "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/garex/ruckusing-migrations"
+        },
         {
             "type": "git",
             "url": "https://github.com/garex/phpunit"
