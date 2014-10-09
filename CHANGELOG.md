@@ -1,6 +1,9 @@
 
 ## Changelog ##
 
+### 0.2.1 ###
+Fix PHP 5.2 parse error (not affects latest PHP versions)
+
 
 ### 0.2 ###
 Connecting scales scores with results through formulas.
@@ -56,8 +59,8 @@ Initial release
 
 == Upgrade Notice ==
 
-### 0.2 ###
-Results and formulas added
+### 0.2.1 ###
+Results and formulas added (parse error fixed)
 
 ### 0.1.4 ###
 Test passing fatal error found and fixed
