@@ -1,6 +1,17 @@
 
 ## Changelog ##
 
+
+### 0.2 ###
+Connecting scales scores with results through formulas.
+
+* Formulas parser undertands variables and comparision operators like "less", "more", "same", "not same", "and", "or"
+* Formulas editor added with buttons of scales and comparision operators
+* Show scale scores totals at the top of questions editor and on the formulas editor buttons
+* Add shortcut buttons to the top of content editor: Add New Questions, Edit Questions, Edit Formulas
+* Show test results calculated through formulas above above scales bars on the results page
+
+
 ### 0.1.4 ###
 Test passing error fixed
 
@@ -44,6 +55,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.2 ###
+Results and formulas added
 
 ### 0.1.4 ###
 Test passing fatal error found and fixed
