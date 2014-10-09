@@ -91,7 +91,8 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         }
 
         try {
-            return !empty($experiment->substitute());
+            $substitute = $experiment->substitute();
+            return !empty($substitute);
         } catch (PHPParser_Error $e) {
             return false;
         }
