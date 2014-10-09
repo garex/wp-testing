@@ -64,6 +64,73 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Build scales and setup their ranges from test's questions
+     *
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScalesWithRange()
+    {
+        $questionIds = implode(',', $this->listWpTesting_Model_Questions());
+        $questionIds = empty($questionIds) ? '0' : $questionIds;
+        $scales      = $this->buildScales();
+        $scoresTable = fORM::tablize('WpTesting_Model_Score');
+        foreach ($scales as $scale) {
+            $db     = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
+            $result = $db->translatedQuery('
+                SELECT SUM(score_value) FROM ' . $scoresTable . '
+                WHERE question_id IN (' . $questionIds . ') AND scale_id = ' . intval($scale->getId()) . '
+                GROUP BY scale_id
+            ');
+            $sum = $result->fetchScalar();
+            if ($sum) {
+                $range = array(0, $sum);
+                $scale->setRange(min($range), max($range));
+            }
+        }
+        return $scales;
+    }
+
+    /**
+     * @return WpTesting_Model_Result[]
+     */
+    public function buildResults()
+    {
+        $results = fRecordSet::build('WpTesting_Model_Result', array(
+            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_result'),
+        ));
+
+        /* @var $result WpTesting_Model_Result */
+        foreach ($results as $result) {
+            $result->setTest($this);
+        }
+
+        return $results;
+    }
+
+    /**
+     * @return WpTesting_Model_FormulaVariable[]
+     */
+    public function buildFormulaVariables($scalesWithRange = null)
+    {
+        $variables = array();
+        if (is_null($scalesWithRange)) {
+            $scalesWithRange = $this->buildScalesWithRange();
+        }
+        foreach ($scalesWithRange as $scale) {
+            $variables[] = new WpTesting_Model_FormulaVariable($scale);
+        }
+        return $variables;
+    }
+
+    /**
+     * @return WpTesting_Model_Formula[]
+     */
+    public function buildFormulas()
+    {
+        return $this->buildWpTesting_Model_Formulas();
+    }
+
+    /**
      * @return WpTesting_Model_Answer[]
      */
     protected function buildAnswers()
@@ -117,6 +184,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             fORMRelated::determineRequestFilter('WpTesting_Model_Question', 'WpTesting_Model_Score', 'question_id');
     }
 
+    public function getFormulasPrefix()
+    {
+        return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Formula', 'test_id');
+    }
+
     /**
      * @see http://stackoverflow.com/questions/10303714/php-max-input-vars
      * @return boolean
@@ -165,6 +237,15 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $questions =& $this->related_records[$table]['test_id']['record_set'];
         $questions = $questions->filter(array('getTitle!=' => ''));
         return $this;
+    }
+
+    /**
+     * @param bool $isRecursive
+     * @return WpTesting_Model_Test
+     */
+    public function populateFormulas($isRecursive = false)
+    {
+        return $this->populateWpTesting_Model_Formulas($isRecursive);
     }
 
     /**

@@ -4,6 +4,11 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 {
 
     /**
+     * @var WpTesting_Model_Scale[]
+     */
+    protected $scalesWithRange = null;
+
+    /**
      * @param WpTesting_Model_Test $test
      * @return WpTesting_Model_Passing
      */
@@ -29,49 +34,73 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return WpTesting_Model_Scales[]
+     * Build scales and setup their ranges from test's questions
+     *
+     * @return WpTesting_Model_Scale[]
      */
-    public function calculateScalesTotals()
+    public function buildScalesWithRange()
     {
-        $results = array();
+        $result = array();
+        foreach ($this->createTest()->buildScalesWithRange() as $testScale) {
+            $scale = clone $testScale;
+            $result[$testScale->getId()] = $testScale;
+        }
 
+        $scoresByScales = array_fill_keys(array_keys($result), 0);
         foreach ($this->buildAnswers() as $passingAnswer) {
             $scores = $passingAnswer->createQuestion()->getScoresByAnswer($passingAnswer->createAnswer());
             foreach ($scores as $score) { /* @var $score WpTesting_Model_Score */
-                $scale = $score->createScale();
-                if (empty($results[$scale->getId()])) {
-                    $results[$scale->getId()] = $scale->resetScore();
-                }
-                $results[$scale->getId()]->addScore($score);
+                $scoresByScales[$score->getScaleId()] += $score->getValue();
             }
         }
 
-        if (empty($results)) {
-            return $results;
+        foreach ($result as $id => $scale) {
+            $scale->setValue($scoresByScales[$id]);
         }
 
-        // Calculate scales global totals (not from respondent answers)
-        $globalTotals = array();
-        /* @var $test WpTesting_Model_Test */
-        $test = $passingAnswer->createQuestion()->createTest();
-        foreach ($test->buildQuestions() as $i => $question) {
-            foreach ($question->buildScores() as $score) {
-                $scale = $score->createScale();
-                if (!isset($results[$scale->getId()])) {
-                    continue;
-                }
-                if (!isset($globalTotals[$scale->getId()])) {
-                    $globalTotals[$scale->getId()] = $scale->resetScore();
-                }
-                $globalTotals[$scale->getId()]->addScore($score);
-            }
-        }
-
-        foreach ($results as $id => $result) {
-            $results[$id]->setTotalScale($globalTotals[$id]);
-        }
-
-        return $results;
+        return fRecordSet::buildFromArray('WpTesting_Model_Scale', $result);
     }
 
+    /**
+     * Build scales and setup their ranges from test's questions.
+     * Cached version.
+     *
+     * @return WpTesting_Model_Scale[]
+     */
+    public function buildScalesWithRangeOnce()
+    {
+        if (is_null($this->scalesWithRange)) {
+            $this->scalesWithRange = $this->buildScalesWithRange();
+        }
+        return $this->scalesWithRange;
+    }
+
+    /**
+     * Prepare results through test, that has true formulas, using current test variables
+     *
+     * @return WpTesting_Model_Result[]
+     */
+    public function buildResults()
+    {
+        $test      = $this->createTest();
+        $variables = $test->buildFormulaVariables($this->buildScalesWithRangeOnce());
+        $result    = array();
+        foreach ($test->buildFormulas() as $formula) {
+            foreach ($variables as $variable) {
+                $formula->addValue($variable->getSource(), $variable->getValue(), $variable->getValueAsRatio());
+            }
+            if ($formula->isTrue()) {
+                $result[] = $formula->createResult();
+            }
+        }
+        return fRecordSet::buildFromArray('WpTesting_Model_Result', $result);
+    }
+
+    /**
+     * @return WpTesting_Model_Test
+     */
+    protected function createTest()
+    {
+        return $this->createWpTesting_Model_Test();
+    }
 }

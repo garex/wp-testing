@@ -14,6 +14,7 @@
         , "xrstf/composer-php52": "1.*"
         , "ruckusing/ruckusing-migrations": "dev-issue/work-in-non-writable-environment"
         , "flourish/flourish": "0.9.*@dev"
+        , "nikic/php-parser": "0.9.5"
     },
     "scripts": {
         "post-install-cmd": [
@@ -32,6 +33,8 @@
         ]
     },
     "require-dev": {
+        "phpunit/phpunit-php52": "dev-3.6.12-php52",
+        "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52"
     },
     "repositories": [
         {

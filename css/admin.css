@@ -1,3 +1,18 @@
+.error.wpt_test_editor > ul {
+    margin-left: 1em;
+}
+.error.wpt_test_editor ul {
+    list-style: circle;
+    padding-left: 1em;
+}
+
+.wp-media-buttons .wpt-button.add {
+    padding-left: 1px;
+}
+.wp-media-buttons .wpt-button.edit {
+    padding-left: 3px;
+}
+
 table.wpt_questions {
     width: 100%;
 }
@@ -18,4 +33,18 @@ table.wpt_questions {
 .wpt_questions .wpt_scale input {
     text-align: center;
     width: 100%;
+}
+
+table.wpt_formulas,
+table.wpt_formulas_helper {
+    margin-top: 1em;
+}
+
+.wpt_formulas .wpt_title {
+    width: 1em;
+    white-space: nowrap;
+}
+
+.wpt_formulas .wpt_formula input {
+    width: 100%;   
 }

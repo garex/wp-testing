@@ -346,4 +346,26 @@ class WpTesting_WordPressFacade
         register_uninstall_hook($this->pluginFile, $function);
         return $this;
     }
+
+    /**
+     * Kill WordPress execution and display HTML message with error message.
+     *
+     *
+     * @since 2.0.4
+     *
+     * @param string $message Error message.
+     * @param string $title Error title.
+     * @param string|array $arguments Optional arguments to control behavior.
+     *
+     * <p>Arguments:</p>
+     * <ul>
+     *     <li><strong>boolean 'back_link'</strong>      Do we need to display localized "Back link" link?</li>
+     *     <li><strong>integer 'response'</strong>       HTTP status code: 200, 500, 404, etc.</li>
+     *     <li><strong>string  'text_direction'</strong> Text direction: ltr, rtl</li>
+     * </ul>
+     */
+    public function dieMessage($message='', $title='', $arguments=array())
+    {
+        wp_die($message, $title, $arguments);
+    }
 }

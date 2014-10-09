@@ -26,6 +26,7 @@
     <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
         <th class="wpt_scale <?php echo ($i%2) ? '' : 'alternate' ?>">
             <?php echo $scale->getTitle() ?>
+            <span class="alignright wp-ui-text-icon">∑ <?php echo $scale->getMaximum() ?></span>
         </th>
     <?php endforeach ?>
     </tr>

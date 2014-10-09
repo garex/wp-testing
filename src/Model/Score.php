@@ -2,6 +2,7 @@
 
 /**
  * @method int getValue() getValue() Gets the current value for score
+ * @method int getScaleId() getScaleId() Gets the current value for scale id
  */
 class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
 {
