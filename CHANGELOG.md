@@ -1,6 +1,10 @@
 
 ## Changelog ##
 
+### 0.2.2 ###
+Update description to correct English version
+
+
 ### 0.2.1 ###
 Fix PHP 5.2 parse error (not affects latest PHP versions)
 
