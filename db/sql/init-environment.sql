@@ -1,0 +1,12 @@
+DROP DATABASE IF EXISTS wpti;
+CREATE DATABASE wpti;
+
+GRANT USAGE ON wpti.* TO wpti;
+DROP USER wpti;
+
+CREATE USER wpti IDENTIFIED BY 'wpti';
+GRANT ALL ON wpti.* TO wpti;
+
+
+SHOW TABLE STATUS;
+
