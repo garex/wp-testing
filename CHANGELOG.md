@@ -1,6 +1,10 @@
 
 ## Changelog ##
 
+### 0.2.3 ###
+Fix activation on PHP below 5.4
+
+
 ### 0.2.2 ###
 Update description to correct English version
 
@@ -62,6 +66,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.2.3 ###
+Plugin activation on PHP below 5.4 fixed
 
 ### 0.2.1 ###
 Results and formulas added (parse error fixed)

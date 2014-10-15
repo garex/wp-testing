@@ -200,7 +200,7 @@ class WpTesting_WordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addAction($tag, callable $function, $priority = 10, $functionArgsCount = 1)
+    public function addAction($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
         add_action($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -217,7 +217,7 @@ class WpTesting_WordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addFilter($tag, callable $function, $priority = 10, $functionArgsCount = 1)
+    public function addFilter($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
         add_filter($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -233,7 +233,7 @@ class WpTesting_WordPressFacade
      * @param callable $function Hook to run when shortcode is found.
      * @return WpTesting_WordPressFacade
      */
-    public function addShortcode($tag, callable $function)
+    public function addShortcode($tag, $function)
     {
         add_shortcode($tag, $function);
         return $this;
@@ -263,7 +263,7 @@ class WpTesting_WordPressFacade
      *                                        to your callback). Default null.
      * @return WpTesting_WordPressFacade
      */
-    public function addMetaBox($id, $title, callable $function, $screen = null, $context = 'advanced', $priority = 'default', $functionArgs = null)
+    public function addMetaBox($id, $title, $function, $screen = null, $context = 'advanced', $priority = 'default', $functionArgs = null)
     {
         add_meta_box($id, $title, $function, $screen, $context, $priority, $functionArgs);
         return $this;
@@ -311,7 +311,7 @@ class WpTesting_WordPressFacade
      * @param callback $function the function hooked for action.
      * @return WpTesting_WordPressFacade
      */
-    public function registerActivationHook(callable $function)
+    public function registerActivationHook($function)
     {
         register_activation_hook($this->pluginFile, $function);
         return $this;
@@ -326,7 +326,7 @@ class WpTesting_WordPressFacade
      * @param callback $function the function hooked for action.
      * @return WpTesting_WordPressFacade
      */
-    public function registerDeactivationHook(callable $function)
+    public function registerDeactivationHook($function)
     {
         register_deactivation_hook($this->pluginFile, $function);
         return $this;
@@ -341,7 +341,7 @@ class WpTesting_WordPressFacade
      * @param callback $function the function hooked for action.
      * @return WpTesting_WordPressFacade
      */
-    public function registerUninstallHook(callable $function)
+    public function registerUninstallHook($function)
     {
         register_uninstall_hook($this->pluginFile, $function);
         return $this;
