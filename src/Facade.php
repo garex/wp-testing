@@ -47,7 +47,8 @@ class WpTesting_Facade
 
     public static function onPluginUninstall()
     {
-        $adapter = $this->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
+        $me = new WpTesting_Facade(new WpTesting_WordPressFacade('../wp-testing.php'));
+        $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
     }
