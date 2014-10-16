@@ -1,6 +1,10 @@
 
 ## Changelog ##
 
+### 0.2.4 ###
+Correctly uninstall plugin
+
+
 ### 0.2.3 ###
 Fix activation on PHP below 5.4
 
