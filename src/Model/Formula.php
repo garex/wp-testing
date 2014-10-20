@@ -181,7 +181,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     public function addValues(array $values)
     {
         foreach ($values as $params) {
-            call_user_method_array('addValue', $this, $params);
+            call_user_func_array(array($this, 'addValue'), $params);
         }
         return $this;
     }
