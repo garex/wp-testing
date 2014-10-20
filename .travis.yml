@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 5.2
+  - 5.3
+
+addons:
+  hosts:
+    - wpti.dev
+
+before_script:
+  - tests/integration-environment/composer-update.sh
+  - mysql -e 'create database wordpress;'
+  - cd db
+  - $TRAVIS_BUILD_DIR/vendor/bin/ruckus.php db:migrate
+  - cd $TRAVIS_BUILD_DIR
+  - tests/integration-environment/create.sh
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - npm install
+  - cd $TRAVIS_BUILD_DIR
+
+script:
+  - vendor/bin/phpunit-php52
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - mocha-casperjs
