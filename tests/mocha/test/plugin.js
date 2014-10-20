@@ -2,21 +2,15 @@ var childProcess = require('child_process');
 
 describe('Plugin', function() {
 
-    before(function (done) {
+    before(function () {
         this.timeout(3600000)
-        console.log()
-        console.log('    Creating environment')
-        childProcess.execFile('/bin/bash', ['../integration-environment/create.sh'], null, function (err, stdout, stderr) {
-            console.log('    ' + stdout.replace(/\n/g, '\n    '))
-            casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
-                method: 'post',
-                data  : {
-                    log: 'wpti',
-                    pwd: 'wpti'
-                }
-            })
-            done()
-        });
+        casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
+            method: 'post',
+            data  : {
+                log: 'wpti',
+                pwd: 'wpti'
+            }
+        })
     });
 
     it('should be activated', function() {
