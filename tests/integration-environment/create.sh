@@ -40,7 +40,13 @@ function nginx {
     sudo apt-get install nginx
     sudo rm --force /etc/nginx/sites-enabled/wpti
     sudo ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
+    sudo service nginx restart
+}
 
+function php_cgi {
+    [ ! -f /etc/profile.d/phpenv.sh ] && return 0
+
+    log 'Configuring php cgi'
     source /etc/profile.d/phpenv.sh
     echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
@@ -54,8 +60,6 @@ function nginx {
         echo 'group = www-data' | sudo tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
         sudo ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
     fi
-
-    sudo service nginx restart
 }
 
 function install_wp {
@@ -113,6 +117,7 @@ function main {
     db
     setup_link
     nginx
+    php_cgi
     install_wp
     set_db_engine
     install_plugin

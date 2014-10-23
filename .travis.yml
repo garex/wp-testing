@@ -36,13 +36,12 @@ before_script:
   - $TRAVIS_BUILD_DIR/vendor/bin/ruckus.php db:migrate
   - cd $TRAVIS_BUILD_DIR
   - tests/integration-environment/create.sh
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - npm install
   - cd $TRAVIS_BUILD_DIR
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
 
 script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - mocha-casperjs
-
