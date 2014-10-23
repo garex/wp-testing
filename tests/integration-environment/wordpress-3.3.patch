@@ -1,0 +1,11 @@
+--- wp-admin/includes/screen.php	2011-12-07 07:13:52.000000000 +0700
++++ wp-admin/includes/screen.php	2014-10-23 23:51:29.479711821 +0700
+@@ -703,7 +703,7 @@
+ 
+ 					<?php if ( $has_sidebar ) : ?>
+ 					<div class="contextual-help-sidebar">
+-						<?php echo self::$this->_help_sidebar; ?>
++						<?php echo $this->_help_sidebar; ?>
+ 					</div>
+ 					<?php endif; ?>
+ 

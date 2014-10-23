@@ -3,14 +3,20 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-HERE=$(dirname $(realpath $0))
-DB_ENGINE=MyISAM
-WP_VERSION=4.0
+HERE=$(dirname $0)
+DB_ENGINE=${DB_ENGINE:-InnoDB}
+WP_VERSION=${WP_VERSION:-4.0}
+
+function init {
+    log 'Define vars'
+    sudo apt-get install realpath
+    HERE=$(dirname $(realpath $0))
+}
 
 
 function db {
     log 'Creating DB and user'
-    mysql --execute '
+    sudo mysql --execute '
         DROP DATABASE IF EXISTS wpti;
         CREATE DATABASE wpti;
 
@@ -22,10 +28,6 @@ function db {
     '
 }
 
-function dns {
-    log 'Setting up DNS'
-    grep wpti.dev /etc/hosts > /dev/null || echo '127.0.0.1   wpti.dev' >> /etc/hosts
-}
 
 function setup_link {
     log 'Setting up symbolic link'
@@ -35,14 +37,35 @@ function setup_link {
 
 function nginx {
     log 'Configuring and reloading nginx'
-    rm --force /etc/nginx/sites-enabled/wpti
-    ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
-    sudo service nginx reload
+    sudo apt-get install nginx
+    sudo rm --force /etc/nginx/sites-enabled/wpti
+    sudo ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
+    sudo service nginx restart
+}
+
+function php_cgi {
+    [ ! -f /etc/profile.d/phpenv.sh ] && return 0
+
+    log 'Configuring php cgi'
+    source /etc/profile.d/phpenv.sh
+    echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
+    then
+        PHP_52=$(phpenv version-name)
+        PHP_CGI=$(realpath ~/.phpenv/versions/$PHP_52/bin/php-cgi)
+        USER=www-data PHP_FCGI_CHILDREN=15 PHP_FCGI_MAX_REQUESTS=1000 sudo $PHP_CGI --bindpath 127.0.0.1:9000 &
+    else
+        sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+        echo 'user  = www-data' | sudo tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
+        echo 'group = www-data' | sudo tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
+        sudo ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+    fi
 }
 
 function install_wp {
     log 'Installing WordPress'
     local WP_LINK=https://wordpress.org/wordpress-$WP_VERSION.tar.gz
+    local WP_PATCH=../wordpress-$WP_VERSION.patch
 
     cd /tmp/wpti
     sudo rm --recursive --force wordpress
@@ -53,9 +76,15 @@ function install_wp {
     log '.. clean up plugins'
     rm --recursive --force wp-content/plugins
     mkdir --parents wp-content/plugins
+    if [ -f $WP_PATCH ];
+    then
+        # To create patch use: diff --unified path/to/original.php path/to/fix.php > $WP_PATCH
+        log '.. patching wordpress'
+        patch -p0 < $WP_PATCH
+    fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
-    wget --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2' > /dev/null
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2'
 }
 
 function set_db_engine {
@@ -71,7 +100,14 @@ function install_plugin {
     cd $HERE/../..
     git checkout-index --all --force --prefix=$PLUGIN/
     cd $PLUGIN
-    composer install --no-interaction --no-dev --prefer-dist
+    if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
+    then
+        phpenv shell 5.3
+        composer install --no-interaction --no-dev --prefer-dist
+        phpenv shell --unset
+    else
+        composer install --no-interaction --no-dev --prefer-dist
+    fi
     sudo chown -R www-data:www-data .
     cd $HERE
 }
@@ -84,10 +120,11 @@ function log {
 }
 
 function main {
+    init
     db
-    dns
     setup_link
     nginx
+    php_cgi
     install_wp
     set_db_engine
     install_plugin

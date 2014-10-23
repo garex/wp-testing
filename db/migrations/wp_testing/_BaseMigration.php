@@ -9,10 +9,14 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
      */
     protected function get_wp_table_engine()
     {
-        return $this->field('
+        $engine = $this->field('
             SELECT ENGINE FROM information_schema.TABLES
             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = "' . WP_DB_PREFIX . 'posts"
         ');
+        if (empty($engine)) {
+            $engine = 'InnoDB';
+        }
+        return $engine;
     }
 
     /**
