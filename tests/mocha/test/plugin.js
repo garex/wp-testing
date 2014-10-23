@@ -36,18 +36,4 @@ describe('Plugin', function() {
        })
     })
 
-    it('should be deleted', function() {
-       casper.then(function() {
-           this.click('#wp-testing .delete a')
-       })
-
-       casper.then(function() {
-           this.click('#submit')
-       })
-
-       casper.then(function() {
-           '#wp-testing'.should.not.be.inDOM
-       })
-    })
-
 })
