@@ -65,6 +65,7 @@ function php_cgi {
 function install_wp {
     log 'Installing WordPress'
     local WP_LINK=https://wordpress.org/wordpress-$WP_VERSION.tar.gz
+    local WP_PATCH=../wordpress-$WP_VERSION.patch
 
     cd /tmp/wpti
     sudo rm --recursive --force wordpress
@@ -75,6 +76,12 @@ function install_wp {
     log '.. clean up plugins'
     rm --recursive --force wp-content/plugins
     mkdir --parents wp-content/plugins
+    if [ -f $WP_PATCH ];
+    then
+        # To create patch use: diff --unified path/to/original.php path/to/fix.php > $WP_PATCH
+        log '.. patching wordpress'
+        patch -p0 < $WP_PATCH
+    fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
     wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2'
