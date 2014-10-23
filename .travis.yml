@@ -4,6 +4,18 @@ php:
   - 5.2
   - 5.3
 
+env:
+  global:
+    - DB_ENGINE=InnoDB
+  matrix:
+    - WP_VERSION=4.0
+    - WP_VERSION=3.2
+
+matrix:
+  include:
+    - php: 5.3
+      env: DB_ENGINE=MyISAM
+
 addons:
   hosts:
     - wpti.dev
@@ -24,3 +36,4 @@ script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - mocha-casperjs
+
