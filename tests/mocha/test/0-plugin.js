@@ -26,14 +26,4 @@ describe('Plugin', function() {
        })
     })
 
-    it('should be deactivated', function() {
-       casper.then(function() {
-           this.click('#wp-testing .deactivate a')
-       })
-
-       casper.then(function() {
-           '#wp-testing .activate a'.should.be.inDOM
-       })
-    })
-
 })

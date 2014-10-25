@@ -13,12 +13,23 @@ describe('Plugin', function() {
         })
     });
 
+    it('should be deactivated', function() {
+       casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {
+           expect(/Plugins/).to.matchTitle
+           '.plugin-title'.should.contain.text('Wp-testing')
+       })
+
+       casper.then(function() {
+           this.click('#wp-testing .deactivate a')
+       })
+
+       casper.then(function() {
+           '#wp-testing .activate a'.should.be.inDOM
+           '#wp-testing .delete a'.should.be.inDOM
+       })
+    })
+
     it('should be deleted', function() {
-        casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {
-            expect(/Plugins/).to.matchTitle
-            '.plugin-title'.should.contain.text('Wp-testing')
-            '#wp-testing .delete a'.should.be.inDOM
-        })
 
        casper.then(function() {
            this.click('#wp-testing .delete a')
