@@ -11,7 +11,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     public function addContentFilter()
     {
         $object = $this->wp->getQuery()->get_queried_object();
-        if ($object instanceof WP_Post && $object->post_type == 'wpt_test') {
+        if (is_object($object) && !empty($object->post_type) && $object->post_type == 'wpt_test') {
             $this->test = new WpTesting_Model_Test($object);
             $this->wp->addFilter('the_content', array($this, 'renderTestContent'));
         }
