@@ -11,7 +11,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  'Edit Formulas',     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('admin_notices', array($this, 'printAdminMessages'))
-            ->addAction('save_post', array($this, 'saveTest'), 10, 3)
+            ->addAction('save_post', array($this, 'saveTest'), 10, 2)
         ;
     }
 
@@ -65,7 +65,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function saveTest($id, WP_Post $item, $isUpdate)
+    public function saveTest($id, WP_Post $item)
     {
         $test = new WpTesting_Model_Test($item);
         if (!$test->getId()) {
