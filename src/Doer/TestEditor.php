@@ -3,8 +3,11 @@
 class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
 
-    public function customizeUi()
+    public function customizeUi(WP_Screen $screen)
     {
+        if ($screen->post_type != 'wpt_test') {
+            return;
+        }
         $this->sessionInit(__CLASS__)->wp
             ->addAction('media_buttons', array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')

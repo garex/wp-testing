@@ -67,7 +67,7 @@ class WpTesting_Facade
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
-            ->addAction('admin_init',        array($this,  'setupTestEditor'))
+            ->addAction('current_screen',    array($this,  'setupTestEditor'))
             ->addFilter('single_template',   array($this,  'setupTestPasser'))
         ;
     }
@@ -83,9 +83,9 @@ class WpTesting_Facade
         $this->isWordPressEntitiesRegistered = true;
     }
 
-    public function setupTestEditor()
+    public function setupTestEditor(WP_Screen $screen)
     {
-        $this->getTestEditor()->customizeUi();
+        $this->getTestEditor()->customizeUi($screen);
     }
 
     public function setupTestPasser($template)
