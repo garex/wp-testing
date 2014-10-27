@@ -26,12 +26,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 
     public function __construct($key = null)
     {
-        if ($key instanceof WP_Post) {
+        if (is_object($key) && isset($key->post_type)) {
             if ($key->post_type != 'wpt_test') {
                 $this->values['ID'] = null;
                 return;
             }
             $postAsArray = (array)$key;
+            unset($postAsArray['ancestors']);
             unset($postAsArray['filter']);
             return parent::__construct(new ArrayIterator(array($postAsArray)));
         }

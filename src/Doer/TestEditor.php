@@ -28,7 +28,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/content-editor-buttons');
     }
 
-    public function renderEditQuestions(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderEditQuestions($item)
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
@@ -41,7 +44,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function renderAddQuestions(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderAddQuestions($item)
     {
         $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
@@ -53,7 +59,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function renderEditFormulas(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderEditFormulas($item)
     {
         $this->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
@@ -68,7 +77,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function saveTest($id, WP_Post $item)
+    /**
+     * @param integer $id
+     * @param WP_Post $item
+     */
+    public function saveTest($id, $item)
     {
         $test = new WpTesting_Model_Test($item);
         if (!$test->getId()) {
