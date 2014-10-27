@@ -83,7 +83,10 @@ class WpTesting_Facade
         $this->isWordPressEntitiesRegistered = true;
     }
 
-    public function setupTestEditor(WP_Screen $screen)
+    /**
+     * @param WP_Screen $screen
+     */
+    public function setupTestEditor($screen)
     {
         $this->getTestEditor()->customizeUi($screen);
     }

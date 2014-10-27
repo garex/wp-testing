@@ -3,7 +3,10 @@
 class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
 
-    public function customizeUi(WP_Screen $screen)
+    /**
+     * @param WP_Screen $screen
+     */
+    public function customizeUi($screen)
     {
         if ($screen->post_type != 'wpt_test') {
             return;
