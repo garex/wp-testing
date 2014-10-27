@@ -1,5 +1,3 @@
-var childProcess = require('child_process');
-
 describe('Plugin', function() {
 
     before(function () {

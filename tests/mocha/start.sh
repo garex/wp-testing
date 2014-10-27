@@ -14,6 +14,7 @@ cd $TRAVIS_BUILD_DIR/tests/mocha
 npm install
 cd $TRAVIS_BUILD_DIR
 export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
+export TZ="UTC"
 
 # Run tests
 cd $TRAVIS_BUILD_DIR/tests/mocha
