@@ -1,5 +1,3 @@
-var childProcess = require('child_process');
-
 describe('Plugin', function() {
 
     before(function () {
@@ -23,16 +21,6 @@ describe('Plugin', function() {
 
        casper.then(function() {
            '#wp-testing .deactivate a'.should.be.inDOM
-       })
-    })
-
-    it('should be deactivated', function() {
-       casper.then(function() {
-           this.click('#wp-testing .deactivate a')
-       })
-
-       casper.then(function() {
-           '#wp-testing .activate a'.should.be.inDOM
        })
     })
 

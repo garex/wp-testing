@@ -15,7 +15,7 @@
 
     <?php foreach ($results as $result): /* @var $result WpTesting_Model_Result */ ?>
 
-        <h4 class="result title"><?php echo $result->getTitle() ?></h4>
+        <h3 class="result title"><?php echo $result->getTitle() ?></h4>
 
         <p class="result description"><?php echo nl2br($result->getDescription()) ?></p>
 
@@ -27,7 +27,7 @@
 
     <?php foreach ($scales as $scale): /* @var $scale WpTesting_Model_Scale */ ?>
 
-        <h4 class="scale title"><?php echo $scale->getTitle() ?></h4>
+        <h3 class="scale title"><?php echo $scale->getTitle() ?></h4>
 
         <div class="scale scores">
             <?php echo $scale->getValue() ?> <?php echo 'out of' ?> <?php echo $scale->getMaximum() ?>

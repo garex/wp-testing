@@ -7,6 +7,7 @@ define('DB_CHARSET',       'utf8');
 define('DB_COLLATE',       '');
 define('WPLANG',           '');
 define('FS_METHOD',        'direct');
+define('WP_MEMORY_LIMIT',  '64M');
 
 define('AUTH_KEY',         '#tca;V8]yS$CD*CS|frVh_mwbh/,bMDtM6;;JI2/ko|hw;)||2Zo`GAhl$nX)-Jv');
 define('SECURE_AUTH_KEY',  'g.Uvx(}@Hq%?Ov9|JP3*V1gI+8**-ng=8-6$3.1@x_`?NPDE|R/YrqX{eQeky.v2');
