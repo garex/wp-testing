@@ -18,4 +18,4 @@ export TZ="UTC"
 
 # Run tests
 cd $TRAVIS_BUILD_DIR/tests/mocha
-mocha-casperjs
+mocha-casperjs --grep='Plugin:' --invert
