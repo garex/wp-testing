@@ -104,6 +104,16 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * The WordPress version string
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $GLOBALS['wp_version'];
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
