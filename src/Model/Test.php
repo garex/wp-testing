@@ -34,6 +34,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $postAsArray = (array)$key;
             unset($postAsArray['ancestors']);
             unset($postAsArray['filter']);
+            unset($postAsArray['format_content']);
             return parent::__construct(new ArrayIterator(array($postAsArray)));
         }
         return parent::__construct($key);
