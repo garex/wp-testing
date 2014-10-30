@@ -31,8 +31,9 @@ function db {
 
 function setup_link {
     log 'Setting up symbolic link'
-    rm --force /tmp/wpti
+    sudo rm --force /tmp/wpti
     ln --symbolic $HERE /tmp/wpti
+    sudo chown --no-dereference :www-data /tmp/wpti
 }
 
 function nginx {
