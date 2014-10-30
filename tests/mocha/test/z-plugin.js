@@ -1,4 +1,4 @@
-describe('Plugin', function() {
+describe('Plugin:', function() {
 
     before(function () {
         this.timeout(3600000)

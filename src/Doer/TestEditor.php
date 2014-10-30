@@ -8,7 +8,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function customizeUi($screen)
     {
-        if ($screen->post_type != 'wpt_test') {
+        if (empty($screen->post_type) || $screen->post_type != 'wpt_test') {
             return;
         }
         $this->sessionInit(__CLASS__)->wp
