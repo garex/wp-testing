@@ -1,6 +1,10 @@
 
 ## Changelog ##
 
+### 0.2.5 ###
+Fix test creation (empty scale sum broken)
+
+
 ### 0.2.4 ###
 Correctly uninstall plugin
 
@@ -70,6 +74,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.2.5 ###
+Test creation from scratch now should work
 
 ### 0.2.3 ###
 Plugin activation on PHP below 5.4 fixed

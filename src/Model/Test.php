@@ -75,16 +75,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $scales      = $this->buildScales();
         $scoresTable = fORM::tablize('WpTesting_Model_Score');
         foreach ($scales as $scale) {
+            /* @var $db fDatabase */
             $db     = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
             $result = $db->translatedQuery('
                 SELECT SUM(score_value) FROM ' . $scoresTable . '
                 WHERE question_id IN (' . $questionIds . ') AND scale_id = ' . intval($scale->getId()) . '
                 GROUP BY scale_id
             ');
-            $sum = $result->fetchScalar();
-            if ($sum) {
-                $range = array(0, $sum);
-                $scale->setRange(min($range), max($range));
+            if ($result->countReturnedRows()) {
+                $sum = $result->fetchScalar();
+                if ($sum) {
+                    $range = array(0, $sum);
+                    $scale->setRange(min($range), max($range));
+                }
             }
         }
         return $scales;
