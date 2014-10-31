@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 3.9  
-**Stable tag:** 0.2.4  
+**Stable tag:** 0.2.5  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -24,6 +24,8 @@ Test answers, scales, results and categories are edited through wordpress standa
 As to formulas you can be sure — we have simple formula editor, that has buttons for each scale (with sum of it's scores) and allowed comparisions.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
+
+ps: **If something broken or not works**, pls create new topic in "Support" tab here!
 
 ## Installation ##
 
