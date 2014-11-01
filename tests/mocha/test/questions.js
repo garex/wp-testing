@@ -24,7 +24,8 @@ describe('Questions', function() {
                 'post_title'                                    : 'To Be or Not to Be?',
                 'wp_testing_model_questions::question_title[0]' : 'To Be?',
                 'wp_testing_model_questions::question_title[5]' : 'Not to Be?'
-            }, true)
+            })
+            this.click('#publish')
         })
 
         casper.waitForUrl(/message/, function() {
@@ -38,13 +39,22 @@ describe('Questions', function() {
 
     it('should be removed and updated in test', function() {
         casper.then(function() {
+            this.clickLabel('All Tests', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            this.clickLabel('To Be or Not to Be?', 'a')
+        })
+
+        casper.then(function() {
             this.clickLabel(' Lie', 'label')
 
             this.fill('form#post', {
                 'wp_testing_model_questions::question_title[0]' : '',
                 'wp_testing_model_questions::question_title[1]' : 'Not to Be???',
                 'wp_testing_model_questions::question_title[2]' : 'But Why?'
-            }, true)
+            })
+            this.fill('form#post', {}, true)
         })
 
         casper.waitForUrl(/message/, function() {
@@ -61,7 +71,7 @@ describe('Questions', function() {
             this.clickLabel('View Test')
         })
 
-        casper.waitForPopup(/wpt_test/).withPopup(/wpt_test/, function() {
+        casper.waitForUrl(/wpt_test/, function() {
             'Fatal'.should.not.be.textInDOM
             '.wpt_test.fill_form'.should.be.inDOM
             'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(2);
