@@ -8,7 +8,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function customizeUi($screen)
     {
-        if (empty($screen->post_type) || $screen->post_type != 'wpt_test') {
+        if (!$this->isTestScreen($screen)) {
             return;
         }
         $this->sessionInit(__CLASS__)->wp
@@ -114,5 +114,33 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if ($this->sessionHas('admin_message')) {
             $this->output('Test/Editor/admin-message', $this->sessionGetRemove('admin_message'));
         }
+    }
+
+    /**
+     * Do we currently at tests?
+     *
+     * @param WP_Screen $screen
+     * @return boolean
+     */
+    private function isTestScreen($screen)
+    {
+        if (!empty($screen->post_type) && $screen->post_type == 'wpt_test') {
+            return true;
+        }
+        if ($this->isWordPressAlready('3.3')) {
+            return false;
+        }
+
+        // WP 3.2 workaround
+        if ($this->isPost() && $this->getRequestValue('post_type') == 'wpt_test') {
+            return true;
+        }
+
+        $id = $this->getRequestValue('post');
+        if (!$id) {
+            return false;
+        }
+        $test = new WpTesting_Model_Test($id);
+        return ($test->getId()) ? true : false;
     }
 }
