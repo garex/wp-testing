@@ -12,6 +12,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return;
         }
         $this->sessionInit(__CLASS__)->wp
+            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
+            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
+            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
             ->addAction('media_buttons', array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
@@ -26,8 +29,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if ('content' != $editorId) {
             return;
         }
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
-
         $this->output('Test/Editor/content-editor-buttons');
     }
 
@@ -36,7 +37,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditQuestions($item)
     {
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-questions', array(
             'scales'      => $test->buildScalesWithRange(),
@@ -52,7 +52,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderAddQuestions($item)
     {
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/add-questions', array(
             'addNewCount' => 10,
@@ -67,11 +66,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditFormulas($item)
     {
-        $this->wp
-            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
-            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
-            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
-        ;
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-formulas', array(
             'results'    => $test->buildResults(),
