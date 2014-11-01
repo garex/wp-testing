@@ -67,8 +67,8 @@ describe('Questions', function() {
     })
 
     it('should be then shown in test', function() {
-        casper.then(function() {
-            this.clickLabel('View Test')
+        casper.evaluate(function() {
+            document.location = jQuery('#view-post-btn a').attr('href')
         })
 
         casper.waitForUrl(/wpt_test/, function() {
