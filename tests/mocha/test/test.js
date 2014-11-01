@@ -34,8 +34,8 @@ describe('Test', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('post_title').to.have.fieldValue('Are You Hot or Not?');
-            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth');
+            expect('post_title').to.have.fieldValue('Are You Hot or Not?')
+            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth')
         })
     })
 
@@ -50,8 +50,8 @@ describe('Test', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('post_title').to.have.fieldValue('Are You Hot or Not?!');
-            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth!');
+            expect('post_title').to.have.fieldValue('Are You Hot or Not?!')
+            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth!')
         })
     })
 
