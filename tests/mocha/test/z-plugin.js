@@ -9,7 +9,7 @@ describe('Plugin:', function() {
                 pwd: 'wpti'
             }
         })
-    });
+    })
 
     it('should be deactivated', function() {
        casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {

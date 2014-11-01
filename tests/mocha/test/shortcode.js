@@ -9,13 +9,13 @@ describe('Shortcode', function() {
                 pwd: 'wpti'
             }
         })
-    });
+    })
 
     it('[wptlist] should be added', function() {
         casper.thenOpen('http://wpti.dev/wp-admin/post.php?post=1&action=edit', function() {
             this.evaluateOrDie(function() {
-                return /Edit Post/.test(document.body.innerText);
-            });
+                return /Edit Post/.test(document.body.innerText)
+            })
 
             this.evaluate(function() {
                 jQuery('#post-body-content a').filter(':contains("Visual")').prev().addClass('__text_tab_here')
@@ -31,7 +31,7 @@ describe('Shortcode', function() {
 
         casper.waitForUrl(/message/, function() {
             '#message'.should.be.inDOM
-        });
+        })
 
         casper.thenOpen('http://wpti.dev/?p=1', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
