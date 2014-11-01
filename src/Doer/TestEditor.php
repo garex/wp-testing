@@ -134,7 +134,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$id) {
             return false;
         }
-        $test = new WpTesting_Model_Test($id);
-        return ($test->getId()) ? true : false;
+        $test   = new WpTesting_Model_Test($id);
+        $isTest = ($test->getId()) ? true : false;
+        $test->reset();
+        return $isTest;
     }
 }
