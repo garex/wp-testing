@@ -14,7 +14,7 @@
             <input type="hidden" name="<?php echo $prefix ?>question_id[<?php echo $startFrom + $i ?>]" />
         </th>
         <td class="wpt_title" colspan="<?php echo count($scales) ?>">
-            <input name="<?php echo $prefix ?>question_title[<?php echo $startFrom + $i ?>]" />
+            <input type="text" name="<?php echo $prefix ?>question_title[<?php echo $startFrom + $i ?>]" />
         </td>
     </tr>
 <?php endforeach ?>

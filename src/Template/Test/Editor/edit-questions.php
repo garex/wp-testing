@@ -37,7 +37,7 @@
             <input type="hidden" name="<?php echo $prefix ?>question_id[<?php echo $q ?>]" value="<?php echo $question->getId() ?>" />
         </th>
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
-            <input name="<?php echo $prefix ?>question_title[<?php echo $q ?>]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
+            <input type="text" name="<?php echo $prefix ?>question_title[<?php echo $q ?>]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
     </tr>
     <?php $scoreIndex = 0 ?>
@@ -55,7 +55,8 @@
                 <input type="hidden"
                     name="<?php echo $scorePrefix ?>scale_id<?php echo $scorePostfix ?>"
                     value="<?php echo $scale->getId() ?>" />
-                <input placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
+                <input type="text"
+                    placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
                     name="<?php echo $scorePrefix ?>score_value<?php echo $scorePostfix ?>"
                     value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
