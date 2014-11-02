@@ -223,7 +223,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
         return array(
             array('Scale A > 34 Scale B < 45',     true,  array('Scale A', 'Scale B')),
             array('Scale A > 34 Scale B < 45',     false, array('Scale X')),
-            array('',                              false, array('Scale X')),
+            array('',                              true,  array('Scale X')),
             array(' something empty?    ',         false, array('Scale X')),
             array('<><>',                          false, array('Scale X')),
             array('var_dump(file("/etc/passwd"))', false, array('Scale X')),
