@@ -72,7 +72,6 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ 4"]'.should.be.inDOM
         })
     })
 
@@ -82,12 +81,33 @@ describe('Scores', function() {
         })
     })
 
-    it('should be added in test with many scales and answers', function() {
-    })
-
     it('should have total sum by each scale', function() {
+        casper.then(function() {
+            '#wpt_edit_formulas input[value="Lie, ∑ 4"]'.should.be.inDOM
+        })
     })
 
-    it('should be saved in test in case of scale toggle', function() {
+    it('should be cleared in test in case of scale toggle', function() {
+        casper.then(function() {
+            this.clickLabel(' Lie', 'label')
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 4"]'.should.not.be.inDOM
+        })
+
+        casper.then(function() {
+            this.clickLabel(' Lie', 'label')
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ "]'.should.be.inDOM
+        })
     })
 })
