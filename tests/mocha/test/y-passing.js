@@ -33,6 +33,9 @@ describe('Passings', function() {
 
     it('should show results with scales on submit', function() {
         casper.then(function() {
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         })
 
