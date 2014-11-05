@@ -72,8 +72,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildScalesWithRange()
     {
-        $questionIds = implode(',', $this->listWpTesting_Model_Questions());
-        $questionIds = empty($questionIds) ? '0' : $questionIds;
+        $questionIds   = array_filter($this->listWpTesting_Model_Questions());
+        $questionIds[] = 0;
+        $questionIds   = implode(',', $questionIds);
         $scales      = $this->buildScales();
         $scoresTable = fORM::tablize('WpTesting_Model_Score');
         foreach ($scales as $scale) {
