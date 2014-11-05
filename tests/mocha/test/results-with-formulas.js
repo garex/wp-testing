@@ -37,6 +37,12 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
+
+            this.fill('form#post', {
+                'wp_testing_model_questions::wp_testing_model_score::score_value[0][0]': '5',
+                'wp_testing_model_questions::wp_testing_model_score::score_value[1][0]': '5',
+                'wp_testing_model_questions::wp_testing_model_score::score_value[2][0]': '5'
+            }, true)
         })
     })
 
