@@ -1,0 +1,47 @@
+language: php
+
+php:
+  - 5.2
+  - 5.3
+  - 5.4
+  - 5.5
+
+env:
+  global:
+    - DB_ENGINE=InnoDB
+  matrix:
+    - WP_VERSION=4.0
+    - WP_VERSION=3.9
+    - WP_VERSION=3.8
+    - WP_VERSION=3.7
+    - WP_VERSION=3.6
+    - WP_VERSION=3.5
+    - WP_VERSION=3.4
+    - WP_VERSION=3.3
+    - WP_VERSION=3.2
+
+matrix:
+  include:
+    - php: 5.3
+      env: DB_ENGINE=MyISAM
+
+addons:
+  hosts:
+    - wpti.dev
+
+before_script:
+  - tests/integration-environment/composer-update.sh
+  - mysql -e 'create database wordpress;'
+  - cd db
+  - $TRAVIS_BUILD_DIR/vendor/bin/ruckus.php db:migrate
+  - cd $TRAVIS_BUILD_DIR
+  - tests/integration-environment/create.sh
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - npm install
+  - cd $TRAVIS_BUILD_DIR
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
+
+script:
+  - vendor/bin/phpunit-php52
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - mocha-casperjs

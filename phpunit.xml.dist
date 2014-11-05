@@ -11,11 +11,11 @@
     stopOnFailure="false"
     syntaxCheck="false"
     verbose="true"
-    bootstrap="tests/bootstrap.php"
+    bootstrap="tests/phpunit/bootstrap.php"
 >
     <testsuites>
         <testsuite name="Default">
-            <directory>tests</directory>
+            <directory>tests/phpunit</directory>
         </testsuite>
     </testsuites>
 </phpunit>

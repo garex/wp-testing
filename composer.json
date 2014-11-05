@@ -12,7 +12,7 @@
     "require": {
         "composer/installers": "~1.0.0"
         , "xrstf/composer-php52": "1.*"
-        , "ruckusing/ruckusing-migrations": "dev-issue/work-in-non-writable-environment"
+        , "ruckusing/ruckusing-migrations": "1.0.3"
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
     },
@@ -38,8 +38,34 @@
     },
     "repositories": [
         {
-            "type": "git",
-            "url": "https://github.com/garex/ruckusing-migrations"
+            "type": "package",
+            "package":
+            {
+                "autoload": {
+                    "psr-0": {
+                        "Ruckusing": "lib/",
+                        "Task": "lib/"
+                    }
+                },
+                "bin": [
+                    "ruckus.php"
+                ],
+                "name": "ruckusing/ruckusing-migrations",
+                "require": {
+                    "php": ">=5.2.0"
+                },
+                "type": "library",
+                "source": {
+                    "url": "https://github.com/garex/ruckusing-migrations",
+                    "type": "git",
+                    "reference": "issue/work-in-non-writable-environment"
+                },
+                "dist": {
+                    "url": "https://github.com/garex/ruckusing-migrations/archive/issue/work-in-non-writable-environment.zip",
+                    "type": "zip"
+                },
+                "version": "1.0.3"
+            }
         },
         {
             "type": "git",

@@ -75,8 +75,12 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function isCorrect(array $valueNames = array())
     {
+        $source = $this->getSource();
+        if (empty($source)) {
+            return true;
+        }
         $experiment = new WpTesting_Model_Formula();
-        $experiment->setSource($this->getSource());
+        $experiment->setSource($source);
 
         if (empty($valueNames)) {
             $experiment->addValues($this->substituteValues);
@@ -120,6 +124,9 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     public function substitute()
     {
         $result = $this->getSource();
+        if (empty($result)) {
+            return 'false';
+        }
 
         $values = $this->substituteValues;
         uksort($values, array($this, 'compareValueNamesInverted'));
@@ -181,7 +188,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     public function addValues(array $values)
     {
         foreach ($values as $params) {
-            call_user_method_array('addValue', $this, $params);
+            call_user_func_array(array($this, 'addValue'), $params);
         }
         return $this;
     }

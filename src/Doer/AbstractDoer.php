@@ -50,6 +50,22 @@ abstract class WpTesting_Doer_AbstractDoer
         return fRequest::isPost();
     }
 
+    protected function getRequestValue($key)
+    {
+        return fRequest::get($key);
+    }
+
+    /**
+     * Checks if current WordPress version greater than or equal provided version
+     *
+     * @param string $version
+     * @return boolean
+     */
+    protected function isWordPressAlready($version)
+    {
+        return version_compare($this->wp->getVersion(), $version, '>=');
+    }
+
     /**
      * @param string $prefix
      * @return WpTesting_Doer_AbstractDoer

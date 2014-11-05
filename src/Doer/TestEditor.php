@@ -3,15 +3,24 @@
 class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
 
-    public function customizeUi()
+    /**
+     * @param WP_Screen $screen
+     */
+    public function customizeUi($screen)
     {
+        if (!$this->isTestScreen($screen)) {
+            return;
+        }
         $this->sessionInit(__CLASS__)->wp
+            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
+            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
+            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
             ->addAction('media_buttons', array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  'Edit Formulas',     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('admin_notices', array($this, 'printAdminMessages'))
-            ->addAction('save_post', array($this, 'saveTest'), 10, 3)
+            ->addAction('save_post', array($this, 'saveTest'), 10, 2)
         ;
     }
 
@@ -20,14 +29,14 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if ('content' != $editorId) {
             return;
         }
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
-
         $this->output('Test/Editor/content-editor-buttons');
     }
 
-    public function renderEditQuestions(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderEditQuestions($item)
     {
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-questions', array(
             'scales'      => $test->buildScalesWithRange(),
@@ -38,9 +47,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function renderAddQuestions(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderAddQuestions($item)
     {
-        $this->wp->enqueuePluginStyle('wpt_admin', 'css/admin.css');
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/add-questions', array(
             'addNewCount' => 10,
@@ -50,13 +61,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function renderEditFormulas(WP_Post $item)
+    /**
+     * @param WP_Post $item
+     */
+    public function renderEditFormulas($item)
     {
-        $this->wp
-            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
-            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
-            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
-        ;
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-formulas', array(
             'results'    => $test->buildResults(),
@@ -65,7 +74,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         ));
     }
 
-    public function saveTest($id, WP_Post $item, $isUpdate)
+    /**
+     * @param integer $id
+     * @param WP_Post $item
+     */
+    public function saveTest($id, $item)
     {
         $test = new WpTesting_Model_Test($item);
         if (!$test->getId()) {
@@ -95,5 +108,35 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if ($this->sessionHas('admin_message')) {
             $this->output('Test/Editor/admin-message', $this->sessionGetRemove('admin_message'));
         }
+    }
+
+    /**
+     * Do we currently at tests?
+     *
+     * @param WP_Screen $screen
+     * @return boolean
+     */
+    private function isTestScreen($screen)
+    {
+        if (!empty($screen->post_type) && $screen->post_type == 'wpt_test') {
+            return true;
+        }
+        if ($this->isWordPressAlready('3.3')) {
+            return false;
+        }
+
+        // WP 3.2 workaround
+        if ($this->isPost() && $this->getRequestValue('post_type') == 'wpt_test') {
+            return true;
+        }
+
+        $id = $this->getRequestValue('post');
+        if (!$id) {
+            return false;
+        }
+        $test   = new WpTesting_Model_Test($id);
+        $isTest = ($test->getId()) ? true : false;
+        $test->reset();
+        return $isTest;
     }
 }

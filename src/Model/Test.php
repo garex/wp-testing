@@ -26,13 +26,15 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 
     public function __construct($key = null)
     {
-        if ($key instanceof WP_Post) {
+        if (is_object($key) && isset($key->post_type)) {
             if ($key->post_type != 'wpt_test') {
                 $this->values['ID'] = null;
                 return;
             }
             $postAsArray = (array)$key;
+            unset($postAsArray['ancestors']);
             unset($postAsArray['filter']);
+            unset($postAsArray['format_content']);
             return parent::__construct(new ArrayIterator(array($postAsArray)));
         }
         return parent::__construct($key);
@@ -70,8 +72,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildScalesWithRange()
     {
-        $questionIds = implode(',', $this->listWpTesting_Model_Questions());
-        $questionIds = empty($questionIds) ? '0' : $questionIds;
+        $questionIds   = array_filter($this->listWpTesting_Model_Questions());
+        $questionIds[] = 0;
+        $questionIds   = implode(',', $questionIds);
         $scales      = $this->buildScales();
         $scoresTable = fORM::tablize('WpTesting_Model_Score');
         foreach ($scales as $scale) {
@@ -258,7 +261,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function toWpPost()
     {
-        $post = new WP_Post(new stdClass());
+        if (class_exists('WP_Post')) {
+            $post = new WP_Post(new stdClass());
+        } else {
+            $post = new stdClass();
+        }
         $post->filter = 'raw';
         foreach ($this->values as $key => $value) {
             $post->$key = (string)$value;

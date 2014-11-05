@@ -12,7 +12,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
             'description'   => 'Instrument to measure unobserved constructs (latent variables).  Typically it is a series of tasks or problems that the respondent has to solve.',
             'public'        => true,
             'menu_position' => 5,
-            'menu_icon'     => 'dashicons-editor-paste-text',
+            'menu_icon'     => $this->isWordPressAlready('3.8') ? 'dashicons-editor-paste-text' : null,
             'supports'      => array(
                 'title',
                 'editor',
