@@ -92,15 +92,115 @@ class WpTesting_WordPressFacade
     }
 
     /**
-     * WordPress Query API
+     * Main WordPress Query
      *
      * @since 1.5.0
+     *
+     * @return WP_Query
+     */
+    public function getMainQuery()
+    {
+        return $GLOBALS['wp_the_query'];
+    }
+
+    /**
+     * Is passed query the main query?
+     *
+     * Backward compatible check instead of WP_Query::is_main_query, which is available since 3.3
+     *
+     * @since 1.5.0
+     *
+     * @param WP_Query $query
+     * @return boolean
+     */
+    public function isQueryMain($query)
+    {
+        return $query === $this->getMainQuery();
+    }
+
+    /**
+     * Current WordPress Query
+     *
+     * Usually it's a link to "Main WordPress Query"
+     *
+     * @since 1.5.0
+     * @see WpTesting_WordPressFacade::getMainQuery
      *
      * @return WP_Query
      */
     public function getQuery()
     {
         return $GLOBALS['wp_query'];
+    }
+
+    /**
+     * Retrieve the ID of the current post
+     *
+     * @since 2.1.0
+     * @return integer
+     */
+    public function getCurrentPostId()
+    {
+        return $GLOBALS['post']->ID;
+    }
+
+    /**
+     * Retrieve post meta field for a post.
+     *
+     * @since 1.5.0
+     * @uses $wpdb
+     * @link http://codex.wordpress.org/Function_Reference/get_post_meta
+     *
+     * @param int $post_id Post ID.
+     * @param string $key The meta key to retrieve.
+     * @param bool $single Whether to return a single value.
+     * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
+     *  is true.
+     */
+    public function getCurrentPostMeta($key)
+    {
+        return $this->getPostMeta($this->getCurrentPostId(), $key, true);
+    }
+
+    /**
+     * Retrieve post meta field for a post.
+     *
+     * @since 1.5.0
+     * @uses $wpdb
+     * @link http://codex.wordpress.org/Function_Reference/get_post_meta
+     *
+     * @param int $postId Post ID.
+     * @param string $key The meta key to retrieve.
+     * @param bool $isSingle Whether to return a single value.
+     * @return mixed Will be an array if $single is false.
+     *               Will be value of meta data field if $single is true.
+     */
+    public function getPostMeta($postId, $key, $isSingle)
+    {
+        return get_post_meta($postId, $key, $isSingle);
+    }
+
+    /**
+     * Update post meta field based on post ID.
+     *
+     * Use the $prev_value parameter to differentiate between meta fields with the
+     * same key and post ID.
+     *
+     * If the meta field for the post does not exist, it will be added.
+     *
+     * @since 1.5.0
+     * @uses $wpdb
+     * @link http://codex.wordpress.org/Function_Reference/update_post_meta
+     *
+     * @param int $postId Post ID.
+     * @param string $key Metadata key.
+     * @param mixed $value Metadata value.
+     * @param mixed $previousValue Optional. Previous value to check before removing.
+     * @return bool False on failure, true if success.
+     */
+    public function updatePostMeta($postId, $key, $value, $previousValue = '')
+    {
+        return update_post_meta($postId, $key, $value, $previousValue);
     }
 
     /**
@@ -310,6 +410,21 @@ class WpTesting_WordPressFacade
     {
         register_taxonomy($name, $objectType, $parameters);
         return $this;
+    }
+
+    /**
+     * Whether the current request is for a network or blog admin page
+     *
+     * Does not inform on whether the user is an admin! Use capability checks to
+     * tell if the user should be accessing a section or not.
+     *
+     * @since 1.5.1
+     *
+     * @return bool True if inside WordPress administration pages.
+     */
+    public function isAdministrationPage()
+    {
+        return is_admin();
     }
 
     /**

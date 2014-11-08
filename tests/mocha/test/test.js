@@ -85,4 +85,50 @@ describe('Test', function() {
         })
     })
 
+    it('should be on home page after publish by default and not when hidden', function() {
+        casper.thenOpen('http://wpti.dev/wp-admin/', function() {
+            this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            'Fatal'.should.not.be.textInDOM
+            'Add New Test'.should.be.inTitle
+
+            this.fill('form#post', {
+                'post_title' : 'Test On Home By Default',
+                'content'    : 'By default we are all on home'
+            })
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+
+            this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            'Fatal'.should.not.be.textInDOM
+            'Add New Test'.should.be.inTitle
+
+            this.fill('form#post', {
+                'post_title'           : 'Test Not On Home!',
+                'content'              : 'But I am not on home as I am hidden'
+            })
+            this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]');
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+        })
+
+        casper.thenOpen('http://wpti.dev/', function() {
+            'By default we are all on home'.should.be.textInDOM
+            'But I am not on home as I am hidden'.should.not.be.textInDOM
+        })
+    })
+
 })

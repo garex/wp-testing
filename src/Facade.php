@@ -14,6 +14,11 @@ class WpTesting_Facade
     private $testEditor = null;
 
     /**
+     * @var WpTesting_Doer_PostBrowser
+     */
+    private $postBrowser = null;
+
+    /**
      * @var WpTesting_Doer_TestPasser
      */
     private $testPasser = null;
@@ -67,9 +72,19 @@ class WpTesting_Facade
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
-            ->addAction('current_screen',    array($this,  'setupTestEditor'))
-            ->addFilter('single_template',   array($this,  'setupTestPasser'))
         ;
+
+        $isPublicPage = !$this->wp->isAdministrationPage();
+        if ($isPublicPage) {
+            $this->wp
+                ->addFilter('pre_get_posts',     array($this,  'setupPostBrowser'))
+                ->addFilter('single_template',   array($this,  'setupTestPasser'))
+            ;
+        } else {
+            $this->wp
+                ->addFilter('current_screen',    array($this,  'setupTestEditor'))
+            ;
+        }
     }
 
     public function registerWordPressEntities()
@@ -89,6 +104,15 @@ class WpTesting_Facade
     public function setupTestEditor($screen)
     {
         $this->getTestEditor()->customizeUi($screen);
+        return $screen;
+    }
+
+    /**
+     * @param WP_Query $query
+     */
+    public function setupPostBrowser($query)
+    {
+        return $this->getPostBrowser()->addTestsToQuery($query);
     }
 
     public function setupTestPasser($template)
@@ -119,6 +143,18 @@ class WpTesting_Facade
         $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
 
         return $this->testEditor;
+    }
+
+    protected function getPostBrowser()
+    {
+        if (!is_null($this->postBrowser)) {
+            return $this->postBrowser;
+        }
+
+        $this->setupORM();
+        $this->postBrowser = new WpTesting_Doer_PostBrowser($this->wp);
+
+        return $this->postBrowser;
     }
 
     protected function getTestPasser()
