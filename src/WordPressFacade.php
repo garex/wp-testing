@@ -92,9 +92,39 @@ class WpTesting_WordPressFacade
     }
 
     /**
-     * WordPress Query API
+     * Main WordPress Query
      *
      * @since 1.5.0
+     *
+     * @return WP_Query
+     */
+    public function getMainQuery()
+    {
+        return $GLOBALS['wp_the_query'];
+    }
+
+    /**
+     * Is passed query the main query?
+     *
+     * Backward compatible check instead of WP_Query::is_main_query, which is available since 3.3
+     *
+     * @since 1.5.0
+     *
+     * @param WP_Query $query
+     * @return boolean
+     */
+    public function isQueryMain($query)
+    {
+        return $query === $this->getMainQuery();
+    }
+
+    /**
+     * Current WordPress Query
+     *
+     * Usually it's a link to "Main WordPress Query"
+     *
+     * @since 1.5.0
+     * @see WpTesting_WordPressFacade::getMainQuery
      *
      * @return WP_Query
      */
@@ -380,6 +410,21 @@ class WpTesting_WordPressFacade
     {
         register_taxonomy($name, $objectType, $parameters);
         return $this;
+    }
+
+    /**
+     * Whether the current request is for a network or blog admin page
+     *
+     * Does not inform on whether the user is an admin! Use capability checks to
+     * tell if the user should be accessing a section or not.
+     *
+     * @since 1.5.1
+     *
+     * @return bool True if inside WordPress administration pages.
+     */
+    public function isAdministrationPage()
+    {
+        return is_admin();
     }
 
     /**
