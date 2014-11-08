@@ -13,15 +13,29 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
         $this->sessionInit(__CLASS__)->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
-            ->enqueuePluginScript('field_selection', 'js/vendor/kof/field-selection.js', array('jquery'), false, true)
-            ->enqueuePluginScript('wpt_test_edit_formulas', 'js/test-edit-formulas.js', array('jquery'), false, true)
-            ->addAction('media_buttons', array($this, 'renderContentEditorButtons'))
+            ->enqueuePluginScript('wpt_test_edit_fix_styles',  'js/test-edit-fix-styles.js',        array('jquery'), false, true)
+            ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array('jquery'), false, true)
+            ->enqueuePluginScript('wpt_test_edit_formulas',    'js/test-edit-formulas.js',          array('jquery'), false, true)
+            ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
+            ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', 'Edit Questions',    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  'Add New Questions', array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  'Edit Formulas',     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('admin_notices', array($this, 'printAdminMessages'))
-            ->addAction('save_post', array($this, 'saveTest'), 10, 2)
+            ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
+    }
+
+    public function renderSubmitMiscActions()
+    {
+        // Set metadata defaults
+        $isPublishOnHome = $this->wp->getCurrentPostMeta('wpt_publish_on_home');
+        if ($isPublishOnHome == '') {
+            $isPublishOnHome = '1';
+        }
+        $this->output('Test/Editor/submit-misc-actions', array(
+            'isPublishOnHome' => $isPublishOnHome,
+        ));
     }
 
     public function renderContentEditorButtons($editorId)
@@ -84,6 +98,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$test->getId()) {
             return;
         }
+
+        // Update metadata only when we have appropriate keys
+        $isPublishOnHome = $this->getRequestValue('wpt_publish_on_home');
+        if (!is_null($isPublishOnHome)) {
+            $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
+        }
+
         $test->populateQuestions(true);
         $test->populateFormulas();
 
