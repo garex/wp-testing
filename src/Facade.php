@@ -67,7 +67,7 @@ class WpTesting_Facade
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
-            ->addAction('current_screen',    array($this,  'setupTestEditor'))
+            ->addFilter('current_screen',    array($this,  'setupTestEditor'))
             ->addFilter('single_template',   array($this,  'setupTestPasser'))
         ;
     }
@@ -89,6 +89,7 @@ class WpTesting_Facade
     public function setupTestEditor($screen)
     {
         $this->getTestEditor()->customizeUi($screen);
+        return $screen;
     }
 
     public function setupTestPasser($template)
