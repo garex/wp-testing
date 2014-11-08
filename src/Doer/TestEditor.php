@@ -101,9 +101,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         // Update metadata only when we have appropriate keys
         $isPublishOnHome = $this->getRequestValue('wpt_publish_on_home');
-        if (!is_null($isPublishOnHome)) {
-            $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
+        $isFullEdit      = (!is_null($isPublishOnHome));
+        if (!$isFullEdit) {
+            return;
         }
+
+        $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
 
         $test->populateQuestions(true);
         $test->populateFormulas();
