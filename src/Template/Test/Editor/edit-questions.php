@@ -41,6 +41,7 @@
                     'i'  => $q,
                     'id' => $question->getId(),
                 ))  ?>]'
+                id="wpt_question_title_<?php echo $q ?>"
                 value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
     </tr>
@@ -55,13 +56,15 @@
                     placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
                     name='wpt_score_value[<?php echo json_encode(array(
                         'i'         => $q,
-                        'j'         => $scoreIndex++,
+                        'j'         => $scoreIndex,
                         'answer_id' => $answer->getId(),
                         'scale_id'  => $scale->getId(),
                     ))  ?>]'
+                    id="wpt_score_value_<?php echo $q ?>_<?php echo $scoreIndex ?>"
                     value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
             </td>
+            <?php $scoreIndex++ ?>
         <?php endforeach ?>
         </tr>
     <?php endforeach ?>

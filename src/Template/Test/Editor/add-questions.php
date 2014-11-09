@@ -16,7 +16,7 @@
             <input type="text" name='wpt_question_title[<?php echo json_encode(array(
                 'i'  => $startFrom + $i,
                 'id' => '',
-            ))  ?>]' />
+            ))  ?>]' id="wpt_question_title_<?php echo $startFrom + $i ?>" />
         </td>
     </tr>
 <?php endforeach ?>

@@ -17,6 +17,7 @@
                     'formula_id' => $formula->getId(),
                     'result_id'  => $formula->getResultId(),
                 ))  ?>]'
+                id="wpt_formula_source_<?php echo $r ?>"
                 value="<?php echo htmlspecialchars($formula->getSource()) ?>" />
         </td>
     </tr>
