@@ -55,8 +55,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/edit-questions', array(
             'scales'      => $test->buildScalesWithRange(),
             'questions'   => $test->buildQuestions(),
-            'prefix'      => $test->getQuestionsPrefix(),
-            'scorePrefix' => $test->getScorePrefix(),
             'isWarnOfSettings' => $test->isWarnOfSettings(),
         ));
     }
@@ -71,7 +69,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'addNewCount' => 10,
             'startFrom'   => $test->buildQuestions()->count(),
             'scales'      => $test->buildScales(),
-            'prefix'      => $test->getQuestionsPrefix(),
         ));
     }
 
@@ -84,7 +81,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/edit-formulas', array(
             'results'    => $test->buildResults(),
             'variables'  => $test->buildFormulaVariables(),
-            'prefix'     => $test->getFormulasPrefix(),
         ));
     }
 
@@ -108,6 +104,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
 
+        $_POST = $test->adaptForPopulate($_POST);
         $test->populateQuestions(true);
         $test->populateFormulas();
 
