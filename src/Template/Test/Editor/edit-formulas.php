@@ -10,10 +10,15 @@
         </td>
         <td class="wpt_formula">
             <?php $formula = $result->getFormula() ?>
-            <input type="hidden" name="<?php echo $prefix ?>test_id[<?php echo $r ?>]"        value="<?php echo $formula->getTestId() ?>" />
-            <input type="hidden" name="<?php echo $prefix ?>formula_id[<?php echo $r ?>]"     value="<?php echo $formula->getId() ?>" />
-            <input type="hidden" name="<?php echo $prefix ?>result_id[<?php echo $r ?>]"      value="<?php echo $formula->getResultId() ?>" />
-            <input type="text" name="<?php echo $prefix ?>formula_source[<?php echo $r ?>]" value="<?php echo htmlspecialchars($formula->getSource()) ?>" />
+            <input type="text"
+                name='wpt_formula_source[<?php echo json_encode(array(
+                    'i'          => $r,
+                    'test_id'    => $formula->getTestId(),
+                    'formula_id' => $formula->getId(),
+                    'result_id'  => $formula->getResultId(),
+                ))  ?>]'
+                id="wpt_formula_source_<?php echo $r ?>"
+                value="<?php echo htmlspecialchars($formula->getSource()) ?>" />
         </td>
     </tr>
 <?php endforeach ?>

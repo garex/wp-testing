@@ -7,6 +7,11 @@
 class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
 {
 
+    /**
+     * How many items to display in add new box
+     */
+    const ADD_NEW_COUNT = 10;
+
     protected $columnAliases = array(
         'title'  => 'question_title',
         'id'     => 'question_id',

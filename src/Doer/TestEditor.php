@@ -55,9 +55,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/edit-questions', array(
             'scales'      => $test->buildScalesWithRange(),
             'questions'   => $test->buildQuestions(),
-            'prefix'      => $test->getQuestionsPrefix(),
-            'scorePrefix' => $test->getScorePrefix(),
-            'isWarnOfSettings' => $test->isWarnOfSettings(),
+            'isWarnOfSettings'   => $test->isWarnOfSettings(),
+            'memoryWarnSettings' => $test->getMemoryWarnSettings(),
+            'isUnderApache'      => $this->isUnderApache(),
         ));
     }
 
@@ -68,10 +68,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     {
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/add-questions', array(
-            'addNewCount' => 10,
+            'addNewCount' => WpTesting_Model_Question::ADD_NEW_COUNT,
             'startFrom'   => $test->buildQuestions()->count(),
             'scales'      => $test->buildScales(),
-            'prefix'      => $test->getQuestionsPrefix(),
         ));
     }
 
@@ -84,7 +83,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/edit-formulas', array(
             'results'    => $test->buildResults(),
             'variables'  => $test->buildFormulaVariables(),
-            'prefix'     => $test->getFormulasPrefix(),
         ));
     }
 
@@ -108,6 +106,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
 
+        $_POST = $test->adaptForPopulate($_POST);
         $test->populateQuestions(true);
         $test->populateFormulas();
 
@@ -162,5 +161,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $isTest = ($test->getId()) ? true : false;
         $test->reset();
         return $isTest;
+    }
+
+    private function isUnderApache()
+    {
+        if (empty($_SERVER['SERVER_SOFTWARE'])) {
+            return false;
+        }
+        return preg_match('/apache|httpd/i', $_SERVER['SERVER_SOFTWARE']);
     }
 }

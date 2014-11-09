@@ -20,10 +20,10 @@ describe('Questions', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
-            this.fill('form#post', {
-                'post_title'                                    : 'To Be or Not to Be?',
-                'wp_testing_model_questions::question_title[0]' : 'To Be?',
-                'wp_testing_model_questions::question_title[5]' : 'Not to Be?'
+            this.fillSelectors('form#post', {
+                '#title'                : 'To Be or Not to Be?',
+                '#wpt_question_title_0' : 'To Be?',
+                '#wpt_question_title_5' : 'Not to Be?'
             })
             this.click('#publish')
         })
@@ -31,9 +31,9 @@ describe('Questions', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('wp_testing_model_questions::question_title[0]').to.have.fieldValue('To Be?')
-            expect('wp_testing_model_questions::question_title[1]').to.have.fieldValue('Not to Be?')
-            expect('wp_testing_model_questions::question_title[2]').to.have.fieldValue('')
+            'wpt_question_title_0.value'.should.evaluate.to.be.equal('To Be?')
+            'wpt_question_title_1.value'.should.evaluate.to.be.equal('Not to Be?')
+            'wpt_question_title_2.value'.should.evaluate.to.be.equal('')
         })
     })
 
@@ -49,10 +49,10 @@ describe('Questions', function() {
         casper.then(function() {
             this.clickLabel(' Lie', 'label')
 
-            this.fill('form#post', {
-                'wp_testing_model_questions::question_title[0]' : '',
-                'wp_testing_model_questions::question_title[1]' : 'Not to Be???',
-                'wp_testing_model_questions::question_title[2]' : 'But Why?'
+            this.fillSelectors('form#post', {
+                '#wpt_question_title_0' : '',
+                '#wpt_question_title_1' : 'Not to Be???',
+                '#wpt_question_title_2' : 'But Why?'
             })
             this.fill('form#post', {}, true)
         })
@@ -60,9 +60,9 @@ describe('Questions', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('wp_testing_model_questions::question_title[0]').to.have.fieldValue('Not to Be???')
-            expect('wp_testing_model_questions::question_title[1]').to.have.fieldValue('But Why?')
-            expect('wp_testing_model_questions::question_title[2]').to.have.fieldValue('')
+            'wpt_question_title_0.value'.should.evaluate.to.be.equal('Not to Be???')
+            'wpt_question_title_1.value'.should.evaluate.to.be.equal('But Why?')
+            'wpt_question_title_2.value'.should.evaluate.to.be.equal('')
         })
     })
 

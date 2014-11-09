@@ -22,8 +22,8 @@ describe('Answers and Scales', function() {
             'jQuery("#wpt_answer-all input:checked").length'.should.evaluate.to.equal(0)
             'jQuery("#wpt_scale-all input:checked").length'.should.evaluate.to.equal(0)
 
-            this.fill('form#post', {
-                'post_title': 'Test With Answers and Scales Without Questions'
+            this.fillSelectors('form#post', {
+                '#title': 'Test With Answers and Scales Without Questions'
             })
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' Lie', 'label')
@@ -44,10 +44,10 @@ describe('Answers and Scales', function() {
         })
 
         casper.then(function() {
-            this.fill('form#post', {
-                'post_title': 'Test With Answers, Scales and Questions',
-                'wp_testing_model_questions::question_title[0]': '5 + 5 is 10?',
-                'wp_testing_model_questions::question_title[1]': '6 + 6 is 10?'
+            this.fillSelectors('form#post', {
+                '#title': 'Test With Answers, Scales and Questions',
+                '#wpt_question_title_0': '5 + 5 is 10?',
+                '#wpt_question_title_1': '6 + 6 is 10?'
             })
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' Lie', 'label')
