@@ -4,18 +4,20 @@
 
     <p>Add this into your php.ini:</p>
     <pre>
-    max_input_vars=5000
-    suhosin.get.max_vars=5000
-    suhosin.post.max_vars=5000
-    suhosin.request.max_vars=5000</pre>
+<?php foreach(array_keys($memoryWarnSettings) as $key): ?>
+    <?php echo $key ?>=5000
+<?php endforeach ?>
+    </pre>
 
+<?php if($isUnderApache): ?>
     .. or .htaccess
 
     <pre>
-    php_value max_input_vars 5000
-    php_value suhosin.get.max_vars 5000
-    php_value suhosin.post.max_vars 5000
-    php_value suhosin.request.max_vars 5000</pre>
+<?php foreach(array_keys($memoryWarnSettings) as $key): ?>
+    php_value <?php echo $key ?> 5000
+<?php endforeach ?>
+    </pre>
+<?php endif ?>
 
     .. and reload (restart) server.
 </div>
@@ -34,10 +36,15 @@
     <tr class="wpt_question">
         <th class="wpt_number bar">
             <?php echo $q+1 ?>
-            <input type="hidden" name="<?php echo $prefix ?>question_id[<?php echo $q ?>]" value="<?php echo $question->getId() ?>" />
         </th>
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
-            <input type="text" name="<?php echo $prefix ?>question_title[<?php echo $q ?>]" value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
+            <input type="text"
+                name='wpt_question_title[<?php echo json_encode(array(
+                    'i'  => $q,
+                    'id' => $question->getId(),
+                ))  ?>]'
+                id="wpt_question_title_<?php echo $q ?>"
+                value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
     </tr>
     <?php $scoreIndex = 0 ?>
@@ -46,21 +53,20 @@
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <?php $score = $question->getScoreByAnswerAndScale($answer, $scale) ?>
-            <?php $scorePrefix  = $prefix . 'wp_testing_model_score::' ?>
-            <?php $scorePostfix = '[' . $q . '][' . ($scoreIndex++) . ']' ?>
             <td class="wpt_scale <?php echo ($s%2) ? '' : 'alternate' ?>">
-                <input type="hidden"
-                    name="<?php echo $scorePrefix ?>answer_id<?php echo $scorePostfix ?>"
-                    value="<?php echo $answer->getId() ?>" />
-                <input type="hidden"
-                    name="<?php echo $scorePrefix ?>scale_id<?php echo $scorePostfix ?>"
-                    value="<?php echo $scale->getId() ?>" />
                 <input type="text"
                     placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
-                    name="<?php echo $scorePrefix ?>score_value<?php echo $scorePostfix ?>"
+                    name='wpt_score_value[<?php echo json_encode(array(
+                        'i'         => $q,
+                        'j'         => $scoreIndex,
+                        'answer_id' => $answer->getId(),
+                        'scale_id'  => $scale->getId(),
+                    ))  ?>]'
+                    id="wpt_score_value_<?php echo $q ?>_<?php echo $scoreIndex ?>"
                     value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
             </td>
+            <?php $scoreIndex++ ?>
         <?php endforeach ?>
         </tr>
     <?php endforeach ?>

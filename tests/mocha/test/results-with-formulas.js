@@ -20,11 +20,11 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
-            this.fill('form#post', {
-                'post_title': 'Test With Results',
-                'wp_testing_model_questions::question_title[0]': 'Question 1?',
-                'wp_testing_model_questions::question_title[1]': 'Question 2?',
-                'wp_testing_model_questions::question_title[2]': 'Question 3?'
+            this.fillSelectors('form#post', {
+                '#title': 'Test With Results',
+                '#wpt_question_title_0': 'Question 1?',
+                '#wpt_question_title_1': 'Question 2?',
+                '#wpt_question_title_2': 'Question 3?'
             })
             this.clickLabel(' Yes',         'label')
             this.clickLabel(' Lie',         'label')
@@ -38,10 +38,10 @@ describe('Results with formulas', function() {
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
 
-            this.fill('form#post', {
-                'wp_testing_model_questions::wp_testing_model_score::score_value[0][0]': '5',
-                'wp_testing_model_questions::wp_testing_model_score::score_value[1][0]': '5',
-                'wp_testing_model_questions::wp_testing_model_score::score_value[2][0]': '5'
+            this.fillSelectors('form#post', {
+                '#wpt_score_value_0_0': '5',
+                '#wpt_score_value_1_0': '5',
+                '#wpt_score_value_2_0': '5'
             }, true)
         })
     })
@@ -50,7 +50,7 @@ describe('Results with formulas', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source=">"]')
-            this.sendKeys('input[name="wp_testing_model_formulas::formula_source[0]"]', '10');
+            this.sendKeys('#wpt_formula_source_0', '10');
             this.click('#publish')
         })
 
@@ -58,7 +58,7 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
-            expect('wp_testing_model_formulas::formula_source[0]').to.have.fieldValue('scale-lie > 10')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10')
         })
     })
 
@@ -66,7 +66,7 @@ describe('Results with formulas', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source="<="]')
-            this.sendKeys('input[name="wp_testing_model_formulas::formula_source[1]"]', 'nothing');
+            this.sendKeys('#wpt_formula_source_1', 'nothing');
             this.click('#publish')
         })
 

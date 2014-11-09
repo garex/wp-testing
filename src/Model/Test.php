@@ -179,20 +179,41 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         return $ids;
     }
 
-    public function getQuestionsPrefix()
+    protected function getQuestionsPrefix()
     {
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Question', 'test_id');
     }
 
-    public function getScorePrefix()
+    protected function getScoresPrefix()
     {
         return $this->getQuestionsPrefix() .
             fORMRelated::determineRequestFilter('WpTesting_Model_Question', 'WpTesting_Model_Score', 'question_id');
     }
 
-    public function getFormulasPrefix()
+    protected function getFormulasPrefix()
     {
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Formula', 'test_id');
+    }
+
+    /**
+     * @return array
+     */
+    public function getMemoryWarnSettings()
+    {
+        $iniKeys = array(
+            'max_input_vars',
+            'suhosin.get.max_vars',
+            'suhosin.post.max_vars',
+            'suhosin.request.max_vars',
+        );
+        $values = array();
+        foreach ($iniKeys as $iniKey) {
+            $value = ini_get($iniKey);
+            if ($value !== false) {
+                $values[$iniKey] = (int)$value;
+            }
+        }
+        return $values;
     }
 
     /**
@@ -215,21 +236,55 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             return false;
         }
 
-        $iniKeys = array(
-            'max_input_vars',
-            'suhosin.get.max_vars',
-            'suhosin.post.max_vars',
-            'suhosin.request.max_vars',
+        $possibleInputsCount = 0
+            + WpTesting_Model_Question::ADD_NEW_COUNT
+            + $questionsCount
+            + $scalesCount * $questionsCount * $answersCount
+        ;
+
+        return $possibleInputsCount > (min($this->getMemoryWarnSettings()) - 150);
+    }
+
+    /**
+     * Unpack request for subsequent population from it to ORM naming standards
+     *
+     * @param array $input
+     * @return array
+     */
+    public function adaptForPopulate($request)
+    {
+        $questionsPrefix = $this->getQuestionsPrefix();
+        $scoresPrefix    = $this->getScoresPrefix();
+        $formulasPrefix  = $this->getFormulasPrefix();
+        $isAssoc         = true;
+        $request        += array(
+            'wpt_question_title' => array(),
+            'wpt_score_value'    => array(),
+            'wpt_formula_source' => array(),
         );
-        $values = array();
-        foreach ($iniKeys as $iniKey) {
-            $value = ini_get($iniKey);
-            if ($value !== false) {
-                $values[] = (int)$value;
-            }
+
+        foreach ($request['wpt_question_title'] as $key => $value) {
+            $key = json_decode(stripslashes($key), $isAssoc);
+            $request[$questionsPrefix . 'question_id']    [$key['i']] = $key['id'];
+            $request[$questionsPrefix . 'question_title'] [$key['i']] = $value;
         }
 
-        return $scalesCount * $questionsCount * $answersCount * 3 > (min($values) - 150);
+        foreach ($request['wpt_score_value'] as $key => $value) {
+            $key = json_decode(stripslashes($key), $isAssoc);
+            $request[$scoresPrefix . 'answer_id']   [$key['i']][$key['j']] = $key['answer_id'];
+            $request[$scoresPrefix . 'scale_id']    [$key['i']][$key['j']] = $key['scale_id'];
+            $request[$scoresPrefix . 'score_value'] [$key['i']][$key['j']] = $value;
+        }
+
+        foreach ($request['wpt_formula_source'] as $key => $value) {
+            $key = json_decode(stripslashes($key), $isAssoc);
+            $request[$formulasPrefix . 'test_id']        [$key['i']] = $key['test_id'];
+            $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
+            $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
+            $request[$formulasPrefix . 'formula_source'] [$key['i']] = $value;
+        }
+
+        return $request;
     }
 
     /**
