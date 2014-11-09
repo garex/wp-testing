@@ -54,7 +54,7 @@ describe('Quick edit', function() {
             })
         })
         casper.then(function() {
-            expect('wp_testing_model_questions::question_title[0]').to.have.fieldValue('Not to Be???')
+            'wpt_question_title_0.value'.should.evaluate.to.be.equal('Not to Be???')
         })
     })
 })

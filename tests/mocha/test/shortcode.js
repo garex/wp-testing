@@ -23,9 +23,9 @@ describe('Shortcode', function() {
 
             this.click('a.__text_tab_here')
 
-            this.fill('form#post', {
-                'post_title': 'Hi World!',
-                'content':    'Hello World!\n[wptlist]'
+            this.fillSelectors('form#post', {
+                '#title'   : 'Hi World!',
+                '#content' : 'Hello World!\n[wptlist]'
             }, true)
         })
 
