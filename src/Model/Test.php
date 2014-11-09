@@ -264,20 +264,20 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         );
 
         foreach ($request['wpt_question_title'] as $key => $value) {
-            $key = json_decode($key, $isAssoc);
+            $key = json_decode(stripslashes($key), $isAssoc);
             $request[$questionsPrefix . 'question_id']    [$key['i']] = $key['id'];
             $request[$questionsPrefix . 'question_title'] [$key['i']] = $value;
         }
 
         foreach ($request['wpt_score_value'] as $key => $value) {
-            $key = json_decode($key, $isAssoc);
+            $key = json_decode(stripslashes($key), $isAssoc);
             $request[$scoresPrefix . 'answer_id']   [$key['i']][$key['j']] = $key['answer_id'];
             $request[$scoresPrefix . 'scale_id']    [$key['i']][$key['j']] = $key['scale_id'];
             $request[$scoresPrefix . 'score_value'] [$key['i']][$key['j']] = $value;
         }
 
         foreach ($request['wpt_formula_source'] as $key => $value) {
-            $key = json_decode($key, $isAssoc);
+            $key = json_decode(stripslashes($key), $isAssoc);
             $request[$formulasPrefix . 'test_id']        [$key['i']] = $key['test_id'];
             $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
             $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
