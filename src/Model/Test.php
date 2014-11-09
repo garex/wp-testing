@@ -196,6 +196,27 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return array
+     */
+    public function getMemoryWarnSettings()
+    {
+        $iniKeys = array(
+            'max_input_vars',
+            'suhosin.get.max_vars',
+            'suhosin.post.max_vars',
+            'suhosin.request.max_vars',
+        );
+        $values = array();
+        foreach ($iniKeys as $iniKey) {
+            $value = ini_get($iniKey);
+            if ($value !== false) {
+                $values[$iniKey] = (int)$value;
+            }
+        }
+        return $values;
+    }
+
+    /**
      * @see http://stackoverflow.com/questions/10303714/php-max-input-vars
      * @return boolean
      */
@@ -215,21 +236,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             return false;
         }
 
-        $iniKeys = array(
-            'max_input_vars',
-            'suhosin.get.max_vars',
-            'suhosin.post.max_vars',
-            'suhosin.request.max_vars',
-        );
-        $values = array();
-        foreach ($iniKeys as $iniKey) {
-            $value = ini_get($iniKey);
-            if ($value !== false) {
-                $values[] = (int)$value;
-            }
-        }
+        $possibleInputsCount = 0
+            + WpTesting_Model_Question::ADD_NEW_COUNT
+            + $questionsCount
+            + $scalesCount * $questionsCount * $answersCount
+        ;
 
-        return $scalesCount * $questionsCount * $answersCount * 3 > (min($values) - 150);
+        return $possibleInputsCount > (min($this->getMemoryWarnSettings()) - 150);
     }
 
     /**

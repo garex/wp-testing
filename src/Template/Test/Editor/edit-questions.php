@@ -4,18 +4,20 @@
 
     <p>Add this into your php.ini:</p>
     <pre>
-    max_input_vars=5000
-    suhosin.get.max_vars=5000
-    suhosin.post.max_vars=5000
-    suhosin.request.max_vars=5000</pre>
+<?php foreach(array_keys($memoryWarnSettings) as $key): ?>
+    <?php echo $key ?>=5000
+<?php endforeach ?>
+    </pre>
 
+<?php if($isUnderApache): ?>
     .. or .htaccess
 
     <pre>
-    php_value max_input_vars 5000
-    php_value suhosin.get.max_vars 5000
-    php_value suhosin.post.max_vars 5000
-    php_value suhosin.request.max_vars 5000</pre>
+<?php foreach(array_keys($memoryWarnSettings) as $key): ?>
+    php_value <?php echo $key ?> 5000
+<?php endforeach ?>
+    </pre>
+<?php endif ?>
 
     .. and reload (restart) server.
 </div>
