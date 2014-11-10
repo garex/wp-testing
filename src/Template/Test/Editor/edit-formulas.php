@@ -22,6 +22,15 @@
         </td>
     </tr>
 <?php endforeach ?>
+<?php if (!count($results)): ?>
+    <tr class="alternate">
+        <td colspan="2">
+            <p class="highlight">
+                <?php echo 'No formulas to edit. To edit formulas you must have results selected.' ?>
+            </p>
+        </td>
+    </tr>
+<?php endif ?>
 </table>
 
 <table class="widefat wpt_formulas_helper">
@@ -41,6 +50,15 @@
         <?php endforeach ?>
         </td>
     </tr>
+<?php if (!count($variables)): ?>
+    <tr class="alternate">
+        <td colspan="2">
+            <p class="highlight">
+                <?php echo 'No variables for formulas available. To use variables you must have scales selected.' ?>
+            </p>
+        </td>
+    </tr>
+<?php endif ?>
     <tr class="alternate">
         <td colspan="2">
             <div class="howto"><?php echo 'Both numbers and percents allowed. For example "Scale 1" has total 30, then "Scale 1 > 15" and "Scale 1 > 50%" are same.'?></div>
