@@ -82,7 +82,10 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $db     = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
             $result = $db->translatedQuery('
                 SELECT SUM(score_value) FROM ' . $scoresTable . '
-                WHERE question_id IN (' . $questionIds . ') AND scale_id = ' . intval($scale->getId()) . '
+                WHERE TRUE
+                    AND question_id IN (' . $questionIds . ')
+                    AND scale_id    = ' . intval($scale->getId()) . '
+                    AND score_value > 0
                 GROUP BY scale_id
             ');
             if ($result->countReturnedRows()) {
@@ -193,6 +196,26 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     protected function getFormulasPrefix()
     {
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Formula', 'test_id');
+    }
+
+    /**
+     * Can respondent use this test to get results?
+     *
+     * Final test is test, that have scores.
+     * Scores can be only, when test have questions, answers and scales.
+     * Results are good to have but not required: they are humanize "scientific" language
+     * of scales to more understandable words.
+     *
+     * @return boolean
+     */
+    public function isFinal()
+    {
+        foreach ($this->buildScalesWithRange() as $scale) {
+            if ($scale->getMaximum()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
