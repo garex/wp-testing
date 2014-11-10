@@ -1,6 +1,13 @@
 
 ## Changelog ##
 
+
+### 0.4.1 ###
+Fix tests preview mode
+
+* Not changing main WP query when in preview
+
+
 ### 0.4 ###
 Display tests in blog everywhere same as posts
 
@@ -110,6 +117,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.4.1 ###
+Fix tests preview mode
 
 ### 0.3 ###
 Plugin now more stable under WP 3.2 to latest and PHP from 5.2 to 5.5
