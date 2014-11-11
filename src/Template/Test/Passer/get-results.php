@@ -21,7 +21,7 @@
 
     <?php endforeach ?>
 
-    <?php if (!empty($results)): ?>
+    <?php if (count($results)): ?>
         <hr/>
     <?php endif ?>
 

@@ -4,6 +4,7 @@
 /* @var $content string */
 /* @var $test WpTesting_Model_Test */
 /* @var $questions WpTesting_Model_Question[] */
+/* @var $isFinal boolean */
 ?>
 <div class="wpt_test fill_form">
 
@@ -40,7 +41,14 @@
 
 <?php endforeach ?>
 
+<?php if($isFinal): ?>
     <input type="submit" class="button" value="<?php echo 'Get Test Results' ?>" />
+<?php else: ?>
+    <div class="wpt_warning">
+        <h4><?php echo 'Test not final' ?></h4>
+        <p><?php echo 'You can not get any results from it.' ?></p>
+    </div>
+<?php endif ?>
 
 </form>
 

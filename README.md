@@ -15,7 +15,7 @@ Create psychological tests/quizes with scales connected with results through sim
 
 With the help of this plugin now you can create typical and advanced psychological tests (quizes, assessments).
 
-Typical psychological test consists of questions and answers. A respondent answers all of the qoestions and gets results. This is how the box outside looks like.
+Typical psychological test consists of questions and answers. A respondent answers all of the questions and gets results. This is how the box outside looks like.
 
 Inside the box we also have scales each connected with the particular answer with scores and results, that are calculated with the help of simple formulas like: "extraversion > 50%". Where "extraversion" is a sum of respondent's scores from extraversion scale. We didn't invent anything new — all this has been already invented in 19th century.
 

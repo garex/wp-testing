@@ -23,15 +23,17 @@
 </div>
 <?php endif ?>
 <table class="widefat wpt_questions">
+<?php if(count($scales)): ?>
     <tr>
         <th></th>
     <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
         <th class="wpt_scale <?php echo ($i%2) ? '' : 'alternate' ?>">
             <?php echo $scale->getTitle() ?>
-            <span class="alignright wp-ui-text-icon">∑ <?php echo $scale->getMaximum() ?></span>
+            <span class="alignright wp-ui-text-icon">∑ <?php echo $scale->getSum() ?></span>
         </th>
     <?php endforeach ?>
     </tr>
+<?php endif ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
     <tr class="wpt_question">
         <th class="wpt_number bar">
@@ -71,4 +73,23 @@
         </tr>
     <?php endforeach ?>
 <?php endforeach ?>
+
+<?php $fullColspan = 1 + max(count($scales), 1) ?>
+<?php if(!count($questions)): ?>
+    <tr class="alternate">
+        <td colspan="<?php echo $fullColspan ?>">
+            <p class="highlight">
+                <?php echo 'No questions to edit. Add new questions and then they will appear here.' ?>
+            </p>
+        </td>
+    </tr>
+<?php elseif(!$scoreIndex): ?>
+    <tr class="alternate">
+        <td colspan="<?php echo $fullColspan ?>">
+            <p class="highlight">
+                <?php echo 'No scores to edit. To edit scores you must have both answers and scales selected.' ?>
+            </p>
+        </td>
+    </tr>
+<?php endif ?>
 </table>

@@ -77,4 +77,11 @@ describe('Questions', function() {
             'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(2)
         })
     })
+
+    it('should be in non-final test', function() {
+        casper.then(function() {
+            'Test not final'.should.be.textInDOM
+            '#wpt-test-form input[type=submit]'.should.not.be.inDOM
+        })
+    })
 })
