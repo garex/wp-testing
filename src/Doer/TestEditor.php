@@ -114,7 +114,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             $problems = $test->validate();
             $test->store(true);
         } catch (fValidationException $e) {
-            $title = 'Test data not saved';
+            $title = __('Test data not saved', 'wp-testing');
             $this->wp->dieMessage(
                 $this->render('Test/Editor/admin-message', array(
                     'title'   => $title,
