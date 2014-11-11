@@ -30,7 +30,7 @@
         <h3 class="scale title"><?php echo $scale->getTitle() ?></h4>
 
         <div class="scale scores">
-            <?php echo $scale->getValue() ?> <?php echo 'out of' ?> <?php echo $scale->getMaximum() ?>
+            <?php echo __(sprintf('%1$d out of %2$d', $scale->getValue(), $scale->getMaximum()), 'wp-testing') ?>
         </div>
         <div class="meter">
             <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>

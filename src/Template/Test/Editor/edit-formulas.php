@@ -61,7 +61,10 @@
 <?php endif ?>
     <tr class="alternate">
         <td colspan="2">
-            <div class="howto"><?php echo 'Both numbers and percents allowed. For example "Scale 1" has total 30, then "Scale 1 > 15" and "Scale 1 > 50%" are same.'?></div>
+            <div class="howto"><?php
+            /* translators: "scale-bla" should not ne translated */
+            echo __('Both numbers and percents allowed. For example "scale-bla" has total 30, then "scale-bla > 15" and "scale-bla > 50%" are same.', 'wp-testing');
+            ?></div>
         </td>
     </tr>
 </table>
