@@ -11,6 +11,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
             'labels'        => array(
                 'name'               => __('Tests', 'wp-testing'),
                 'singular_name'      => __('Test', 'wp-testing'),
+                'add_new'            => _x('Add New', 'test', 'wp-testing'),
                 'add_new_item'       => __('Add New Test', 'wp-testing'),
                 'edit_item'          => __('Edit Test', 'wp-testing'),
                 'view_item'          => __('View Test', 'wp-testing'),

@@ -11,7 +11,7 @@
 
 <div class="results">
 
-    <h2><?php echo 'Results' ?></h2>
+    <h2><?php echo __('Results', 'wp-testing') ?></h2>
 
     <?php foreach ($results as $result): /* @var $result WpTesting_Model_Result */ ?>
 

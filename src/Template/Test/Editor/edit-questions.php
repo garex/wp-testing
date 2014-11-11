@@ -79,7 +79,7 @@
     <tr class="alternate">
         <td colspan="<?php echo $fullColspan ?>">
             <p class="highlight">
-                <?php echo 'No questions to edit. Add new questions and then they will appear here.' ?>
+                <?php echo __('No questions to edit. Add new questions and then they will appear here.', 'wp-testing') ?>
             </p>
         </td>
     </tr>
@@ -87,7 +87,7 @@
     <tr class="alternate">
         <td colspan="<?php echo $fullColspan ?>">
             <p class="highlight">
-                <?php echo 'No scores to edit. To edit scores you must have both answers and scales selected.' ?>
+                <?php echo __('No scores to edit. To edit scores you must have both answers and scales selected.', 'wp-testing') ?>
             </p>
         </td>
     </tr>
