@@ -214,7 +214,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         }
         /* @var $result WpTesting_Model_Result */
         $result = $me->createWpTesting_Model_Result();
-        $validationMessages['formula_source'] = 'Formula for ' . $result->getTitle() . ' has error';
+        $validationMessages['formula_source'] = sprintf(__('Formula for %s has error', 'wp-testing'), $result->getTitle());
     }
 
     protected function configure()
