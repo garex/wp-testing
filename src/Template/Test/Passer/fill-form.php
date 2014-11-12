@@ -42,11 +42,11 @@
 <?php endforeach ?>
 
 <?php if($isFinal): ?>
-    <input type="submit" class="button" value="<?php echo 'Get Test Results' ?>" />
+    <input type="submit" class="button" value="<?php echo __('Get Test Results', 'wp-testing') ?>" />
 <?php else: ?>
     <div class="wpt_warning">
-        <h4><?php echo 'Test not final' ?></h4>
-        <p><?php echo 'You can not get any results from it.' ?></p>
+        <h4><?php echo __('Test is under construction', 'wp-testing') ?></h4>
+        <p><?php echo __('You can not get any results from it yet.', 'wp-testing') ?></p>
     </div>
 <?php endif ?>
 

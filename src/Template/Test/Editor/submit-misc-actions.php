@@ -3,6 +3,6 @@
         <input type="hidden"   value="0" name="wpt_publish_on_home" />
         <input type="checkbox" value="1" name="wpt_publish_on_home"
             <?php echo ($isPublishOnHome) ? 'checked="checked"' : '' ?> />
-        <?php echo 'Publish on the home page' ?>
+        <?php echo __('Publish on the home page', 'wp-testing') ?>
     </label>
 </div>

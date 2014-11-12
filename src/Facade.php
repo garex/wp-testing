@@ -71,6 +71,7 @@ class WpTesting_Facade
             ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
+            ->addAction('plugins_loaded',    array($this,  'loadLocale'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
         ;
 
@@ -96,6 +97,13 @@ class WpTesting_Facade
         new WpTesting_Doer_WordPressEntitiesRegistrator($this->wp);
 
         $this->isWordPressEntitiesRegistered = true;
+    }
+
+    public function loadLocale()
+    {
+        $pluginDirectory = basename(dirname(dirname(__FILE__)));
+        $languages       = $pluginDirectory . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR;
+        $this->wp->loadPluginTextdomain('wp-testing', false, $languages);
     }
 
     /**

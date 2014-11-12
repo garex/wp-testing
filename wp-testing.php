@@ -7,6 +7,8 @@
  * Author: Alexander Ustimenko
  * Author URI: http://ustimen.co
  * License: GPL3
+ * Text Domain: wp-testing
+ * Domain Path: /languages
  */
 
 require_once dirname(__FILE__) . '/src/WordPressFacade.php';

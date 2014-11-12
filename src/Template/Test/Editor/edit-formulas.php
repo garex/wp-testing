@@ -1,7 +1,7 @@
 <table class="widefat wpt_formulas">
     <tr>
-        <th class="bar"><?php echo 'Result' ?></th>
-        <th class="bar"><?php echo 'Formula' ?></th>
+        <th class="bar"><?php echo __('Result', 'wp-testing') ?></th>
+        <th class="bar"><?php echo __('Formula', 'wp-testing') ?></th>
     </tr>
 <?php foreach($results as $r => $result): /* @var $result WpTesting_Model_Result */ ?>
     <tr class="wpt_result<?php echo ($r%2) ? ' alternate' : '' ?>">
@@ -26,7 +26,7 @@
     <tr class="alternate">
         <td colspan="2">
             <p class="highlight">
-                <?php echo 'No formulas to edit. To edit formulas you must have results selected.' ?>
+                <?php echo __('No formulas to edit. To edit formulas you must have results selected.', 'wp-testing') ?>
             </p>
         </td>
     </tr>
@@ -35,8 +35,8 @@
 
 <table class="widefat wpt_formulas_helper">
     <tr>
-        <th class="bar"><?php echo 'Variables' ?></th>
-        <th class="bar"><?php echo 'Comparisions' ?></th>
+        <th class="bar"><?php echo __('Variables', 'wp-testing') ?></th>
+        <th class="bar"><?php echo __('Comparisions', 'wp-testing') ?></th>
     </tr>
     <tr>
         <td>
@@ -46,7 +46,7 @@
         </td>
         <td>
         <?php foreach(explode(', ', '<, >, <=, =>, <>, AND, OR, (, )') as $operator):  ?>
-            <input type="button" data-source="<?php echo htmlspecialchars($operator) ?>" title="<?php echo 'Comparision' ?>" value="<?php echo htmlspecialchars($operator) ?>"/>
+            <input type="button" data-source="<?php echo htmlspecialchars($operator) ?>" title="<?php echo __('Comparision', 'wp-testing') ?>" value="<?php echo htmlspecialchars($operator) ?>"/>
         <?php endforeach ?>
         </td>
     </tr>
@@ -54,14 +54,17 @@
     <tr class="alternate">
         <td colspan="2">
             <p class="highlight">
-                <?php echo 'No variables for formulas available. To use variables you must have scales selected.' ?>
+                <?php echo __('No variables for formulas available. To use variables you must have scales selected.', 'wp-testing') ?>
             </p>
         </td>
     </tr>
 <?php endif ?>
     <tr class="alternate">
         <td colspan="2">
-            <div class="howto"><?php echo 'Both numbers and percents allowed. For example "Scale 1" has total 30, then "Scale 1 > 15" and "Scale 1 > 50%" are same.'?></div>
+            <div class="howto"><?php
+            /* translators: "scale-bla" should not ne translated */
+            echo __('Both numbers and percents allowed. For example "scale-bla" has total 30, then "scale-bla > 15" and "scale-bla > 50%" are same.', 'wp-testing');
+            ?></div>
         </td>
     </tr>
 </table>

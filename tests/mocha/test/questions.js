@@ -80,7 +80,7 @@ describe('Questions', function() {
 
     it('should be in non-final test', function() {
         casper.then(function() {
-            'Test not final'.should.be.textInDOM
+            'Test is under construction'.should.be.textInDOM
             '#wpt-test-form input[type=submit]'.should.not.be.inDOM
         })
     })
