@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 12:13+0700\n"
+"POT-Creation-Date: 2014-11-12 12:32+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -415,10 +415,10 @@ msgid "Get Test Results"
 msgstr ""
 
 #: Template/Test/Passer/fill-form.php:48
-msgid "Test not final"
+msgid "Test is under construction"
 msgstr ""
 
 #: Template/Test/Passer/fill-form.php:49
-msgid "You can not get any results from it."
+msgid "You can not get any results from it yet."
 msgstr ""
 

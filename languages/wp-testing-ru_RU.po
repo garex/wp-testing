@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 12:13+0700\n"
+"POT-Creation-Date: 2014-11-12 12:32+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team:  <a@ustimen.co>\n"
@@ -121,7 +121,7 @@ msgstr "Редактировать ответ"
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 msgid "View Answer"
-msgstr "Просмотрет ответ"
+msgstr "Просмотреть ответ"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Search Answers"
@@ -133,7 +133,7 @@ msgstr "Родительский ответ:"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Answers"
-msgstr "Вопросы"
+msgstr "Ответы"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "All Answers"
@@ -289,7 +289,7 @@ msgstr "Категории тестов"
 
 #: Doer/WordPressEntitiesRegistrator.php:122
 msgid "Test Category"
-msgstr "Категории теста"
+msgstr "Категория теста"
 
 #: Doer/WordPressEntitiesRegistrator.php:123
 msgid "Add New Category"
@@ -415,10 +415,12 @@ msgid "Get Test Results"
 msgstr "Узнать результаты"
 
 #: Template/Test/Passer/fill-form.php:48
-msgid "Test not final"
-msgstr "Тест не полный"
+msgid "Test is under construction"
+msgstr "Тест в процессе разработки"
 
 #: Template/Test/Passer/fill-form.php:49
-msgid "You can not get any results from it."
-msgstr "Вы не можете получить из него результаты."
+msgid "You can not get any results from it yet."
+msgstr "Пока вы не можете получить из него результаты."
 
+#~ msgid "Test not final"
+#~ msgstr "Тест не полный"
