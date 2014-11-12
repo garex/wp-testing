@@ -1,422 +1,432 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
+# Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: Psychological tests & quizes\n"
+"Project-Id-Version: wp-testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-12 12:32+0700\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2014-11-12 21:09+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Your Team <translations@example.com>\n"
-"Language: \n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Basepath: ../src/\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
 #: Doer/TestEditor.php:21
 msgid "Edit Questions"
-msgstr ""
+msgstr "Modifier les Questions"
 
 #: Doer/TestEditor.php:22
 msgid "Add New Questions"
-msgstr ""
+msgstr "Ajouter de nouvelles Questions"
 
 #: Doer/TestEditor.php:23
 msgid "Edit Formulas"
-msgstr ""
+msgstr "Modifier des formules"
 
 #: Doer/TestEditor.php:117
 msgid "Test data not saved"
-msgstr ""
+msgstr "Tester les données non sauvegardées"
 
 #: Doer/WordPressEntitiesRegistrator.php:12
 #: Doer/WordPressEntitiesRegistrator.php:21
 msgid "Tests"
-msgstr ""
+msgstr "Tests"
 
 #: Doer/WordPressEntitiesRegistrator.php:13
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:14
 msgctxt "test"
 msgid "Add New"
-msgstr ""
+msgstr "Ajouter un nouveau"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgid "Add New Test"
-msgstr ""
+msgstr "Ajouter nouveau Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Edit Test"
-msgstr ""
+msgstr "Modifier le Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "View Test"
-msgstr ""
+msgstr "Voir Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "Search Tests"
-msgstr ""
+msgstr "Tests de recherche"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Parent Test:"
-msgstr ""
+msgstr "Test de parent:"
 
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "All Tests"
-msgstr ""
+msgstr "Tous les Tests"
 
 #: Doer/WordPressEntitiesRegistrator.php:23
 msgid "Update Test"
-msgstr ""
+msgstr "Mise à jour de Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "New Test Name"
-msgstr ""
+msgstr "Nouveau Test nom"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "Parent Test"
-msgstr ""
+msgstr "Test parent"
 
 #: Doer/WordPressEntitiesRegistrator.php:27
 msgid "New Test"
-msgstr ""
+msgstr "Nouveau Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "No Tests found"
-msgstr ""
+msgstr "Aucun test trouvé"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found in Trash"
-msgstr ""
+msgstr "Aucun test ne trouvé dans la corbeille"
 
 #: Doer/WordPressEntitiesRegistrator.php:31
-msgid "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
-msgstr ""
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "Instrument pour mesurer la non prise en charge des constructions (variables latentes). En général, c'est une série de tâches ou de problèmes que l'intimé a à résoudre."
 
 #: Doer/WordPressEntitiesRegistrator.php:58
 msgid "Test Answers"
-msgstr ""
+msgstr "Réponses à l'examen"
 
 #: Doer/WordPressEntitiesRegistrator.php:59
 msgid "Test Answer"
-msgstr ""
+msgstr "Réponse de test"
 
 #: Doer/WordPressEntitiesRegistrator.php:60
 msgid "Add New Answer"
-msgstr ""
+msgstr "Ajouter nouvelle réponse"
 
 #: Doer/WordPressEntitiesRegistrator.php:61
 msgid "Edit Answer"
-msgstr ""
+msgstr "Modifier la réponse"
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 msgid "View Answer"
-msgstr ""
+msgstr "Réponse de vue"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Search Answers"
-msgstr ""
+msgstr "Recherche réponses"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Parent Answer:"
-msgstr ""
+msgstr "Réponse de parent:"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Answers"
-msgstr ""
+msgstr "Réponses"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "All Answers"
-msgstr ""
+msgstr "Toutes les réponses"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Update Answer"
-msgstr ""
+msgstr "Réponse de mise à jour"
 
 #: Doer/WordPressEntitiesRegistrator.php:69
 msgid "New Answer Name"
-msgstr ""
+msgstr "Nouveau nom de réponse"
 
 #: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Parent Answer"
-msgstr ""
+msgstr "Réponse de parent"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "New Answer"
-msgstr ""
+msgstr "Nouvelle réponse"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "No Answers found"
-msgstr ""
+msgstr "Pas trouvés de réponses"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "No Answers found in Trash"
-msgstr ""
+msgstr "Aucune réponses trouvées dans la corbeille"
 
 #: Doer/WordPressEntitiesRegistrator.php:79
 msgid "Test Scales"
-msgstr ""
+msgstr "Échelles d'essai"
 
 #: Doer/WordPressEntitiesRegistrator.php:80
 msgid "Test Scale"
-msgstr ""
+msgstr "Barème de test"
 
 #: Doer/WordPressEntitiesRegistrator.php:81
 msgid "Add New Scale"
-msgstr ""
+msgstr "Ajouter le nouveau barème"
 
 #: Doer/WordPressEntitiesRegistrator.php:82
 msgid "Edit Scale"
-msgstr ""
+msgstr "Modifier l'échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:83
 msgid "View Scale"
-msgstr ""
+msgstr "Échelle de la vue"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Search Scales"
-msgstr ""
+msgstr "Recherche des échelles"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Parent Scale:"
-msgstr ""
+msgstr "Échelle des parents:"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Scales"
-msgstr ""
+msgstr "Échelles"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "All Scales"
-msgstr ""
+msgstr "Toutes les échelles"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Update Scale"
-msgstr ""
+msgstr "Mise à jour échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:90
 msgid "New Scale Name"
-msgstr ""
+msgstr "Nouveau nom de l'échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Parent Scale"
-msgstr ""
+msgstr "Échelle des parents"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "New Scale"
-msgstr ""
+msgstr "Nouveau barème"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "No Scales found"
-msgstr ""
+msgstr "Dépourvu d'écailles trouvées"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "No Scales found in Trash"
-msgstr ""
+msgstr "Dépourvu d'écailles trouvées dans la corbeille"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "Test Results"
-msgstr ""
+msgstr "Résultats des tests"
 
 #: Doer/WordPressEntitiesRegistrator.php:101
 msgid "Test Result"
-msgstr ""
+msgstr "Résultat du test"
 
 #: Doer/WordPressEntitiesRegistrator.php:102
 msgid "Add New Result"
-msgstr ""
+msgstr "Ajouter nouveau résultat"
 
 #: Doer/WordPressEntitiesRegistrator.php:103
 msgid "Edit Result"
-msgstr ""
+msgstr "Modifier le résultat"
 
 #: Doer/WordPressEntitiesRegistrator.php:104
 msgid "View Result"
-msgstr ""
+msgstr "Résultat de la vue"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Search Results"
-msgstr ""
+msgstr "Résultats de recherche"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Parent Result:"
-msgstr ""
+msgstr "Résultat de parent:"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Results"
-msgstr ""
+msgstr "Résultats"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "All Results"
-msgstr ""
+msgstr "Tous les résultats"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Update Result"
-msgstr ""
+msgstr "Mise à jour résultat"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "New Result Name"
-msgstr ""
+msgstr "Nouveau nom de résultat"
 
 #: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Parent Result"
-msgstr ""
+msgstr "Résultat de parent"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "New Result"
-msgstr ""
+msgstr "Nouveau résultat"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "No Results found"
-msgstr ""
+msgstr "Aucun résultat trouvé"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "No Results found in Trash"
-msgstr ""
+msgstr "Aucun résultat trouvé dans la poubelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:121
 msgid "Test Categories"
-msgstr ""
+msgstr "Catégories de test"
 
 #: Doer/WordPressEntitiesRegistrator.php:122
 msgid "Test Category"
-msgstr ""
+msgstr "Catégorie de test"
 
 #: Doer/WordPressEntitiesRegistrator.php:123
 msgid "Add New Category"
-msgstr ""
+msgstr "Ajouter nouvelle catégorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:124
 msgid "Edit Category"
-msgstr ""
+msgstr "Modifier la catégorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:125
 msgid "View Category"
-msgstr ""
+msgstr "Catégorie de vue"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Search Categories"
-msgstr ""
+msgstr "Catégories de recherche"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Parent Category:"
-msgstr ""
+msgstr "Catégorie parente:"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "All Categories"
-msgstr ""
+msgstr "Toutes les catégories"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Update Category"
-msgstr ""
+msgstr "Catégorie de mise à jour"
 
 #: Doer/WordPressEntitiesRegistrator.php:132
 msgid "New Category Name"
-msgstr ""
+msgstr "Nouveau nom de la catégorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Parent Category"
-msgstr ""
+msgstr "Catégorie parent"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "New Category"
-msgstr ""
+msgstr "Nouvelle catégorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "No Categories found"
-msgstr ""
+msgstr "Pas trouvés de catégories"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "No Categories found in Trash"
-msgstr ""
+msgstr "Pas trouvés dans la corbeille de catégories"
 
 #: Model/Formula.php:217
 #, php-format
 msgid "Formula for %s has error"
-msgstr ""
+msgstr "Formule pour %s a erreur"
 
 #: Model/FormulaVariable.php:17
 #, php-format
 msgid "%1$s, ∑ %2$d"
-msgstr ""
+msgstr "%1$s, ∑ %2$d"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
-msgstr ""
+msgstr "Échelle Variable"
 
 #: Model/FormulaVariable.php:28
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Result"
-msgstr ""
+msgstr "Résultat"
 
 #: Template/Test/Editor/edit-formulas.php:4
 msgid "Formula"
-msgstr ""
+msgstr "Formule"
 
 #: Template/Test/Editor/edit-formulas.php:29
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr ""
+msgstr "Aucune formule à modifier. Pour modifier des formules, vous devez avoir sélectionné des résultats."
 
 #: Template/Test/Editor/edit-formulas.php:38
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 #: Template/Test/Editor/edit-formulas.php:39
 msgid "Comparisions"
-msgstr ""
+msgstr "Comparaisons"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
-msgstr ""
+msgstr "Comparision"
 
 #: Template/Test/Editor/edit-formulas.php:57
-msgid "No variables for formulas available. To use variables you must have scales selected."
-msgstr ""
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected."
+msgstr "Aucune variable pour les formules disponibles. Pour utiliser des variables, que vous devez avoir les échelles choisies."
 
 #: Template/Test/Editor/edit-formulas.php:66
-msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr ""
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Des chiffres et des pourcentages autorisés. Par exemple, \"scale-bla\" a un total de 30, puis \"scale-bla > 15\" et \"scale-bla > 50%\" sont même."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
-msgstr ""
+msgstr "Publier sur la page d'accueil"
 
 #: Template/Test/Editor/edit-questions.php:82
-msgid "No questions to edit. Add new questions and then they will appear here."
-msgstr ""
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "Aucune question d'éditer. Ajouter de nouvelles questions et puis elles apparaîtront ici."
 
 #: Template/Test/Editor/edit-questions.php:90
-msgid "No scores to edit. To edit scores you must have both answers and scales selected."
-msgstr ""
+msgid ""
+"No scores to edit. To edit scores you must have both answers and scales "
+"selected."
+msgstr "Aucun des scores d'éditer. Pour éditer des partitions, vous devez avoir des réponses et des échelles choisies."
 
 #: Template/Test/Passer/get-results.php:33
 #, php-format
 msgid "%1$d out of %2$d"
-msgstr ""
+msgstr "%1$d sur %2$d"
 
 #: Template/Test/Passer/fill-form.php:45
 msgid "Get Test Results"
-msgstr ""
+msgstr "Obtenez les résultats des tests"
 
 #: Template/Test/Passer/fill-form.php:48
 msgid "Test is under construction"
-msgstr ""
+msgstr "Test est en cours de construction"
 
 #: Template/Test/Passer/fill-form.php:49
 msgid "You can not get any results from it yet."
-msgstr ""
-
+msgstr "Vous ne pouvez pas obtenir aucun résultat d'elle encore."
