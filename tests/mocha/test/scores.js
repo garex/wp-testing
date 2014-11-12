@@ -34,7 +34,7 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ "]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '-1',
                 '#wpt_score_value_1_0': '5',
@@ -107,7 +107,7 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ "]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
         })
     })
 })
