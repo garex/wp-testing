@@ -4,10 +4,10 @@
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: wp-testing\n"
+"Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 12:32+0700\n"
-"PO-Revision-Date: 2014-11-12 20:50+0000\n"
+"POT-Creation-Date: 2014-11-15 01:47+0700\n"
+"PO-Revision-Date: 2014-11-14 20:01+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-testing/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +21,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:21
+#: Doer/TestEditor.php:23
 msgid "Edit Questions"
 msgstr "Fragen zu bearbeiten"
 
-#: Doer/TestEditor.php:22
+#: Doer/TestEditor.php:24
 msgid "Add New Questions"
 msgstr "Neue Fragen hinzufügen"
 
-#: Doer/TestEditor.php:23
+#: Doer/TestEditor.php:25
 msgid "Edit Formulas"
 msgstr "Bearbeiten von Formeln"
 
-#: Doer/TestEditor.php:117
+#: Doer/TestEditor.php:118
 msgid "Test data not saved"
 msgstr "Testdaten nicht gespeichert"
 
@@ -398,6 +398,17 @@ msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Beide Zahlen und Prozent erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
+
+#: Template/Test/Editor/add-questions.php:20
+#: Template/Test/Editor/add-questions.php:25
+msgid "Quick Fill From Text"
+msgstr "Schnellfüllung aus Text"
+
+#: Template/Test/Editor/add-questions.php:24
+msgid ""
+"Paste here your questions and they will fill fields above. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Fügen Sie hier Ihre Fragen und sie werden Felder oben zu füllen. Zahlen und anderen Indizes werden automatisch abgezogen werden."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"

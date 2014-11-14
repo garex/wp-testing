@@ -3,10 +3,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: wp-testing\n"
+"Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 12:32+0700\n"
-"PO-Revision-Date: 2014-11-12 08:28+0000\n"
+"POT-Creation-Date: 2014-11-15 01:47+0700\n"
+"PO-Revision-Date: 2014-11-14 19:48+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: English (United States) (http://www.transifex.com/projects/p/wp-testing/language/en_US/)\n"
 "MIME-Version: 1.0\n"
@@ -20,19 +20,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:21
+#: Doer/TestEditor.php:23
 msgid "Edit Questions"
 msgstr "Edit Questions"
 
-#: Doer/TestEditor.php:22
+#: Doer/TestEditor.php:24
 msgid "Add New Questions"
 msgstr "Add New Questions"
 
-#: Doer/TestEditor.php:23
+#: Doer/TestEditor.php:25
 msgid "Edit Formulas"
 msgstr "Edit Formulas"
 
-#: Doer/TestEditor.php:117
+#: Doer/TestEditor.php:118
 msgid "Test data not saved"
 msgstr "Test data not saved"
 
@@ -397,6 +397,17 @@ msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+
+#: Template/Test/Editor/add-questions.php:20
+#: Template/Test/Editor/add-questions.php:25
+msgid "Quick Fill From Text"
+msgstr "Quick Fill From Text"
+
+#: Template/Test/Editor/add-questions.php:24
+msgid ""
+"Paste here your questions and they will fill fields above. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Paste here your questions and they will fill fields above. Numbers and other indexes will be stripped automatically."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
