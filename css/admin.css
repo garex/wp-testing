@@ -48,3 +48,8 @@ table.wpt_formulas_helper {
 .wpt_formulas .wpt_formula input {
     width: 100%;   
 }
+
+#wpt_quick_fill_questions textarea {
+    height: 30em;
+    width: 100%;
+}

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 12:32+0700\n"
+"POT-Creation-Date: 2014-11-15 01:47+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Doer/TestEditor.php:21
+#: Doer/TestEditor.php:23
 msgid "Edit Questions"
 msgstr ""
 
-#: Doer/TestEditor.php:22
+#: Doer/TestEditor.php:24
 msgid "Add New Questions"
 msgstr ""
 
-#: Doer/TestEditor.php:23
+#: Doer/TestEditor.php:25
 msgid "Edit Formulas"
 msgstr ""
 
-#: Doer/TestEditor.php:117
+#: Doer/TestEditor.php:118
 msgid "Test data not saved"
 msgstr ""
 
@@ -389,6 +389,15 @@ msgstr ""
 
 #: Template/Test/Editor/edit-formulas.php:66
 msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr ""
+
+#: Template/Test/Editor/add-questions.php:20
+#: Template/Test/Editor/add-questions.php:25
+msgid "Quick Fill From Text"
+msgstr ""
+
+#: Template/Test/Editor/add-questions.php:24
+msgid "Paste here your questions and they will fill fields above. Numbers and other indexes will be stripped automatically."
 msgstr ""
 
 #: Template/Test/Editor/submit-misc-actions.php:6
