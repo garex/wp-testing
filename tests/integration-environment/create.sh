@@ -9,7 +9,8 @@ WP_VERSION=${WP_VERSION:-4.0}
 
 function init {
     log 'Define vars'
-    sudo apt-get install realpath mutt
+    sudo apt-get install realpath
+    # sudo apt-get install mutt
     HERE=$(dirname $(realpath $0))
 }
 
