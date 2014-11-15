@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 01:47+0700\n"
-"PO-Revision-Date: 2014-11-14 20:01+0000\n"
+"POT-Creation-Date: 2014-11-15 13:34+0700\n"
+"PO-Revision-Date: 2014-11-15 07:37+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -399,16 +399,16 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Des chiffres et des pourcentages autorisés. Par exemple, \"scale-bla\" a un total de 30, puis \"scale-bla > 15\" et \"scale-bla > 50%\" sont même."
 
-#: Template/Test/Editor/add-questions.php:20
-#: Template/Test/Editor/add-questions.php:25
+#: Template/Test/Editor/add-questions.php:4
+#: Template/Test/Editor/add-questions.php:9
 msgid "Quick Fill From Text"
 msgstr "Remplissage Rapide de Texte"
 
-#: Template/Test/Editor/add-questions.php:24
+#: Template/Test/Editor/add-questions.php:8
 msgid ""
-"Paste here your questions and they will fill fields above. Numbers and other"
+"Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Collez ici vos questions et vous feront remplir les champs ci-dessus. Les chiffres et les autres indices seront supprimés automatiquement."
+msgstr "Collez ici vos questions et vous feront remplir les champs ci-dessous. Les chiffres et les autres indices seront supprimés automatiquement."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"

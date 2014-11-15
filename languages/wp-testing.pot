@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 01:47+0700\n"
+"POT-Creation-Date: 2014-11-15 13:34+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -391,13 +391,13 @@ msgstr ""
 msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr ""
 
-#: Template/Test/Editor/add-questions.php:20
-#: Template/Test/Editor/add-questions.php:25
+#: Template/Test/Editor/add-questions.php:4
+#: Template/Test/Editor/add-questions.php:9
 msgid "Quick Fill From Text"
 msgstr ""
 
-#: Template/Test/Editor/add-questions.php:24
-msgid "Paste here your questions and they will fill fields above. Numbers and other indexes will be stripped automatically."
+#: Template/Test/Editor/add-questions.php:8
+msgid "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
 msgstr ""
 
 #: Template/Test/Editor/submit-misc-actions.php:6
