@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.4.2 ###
+Fix pages disapperance and form formatting
+
+* Fix pages disapperance
+* Fix fill form (public) formatting conflict with wpautop (for example under Monaco theme)
+
+
 ### 0.4.1 ###
 Fix tests preview mode
 
@@ -117,6 +124,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.4.2 ###
+Fix page disppearance and fill form broken formatting
 
 ### 0.4.1 ###
 Fix tests preview mode

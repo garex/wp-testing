@@ -20,9 +20,9 @@
 
         <div class="title">
             <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?></span>
+            <input type="hidden" name="wp_testing_model_passing_answers::answer_id[<?php echo $q ?>]" value="" />
         </div>
 
-        <input type="hidden" name="wp_testing_model_passing_answers::answer_id[<?php echo $q ?>]" value="" />
     <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
@@ -42,7 +42,7 @@
 <?php endforeach ?>
 
 <?php if($isFinal): ?>
-    <input type="submit" class="button" value="<?php echo __('Get Test Results', 'wp-testing') ?>" />
+    <p><input type="submit" class="button" value="<?php echo __('Get Test Results', 'wp-testing') ?>" /></p>
 <?php else: ?>
     <div class="wpt_warning">
         <h4><?php echo __('Test is under construction', 'wp-testing') ?></h4>

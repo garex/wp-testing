@@ -47,7 +47,7 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
             return $postTypes;
         }
         if (empty($postTypes)) {
-            $postTypes[] = 'post';
+            $postTypes[] = $query->is_page ? 'page' : 'post';
         }
         $postTypes[] = 'wpt_test';
 

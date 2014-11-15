@@ -9,8 +9,6 @@
 .wpt_test .question .title .number {
     font-weight: normal;
     display: inline-block;
-    width: 3em;
-    margin-left: -3.5em;
     padding-right: 0.5em;
     text-align: right;
 }
