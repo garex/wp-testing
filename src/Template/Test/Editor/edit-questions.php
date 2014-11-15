@@ -34,6 +34,24 @@
     <?php endforeach ?>
     </tr>
 <?php endif ?>
+<?php $fullColspan = 1 + max(count($scales), 1) ?>
+<?php if(!count($questions)): ?>
+    <tr class="alternate">
+        <td colspan="<?php echo $fullColspan ?>">
+            <p class="highlight">
+                <?php echo __('No questions to edit. Add new questions and then they will appear here.', 'wp-testing') ?>
+            </p>
+        </td>
+    </tr>
+<?php elseif(!$scoreIndex): ?>
+    <tr class="alternate">
+        <td colspan="<?php echo $fullColspan ?>">
+            <p class="highlight">
+                <?php echo __('No scores to edit. To edit scores you must have both answers and scales selected.', 'wp-testing') ?>
+            </p>
+        </td>
+    </tr>
+<?php endif ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
     <tr class="wpt_question">
         <th class="wpt_number bar">
@@ -74,22 +92,4 @@
     <?php endforeach ?>
 <?php endforeach ?>
 
-<?php $fullColspan = 1 + max(count($scales), 1) ?>
-<?php if(!count($questions)): ?>
-    <tr class="alternate">
-        <td colspan="<?php echo $fullColspan ?>">
-            <p class="highlight">
-                <?php echo __('No questions to edit. Add new questions and then they will appear here.', 'wp-testing') ?>
-            </p>
-        </td>
-    </tr>
-<?php elseif(!$scoreIndex): ?>
-    <tr class="alternate">
-        <td colspan="<?php echo $fullColspan ?>">
-            <p class="highlight">
-                <?php echo __('No scores to edit. To edit scores you must have both answers and scales selected.', 'wp-testing') ?>
-            </p>
-        </td>
-    </tr>
-<?php endif ?>
 </table>
