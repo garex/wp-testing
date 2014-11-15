@@ -218,6 +218,40 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         return false;
     }
 
+    protected function hasAnswers()
+    {
+        return $this->buildAnswers()->count() > 0;
+    }
+
+    protected function hasScales()
+    {
+        return $this->buildScales()->count() > 0;
+    }
+
+    /**
+     * Can scores be editable?
+     *
+     * @return boolean
+     */
+    public function canEditScores()
+    {
+        return true
+            && $this->hasAnswers()
+            && $this->hasScales()
+            && $this->hasWpTesting_Model_Questions()
+        ;
+
+        $questions = fRecordSet::build('WpTesting_Model_Question', array(
+            'test_id=' => $this->getId(),
+        ));
+        if (!$questions->count()) {
+            return false;
+        }
+        /* @var $question WpTesting_Model_Question */
+        $question = $questions->getRecord(0);
+        return $question->hasWpTesting_Model_Scores();
+    }
+
     /**
      * @return array
      */

@@ -43,7 +43,7 @@
             </p>
         </td>
     </tr>
-<?php elseif(!$scoreIndex): ?>
+<?php elseif(!$canEditScores): ?>
     <tr class="alternate">
         <td colspan="<?php echo $fullColspan ?>">
             <p class="highlight">

@@ -60,6 +60,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'isWarnOfSettings'   => $test->isWarnOfSettings(),
             'memoryWarnSettings' => $test->getMemoryWarnSettings(),
             'isUnderApache'      => $this->isUnderApache(),
+            'canEditScores'      => $test->canEditScores(),
         ));
     }
 
