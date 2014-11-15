@@ -22,6 +22,42 @@
     .. and reload (restart) server.
 </div>
 <?php endif ?>
+<?php if($canEditScores): ?>
+<div id="wpt_quick_fill_scores" class="hide-if-no-js wp-hidden-children">
+
+    <h4>
+        <a href="#wpt-quick-fill-scores" class="toggle"><?php echo __('Quick Fill Scores', 'wp-testing') ?></a>
+    </h4>
+
+    <div class="wp-hidden-child">
+
+        <table class="widefat wpt_quick_scores">
+            <tr class="bar">
+                <th><?php echo __('Scale', 'wp-testing') ?></th>
+                <th class="score"><?php echo __('Score', 'wp-testing') ?></th>
+                <th><?php echo __('Answer', 'wp-testing') ?></th>
+                <th class="questions"><?php echo __('Questions', 'wp-testing') ?></th>
+            </tr>
+
+        <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
+            <?php foreach($answers as $j => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+                <tr class="<?php echo ($i%2) ? '' : '' ?>">
+                <?php if (0 == $j): ?>
+                    <td rowspan="<?php echo count($answers) ?>"><?php echo $scale->getTitle() ?></td>
+                <?php endif ?>
+                    <td class="score <?php echo ($j%2) ? 'bar' : 'alternate' ?>"><input placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>" type="text" /></td>
+                    <td class="answer <?php echo ($j%2) ? 'bar' : 'alternate' ?>"><?php echo $answer->getTitle() ?></td>
+                    <td class="questions <?php echo ($j%2) ? 'bar' : 'alternate' ?>"><input placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>" type="text" /></td>
+                </tr>
+            <?php endforeach ?>
+        <?php endforeach ?>
+
+        </table>
+
+        <input type="button" class="button" value="<?php echo __('Quick Fill Scores', 'wp-testing') ?>" />
+    </div>
+</div>
+<?php endif ?>
 <table class="widefat wpt_questions">
 <?php if(count($scales)): ?>
     <tr>
