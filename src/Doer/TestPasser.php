@@ -59,7 +59,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             );
         }
 
-        return $this->render($template, $params);
+        return preg_replace_callback('|<form.+</form>|s', array($this, 'stripNewLines'), $this->render($template, $params));
+    }
+
+    private function stripNewLines($matches)
+    {
+        return str_replace('> <', '><', preg_replace('/[\n\r\s]+/s', ' ', $matches[0]));
     }
 
     private function getTestPassingAction()
