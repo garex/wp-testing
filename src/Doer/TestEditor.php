@@ -17,10 +17,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array(), false, true)
             ->enqueuePluginScript('wpt_test_edit_formulas',    'js/test-edit-formulas.js',          array('jquery', 'field_selection'), false, true)
             ->enqueuePluginScript('json3',                     'js/vendor/bestiejs/json3.min.js',   array(), false, true)
+            ->enqueuePluginScript('wpt_test_quick_scores',     'js/test-quick-scores.js',           array('jquery', 'lodash'), false, true)
             ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
-            ->addMetaBox('wpt_edit_questions', __('Edit Questions', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
+            ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  __('Add New Questions', 'wp-testing'), array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('admin_notices', array($this, 'printAdminMessages'))
@@ -56,10 +57,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-questions', array(
             'scales'      => $test->buildScalesWithRange(),
+            'answers'     => $test->buildAnswers(),
             'questions'   => $test->buildQuestions(),
             'isWarnOfSettings'   => $test->isWarnOfSettings(),
             'memoryWarnSettings' => $test->getMemoryWarnSettings(),
             'isUnderApache'      => $this->isUnderApache(),
+            'canEditScores'      => $test->canEditScores(),
         ));
     }
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 13:34+0700\n"
-"PO-Revision-Date: 2014-11-15 07:37+0000\n"
+"POT-Creation-Date: 2014-11-16 06:37+0700\n"
+"PO-Revision-Date: 2014-11-16 00:56+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/wp-testing/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +21,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:23
-msgid "Edit Questions"
-msgstr "Redigera frågor"
-
 #: Doer/TestEditor.php:24
+msgid "Edit Questions and Scores"
+msgstr "Redigera frågor och poäng"
+
+#: Doer/TestEditor.php:25
 msgid "Add New Questions"
 msgstr "Lägg till nya frågor"
 
-#: Doer/TestEditor.php:25
+#: Doer/TestEditor.php:26
 msgid "Edit Formulas"
 msgstr "Redigera formler"
 
-#: Doer/TestEditor.php:118
+#: Doer/TestEditor.php:121
 msgid "Test data not saved"
 msgstr "Testdata sparas inte"
 
@@ -414,12 +414,33 @@ msgstr "Klistra här dina frågor och de kommer att fylla fälten nedan. Siffror
 msgid "Publish on the home page"
 msgstr "Publicera på hemsidan"
 
-#: Template/Test/Editor/edit-questions.php:82
+#: Template/Test/Editor/edit-questions.php:29
+#: Template/Test/Editor/edit-questions.php:65
+msgid "Quick Fill Scores"
+msgstr "Snabbt fylla punkter"
+
+#: Template/Test/Editor/edit-questions.php:37
+msgid "Scale"
+msgstr "Skala"
+
+#: Template/Test/Editor/edit-questions.php:38
+msgid "Score"
+msgstr "Score"
+
+#: Template/Test/Editor/edit-questions.php:39
+msgid "Answer"
+msgstr "Svara"
+
+#: Template/Test/Editor/edit-questions.php:40
+msgid "Questions"
+msgstr "Frågor"
+
+#: Template/Test/Editor/edit-questions.php:86
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Inga frågor att redigera. Lägg till nya frågor och sedan visas de här."
 
-#: Template/Test/Editor/edit-questions.php:90
+#: Template/Test/Editor/edit-questions.php:94
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
