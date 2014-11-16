@@ -4,7 +4,7 @@
 </a>
 <a href="#wpt_edit_questions" class="button wpt-button edit">
     <span class="wp-media-buttons-icon dashicons dashicons-edit"></span>
-    <?php echo __('Edit Questions', 'wp-testing') ?>
+    <?php echo __('Edit Questions and Scores', 'wp-testing') ?>
 </a>
 <a href="#wpt_edit_formulas"  class="button wpt-button edit">
     <span class="wp-media-buttons-icon dashicons dashicons-edit"></span>

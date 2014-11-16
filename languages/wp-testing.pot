@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 13:34+0700\n"
+"POT-Creation-Date: 2014-11-16 06:37+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Doer/TestEditor.php:23
-msgid "Edit Questions"
-msgstr ""
-
 #: Doer/TestEditor.php:24
-msgid "Add New Questions"
+msgid "Edit Questions and Scores"
 msgstr ""
 
 #: Doer/TestEditor.php:25
+msgid "Add New Questions"
+msgstr ""
+
+#: Doer/TestEditor.php:26
 msgid "Edit Formulas"
 msgstr ""
 
-#: Doer/TestEditor.php:118
+#: Doer/TestEditor.php:121
 msgid "Test data not saved"
 msgstr ""
 
@@ -404,11 +404,32 @@ msgstr ""
 msgid "Publish on the home page"
 msgstr ""
 
-#: Template/Test/Editor/edit-questions.php:82
+#: Template/Test/Editor/edit-questions.php:29
+#: Template/Test/Editor/edit-questions.php:65
+msgid "Quick Fill Scores"
+msgstr ""
+
+#: Template/Test/Editor/edit-questions.php:37
+msgid "Scale"
+msgstr ""
+
+#: Template/Test/Editor/edit-questions.php:38
+msgid "Score"
+msgstr ""
+
+#: Template/Test/Editor/edit-questions.php:39
+msgid "Answer"
+msgstr ""
+
+#: Template/Test/Editor/edit-questions.php:40
+msgid "Questions"
+msgstr ""
+
+#: Template/Test/Editor/edit-questions.php:86
 msgid "No questions to edit. Add new questions and then they will appear here."
 msgstr ""
 
-#: Template/Test/Editor/edit-questions.php:90
+#: Template/Test/Editor/edit-questions.php:94
 msgid "No scores to edit. To edit scores you must have both answers and scales selected."
 msgstr ""
 
