@@ -1,0 +1,464 @@
+# Copyright (C) 2014 Alexander Ustimenko
+# This file is distrubuted under the GPL-3.0+
+# Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: WP testing\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-16 06:37+0700\n"
+"PO-Revision-Date: 2014-11-16 00:56+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/wp-testing/language/ru_RU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: ../src/\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+
+#: Doer/TestEditor.php:24
+msgid "Edit Questions and Scores"
+msgstr "Редактировать вопросы и баллы"
+
+#: Doer/TestEditor.php:25
+msgid "Add New Questions"
+msgstr "Добавить новые вопросы"
+
+#: Doer/TestEditor.php:26
+msgid "Edit Formulas"
+msgstr "Редактировать формулы"
+
+#: Doer/TestEditor.php:121
+msgid "Test data not saved"
+msgstr "Данные теста не сохранены"
+
+#: Doer/WordPressEntitiesRegistrator.php:12
+#: Doer/WordPressEntitiesRegistrator.php:21
+msgid "Tests"
+msgstr "Тесты"
+
+#: Doer/WordPressEntitiesRegistrator.php:13
+msgid "Test"
+msgstr "Тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:14
+msgctxt "test"
+msgid "Add New"
+msgstr "Добавить новый"
+
+#: Doer/WordPressEntitiesRegistrator.php:15
+msgid "Add New Test"
+msgstr "Добавить новый тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:16
+msgid "Edit Test"
+msgstr "Редактировать тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:17
+msgid "View Test"
+msgstr "Просмотреть тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:18
+msgid "Search Tests"
+msgstr "Поиск тестов"
+
+#: Doer/WordPressEntitiesRegistrator.php:19
+msgid "Parent Test:"
+msgstr "Родительский тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "All Tests"
+msgstr "Все тесты"
+
+#: Doer/WordPressEntitiesRegistrator.php:23
+msgid "Update Test"
+msgstr "Обновить тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:24
+msgid "New Test Name"
+msgstr "Имя нового теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:25
+msgid "Parent Test"
+msgstr "Родительский тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:27
+msgid "New Test"
+msgstr "Новый тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:28
+msgid "No Tests found"
+msgstr "Тестов не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:29
+msgid "No Tests found in Trash"
+msgstr "Тестов в корзине не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:31
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "Стандартизированное задание, по результатам выполнения которого судят о психофизиологических и личностных характеристиках, знаниях, умениях и навыках испытуемого."
+
+#: Doer/WordPressEntitiesRegistrator.php:58
+msgid "Test Answers"
+msgstr "Ответы теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:59
+msgid "Test Answer"
+msgstr "Ответ теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:60
+msgid "Add New Answer"
+msgstr "Добавить новый ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:61
+msgid "Edit Answer"
+msgstr "Редактировать ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:62
+msgid "View Answer"
+msgstr "Просмотреть ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:63
+msgid "Search Answers"
+msgstr "Поиск ответов"
+
+#: Doer/WordPressEntitiesRegistrator.php:64
+msgid "Parent Answer:"
+msgstr "Родительский ответ:"
+
+#: Doer/WordPressEntitiesRegistrator.php:66
+msgid "Answers"
+msgstr "Ответы"
+
+#: Doer/WordPressEntitiesRegistrator.php:67
+msgid "All Answers"
+msgstr "Все ответы"
+
+#: Doer/WordPressEntitiesRegistrator.php:68
+msgid "Update Answer"
+msgstr "Обновить ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:69
+msgid "New Answer Name"
+msgstr "Имя нового ответа"
+
+#: Doer/WordPressEntitiesRegistrator.php:70
+msgid "Parent Answer"
+msgstr "Родительский ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:72
+msgid "New Answer"
+msgstr "Новый ответ"
+
+#: Doer/WordPressEntitiesRegistrator.php:73
+msgid "No Answers found"
+msgstr "Ответов не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:74
+msgid "No Answers found in Trash"
+msgstr "Ответов в корзине не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:79
+msgid "Test Scales"
+msgstr "Шкалы теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:80
+msgid "Test Scale"
+msgstr "Шкала теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:81
+msgid "Add New Scale"
+msgstr "Добавить новую шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:82
+msgid "Edit Scale"
+msgstr "Редактировать шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:83
+msgid "View Scale"
+msgstr "Просмотреть шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:84
+msgid "Search Scales"
+msgstr "Поиск шкал"
+
+#: Doer/WordPressEntitiesRegistrator.php:85
+msgid "Parent Scale:"
+msgstr "Родительская шкала:"
+
+#: Doer/WordPressEntitiesRegistrator.php:87
+msgid "Scales"
+msgstr "Шкалы"
+
+#: Doer/WordPressEntitiesRegistrator.php:88
+msgid "All Scales"
+msgstr "Все шкалы"
+
+#: Doer/WordPressEntitiesRegistrator.php:89
+msgid "Update Scale"
+msgstr "Обновить шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:90
+msgid "New Scale Name"
+msgstr "Имя новой шкалы"
+
+#: Doer/WordPressEntitiesRegistrator.php:91
+msgid "Parent Scale"
+msgstr "Родительская шкала"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
+msgid "New Scale"
+msgstr "Новая шкала"
+
+#: Doer/WordPressEntitiesRegistrator.php:94
+msgid "No Scales found"
+msgstr "Шкал не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:95
+msgid "No Scales found in Trash"
+msgstr "Шкал в корзине не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:100
+msgid "Test Results"
+msgstr "Результаты теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:101
+msgid "Test Result"
+msgstr "Результат теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:102
+msgid "Add New Result"
+msgstr "Добавить новый результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:103
+msgid "Edit Result"
+msgstr "Редактировать результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:104
+msgid "View Result"
+msgstr "Просмотреть результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:105
+msgid "Search Results"
+msgstr "Поиск результатов"
+
+#: Doer/WordPressEntitiesRegistrator.php:106
+msgid "Parent Result:"
+msgstr "Родительский результат:"
+
+#: Doer/WordPressEntitiesRegistrator.php:108
+msgid "Results"
+msgstr "Результаты"
+
+#: Doer/WordPressEntitiesRegistrator.php:109
+msgid "All Results"
+msgstr "Все результаты"
+
+#: Doer/WordPressEntitiesRegistrator.php:110
+msgid "Update Result"
+msgstr "Обновить результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:111
+msgid "New Result Name"
+msgstr "Имя нового результата"
+
+#: Doer/WordPressEntitiesRegistrator.php:112
+msgid "Parent Result"
+msgstr "Родительский результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
+msgid "New Result"
+msgstr "Новый результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:115
+msgid "No Results found"
+msgstr "Результатов не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:116
+msgid "No Results found in Trash"
+msgstr "Результатов в корзине не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:121
+msgid "Test Categories"
+msgstr "Категории тестов"
+
+#: Doer/WordPressEntitiesRegistrator.php:122
+msgid "Test Category"
+msgstr "Категория теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:123
+msgid "Add New Category"
+msgstr "Добавить новую категорию"
+
+#: Doer/WordPressEntitiesRegistrator.php:124
+msgid "Edit Category"
+msgstr "Редактировать категорию"
+
+#: Doer/WordPressEntitiesRegistrator.php:125
+msgid "View Category"
+msgstr "Просмотреть категорию"
+
+#: Doer/WordPressEntitiesRegistrator.php:126
+msgid "Search Categories"
+msgstr "Поиск категорий"
+
+#: Doer/WordPressEntitiesRegistrator.php:127
+msgid "Parent Category:"
+msgstr "Родительская категория:"
+
+#: Doer/WordPressEntitiesRegistrator.php:129
+msgid "Categories"
+msgstr "Категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:130
+msgid "All Categories"
+msgstr "Все категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:131
+msgid "Update Category"
+msgstr "Обновить категорию"
+
+#: Doer/WordPressEntitiesRegistrator.php:132
+msgid "New Category Name"
+msgstr "Имя новой категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:133
+msgid "Parent Category"
+msgstr "Родительская категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:135
+msgid "New Category"
+msgstr "Новая категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:136
+msgid "No Categories found"
+msgstr "Категорий не найдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:137
+msgid "No Categories found in Trash"
+msgstr "Категорий в корзине не найдено"
+
+#: Model/Formula.php:217
+#, php-format
+msgid "Formula for %s has error"
+msgstr "Ошибка в формуле результата «%s»"
+
+#: Model/FormulaVariable.php:17
+#, php-format
+msgid "%1$s, ∑ %2$d"
+msgstr "%1$s, ∑ %2$d"
+
+#: Model/FormulaVariable.php:26
+msgid "Scale Variable"
+msgstr "Переменная из шкалы"
+
+#: Model/FormulaVariable.php:28
+msgid "Variable"
+msgstr "Переменная"
+
+#: Template/Test/Editor/edit-formulas.php:3
+msgid "Result"
+msgstr "Результат"
+
+#: Template/Test/Editor/edit-formulas.php:4
+msgid "Formula"
+msgstr "Формула"
+
+#: Template/Test/Editor/edit-formulas.php:29
+msgid "No formulas to edit. To edit formulas you must have results selected."
+msgstr "Формулы отсутствуют. Чтобы редактировать формулы вы должны выбрать результаты."
+
+#: Template/Test/Editor/edit-formulas.php:38
+msgid "Variables"
+msgstr "Переменные"
+
+#: Template/Test/Editor/edit-formulas.php:39
+msgid "Comparisions"
+msgstr "Сравнения"
+
+#: Template/Test/Editor/edit-formulas.php:49
+msgid "Comparision"
+msgstr "Сравнение"
+
+#: Template/Test/Editor/edit-formulas.php:57
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected."
+msgstr "Переменные для формул не доступны. Чтобы использовать переменные вы должны выбрать шкалы."
+
+#: Template/Test/Editor/edit-formulas.php:66
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Разрешены как числа, так и проценты. Например всего по шкале «scale-bla» 30, тогда «scale-bla > 15» и «scale-bla > 50%» будет идентично."
+
+#: Template/Test/Editor/add-questions.php:4
+#: Template/Test/Editor/add-questions.php:9
+msgid "Quick Fill From Text"
+msgstr "Быстро заполнить из текста"
+
+#: Template/Test/Editor/add-questions.php:8
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Вставьте сюда ваши вопросы и они появятся в полях ниже. Цифры и прочие индексы будут удалены автоматически."
+
+#: Template/Test/Editor/submit-misc-actions.php:6
+msgid "Publish on the home page"
+msgstr "Публиковать на начальной странице"
+
+#: Template/Test/Editor/edit-questions.php:29
+#: Template/Test/Editor/edit-questions.php:65
+msgid "Quick Fill Scores"
+msgstr "Быстро заполнить баллы"
+
+#: Template/Test/Editor/edit-questions.php:37
+msgid "Scale"
+msgstr "Шкала"
+
+#: Template/Test/Editor/edit-questions.php:38
+msgid "Score"
+msgstr "Балл"
+
+#: Template/Test/Editor/edit-questions.php:39
+msgid "Answer"
+msgstr "Ответ"
+
+#: Template/Test/Editor/edit-questions.php:40
+msgid "Questions"
+msgstr "Вопросы"
+
+#: Template/Test/Editor/edit-questions.php:86
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "Вопросы отсутствуют. Добавьте новые вопросы и они появятся здесь."
+
+#: Template/Test/Editor/edit-questions.php:94
+msgid ""
+"No scores to edit. To edit scores you must have both answers and scales "
+"selected."
+msgstr "Баллы отсутствуют. Чтобы редактировать баллы у вас должны быть выбраны ответы и шкалы."
+
+#: Template/Test/Passer/get-results.php:33
+#, php-format
+msgid "%1$d out of %2$d"
+msgstr "%1$d из %2$d"
+
+#: Template/Test/Passer/fill-form.php:45
+msgid "Get Test Results"
+msgstr "Узнать результаты"
+
+#: Template/Test/Passer/fill-form.php:48
+msgid "Test is under construction"
+msgstr "Тест в процессе разработки"
+
+#: Template/Test/Passer/fill-form.php:49
+msgid "You can not get any results from it yet."
+msgstr "Пока вы не можете получить из него результаты."

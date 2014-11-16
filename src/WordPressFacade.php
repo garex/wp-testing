@@ -270,6 +270,25 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Loads the plugin's translated strings.
+     *
+     * If the path is not given then it will be the root of the plugin directory.
+     * The .mo file should be named based on the domain with a dash, and then the locale exactly.
+     *
+     * @since 1.5.0
+     *
+     * @param string $domain Unique identifier for retrieving translated strings
+     * @param string $absoluteRelativePath Optional. Relative path to ABSPATH of a folder,
+     * 	where the .mo file resides. Deprecated, but still functional until 2.7
+     * @param string $pluginsRelativePath Optional. Relative path to WP_PLUGIN_DIR. This is the preferred argument to use. It takes precendence over $abs_rel_path
+     * @return boolean
+     */
+    public function loadPluginTextdomain($domain, $absoluteRelativePath = false, $pluginsRelativePath = false)
+    {
+        return load_plugin_textdomain($domain, $absoluteRelativePath, $pluginsRelativePath);
+    }
+
+    /**
      * Retrieve the name of the highest priority template file that exists.
      *
      * @since 2.7.0

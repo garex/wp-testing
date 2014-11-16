@@ -1,0 +1,463 @@
+# Copyright (C) 2014 Alexander Ustimenko
+# This file is distrubuted under the GPL-3.0+
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: WP testing\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-16 06:37+0700\n"
+"PO-Revision-Date: 2014-11-16 00:39+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"Language-Team: English (United States) (http://www.transifex.com/projects/p/wp-testing/language/en_US/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ../src/\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+
+#: Doer/TestEditor.php:24
+msgid "Edit Questions and Scores"
+msgstr "Edit Questions and Scores"
+
+#: Doer/TestEditor.php:25
+msgid "Add New Questions"
+msgstr "Add New Questions"
+
+#: Doer/TestEditor.php:26
+msgid "Edit Formulas"
+msgstr "Edit Formulas"
+
+#: Doer/TestEditor.php:121
+msgid "Test data not saved"
+msgstr "Test data not saved"
+
+#: Doer/WordPressEntitiesRegistrator.php:12
+#: Doer/WordPressEntitiesRegistrator.php:21
+msgid "Tests"
+msgstr "Tests"
+
+#: Doer/WordPressEntitiesRegistrator.php:13
+msgid "Test"
+msgstr "Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:14
+msgctxt "test"
+msgid "Add New"
+msgstr "Add New"
+
+#: Doer/WordPressEntitiesRegistrator.php:15
+msgid "Add New Test"
+msgstr "Add New Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:16
+msgid "Edit Test"
+msgstr "Edit Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:17
+msgid "View Test"
+msgstr "View Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:18
+msgid "Search Tests"
+msgstr "Search Tests"
+
+#: Doer/WordPressEntitiesRegistrator.php:19
+msgid "Parent Test:"
+msgstr "Parent Test:"
+
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "All Tests"
+msgstr "All Tests"
+
+#: Doer/WordPressEntitiesRegistrator.php:23
+msgid "Update Test"
+msgstr "Update Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:24
+msgid "New Test Name"
+msgstr "New Test Name"
+
+#: Doer/WordPressEntitiesRegistrator.php:25
+msgid "Parent Test"
+msgstr "Parent Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:27
+msgid "New Test"
+msgstr "New Test"
+
+#: Doer/WordPressEntitiesRegistrator.php:28
+msgid "No Tests found"
+msgstr "No Tests found"
+
+#: Doer/WordPressEntitiesRegistrator.php:29
+msgid "No Tests found in Trash"
+msgstr "No Tests found in Trash"
+
+#: Doer/WordPressEntitiesRegistrator.php:31
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
+
+#: Doer/WordPressEntitiesRegistrator.php:58
+msgid "Test Answers"
+msgstr "Test Answers"
+
+#: Doer/WordPressEntitiesRegistrator.php:59
+msgid "Test Answer"
+msgstr "Test Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:60
+msgid "Add New Answer"
+msgstr "Add New Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:61
+msgid "Edit Answer"
+msgstr "Edit Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:62
+msgid "View Answer"
+msgstr "View Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:63
+msgid "Search Answers"
+msgstr "Search Answers"
+
+#: Doer/WordPressEntitiesRegistrator.php:64
+msgid "Parent Answer:"
+msgstr "Parent Answer:"
+
+#: Doer/WordPressEntitiesRegistrator.php:66
+msgid "Answers"
+msgstr "Answers"
+
+#: Doer/WordPressEntitiesRegistrator.php:67
+msgid "All Answers"
+msgstr "All Answers"
+
+#: Doer/WordPressEntitiesRegistrator.php:68
+msgid "Update Answer"
+msgstr "Update Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:69
+msgid "New Answer Name"
+msgstr "New Answer Name"
+
+#: Doer/WordPressEntitiesRegistrator.php:70
+msgid "Parent Answer"
+msgstr "Parent Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:72
+msgid "New Answer"
+msgstr "New Answer"
+
+#: Doer/WordPressEntitiesRegistrator.php:73
+msgid "No Answers found"
+msgstr "No Answers found"
+
+#: Doer/WordPressEntitiesRegistrator.php:74
+msgid "No Answers found in Trash"
+msgstr "No Answers found in Trash"
+
+#: Doer/WordPressEntitiesRegistrator.php:79
+msgid "Test Scales"
+msgstr "Test Scales"
+
+#: Doer/WordPressEntitiesRegistrator.php:80
+msgid "Test Scale"
+msgstr "Test Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:81
+msgid "Add New Scale"
+msgstr "Add New Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:82
+msgid "Edit Scale"
+msgstr "Edit Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:83
+msgid "View Scale"
+msgstr "View Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:84
+msgid "Search Scales"
+msgstr "Search Scales"
+
+#: Doer/WordPressEntitiesRegistrator.php:85
+msgid "Parent Scale:"
+msgstr "Parent Scale:"
+
+#: Doer/WordPressEntitiesRegistrator.php:87
+msgid "Scales"
+msgstr "Scales"
+
+#: Doer/WordPressEntitiesRegistrator.php:88
+msgid "All Scales"
+msgstr "All Scales"
+
+#: Doer/WordPressEntitiesRegistrator.php:89
+msgid "Update Scale"
+msgstr "Update Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:90
+msgid "New Scale Name"
+msgstr "New Scale Name"
+
+#: Doer/WordPressEntitiesRegistrator.php:91
+msgid "Parent Scale"
+msgstr "Parent Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
+msgid "New Scale"
+msgstr "New Scale"
+
+#: Doer/WordPressEntitiesRegistrator.php:94
+msgid "No Scales found"
+msgstr "No Scales found"
+
+#: Doer/WordPressEntitiesRegistrator.php:95
+msgid "No Scales found in Trash"
+msgstr "No Scales found in Trash"
+
+#: Doer/WordPressEntitiesRegistrator.php:100
+msgid "Test Results"
+msgstr "Test Results"
+
+#: Doer/WordPressEntitiesRegistrator.php:101
+msgid "Test Result"
+msgstr "Test Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:102
+msgid "Add New Result"
+msgstr "Add New Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:103
+msgid "Edit Result"
+msgstr "Edit Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:104
+msgid "View Result"
+msgstr "View Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:105
+msgid "Search Results"
+msgstr "Search Results"
+
+#: Doer/WordPressEntitiesRegistrator.php:106
+msgid "Parent Result:"
+msgstr "Parent Result:"
+
+#: Doer/WordPressEntitiesRegistrator.php:108
+msgid "Results"
+msgstr "Results"
+
+#: Doer/WordPressEntitiesRegistrator.php:109
+msgid "All Results"
+msgstr "All Results"
+
+#: Doer/WordPressEntitiesRegistrator.php:110
+msgid "Update Result"
+msgstr "Update Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:111
+msgid "New Result Name"
+msgstr "New Result Name"
+
+#: Doer/WordPressEntitiesRegistrator.php:112
+msgid "Parent Result"
+msgstr "Parent Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
+msgid "New Result"
+msgstr "New Result"
+
+#: Doer/WordPressEntitiesRegistrator.php:115
+msgid "No Results found"
+msgstr "No Results found"
+
+#: Doer/WordPressEntitiesRegistrator.php:116
+msgid "No Results found in Trash"
+msgstr "No Results found in Trash"
+
+#: Doer/WordPressEntitiesRegistrator.php:121
+msgid "Test Categories"
+msgstr "Test Categories"
+
+#: Doer/WordPressEntitiesRegistrator.php:122
+msgid "Test Category"
+msgstr "Test Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:123
+msgid "Add New Category"
+msgstr "Add New Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:124
+msgid "Edit Category"
+msgstr "Edit Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:125
+msgid "View Category"
+msgstr "View Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:126
+msgid "Search Categories"
+msgstr "Search Categories"
+
+#: Doer/WordPressEntitiesRegistrator.php:127
+msgid "Parent Category:"
+msgstr "Parent Category:"
+
+#: Doer/WordPressEntitiesRegistrator.php:129
+msgid "Categories"
+msgstr "Categories"
+
+#: Doer/WordPressEntitiesRegistrator.php:130
+msgid "All Categories"
+msgstr "All Categories"
+
+#: Doer/WordPressEntitiesRegistrator.php:131
+msgid "Update Category"
+msgstr "Update Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:132
+msgid "New Category Name"
+msgstr "New Category Name"
+
+#: Doer/WordPressEntitiesRegistrator.php:133
+msgid "Parent Category"
+msgstr "Parent Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:135
+msgid "New Category"
+msgstr "New Category"
+
+#: Doer/WordPressEntitiesRegistrator.php:136
+msgid "No Categories found"
+msgstr "No Categories found"
+
+#: Doer/WordPressEntitiesRegistrator.php:137
+msgid "No Categories found in Trash"
+msgstr "No Categories found in Trash"
+
+#: Model/Formula.php:217
+#, php-format
+msgid "Formula for %s has error"
+msgstr "Formula for %s has error"
+
+#: Model/FormulaVariable.php:17
+#, php-format
+msgid "%1$s, ∑ %2$d"
+msgstr "%1$s, ∑ %2$d"
+
+#: Model/FormulaVariable.php:26
+msgid "Scale Variable"
+msgstr "Scale Variable"
+
+#: Model/FormulaVariable.php:28
+msgid "Variable"
+msgstr "Variable"
+
+#: Template/Test/Editor/edit-formulas.php:3
+msgid "Result"
+msgstr "Result"
+
+#: Template/Test/Editor/edit-formulas.php:4
+msgid "Formula"
+msgstr "Formula"
+
+#: Template/Test/Editor/edit-formulas.php:29
+msgid "No formulas to edit. To edit formulas you must have results selected."
+msgstr "No formulas to edit. To edit formulas you must have results selected."
+
+#: Template/Test/Editor/edit-formulas.php:38
+msgid "Variables"
+msgstr "Variables"
+
+#: Template/Test/Editor/edit-formulas.php:39
+msgid "Comparisions"
+msgstr "Comparisions"
+
+#: Template/Test/Editor/edit-formulas.php:49
+msgid "Comparision"
+msgstr "Comparision"
+
+#: Template/Test/Editor/edit-formulas.php:57
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected."
+msgstr "No variables for formulas available. To use variables you must have scales selected."
+
+#: Template/Test/Editor/edit-formulas.php:66
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+
+#: Template/Test/Editor/add-questions.php:4
+#: Template/Test/Editor/add-questions.php:9
+msgid "Quick Fill From Text"
+msgstr "Quick Fill From Text"
+
+#: Template/Test/Editor/add-questions.php:8
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
+
+#: Template/Test/Editor/submit-misc-actions.php:6
+msgid "Publish on the home page"
+msgstr "Publish on the home page"
+
+#: Template/Test/Editor/edit-questions.php:29
+#: Template/Test/Editor/edit-questions.php:65
+msgid "Quick Fill Scores"
+msgstr "Quick Fill Scores"
+
+#: Template/Test/Editor/edit-questions.php:37
+msgid "Scale"
+msgstr "Scale"
+
+#: Template/Test/Editor/edit-questions.php:38
+msgid "Score"
+msgstr "Score"
+
+#: Template/Test/Editor/edit-questions.php:39
+msgid "Answer"
+msgstr "Answer"
+
+#: Template/Test/Editor/edit-questions.php:40
+msgid "Questions"
+msgstr "Questions"
+
+#: Template/Test/Editor/edit-questions.php:86
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "No questions to edit. Add new questions and then they will appear here."
+
+#: Template/Test/Editor/edit-questions.php:94
+msgid ""
+"No scores to edit. To edit scores you must have both answers and scales "
+"selected."
+msgstr "No scores to edit. To edit scores you must have both answers and scales selected."
+
+#: Template/Test/Passer/get-results.php:33
+#, php-format
+msgid "%1$d out of %2$d"
+msgstr "%1$d out of %2$d"
+
+#: Template/Test/Passer/fill-form.php:45
+msgid "Get Test Results"
+msgstr "Get Test Results"
+
+#: Template/Test/Passer/fill-form.php:48
+msgid "Test is under construction"
+msgstr "Test is under construction"
+
+#: Template/Test/Passer/fill-form.php:49
+msgid "You can not get any results from it yet."
+msgstr "You can not get any results from it yet."

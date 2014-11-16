@@ -14,7 +14,7 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return $model->getTitle() . ', ∑ ' . $model->getMaximum();
+            return sprintf(__('%1$s, ∑ %2$d', 'wp-testing'), $model->getTitle(), $model->getSum());
         }
         return null;
     }
@@ -23,9 +23,9 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_Scale) {
-            return 'Scale Variable';
+            return __('Scale Variable', 'wp-testing');
         }
-        return 'Variable';
+        return __('Variable', 'wp-testing');
     }
 
     public function getSource()

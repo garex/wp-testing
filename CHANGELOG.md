@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+## 0.5 ##
+Localization and quick fill
+
+* Localize to six languages with help of [Transifiex](https://www.transifex.com/projects/p/wp-testing/)
+* Add understandable labels for no-questions/no-answers and other no-something cases in test editor
+* Quick fill questions from text
+* Quick fill scores from questions separated by commas
+* Update docs and add screenshots
+
+
 ### 0.4.2 ###
 Fix pages disapperance and form formatting
 

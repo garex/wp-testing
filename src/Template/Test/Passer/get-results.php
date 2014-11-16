@@ -11,7 +11,7 @@
 
 <div class="results">
 
-    <h2><?php echo 'Results' ?></h2>
+    <h2><?php echo __('Results', 'wp-testing') ?></h2>
 
     <?php foreach ($results as $result): /* @var $result WpTesting_Model_Result */ ?>
 
@@ -21,7 +21,7 @@
 
     <?php endforeach ?>
 
-    <?php if (!empty($results)): ?>
+    <?php if (count($results)): ?>
         <hr/>
     <?php endif ?>
 
@@ -30,7 +30,7 @@
         <h3 class="scale title"><?php echo $scale->getTitle() ?></h4>
 
         <div class="scale scores">
-            <?php echo $scale->getValue() ?> <?php echo 'out of' ?> <?php echo $scale->getMaximum() ?>
+            <?php echo __(sprintf(__('%1$d out of %2$d', 'wp-testing'), $scale->getValue(), $scale->getMaximum()), 'wp-testing') ?>
         </div>
         <div class="meter">
             <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>

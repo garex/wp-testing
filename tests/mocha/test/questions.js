@@ -66,6 +66,34 @@ describe('Questions', function() {
         })
     })
 
+    it('should be added from quick fill', function() {
+        casper.then(function() {
+            this.clickLabel('All Tests', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            this.clickLabel('To Be or Not to Be?', 'a')
+        })
+
+        casper.then(function() {
+            this.clickLabel('Quick Fill From Text', 'a')
+            this.fillSelectors('form#post', {
+                '#wpt_quick_fill_questions textarea': '1. Cool. \n2. Quick\n3. Question\n'
+            })
+            this.click('#wpt_quick_fill_questions .button')
+            this.fill('form#post', {}, true)
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            'wpt_question_title_2.value'.should.evaluate.to.be.equal('Cool.')
+            'wpt_question_title_3.value'.should.evaluate.to.be.equal('Quick')
+            'wpt_question_title_4.value'.should.evaluate.to.be.equal('Question')
+            'wpt_question_title_5.value'.should.evaluate.to.be.equal('')
+        })
+    })
+
     it('should be then shown in test', function() {
         casper.evaluate(function() {
             document.location = jQuery('#view-post-btn a').attr('href')
@@ -74,7 +102,14 @@ describe('Questions', function() {
         casper.waitForUrl(/wpt_test/, function() {
             'Fatal'.should.not.be.textInDOM
             '.wpt_test.fill_form'.should.be.inDOM
-            'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(2)
+            'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(5)
+        })
+    })
+
+    it('should be in non-final test', function() {
+        casper.then(function() {
+            'Test is under construction'.should.be.textInDOM
+            '#wpt-test-form input[type=submit]'.should.not.be.inDOM
         })
     })
 })

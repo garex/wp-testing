@@ -46,6 +46,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'content'    => $content,
                 'test'       => $this->test,
                 'questions'  => $this->test->buildQuestions(),
+                'isFinal'    => $this->test->isFinal(),
             );
         } elseif (self::ACTION_GET_RESULTS == $action) {
             $passing = new WpTesting_Model_Passing();

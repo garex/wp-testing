@@ -34,7 +34,7 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ "]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '-1',
                 '#wpt_score_value_1_0': '5',
@@ -107,7 +107,28 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ "]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
+        })
+    })
+
+    it('should be filled from quick fill', function() {
+        casper.then(function() {
+            this.clickLabel('Quick Fill Scores', 'a')
+            this.fillSelectors('form#post', {
+                '#wpt_quick_fill_scores .score input'     : '2',
+                '#wpt_quick_fill_scores .questions input' : ' 1, 2, 3, 4,wow'
+            })
+            this.click('#wpt_quick_fill_scores input[type=button]')
+        })
+        casper.then(function() {
+            'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('2')
+            'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('2')
+            'wpt_score_value_2_0.value'.should.evaluate.to.be.equal('2')
+        })
+        casper.then(function() {
+            this.clickLabel('Quick Fill Scores', 'a')
+            'wpt_quick_fill_scores_score_0_0.value'.should.evaluate.to.be.equal('2')
+            'wpt_quick_fill_scores_questions_0_0.value'.should.evaluate.to.be.equal('1, 2, 3')
         })
     })
 })

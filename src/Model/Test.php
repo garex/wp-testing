@@ -81,16 +81,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             /* @var $db fDatabase */
             $db     = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
             $result = $db->translatedQuery('
-                SELECT SUM(score_value) FROM ' . $scoresTable . '
-                WHERE question_id IN (' . $questionIds . ') AND scale_id = ' . intval($scale->getId()) . '
+                SELECT
+                    SUM(IF(score_value > 0, 0, score_value)) AS total_negative,
+                    SUM(IF(score_value > 0, score_value, 0)) AS total_positive
+                FROM ' . $scoresTable . '
+                WHERE TRUE
+                    AND question_id IN (' . $questionIds . ')
+                    AND scale_id    = ' . intval($scale->getId()) . '
                 GROUP BY scale_id
+                HAVING total_negative < total_positive
             ');
             if ($result->countReturnedRows()) {
-                $sum = $result->fetchScalar();
-                if ($sum) {
-                    $range = array(0, $sum);
-                    $scale->setRange(min($range), max($range));
-                }
+                $values = $result->fetchRow();
+                $scale->setRange($values['total_negative'], $values['total_positive']);
             }
         }
         return $scales;
@@ -139,7 +142,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     /**
      * @return WpTesting_Model_Answer[]
      */
-    protected function buildAnswers()
+    public function buildAnswers()
     {
         return fRecordSet::build('WpTesting_Model_Answer', array(
             'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
@@ -193,6 +196,60 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     protected function getFormulasPrefix()
     {
         return fORMRelated::determineRequestFilter('WpTesting_Model_Test', 'WpTesting_Model_Formula', 'test_id');
+    }
+
+    /**
+     * Can respondent use this test to get results?
+     *
+     * Final test is test, that have scores.
+     * Scores can be only, when test have questions, answers and scales.
+     * Results are good to have but not required: they are humanize "scientific" language
+     * of scales to more understandable words.
+     *
+     * @return boolean
+     */
+    public function isFinal()
+    {
+        foreach ($this->buildScalesWithRange() as $scale) {
+            if ($scale->getMaximum()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected function hasAnswers()
+    {
+        return $this->buildAnswers()->count() > 0;
+    }
+
+    protected function hasScales()
+    {
+        return $this->buildScales()->count() > 0;
+    }
+
+    /**
+     * Can scores be editable?
+     *
+     * @return boolean
+     */
+    public function canEditScores()
+    {
+        return true
+            && $this->hasAnswers()
+            && $this->hasScales()
+            && $this->hasWpTesting_Model_Questions()
+        ;
+
+        $questions = fRecordSet::build('WpTesting_Model_Question', array(
+            'test_id=' => $this->getId(),
+        ));
+        if (!$questions->count()) {
+            return false;
+        }
+        /* @var $question WpTesting_Model_Question */
+        $question = $questions->getRecord(0);
+        return $question->hasWpTesting_Model_Scores();
     }
 
     /**

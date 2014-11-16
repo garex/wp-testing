@@ -48,3 +48,42 @@ table.wpt_formulas_helper {
 .wpt_formulas .wpt_formula input {
     width: 100%;   
 }
+
+#wpt_quick_fill_scores,
+#wpt_quick_fill_questions {
+    margin-bottom: 1em;
+}
+
+#wpt_quick_fill_questions textarea {
+    height: 30em;
+    width: 100%;
+}
+
+table.wpt_quick_scores {
+    margin-bottom: 0.5em;
+}
+
+table.wpt_quick_scores th {
+    text-align: center;
+}
+
+table.wpt_quick_scores th.questions {
+    width: 90%;
+}
+table.wpt_quick_scores td {
+    white-space: nowrap;
+}
+table.wpt_quick_scores td.answer {
+    text-align: center;
+}
+table.wpt_quick_scores th.score,
+table.wpt_quick_scores td.score {
+    padding-right: 0em;
+}
+table.wpt_quick_scores td.score input {
+    text-align: center;
+    width: 5em;
+}
+table.wpt_quick_scores td.questions input {
+    width: 100%;
+}
