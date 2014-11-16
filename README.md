@@ -49,3 +49,20 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * WordPress version **3.2** or higher.
 * PHP version **5.2.4** or higher.
 * MySQL version **5.0** or higher.
+
+## Screenshots ##
+
+1. Test editing section with menu in admin
+2. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar.
+3. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores
+4. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas
+5. Fast adding questions from text
+6. Editing formulas
+7. Ready test on the home page
+8. The page with the description of the test, questions and answers
+9. The button is desabled untill all questions are not answered
+10. Get test results after all questions are answered
+11. The results page
+12. The result page contains both the result of the test and the scales that create a result
+13. The example of the test without  scores
+14. A test without scores is shown like a "Test is under construction"
