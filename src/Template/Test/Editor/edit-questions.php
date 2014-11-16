@@ -49,11 +49,13 @@
                 <?php endif ?>
                     <td class="score <?php echo ($j%2) ? 'bar' : 'alternate' ?>">
                         <input type="text"
+                            id="wpt_quick_fill_scores_score_<?php echo $i ?>_<?php echo $j ?>"
                             placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>" />
                     </td>
                     <td class="answer <?php echo ($j%2) ? 'bar' : 'alternate' ?>"><?php echo $answer->getTitle() ?></td>
                     <td class="questions <?php echo ($j%2) ? 'bar' : 'alternate' ?>">
                         <input type="text"
+                            id="wpt_quick_fill_scores_questions_<?php echo $i ?>_<?php echo $j ?>"
                             placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>" />
                     </td>
                 </tr>
