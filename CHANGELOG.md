@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.5.1 ###
+Add tags, improve formulas editor and docs
+
+* Prefix screenhots by zeros
+* Remove session stuff to avoid openbasedir bug
+* Update compatible up to WP 4.0
+* Swap formulas and results columns in editor
+* Add tags to test
+
+
 ## 0.5 ##
 Localization and quick fill
 
