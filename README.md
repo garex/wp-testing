@@ -4,7 +4,7 @@
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
-**Tested up to:** 3.9  
+**Tested up to:** 4.0  
 **Stable tag:** 0.5  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
