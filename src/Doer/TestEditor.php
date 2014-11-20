@@ -11,7 +11,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$this->isTestScreen($screen)) {
             return;
         }
-        $this->sessionInit(__CLASS__)->wp
+        $this->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
             ->enqueuePluginScript('wpt_test_edit_fix_styles',  'js/test-edit-fix-styles.js',        array('jquery'), false, true)
             ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array(), false, true)
@@ -24,7 +24,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  __('Add New Questions', 'wp-testing'), array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
-            ->addAction('admin_notices', array($this, 'printAdminMessages'))
             ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
     }
@@ -127,13 +126,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 $title,
                 array('back_link' => true)
             );
-        }
-    }
-
-    public function printAdminMessages()
-    {
-        if ($this->sessionHas('admin_message')) {
-            $this->output('Test/Editor/admin-message', $this->sessionGetRemove('admin_message'));
         }
     }
 
