@@ -1,13 +1,10 @@
 <table class="widefat wpt_formulas">
     <tr>
-        <th class="bar"><?php echo __('Result', 'wp-testing') ?></th>
         <th class="bar"><?php echo __('Formula', 'wp-testing') ?></th>
+        <th class="bar"><?php echo __('Result', 'wp-testing') ?></th>
     </tr>
 <?php foreach($results as $r => $result): /* @var $result WpTesting_Model_Result */ ?>
     <tr class="wpt_result<?php echo ($r%2) ? ' alternate' : '' ?>">
-        <td class="wpt_title">
-            <?php echo $result->getTitle() ?>
-        </td>
         <td class="wpt_formula">
             <?php $formula = $result->getFormula() ?>
             <input type="text"
@@ -19,6 +16,9 @@
                 ))  ?>]'
                 id="wpt_formula_source_<?php echo $r ?>"
                 value="<?php echo htmlspecialchars($formula->getSource()) ?>" />
+        </td>
+        <td class="wpt_title">
+            <?php echo $result->getTitle() ?>
         </td>
     </tr>
 <?php endforeach ?>

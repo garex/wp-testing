@@ -4,8 +4,8 @@
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
-**Tested up to:** 3.9  
-**Stable tag:** 0.5  
+**Tested up to:** 4.0  
+**Stable tag:** 0.5.1  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -52,15 +52,15 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 
 ## Screenshots ##
 
-1. Test editing section with menu in admin
-2. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar.
-3. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores
-4. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas
-5. Fast adding questions from text
-6. Editing formulas
-7. Ready test on the home page
-8. The page with the description of the test, questions and answers
-9. The button is desabled untill all questions are not answered
+01. Test editing section with menu in admin
+02. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar.
+03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores
+04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas
+05. Fast adding questions from text
+06. Editing formulas
+07. Ready test on the home page
+08. The page with the description of the test, questions and answers
+09. The button is desabled untill all questions are not answered
 10. Get test results after all questions are answered
 11. The results page
 12. The result page contains both the result of the test and the scales that create a result

@@ -42,6 +42,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                 'wpt_answer',
                 'wpt_scale',
                 'wpt_result',
+                'post_tag',
                 'wpt_category',
             ),
             'has_archive'   => true,
@@ -147,37 +148,8 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
         $this->wp->getRewrite()->flush_rules();
     }
 
-    protected function generateLabels($name, $pluralName = null)
-    {
-        $name       = ucfirst($name);
-        $pluralName = ($pluralName) ? $pluralName : $name . 's';
-        $pluralName = ucfirst($pluralName);
-        return array(
-            'name'               => "Test $pluralName",
-            'singular_name'      => "Test $name",
-            'add_new_item'       => "Add New $name",
-            'edit_item'          => "Edit $name",
-            'view_item'          => "View $name",
-            'search_items'       => "Search $pluralName",
-            'parent_item_colon'  => "Parent $name:",
-
-            'menu_name'          => "$pluralName",
-            'all_items'          => "All $pluralName",
-            'update_item'        => "Update $name",
-            'new_item_name'      => "New $name Name",
-            'parent_item'        => "Parent $name",
-
-            'new_item'           => "New $name",
-            'not_found'          => "No $pluralName found",
-            'not_found_in_trash' => "No $pluralName found in Trash",
-        );
-    }
-
     protected function addTaxonomy($name, $parameters = array())
     {
-        if (empty($parameters['labels'])) {
-            $parameters['labels'] = $this->generateLabels($name);
-        }
         $this->wp->registerTaxonomy('wpt_' . $name, array('wpt_test'),  $parameters + array(
             'hierarchical'      => true,
             'public'            => false,
