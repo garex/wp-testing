@@ -35,6 +35,11 @@ Wp-testing localized in six languages: English, Russian (native speaker), German
 
 PS: **If something broken or doesn't work**, pls create new topic in ["Support" tab](https://wordpress.org/support/plugin/wp-testing)!
 
+### Thank You Board ###
+
+* For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
+
+
 ## Installation ##
 
 1. Download plugin archive.

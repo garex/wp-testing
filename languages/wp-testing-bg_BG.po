@@ -1,0 +1,465 @@
+# Copyright (C) 2014 Alexander Ustimenko
+# This file is distrubuted under the GPL-3.0+
+# Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
+# Borry Semerdzhieva <borry.semerdzhieva@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: WP testing\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-16 06:37+0700\n"
+"PO-Revision-Date: 2014-11-21 20:00+0000\n"
+"Last-Translator: Borry Semerdzhieva <borry.semerdzhieva@gmail.com>\n"
+"Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/wp-testing/language/bg_BG/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg_BG\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ../src/\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+
+#: Doer/TestEditor.php:24
+msgid "Edit Questions and Scores"
+msgstr "Редактирай въпросите и точките"
+
+#: Doer/TestEditor.php:25
+msgid "Add New Questions"
+msgstr "Добави нови въпроси"
+
+#: Doer/TestEditor.php:26
+msgid "Edit Formulas"
+msgstr "Редактирай формулите"
+
+#: Doer/TestEditor.php:121
+msgid "Test data not saved"
+msgstr "Тестовите данни не са запазени"
+
+#: Doer/WordPressEntitiesRegistrator.php:12
+#: Doer/WordPressEntitiesRegistrator.php:21
+msgid "Tests"
+msgstr "Тестове"
+
+#: Doer/WordPressEntitiesRegistrator.php:13
+msgid "Test"
+msgstr "Тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:14
+msgctxt "test"
+msgid "Add New"
+msgstr "Добави нов"
+
+#: Doer/WordPressEntitiesRegistrator.php:15
+msgid "Add New Test"
+msgstr "Добави нов тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:16
+msgid "Edit Test"
+msgstr "Редактирай теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:17
+msgid "View Test"
+msgstr "Виж теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:18
+msgid "Search Tests"
+msgstr "Търси тестове"
+
+#: Doer/WordPressEntitiesRegistrator.php:19
+msgid "Parent Test:"
+msgstr "Родителски тест:"
+
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "All Tests"
+msgstr "Всички тестове"
+
+#: Doer/WordPressEntitiesRegistrator.php:23
+msgid "Update Test"
+msgstr "Обнови теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:24
+msgid "New Test Name"
+msgstr "Име на новия тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:25
+msgid "Parent Test"
+msgstr "Родителски тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:27
+msgid "New Test"
+msgstr "Нов тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:28
+msgid "No Tests found"
+msgstr "Не са открити тестове"
+
+#: Doer/WordPressEntitiesRegistrator.php:29
+msgid "No Tests found in Trash"
+msgstr "Не са открити тестове в кошчето"
+
+#: Doer/WordPressEntitiesRegistrator.php:31
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "Инструмент за набиране на информация чрез решаване на последователни задачи, които могат да бъдат графични, за постижения или за време."
+
+#: Doer/WordPressEntitiesRegistrator.php:58
+msgid "Test Answers"
+msgstr "Отговори на теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:59
+msgid "Test Answer"
+msgstr "Отговор на теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:60
+msgid "Add New Answer"
+msgstr "Добави нов отговор"
+
+#: Doer/WordPressEntitiesRegistrator.php:61
+msgid "Edit Answer"
+msgstr "Редактирай отговора"
+
+#: Doer/WordPressEntitiesRegistrator.php:62
+msgid "View Answer"
+msgstr "Виж отговора"
+
+#: Doer/WordPressEntitiesRegistrator.php:63
+msgid "Search Answers"
+msgstr "Търси отговори"
+
+#: Doer/WordPressEntitiesRegistrator.php:64
+msgid "Parent Answer:"
+msgstr "Родителски отговор:"
+
+#: Doer/WordPressEntitiesRegistrator.php:66
+msgid "Answers"
+msgstr "Отговори"
+
+#: Doer/WordPressEntitiesRegistrator.php:67
+msgid "All Answers"
+msgstr "Всички отговори"
+
+#: Doer/WordPressEntitiesRegistrator.php:68
+msgid "Update Answer"
+msgstr "Обнови отговора"
+
+#: Doer/WordPressEntitiesRegistrator.php:69
+msgid "New Answer Name"
+msgstr "Име на новия отговор"
+
+#: Doer/WordPressEntitiesRegistrator.php:70
+msgid "Parent Answer"
+msgstr "Родителски отговор"
+
+#: Doer/WordPressEntitiesRegistrator.php:72
+msgid "New Answer"
+msgstr "Нов отговор"
+
+#: Doer/WordPressEntitiesRegistrator.php:73
+msgid "No Answers found"
+msgstr "Не са открити отговори"
+
+#: Doer/WordPressEntitiesRegistrator.php:74
+msgid "No Answers found in Trash"
+msgstr "Не са открити отговори в кошчето"
+
+#: Doer/WordPressEntitiesRegistrator.php:79
+msgid "Test Scales"
+msgstr "Тестови скали"
+
+#: Doer/WordPressEntitiesRegistrator.php:80
+msgid "Test Scale"
+msgstr "Тестова скала"
+
+#: Doer/WordPressEntitiesRegistrator.php:81
+msgid "Add New Scale"
+msgstr "Добави нова скала"
+
+#: Doer/WordPressEntitiesRegistrator.php:82
+msgid "Edit Scale"
+msgstr "Редактирай скалата"
+
+#: Doer/WordPressEntitiesRegistrator.php:83
+msgid "View Scale"
+msgstr "Виж скалата"
+
+#: Doer/WordPressEntitiesRegistrator.php:84
+msgid "Search Scales"
+msgstr "Търси скали"
+
+#: Doer/WordPressEntitiesRegistrator.php:85
+msgid "Parent Scale:"
+msgstr "Родителска скала:"
+
+#: Doer/WordPressEntitiesRegistrator.php:87
+msgid "Scales"
+msgstr "Скали"
+
+#: Doer/WordPressEntitiesRegistrator.php:88
+msgid "All Scales"
+msgstr "Всички скали"
+
+#: Doer/WordPressEntitiesRegistrator.php:89
+msgid "Update Scale"
+msgstr "Обнови скалата"
+
+#: Doer/WordPressEntitiesRegistrator.php:90
+msgid "New Scale Name"
+msgstr "Име на новата скала"
+
+#: Doer/WordPressEntitiesRegistrator.php:91
+msgid "Parent Scale"
+msgstr "Родителска скала"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
+msgid "New Scale"
+msgstr "Нова скала"
+
+#: Doer/WordPressEntitiesRegistrator.php:94
+msgid "No Scales found"
+msgstr "Не са открити скали"
+
+#: Doer/WordPressEntitiesRegistrator.php:95
+msgid "No Scales found in Trash"
+msgstr "Не са открити скали в кошчето"
+
+#: Doer/WordPressEntitiesRegistrator.php:100
+msgid "Test Results"
+msgstr "Резултати от теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:101
+msgid "Test Result"
+msgstr "Резултат от теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:102
+msgid "Add New Result"
+msgstr "Добави нов резултат от теста"
+
+#: Doer/WordPressEntitiesRegistrator.php:103
+msgid "Edit Result"
+msgstr "Редактирай резултата"
+
+#: Doer/WordPressEntitiesRegistrator.php:104
+msgid "View Result"
+msgstr "Виж резултата"
+
+#: Doer/WordPressEntitiesRegistrator.php:105
+msgid "Search Results"
+msgstr "Резултати от търсенето"
+
+#: Doer/WordPressEntitiesRegistrator.php:106
+msgid "Parent Result:"
+msgstr "Родителски резултати:"
+
+#: Doer/WordPressEntitiesRegistrator.php:108
+msgid "Results"
+msgstr "Резултати"
+
+#: Doer/WordPressEntitiesRegistrator.php:109
+msgid "All Results"
+msgstr "Всички резултати"
+
+#: Doer/WordPressEntitiesRegistrator.php:110
+msgid "Update Result"
+msgstr "Обнови резултата"
+
+#: Doer/WordPressEntitiesRegistrator.php:111
+msgid "New Result Name"
+msgstr "Име на новия резултат"
+
+#: Doer/WordPressEntitiesRegistrator.php:112
+msgid "Parent Result"
+msgstr "Родителски резултат"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
+msgid "New Result"
+msgstr "Нов резултат"
+
+#: Doer/WordPressEntitiesRegistrator.php:115
+msgid "No Results found"
+msgstr "Не са открити резултати"
+
+#: Doer/WordPressEntitiesRegistrator.php:116
+msgid "No Results found in Trash"
+msgstr "Не са открити резултати в кошчето"
+
+#: Doer/WordPressEntitiesRegistrator.php:121
+msgid "Test Categories"
+msgstr "Тестови категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:122
+msgid "Test Category"
+msgstr "Тестова категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:123
+msgid "Add New Category"
+msgstr "Добави нова категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:124
+msgid "Edit Category"
+msgstr "Редактиране на категорията"
+
+#: Doer/WordPressEntitiesRegistrator.php:125
+msgid "View Category"
+msgstr "Преглед на категорията"
+
+#: Doer/WordPressEntitiesRegistrator.php:126
+msgid "Search Categories"
+msgstr "Търси категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:127
+msgid "Parent Category:"
+msgstr "Родителска категория:"
+
+#: Doer/WordPressEntitiesRegistrator.php:129
+msgid "Categories"
+msgstr "Категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:130
+msgid "All Categories"
+msgstr "Всички категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:131
+msgid "Update Category"
+msgstr "Обнови категорията"
+
+#: Doer/WordPressEntitiesRegistrator.php:132
+msgid "New Category Name"
+msgstr "Име на новата категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:133
+msgid "Parent Category"
+msgstr "Родителска категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:135
+msgid "New Category"
+msgstr "Нова категория"
+
+#: Doer/WordPressEntitiesRegistrator.php:136
+msgid "No Categories found"
+msgstr "Не са открити категории"
+
+#: Doer/WordPressEntitiesRegistrator.php:137
+msgid "No Categories found in Trash"
+msgstr "Не са открити категории в кошчето"
+
+#: Model/Formula.php:217
+#, php-format
+msgid "Formula for %s has error"
+msgstr "Грешка във формулата с резултат \"%s\""
+
+#: Model/FormulaVariable.php:17
+#, php-format
+msgid "%1$s, ∑ %2$d"
+msgstr "%1$s, ∑ %2$d"
+
+#: Model/FormulaVariable.php:26
+msgid "Scale Variable"
+msgstr "Скала на променливата"
+
+#: Model/FormulaVariable.php:28
+msgid "Variable"
+msgstr "Променлива"
+
+#: Template/Test/Editor/edit-formulas.php:3
+msgid "Result"
+msgstr "Резултат"
+
+#: Template/Test/Editor/edit-formulas.php:4
+msgid "Formula"
+msgstr "Формула"
+
+#: Template/Test/Editor/edit-formulas.php:29
+msgid "No formulas to edit. To edit formulas you must have results selected."
+msgstr "Няма формули за редактиране. За да редактирате формулите трябва да сте избрали резултати."
+
+#: Template/Test/Editor/edit-formulas.php:38
+msgid "Variables"
+msgstr "Променливи"
+
+#: Template/Test/Editor/edit-formulas.php:39
+msgid "Comparisions"
+msgstr "Сравнения"
+
+#: Template/Test/Editor/edit-formulas.php:49
+msgid "Comparision"
+msgstr "Сравнение"
+
+#: Template/Test/Editor/edit-formulas.php:57
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected."
+msgstr "Няма променливи във формулите. За да използвате променливи трябва да сте избрали скали."
+
+#: Template/Test/Editor/edit-formulas.php:66
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Позволени са и цифри, и проценти. Например, ако \"скала-бла\" има тотал 30, то \"скала-бла > 15\" и \"скала-бла > 50%\" е едно и също."
+
+#: Template/Test/Editor/add-questions.php:4
+#: Template/Test/Editor/add-questions.php:9
+msgid "Quick Fill From Text"
+msgstr "Попълни бързо от текст"
+
+#: Template/Test/Editor/add-questions.php:8
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Поставете тук вашите въпроси и те ще попълнят полетата надолу. Номерата и другите индекси ще бъдат премахнати автоматично."
+
+#: Template/Test/Editor/submit-misc-actions.php:6
+msgid "Publish on the home page"
+msgstr "Публикувай на началната страница"
+
+#: Template/Test/Editor/edit-questions.php:29
+#: Template/Test/Editor/edit-questions.php:65
+msgid "Quick Fill Scores"
+msgstr "Бързо попълване на точките"
+
+#: Template/Test/Editor/edit-questions.php:37
+msgid "Scale"
+msgstr "Скала"
+
+#: Template/Test/Editor/edit-questions.php:38
+msgid "Score"
+msgstr "Точки"
+
+#: Template/Test/Editor/edit-questions.php:39
+msgid "Answer"
+msgstr "Отговор"
+
+#: Template/Test/Editor/edit-questions.php:40
+msgid "Questions"
+msgstr "Въпрос"
+
+#: Template/Test/Editor/edit-questions.php:86
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "Няма въпроси за редактиране. Добави нови въроси и те ще се появят тук."
+
+#: Template/Test/Editor/edit-questions.php:94
+msgid ""
+"No scores to edit. To edit scores you must have both answers and scales "
+"selected."
+msgstr "Няма точки за редактиране. За да редактирате точките трябва да сте избрали и отговори, и скали."
+
+#: Template/Test/Passer/get-results.php:33
+#, php-format
+msgid "%1$d out of %2$d"
+msgstr "%1$d от %2$d"
+
+#: Template/Test/Passer/fill-form.php:45
+msgid "Get Test Results"
+msgstr "Виж резултатите"
+
+#: Template/Test/Passer/fill-form.php:48
+msgid "Test is under construction"
+msgstr "Тестът е в процес на разработка"
+
+#: Template/Test/Passer/fill-form.php:49
+msgid "You can not get any results from it yet."
+msgstr "Не можете да получите никакви резултати все още."
