@@ -2,6 +2,12 @@
 ## Changelog ##
 
 
+### 0.5.2 ###
+Fix fatal error incompatibility with wordpress-seo plugin
+
+* Adding Bulgarian translation
+
+
 ### 0.5.1 ###
 Add tags, improve formulas editor and docs
 
@@ -12,7 +18,7 @@ Add tags, improve formulas editor and docs
 * Add tags to test
 
 
-## 0.5 ##
+### 0.5 ###
 Localization and quick fill
 
 * Localize to six languages with help of [Transifiex](https://www.transifex.com/projects/p/wp-testing/)
@@ -144,6 +150,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.5.2 ###
+Fix fatal error incompatibility with wordpress-seo plugin
 
 ### 0.4.2 ###
 Fix page disppearance and fill form broken formatting
