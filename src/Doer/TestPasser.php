@@ -18,6 +18,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
      */
     private $test = null;
 
+    /**
+     * Protection for many times calling the_content filter
+     * @var string
+     */
+    private $filteredTestContent = null;
+
     public function addContentFilter()
     {
         $object        = $this->wp->getQuery()->get_queried_object();
@@ -37,6 +43,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     public function renderTestContent($content)
     {
+        if (!is_null($this->filteredTestContent)) {
+            return $this->filteredTestContent;
+        }
         $action   = $this->getTestPassingAction();
         $template = $this->wp->locateTemplate('entry-content-wpt-test-' . $action . '.php');
         $template = ($template) ? $template : 'Test/Passer/' . $action;
@@ -60,7 +69,8 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             );
         }
 
-        return preg_replace_callback('|<form.+</form>|s', array($this, 'stripNewLines'), $this->render($template, $params));
+        $this->filteredTestContent = preg_replace_callback('|<form.+</form>|s', array($this, 'stripNewLines'), $this->render($template, $params));
+        return $this->filteredTestContent;
     }
 
     private function stripNewLines($matches)

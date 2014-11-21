@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.0  
-**Stable tag:** 0.5.1  
+**Stable tag:** 0.5.2  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -34,6 +34,11 @@ Wp-testing localized in six languages: English, Russian (native speaker), German
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 
 PS: **If something broken or doesn't work**, pls create new topic in ["Support" tab](https://wordpress.org/support/plugin/wp-testing)!
+
+### Thank You Board ###
+
+* For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
+
 
 ## Installation ##
 
