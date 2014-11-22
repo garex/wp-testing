@@ -5,7 +5,7 @@ set -e
 
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
-WP_VERSION=${WP_VERSION:-4.0}
+WP_VERSION=${WP_VERSION:-4.0.1}
 
 function init {
     log 'Define vars'
