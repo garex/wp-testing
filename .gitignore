@@ -5,4 +5,5 @@
 /tests/mocha/node_modules/
 /tests/integration-environment/wordpress/
 /tests/integration-environment/wordpress-*.tar.gz
+/tests/integration-environment/*.zip
 /vendor/
