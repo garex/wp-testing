@@ -19,7 +19,7 @@ function db {
     log 'Creating DB and user'
     sudo mysql --execute '
         DROP DATABASE IF EXISTS wpti;
-        CREATE DATABASE wpti;
+        CREATE DATABASE wpti DEFAULT CHARACTER SET utf8;
 
         GRANT USAGE ON wpti.* TO wpti;
         DROP USER wpti;
