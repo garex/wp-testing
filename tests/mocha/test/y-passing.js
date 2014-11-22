@@ -11,7 +11,7 @@ describe('Passings', function() {
             this.clickLabel('Test With Results')
         })
 
-        casper.waitForUrl(/test-with-results/, function() {
+        casper.waitForUrl(/test.+results/, function() {
             'Fatal'.should.not.be.textInDOM
             'Test With Results'.should.be.inTitle
             '#wpt-test-form input[type=submit]'.should.be.inDOM
@@ -39,7 +39,7 @@ describe('Passings', function() {
             this.fill('form#wpt-test-form', {}, true)
         })
 
-        casper.waitForUrl(/test-with-results/, function() {
+        casper.waitForUrl(/test.+results/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM
             'Choleric'.should.be.textInDOM
