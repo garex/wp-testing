@@ -32,7 +32,7 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return $model->getSlug();
+            return urldecode($model->getSlug());
         }
         return null;
     }
