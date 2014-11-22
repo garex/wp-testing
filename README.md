@@ -27,7 +27,7 @@ Tests are treated for WordPress like posts — they appear on home page and insi
 
 To minimize author's time we have **Quick Fill** for questions and scores. You can **quick fill questions from text** and they will fill appropriate fields. Same way you can **Quick Fill Scores** in many questions some answer+scale combination. 
 
-Wp-testing localized in six languages: English, Russian (native speaker), German, French, Dutch and Swedish. English and Russian have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome!
+Wp-testing localized in seven languages: English, Russian (native speaker), German, French, Dutch, Swedish and Bulgarian (native speaker). English, Russian and Bulgarian have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome!
 
 **Quality** and **compatibility** are taken really seriously. Plugin tested on [37 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.0) and PHP (from 5.2 to 5.5) plus one custom combination for old MySQL storage engine (MyISAM). So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
