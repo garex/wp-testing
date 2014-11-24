@@ -2,6 +2,12 @@
 ## Changelog ##
 
 
+### 0.5.3 ###
+Add standard category to tests
+
+* Update README about Bulgarian translation
+
+
 ### 0.5.2 ###
 Fix fatal error incompatibility with wordpress-seo plugin
 
