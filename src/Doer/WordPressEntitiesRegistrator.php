@@ -42,6 +42,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                 'wpt_answer',
                 'wpt_scale',
                 'wpt_result',
+                'category',
                 'post_tag',
                 'wpt_category',
             ),
