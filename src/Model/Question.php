@@ -23,7 +23,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     protected $scores = null;
 
     /**
-     * @var WpTesting_Model_Answer[]
+     * @var WpTesting_Model_GlobalAnswer[]
      */
     protected $answers = array();
 
@@ -33,7 +33,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
      */
     public function setAnswers(fRecordSet $answers)
     {
-        if (count($answers) == 0 || !($answers[0] instanceof WpTesting_Model_Answer)) {
+        if (count($answers) == 0 || !($answers[0] instanceof WpTesting_Model_GlobalAnswer)) {
             return $this;
         }
         $this->answers = $answers;
@@ -48,11 +48,11 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     /**
      * Get score anyway (even if it doesn't exists)
      *
-     * @param WpTesting_Model_Answer $answer
+     * @param WpTesting_Model_GlobalAnswer $answer
      * @param WpTesting_Model_Scale $scale
      * @return WpTesting_Model_Score
      */
-    public function getScoreByAnswerAndScale(WpTesting_Model_Answer $answer, WpTesting_Model_Scale $scale)
+    public function getScoreByAnswerAndScale(WpTesting_Model_GlobalAnswer $answer, WpTesting_Model_Scale $scale)
     {
         $result = $this->buildScoresOnce()->filter(array(
             'getAnswerId=' => $answer->getId(),
@@ -67,10 +67,10 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     /**
      * Get scores by answer
      *
-     * @param WpTesting_Model_Answer $answer
+     * @param WpTesting_Model_GlobalAnswer $answer
      * @return WpTesting_Model_Score[]
      */
-    public function getScoresByAnswer(WpTesting_Model_Answer $answer)
+    public function getScoresByAnswer(WpTesting_Model_GlobalAnswer $answer)
     {
         return $this->buildScoresOnce()->filter(array(
             'getAnswerId=' => $answer->getId(),

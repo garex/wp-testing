@@ -23,7 +23,7 @@
             <input type="hidden" name="wp_testing_model_passing_answers::answer_id[<?php echo $q ?>]" value="" />
         </div>
 
-    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_GlobalAnswer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
         <div class="answer">

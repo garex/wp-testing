@@ -42,7 +42,7 @@
         </thead>
         <tbody>
         <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <?php foreach($answers as $j => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+            <?php foreach($answers as $j => $answer): /* @var $answer WpTesting_Model_GlobalAnswer */ ?>
                 <tr class="quick-score" data-quick-score-class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getId() ?>">
                 <?php if (0 == $j): ?>
                     <td rowspan="<?php echo count($answers) ?>"><?php echo $scale->getTitle() ?></td>
@@ -114,7 +114,7 @@
         </td>
     </tr>
     <?php $scoreIndex = 0 ?>
-    <?php foreach($question->getAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->getAnswers() as $a => $answer): /* @var $answer WpTesting_Model_GlobalAnswer */ ?>
         <tr>
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>

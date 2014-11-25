@@ -198,7 +198,7 @@ class WpTesting_Facade
         fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',      WPT_DB_PREFIX  . 'questions');
         fORM::mapClassToTable('WpTesting_Model_Taxonomy',      WP_DB_PREFIX   . 'term_taxonomy');
-        fORM::mapClassToTable('WpTesting_Model_Answer',        WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_GlobalAnswer',        WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Scale',         WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Score',         WPT_DB_PREFIX  . 'scores');
         fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');

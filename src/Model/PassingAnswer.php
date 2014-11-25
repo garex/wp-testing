@@ -29,10 +29,10 @@ class WpTesting_Model_PassingAnswer extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return WpTesting_Model_Answer
+     * @return WpTesting_Model_GlobalAnswer
      */
     public function createAnswer()
     {
-        return $this->createWpTesting_Model_Answer();
+        return $this->createWpTesting_Model_GlobalAnswer();
     }
 }
