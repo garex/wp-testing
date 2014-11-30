@@ -106,7 +106,7 @@
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
             <input type="text"
                 name='wpt_question_title[<?php echo json_encode(array(
-                    'i'  => $q,
+                    'q'  => $q,
                     'id' => $question->getId(),
                 ))  ?>]'
                 id="wpt_question_title_<?php echo $q ?>"
@@ -114,22 +114,23 @@
         </td>
     </tr>
     <?php $scoreIndex = 0 ?>
-    <?php foreach($question->getAnswers() as $a => $answer): /* @var $answer WpTesting_Model_GlobalAnswer */ ?>
+    <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
             <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <?php $score = $question->getScoreByAnswerAndScale($answer, $scale) ?>
+            <?php $score = $answer->getScoreByScale($scale) ?>
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">
                 <input type="text"
                     placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
                     name='wpt_score_value[<?php echo json_encode(array(
-                        'i'         => $q,
-                        'j'         => $scoreIndex,
+                        'q'         => $q,
+                        'a'         => $a,
+                        's'         => $scoreIndex,
                         'answer_id' => $answer->getId(),
                         'scale_id'  => $scale->getId(),
                     ))  ?>]'
                     data-question-number="<?php echo $q+1 ?>"
-                    class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getId() ?> question-<?php echo $q+1 ?>"
+                    class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getGlobalAnswerId() ?> question-<?php echo $q+1 ?>"
                     id="wpt_score_value_<?php echo $q ?>_<?php echo $scoreIndex ?>"
                     value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />

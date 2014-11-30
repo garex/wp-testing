@@ -55,13 +55,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     {
         $test = new WpTesting_Model_Test($item);
         $this->output('Test/Editor/edit-questions', array(
-            'scales'      => $test->buildScalesWithRange(),
-            'answers'     => $test->buildAnswers(),
-            'questions'   => $test->buildQuestions(),
-            'isWarnOfSettings'   => $test->isWarnOfSettings(),
-            'memoryWarnSettings' => $test->getMemoryWarnSettings(),
-            'isUnderApache'      => $this->isUnderApache(),
-            'canEditScores'      => $test->canEditScores(),
+            'scales'              => $test->buildScalesWithRange(),
+            'answers'             => $test->buildGlobalAnswers(),
+            'questions'           => $test->buildQuestions(),
+            'isWarnOfSettings'    => $test->isWarnOfSettings(),
+            'memoryWarnSettings'  => $test->getMemoryWarnSettings(),
+            'isUnderApache'       => $this->isUnderApache(),
+            'canEditScores'       => $test->canEditScores(),
         ));
     }
 
@@ -116,6 +116,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         try {
             $problems = $test->validate();
             $test->store(true);
+            $test->syncQuestionsAnswers();
         } catch (fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
             $this->wp->dieMessage(

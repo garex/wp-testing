@@ -16,21 +16,16 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     {
         $this->setTestId($test->getId());
         parent::populate(true);
-
-        $answers = $this->buildAnswers();
-        foreach ($test->buildQuestions() as $i => $question) {
-            $answers[$i]->setQuestionId($question->getId());
-        }
-
+        $this->linkWpTesting_Model_Answers();
         return $this;
     }
 
     /**
-     * @return WpTesting_Model_PassingAnswer[]
+     * @return WpTesting_Model_Answer[]
      */
     public function buildAnswers()
     {
-        return $this->buildWpTesting_Model_PassingAnswers();
+        return $this->buildWpTesting_Model_Answers();
     }
 
     /**
@@ -47,8 +42,8 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         }
 
         $scoresByScales = array_fill_keys(array_keys($result), 0);
-        foreach ($this->buildAnswers() as $passingAnswer) {
-            $scores = $passingAnswer->createQuestion()->getScoresByAnswer($passingAnswer->createAnswer());
+        foreach ($this->buildAnswers() as $answer) {
+            $scores = $answer->buildScores();
             foreach ($scores as $score) { /* @var $score WpTesting_Model_Score */
                 $scoresByScales[$score->getScaleId()] += $score->getValue();
             }
