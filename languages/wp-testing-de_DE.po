@@ -2,13 +2,14 @@
 # This file is distrubuted under the GPL-3.0+
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
+# coach2talk <info@newwaystec.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-16 06:37+0700\n"
-"PO-Revision-Date: 2014-11-16 00:56+0000\n"
-"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"PO-Revision-Date: 2014-12-02 15:06+0000\n"
+"Last-Translator: coach2talk <info@newwaystec.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-testing/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +54,7 @@ msgstr "Hinzufügen"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgid "Add New Test"
-msgstr "Fügen neuen Test hinzu"
+msgstr "Neuen Test hinzufügen"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Edit Test"
@@ -97,7 +98,7 @@ msgstr "Keine Tests gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found in Trash"
-msgstr "Keine Tests, die im Papierkorb gefunden"
+msgstr "Keine Tests im Papierkorb gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:31
 msgid ""
@@ -175,11 +176,11 @@ msgstr "Test-Skala"
 
 #: Doer/WordPressEntitiesRegistrator.php:81
 msgid "Add New Scale"
-msgstr "Fügen neuer Scale hinzu"
+msgstr "Neue Skala hinzufügen"
 
 #: Doer/WordPressEntitiesRegistrator.php:82
 msgid "Edit Scale"
-msgstr "Bearbeiten von Skala"
+msgstr "Skala bearbeiten"
 
 #: Doer/WordPressEntitiesRegistrator.php:83
 msgid "View Scale"
@@ -187,7 +188,7 @@ msgstr "Ansichtsmaßstab"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Search Scales"
-msgstr "Suche Waage"
+msgstr "Skala Suche"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Parent Scale:"
@@ -195,7 +196,7 @@ msgstr "Übergeordneten Skala:"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Scales"
-msgstr "Waage"
+msgstr "Skalen"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "All Scales"
@@ -219,11 +220,11 @@ msgstr "Neue Skala"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "No Scales found"
-msgstr "Keine Schuppen gefunden"
+msgstr "Keine Skalen gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "No Scales found in Trash"
-msgstr "Keine Schuppen, die im Papierkorb gefunden"
+msgstr "Keine Skalen im Papierkorb gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "Test Results"
@@ -263,15 +264,15 @@ msgstr "Alle Ergebnisse"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Update Result"
-msgstr "Update-Ergebnis"
+msgstr "Ergebnis aktualisieren"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "New Result Name"
-msgstr "Neue Ergebnisname"
+msgstr "Neuer Ergebnisname"
 
 #: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Parent Result"
-msgstr "Übergeordnete Ergebnis"
+msgstr "Übergeordnetes Ergebnis"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "New Result"
@@ -343,7 +344,7 @@ msgstr "Keine Kategorien gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "No Categories found in Trash"
-msgstr "Keine Kategorien in Papierkorb gefunden"
+msgstr "Keine Kategorien im Papierkorb gefunden"
 
 #: Model/Formula.php:217
 #, php-format
@@ -373,7 +374,7 @@ msgstr "Formel"
 
 #: Template/Test/Editor/edit-formulas.php:29
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Keine Formeln bearbeiten. Formeln bearbeiten möchten, die müssen Sie Ergebnisse ausgewählt haben."
+msgstr "Formeln können nicht bearbeitet werden. Um Formeln bearbeiten zu können, müssen Ergebnisse ausgewählt werden."
 
 #: Template/Test/Editor/edit-formulas.php:38
 msgid "Variables"
@@ -391,13 +392,13 @@ msgstr "Vergleich"
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
-msgstr "Keine Variablen bei Formeln zur Verfügung. Um Variablen zu verwenden, Sie müssen Waagen ausgewählten."
+msgstr "Es stehen keine Variablen für Formeln zur Auswahl. Um Variablen verwenden zu können, müssen Sie Skalen ausgewählt haben."
 
 #: Template/Test/Editor/edit-formulas.php:66
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Beide Zahlen und Prozent erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
+msgstr "Zahlen und Prozente sind erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
 
 #: Template/Test/Editor/add-questions.php:4
 #: Template/Test/Editor/add-questions.php:9
@@ -408,7 +409,7 @@ msgstr "Schnellfüllung aus Text"
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Fügen Sie hier Ihre Fragen und sie werden folgenden Felder aus. Zahlen und anderen Indizes werden automatisch abgezogen werden."
+msgstr "Fügen Sie hier Ihre Fragen ein und die Felder darüber werden ausgefüllt. Zahlen und andere Indizes werden automatisch abgezogen."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
@@ -438,13 +439,13 @@ msgstr "Fragen"
 #: Template/Test/Editor/edit-questions.php:86
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Keine Fragen zu bearbeiten. Neue Fragen hinzufügen und dann werden sie hier erscheinen."
+msgstr "Es können keine Fragen bearbeiten werden. Füge neue Fragen hinzu und sie werden hier erscheinen."
 
 #: Template/Test/Editor/edit-questions.php:94
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
-msgstr "Keine Resultate zu bearbeiten. Um Resultate zu bearbeiten müssen Sie Antworten und Skalen ausgewählt."
+msgstr "Es können keine Punkte bearbeitet werden. Um Punkte bearbeiten zu können, müssen Sie beide Antworten und Skalen ausgewählt haben."
 
 #: Template/Test/Passer/get-results.php:33
 #, php-format
@@ -453,7 +454,7 @@ msgstr "%1$d von %2$d"
 
 #: Template/Test/Passer/fill-form.php:45
 msgid "Get Test Results"
-msgstr "Testergebnisse zu erhalten"
+msgstr "Testergebnis anzeigen"
 
 #: Template/Test/Passer/fill-form.php:48
 msgid "Test is under construction"
@@ -461,4 +462,4 @@ msgstr "Test befindet sich im Aufbau"
 
 #: Template/Test/Passer/fill-form.php:49
 msgid "You can not get any results from it yet."
-msgstr "Sie erhalten keine Ergebnisse daraus."
+msgstr "Ihnen können noch keine Ergebnisse angezeigt werden."
