@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.0  
-**Stable tag:** 0.5.3  
+**Stable tag:** 0.5.4  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -38,6 +38,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ### Thank You Board ###
 
 * For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
+* For German translation thanks to Sascha (info@newwaystec.com)
 
 
 ## Installation ##

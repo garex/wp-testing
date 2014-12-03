@@ -2,6 +2,10 @@
 ## Changelog ##
 
 
+### 0.5.4 ###
+Update German translation
+
+
 ### 0.5.3 ###
 Add standard category to tests
 
