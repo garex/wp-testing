@@ -328,6 +328,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $isAssoc         = true;
         $request        += array(
             'wpt_question_title' => array(),
+            'wpt_answer_title'   => array(),
             'wpt_score_value'    => array(),
             'wpt_formula_source' => array(),
         );
@@ -338,9 +339,14 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $request[$questionsPrefix . 'question_title'] [$key['q']] = $value;
         }
 
+        foreach ($request['wpt_answer_title'] as $key => $value) {
+            $key = json_decode(stripslashes($key), $isAssoc);
+            $request[$answersPrefix . 'answer_id']    [$key['q']][$key['a']] = $key['id'];
+            $request[$answersPrefix . 'answer_title'] [$key['q']][$key['a']] = $value;
+        }
+
         foreach ($request['wpt_score_value'] as $key => $value) {
             $key = json_decode(stripslashes($key), $isAssoc);
-            $request[$answersPrefix . 'answer_id']  [$key['q']][$key['a']]            = $key['answer_id'];
             $request[$scoresPrefix . 'answer_id']   [$key['q']][$key['a']][$key['s']] = $key['answer_id'];
             $request[$scoresPrefix . 'scale_id']    [$key['q']][$key['a']][$key['s']] = $key['scale_id'];
             $request[$scoresPrefix . 'score_value'] [$key['q']][$key['a']][$key['s']] = $value;

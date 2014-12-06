@@ -26,6 +26,11 @@ table.wpt_questions {
     text-align: right;
 }
 
+.wpt_questions .wpt_answer input {
+    width: 100%;
+    min-width: 10em;
+}
+
 .wpt_questions .wpt_scale {
     text-align: center;
 }

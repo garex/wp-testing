@@ -116,7 +116,18 @@
     <?php $scoreIndex = 0 ?>
     <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
-            <td class="wpt_answer subtitle answer-<?php echo $answer->getIndividuality() ?>"><?php echo $answer->getTitle() ?></td>
+            <td class="wpt_answer subtitle answer-<?php echo $answer->getIndividuality() ?>">
+                <input type="text"
+                    placeholder="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>"
+                    name='wpt_answer_title[<?php echo json_encode(array(
+                        'q'  => $q,
+                        'a'  => $a,
+                        'id' => $answer->getId(),
+                    ))  ?>]'
+                    id="wpt_answer_title_<?php echo $q ?>_<?php echo $a ?>"
+                    value="<?php echo htmlspecialchars($answer->getIndividualTitle()) ?>"
+                    title="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>" />
+            </td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <?php $score = $answer->getScoreByScale($scale) ?>
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">

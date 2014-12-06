@@ -46,6 +46,22 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return string
+     */
+    public function getIndividualTitle()
+    {
+        return $this->get('title');
+    }
+
+    /**
+     * @return string
+     */
+    public function getGlobalTitle()
+    {
+        return $this->createGlobalAnswer()->getTitle();
+    }
+
+    /**
      * @return WpTesting_Model_Score[]
      */
     public function buildScores()
