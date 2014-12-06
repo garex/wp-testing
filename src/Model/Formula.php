@@ -232,9 +232,9 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     protected function compareValueNames($name1, $name2)
     {
-        if (mb_strlen($name1) < mb_strlen($name2)) {
+        if ($this->stringLength($name1) < $this->stringLength($name2)) {
             return -1;
-        } elseif (mb_strlen($name1) > mb_strlen($name2)) {
+        } elseif ($this->stringLength($name1) > $this->stringLength($name2)) {
             return 1;
         } elseif ($name1 < $name2) {
             return -1;

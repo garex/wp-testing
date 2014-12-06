@@ -95,4 +95,21 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         }
         return parent::set($column, $value);
     }
+
+    /**
+     * mb_strlen graceful degradation
+     * @param string $string
+     * @return int
+     */
+    protected function stringLength($string)
+    {
+        if (function_exists('mb_strlen')) {
+            return mb_strlen($string);
+        }
+        if (function_exists('iconv_strlen')) {
+            return iconv_strlen($string);
+        }
+        return strlen($string);
+    }
+
 }
