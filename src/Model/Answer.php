@@ -6,8 +6,30 @@
  */
 class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 {
+
+    /**
+     * Auto-created from test's global answer and have it's title.
+     * When global answer gone from test it also will gone.
+     */
+    const INDIVIDUALITY_GLOBAL = 'global';
+
+    /**
+     * Auto-created from test's global answer and have individualized title.
+     * Can be transformed into global by clearing title.
+     * When global answer gone from test it also will gone.
+     */
+    const INDIVIDUALITY_INDIVIDUALIZED = 'individualized';
+
+    /**
+     * Created in conrete question individually and must has a title.
+     * Doesn't related with any global answers.
+     * Removed also individually from concrete answer (by simply clearing title).
+     */
+    const INDIVIDUALITY_INDIVIDUAL = 'individual';
+
     protected $columnAliases = array(
         'id'    => 'answer_id',
+        'title' => 'answer_title',
     );
 
     /**
@@ -20,12 +42,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function getTitle()
     {
-        $title    = $this->get('answer_title');
-        $globalId = $this->getGlobalAnswerId();
-        if (empty($title) && !empty($globalId)) {
-            return $this->createGlobalAnswer()->getTitle();
-        }
-        return $title;
+        return $this->isGlobal() ? $this->createGlobalAnswer()->getTitle() : $this->get('title');
     }
 
     /**
@@ -82,5 +99,61 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
         return new WpTesting_Model_Score();
     }
 
+    /**
+     * @return string One of global, individualized and individual
+     */
+    public function getIndividuality()
+    {
+        $globalId = $this->getGlobalAnswerId();
+        if (empty($globalId)) {
+            return self::INDIVIDUALITY_INDIVIDUAL;
+        }
+
+        return ($this->isEmptyTitle())
+            ? self::INDIVIDUALITY_GLOBAL
+            : self::INDIVIDUALITY_INDIVIDUALIZED
+        ;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEmptyTitle()
+    {
+        return $this->get('title') == '';
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isGlobal()
+    {
+        return self::INDIVIDUALITY_GLOBAL == $this->getIndividuality();
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIndividual()
+    {
+        return self::INDIVIDUALITY_INDIVIDUAL == $this->getIndividuality();
+    }
+
+    /**
+     * Should this answer be deleted?
+     *
+     * @param array $globalAnswersIds
+     * @return boolean
+     */
+    public function isDeletable($globalAnswersIds)
+    {
+        return
+            // Remove empty-title individual answers
+            $this->isIndividual() && $this->isEmptyTitle()
+                ||
+            // Remove not existing global answers
+            $this->getGlobalAnswerId() && !in_array($this->getGlobalAnswerId(), $globalAnswersIds)
+        ;
+    }
 
 }

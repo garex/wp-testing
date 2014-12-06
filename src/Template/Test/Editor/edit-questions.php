@@ -116,7 +116,7 @@
     <?php $scoreIndex = 0 ?>
     <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
-            <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
+            <td class="wpt_answer subtitle answer-<?php echo $answer->getIndividuality() ?>"><?php echo $answer->getTitle() ?></td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <?php $score = $answer->getScoreByScale($scale) ?>
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">

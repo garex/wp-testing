@@ -394,13 +394,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         foreach ($this->buildQuestions() as $question) {
             $existingGlobalAnswersIds = array();
             foreach ($question->buildAnswers() as $answer) {
-                if (
-                    // Remove empty-title individual answers
-                    !$answer->getGlobalAnswerId() && !$answer->getTitle()
-                        ||
-                    // Remove not existing global answers
-                    $answer->getGlobalAnswerId()  && !in_array($answer->getGlobalAnswerId(), $globalAnswersIds)
-                ) {
+                if ($answer->isDeletable($globalAnswersIds)) {
                     $answer->delete();
                 } else {
                     $existingGlobalAnswersIds[] = $answer->getGlobalAnswerId();
