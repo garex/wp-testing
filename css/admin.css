@@ -92,3 +92,14 @@ table.wpt_quick_scores td.score input {
 table.wpt_quick_scores td.questions input {
     width: 100%;
 }
+
+.wpt-add-individual-answers span.howto {
+    display: inline;
+}
+.wpt-add-individual-answers.wp-hidden-children span.howto.wp-hidden-child {
+    display: none;
+}
+.wpt-add-individual-answers textarea {
+    height: 5em;
+    width: 100%;    
+}

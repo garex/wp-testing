@@ -150,6 +150,18 @@
         <?php endforeach ?>
         </tr>
     <?php endforeach ?>
+        <tr><td colspan="<?php echo $fullColspan ?>" class="wpt-add-individual-answers">
+            <p>
+                <a href="#wpt-add-individual-answers-to-question-<?php echo $q ?>" class="toggle"><?php echo __('Add Individual Answers', 'wp-testing') ?></a>
+                <span class="wp-hidden-child howto"><?php echo sprintf(__('— unique to each question. If you have same answers to all test questions, use the %s', 'wp-testing'), '<a href="#wpt_answerdiv">' . __('Test Answers', 'wp-testing') . '</a>') ?></span>
+            </p>
+            <div class="wp-hidden-child">
+                <textarea
+                    placeholder="<?php echo __('Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically.', 'wp-testing') ?>"
+                    id="wpt-add-individual-answers-to-question-<?php echo $q ?>"
+                    rows="5" cols="120"></textarea>
+            </div>
+        </td></tr>
 <?php endforeach ?>
 
 </table>

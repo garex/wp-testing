@@ -20,6 +20,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('wpt_test_quick_scores',     'js/test-quick-scores.js',           array('jquery', 'lodash'), false, true)
             ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3'), false, true)
             ->enqueuePluginScript('wpt_test_edit_answers',     'js/test-edit-answers.js',           array('jquery'), false, true)
+            ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
