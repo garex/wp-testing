@@ -327,10 +327,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $formulasPrefix  = $this->getFormulasPrefix();
         $isAssoc         = true;
         $request        += array(
-            'wpt_question_title' => array(),
-            'wpt_answer_title'   => array(),
-            'wpt_score_value'    => array(),
-            'wpt_formula_source' => array(),
+            'wpt_question_title'              => array(),
+            'wpt_answer_title'                => array(),
+            'wpt_question_individual_answers' => array(),
+            'wpt_score_value'                 => array(),
+            'wpt_formula_source'              => array(),
         );
 
         foreach ($request['wpt_question_title'] as $key => $value) {
@@ -343,6 +344,22 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $key = json_decode(stripslashes($key), $isAssoc);
             $request[$answersPrefix . 'answer_id']    [$key['q']][$key['a']] = $key['id'];
             $request[$answersPrefix . 'answer_title'] [$key['q']][$key['a']] = $value;
+        }
+
+        foreach ($request['wpt_question_individual_answers'] as $key => $value) {
+            $key = json_decode(stripslashes($key), $isAssoc);
+
+            $value = trim($value);
+            if ($value == '') {
+                continue;
+            }
+
+            $titles = preg_split('/[\r\n]+/', $value);
+            foreach ($titles as $title) {
+                $title = trim(preg_replace('/^\w{1,3}[^\w\s]\s+/', '', $title));
+                $request[$answersPrefix . 'answer_id']    [$key['q']][] = null;
+                $request[$answersPrefix . 'answer_title'] [$key['q']][] = $title;
+            }
         }
 
         foreach ($request['wpt_score_value'] as $key => $value) {

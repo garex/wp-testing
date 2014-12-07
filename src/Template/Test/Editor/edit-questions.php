@@ -158,6 +158,10 @@
             <div class="wp-hidden-child">
                 <textarea
                     placeholder="<?php echo __('Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically.', 'wp-testing') ?>"
+                    name='wpt_question_individual_answers[<?php echo json_encode(array(
+                        'q'  => $q,
+                        'id' => $question->getId(),
+                    ))  ?>]'
                     id="wpt-add-individual-answers-to-question-<?php echo $q ?>"
                     rows="5" cols="120"></textarea>
             </div>
