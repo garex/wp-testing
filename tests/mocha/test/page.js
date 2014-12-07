@@ -41,7 +41,7 @@ describe('Page', function() {
         casper.waitForUrl(/page_id/, function() {
             'Fatal'.should.not.be.textInDOM
             'Disappear'.should.be.textInDOM
-            '404'.should.not.be.textInDOM
+            'error404'.should.not.be.textInDOM
         })
     })
 })
