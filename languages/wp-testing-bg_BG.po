@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-16 06:37+0700\n"
-"PO-Revision-Date: 2014-11-21 20:00+0000\n"
-"Last-Translator: Borry Semerdzhieva <borry.semerdzhieva@gmail.com>\n"
+"POT-Creation-Date: 2014-12-07 18:17+0700\n"
+"PO-Revision-Date: 2014-12-07 12:41+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/wp-testing/language/bg_BG/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:24
+#: Doer/TestEditor.php:26
 msgid "Edit Questions and Scores"
 msgstr "Редактирай въпросите и точките"
 
-#: Doer/TestEditor.php:25
+#: Doer/TestEditor.php:27
 msgid "Add New Questions"
 msgstr "Добави нови въпроси"
 
-#: Doer/TestEditor.php:26
+#: Doer/TestEditor.php:28
 msgid "Edit Formulas"
 msgstr "Редактирай формулите"
 
-#: Doer/TestEditor.php:121
+#: Doer/TestEditor.php:123
 msgid "Test data not saved"
 msgstr "Тестовите данни не са запазени"
 
@@ -106,243 +106,243 @@ msgid ""
 " is a series of tasks or problems that the respondent has to solve."
 msgstr "Инструмент за набиране на информация чрез решаване на последователни задачи, които могат да бъдат графични, за постижения или за време."
 
-#: Doer/WordPressEntitiesRegistrator.php:58
+#: Doer/WordPressEntitiesRegistrator.php:60
 msgid "Test Answers"
 msgstr "Отговори на теста"
 
-#: Doer/WordPressEntitiesRegistrator.php:59
+#: Doer/WordPressEntitiesRegistrator.php:61
 msgid "Test Answer"
 msgstr "Отговор на теста"
 
-#: Doer/WordPressEntitiesRegistrator.php:60
+#: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Add New Answer"
 msgstr "Добави нов отговор"
 
-#: Doer/WordPressEntitiesRegistrator.php:61
+#: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Edit Answer"
 msgstr "Редактирай отговора"
 
-#: Doer/WordPressEntitiesRegistrator.php:62
+#: Doer/WordPressEntitiesRegistrator.php:64
 msgid "View Answer"
 msgstr "Виж отговора"
 
-#: Doer/WordPressEntitiesRegistrator.php:63
+#: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Search Answers"
 msgstr "Търси отговори"
 
-#: Doer/WordPressEntitiesRegistrator.php:64
+#: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Parent Answer:"
 msgstr "Родителски отговор:"
 
-#: Doer/WordPressEntitiesRegistrator.php:66
+#: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Answers"
 msgstr "Отговори"
 
-#: Doer/WordPressEntitiesRegistrator.php:67
+#: Doer/WordPressEntitiesRegistrator.php:69
 msgid "All Answers"
 msgstr "Всички отговори"
 
-#: Doer/WordPressEntitiesRegistrator.php:68
+#: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Update Answer"
 msgstr "Обнови отговора"
 
-#: Doer/WordPressEntitiesRegistrator.php:69
+#: Doer/WordPressEntitiesRegistrator.php:71
 msgid "New Answer Name"
 msgstr "Име на новия отговор"
 
-#: Doer/WordPressEntitiesRegistrator.php:70
+#: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Parent Answer"
 msgstr "Родителски отговор"
 
-#: Doer/WordPressEntitiesRegistrator.php:72
+#: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer"
 msgstr "Нов отговор"
 
-#: Doer/WordPressEntitiesRegistrator.php:73
+#: Doer/WordPressEntitiesRegistrator.php:75
 msgid "No Answers found"
 msgstr "Не са открити отговори"
 
-#: Doer/WordPressEntitiesRegistrator.php:74
+#: Doer/WordPressEntitiesRegistrator.php:76
 msgid "No Answers found in Trash"
 msgstr "Не са открити отговори в кошчето"
 
-#: Doer/WordPressEntitiesRegistrator.php:79
+#: Doer/WordPressEntitiesRegistrator.php:81
 msgid "Test Scales"
 msgstr "Тестови скали"
 
-#: Doer/WordPressEntitiesRegistrator.php:80
+#: Doer/WordPressEntitiesRegistrator.php:82
 msgid "Test Scale"
 msgstr "Тестова скала"
 
-#: Doer/WordPressEntitiesRegistrator.php:81
+#: Doer/WordPressEntitiesRegistrator.php:83
 msgid "Add New Scale"
 msgstr "Добави нова скала"
 
-#: Doer/WordPressEntitiesRegistrator.php:82
+#: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Edit Scale"
 msgstr "Редактирай скалата"
 
-#: Doer/WordPressEntitiesRegistrator.php:83
+#: Doer/WordPressEntitiesRegistrator.php:85
 msgid "View Scale"
 msgstr "Виж скалата"
 
-#: Doer/WordPressEntitiesRegistrator.php:84
+#: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Search Scales"
 msgstr "Търси скали"
 
-#: Doer/WordPressEntitiesRegistrator.php:85
+#: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Parent Scale:"
 msgstr "Родителска скала:"
 
-#: Doer/WordPressEntitiesRegistrator.php:87
+#: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Scales"
 msgstr "Скали"
 
-#: Doer/WordPressEntitiesRegistrator.php:88
+#: Doer/WordPressEntitiesRegistrator.php:90
 msgid "All Scales"
 msgstr "Всички скали"
 
-#: Doer/WordPressEntitiesRegistrator.php:89
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Update Scale"
 msgstr "Обнови скалата"
 
-#: Doer/WordPressEntitiesRegistrator.php:90
+#: Doer/WordPressEntitiesRegistrator.php:92
 msgid "New Scale Name"
 msgstr "Име на новата скала"
 
-#: Doer/WordPressEntitiesRegistrator.php:91
+#: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Parent Scale"
 msgstr "Родителска скала"
 
-#: Doer/WordPressEntitiesRegistrator.php:93
+#: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale"
 msgstr "Нова скала"
 
-#: Doer/WordPressEntitiesRegistrator.php:94
+#: Doer/WordPressEntitiesRegistrator.php:96
 msgid "No Scales found"
 msgstr "Не са открити скали"
 
-#: Doer/WordPressEntitiesRegistrator.php:95
+#: Doer/WordPressEntitiesRegistrator.php:97
 msgid "No Scales found in Trash"
 msgstr "Не са открити скали в кошчето"
 
-#: Doer/WordPressEntitiesRegistrator.php:100
+#: Doer/WordPressEntitiesRegistrator.php:102
 msgid "Test Results"
 msgstr "Резултати от теста"
 
-#: Doer/WordPressEntitiesRegistrator.php:101
+#: Doer/WordPressEntitiesRegistrator.php:103
 msgid "Test Result"
 msgstr "Резултат от теста"
 
-#: Doer/WordPressEntitiesRegistrator.php:102
+#: Doer/WordPressEntitiesRegistrator.php:104
 msgid "Add New Result"
 msgstr "Добави нов резултат от теста"
 
-#: Doer/WordPressEntitiesRegistrator.php:103
+#: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Edit Result"
 msgstr "Редактирай резултата"
 
-#: Doer/WordPressEntitiesRegistrator.php:104
+#: Doer/WordPressEntitiesRegistrator.php:106
 msgid "View Result"
 msgstr "Виж резултата"
 
-#: Doer/WordPressEntitiesRegistrator.php:105
+#: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Search Results"
 msgstr "Резултати от търсенето"
 
-#: Doer/WordPressEntitiesRegistrator.php:106
+#: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Parent Result:"
 msgstr "Родителски резултати:"
 
-#: Doer/WordPressEntitiesRegistrator.php:108
+#: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Results"
 msgstr "Резултати"
 
-#: Doer/WordPressEntitiesRegistrator.php:109
+#: Doer/WordPressEntitiesRegistrator.php:111
 msgid "All Results"
 msgstr "Всички резултати"
 
-#: Doer/WordPressEntitiesRegistrator.php:110
+#: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Update Result"
 msgstr "Обнови резултата"
 
-#: Doer/WordPressEntitiesRegistrator.php:111
+#: Doer/WordPressEntitiesRegistrator.php:113
 msgid "New Result Name"
 msgstr "Име на новия резултат"
 
-#: Doer/WordPressEntitiesRegistrator.php:112
+#: Doer/WordPressEntitiesRegistrator.php:114
 msgid "Parent Result"
 msgstr "Родителски резултат"
 
-#: Doer/WordPressEntitiesRegistrator.php:114
+#: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result"
 msgstr "Нов резултат"
 
-#: Doer/WordPressEntitiesRegistrator.php:115
+#: Doer/WordPressEntitiesRegistrator.php:117
 msgid "No Results found"
 msgstr "Не са открити резултати"
 
-#: Doer/WordPressEntitiesRegistrator.php:116
+#: Doer/WordPressEntitiesRegistrator.php:118
 msgid "No Results found in Trash"
 msgstr "Не са открити резултати в кошчето"
 
-#: Doer/WordPressEntitiesRegistrator.php:121
+#: Doer/WordPressEntitiesRegistrator.php:123
 msgid "Test Categories"
 msgstr "Тестови категории"
 
-#: Doer/WordPressEntitiesRegistrator.php:122
+#: Doer/WordPressEntitiesRegistrator.php:124
 msgid "Test Category"
 msgstr "Тестова категория"
 
-#: Doer/WordPressEntitiesRegistrator.php:123
+#: Doer/WordPressEntitiesRegistrator.php:125
 msgid "Add New Category"
 msgstr "Добави нова категория"
 
-#: Doer/WordPressEntitiesRegistrator.php:124
+#: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Edit Category"
 msgstr "Редактиране на категорията"
 
-#: Doer/WordPressEntitiesRegistrator.php:125
+#: Doer/WordPressEntitiesRegistrator.php:127
 msgid "View Category"
 msgstr "Преглед на категорията"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Search Categories"
 msgstr "Търси категории"
 
-#: Doer/WordPressEntitiesRegistrator.php:127
+#: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Parent Category:"
 msgstr "Родителска категория:"
 
-#: Doer/WordPressEntitiesRegistrator.php:129
+#: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Categories"
 msgstr "Категории"
 
-#: Doer/WordPressEntitiesRegistrator.php:130
+#: Doer/WordPressEntitiesRegistrator.php:132
 msgid "All Categories"
 msgstr "Всички категории"
 
-#: Doer/WordPressEntitiesRegistrator.php:131
+#: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Update Category"
 msgstr "Обнови категорията"
 
-#: Doer/WordPressEntitiesRegistrator.php:132
+#: Doer/WordPressEntitiesRegistrator.php:134
 msgid "New Category Name"
 msgstr "Име на новата категория"
 
-#: Doer/WordPressEntitiesRegistrator.php:133
+#: Doer/WordPressEntitiesRegistrator.php:135
 msgid "Parent Category"
 msgstr "Родителска категория"
 
-#: Doer/WordPressEntitiesRegistrator.php:135
+#: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category"
 msgstr "Нова категория"
 
-#: Doer/WordPressEntitiesRegistrator.php:136
+#: Doer/WordPressEntitiesRegistrator.php:138
 msgid "No Categories found"
 msgstr "Не са открити категории"
 
-#: Doer/WordPressEntitiesRegistrator.php:137
+#: Doer/WordPressEntitiesRegistrator.php:139
 msgid "No Categories found in Trash"
 msgstr "Не са открити категории в кошчето"
 
@@ -365,12 +365,12 @@ msgid "Variable"
 msgstr "Променлива"
 
 #: Template/Test/Editor/edit-formulas.php:3
-msgid "Result"
-msgstr "Резултат"
-
-#: Template/Test/Editor/edit-formulas.php:4
 msgid "Formula"
 msgstr "Формула"
+
+#: Template/Test/Editor/edit-formulas.php:4
+msgid "Result"
+msgstr "Резултат"
 
 #: Template/Test/Editor/edit-formulas.php:29
 msgid "No formulas to edit. To edit formulas you must have results selected."
@@ -416,7 +416,7 @@ msgid "Publish on the home page"
 msgstr "Публикувай на началната страница"
 
 #: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:65
+#: Template/Test/Editor/edit-questions.php:67
 msgid "Quick Fill Scores"
 msgstr "Бързо попълване на точките"
 
@@ -436,30 +436,48 @@ msgstr "Отговор"
 msgid "Questions"
 msgstr "Въпрос"
 
-#: Template/Test/Editor/edit-questions.php:86
+#: Template/Test/Editor/edit-questions.php:88
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Няма въпроси за редактиране. Добави нови въроси и те ще се появят тук."
 
-#: Template/Test/Editor/edit-questions.php:94
+#: Template/Test/Editor/edit-questions.php:96
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
 msgstr "Няма точки за редактиране. За да редактирате точките трябва да сте избрали и отговори, и скали."
+
+#: Template/Test/Editor/edit-questions.php:155
+msgid "Add Individual Answers"
+msgstr "Добавяне на индивидуални отговори"
+
+#: Template/Test/Editor/edit-questions.php:156
+#, php-format
+msgid ""
+"— unique to each question. If you have same answers to all test questions, "
+"use the %s"
+msgstr "— уникална за всеки въпрос. Ако имате същите отговори на всички въпроси тест, използвайте %s"
+
+#: Template/Test/Editor/edit-questions.php:160
+msgid ""
+"Add here your individual answers as text; after test saving they will be "
+"extracted and created. Numbers and other indexes will be stripped "
+"automatically."
+msgstr "Добавете тук вашите индивидуални отговори като текст; след тест за записване ще бъдат извлечени и създадени. Номерата и другите индекси ще бъдат премахнати автоматично."
 
 #: Template/Test/Passer/get-results.php:33
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d от %2$d"
 
-#: Template/Test/Passer/fill-form.php:45
+#: Template/Test/Passer/fill-form.php:46
 msgid "Get Test Results"
 msgstr "Виж резултатите"
 
-#: Template/Test/Passer/fill-form.php:48
+#: Template/Test/Passer/fill-form.php:49
 msgid "Test is under construction"
 msgstr "Тестът е в процес на разработка"
 
-#: Template/Test/Passer/fill-form.php:49
+#: Template/Test/Passer/fill-form.php:50
 msgid "You can not get any results from it yet."
 msgstr "Не можете да получите никакви резултати все още."
