@@ -231,7 +231,18 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 
     protected function hasAnswers()
     {
-        return $this->buildGlobalAnswers()->count() > 0;
+        if ($this->buildGlobalAnswers()->count() > 0) {
+            return true;
+        }
+
+        // Find both global and individual answers
+        $questionIds = fRecordSet::build('WpTesting_Model_Question', array(
+            'test_id=' => $this->getId(),
+        ))->getPrimaryKeys();
+
+        return fRecordSet::tally('WpTesting_Model_Answer', array(
+            'question_id=' => $questionIds,
+        )) > 0;
     }
 
     protected function hasScales()
@@ -247,20 +258,10 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function canEditScores()
     {
         return true
-            && $this->hasAnswers()
             && $this->hasScales()
             && $this->hasWpTesting_Model_Questions()
+            && $this->hasAnswers()
         ;
-
-        $questions = fRecordSet::build('WpTesting_Model_Question', array(
-            'test_id=' => $this->getId(),
-        ));
-        if (!$questions->count()) {
-            return false;
-        }
-        /* @var $question WpTesting_Model_Question */
-        $question = $questions->getRecord(0);
-        return $question->hasWpTesting_Model_Scores();
     }
 
     /**
