@@ -41,7 +41,9 @@ describe('Results with formulas', function() {
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '5',
                 '#wpt_score_value_1_0': '5',
-                '#wpt_score_value_2_0': '5'
+                '#wpt_score_value_2_0': '5',
+                '#wpt_answer_title_0_0': 'Yezzzzzzz!',
+                '#wpt_answer_title_1_0': 'I said yes. I confirm it.'
             }, true)
         })
     })

@@ -1,4 +1,4 @@
-describe('Plugin:', function() {
+describe('Plugin_deactivation', function() {
 
     before(function () {
         this.timeout(3600000)
