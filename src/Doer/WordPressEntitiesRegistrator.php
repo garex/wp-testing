@@ -128,7 +128,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                     'search_items'       => __('Search Categories', 'wp-testing'),
                     'parent_item_colon'  => __('Parent Category:', 'wp-testing'),
 
-                    'menu_name'          => __('Categories', 'wp-testing'),
+                    'menu_name'          => __('Test Categories', 'wp-testing'),
                     'all_items'          => __('All Categories', 'wp-testing'),
                     'update_item'        => __('Update Category', 'wp-testing'),
                     'new_item_name'      => __('New Category Name', 'wp-testing'),
