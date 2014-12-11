@@ -116,7 +116,7 @@ describe('Test', function() {
                 'post_title'           : 'Test Not On Home!',
                 'content'              : 'But I am not on home as I am hidden'
             })
-            this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]');
+            this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]')
             this.click('#publish')
         })
 

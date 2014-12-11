@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
         table.find('tr').remove();
 
         $(questions).each(function(i, question) {
-            var inputNameKey = 'wpt_question_title[' + JSON.stringify({"i": startFrom + i, "id": ''}) + ']';
+            var inputNameKey = 'wpt_question_title[' + JSON.stringify({"q": startFrom + i, "id": ''}) + ']';
             firstRow
                 .clone()
                 .addClass(i % 2 ? 'alternate' : 'bar')

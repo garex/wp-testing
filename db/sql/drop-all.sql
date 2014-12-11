@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS wp_t_scores;
 SET FOREIGN_KEY_CHECKS = 1;
 
 DELETE FROM wp_posts WHERE post_title LIKE '%EPI%';
-DELETE FROM wp_terms WHERE slug RLIKE 'answer|scale';
+DELETE FROM wp_terms WHERE term_id > 1;
 DELETE FROM wp_postmeta WHERE post_id NOT IN (
 	SELECT ID FROM wp_posts
 );

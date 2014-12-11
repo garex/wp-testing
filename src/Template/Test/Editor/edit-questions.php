@@ -42,7 +42,7 @@
         </thead>
         <tbody>
         <?php foreach($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <?php foreach($answers as $j => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+            <?php foreach($answers as $j => $answer): /* @var $answer WpTesting_Model_GlobalAnswer */ ?>
                 <tr class="quick-score" data-quick-score-class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getId() ?>">
                 <?php if (0 == $j): ?>
                     <td rowspan="<?php echo count($answers) ?>"><?php echo $scale->getTitle() ?></td>
@@ -106,7 +106,7 @@
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
             <input type="text"
                 name='wpt_question_title[<?php echo json_encode(array(
-                    'i'  => $q,
+                    'q'  => $q,
                     'id' => $question->getId(),
                 ))  ?>]'
                 id="wpt_question_title_<?php echo $q ?>"
@@ -114,22 +114,34 @@
         </td>
     </tr>
     <?php $scoreIndex = 0 ?>
-    <?php foreach($question->getAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <tr>
-            <td class="wpt_answer subtitle"><?php echo $answer->getTitle() ?></td>
+            <td class="wpt_answer subtitle answer-<?php echo $answer->getIndividuality() ?>">
+                <input type="text"
+                    placeholder="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>"
+                    name='wpt_answer_title[<?php echo json_encode(array(
+                        'q'  => $q,
+                        'a'  => $a,
+                        'id' => $answer->getId(),
+                    ))  ?>]'
+                    id="wpt_answer_title_<?php echo $q ?>_<?php echo $a ?>"
+                    value="<?php echo htmlspecialchars($answer->getIndividualTitle()) ?>"
+                    title="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>" />
+            </td>
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
-            <?php $score = $question->getScoreByAnswerAndScale($answer, $scale) ?>
+            <?php $score = $answer->getScoreByScale($scale) ?>
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">
                 <input type="text"
                     placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
                     name='wpt_score_value[<?php echo json_encode(array(
-                        'i'         => $q,
-                        'j'         => $scoreIndex,
+                        'q'         => $q,
+                        'a'         => $a,
+                        's'         => $scoreIndex,
                         'answer_id' => $answer->getId(),
                         'scale_id'  => $scale->getId(),
                     ))  ?>]'
                     data-question-number="<?php echo $q+1 ?>"
-                    class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getId() ?> question-<?php echo $q+1 ?>"
+                    class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getGlobalAnswerId() ?> question-<?php echo $q+1 ?>"
                     id="wpt_score_value_<?php echo $q ?>_<?php echo $scoreIndex ?>"
                     value="<?php echo $score->getValueWithoutZeros() ?>"
                     title="<?php echo htmlspecialchars($scale->getTitle() . ', ' . $answer->getTitle()) ?>" />
@@ -138,6 +150,22 @@
         <?php endforeach ?>
         </tr>
     <?php endforeach ?>
+        <tr><td colspan="<?php echo $fullColspan ?>" class="wpt-add-individual-answers">
+            <p>
+                <a href="#wpt-add-individual-answers-to-question-<?php echo $q ?>" class="toggle"><?php echo __('Add Individual Answers', 'wp-testing') ?></a>
+                <span class="wp-hidden-child howto"><?php echo sprintf(__('— unique to each question. If you have same answers to all test questions, use the %s', 'wp-testing'), '<a href="#wpt_answerdiv">' . __('Test Answers', 'wp-testing') . '</a>') ?></span>
+            </p>
+            <div class="wp-hidden-child">
+                <textarea
+                    placeholder="<?php echo __('Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically.', 'wp-testing') ?>"
+                    name='wpt_question_individual_answers[<?php echo json_encode(array(
+                        'q'  => $q,
+                        'id' => $question->getId(),
+                    ))  ?>]'
+                    id="wpt-add-individual-answers-to-question-<?php echo $q ?>"
+                    rows="5" cols="120"></textarea>
+            </div>
+        </td></tr>
 <?php endforeach ?>
 
 </table>
