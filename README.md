@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.0  
-**Stable tag:** 0.5.4  
+**Stable tag:** 0.6  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -20,6 +20,8 @@ Typical psychological test consists of **questions** and **answers**. A responde
 Inside the box we also have **scales** each connected with the particular answer with **scores** and **results**, that are calculated with the help of **simple formulas** like: "extraversion > 50%". Where "extraversion" is a sum of respondent's scores from extraversion scale. We didn't invent anything new — all this has been already invented in 19th century.
 
 Test answers, scales, results and categories are edited through **wordpress standard editors**, similar to categories editor. You can associate them in sidebar. Whether test questions, answers and formulas are edited with standard wordpress metaboxes, behind content. You can even reorder them if you like. At the top of content editor you have **button for quick access** to those metaboxes: Add New Questions, Edit Questions and Scores, Edit Formulas.
+
+**Answers**  can be global to test — when all questions have the same answers. For example: "Yes", "No", "I'm not sure". Or you can use **individual answers** to add individual answer to each question. And the third option is to use global answers, but individualize their titles: not just "Yes", but "Yes, I do so and so", when you use it for the particular question. Some tests have this pattern.
 
 As to **formulas** you can be sure — we have simple formula editor, that has buttons for each scale (with sum of it's scores) and allowed comparisions.
 
@@ -59,9 +61,9 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar.
-03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores
-04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas
+02. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
+03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers
+04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
 07. Ready test on the home page
@@ -70,5 +72,5 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 10. Get test results after all questions are answered
 11. The results page
 12. The result page contains both the result of the test and the scales that create a result
-13. The example of the test without  scores
-14. A test without scores is shown like a "Test is under construction"
+13. The example of the test without  scores. Some answers are individual and some are individualized
+14. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered

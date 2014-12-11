@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.6 ###
+Individual answers
+
+* Add individual answers feature
+* Update locales for main languages
+* Migrate existing tests on new questions-answers model
+* Allow to individualize answers: custom global answer title for question
+* Use "Test Categories" in admin menu to differ with post categories 
+
+
 ### 0.5.4 ###
 Update German translation
 
