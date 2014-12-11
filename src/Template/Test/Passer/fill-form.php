@@ -1,6 +1,7 @@
 <?php
 // Can be overriden in your theme as entry-content-wpt-test-fill-form.php
 
+/* @var $answerIdName string */
 /* @var $content string */
 /* @var $test WpTesting_Model_Test */
 /* @var $questions WpTesting_Model_Question[] */
@@ -20,16 +21,16 @@
 
         <div class="title">
             <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?></span>
-            <input type="hidden" name="wp_testing_model_passing_answers::answer_id[<?php echo $q ?>]" value="" />
+            <input type="hidden" name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="" />
         </div>
 
-    <?php foreach($question->getAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->buildAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
         <div class="answer">
 
             <input type="radio" id="<?php echo $answerId ?>"
-                name="wp_testing_model_passing_answers::answer_id[<?php echo $q ?>]" value="<?php echo $answer->getId() ?>" />
+                name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="<?php echo $answer->getId() ?>" />
 
             <label for="<?php echo $answerId ?>"><?php echo $answer->getTitle() ?></label>
 

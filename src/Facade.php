@@ -198,16 +198,17 @@ class WpTesting_Facade
         fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',      WPT_DB_PREFIX  . 'questions');
         fORM::mapClassToTable('WpTesting_Model_Taxonomy',      WP_DB_PREFIX   . 'term_taxonomy');
-        fORM::mapClassToTable('WpTesting_Model_Answer',        WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_GlobalAnswer',  WP_DB_PREFIX   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Answer',        WPT_DB_PREFIX  . 'answers');
         fORM::mapClassToTable('WpTesting_Model_Scale',         WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Score',         WPT_DB_PREFIX  . 'scores');
         fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');
-        fORM::mapClassToTable('WpTesting_Model_PassingAnswer', WPT_DB_PREFIX  . 'passing_answers');
         fORM::mapClassToTable('WpTesting_Model_Result',        WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Formula',       WPT_DB_PREFIX  . 'formulas');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');
+        fGrammar::addSingularPluralRule('Answer',   'Answer');
         $schema = fORMSchema::retrieve('name:default');
         $fkOptions = array(
             'on_delete'      => 'cascade',
@@ -225,13 +226,8 @@ class WpTesting_Facade
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'answer_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'terms',
-                'foreign_column' => 'term_id',
-            ) + $fkOptions,
-            array(
-                'column'         => 'question_id',
-                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
-                'foreign_column' => 'question_id',
+                'foreign_table'  => WPT_DB_PREFIX   . 'answers',
+                'foreign_column' => 'answer_id',
             ) + $fkOptions,
             array(
                 'column'         => 'scale_id',
@@ -256,13 +252,8 @@ class WpTesting_Facade
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'answer_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'terms',
-                'foreign_column' => 'term_id',
-            ) + $fkOptions,
-            array(
-                'column'         => 'question_id',
-                'foreign_table'  => WPT_DB_PREFIX  . 'questions',
-                'foreign_column' => 'question_id',
+                'foreign_table'  => WPT_DB_PREFIX   . 'answers',
+                'foreign_column' => 'answer_id',
             ) + $fkOptions,
             array(
                 'column'         => 'passing_id',
@@ -305,6 +296,19 @@ class WpTesting_Facade
                 'foreign_column' => 'term_id',
             ) + $fkOptions,
         ), WP_DB_PREFIX . 'term_taxonomy', 'foreign');
+
+        $schema->setKeysOverride(array(
+            array(
+                'column'         => 'question_id',
+                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
+                'foreign_column' => 'question_id',
+            ) + $fkOptions,
+            array(
+                'column'         => 'global_answer_id',
+                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_column' => 'term_id',
+            ) + $fkOptions,
+        ), WPT_DB_PREFIX  . 'answers', 'foreign');
 
         $this->isOrmSettedUp = true;
     }

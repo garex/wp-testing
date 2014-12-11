@@ -5,7 +5,8 @@ set -e
 
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
-WP_VERSION=${WP_VERSION:-4.0}
+WP_VERSION=${WP_VERSION:-4.0.1}
+PLUGINS=${PLUGINS:-}
 
 function init {
     log 'Define vars'
@@ -19,7 +20,7 @@ function db {
     log 'Creating DB and user'
     sudo mysql --execute '
         DROP DATABASE IF EXISTS wpti;
-        CREATE DATABASE wpti;
+        CREATE DATABASE wpti DEFAULT CHARACTER SET utf8;
 
         GRANT USAGE ON wpti.* TO wpti;
         DROP USER wpti;
@@ -114,6 +115,23 @@ function install_plugin {
     cd $HERE
 }
 
+function install_other_plugins {
+    [[ "$PLUGINS" == "" ]] && return 0
+
+    log 'Installing other plugins'
+    cd /tmp/wpti
+    items=(${PLUGINS//:/ })
+    for i in "${!items[@]}"
+    do
+        PLUGIN_NAME="${items[i]}"
+        PLUGIN_URL="https://downloads.wordpress.org/plugin/$PLUGIN_NAME.zip"
+        log ".. $PLUGIN_NAME"
+
+        wget --no-clobber $PLUGIN_URL
+        unzip -oq $PLUGIN_NAME.zip -d /tmp/wpti/wordpress/wp-content/plugins/
+    done
+}
+
 function log {
     local message=$1
     local now=$(date)
@@ -129,6 +147,7 @@ function main {
     php_cgi
     install_wp
     set_db_engine
+    install_other_plugins
     install_plugin
     log 'Done.'
 }

@@ -12,16 +12,16 @@
 </div>
 
 <table class="widefat wpt_questions" data-start-from="<?php echo $startFrom ?>">
-<?php foreach(range(0, $addNewCount) as $i): ?>
-    <tr class="wpt_question <?php echo ($i%2) ? 'alternate' :'bar' ?>">
+<?php foreach(range(0, $addNewCount) as $q): ?>
+    <tr class="wpt_question <?php echo ($q%2) ? 'alternate' :'bar' ?>">
         <th class="wpt_number">
             *
         </th>
         <td class="wpt_title">
             <input type="text" name='wpt_question_title[<?php echo json_encode(array(
-                'i'  => $startFrom + $i,
+                'q'  => $startFrom + $q,
                 'id' => '',
-            ))  ?>]' id="wpt_question_title_<?php echo $startFrom + $i ?>" />
+            ))  ?>]' id="wpt_question_title_<?php echo $startFrom + $q ?>" />
         </td>
     </tr>
 <?php endforeach ?>

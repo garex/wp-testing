@@ -41,7 +41,9 @@ describe('Results with formulas', function() {
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '5',
                 '#wpt_score_value_1_0': '5',
-                '#wpt_score_value_2_0': '5'
+                '#wpt_score_value_2_0': '5',
+                '#wpt_answer_title_0_0': 'Yezzzzzzz!',
+                '#wpt_answer_title_1_0': 'I said yes. I confirm it.'
             }, true)
         })
     })
@@ -50,7 +52,7 @@ describe('Results with formulas', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source=">"]')
-            this.sendKeys('#wpt_formula_source_0', '10');
+            this.sendKeys('#wpt_formula_source_0', '10')
             this.click('#publish')
         })
 
@@ -64,9 +66,10 @@ describe('Results with formulas', function() {
 
     it('should error when formulas is bad', function() {
         casper.then(function() {
+            this.click('#wpt_formula_source_1')
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source="<="]')
-            this.sendKeys('#wpt_formula_source_1', 'nothing');
+            this.sendKeys('#wpt_formula_source_1', 'nothing')
             this.click('#publish')
         })
 
@@ -75,6 +78,38 @@ describe('Results with formulas', function() {
             'Test data not saved'.should.be.textInDOM
             'Formula for Melancholic has error'.should.be.textInDOM
             this.clickLabel('« Back')
+        })
+    })
+
+    it('should be saved when formulas contains non-english slugs that should be unencoded', function() {
+        casper.then(function() {
+            this.sendKeys('#wpt_formula_source_1', '', {reset: true})
+            this.click('#wpt_scale-add-toggle')
+            this.sendKeys('#newwpt_scale', 'свобода')
+            this.click('#wpt_scale-add-submit')
+            this.waitForSelectorTextChange('#wpt_scalechecklist', function() {
+                this.click('#publish')
+            })
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            this.click('#wpt_formula_source_1')
+            this.click('.wpt_formulas_helper input[data-source="свобода"]')
+            this.click('.wpt_formulas_helper input[data-source=">"]')
+            this.sendKeys('#wpt_formula_source_1', '0')
+            'wpt_formula_source_1.value'.should.evaluate.to.be.equal('свобода > 0')
+            this.click('#publish')
+
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'Test data not saved'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            '#wpt_edit_formulas .wpt_result'.should.be.inDOM
+            'wpt_formula_source_1.value'.should.evaluate.to.be.equal('свобода > 0')
         })
     })
 })

@@ -1,4 +1,4 @@
-describe('Plugin', function() {
+describe('Plugin_activation', function() {
 
     before(function () {
         this.timeout(3600000)
@@ -12,16 +12,21 @@ describe('Plugin', function() {
     })
 
     it('should be activated', function() {
-       casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {
-           expect(/Plugins/).to.matchTitle
-           '.plugin-title'.should.contain.text('Wp-testing')
-           '#wp-testing .activate a'.should.be.inDOM
-           this.click('#wp-testing .activate a')
-       })
+        casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {
+            expect(/Plugins/).to.matchTitle
+            'Wp-testing'.should.be.textInDOM
+            this.click('#cb input')
+            '#wpbody-content .wrap form'.should.be.inDOM
+            this.evaluate(function() {
+                jQuery('.wrap form select:first').val('activate-selected')
+            })
+            this.click('#doaction')
+        })
 
-       casper.then(function() {
-           '#wp-testing .deactivate a'.should.be.inDOM
-       })
+        casper.waitForUrl(/activate/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#wp-testing .deactivate a'.should.be.inDOM
+        }, null, 10000)
     })
 
 })

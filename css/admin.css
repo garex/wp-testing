@@ -26,6 +26,11 @@ table.wpt_questions {
     text-align: right;
 }
 
+.wpt_questions .wpt_answer input {
+    width: 100%;
+    min-width: 10em;
+}
+
 .wpt_questions .wpt_scale {
     text-align: center;
 }
@@ -86,4 +91,15 @@ table.wpt_quick_scores td.score input {
 }
 table.wpt_quick_scores td.questions input {
     width: 100%;
+}
+
+.wpt-add-individual-answers span.howto {
+    display: inline;
+}
+.wpt-add-individual-answers.wp-hidden-children span.howto.wp-hidden-child {
+    display: none;
+}
+.wpt-add-individual-answers textarea {
+    height: 5em;
+    width: 100%;    
 }
