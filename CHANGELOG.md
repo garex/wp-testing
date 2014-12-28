@@ -2,6 +2,10 @@
 ## Changelog ##
 
 
+### 0.6.1 ###
+Fix apostrophe problem (slashes) and update tests to be compatible to WP 4.1
+
+
 ### 0.6 ###
 Individual answers
 

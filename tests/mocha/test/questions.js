@@ -78,7 +78,7 @@ describe('Questions', function() {
         casper.then(function() {
             this.clickLabel('Quick Fill From Text', 'a')
             this.fillSelectors('form#post', {
-                '#wpt_quick_fill_questions textarea': '1. Cool. \n2. Quick\n3. Question\n'
+                '#wpt_quick_fill_questions textarea': '1. Cool. \n2. "Quick"\n3. Question\n'
             })
             this.click('#wpt_quick_fill_questions .button')
             this.fill('form#post', {}, true)
@@ -88,7 +88,7 @@ describe('Questions', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_question_title_2.value'.should.evaluate.to.be.equal('Cool.')
-            'wpt_question_title_3.value'.should.evaluate.to.be.equal('Quick')
+            'wpt_question_title_3.value'.should.evaluate.to.be.equal('"Quick"')
             'wpt_question_title_4.value'.should.evaluate.to.be.equal('Question')
             'wpt_question_title_5.value'.should.evaluate.to.be.equal('')
         })
@@ -101,6 +101,7 @@ describe('Questions', function() {
 
         casper.waitForUrl(/wpt_test/, function() {
             'Fatal'.should.not.be.textInDOM
+            '"Quick"'.should.be.textInDOM
             '.wpt_test.fill_form'.should.be.inDOM
             'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(5)
         })

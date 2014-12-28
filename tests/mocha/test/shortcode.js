@@ -18,10 +18,10 @@ describe('Shortcode', function() {
             })
 
             this.evaluate(function() {
-                jQuery('#post-body-content a').filter(':contains("Visual")').prev().addClass('__text_tab_here')
+                jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
             })
 
-            this.click('a.__text_tab_here')
+            this.click('.__text_tab_here')
 
             this.fillSelectors('form#post', {
                 '#title'   : 'Hi World!',
