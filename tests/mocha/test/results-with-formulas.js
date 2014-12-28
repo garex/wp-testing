@@ -52,7 +52,7 @@ describe('Results with formulas', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source=">"]')
-            this.sendKeys('#wpt_formula_source_0', '10')
+            this.sendKeys('#wpt_formula_source_0', '10 "nothing"')
             this.click('#publish')
         })
 
@@ -60,7 +60,7 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
-            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10 "nothing"')
         })
     })
 
@@ -69,7 +69,7 @@ describe('Results with formulas', function() {
             this.click('#wpt_formula_source_1')
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source="<="]')
-            this.sendKeys('#wpt_formula_source_1', 'nothing')
+            this.sendKeys('#wpt_formula_source_1', '"nothing"')
             this.click('#publish')
         })
 

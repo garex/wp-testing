@@ -21,9 +21,9 @@ describe('Test', function() {
             'Add New Test'.should.be.inTitle
 
             this.evaluate(function() {
-                jQuery('#post-body-content a').filter(':contains("Visual")').prev().addClass('__text_tab_here')
+                jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
             })
-            this.click('a.__text_tab_here')
+            this.click('.__text_tab_here')
 
             this.fill('form#post', {
                 'post_title' : 'Are You Hot or Not?',

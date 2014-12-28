@@ -11,6 +11,12 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected $columnAliases = array();
 
+    public function populate($recursive = false)
+    {
+        parent::populate($recursive);
+
+        return $this->stripValuesSlashes();
+    }
 
     /**
      * Generates phpdoc for class
@@ -110,6 +116,22 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             return iconv_strlen($string);
         }
         return strlen($string);
+    }
+
+    /**
+     * Strip slashes from values.
+     * It's an antipod of wp_magic_quotes.
+     * @return WpTesting_Model_AbstractModel
+     */
+    private function stripValuesSlashes()
+    {
+        foreach ($this->values as $key => $value) {
+            if (is_string($value) && strstr($value, '\\') !== false) {
+                $this->values[$key] = stripslashes($value);
+            }
+        }
+
+        return $this;
     }
 
 }
