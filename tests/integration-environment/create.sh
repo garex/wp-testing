@@ -5,7 +5,7 @@ set -e
 
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
-WP_VERSION=${WP_VERSION:-4.0.1}
+WP_VERSION=${WP_VERSION:-4.1}
 PLUGINS=${PLUGINS:-}
 
 function init {
