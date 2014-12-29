@@ -35,6 +35,17 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
         }
     }
 
+    public function inheritPostClassesToTest($classes)
+    {
+        if (in_array('wpt_test', $classes)) {
+            $classes[] = 'post';
+            $classes[] = 'type-post';
+        } elseif (in_array('single-wpt_test', $classes)) {
+            $classes[] = 'single-post';
+        }
+        return $classes;
+    }
+
     /**
      * @param WP_Query $query
      * @return array
