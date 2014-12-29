@@ -13,7 +13,7 @@
     <?php echo $content ?>
 </div>
 
-<form method="post" id="wpt-test-form">
+<div class="content"><form method="post" id="wpt-test-form">
 
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
 
@@ -51,6 +51,6 @@
     </div>
 <?php endif ?>
 
-</form>
+</form></div>
 
 </div>
