@@ -120,6 +120,10 @@ class WpTesting_Facade
      */
     public function setupPostBrowser($query)
     {
+        $this->wp
+            ->addFilter('post_class', array($this->getPostBrowser(),  'inheritPostClassesToTest'))
+            ->addFilter('body_class', array($this->getPostBrowser(),  'inheritPostClassesToTest'))
+        ;
         return $this->getPostBrowser()->addTestsToQuery($query);
     }
 
