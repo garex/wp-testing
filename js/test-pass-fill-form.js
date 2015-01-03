@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
-    var form = $('#wpt-test-form');
+    var form = $('#wpt-test-form'),
+        _    = lodash;
 
     if (0 == form.length) {
         return;

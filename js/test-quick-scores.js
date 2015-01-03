@@ -4,7 +4,8 @@ jQuery(document).ready(function($) {
         targetTable = $('#wpt_edit_questions table.wpt_questions'),
         toggle      = box.find('.toggle'),
         panel       = box.find('.wp-hidden-child'),
-        ok          = box.find('.button');
+        ok          = box.find('.button'),
+        _           = lodash;
 
     toggle.click(function() {
         fillUpSourceTableFromTarget();
