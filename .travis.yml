@@ -26,7 +26,7 @@ matrix:
     - php: 5.3
       env: DB_ENGINE=MyISAM
     - php: 5.4
-      env: PLUGINS=akismet.3.0.3:jetpack.3.2.1:wordpress-seo.1.7:wordfence.5.3.3:contact-form-7.4.0.1:google-sitemap-generator.4.0.8
+      env: PLUGINS=akismet.3.0.4:jetpack.3.3:wordpress-seo.1.7.1:wordfence.5.3.4:contact-form-7.4.0.3:google-sitemap-generator.4.0.8
 
 addons:
   hosts:

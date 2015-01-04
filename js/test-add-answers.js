@@ -6,7 +6,8 @@ jQuery(document).ready(function($) {
         individualAnswers       = superBox.find('.wpt-add-individual-answers'),
         individualAnswersPanels = individualAnswers.find('.wp-hidden-child'),
         toggledPanels           = [],
-        isAllToggled            = false;
+        isAllToggled            = false,
+        _                       = lodash;
 
     individualAnswers.each(function () {
         var box     = $(this),
