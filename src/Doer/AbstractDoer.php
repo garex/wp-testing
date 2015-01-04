@@ -20,7 +20,8 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function registerScripts()
     {
         $this->wp
-            ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
+            ->registerPluginScript('lodash-source', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
+            ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.no-conflict.js', array('lodash-source'))
         ;
     }
 

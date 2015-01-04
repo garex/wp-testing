@@ -23,4 +23,6 @@ $table_prefix = 'wp_';
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
 
+defined('JETPACK_DEV_DEBUG') or define('JETPACK_DEV_DEBUG', true);
+
 require_once(ABSPATH . 'wp-settings.php');
