@@ -2,6 +2,10 @@
 ## Changelog ##
 
 
+### 0.6.3 ###
+Fix featured image incompatibilities with Jetpack shortcode module
+
+
 ### 0.6.2 ###
 Inherit post's CSS classes onto test
 
