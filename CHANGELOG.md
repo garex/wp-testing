@@ -2,6 +2,10 @@
 ## Changelog ##
 
 
+### 0.6.4 ###
+Italian translation added
+
+
 ### 0.6.3 ###
 Fix featured image incompatibilities with Jetpack shortcode module
 
