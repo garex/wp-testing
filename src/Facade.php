@@ -43,11 +43,12 @@ class WpTesting_Facade
     {
         $this->migrateDatabase(array(__FILE__, 'db:migrate'));
         $this->registerWordPressEntities();
+        $this->wp->getRewrite()->flush_rules();
     }
 
     public function onPluginDeactivate()
     {
-        // do nothing currently
+        $this->wp->getRewrite()->flush_rules();
     }
 
     public static function onPluginUninstall()
@@ -56,6 +57,7 @@ class WpTesting_Facade
         $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
+        $me->wp->getRewrite()->flush_rules();
     }
 
     public function shortcodeList()

@@ -145,8 +145,6 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                 ),
             ))
         ;
-
-        $this->wp->getRewrite()->flush_rules();
     }
 
     protected function addTaxonomy($name, $parameters = array())
