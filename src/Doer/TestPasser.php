@@ -33,6 +33,19 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         }
         $this->test = new WpTesting_Model_Test($object);
         $action     = $this->getTestPassingAction();
+        $isDie      = (self::ACTION_FILL_FORM != $action && !$this->test->isFinal());
+        if ($isDie) {
+            $this->wp->dieMessage(
+                __('You can not get any results from it yet.', 'wp-testing'),
+                __('Test is under construction', 'wp-testing'),
+                array(
+                    'back_link' => true,
+                    'response' => 403,
+                )
+            );
+            return $this;
+        }
+
         $this->wp
             ->enqueuePluginStyle('wpt_public', 'css/public.css')
             ->enqueuePluginScript('wpt_test_pass_' . $action, 'js/test-pass-' . $action . '.js', array('jquery', 'lodash'), false, true)
