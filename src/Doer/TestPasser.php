@@ -43,6 +43,16 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     public function renderTestContent($content)
     {
+        // Protection for calling the_content filter not on current test content
+        $isSimilar = 50 > levenshtein(
+            $this->prepareToLevenshein($this->test->getContent()),
+            $this->prepareToLevenshein($content)
+        );
+        if (!$isSimilar) {
+            return $content;
+        }
+
+        // Protection for many times calling the_content filter
         if (!is_null($this->filteredTestContent)) {
             return $this->filteredTestContent;
         }
@@ -72,6 +82,11 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
         $this->filteredTestContent = preg_replace_callback('|<form.+</form>|s', array($this, 'stripNewLines'), $this->render($template, $params));
         return $this->filteredTestContent;
+    }
+
+    private function prepareToLevenshein($input)
+    {
+        return substr(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($input))), 0, 255);
     }
 
     private function stripNewLines($matches)

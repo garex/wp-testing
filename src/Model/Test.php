@@ -8,6 +8,7 @@
  * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
  * @method fTimestamp getModified() getModified() Gets the current value of modified
  * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method string getContent() getContent() Gets the current value of content
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
@@ -17,6 +18,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'title'     => 'post_title',
         'created'   => 'post_date',
         'modified'  => 'post_modified',
+        'content'   => 'post_content',
     );
 
     /**
