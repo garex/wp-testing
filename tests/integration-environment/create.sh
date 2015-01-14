@@ -10,6 +10,7 @@ PLUGINS=${PLUGINS:-}
 
 function init {
     log 'Define vars'
+    sudo apt-get update
     sudo apt-get install realpath
     # sudo apt-get install mutt
     HERE=$(dirname $(realpath $0))
