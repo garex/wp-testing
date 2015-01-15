@@ -92,6 +92,17 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * WordPress Object
+     * @global object $wp
+     * @since 2.0.0
+     * @return WP
+     */
+    public function getWP()
+    {
+       return $GLOBALS['wp'];
+    }
+
+    /**
      * Main WordPress Query
      *
      * @since 1.5.0
@@ -315,6 +326,72 @@ class WpTesting_WordPressFacade
     public function getPermalink($id = 0, $isLeaveName = false)
     {
         return get_permalink($id, $isLeaveName);
+    }
+
+    /**
+     * Retrieve the permalink for a post with a custom post type.
+     *
+     * @since 3.0.0
+     *
+     * @param int $id Optional. Post ID.
+     * @param bool $isLeavename Optional, defaults to false. Whether to keep post name.
+     * @param bool $isSample Optional, defaults to false. Is it a sample permalink.
+     * @return string The post permalink.
+     */
+    public function getPostPermalink($id = 0, $isLeavename = false, $isSample = false)
+    {
+        return get_post_permalink($id, $isLeavename, $isSample);
+    }
+
+    /**
+     * Redirects to another page.
+     *
+     * @since 1.5.1
+     *
+     * @param string $location The path to redirect to.
+     * @param int $status Status code to use.
+     * @return bool False if $location is not provided, true otherwise.
+     */
+    function redirect($location, $status = 302)
+    {
+        return wp_redirect($location, $status);
+    }
+
+    /**
+     * Get salt to add to hashes.
+     *
+     * Salts are created using secret keys. Secret keys are located in two places:
+     * in the database and in the wp-config.php file. The secret key in the database
+     * is randomly generated and will be appended to the secret keys in wp-config.php.
+     *
+     * The secret keys in wp-config.php should be updated to strong, random keys to maximize
+     * security. Below is an example of how the secret key constants are defined.
+     * Do not paste this example directly into wp-config.php. Instead, have a
+     * {@link https://api.wordpress.org/secret-key/1.1/salt/ secret key created} just
+     * for you.
+     *
+     *     define('AUTH_KEY',         ' Xakm<o xQy rw4EMsLKM-?!T+,PFF})H4lzcW57AF0U@N@< >M%G4Yt>f`z]MON');
+     *     define('SECURE_AUTH_KEY',  'LzJ}op]mr|6+![P}Ak:uNdJCJZd>(Hx.-Mh#Tz)pCIU#uGEnfFz|f ;;eU%/U^O~');
+     *     define('LOGGED_IN_KEY',    '|i|Ux`9<p-h$aFf(qnT:sDO:D1P^wZ$$/Ra@miTJi9G;ddp_<q}6H1)o|a +&JCM');
+     *     define('NONCE_KEY',        '%:R{[P|,s.KuMltH5}cI;/k<Gx~j!f0I)m_sIyu+&NJZ)-iO>z7X>QYR0Z_XnZ@|');
+     *     define('AUTH_SALT',        'eZyT)-Naw]F8CwA*VaW#q*|.)g@o}||wf~@C-YSt}(dh_r6EbI#A,y|nU2{B#JBW');
+     *     define('SECURE_AUTH_SALT', '!=oLUTXh,QW=H `}`L|9/^4-3 STz},T(w}W<I`.JjPi)<Bmf1v,HpGe}T1:Xt7n');
+     *     define('LOGGED_IN_SALT',   '+XSqHc;@Q*K_b|Z?NC[3H!!EONbh.n<+=uKR:>*c(u`g~EJBf#8u#R{mUEZrozmm');
+     *     define('NONCE_SALT',       'h`GXHhD>SLWVfg1(1(N{;.V!MoE(SfbA_ksP@&`+AycHcAV$+?@3q+rxV{%^VyKT');
+     *
+     * Salting passwords helps against tools which has stored hashed values of
+     * common dictionary strings. The added values makes it harder to crack.
+     *
+     * @since 2.5.0
+     *
+     * @link https://api.wordpress.org/secret-key/1.1/salt/ Create secrets for wp-config.php
+     *
+     * @param string $scheme Authentication scheme (auth, secure_auth, logged_in, nonce)
+     * @return string Salt value
+     */
+    public function getSalt($scheme = 'auth')
+    {
+        return wp_salt($scheme);
     }
 
     /**

@@ -9,7 +9,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     const ACTION_FILL_FORM = 'fill-form';
 
     /**
-     * After form filled and button clicked, we show results page with scales
+     * After form filled and button clicked, we process it and redirect to passing result
+     */
+    const ACTION_PROCESS_FORM = 'process-form';
+
+    /**
+     * After form processed and redirected, we show results page with scales of concrete passing
      */
     const ACTION_GET_RESULTS = 'get-results';
 
@@ -17,6 +22,11 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
      * @var WpTesting_Model_Test
      */
     private $test = null;
+
+    /**
+     * @var WpTesting_Model_Passing
+     */
+    private $passing = null;
 
     /**
      * Protection for many times calling the_content filter
@@ -31,12 +41,16 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         if (!$isPassingPage) {
             return $this;
         }
+
         $this->test = new WpTesting_Model_Test($object);
         $action     = $this->getTestPassingAction();
         $isDie      = (self::ACTION_FILL_FORM != $action && !$this->test->isFinal());
         if ($isDie) {
             $this->wp->dieMessage(
-                __('You can not get any results from it yet.', 'wp-testing'),
+                $this->render('Test/Passer/respondent-message', array(
+                    'title'   => __('Test is under construction', 'wp-testing'),
+                    'content' => __('You can not get any results from it yet.', 'wp-testing'),
+                )),
                 __('Test is under construction', 'wp-testing'),
                 array(
                     'back_link' => true,
@@ -44,6 +58,63 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 )
             );
             return $this;
+        }
+
+        if (self::ACTION_PROCESS_FORM == $action) {
+            $passing = new WpTesting_Model_Passing();
+            $passing->populate($this->test);
+
+            try {
+                $passing->store(true);
+
+                $link = rtrim($this->wp->getPostPermalink($this->test->getId()), '/&');
+                $slug = $passing->getSlug($this->wp->getSalt());
+                if ($this->wp->getRewrite()->using_permalinks()) {
+                    $link .= '/' . $slug . '/';
+                } else {
+                    $link .= '&wpt_passing_slug=' . $slug;
+                }
+                $this->wp->redirect($link);
+
+                return $this;
+            } catch (fValidationException $e) {
+                $title   = __('Test data not valid', 'wp-testing');
+                $message = __('You passed not valid data to test.', 'wp-testing');
+                $this->wp->dieMessage(
+                    $this->render('Test/Passer/respondent-message', array(
+                        'title'   => $title,
+                        'content' => $message,
+                        'details' => $e->getMessage(),
+                    )),
+                    $title,
+                    array(
+                        'back_link' => true,
+                        'response'  => 400,
+                    )
+                );
+            }
+        } elseif (self::ACTION_GET_RESULTS == $action) {
+            try {
+                $this->passing = new WpTesting_Model_Passing(
+                    $this->wp->getQuery()->get('wpt_passing_slug'),
+                    $this->wp->getSalt()
+                );
+                if (!$this->passing->getId()) {
+                    throw new fNotFoundException();
+                }
+            } catch (fNotFoundException $e) {
+                $this->wp->dieMessage(
+                    $this->render('Test/Passer/respondent-message', array(
+                        'title'   => __('Test result not found', 'wp-testing'),
+                        'content' => __('You can not get anything from nothing.', 'wp-testing'),
+                    )),
+                    __('Test result not found', 'wp-testing'),
+                    array(
+                        'back_link' => true,
+                        'response' => 404,
+                    )
+                );
+            }
         }
 
         $this->wp
@@ -82,14 +153,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'isFinal'      => $this->test->isFinal(),
             );
         } elseif (self::ACTION_GET_RESULTS == $action) {
-            $passing = new WpTesting_Model_Passing();
-            $passing->populate($this->test);
-            $params = array(
+            $params  = array(
                 'content'    => $content,
                 'test'       => $this->test,
-                'passing'    => $passing,
-                'scales'     => $passing->buildScalesWithRangeOnce(),
-                'results'    => $passing->buildResults(),
+                'passing'    => $this->passing,
+                'scales'     => $this->passing->buildScalesWithRangeOnce(),
+                'results'    => $this->passing->buildResults(),
             );
         }
 
@@ -109,6 +178,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     private function getTestPassingAction()
     {
-        return $this->isPost() ? self::ACTION_GET_RESULTS : self::ACTION_FILL_FORM;
+        if ($this->wp->getQuery()->get('wpt_passing_slug')) {
+            return self::ACTION_GET_RESULTS;
+        }
+        if ($this->isPost()) {
+            return self::ACTION_PROCESS_FORM;
+        }
+        return self::ACTION_FILL_FORM;
     }
 }
