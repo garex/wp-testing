@@ -15,6 +15,8 @@
         , "ruckusing/ruckusing-migrations": "1.0.3"
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
+        , "samyk/evercookie": "dev-2014-10-21"
+        , "pnegri/uuid-js": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -65,6 +67,32 @@
                     "type": "zip"
                 },
                 "version": "1.0.3"
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "samyk/evercookie",
+                "type": "library",
+                "version": "dev-2014-10-21",
+                "source": {
+                    "url": "https://github.com/samyk/evercookie.git",
+                    "type": "git",
+                    "reference": "f789665f15d746618c553d0a29a2d97f78f60c21"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pnegri/uuid-js",
+                "type": "library",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/pnegri/uuid-js",
+                    "type": "git",
+                    "reference": "32d4aac39bca32726dbd8689b86515de7b09bdcc"
+                }
             }
         },
         {

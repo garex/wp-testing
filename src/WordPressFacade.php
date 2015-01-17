@@ -225,6 +225,20 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve a URL within the plugin
+     *
+     * @since 2.6.0
+     *
+     * @param  string $pluginRelatedPath Optional. Extra path appended to the end of the URL, including
+     *                                    the relative directory. Default empty.
+     * @return string Plugin URL link with optional paths appended.
+     */
+    public function getPluginUrl($pluginRelatedPath = '')
+    {
+        return plugins_url($pluginRelatedPath, $this->pluginFile);
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
@@ -235,7 +249,7 @@ class WpTesting_WordPressFacade
      */
     public function enqueuePluginStyle($name, $pluginRelatedPath)
     {
-        wp_enqueue_style($name, plugins_url($pluginRelatedPath, $this->pluginFile));
+        wp_enqueue_style($name, $this->getPluginUrl($pluginRelatedPath));
         return $this;
     }
 
@@ -253,7 +267,7 @@ class WpTesting_WordPressFacade
      */
     public function enqueuePluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
-        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        $path = $this->getPluginUrl($pluginRelatedPath);
         wp_enqueue_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
     }
@@ -275,7 +289,7 @@ class WpTesting_WordPressFacade
      */
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
-        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        $path = $this->getPluginUrl($pluginRelatedPath);
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
     }
@@ -297,6 +311,32 @@ class WpTesting_WordPressFacade
     public function loadPluginTextdomain($domain, $absoluteRelativePath = false, $pluginsRelativePath = false)
     {
         return load_plugin_textdomain($domain, $absoluteRelativePath, $pluginsRelativePath);
+    }
+
+    /**
+     * Localize a script.
+     *
+     * Works only if the script has already been added.
+     *
+     * Accepts an associative array $l10n and creates a JavaScript object:
+     *
+     *     "$object_name" = {
+     *         key: value,
+     *         key: value,
+     *         ...
+     *     }
+     *
+     * @since 2.6.0
+     *
+     * @param string $handle      Script handle the data will be attached to.
+     * @param string $objectName  Name for the JavaScript object. Passed directly, so it should be qualified JS variable.
+     *                            Example: '/[a-zA-Z0-9_]+/'.
+     * @param array $l10n         The data itself. The data can be either a single or multi-dimensional array.
+     * @return bool True if the script was successfully localized, false otherwise.
+     */
+    public function localizeScript($handle, $objectName, $l10n)
+    {
+        return wp_localize_script($handle, $objectName, $l10n);
     }
 
     /**

@@ -9,6 +9,10 @@
  * @method WpTesting_Model_Passing setCreated() setCreated(fTimestamp|string $created) Sets the value for created
  * @method fTimestamp getModified() getModified() Gets the current value of modified
  * @method WpTesting_Model_Passing setModified() setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method integer getIp() getIp() Gets the current value of ip
+ * @method WpTesting_Model_Passing setIp() setIp(string $ip) Sets the value for ip
+ * @method integer getDeviceUuid() getDeviceUuid() Gets the current value of device's uuid
+ * @method WpTesting_Model_Passing setDeviceUuid() setDeviceUuid(string $uuid) Sets the value for device's uuid
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 {

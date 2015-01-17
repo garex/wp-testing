@@ -62,7 +62,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
         if (self::ACTION_PROCESS_FORM == $action) {
             $passing = new WpTesting_Model_Passing();
-            $passing->populate($this->test);
+            $passing->populate($this->test)
+                ->setIp($this->getClientIp())
+                ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE));
 
             try {
                 $passing->store(true);
@@ -115,6 +117,15 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                     )
                 );
             }
+        } elseif (self::ACTION_FILL_FORM == $action) {
+            $this->wp
+                ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
+                ->enqueuePluginScript('samyk_swfobject',  'vendor/samyk/evercookie/js/swfobject-2.2.min.js', array(),     false, true)
+                ->enqueuePluginScript('samyk_evercookie', 'vendor/samyk/evercookie/js/evercookie.js',  array(),           false, true)
+                ->localizeScript('samyk_evercookie', 'wpt_evercookie', array(
+                    'baseurl' => $this->wp->getPluginUrl('vendor/samyk/evercookie'),
+                ))
+            ;
         }
 
         $this->wp
@@ -185,5 +196,24 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return self::ACTION_PROCESS_FORM;
         }
         return self::ACTION_FILL_FORM;
+    }
+
+    private function extractUuid($key, $data) {
+        $candidates = array();
+
+        foreach ($data as $candidateKey => $candidateValue) {
+            if (!preg_match('/' . preg_quote($key) . '$/', $candidateKey)) {
+                continue;
+            }
+            if (!preg_match('/^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i', $candidateValue)) {
+                continue;
+            }
+            $candidates[] = strtolower($candidateValue);
+        }
+
+        $candidatesCounts = array_count_values($candidates);
+        arsort($candidatesCounts);
+
+        return key($candidatesCounts);
     }
 }
