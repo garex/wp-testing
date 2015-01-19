@@ -21,7 +21,7 @@ describe('Results with formulas', function() {
             'Add New Test'.should.be.inTitle
 
             this.fillSelectors('form#post', {
-                '#title': 'Test With Results',
+                '#title': 'Test Containing Results',
                 '#wpt_question_title_0': 'Question 1?',
                 '#wpt_question_title_1': 'Question 2?',
                 '#wpt_question_title_2': 'Question 3?'
