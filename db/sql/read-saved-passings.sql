@@ -1,0 +1,1 @@
+SELECT * FROM wp_t_passings;

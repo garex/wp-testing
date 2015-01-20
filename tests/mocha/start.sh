@@ -6,6 +6,7 @@ set -e
 # Define vars
 HERE=$(dirname $(realpath $0))
 TRAVIS_BUILD_DIR=$(realpath $HERE/../..)
+export IS_APT_UPDATE=0
 
 # Prepare environment
 cd $TRAVIS_BUILD_DIR
@@ -16,5 +17,5 @@ export PATH=$PATH:./node_modules/.bin/
 export TZ="UTC"
 
 # Run tests
-mocha-casperjs --grep=Plugin_activation
+mocha-casperjs --grep=Plugin_activation --timeout=360000
 mocha-casperjs --grep=Plugin --invert

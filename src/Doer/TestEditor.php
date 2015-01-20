@@ -116,7 +116,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $test->populateFormulas();
 
         try {
-            $problems = $test->validate();
             $test->store(true);
             $test->syncQuestionsAnswers();
         } catch (fValidationException $e) {

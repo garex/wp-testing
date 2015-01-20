@@ -15,6 +15,8 @@
         , "ruckusing/ruckusing-migrations": "1.0.3"
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
+        , "samyk/evercookie": "dev-2014-10-21"
+        , "pnegri/uuid-js": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -68,6 +70,40 @@
             }
         },
         {
+            "type": "package",
+            "package": {
+                "name": "samyk/evercookie",
+                "type": "library",
+                "version": "dev-2014-10-21",
+                "dist" : {
+                    "url": "https://github.com/samyk/evercookie/archive/977db236367c509ce6b10fb565ed5a75c8d729d5.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/samyk/evercookie.git",
+                    "type": "git",
+                    "reference": "977db236367c509ce6b10fb565ed5a75c8d729d5"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pnegri/uuid-js",
+                "type": "library",
+                "version": "dev-master",
+                "dist" : {
+                    "url": "https://github.com/pnegri/uuid-js/archive/32d4aac39bca32726dbd8689b86515de7b09bdcc.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/pnegri/uuid-js",
+                    "type": "git",
+                    "reference": "32d4aac39bca32726dbd8689b86515de7b09bdcc"
+                }
+            }
+        },
+        {
             "type": "git",
             "url": "https://github.com/garex/phpunit"
         },
@@ -76,8 +112,23 @@
             "url": "https://github.com/garex/phpunit-mock-objects"
         },
         {
-            "type": "git",
-            "url": "https://github.com/garex/flourish-classes"
+            "type": "package",
+            "package": {
+                "name": "flourish/flourish",
+                "version": "0.9.x-dev",
+                "autoload": {
+                    "classmap": ["."]
+                },
+                "source": {
+                    "url": "https://github.com/garex/flourish-classes",
+                    "type": "git",
+                    "reference": "8e57220fdcd2153d5872fb87a6f64fd933a972f1"
+                },
+                "dist": {
+                    "url": "https://github.com/garex/flourish-classes/archive/master.zip",
+                    "type": "zip"
+                }
+            }
         }
     ]
 }

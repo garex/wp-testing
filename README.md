@@ -71,7 +71,6 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 08. The page with the description of the test, questions and answers
 09. The button is desabled untill all questions are not answered
 10. Get test results after all questions are answered
-11. The results page
-12. The result page contains both the result of the test and the scales that create a result
-13. The example of the test without  scores. Some answers are individual and some are individualized
-14. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+11. The result page on it's own URL contains both the result of the test and the scales that create a result
+12. The example of the test without  scores. Some answers are individual and some are individualized
+13. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
