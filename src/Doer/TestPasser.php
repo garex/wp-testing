@@ -170,6 +170,8 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'passing'    => $this->passing,
                 'scales'     => $this->passing->buildScalesWithRangeOnce(),
                 'results'    => $this->passing->buildResults(),
+                'isShowScales'      => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales')),
+                'isShowDescription' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_test_description')),
             );
         }
 

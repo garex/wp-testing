@@ -516,6 +516,60 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Get metaboxes by provided screen, context and priority
+     *
+     * @param string $screen
+     * @param string $context
+     * @param string $priority
+     *
+     * @return array
+     */
+    public function getMetaBoxes($screen = null, $context = 'advanced', $priority = 'default')
+    {
+        return $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, null);
+    }
+
+    /**
+     * Set metaboxes by provided screen, context and priority to values
+     *
+     * @param array $values
+     * @param string $screen
+     * @param string $context
+     * @param string $priority
+     *
+     * @return WpTesting_WordPressFacade
+     */
+    public function setMetaBoxes($values, $screen = null, $context = 'advanced', $priority = 'default')
+    {
+        return $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, $values);
+    }
+
+    protected function processMetaBoxes($screen, $context, $priority, $action, $values)
+    {
+        global $wp_meta_boxes;
+
+        if (empty($screen)) {
+            $screen = get_current_screen();
+        } elseif (is_string($screen)) {
+            $screen = convert_to_screen($screen);
+        }
+
+        $page = $screen->id;
+
+        if (empty($wp_meta_boxes[$page][$context][$priority])) {
+            $wp_meta_boxes[$page][$context][$priority] = array();
+        }
+
+        if ('getMetaBoxes' == $action) {
+            return $wp_meta_boxes[$page][$context][$priority];
+        }
+        if ('setMetaBoxes' == $action) {
+            $wp_meta_boxes[$page][$context][$priority] = $values;
+            return $this;
+        }
+    }
+
+    /**
      * Register a post type. Do not use before init.
      *
      * @since 2.9.0

@@ -34,4 +34,24 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
         }
         return reset($result);
     }
+
+    protected function add_meta($key, $value)
+    {
+        $meta    = WP_DB_PREFIX  . 'postmeta';
+        $posts   = WP_DB_PREFIX  . 'posts';
+        $this->execute("
+            INSERT INTO $meta(post_id, meta_key, meta_value)
+            SELECT ID, '$key', $value
+            FROM $posts WHERE post_type = 'wpt_test'
+        ");
+    }
+
+    protected function remove_meta($key)
+    {
+        $meta    = WP_DB_PREFIX  . 'postmeta';
+        $this->execute("
+            DELETE FROM $meta
+            WHERE meta_key = '$key'
+        ");
+    }
 }
