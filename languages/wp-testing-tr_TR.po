@@ -1,21 +1,20 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
-# Borry Semerdzhieva <borry.semerdzhieva@gmail.com>, 2014
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-22 01:53+0700\n"
-"PO-Revision-Date: 2015-01-21 20:11+0000\n"
+"PO-Revision-Date: 2015-01-21 20:41+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/wp-testing/language/bg_BG/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg_BG\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -24,365 +23,365 @@ msgstr ""
 
 #: Doer/TestPasser.php:51 Doer/TestPasser.php:54
 msgid "Test is under construction"
-msgstr "Тестът е в процес на разработка"
+msgstr "Test Yapım Aşamasındadır"
 
 #: Doer/TestPasser.php:52
 msgid "You can not get any results from it yet."
-msgstr "Не можете да получите никакви резултати все още."
+msgstr "Henüz Sonuç Alamazsınız"
 
 #: Doer/TestPasser.php:83
 msgid "Test data not valid"
-msgstr "Тестовите данни не е валиден"
+msgstr "Sınama verileri geçerli değil"
 
 #: Doer/TestPasser.php:84
 msgid "You passed not valid data to test."
-msgstr "Сте преминали не валидни данни за тестване."
+msgstr "Test için geçerli olmayan veri geçti."
 
 #: Doer/TestPasser.php:110 Doer/TestPasser.php:113
 msgid "Test result not found"
-msgstr "Резултат от теста не е намерен"
+msgstr "Test sonuç bulunamadı"
 
 #: Doer/TestPasser.php:111
 msgid "You can not get anything from nothing."
-msgstr "Не можете да получите нещо от нищо."
+msgstr "Sana bir şey hiçbir şey elde edemezsiniz."
 
 #: Doer/TestEditor.php:27
 msgid "Result Page Options"
-msgstr "Опции страница с резултати"
+msgstr "Sonuç sayfası seçenekleri"
 
 #: Doer/TestEditor.php:29
 msgid "Edit Questions and Scores"
-msgstr "Редактирай въпросите и точките"
+msgstr "Soru ve Sonuçları Düzenle"
 
 #: Doer/TestEditor.php:30
 msgid "Add New Questions"
-msgstr "Добави нови въпроси"
+msgstr "Yeni Soru Ekle"
 
 #: Doer/TestEditor.php:31
 msgid "Edit Formulas"
-msgstr "Редактирай формулите"
+msgstr "Formülleri Düzenle"
 
 #: Doer/TestEditor.php:79
 msgid "Show scales"
-msgstr "Покажи скали"
+msgstr "Ölçekler göster"
 
 #: Doer/TestEditor.php:83
 msgid "Show test description"
-msgstr "Покажи описание на теста"
+msgstr "Test açıklama göster"
 
 #: Doer/TestEditor.php:177
 msgid "Test data not saved"
-msgstr "Тестовите данни не са запазени"
+msgstr "Test verisi kaydedilmedi"
 
 #: Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Тестове"
+msgstr "Testler"
 
 #: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
-msgstr "Тест"
+msgstr "Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Добави нов"
+msgstr "Yeni Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Добави нов тест"
+msgstr "Yeni Test Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Редактирай теста"
+msgstr "Testi Düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Виж теста"
+msgstr "Testi Görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Търси тестове"
+msgstr "Test Ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Родителски тест:"
+msgstr "Ana Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:23
 msgid "All Tests"
-msgstr "Всички тестове"
+msgstr "Tüm Testler"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Обнови теста"
+msgstr "Testi Güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Име на новия тест"
+msgstr "Yeni Test Adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Родителски тест"
+msgstr "Ana Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Нов тест"
+msgstr "Yeni Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Не са открити тестове"
+msgstr "Test Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Не са открити тестове в кошчето"
+msgstr "Çöp Kutusunda Test Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Инструмент за набиране на информация чрез решаване на последователни задачи, които могат да бъдат графични, за постижения или за време."
+msgstr "Enstrüman denetlenmediğini yapıları (latent değişkenler) ölçmek için. Genellikle bu görevleri ya da sorunları çözmek için davalı olan bir dizi var."
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Test Answers"
-msgstr "Отговори на теста"
+msgstr "Test Cevapları"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Test Answer"
-msgstr "Отговор на теста"
+msgstr "Test Cevabı"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Add New Answer"
-msgstr "Добави нов отговор"
+msgstr "Yeni Cevap Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Edit Answer"
-msgstr "Редактирай отговора"
+msgstr "Cevabı Düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "View Answer"
-msgstr "Виж отговора"
+msgstr "Cevabı Görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "Search Answers"
-msgstr "Търси отговори"
+msgstr "Cevapları Ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Parent Answer:"
-msgstr "Родителски отговор:"
+msgstr "Ana Cevap"
 
 #: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Answers"
-msgstr "Отговори"
+msgstr "Cevaplar"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "All Answers"
-msgstr "Всички отговори"
+msgstr "Tüm Cevaplar"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
-msgstr "Обнови отговора"
+msgstr "Cevabı Güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
-msgstr "Име на новия отговор"
+msgstr "Yeni Cevap Adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "Parent Answer"
-msgstr "Родителски отговор"
+msgstr "Ana Cevap"
 
 #: Doer/WordPressEntitiesRegistrator.php:76
 msgid "New Answer"
-msgstr "Нов отговор"
+msgstr "Yeni Cevap"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "No Answers found"
-msgstr "Не са открити отговори"
+msgstr "Cevap Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found in Trash"
-msgstr "Не са открити отговори в кошчето"
+msgstr "Çöp Kutusunda Cevap Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:83
 msgid "Test Scales"
-msgstr "Тестови скали"
+msgstr "Test Ölçekleri"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scale"
-msgstr "Тестова скала"
+msgstr "Test Ölçeği"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Add New Scale"
-msgstr "Добави нова скала"
+msgstr "Yeni Ölçek Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Edit Scale"
-msgstr "Редактирай скалата"
+msgstr "Ölçeği Düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "View Scale"
-msgstr "Виж скалата"
+msgstr "Ölçeği Görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "Search Scales"
-msgstr "Търси скали"
+msgstr "Ölçekleri Ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Parent Scale:"
-msgstr "Родителска скала:"
+msgstr "Ana Ölçek"
 
 #: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
-msgstr "Скали"
+msgstr "Ölçekler"
 
 #: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
-msgstr "Всички скали"
+msgstr "Tüm Ölçekler"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Update Scale"
-msgstr "Обнови скалата"
+msgstr "Ölçeği Güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "New Scale Name"
-msgstr "Име на новата скала"
+msgstr "Yeni Ölçek Adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "Parent Scale"
-msgstr "Родителска скала"
+msgstr "Ana Ölçek"
 
 #: Doer/WordPressEntitiesRegistrator.php:97
 msgid "New Scale"
-msgstr "Нова скала"
+msgstr "Yeni Ölçek"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "No Scales found"
-msgstr "Не са открити скали"
+msgstr "Ölçek Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found in Trash"
-msgstr "Не са открити скали в кошчето"
+msgstr "Çöp Kutusunda Ölçek Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:104
 msgid "Test Results"
-msgstr "Резултати от теста"
+msgstr "Test Sonuçları"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Result"
-msgstr "Резултат от теста"
+msgstr "Test Sonucu"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Add New Result"
-msgstr "Добави нов резултат от теста"
+msgstr "Yeni Sonuç Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Edit Result"
-msgstr "Редактирай резултата"
+msgstr "Sonucu Düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "View Result"
-msgstr "Виж резултата"
+msgstr "Sonucu Görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "Search Results"
-msgstr "Резултати от търсенето"
+msgstr "Arama Sonuçları"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
-msgstr "Родителски резултати:"
+msgstr "Ana Sonuç"
 
 #: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Results"
-msgstr "Резултати"
+msgstr "Sonuçlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
-msgstr "Всички резултати"
+msgstr "Tüm Sonuçlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "Update Result"
-msgstr "Обнови резултата"
+msgstr "Sonucu Güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "New Result Name"
-msgstr "Име на новия резултат"
+msgstr "Yeni Sonuç Adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "Parent Result"
-msgstr "Родителски резултат"
+msgstr "Ana Sonuç"
 
 #: Doer/WordPressEntitiesRegistrator.php:118
 msgid "New Result"
-msgstr "Нов резултат"
+msgstr "Yeni Sonuç"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "No Results found"
-msgstr "Не са открити резултати"
+msgstr "Sonuç Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found in Trash"
-msgstr "Не са открити резултати в кошчето"
+msgstr "Çöp Kutusunda Sonuç Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:125
 #: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Test Categories"
-msgstr "Тестови категории"
+msgstr "Test Kategorileri"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Test Category"
-msgstr "Тестова категория"
+msgstr "Test Kategorisi"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Add New Category"
-msgstr "Добави нова категория"
+msgstr "Yeni Kategori Ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Edit Category"
-msgstr "Редактиране на категорията"
+msgstr "Kategoriyi Düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "View Category"
-msgstr "Преглед на категорията"
+msgstr "Kategoriyi görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "Search Categories"
-msgstr "Търси категории"
+msgstr "Kategorilerde Ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Parent Category:"
-msgstr "Родителска категория:"
+msgstr "Ana kategori:"
 
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "All Categories"
-msgstr "Всички категории"
+msgstr "Tüm Kategoriler"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "Update Category"
-msgstr "Обнови категорията"
+msgstr "Kategoriyi Güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "New Category Name"
-msgstr "Име на новата категория"
+msgstr "Yeni Kategori Adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "Parent Category"
-msgstr "Родителска категория"
+msgstr "Ana kategori"
 
 #: Doer/WordPressEntitiesRegistrator.php:139
 msgid "New Category"
-msgstr "Нова категория"
+msgstr "Yeni Kategori"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "No Categories found"
-msgstr "Не са открити категории"
+msgstr "Kategori Bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found in Trash"
-msgstr "Не са открити категории в кошчето"
+msgstr "Çöp Kutusunda Kategori Bulunamadı"
 
 #: Model/Formula.php:217
 #, php-format
 msgid "Formula for %s has error"
-msgstr "Грешка във формулата с резултат \"%s\""
+msgstr "%s için formül hatası"
 
 #: Model/FormulaVariable.php:17
 #, php-format
@@ -391,118 +390,118 @@ msgstr "%1$s, ∑ %2$d"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
-msgstr "Скала на променливата"
+msgstr "Ölçek Değişkeni"
 
 #: Model/FormulaVariable.php:28
 msgid "Variable"
-msgstr "Променлива"
+msgstr "Değişken"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
-msgstr "Формула"
+msgstr "Formül"
 
 #: Template/Test/Editor/edit-formulas.php:4
 msgid "Result"
-msgstr "Резултат"
+msgstr "Sonuç"
 
 #: Template/Test/Editor/edit-formulas.php:29
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Няма формули за редактиране. За да редактирате формулите трябва да сте избрали резултати."
+msgstr "Düzenlenecek formül bulunmamaktadır. Formülleri düzenlemek için sonuçları seçmelisiniz"
 
 #: Template/Test/Editor/edit-formulas.php:38
 msgid "Variables"
-msgstr "Променливи"
+msgstr "Değişkenler"
 
 #: Template/Test/Editor/edit-formulas.php:39
 msgid "Comparisions"
-msgstr "Сравнения"
+msgstr "Karşılaştırmalar"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
-msgstr "Сравнение"
+msgstr "Karşılaştırma"
 
 #: Template/Test/Editor/edit-formulas.php:57
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
-msgstr "Няма променливи във формулите. За да използвате променливи трябва да сте избрали скали."
+msgstr "Formül için değişken bulunmuyor. Değişkenleri kullanmak için ölçekleri seçmelisiniz"
 
 #: Template/Test/Editor/edit-formulas.php:66
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Позволени са и цифри, и проценти. Например, ако \"скала-бла\" има тотал 30, то \"скала-бла > 15\" и \"скала-бла > 50%\" е едно и също."
+msgstr "Sayı ve yüzdeler girebilir. Örneğin \"olcek-bla\" toplam 30, sonra da vardır \"olcek-bla > 15\" ve \"olcek-bla > %50\" aynı."
 
 #: Template/Test/Editor/add-questions.php:4
 #: Template/Test/Editor/add-questions.php:9
 msgid "Quick Fill From Text"
-msgstr "Попълни бързо от текст"
+msgstr "Metinden hızlı doldurma"
 
 #: Template/Test/Editor/add-questions.php:8
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Поставете тук вашите въпроси и те ще попълнят полетата надолу. Номерата и другите индекси ще бъдат премахнати автоматично."
+msgstr "Sorularınızı buraya yapıştırınız. Numaralar ve diğer indeksler otomatik olarak ayrılacaktır"
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
-msgstr "Публикувай на началната страница"
+msgstr "Ana Sayfada Yayınla"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
 msgid "Quick Fill Scores"
-msgstr "Бързо попълване на точките"
+msgstr "Hızlı Doldurma Sonuçları"
 
 #: Template/Test/Editor/edit-questions.php:37
 msgid "Scale"
-msgstr "Скала"
+msgstr "Ölçeklendir"
 
 #: Template/Test/Editor/edit-questions.php:38
 msgid "Score"
-msgstr "Точки"
+msgstr "Sonuç"
 
 #: Template/Test/Editor/edit-questions.php:39
 msgid "Answer"
-msgstr "Отговор"
+msgstr "Cevap"
 
 #: Template/Test/Editor/edit-questions.php:40
 msgid "Questions"
-msgstr "Въпрос"
+msgstr "Sorular"
 
 #: Template/Test/Editor/edit-questions.php:88
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Няма въпроси за редактиране. Добави нови въроси и те ще се появят тук."
+msgstr "Düzenlenecek soru bulunmuyor. Burada gözükmesi için soru ekleyin"
 
 #: Template/Test/Editor/edit-questions.php:96
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
-msgstr "Няма точки за редактиране. За да редактирате точките трябва да сте избрали и отговори, и скали."
+msgstr "Düzenlenecek sonuç bulunmuyor. Sonuçları düzenlemek için hem ölçeklere hem de cevaplara ihtiyacınız bulunmaktadır"
 
 #: Template/Test/Editor/edit-questions.php:155
 msgid "Add Individual Answers"
-msgstr "Добавяне на индивидуални отговори"
+msgstr "Bireysel Cevaplar Ekle"
 
 #: Template/Test/Editor/edit-questions.php:156
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— уникална за всеки въпрос. Ако имате същите отговори на всички въпроси тест, използвайте %s"
+msgstr "— her soru için benzersiz. Bütün sınav soruları aynı cevapları varsa, %s kullanarak"
 
 #: Template/Test/Editor/edit-questions.php:160
 msgid ""
 "Add here your individual answers as text; after test saving they will be "
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
-msgstr "Добавете тук вашите индивидуални отговори като текст; след тест за записване ще бъдат извлечени и създадени. Номерата и другите индекси ще бъдат премахнати автоматично."
+msgstr "Burada metin olarak bireysel yanıtlarınızı ekleyin; test kaydettikten sonra onlar elde ve oluşturulmalıdır. Sayılar ve diğer dizinleri otomatik olarak elimden."
 
 #: Template/Test/Passer/get-results.php:37
 #, php-format
 msgid "%1$d out of %2$d"
-msgstr "%1$d от %2$d"
+msgstr "%2$d üzerinden %1$d"
 
 #: Template/Test/Passer/fill-form.php:46
 msgid "Get Test Results"
-msgstr "Виж резултатите"
+msgstr "Test Sonuçlarını Al"

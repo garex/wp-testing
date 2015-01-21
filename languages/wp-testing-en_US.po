@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-07 18:17+0700\n"
-"PO-Revision-Date: 2014-12-07 12:18+0000\n"
+"POT-Creation-Date: 2015-01-22 01:53+0700\n"
+"PO-Revision-Date: 2015-01-21 19:57+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: English (United States) (http://www.transifex.com/projects/p/wp-testing/language/en_US/)\n"
 "MIME-Version: 1.0\n"
@@ -20,327 +20,360 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:26
+#: Doer/TestPasser.php:51 Doer/TestPasser.php:54
+msgid "Test is under construction"
+msgstr "Test is under construction"
+
+#: Doer/TestPasser.php:52
+msgid "You can not get any results from it yet."
+msgstr "You can not get any results from it yet."
+
+#: Doer/TestPasser.php:83
+msgid "Test data not valid"
+msgstr "Test data not valid"
+
+#: Doer/TestPasser.php:84
+msgid "You passed not valid data to test."
+msgstr "You passed not valid data to test."
+
+#: Doer/TestPasser.php:110 Doer/TestPasser.php:113
+msgid "Test result not found"
+msgstr "Test result not found"
+
+#: Doer/TestPasser.php:111
+msgid "You can not get anything from nothing."
+msgstr "You can not get anything from nothing."
+
+#: Doer/TestEditor.php:27
+msgid "Result Page Options"
+msgstr "Result Page Options"
+
+#: Doer/TestEditor.php:29
 msgid "Edit Questions and Scores"
 msgstr "Edit Questions and Scores"
 
-#: Doer/TestEditor.php:27
+#: Doer/TestEditor.php:30
 msgid "Add New Questions"
 msgstr "Add New Questions"
 
-#: Doer/TestEditor.php:28
+#: Doer/TestEditor.php:31
 msgid "Edit Formulas"
 msgstr "Edit Formulas"
 
-#: Doer/TestEditor.php:123
+#: Doer/TestEditor.php:79
+msgid "Show scales"
+msgstr "Show scales"
+
+#: Doer/TestEditor.php:83
+msgid "Show test description"
+msgstr "Show test description"
+
+#: Doer/TestEditor.php:177
 msgid "Test data not saved"
 msgstr "Test data not saved"
 
-#: Doer/WordPressEntitiesRegistrator.php:12
-#: Doer/WordPressEntitiesRegistrator.php:21
+#: Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
 msgstr "Tests"
 
-#: Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:14
+#: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
 msgstr "Add New"
 
-#: Doer/WordPressEntitiesRegistrator.php:15
+#: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
 msgstr "Add New Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:16
+#: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
 msgstr "Edit Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:17
+#: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
 msgstr "View Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:18
+#: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
 msgstr "Search Tests"
 
-#: Doer/WordPressEntitiesRegistrator.php:19
+#: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "Parent Test:"
 
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/WordPressEntitiesRegistrator.php:23
 msgid "All Tests"
 msgstr "All Tests"
 
-#: Doer/WordPressEntitiesRegistrator.php:23
+#: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
 msgstr "Update Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:24
+#: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
 msgstr "New Test Name"
 
-#: Doer/WordPressEntitiesRegistrator.php:25
+#: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
 msgstr "Parent Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:27
+#: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
 msgstr "New Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:28
+#: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
 msgstr "No Tests found"
 
-#: Doer/WordPressEntitiesRegistrator.php:29
+#: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
 msgstr "No Tests found in Trash"
 
-#: Doer/WordPressEntitiesRegistrator.php:31
+#: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
 msgstr "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
 
-#: Doer/WordPressEntitiesRegistrator.php:60
+#: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Test Answers"
 msgstr "Test Answers"
 
-#: Doer/WordPressEntitiesRegistrator.php:61
+#: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Test Answer"
 msgstr "Test Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:62
+#: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Add New Answer"
 msgstr "Add New Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:63
+#: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Edit Answer"
 msgstr "Edit Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:64
+#: Doer/WordPressEntitiesRegistrator.php:66
 msgid "View Answer"
 msgstr "View Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:65
+#: Doer/WordPressEntitiesRegistrator.php:67
 msgid "Search Answers"
 msgstr "Search Answers"
 
-#: Doer/WordPressEntitiesRegistrator.php:66
+#: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Parent Answer:"
 msgstr "Parent Answer:"
 
-#: Doer/WordPressEntitiesRegistrator.php:68
+#: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Answers"
 msgstr "Answers"
 
-#: Doer/WordPressEntitiesRegistrator.php:69
+#: Doer/WordPressEntitiesRegistrator.php:71
 msgid "All Answers"
 msgstr "All Answers"
 
-#: Doer/WordPressEntitiesRegistrator.php:70
+#: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
 msgstr "Update Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:71
+#: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
 msgstr "New Answer Name"
 
-#: Doer/WordPressEntitiesRegistrator.php:72
+#: Doer/WordPressEntitiesRegistrator.php:74
 msgid "Parent Answer"
 msgstr "Parent Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:74
+#: Doer/WordPressEntitiesRegistrator.php:76
 msgid "New Answer"
 msgstr "New Answer"
 
-#: Doer/WordPressEntitiesRegistrator.php:75
+#: Doer/WordPressEntitiesRegistrator.php:77
 msgid "No Answers found"
 msgstr "No Answers found"
 
-#: Doer/WordPressEntitiesRegistrator.php:76
+#: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found in Trash"
 msgstr "No Answers found in Trash"
 
-#: Doer/WordPressEntitiesRegistrator.php:81
+#: Doer/WordPressEntitiesRegistrator.php:83
 msgid "Test Scales"
 msgstr "Test Scales"
 
-#: Doer/WordPressEntitiesRegistrator.php:82
+#: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scale"
 msgstr "Test Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:83
+#: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Add New Scale"
 msgstr "Add New Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:84
+#: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Edit Scale"
 msgstr "Edit Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:85
+#: Doer/WordPressEntitiesRegistrator.php:87
 msgid "View Scale"
 msgstr "View Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:86
+#: Doer/WordPressEntitiesRegistrator.php:88
 msgid "Search Scales"
 msgstr "Search Scales"
 
-#: Doer/WordPressEntitiesRegistrator.php:87
+#: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Parent Scale:"
 msgstr "Parent Scale:"
 
-#: Doer/WordPressEntitiesRegistrator.php:89
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "Scales"
 
-#: Doer/WordPressEntitiesRegistrator.php:90
+#: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
 msgstr "All Scales"
 
-#: Doer/WordPressEntitiesRegistrator.php:91
+#: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Update Scale"
 msgstr "Update Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:92
+#: Doer/WordPressEntitiesRegistrator.php:94
 msgid "New Scale Name"
 msgstr "New Scale Name"
 
-#: Doer/WordPressEntitiesRegistrator.php:93
+#: Doer/WordPressEntitiesRegistrator.php:95
 msgid "Parent Scale"
 msgstr "Parent Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:95
+#: Doer/WordPressEntitiesRegistrator.php:97
 msgid "New Scale"
 msgstr "New Scale"
 
-#: Doer/WordPressEntitiesRegistrator.php:96
+#: Doer/WordPressEntitiesRegistrator.php:98
 msgid "No Scales found"
 msgstr "No Scales found"
 
-#: Doer/WordPressEntitiesRegistrator.php:97
+#: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found in Trash"
 msgstr "No Scales found in Trash"
 
-#: Doer/WordPressEntitiesRegistrator.php:102
+#: Doer/WordPressEntitiesRegistrator.php:104
 msgid "Test Results"
 msgstr "Test Results"
 
-#: Doer/WordPressEntitiesRegistrator.php:103
+#: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Result"
 msgstr "Test Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:104
+#: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Add New Result"
 msgstr "Add New Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:105
+#: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Edit Result"
 msgstr "Edit Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:106
+#: Doer/WordPressEntitiesRegistrator.php:108
 msgid "View Result"
 msgstr "View Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:107
+#: Doer/WordPressEntitiesRegistrator.php:109
 msgid "Search Results"
 msgstr "Search Results"
 
-#: Doer/WordPressEntitiesRegistrator.php:108
+#: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
 msgstr "Parent Result:"
 
-#: Doer/WordPressEntitiesRegistrator.php:110
+#: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Results"
 msgstr "Results"
 
-#: Doer/WordPressEntitiesRegistrator.php:111
+#: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
 msgstr "All Results"
 
-#: Doer/WordPressEntitiesRegistrator.php:112
+#: Doer/WordPressEntitiesRegistrator.php:114
 msgid "Update Result"
 msgstr "Update Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:113
+#: Doer/WordPressEntitiesRegistrator.php:115
 msgid "New Result Name"
 msgstr "New Result Name"
 
-#: Doer/WordPressEntitiesRegistrator.php:114
+#: Doer/WordPressEntitiesRegistrator.php:116
 msgid "Parent Result"
 msgstr "Parent Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:116
+#: Doer/WordPressEntitiesRegistrator.php:118
 msgid "New Result"
 msgstr "New Result"
 
-#: Doer/WordPressEntitiesRegistrator.php:117
+#: Doer/WordPressEntitiesRegistrator.php:119
 msgid "No Results found"
 msgstr "No Results found"
 
-#: Doer/WordPressEntitiesRegistrator.php:118
+#: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found in Trash"
 msgstr "No Results found in Trash"
 
-#: Doer/WordPressEntitiesRegistrator.php:123
+#: Doer/WordPressEntitiesRegistrator.php:125
+#: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Test Categories"
 msgstr "Test Categories"
 
-#: Doer/WordPressEntitiesRegistrator.php:124
+#: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Test Category"
 msgstr "Test Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:125
+#: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Add New Category"
 msgstr "Add New Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Edit Category"
 msgstr "Edit Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:127
+#: Doer/WordPressEntitiesRegistrator.php:129
 msgid "View Category"
 msgstr "View Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:128
+#: Doer/WordPressEntitiesRegistrator.php:130
 msgid "Search Categories"
 msgstr "Search Categories"
 
-#: Doer/WordPressEntitiesRegistrator.php:129
+#: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Parent Category:"
 msgstr "Parent Category:"
 
-#: Doer/WordPressEntitiesRegistrator.php:131
-msgid "Categories"
-msgstr "Categories"
-
-#: Doer/WordPressEntitiesRegistrator.php:132
+#: Doer/WordPressEntitiesRegistrator.php:134
 msgid "All Categories"
 msgstr "All Categories"
 
-#: Doer/WordPressEntitiesRegistrator.php:133
+#: Doer/WordPressEntitiesRegistrator.php:135
 msgid "Update Category"
 msgstr "Update Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:134
+#: Doer/WordPressEntitiesRegistrator.php:136
 msgid "New Category Name"
 msgstr "New Category Name"
 
-#: Doer/WordPressEntitiesRegistrator.php:135
+#: Doer/WordPressEntitiesRegistrator.php:137
 msgid "Parent Category"
 msgstr "Parent Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:137
+#: Doer/WordPressEntitiesRegistrator.php:139
 msgid "New Category"
 msgstr "New Category"
 
-#: Doer/WordPressEntitiesRegistrator.php:138
+#: Doer/WordPressEntitiesRegistrator.php:140
 msgid "No Categories found"
 msgstr "No Categories found"
 
-#: Doer/WordPressEntitiesRegistrator.php:139
+#: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found in Trash"
 msgstr "No Categories found in Trash"
 
@@ -463,7 +496,7 @@ msgid ""
 "automatically."
 msgstr "Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically."
 
-#: Template/Test/Passer/get-results.php:33
+#: Template/Test/Passer/get-results.php:37
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d out of %2$d"
@@ -471,11 +504,3 @@ msgstr "%1$d out of %2$d"
 #: Template/Test/Passer/fill-form.php:46
 msgid "Get Test Results"
 msgstr "Get Test Results"
-
-#: Template/Test/Passer/fill-form.php:49
-msgid "Test is under construction"
-msgstr "Test is under construction"
-
-#: Template/Test/Passer/fill-form.php:50
-msgid "You can not get any results from it yet."
-msgstr "You can not get any results from it yet."
