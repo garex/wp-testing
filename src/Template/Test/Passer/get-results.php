@@ -6,6 +6,8 @@
 /* @var $passing WpTesting_Model_Passing[] */
 /* @var $scales WpTesting_Model_Scale[] */
 /* @var $results WpTesting_Model_Result[] */
+/* @var $isShowScales boolean */
+/* @var $isShowDescription boolean */
 ?>
 <div class="wpt_test get_results">
 
@@ -20,6 +22,8 @@
         <p class="result description"><?php echo nl2br($result->getDescription()) ?></p>
 
     <?php endforeach ?>
+
+<?php if ($isShowScales): ?>
 
     <?php if (count($results)): ?>
         <hr/>
@@ -40,12 +44,18 @@
 
     <?php endforeach ?>
 
+<?php endif ?>
+
 </div>
+
+<?php if ($isShowDescription): ?>
 
 <hr/>
 
 <div class="content">
     <?php echo $content ?>
 </div>
+
+<?php endif ?>
 
 </div>

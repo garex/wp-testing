@@ -89,6 +89,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     var resultUrl = null;
     it('should show results with scales on submit', function() {
         casper.then(function() {
+            'London is the capital of great britan'.should.be.textInDOM
             this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
             this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
@@ -146,6 +147,36 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
+    it('should show scales and not test description for new tests by default', function() {
+        casper.open(resultUrl).waitForUrl(/test.+results.+[a-z0-9]+[a-f0-9]{32}/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'Results'.should.be.textInDOM
+            'Choleric'.should.be.textInDOM
+            'London is the capital of great britan'.should.not.be.textInDOM
+        })
+    })
+
+    it('should not show scales and test description whne they are disabled', function() {
+        casper.open('http://wpti.dev/')
+
+        casper.then(function() {
+            this.clickLabel('Are You Hot or Not?!')
+        })
+
+        casper.waitForUrl(/test/, function() {
+            'Allow others to rate the vacuum on the Earth'.should.be.textInDOM
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.fill('form#wpt-test-form', {}, true)
+        })
+
+        casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'Results'.should.be.textInDOM
+            'Lie'.should.not.be.textInDOM
+            'Allow others to rate the vacuum on the Earth'.should.not.be.textInDOM
+        })
+    })
+
     it('should be same after answers migrations', function() {
         var url = isPermalinks
                 ? 'http://wpti.dev/test/eysencks-personality-inventory-epi-extroversionintroversion/'
@@ -173,6 +204,8 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             '9 out of 24'   .should.be.textInDOM
             '0 out of 24'   .should.be.textInDOM
             '6 out of 9'    .should.be.textInDOM
+
+            resultUrl = this.getCurrentUrl();
         })
     })
 
@@ -192,6 +225,15 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             'Test is under construction'.should.be.textInDOM
         })
     })
+
+    it('should show scales and test description for existing tests', function() {
+        casper.open(resultUrl).waitForUrl(/test.+eysencks.+[a-z0-9]+[a-f0-9]{32}/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'Extraversion/Introversion'.should.be.textInDOM
+            'The Eysenck Personality Inventory (EPI) measures two pervasive'.should.be.textInDOM
+        })
+    })
+
 })
 }
 

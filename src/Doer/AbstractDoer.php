@@ -101,6 +101,62 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * Move source item before destination item in array
+     *
+     * @param array $input
+     * @param string $sourceKey
+     * @param string $destinationKey
+     * @return array
+     */
+    protected function arrayMoveItemBefore($input, $sourceKey, $destinationKey)
+    {
+        return $this->arrayMoveItemTo($input, $sourceKey, $destinationKey, 'before');
+    }
+
+    /**
+     * Move source item after destination item in array
+     *
+     * @param array $input
+     * @param string $sourceKey
+     * @param string $destinationKey
+     * @return array
+     */
+    protected function arrayMoveItemAfter($input, $sourceKey, $destinationKey)
+    {
+        return $this->arrayMoveItemTo($input, $sourceKey, $destinationKey, 'after');
+    }
+
+    /**
+     * @param array $input
+     * @param string $sourceKey
+     * @param string $destinationKey
+     * @param string $placement before or after
+     * @return array
+     */
+    private function arrayMoveItemTo($input, $sourceKey, $destinationKey, $placement)
+    {
+        if (!isset($input[$sourceKey]) || !isset($input[$destinationKey])) {
+            return $input;
+        }
+
+        $sourceItem = $input[$sourceKey];
+        unset($input[$sourceKey]);
+        $result = array();
+
+        foreach ($input as $key => $value) {
+            if ('before' == $placement && $key == $destinationKey) {
+                $result[$sourceKey] = $sourceItem;
+            }
+            $result[$key] = $value;
+            if ('after' == $placement && $key == $destinationKey) {
+                $result[$sourceKey] = $sourceItem;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Gets an environment variable from available sources
      *
      * @see CakePHP's env function
