@@ -1,8 +1,8 @@
 language: php
 
 php:
-  - 5.2
   - 5.3
+  - 5.2
   - 5.4
   - 5.5
 
@@ -10,14 +10,14 @@ env:
   global:
     - DB_ENGINE=InnoDB
   matrix:
-    - WP_VERSION=4.1
-    - WP_VERSION=4.0.1
-    - WP_VERSION=3.9
-    - WP_VERSION=3.8
-    - WP_VERSION=3.7
-    - WP_VERSION=3.6
     - WP_VERSION=3.5
+    - WP_VERSION=3.9
+    - WP_VERSION=4.0.1
+    - WP_VERSION=3.8
+    - WP_VERSION=4.1
+    - WP_VERSION=3.6
     - WP_VERSION=3.4
+    - WP_VERSION=3.7
     - WP_VERSION=3.3
     - WP_VERSION=3.2
 
@@ -47,4 +47,4 @@ before_script:
 script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - mocha-casperjs
+  - mocha-casperjs --timeout=360000

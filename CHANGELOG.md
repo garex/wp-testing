@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.7 ###
+Give each passing own URL to allow sharing and add two result page options
+
+* Save passings in DB and redirect to them by URLs (with client's ip and device uuid)
+* Add result page options for scales and test description
+* Add Turkish translation
+* Speed-up plugin by not updating rewrite rules everytime
+* Fix conflict with scroll-triggered-box plugin
+* Update translations
+
 ### 0.6.4 ###
 Italian translation added
 

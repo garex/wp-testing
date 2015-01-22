@@ -92,6 +92,17 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * WordPress Object
+     * @global object $wp
+     * @since 2.0.0
+     * @return WP
+     */
+    public function getWP()
+    {
+       return $GLOBALS['wp'];
+    }
+
+    /**
      * Main WordPress Query
      *
      * @since 1.5.0
@@ -214,6 +225,20 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve a URL within the plugin
+     *
+     * @since 2.6.0
+     *
+     * @param  string $pluginRelatedPath Optional. Extra path appended to the end of the URL, including
+     *                                    the relative directory. Default empty.
+     * @return string Plugin URL link with optional paths appended.
+     */
+    public function getPluginUrl($pluginRelatedPath = '')
+    {
+        return plugins_url($pluginRelatedPath, $this->pluginFile);
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
@@ -224,7 +249,7 @@ class WpTesting_WordPressFacade
      */
     public function enqueuePluginStyle($name, $pluginRelatedPath)
     {
-        wp_enqueue_style($name, plugins_url($pluginRelatedPath, $this->pluginFile));
+        wp_enqueue_style($name, $this->getPluginUrl($pluginRelatedPath));
         return $this;
     }
 
@@ -242,7 +267,7 @@ class WpTesting_WordPressFacade
      */
     public function enqueuePluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
-        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        $path = $this->getPluginUrl($pluginRelatedPath);
         wp_enqueue_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
     }
@@ -264,7 +289,7 @@ class WpTesting_WordPressFacade
      */
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
-        $path = plugins_url($pluginRelatedPath, $this->pluginFile);
+        $path = $this->getPluginUrl($pluginRelatedPath);
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
     }
@@ -286,6 +311,32 @@ class WpTesting_WordPressFacade
     public function loadPluginTextdomain($domain, $absoluteRelativePath = false, $pluginsRelativePath = false)
     {
         return load_plugin_textdomain($domain, $absoluteRelativePath, $pluginsRelativePath);
+    }
+
+    /**
+     * Localize a script.
+     *
+     * Works only if the script has already been added.
+     *
+     * Accepts an associative array $l10n and creates a JavaScript object:
+     *
+     *     "$object_name" = {
+     *         key: value,
+     *         key: value,
+     *         ...
+     *     }
+     *
+     * @since 2.6.0
+     *
+     * @param string $handle      Script handle the data will be attached to.
+     * @param string $objectName  Name for the JavaScript object. Passed directly, so it should be qualified JS variable.
+     *                            Example: '/[a-zA-Z0-9_]+/'.
+     * @param array $l10n         The data itself. The data can be either a single or multi-dimensional array.
+     * @return bool True if the script was successfully localized, false otherwise.
+     */
+    public function localizeScript($handle, $objectName, $l10n)
+    {
+        return wp_localize_script($handle, $objectName, $l10n);
     }
 
     /**
@@ -315,6 +366,72 @@ class WpTesting_WordPressFacade
     public function getPermalink($id = 0, $isLeaveName = false)
     {
         return get_permalink($id, $isLeaveName);
+    }
+
+    /**
+     * Retrieve the permalink for a post with a custom post type.
+     *
+     * @since 3.0.0
+     *
+     * @param int $id Optional. Post ID.
+     * @param bool $isLeavename Optional, defaults to false. Whether to keep post name.
+     * @param bool $isSample Optional, defaults to false. Is it a sample permalink.
+     * @return string The post permalink.
+     */
+    public function getPostPermalink($id = 0, $isLeavename = false, $isSample = false)
+    {
+        return get_post_permalink($id, $isLeavename, $isSample);
+    }
+
+    /**
+     * Redirects to another page.
+     *
+     * @since 1.5.1
+     *
+     * @param string $location The path to redirect to.
+     * @param int $status Status code to use.
+     * @return bool False if $location is not provided, true otherwise.
+     */
+    function redirect($location, $status = 302)
+    {
+        return wp_redirect($location, $status);
+    }
+
+    /**
+     * Get salt to add to hashes.
+     *
+     * Salts are created using secret keys. Secret keys are located in two places:
+     * in the database and in the wp-config.php file. The secret key in the database
+     * is randomly generated and will be appended to the secret keys in wp-config.php.
+     *
+     * The secret keys in wp-config.php should be updated to strong, random keys to maximize
+     * security. Below is an example of how the secret key constants are defined.
+     * Do not paste this example directly into wp-config.php. Instead, have a
+     * {@link https://api.wordpress.org/secret-key/1.1/salt/ secret key created} just
+     * for you.
+     *
+     *     define('AUTH_KEY',         ' Xakm<o xQy rw4EMsLKM-?!T+,PFF})H4lzcW57AF0U@N@< >M%G4Yt>f`z]MON');
+     *     define('SECURE_AUTH_KEY',  'LzJ}op]mr|6+![P}Ak:uNdJCJZd>(Hx.-Mh#Tz)pCIU#uGEnfFz|f ;;eU%/U^O~');
+     *     define('LOGGED_IN_KEY',    '|i|Ux`9<p-h$aFf(qnT:sDO:D1P^wZ$$/Ra@miTJi9G;ddp_<q}6H1)o|a +&JCM');
+     *     define('NONCE_KEY',        '%:R{[P|,s.KuMltH5}cI;/k<Gx~j!f0I)m_sIyu+&NJZ)-iO>z7X>QYR0Z_XnZ@|');
+     *     define('AUTH_SALT',        'eZyT)-Naw]F8CwA*VaW#q*|.)g@o}||wf~@C-YSt}(dh_r6EbI#A,y|nU2{B#JBW');
+     *     define('SECURE_AUTH_SALT', '!=oLUTXh,QW=H `}`L|9/^4-3 STz},T(w}W<I`.JjPi)<Bmf1v,HpGe}T1:Xt7n');
+     *     define('LOGGED_IN_SALT',   '+XSqHc;@Q*K_b|Z?NC[3H!!EONbh.n<+=uKR:>*c(u`g~EJBf#8u#R{mUEZrozmm');
+     *     define('NONCE_SALT',       'h`GXHhD>SLWVfg1(1(N{;.V!MoE(SfbA_ksP@&`+AycHcAV$+?@3q+rxV{%^VyKT');
+     *
+     * Salting passwords helps against tools which has stored hashed values of
+     * common dictionary strings. The added values makes it harder to crack.
+     *
+     * @since 2.5.0
+     *
+     * @link https://api.wordpress.org/secret-key/1.1/salt/ Create secrets for wp-config.php
+     *
+     * @param string $scheme Authentication scheme (auth, secure_auth, logged_in, nonce)
+     * @return string Salt value
+     */
+    public function getSalt($scheme = 'auth')
+    {
+        return wp_salt($scheme);
     }
 
     /**
@@ -396,6 +513,60 @@ class WpTesting_WordPressFacade
     {
         add_meta_box($id, $title, $function, $screen, $context, $priority, $functionArgs);
         return $this;
+    }
+
+    /**
+     * Get metaboxes by provided screen, context and priority
+     *
+     * @param string $screen
+     * @param string $context
+     * @param string $priority
+     *
+     * @return array
+     */
+    public function getMetaBoxes($screen = null, $context = 'advanced', $priority = 'default')
+    {
+        return $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, null);
+    }
+
+    /**
+     * Set metaboxes by provided screen, context and priority to values
+     *
+     * @param array $values
+     * @param string $screen
+     * @param string $context
+     * @param string $priority
+     *
+     * @return WpTesting_WordPressFacade
+     */
+    public function setMetaBoxes($values, $screen = null, $context = 'advanced', $priority = 'default')
+    {
+        return $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, $values);
+    }
+
+    protected function processMetaBoxes($screen, $context, $priority, $action, $values)
+    {
+        global $wp_meta_boxes;
+
+        if (empty($screen)) {
+            $screen = get_current_screen();
+        } elseif (is_string($screen)) {
+            $screen = convert_to_screen($screen);
+        }
+
+        $page = $screen->id;
+
+        if (empty($wp_meta_boxes[$page][$context][$priority])) {
+            $wp_meta_boxes[$page][$context][$priority] = array();
+        }
+
+        if ('getMetaBoxes' == $action) {
+            return $wp_meta_boxes[$page][$context][$priority];
+        }
+        if ('setMetaBoxes' == $action) {
+            $wp_meta_boxes[$page][$context][$priority] = $values;
+            return $this;
+        }
     }
 
     /**

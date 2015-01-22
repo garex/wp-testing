@@ -7,6 +7,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
     {
         parent::__construct($wp);
 
+        $testSlug = 'test';
         $wp->registerPostType('wpt_test', array(
             'labels'        => array(
                 'name'               => __('Tests', 'wp-testing'),
@@ -48,8 +49,9 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
             ),
             'has_archive'   => true,
             'rewrite'       => array(
-                'slug'   => 'test',
+                'slug'   => $testSlug,
                 'pages'  => false,
+                'feeds'  => false,
             ),
             'can_export' => true,
         ));
@@ -146,7 +148,13 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
             ))
         ;
 
-        $this->wp->getRewrite()->flush_rules();
+        $this->wp->getWP()->add_query_var('wpt_passing_slug');
+        $rewrite = $this->wp->getRewrite();
+        $rewrite->add_rule(
+            $rewrite->root . $testSlug . '/([^/]+)/([a-z0-9]+[a-f0-9]{32})/?$',
+            $rewrite->index . '?wpt_test=$matches[1]&wpt_passing_slug=$matches[2]',
+            'top'
+        );
     }
 
     protected function addTaxonomy($name, $parameters = array())
@@ -158,6 +166,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
             'show_admin_column' => true,
             'query_var'         => true,
             'sort'              => true,
+            'rewrite'           => false,
         ));
 
         return $this;

@@ -23,11 +23,29 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
+            ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
+            ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
+                array($this, 'renderResultPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  __('Add New Questions', 'wp-testing'), array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
+    }
+
+    /**
+     * @param WP_Post $post
+     */
+    public function setDefaultMetaboxesOrder($post)
+    {
+        $this->wp->setMetaBoxes(
+            $this->arrayMoveItemAfter(
+                $this->wp->getMetaBoxes('wpt_test', 'side', 'core'),
+                'wpt_result_page_options',
+                'submitdiv'
+            ),
+            'wpt_test', 'side', 'core'
+        );
     }
 
     public function renderSubmitMiscActions()
@@ -48,6 +66,35 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return;
         }
         $this->output('Test/Editor/content-editor-buttons');
+    }
+
+    /**
+     * @param WP_Post $item
+     */
+    public function renderResultPageOptions($item)
+    {
+        $options = array(
+            'wpt_result_page_show_scales' => array(
+                'default' => '1',
+                'title'   => __('Show scales', 'wp-testing'),
+            ),
+            'wpt_result_page_show_test_description' => array(
+                'default' => '0',
+                'title'   => __('Show test description', 'wp-testing'),
+            ),
+        );
+
+        foreach ($options as $key => $option) {
+            $option['value'] = $this->wp->getCurrentPostMeta($key);
+            if ($option['value'] == '') {
+                $option['value'] = $option['default'];
+            }
+            $options[$key] = $option;
+        }
+
+        $this->output('Test/Editor/result-page-options', array(
+            'options' => $options,
+        ));
     }
 
     /**
@@ -102,21 +149,28 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return;
         }
 
+        $metaOptions = array(
+            'wpt_publish_on_home',
+            'wpt_result_page_show_scales',
+            'wpt_result_page_show_test_description',
+        );
+
         // Update metadata only when we have appropriate keys
-        $isPublishOnHome = $this->getRequestValue('wpt_publish_on_home');
-        $isFullEdit      = (!is_null($isPublishOnHome));
+        $isFullEdit      = (!is_null($this->getRequestValue($metaOptions[0])));
         if (!$isFullEdit) {
             return;
         }
 
-        $this->wp->updatePostMeta($test->getId(), 'wpt_publish_on_home', intval($isPublishOnHome));
+        foreach ($metaOptions as $metaOptionKey) {
+            $metaOptionValue = intval($this->getRequestValue($metaOptionKey));
+            $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
+        }
 
         $_POST = $test->adaptForPopulate($_POST);
         $test->populateQuestions(true);
         $test->populateFormulas();
 
         try {
-            $problems = $test->validate();
             $test->store(true);
             $test->syncQuestionsAnswers();
         } catch (fValidationException $e) {

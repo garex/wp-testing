@@ -7,9 +7,11 @@ HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
 WP_VERSION=${WP_VERSION:-4.1}
 PLUGINS=${PLUGINS:-}
+IS_APT_UPDATE=${IS_APT_UPDATE:-1}
 
 function init {
     log 'Define vars'
+    [[ "$IS_APT_UPDATE" == "1" ]] && sudo apt-get update
     sudo apt-get install realpath
     # sudo apt-get install mutt
     HERE=$(dirname $(realpath $0))

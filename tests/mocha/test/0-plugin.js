@@ -34,7 +34,7 @@ describe('Plugin_activation', function() {
             if (hasJetpack) {
                 activateJetpackModules()
             }
-        }, null, 30000)
+        }, null, 60000)
     })
 
     function activateJetpackModules() {
@@ -49,7 +49,7 @@ describe('Plugin_activation', function() {
 
         casper.waitForSelector('.jetpack-module.active', function() {
             'Fatal'.should.not.be.textInDOM
-        }, null, 30000)
+        }, null, 60000)
     }
 
 })

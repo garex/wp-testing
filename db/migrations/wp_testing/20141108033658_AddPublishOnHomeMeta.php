@@ -6,21 +6,11 @@ class AddPublishOnHomeMeta extends BaseMigration
 {
     public function up()
     {
-        $meta    = WP_DB_PREFIX  . 'postmeta';
-        $posts   = WP_DB_PREFIX  . 'posts';
-        $this->execute("
-            INSERT INTO $meta(post_id, meta_key, meta_value)
-            SELECT ID, 'wpt_publish_on_home', 1
-            FROM $posts WHERE post_type = 'wpt_test'
-        ");
+        $this->add_meta('wpt_publish_on_home', 1);
     }
 
     public function down()
     {
-        $meta    = WP_DB_PREFIX  . 'postmeta';
-        $this->execute("
-            DELETE FROM $meta
-            WHERE meta_key = 'wpt_publish_on_home'
-        ");
+        $this->remove_meta('wpt_publish_on_home');
     }
 }

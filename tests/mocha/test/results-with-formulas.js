@@ -20,8 +20,14 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
+            this.evaluate(function() {
+                jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
+            })
+            this.click('.__text_tab_here')
+
             this.fillSelectors('form#post', {
-                '#title': 'Test With Results',
+                '#title': 'Test Containing Results',
+                '#content': 'London is the capital of great britan',
                 '#wpt_question_title_0': 'Question 1?',
                 '#wpt_question_title_1': 'Question 2?',
                 '#wpt_question_title_2': 'Question 3?'

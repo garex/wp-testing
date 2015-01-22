@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1  
-**Stable tag:** 0.6.4  
+**Stable tag:** 0.7  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -27,21 +27,26 @@ As to **formulas** you can be sure — we have simple formula editor, that has b
 
 Tests are treated for WordPress like posts — they appear on home page and inside their categories pages if selected. But if you don't want your test to appear on home page you can uncheck **"Publish on the home page"** in "Publish" metabox and this particular test will not appear on homepage.
 
-To minimize author's time we have **Quick Fill** for questions and scores. You can **quick fill questions from text** and they will fill appropriate fields. Same way you can **Quick Fill Scores** in many questions some answer+scale combination. 
+To minimize author's time we have **Quick Fill** for questions and scores. You can **quick fill questions from text** and they will fill appropriate fields. Same way you can **Quick Fill Scores** in many questions some answer+scale combination.
 
-Wp-testing localized in seven languages: English, Russian (native speaker), German, French, Dutch, Swedish and Bulgarian (native speaker). English, Russian and Bulgarian have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome!
+Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. It will allow later to see if someone will have many passings from same computer/smartphone/another device.
 
-**Quality** and **compatibility** are taken really seriously. Plugin tested on [37 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.0) and PHP (from 5.2 to 5.5) plus one custom combination for old MySQL storage engine (MyISAM). So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
+**Results** page also can be customized: when you need to show/hide scales or test description on it.
+
+Wp-testing localized into nine languages: English, Russian (native speaker), German, French, Dutch, Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, Bulgarian, Italian and Turkish have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+
+**Quality** and **compatibility** are taken really seriously. Plugin tested on [37 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.0) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 
-PS: **If something broken or doesn't work**, pls create new topic in ["Support" tab](https://wordpress.org/support/plugin/wp-testing)!
+PS: **If something broken or doesn't work**, pls create new topic in ["Support" tab](https://wordpress.org/support/plugin/wp-testing)! Good support topic describes problem and have WP version and other plugins that you have in it. If you want some feature — also create topic. Donations as money or links to our site are welcome.
 
 ### Thank You Board ###
 
 * For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
 * For German translation thanks to Sascha (info@newwaystec.com)
 * For Italian translation thanks to Ilaria Rizzo (dott.rizzo.ilaria@gmail.com)
+* For Turkish translation thanks to Islam Kurtuldu (https://wordpress.org/support/profile/ikurtuldu)
 
 
 ## Installation ##
@@ -62,16 +67,15 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
+02. Test editing section. There are fast access buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
 03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
-07. Ready test on the home page
-08. The page with the description of the test, questions and answers
-09. The button is desabled untill all questions are not answered
-10. Get test results after all questions are answered
-11. The results page
-12. The result page contains both the result of the test and the scales that create a result
-13. The example of the test without  scores. Some answers are individual and some are individualized
-14. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+07. The example of the test without  scores. Some answers are individual and some are individualized
+08. Ready test on the home page
+09. The page with the description of the test, questions and answers
+10. The button is disabled until all questions are not answered
+11. Get test results after all questions are answered
+12. The result page on it`s own URL contains both the result of the test and the scales that create a result
+13. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered

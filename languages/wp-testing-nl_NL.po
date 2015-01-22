@@ -1,13 +1,13 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-07 18:17+0700\n"
-"PO-Revision-Date: 2014-12-22 20:08+0000\n"
+"POT-Creation-Date: 2015-01-22 01:53+0700\n"
+"PO-Revision-Date: 2015-01-21 20:24+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,327 +21,360 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestEditor.php:26
+#: Doer/TestPasser.php:51 Doer/TestPasser.php:54
+msgid "Test is under construction"
+msgstr "Test is in aanbouw"
+
+#: Doer/TestPasser.php:52
+msgid "You can not get any results from it yet."
+msgstr "U kunt niet krijgen geen resultaten van het nog."
+
+#: Doer/TestPasser.php:83
+msgid "Test data not valid"
+msgstr "Testgegevens niet geldig"
+
+#: Doer/TestPasser.php:84
+msgid "You passed not valid data to test."
+msgstr "U doorgegeven niet geldige gegevens te testen."
+
+#: Doer/TestPasser.php:110 Doer/TestPasser.php:113
+msgid "Test result not found"
+msgstr "Testresultaat niet gevonden"
+
+#: Doer/TestPasser.php:111
+msgid "You can not get anything from nothing."
+msgstr "U kunt om het even wat niet krijgen uit het niets."
+
+#: Doer/TestEditor.php:27
+msgid "Result Page Options"
+msgstr "Resultaat Paginaopties"
+
+#: Doer/TestEditor.php:29
 msgid "Edit Questions and Scores"
 msgstr "Rediger spørgsmål og scoringer"
 
-#: Doer/TestEditor.php:27
+#: Doer/TestEditor.php:30
 msgid "Add New Questions"
 msgstr "Nieuwe vragen toevoegen"
 
-#: Doer/TestEditor.php:28
+#: Doer/TestEditor.php:31
 msgid "Edit Formulas"
 msgstr "Formules bewerken"
 
-#: Doer/TestEditor.php:123
+#: Doer/TestEditor.php:79
+msgid "Show scales"
+msgstr "Vis skalaer"
+
+#: Doer/TestEditor.php:83
+msgid "Show test description"
+msgstr "Viser beskrivelsen af testen"
+
+#: Doer/TestEditor.php:177
 msgid "Test data not saved"
 msgstr "Testgegevens niet opgeslagen"
 
-#: Doer/WordPressEntitiesRegistrator.php:12
-#: Doer/WordPressEntitiesRegistrator.php:21
+#: Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
 msgstr "Proeven"
 
-#: Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:14
+#: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
 msgstr "Nieuwe toevoegen"
 
-#: Doer/WordPressEntitiesRegistrator.php:15
+#: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
 msgstr "Toevoegen van nieuwe Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:16
+#: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
 msgstr "Test bewerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:17
+#: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
 msgstr "Weergave Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:18
+#: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
 msgstr "Zoek Tests"
 
-#: Doer/WordPressEntitiesRegistrator.php:19
+#: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "Bovenliggende Test:"
 
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/WordPressEntitiesRegistrator.php:23
 msgid "All Tests"
 msgstr "Alle Tests"
 
-#: Doer/WordPressEntitiesRegistrator.php:23
+#: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
 msgstr "Update Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:24
+#: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
 msgstr "Nieuwe Test naam"
 
-#: Doer/WordPressEntitiesRegistrator.php:25
+#: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
 msgstr "Bovenliggende Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:27
+#: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
 msgstr "Nieuwe Test"
 
-#: Doer/WordPressEntitiesRegistrator.php:28
+#: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
 msgstr "Geen Tests gevonden"
 
-#: Doer/WordPressEntitiesRegistrator.php:29
+#: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
 msgstr "Geen Tests gevonden in Prullenbak"
 
-#: Doer/WordPressEntitiesRegistrator.php:31
+#: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
 msgstr "En psykologisk test er en standardiseret måling af forskellige aspekter af menneskelig adfærd, såsom intelligens eller personlighed."
 
-#: Doer/WordPressEntitiesRegistrator.php:60
+#: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Test Answers"
 msgstr "Test antwoorden"
 
-#: Doer/WordPressEntitiesRegistrator.php:61
+#: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Test Answer"
 msgstr "Test antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:62
+#: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Add New Answer"
 msgstr "Toevoegen van nieuwe antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:63
+#: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Edit Answer"
 msgstr "Antwoord bewerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:64
+#: Doer/WordPressEntitiesRegistrator.php:66
 msgid "View Answer"
 msgstr "Weergave antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:65
+#: Doer/WordPressEntitiesRegistrator.php:67
 msgid "Search Answers"
 msgstr "Zoek antwoorden"
 
-#: Doer/WordPressEntitiesRegistrator.php:66
+#: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Parent Answer:"
 msgstr "Bovenliggende antwoord:"
 
-#: Doer/WordPressEntitiesRegistrator.php:68
+#: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Answers"
 msgstr "Antwoorden"
 
-#: Doer/WordPressEntitiesRegistrator.php:69
+#: Doer/WordPressEntitiesRegistrator.php:71
 msgid "All Answers"
 msgstr "Alle antwoorden"
 
-#: Doer/WordPressEntitiesRegistrator.php:70
+#: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
 msgstr "Bijwerken antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:71
+#: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
 msgstr "Nieuwe antwoord naam"
 
-#: Doer/WordPressEntitiesRegistrator.php:72
+#: Doer/WordPressEntitiesRegistrator.php:74
 msgid "Parent Answer"
 msgstr "Bovenliggende antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:74
+#: Doer/WordPressEntitiesRegistrator.php:76
 msgid "New Answer"
 msgstr "Nieuwe antwoord"
 
-#: Doer/WordPressEntitiesRegistrator.php:75
+#: Doer/WordPressEntitiesRegistrator.php:77
 msgid "No Answers found"
 msgstr "Geen antwoorden gevonden"
 
-#: Doer/WordPressEntitiesRegistrator.php:76
+#: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found in Trash"
 msgstr "Geen antwoorden gevonden in Prullenbak"
 
-#: Doer/WordPressEntitiesRegistrator.php:81
+#: Doer/WordPressEntitiesRegistrator.php:83
 msgid "Test Scales"
 msgstr "Test schalen"
 
-#: Doer/WordPressEntitiesRegistrator.php:82
+#: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scale"
 msgstr "Test schaal"
 
-#: Doer/WordPressEntitiesRegistrator.php:83
+#: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Add New Scale"
 msgstr "Toevoegen van nieuwe schaal"
 
-#: Doer/WordPressEntitiesRegistrator.php:84
+#: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Edit Scale"
 msgstr "Schaal bewerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:85
+#: Doer/WordPressEntitiesRegistrator.php:87
 msgid "View Scale"
 msgstr "Weergave schaal"
 
-#: Doer/WordPressEntitiesRegistrator.php:86
+#: Doer/WordPressEntitiesRegistrator.php:88
 msgid "Search Scales"
 msgstr "Zoek schalen"
 
-#: Doer/WordPressEntitiesRegistrator.php:87
+#: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Parent Scale:"
 msgstr "Bovenliggende schaal:"
 
-#: Doer/WordPressEntitiesRegistrator.php:89
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "Schalen"
 
-#: Doer/WordPressEntitiesRegistrator.php:90
+#: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
 msgstr "Alle schalen"
 
-#: Doer/WordPressEntitiesRegistrator.php:91
+#: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Update Scale"
 msgstr "Schaal bijwerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:92
+#: Doer/WordPressEntitiesRegistrator.php:94
 msgid "New Scale Name"
 msgstr "Nieuwe schaal naam"
 
-#: Doer/WordPressEntitiesRegistrator.php:93
+#: Doer/WordPressEntitiesRegistrator.php:95
 msgid "Parent Scale"
 msgstr "Bovenliggende schaal"
 
-#: Doer/WordPressEntitiesRegistrator.php:95
+#: Doer/WordPressEntitiesRegistrator.php:97
 msgid "New Scale"
 msgstr "Nieuwe schaal"
 
-#: Doer/WordPressEntitiesRegistrator.php:96
+#: Doer/WordPressEntitiesRegistrator.php:98
 msgid "No Scales found"
 msgstr "Geen schalen gevonden"
 
-#: Doer/WordPressEntitiesRegistrator.php:97
+#: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found in Trash"
 msgstr "Geen schalen gevonden in Prullenbak"
 
-#: Doer/WordPressEntitiesRegistrator.php:102
+#: Doer/WordPressEntitiesRegistrator.php:104
 msgid "Test Results"
 msgstr "Testresultaten"
 
-#: Doer/WordPressEntitiesRegistrator.php:103
+#: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Result"
 msgstr "Testresultaat"
 
-#: Doer/WordPressEntitiesRegistrator.php:104
+#: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Add New Result"
 msgstr "Toevoegen van nieuwe resultaat"
 
-#: Doer/WordPressEntitiesRegistrator.php:105
+#: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Edit Result"
 msgstr "Resultaat bewerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:106
+#: Doer/WordPressEntitiesRegistrator.php:108
 msgid "View Result"
 msgstr "Bekijk resultaat"
 
-#: Doer/WordPressEntitiesRegistrator.php:107
+#: Doer/WordPressEntitiesRegistrator.php:109
 msgid "Search Results"
 msgstr "Zoekresultaten"
 
-#: Doer/WordPressEntitiesRegistrator.php:108
+#: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
 msgstr "Bovenliggende resultaat:"
 
-#: Doer/WordPressEntitiesRegistrator.php:110
+#: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Results"
 msgstr "Resultaten"
 
-#: Doer/WordPressEntitiesRegistrator.php:111
+#: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
 msgstr "Alle resultaten"
 
-#: Doer/WordPressEntitiesRegistrator.php:112
+#: Doer/WordPressEntitiesRegistrator.php:114
 msgid "Update Result"
 msgstr "Resultaat bijgewerkt"
 
-#: Doer/WordPressEntitiesRegistrator.php:113
+#: Doer/WordPressEntitiesRegistrator.php:115
 msgid "New Result Name"
 msgstr "Nieuwe resultaat naam"
 
-#: Doer/WordPressEntitiesRegistrator.php:114
+#: Doer/WordPressEntitiesRegistrator.php:116
 msgid "Parent Result"
 msgstr "Bovenliggende resultaat"
 
-#: Doer/WordPressEntitiesRegistrator.php:116
+#: Doer/WordPressEntitiesRegistrator.php:118
 msgid "New Result"
 msgstr "Nieuwe resultaat"
 
-#: Doer/WordPressEntitiesRegistrator.php:117
+#: Doer/WordPressEntitiesRegistrator.php:119
 msgid "No Results found"
 msgstr "Geen resultaten gevonden"
 
-#: Doer/WordPressEntitiesRegistrator.php:118
+#: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found in Trash"
 msgstr "Geen resultaten gevonden in de Prullenbak"
 
-#: Doer/WordPressEntitiesRegistrator.php:123
+#: Doer/WordPressEntitiesRegistrator.php:125
+#: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Test Categories"
 msgstr "Test Categorieën"
 
-#: Doer/WordPressEntitiesRegistrator.php:124
+#: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Test Category"
 msgstr "Test categorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:125
+#: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Add New Category"
 msgstr "Nieuwe categorie toevoegen"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Edit Category"
 msgstr "Categorie bewerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:127
+#: Doer/WordPressEntitiesRegistrator.php:129
 msgid "View Category"
 msgstr "Categorie tonen"
 
-#: Doer/WordPressEntitiesRegistrator.php:128
+#: Doer/WordPressEntitiesRegistrator.php:130
 msgid "Search Categories"
 msgstr "Categorieën zoeken"
 
-#: Doer/WordPressEntitiesRegistrator.php:129
+#: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Parent Category:"
 msgstr "Bovenliggende categorie:"
 
-#: Doer/WordPressEntitiesRegistrator.php:131
-msgid "Categories"
-msgstr "Categorieën"
-
-#: Doer/WordPressEntitiesRegistrator.php:132
+#: Doer/WordPressEntitiesRegistrator.php:134
 msgid "All Categories"
 msgstr "Alle categorieën"
 
-#: Doer/WordPressEntitiesRegistrator.php:133
+#: Doer/WordPressEntitiesRegistrator.php:135
 msgid "Update Category"
 msgstr "Categorie bijwerken"
 
-#: Doer/WordPressEntitiesRegistrator.php:134
+#: Doer/WordPressEntitiesRegistrator.php:136
 msgid "New Category Name"
 msgstr "Nieuwe categorienaam"
 
-#: Doer/WordPressEntitiesRegistrator.php:135
+#: Doer/WordPressEntitiesRegistrator.php:137
 msgid "Parent Category"
 msgstr "Bovenliggende categorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:137
+#: Doer/WordPressEntitiesRegistrator.php:139
 msgid "New Category"
 msgstr "Nieuwe categorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:138
+#: Doer/WordPressEntitiesRegistrator.php:140
 msgid "No Categories found"
 msgstr "Er zijn geen rubrieken gevonden"
 
-#: Doer/WordPressEntitiesRegistrator.php:139
+#: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found in Trash"
 msgstr "Er zijn geen rubrieken gevonden in Prullenbak"
 
@@ -464,7 +497,7 @@ msgid ""
 "automatically."
 msgstr "Voeg hier uw individuele antwoorden als tekst; na het opslaan van de test zal worden geëxtraheerd en gemaakt. Nummers en andere indexen zal automatisch worden ontdaan."
 
-#: Template/Test/Passer/get-results.php:33
+#: Template/Test/Passer/get-results.php:37
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d ud af %2$d"
@@ -472,11 +505,3 @@ msgstr "%1$d ud af %2$d"
 #: Template/Test/Passer/fill-form.php:46
 msgid "Get Test Results"
 msgstr "Testresultaten te krijgen"
-
-#: Template/Test/Passer/fill-form.php:49
-msgid "Test is under construction"
-msgstr "Test is in aanbouw"
-
-#: Template/Test/Passer/fill-form.php:50
-msgid "You can not get any results from it yet."
-msgstr "U kunt niet krijgen geen resultaten van het nog."

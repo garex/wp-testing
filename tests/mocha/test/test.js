@@ -39,12 +39,32 @@ describe('Test', function() {
         })
     })
 
+    it('should have result page options just below "Publish" metabox', function() {
+        casper.then(function() {
+            var boxIds = this.evaluate(function() {
+                return jQuery('#side-sortables .postbox')
+                    .map(function() {
+                        return this.id;
+                    })
+                    .get()
+                    .join(',')
+            })
+
+            boxIds.should.match(/submitdiv,wpt_result_page_options/)
+        })
+    })
+
     it('should be updated', function() {
         casper.then(function() {
-            this.fill('form#post', {
-                'post_title' : 'Are You Hot or Not?!',
-                'content'    : 'Allow others to rate the vacuum on the Earth!'
-            }, true)
+            this.fillSelectors('form#post', {
+                '#title': 'Are You Hot or Not?!',
+                '#content': 'Allow others to rate the vacuum on the Earth!',
+                '#wpt_question_title_0': 'Are You Hot?',
+            })
+            this.click('.misc-pub-wpt-result-page-show-scales input[type=checkbox]') // not show scales later
+            this.clickLabel(' Yes', 'label')
+            this.clickLabel(' Lie', 'label')
+            this.click('#save-post')
         })
 
         casper.waitForUrl(/message/, function() {
@@ -52,6 +72,9 @@ describe('Test', function() {
             '#message'.should.be.inDOM
             expect('post_title').to.have.fieldValue('Are You Hot or Not?!')
             expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth!')
+            this.fillSelectors('form#post', {
+                '#wpt_score_value_0_0': '5'
+            }, true)
         })
     })
 

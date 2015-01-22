@@ -1,9 +1,13 @@
 /db/log/*.log
 /db/ruckusing.conf.local.php
 /db/sql/*.bak
+/js/vendor/evercookie
+/js/vendor/uuid-js
 /phpunit.xml
 /tests/mocha/node_modules/
 /tests/integration-environment/wordpress/
 /tests/integration-environment/wordpress-*.tar.gz
 /tests/integration-environment/*.zip
+/tools/screenshots/node_modules/
+/tools/screenshots/screenshot-*.png
 /vendor/
