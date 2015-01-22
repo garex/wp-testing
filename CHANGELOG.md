@@ -2,6 +2,10 @@
 ## Changelog ##
 
 
+### 0.7.1 ###
+Fix bad external library version
+
+
 ### 0.7 ###
 Give each passing own URL to allow sharing and add two result page options
 
@@ -196,6 +200,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.7.1 ###
+Fix bad external library version
 
 ### 0.5.2 ###
 Fix fatal error incompatibility with wordpress-seo plugin
