@@ -62,15 +62,15 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. Test editing section. There are fast acces buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
+02. Test editing section. There are fast access buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
 03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
-07. Ready test on the home page
-08. The page with the description of the test, questions and answers
-09. The button is desabled untill all questions are not answered
-10. Get test results after all questions are answered
-11. The result page on it's own URL contains both the result of the test and the scales that create a result
-12. The example of the test without  scores. Some answers are individual and some are individualized
+07. The example of the test without  scores. Some answers are individual and some are individualized
+08. Ready test on the home page
+09. The page with the description of the test, questions and answers
+10. The button is disabled until all questions are not answered
+11. Get test results after all questions are answered
+12. The result page on it`s own URL contains both the result of the test and the scales that create a result
 13. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
