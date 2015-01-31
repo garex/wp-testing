@@ -76,8 +76,16 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 } else {
                     $link .= '&wpt_passing_slug=' . $slug;
                 }
-                $this->wp->redirect($link);
-
+                $this->wp->redirect($link, 302);
+                $this->wp->dieMessage(
+                    $this->render('Test/Passer/redirect-message', array(
+                        'url' => $link,
+                    )),
+                    'Redirect',
+                    array(
+                        'response' => 302,
+                    )
+                );
                 return $this;
             } catch (fValidationException $e) {
                 $title   = __('Test data not valid', 'wp-testing');
