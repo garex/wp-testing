@@ -64,7 +64,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             $passing = new WpTesting_Model_Passing();
             $passing->populate($this->test)
                 ->setIp($this->getClientIp())
-                ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE));
+                ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE))
+                ->setUserAgent($this->getUserAgent())
+            ;
 
             try {
                 $passing->store(true);
