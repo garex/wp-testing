@@ -60,6 +60,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return $this;
         }
 
+        $this->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
         if (self::ACTION_PROCESS_FORM == $action) {
             $passing = new WpTesting_Model_Passing();
             $passing->populate($this->test)
@@ -144,6 +145,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             ->addFilter('the_content', array($this, 'renderTestContent'))
         ;
         return $this;
+    }
+
+    public function addPassingActionCssClass($classes)
+    {
+        $classes[] = 'wpt_test-' . $this->getTestPassingAction();
+        return $classes;
     }
 
     public function renderTestContent($content)
