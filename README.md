@@ -1,6 +1,6 @@
 # Psychological tests & quizes #
 
-**Contributors:** ustimenko  
+**Contributors:** ustimenko, borrypsy, coach2talk, ilariarizzo, ikurtuldu  
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
@@ -46,7 +46,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
 * For German translation thanks to Sascha (info@newwaystec.com)
 * For Italian translation thanks to Ilaria Rizzo (dott.rizzo.ilaria@gmail.com)
-* For Turkish translation thanks to Islam Kurtuldu (https://wordpress.org/support/profile/ikurtuldu)
+* For Turkish translation thanks to Islam Kurtuldu
 
 
 ## Installation ##
