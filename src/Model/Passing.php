@@ -13,6 +13,8 @@
  * @method WpTesting_Model_Passing setIp() setIp(string $ip) Sets the value for ip
  * @method integer getDeviceUuid() getDeviceUuid() Gets the current value of device's uuid
  * @method WpTesting_Model_Passing setDeviceUuid() setDeviceUuid(string $uuid) Sets the value for device's uuid
+ * @method integer getUserAgent() getUserAgent() Gets the current value of user agent
+ * @method WpTesting_Model_Passing setUserAgent() setUserAgent(string $userAgent) Sets the value for user agent
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 {
