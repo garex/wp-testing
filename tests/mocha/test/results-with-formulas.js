@@ -32,6 +32,7 @@ describe('Results with formulas', function() {
                 '#wpt_question_title_1': 'Question 2?',
                 '#wpt_question_title_2': 'Question 3?'
             })
+            this.click('.misc-pub-wpt-test-page-reset-answers-on-back input[type=checkbox]') // Reset answers on back
             this.clickLabel(' Yes',         'label')
             this.clickLabel(' Lie',         'label')
             this.clickLabel(' Choleric',    'label')
