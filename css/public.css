@@ -42,8 +42,18 @@
     border-radius: 6px;
     position: relative;
 }
+.wpt_test .get_results .meter,
+.wpt_test .get_results .scale.scores {
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 .wpt_test .get_results .meter {
-    height: 1.8em;
     margin-bottom: 1em;
     padding: 2px 1px;
     border: 1px solid highlight;
@@ -56,8 +66,6 @@
 }
 .wpt_test .get_results .scale.scores {
     padding-left: 7px;
-    padding-top: 0.1em;
-    font-weight: bold;
     position: absolute;
     z-index: 1;
 }
