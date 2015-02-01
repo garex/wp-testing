@@ -15,7 +15,11 @@ jQuery(document).ready(function($) {
     });
     questions = _.uniq(questions);
 
-    form.find('input:radio').change(function() {
+    var answers = form.find('input:radio');
+    if (form.data('isResetAnswersOnBack')) {
+        answers.attr('checked', false);
+    }
+    answers.change(function() {
         if (form.find('input:radio:checked').length < questions.length) {
             return;
         }

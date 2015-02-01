@@ -179,10 +179,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'test'         => $this->test,
                 'questions'    => $this->test->buildQuestions(),
                 'isFinal'      => $this->test->isFinal(),
-                'submitButtonCaption' => current(array_filter(array(
+                'submitButtonCaption'  => current(array_filter(array(
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
+                'wp'           => $this->wp,
+                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
             );
         } elseif (self::ACTION_GET_RESULTS == $action) {
             $params  = array(
