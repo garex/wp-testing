@@ -31,6 +31,7 @@ To minimize author's time we have **Quick Fill** for questions and scores. You c
 
 Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. It will allow later to see if someone will have many passings from same computer/smartphone/another device.
 
+**Test** page can be customized: reset answers on "Back" button and use your own caption for "Get Test Result" button.
 **Results** page also can be customized: when you need to show/hide scales or test description on it.
 
 Wp-testing localized into nine languages: English, Russian (native speaker), German, French, Dutch, Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, Bulgarian, Italian and Turkish have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
