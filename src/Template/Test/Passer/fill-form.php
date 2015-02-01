@@ -43,7 +43,7 @@
 <?php endforeach ?>
 
 <?php if($isFinal): ?>
-    <p><input type="submit" class="button" value="<?php echo __('Get Test Results', 'wp-testing') ?>" /></p>
+    <p><input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" /></p>
 <?php else: ?>
     <div class="wpt_warning">
         <h4><?php echo __('Test is under construction', 'wp-testing') ?></h4>
