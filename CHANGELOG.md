@@ -2,6 +2,20 @@
 ## Changelog ##
 
 
+### 0.8 ###
+Add test page settings
+
+* Allow to reset answers and customize button caption
+* Save user agent in passing
+* Update translations
+
+Internal improvements:
+
+* Fix attachment URLs
+* Add CSS class to body on passing pages
+* Exit after passing redirect
+
+
 ### 0.7.1 ###
 Fix bad external library version
 
