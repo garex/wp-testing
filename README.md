@@ -68,8 +68,8 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. Test editing section. There are fast access buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
-03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers
+02. There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar
+03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
