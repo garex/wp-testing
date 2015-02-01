@@ -26,6 +26,11 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             this.click('#submit')
         })
 
+        // Fix for WP 3.2 flush rules
+        casper.waitForUrl(/options/).then(function () {
+            this.click('#submit')
+        })
+
         casper.waitForUrl(/options/).thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
             this.clickLabel('log out', 'a')
         })
