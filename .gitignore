@@ -9,5 +9,5 @@
 /tests/integration-environment/wordpress-*.tar.gz
 /tests/integration-environment/*.zip
 /tools/screenshots/node_modules/
-/tools/screenshots/screenshot-*.png
+/tools/screenshots/*.png
 /vendor/

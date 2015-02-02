@@ -1,11 +1,11 @@
 # Psychological tests & quizes #
 
-**Contributors:** ustimenko  
+**Contributors:** ustimenko, borrypsy, coach2talk, ilariarizzo, ikurtuldu  
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1  
-**Stable tag:** 0.7.1  
+**Stable tag:** 0.8  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -31,6 +31,7 @@ To minimize author's time we have **Quick Fill** for questions and scores. You c
 
 Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. It will allow later to see if someone will have many passings from same computer/smartphone/another device.
 
+**Test** page can be customized: reset answers on "Back" button and use your own caption for "Get Test Result" button.
 **Results** page also can be customized: when you need to show/hide scales or test description on it.
 
 Wp-testing localized into nine languages: English, Russian (native speaker), German, French, Dutch, Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, Bulgarian, Italian and Turkish have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
@@ -46,7 +47,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Bulgarian translation thanks to Borry Semerdzhieva (borry.semerdzhieva@gmail.com)
 * For German translation thanks to Sascha (info@newwaystec.com)
 * For Italian translation thanks to Ilaria Rizzo (dott.rizzo.ilaria@gmail.com)
-* For Turkish translation thanks to Islam Kurtuldu (https://wordpress.org/support/profile/ikurtuldu)
+* For Turkish translation thanks to Islam Kurtuldu
 
 
 ## Installation ##
@@ -67,8 +68,8 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. Test editing section. There are fast access buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar
-03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers
+02. There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar
+03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
