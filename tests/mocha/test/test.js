@@ -27,7 +27,8 @@ describe('Test', function() {
 
             this.fill('form#post', {
                 'post_title' : 'Are You Hot or Not?',
-                'content'    : 'Allow others to rate the vacuum on the Earth'
+                'content'    : 'Allow others to rate the vacuum on the Earth',
+                'wpt_test_page_submit_button_caption': 'Gimme Gimme'
             }, true)
         })
 
@@ -36,10 +37,11 @@ describe('Test', function() {
             '#message'.should.be.inDOM
             expect('post_title').to.have.fieldValue('Are You Hot or Not?')
             expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth')
+            expect('wpt_test_page_submit_button_caption').to.have.fieldValue('Gimme Gimme')
         })
     })
 
-    it('should have result page options just below "Publish" metabox', function() {
+    it('should have page options just below "Publish" metabox', function() {
         casper.then(function() {
             var boxIds = this.evaluate(function() {
                 return jQuery('#side-sortables .postbox')
@@ -50,7 +52,7 @@ describe('Test', function() {
                     .join(',')
             })
 
-            boxIds.should.match(/submitdiv,wpt_result_page_options/)
+            boxIds.should.match(/submitdiv,wpt_test_page_options,wpt_result_page_options/)
         })
     })
 

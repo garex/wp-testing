@@ -41,7 +41,7 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
         $posts   = WP_DB_PREFIX  . 'posts';
         $this->execute("
             INSERT INTO $meta(post_id, meta_key, meta_value)
-            SELECT ID, '$key', $value
+            SELECT ID, '$key', '$value'
             FROM $posts WHERE post_type = 'wpt_test'
         ");
     }

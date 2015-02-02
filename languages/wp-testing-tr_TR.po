@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 01:53+0700\n"
-"PO-Revision-Date: 2015-01-21 20:41+0000\n"
+"POT-Creation-Date: 2015-02-01 23:09+0700\n"
+"PO-Revision-Date: 2015-02-02 09:11+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -29,47 +29,63 @@ msgstr "Test Yapım Aşamasındadır"
 msgid "You can not get any results from it yet."
 msgstr "Henüz Sonuç Alamazsınız"
 
-#: Doer/TestPasser.php:83
+#: Doer/TestPasser.php:94
 msgid "Test data not valid"
 msgstr "Sınama verileri geçerli değil"
 
-#: Doer/TestPasser.php:84
+#: Doer/TestPasser.php:95
 msgid "You passed not valid data to test."
 msgstr "Test için geçerli olmayan veri geçti."
 
-#: Doer/TestPasser.php:110 Doer/TestPasser.php:113
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
 msgstr "Test sonuç bulunamadı"
 
-#: Doer/TestPasser.php:111
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Sana bir şey hiçbir şey elde edemezsiniz."
 
+#: Doer/TestPasser.php:184 Doer/TestEditor.php:79
+msgid "Get Test Results"
+msgstr "Test Sonuçlarını Al"
+
 #: Doer/TestEditor.php:27
+msgid "Test Page Options"
+msgstr "Test Sayfası Seçenekleri"
+
+#: Doer/TestEditor.php:29
 msgid "Result Page Options"
 msgstr "Sonuç sayfası seçenekleri"
 
-#: Doer/TestEditor.php:29
+#: Doer/TestEditor.php:31
 msgid "Edit Questions and Scores"
 msgstr "Soru ve Sonuçları Düzenle"
 
-#: Doer/TestEditor.php:30
+#: Doer/TestEditor.php:32
 msgid "Add New Questions"
 msgstr "Yeni Soru Ekle"
 
-#: Doer/TestEditor.php:31
+#: Doer/TestEditor.php:33
 msgid "Edit Formulas"
 msgstr "Formülleri Düzenle"
 
-#: Doer/TestEditor.php:79
+#: Doer/TestEditor.php:77
+msgid "Button caption"
+msgstr "Düğme başlık"
+
+#: Doer/TestEditor.php:83
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr "\"Geri\" butonuna basıldığında davalı cevapları sıfırlayın"
+
+#: Doer/TestEditor.php:98
 msgid "Show scales"
 msgstr "Ölçekler göster"
 
-#: Doer/TestEditor.php:83
+#: Doer/TestEditor.php:102
 msgid "Show test description"
 msgstr "Test açıklama göster"
 
-#: Doer/TestEditor.php:177
+#: Doer/TestEditor.php:188
 msgid "Test data not saved"
 msgstr "Test verisi kaydedilmedi"
 
@@ -488,20 +504,16 @@ msgstr "Bireysel Cevaplar Ekle"
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— her soru için benzersiz. Bütün sınav soruları aynı cevapları varsa, %s kullanarak"
+msgstr "-her soruya özeldir. Eğer tüm sorulara cevabınız aynı ise %s kullanın"
 
 #: Template/Test/Editor/edit-questions.php:160
 msgid ""
 "Add here your individual answers as text; after test saving they will be "
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
-msgstr "Burada metin olarak bireysel yanıtlarınızı ekleyin; test kaydettikten sonra onlar elde ve oluşturulmalıdır. Sayılar ve diğer dizinleri otomatik olarak elimden."
+msgstr "Buraya bireysel cevaplarınızı metin olarak ekleyin, testin kaydedilmesinden sonra cevaplarınız buraya açılacaktır. Sayılar ve diğer indeksler otomatik olarak ayıklanacaktır."
 
 #: Template/Test/Passer/get-results.php:37
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%2$d üzerinden %1$d"
-
-#: Template/Test/Passer/fill-form.php:46
-msgid "Get Test Results"
-msgstr "Test Sonuçlarını Al"

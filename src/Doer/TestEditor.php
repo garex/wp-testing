@@ -24,6 +24,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
+            ->addMetaBox('wpt_test_page_options', __('Test Page Options', 'wp-testing'),
+                array($this, 'renderTestPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
                 array($this, 'renderResultPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
@@ -38,14 +40,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function setDefaultMetaboxesOrder($post)
     {
-        $this->wp->setMetaBoxes(
-            $this->arrayMoveItemAfter(
-                $this->wp->getMetaBoxes('wpt_test', 'side', 'core'),
-                'wpt_result_page_options',
-                'submitdiv'
-            ),
-            'wpt_test', 'side', 'core'
-        );
+        $boxes = $this->wp->getMetaBoxes('wpt_test', 'side', 'core');
+        $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_result_page_options', 'submitdiv');
+        $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_test_page_options', 'submitdiv');
+        $this->wp->setMetaBoxes($boxes, 'wpt_test', 'side', 'core');
     }
 
     public function renderSubmitMiscActions()
@@ -71,6 +69,27 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     /**
      * @param WP_Post $item
      */
+    public function renderTestPageOptions($item)
+    {
+        $options = array(
+            'wpt_test_page_submit_button_caption' => array(
+                'default' => '',
+                'title'   => __('Button caption', 'wp-testing'),
+                'type'    => 'text',
+                'placeholder' => __('Get Test Results', 'wp-testing'),
+            ),
+            'wpt_test_page_reset_answers_on_back' => array(
+                'default' => '0',
+                'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
+            ),
+        );
+
+        $this->renderMetaboxOptions($options);
+    }
+
+    /**
+     * @param WP_Post $item
+     */
     public function renderResultPageOptions($item)
     {
         $options = array(
@@ -84,17 +103,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
-        foreach ($options as $key => $option) {
-            $option['value'] = $this->wp->getCurrentPostMeta($key);
-            if ($option['value'] == '') {
-                $option['value'] = $option['default'];
-            }
-            $options[$key] = $option;
-        }
-
-        $this->output('Test/Editor/result-page-options', array(
-            'options' => $options,
-        ));
+        $this->renderMetaboxOptions($options);
     }
 
     /**
@@ -151,6 +160,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         $metaOptions = array(
             'wpt_publish_on_home',
+            'wpt_test_page_submit_button_caption',
+            'wpt_test_page_reset_answers_on_back',
             'wpt_result_page_show_scales',
             'wpt_result_page_show_test_description',
         );
@@ -162,7 +173,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
 
         foreach ($metaOptions as $metaOptionKey) {
-            $metaOptionValue = intval($this->getRequestValue($metaOptionKey));
+            $metaOptionValue = $this->getRequestValue($metaOptionKey);
             $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
         }
 
@@ -222,5 +233,26 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return false;
         }
         return preg_match('/apache|httpd/i', $_SERVER['SERVER_SOFTWARE']);
+    }
+
+    private function renderMetaboxOptions($options)
+    {
+        foreach ($options as $key => $option) {
+            $option['value'] = $this->wp->getCurrentPostMeta($key);
+            if ($option['value'] == '') {
+                $option['value'] = $option['default'];
+            }
+            if (empty($option['type'])) {
+                $option['type'] = 'checkbox';
+            }
+            if (empty($option['placeholder'])) {
+                $option['placeholder'] = '';
+            }
+            $options[$key] = $option;
+        }
+
+        $this->output('Test/Editor/metabox-options', array(
+            'options' => $options,
+        ));
     }
 }

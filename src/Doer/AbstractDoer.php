@@ -70,7 +70,8 @@ abstract class WpTesting_Doer_AbstractDoer
      *
      * @return string|null
      */
-    protected function getClientIp() {
+    protected function getClientIp()
+    {
         $candidateKeys = array(
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP',
@@ -98,6 +99,16 @@ abstract class WpTesting_Doer_AbstractDoer
         }
 
         return null;
+    }
+
+    /**
+     * Get visitor's browser user agent string
+     *
+     * @return string
+     */
+    protected function getUserAgent()
+    {
+        return $this->getEnv('HTTP_USER_AGENT');
     }
 
     /**

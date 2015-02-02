@@ -46,7 +46,7 @@ var screenshots = [
            })
        }
    }, {
-       title   : 'Test editing section. There are fast access buttons like "add new questions" at the top of the page. The choise of answers and scales is available in the sidebar',
+       title   : 'There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar',
        actions : function () {
            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
@@ -66,8 +66,8 @@ var screenshots = [
            })
        }
    }, {
-       title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers',
-       offset  : 1150,
+       title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar',
+       offset  : 1050,
        actions : function () {
            casper.then(function() {
                this.evaluate(function() {
@@ -82,10 +82,11 @@ var screenshots = [
        }
    }, {
        title   : 'The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same',
-       offset  : 900,
+       offset  : 1050,
        actions : function () {
            casper.then(function() {
                this.clickLabel('Quick Fill Scores')
+               this.clickLabel('Add Individual Answers')
            })
        }
     }, {
@@ -149,12 +150,12 @@ var screenshots = [
         }
     }, {
         title   : 'The button is disabled until all questions are not answered',
-        offset  : 7000,
+        offset  : 7200,
         actions : function () {
         }
     }, {
         title   : 'Get test results after all questions are answered',
-        offset  : 7000,
+        offset  : 7200,
         actions : function () {
             casper.then(function() {
                 for (var i = 1, iMax = 57; i <= iMax; i++) {
@@ -211,6 +212,7 @@ casper.each(screenshots, function(self, screenshot, index) {
         }, options.height + options.top)
 
         this.capture('screenshot-' + screenIndex + '.png', options)
+        this.capture(screenIndex + '-' + screenshot.title + '.png', options)
         this.echo(screenIndex + '. ' + screenshot.title)
     })
 

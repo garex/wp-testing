@@ -26,6 +26,11 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             this.click('#submit')
         })
 
+        // Fix for WP 3.2 flush rules
+        casper.waitForUrl(/options/).then(function () {
+            this.click('#submit')
+        })
+
         casper.waitForUrl(/options/).thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
             this.clickLabel('log out', 'a')
         })
@@ -107,8 +112,17 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
-    it('should give same results on back-n-submit with new passing url', function() {
+    it('should reset answers on back if this option enabled', function() {
         casper.back().then(function() {
+            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
+        })
+    })
+
+    it('should give same results on back-n-submit with new passing url', function() {
+        casper.then(function() {
+            this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         })
 
@@ -156,7 +170,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
-    it('should not show scales and test description whne they are disabled', function() {
+    it('should show customized button title', function() {
         casper.open('http://wpti.dev/')
 
         casper.then(function() {
@@ -164,6 +178,12 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
 
         casper.waitForUrl(/test/, function() {
+            '#wpt-test-form input[type=submit]'.should.have.attr('value', 'Gimme Gimme')
+        })
+    })
+
+    it('should not show scales and test description when they are disabled', function() {
+        casper.then(function() {
             'Allow others to rate the vacuum on the Earth'.should.be.textInDOM
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
             this.fill('form#wpt-test-form', {}, true)
