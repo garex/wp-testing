@@ -2,15 +2,15 @@
 # This file is distrubuted under the GPL-3.0+
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
-# coach2talk <info@newwaystec.com>, 2014
+# coach2talk <info@newwaystec.com>, 2014-2015
 # Tomas Darius Davainis <tomasdd@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 01:53+0700\n"
-"PO-Revision-Date: 2015-01-21 20:31+0000\n"
-"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"POT-Creation-Date: 2015-02-01 23:09+0700\n"
+"PO-Revision-Date: 2015-02-02 14:51+0000\n"
+"Last-Translator: coach2talk <info@newwaystec.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-testing/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,47 +31,63 @@ msgstr "Test befindet sich im Aufbau"
 msgid "You can not get any results from it yet."
 msgstr "Ihnen können noch keine Ergebnisse angezeigt werden."
 
-#: Doer/TestPasser.php:83
+#: Doer/TestPasser.php:94
 msgid "Test data not valid"
-msgstr "Testdaten nicht gültig"
+msgstr "Ungültige Testdaten"
 
-#: Doer/TestPasser.php:84
+#: Doer/TestPasser.php:95
 msgid "You passed not valid data to test."
 msgstr "Sie haben keine gültige Daten zum Testen übergeben."
 
-#: Doer/TestPasser.php:110 Doer/TestPasser.php:113
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
-msgstr "Testergebnis nicht gefunden"
+msgstr "Kein Testergebnis gefunden"
 
-#: Doer/TestPasser.php:111
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Sie können nicht alles aus dem nichts bekommen."
 
+#: Doer/TestPasser.php:184 Doer/TestEditor.php:79
+msgid "Get Test Results"
+msgstr "Testergebnisse anzeigen"
+
 #: Doer/TestEditor.php:27
+msgid "Test Page Options"
+msgstr "Testseite Optionen"
+
+#: Doer/TestEditor.php:29
 msgid "Result Page Options"
 msgstr "Einstellung Ergebnisseite"
 
-#: Doer/TestEditor.php:29
+#: Doer/TestEditor.php:31
 msgid "Edit Questions and Scores"
 msgstr "Bearbeiten Sie Fragen und Partituren"
 
-#: Doer/TestEditor.php:30
+#: Doer/TestEditor.php:32
 msgid "Add New Questions"
 msgstr "Neue Fragen hinzufügen"
 
-#: Doer/TestEditor.php:31
+#: Doer/TestEditor.php:33
 msgid "Edit Formulas"
 msgstr "Bearbeiten von Formeln"
 
-#: Doer/TestEditor.php:79
+#: Doer/TestEditor.php:77
+msgid "Button caption"
+msgstr "Button Beschriftung"
+
+#: Doer/TestEditor.php:83
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr "Zurücksetzen Befragten Antworten, wenn Sie \"Zurück\" Taste gedrückt"
+
+#: Doer/TestEditor.php:98
 msgid "Show scales"
 msgstr "Zeige Skalen"
 
-#: Doer/TestEditor.php:83
+#: Doer/TestEditor.php:102
 msgid "Show test description"
 msgstr "Testbeschreibung anzeigen"
 
-#: Doer/TestEditor.php:177
+#: Doer/TestEditor.php:188
 msgid "Test data not saved"
 msgstr "Testdaten nicht gespeichert"
 
@@ -115,7 +131,7 @@ msgstr "Alle Tests"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Update-Test"
+msgstr "Test aktualisieren"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
@@ -145,7 +161,7 @@ msgstr "Als psychologischer Test oder psychologisches Testverfahren wird ein Ins
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Test Answers"
-msgstr "Test Antworten"
+msgstr "Test-Antworten"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Test Answer"
@@ -181,7 +197,7 @@ msgstr "Alle Antworten"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
-msgstr "Update Antwort"
+msgstr "Antwort aktualisieren"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
@@ -241,7 +257,7 @@ msgstr "Allen Skalen"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Update Scale"
-msgstr "Update-Skala"
+msgstr "Skala aktualisieren"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "New Scale Name"
@@ -330,7 +346,7 @@ msgstr "Testkategorien"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Test Category"
-msgstr "Test-Kategorie"
+msgstr "Testkategorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Add New Category"
@@ -483,7 +499,7 @@ msgstr "Es können keine Punkte bearbeitet werden. Um Punkte bearbeiten zu könn
 
 #: Template/Test/Editor/edit-questions.php:155
 msgid "Add Individual Answers"
-msgstr "Fügen Sie individuelle Antworten"
+msgstr "Individuelle Antworten hinzufügen"
 
 #: Template/Test/Editor/edit-questions.php:156
 #, php-format
@@ -503,7 +519,3 @@ msgstr "Fügen Sie hier Ihre individuellen Antworten als Text; nach dem Test spe
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d von %2$d"
-
-#: Template/Test/Passer/fill-form.php:46
-msgid "Get Test Results"
-msgstr "Testergebnis anzeigen"

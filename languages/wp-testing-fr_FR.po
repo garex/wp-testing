@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 01:53+0700\n"
-"PO-Revision-Date: 2015-01-21 20:31+0000\n"
+"POT-Creation-Date: 2015-02-01 23:09+0700\n"
+"PO-Revision-Date: 2015-02-02 09:21+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -29,47 +29,63 @@ msgstr "Test est en cours de construction"
 msgid "You can not get any results from it yet."
 msgstr "Vous ne pouvez pas obtenir aucun résultat d'elle encore."
 
-#: Doer/TestPasser.php:83
+#: Doer/TestPasser.php:94
 msgid "Test data not valid"
 msgstr "Données de test non valide"
 
-#: Doer/TestPasser.php:84
+#: Doer/TestPasser.php:95
 msgid "You passed not valid data to test."
 msgstr "Vous avez passé des données non valides à tester."
 
-#: Doer/TestPasser.php:110 Doer/TestPasser.php:113
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
 msgstr "Résultat de test non trouvé"
 
-#: Doer/TestPasser.php:111
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Vous ne pouvez pas obtenir quelque chose de rien."
 
+#: Doer/TestPasser.php:184 Doer/TestEditor.php:79
+msgid "Get Test Results"
+msgstr "Obtenez les résultats des tests"
+
 #: Doer/TestEditor.php:27
+msgid "Test Page Options"
+msgstr "Options de Page de test"
+
+#: Doer/TestEditor.php:29
 msgid "Result Page Options"
 msgstr "Page paramètres des résultats"
 
-#: Doer/TestEditor.php:29
+#: Doer/TestEditor.php:31
 msgid "Edit Questions and Scores"
 msgstr "Modifier les questions et les scores"
 
-#: Doer/TestEditor.php:30
+#: Doer/TestEditor.php:32
 msgid "Add New Questions"
 msgstr "Ajouter de nouvelles Questions"
 
-#: Doer/TestEditor.php:31
+#: Doer/TestEditor.php:33
 msgid "Edit Formulas"
 msgstr "Modifier des formules"
 
-#: Doer/TestEditor.php:79
+#: Doer/TestEditor.php:77
+msgid "Button caption"
+msgstr "Légende bouton"
+
+#: Doer/TestEditor.php:83
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr "Réinitialiser l'intimé réponses quand appuie sur le bouton «Retour»"
+
+#: Doer/TestEditor.php:98
 msgid "Show scales"
 msgstr "Voir les échelles"
 
-#: Doer/TestEditor.php:83
+#: Doer/TestEditor.php:102
 msgid "Show test description"
 msgstr "Voir la description de test"
 
-#: Doer/TestEditor.php:177
+#: Doer/TestEditor.php:188
 msgid "Test data not saved"
 msgstr "Tester les données non sauvegardées"
 
@@ -501,7 +517,3 @@ msgstr "Ajouter ici vos réponses individuelles sous forme de texte ; après l'e
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d sur %2$d"
-
-#: Template/Test/Passer/fill-form.php:46
-msgid "Get Test Results"
-msgstr "Obtenez les résultats des tests"
