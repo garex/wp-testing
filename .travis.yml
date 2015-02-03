@@ -47,4 +47,15 @@ before_script:
 script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - mocha-casperjs --timeout=360000
+  - mocha-casperjs --grep=Plugin_activation --timeout=360000
+  - mocha-casperjs --grep=Answers
+  - mocha-casperjs --grep=Page
+  - mocha-casperjs --grep=Questions
+  - mocha-casperjs --grep=Quick
+  - mocha-casperjs --grep=Results
+  - mocha-casperjs --grep=Scores
+  - mocha-casperjs --grep=Shortcode
+  - mocha-casperjs --grep=Taxonomies
+  - mocha-casperjs --grep=Test
+  - mocha-casperjs --grep=Passings
+  - mocha-casperjs --grep=Plugin_deactivation

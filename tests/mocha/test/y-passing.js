@@ -69,7 +69,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     })
 
     var uuidCookie = null;
-    it('should block "Get Test Results" button until all answers selected', function() {
+    it('should block "Get results" button until all answers selected', function() {
         casper.then(function() {
 
             this.wait(1000, function() {
