@@ -10,7 +10,6 @@ PLUGINS=${PLUGINS:-}
 
 function init {
     log 'Define vars'
-    sudo apt-get install realpath
     HERE=$(dirname $(realpath $0))
 }
 
@@ -136,6 +135,11 @@ function log {
     local now=$(date)
     echo
     echo [$now] $message
+}
+
+function realpath {
+    local path=$1
+    php -r 'echo realpath($argv[1]);' $path
 }
 
 function main {
