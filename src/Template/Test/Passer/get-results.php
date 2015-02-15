@@ -2,6 +2,7 @@
 // Can be overriden in your theme as entry-content-wpt-test-get-results.php
 
 /* @var $content string */
+/* @var $renderer WpTesting_Doer_IRenderer */
 /* @var $test WpTesting_Model_Test */
 /* @var $passing WpTesting_Model_Passing[] */
 /* @var $scales WpTesting_Model_Scale[] */
@@ -19,7 +20,7 @@
 
         <h3 class="result title"><?php echo $result->getTitle() ?></h4>
 
-        <p class="result description"><?php echo nl2br($result->getDescription()) ?></p>
+        <div class="result description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($result->getDescription())) ?></div>
 
     <?php endforeach ?>
 
@@ -40,7 +41,7 @@
             <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>
         </div>
 
-        <p class="scale description"><?php echo nl2br($scale->getDescription()) ?></p>
+        <div class="scale description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($scale->getDescription())) ?></div>
 
     <?php endforeach ?>
 

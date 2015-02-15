@@ -70,6 +70,30 @@
     z-index: 1;
 }
 
+.wpt_test .get_results div.description {
+    margin-bottom: 1.6842em;
+}
+
+.wpt_text_with_more .more_link {
+    display: none;
+}
+.wpt_text_with_more .text_before_more {
+    margin-bottom: 1.6842em;
+}
+html.js .wpt_text_with_more .text_under_more {
+    display: none;
+}
+html.js .wpt_text_with_more .more_link {
+    display: inline;
+    text-decoration: none;
+    color: gray;
+    border-bottom: 1px dashed gainsboro;
+}
+html.js .wpt_text_with_more .more_link.open {
+    color: gainsboro;
+    border-bottom-color: #f6f6f6;
+}
+
 .wpt_test .get_results .content {
     color: gray;
 }

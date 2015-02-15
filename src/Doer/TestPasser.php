@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
+class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements WpTesting_Doer_IRenderer
 {
 
     /**
@@ -142,6 +142,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $this->wp
             ->enqueuePluginStyle('wpt_public', 'css/public.css')
             ->enqueuePluginScript('wpt_test_pass_' . $action, 'js/test-pass-' . $action . '.js', array('jquery', 'lodash'), false, true)
+            ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('jquery'), false, true)
             ->addFilter('the_content', array($this, 'renderTestContent'))
         ;
         return $this;
@@ -190,6 +191,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
             $params  = array(
                 'content'    => $content,
+                'renderer'   => $this,
                 'test'       => $this->test,
                 'passing'    => $this->passing,
                 'scales'     => $this->passing->buildScalesWithRangeOnce($isSortByScore),
@@ -201,6 +203,30 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
         $this->filteredTestContent = preg_replace_callback('|<form.+</form>|s', array($this, 'stripNewLines'), $this->render($template, $params));
         return $this->filteredTestContent;
+    }
+
+    public function renderTextAsHtml($content)
+    {
+        $content = preg_replace('|(<\/[^>]+>)\r?\n|', '$1', $content);
+        $content = preg_replace('|[\r\n]+(<!--)|',    '$1', $content);
+        $content = preg_replace('|(-->)[\r\n]+|',     '$1', $content);
+        return nl2br($content);
+    }
+
+    public function renderWithMoreSplitted($content)
+    {
+        $extended = get_extended($content);
+        if (empty($extended['extended'])) {
+            return $content;
+        }
+        if (empty($extended['more_text'])) {
+            $extended['more_text'] = trim(__('(more&hellip;)'), '()');
+        }
+        return $this->render('Test/Passer/text-with-more', array(
+            'excerpt' => $extended['main'],
+            'more'    => $extended['more_text'],
+            'content' => $extended['extended'],
+        ));
     }
 
     private function prepareToLevenshein($input)
