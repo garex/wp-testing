@@ -426,6 +426,8 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         /** @var fRecordSet $globalAnswers */
         $globalAnswers    = $this->buildGlobalAnswers();
         $globalAnswersIds = $globalAnswers->call('getId');
+        $globalAnswerSort = array_flip($globalAnswersIds);
+        $globalAnswerSort[null] = 100;
         foreach ($this->buildQuestions() as $question) {
             $existingGlobalAnswersIds = array();
             foreach ($question->buildAnswers() as $answer) {
@@ -433,6 +435,10 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                     $answer->delete();
                 } else {
                     $existingGlobalAnswersIds[] = $answer->getGlobalAnswerId();
+                    $newAnswerSort = $globalAnswerSort[$answer->getGlobalAnswerId()];
+                    if ($answer->getSort() != $newAnswerSort) {
+                        $answer->setSort($newAnswerSort)->store();
+                    }
                 }
             }
 
@@ -442,6 +448,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                 $answer = new WpTesting_Model_Answer();
                 $answer->setGlobalAnswerId($globalAnswerId);
                 $answer->setQuestionId($question->getId());
+                $answer->setSort($globalAnswerSort[$answer->getGlobalAnswerId()]);
                 $answer->store();
             }
         }

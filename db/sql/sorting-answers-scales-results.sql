@@ -1,3 +1,7 @@
+-- update wp_t_answers set answer_sort = 100;
+
+SELECT * FROM wp_t_answers;
+
 SELECT 
     p.post_title, tt.taxonomy, t.name, t.term_id, tr.term_order
 FROM
