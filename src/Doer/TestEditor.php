@@ -140,6 +140,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 'default' => '1',
                 'title'   => __('Show scales', 'wp-testing'),
             ),
+            'wpt_result_page_sort_scales_by_score' => array(
+                'default' => '0',
+                'title'   => __('Sort scales by score', 'wp-testing'),
+            ),
             'wpt_result_page_show_test_description' => array(
                 'default' => '0',
                 'title'   => __('Show test description', 'wp-testing'),
@@ -206,6 +210,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
             'wpt_result_page_show_scales',
+            'wpt_result_page_sort_scales_by_score',
             'wpt_result_page_show_test_description',
         );
 
