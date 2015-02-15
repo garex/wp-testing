@@ -38,4 +38,15 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
         return $this->createWpTesting_Model_Test();
     }
 
+    protected function configure()
+    {
+        fORMRelated::setOrderBys(
+            $this,
+            'WpTesting_Model_Answer',
+            array(
+                WPT_DB_PREFIX . 'answers.answer_sort' => 'asc',
+                WPT_DB_PREFIX . 'answers.answer_id'   => 'asc',
+            )
+        );
+    }
 }

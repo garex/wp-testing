@@ -4,6 +4,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
 
     /**
+     * Current test taxonomies, broken by taxonomy
+     * @var array
+     */
+    private $selectedTermsIds = array();
+
+    /**
      * @param WP_Screen $screen
      */
     public function customizeUi($screen)
@@ -21,9 +27,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3'), false, true)
             ->enqueuePluginScript('wpt_test_edit_answers',     'js/test-edit-answers.js',           array('jquery'), false, true)
             ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
+            ->enqueuePluginScript('wpt_test_sort_taxonomies',  'js/test-sort-taxonomies.js',        array('jquery', 'jquery-ui-sortable'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
+            ->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), 10, 2)
             ->addMetaBox('wpt_test_page_options', __('Test Page Options', 'wp-testing'),
                 array($this, 'renderTestPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
@@ -44,6 +52,41 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_result_page_options', 'submitdiv');
         $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_test_page_options', 'submitdiv');
         $this->wp->setMetaBoxes($boxes, 'wpt_test', 'side', 'core');
+    }
+
+    public function filterTermsChecklistArgs($args, $postId = null)
+    {
+        $taxonomy = $args['taxonomy'];
+        if (!in_array($taxonomy, array('wpt_answer', 'wpt_scale', 'wpt_result'))) {
+            return $args;
+        }
+        if (empty($postId)) {
+            return $args;
+        }
+        $args['selected_cats'] = $this->wp->getObjectTerms($postId, $taxonomy, array(
+            'taxonomy' => $taxonomy,
+            'fields'   => 'ids',
+            'orderby'  => 'term_order',
+        ));
+        $this->selectedTermsIds[$taxonomy] = $args['selected_cats'];
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        return $args;
+    }
+
+    public function filterTermsOrderBy($orderBy, $args, $taxonomies)
+    {
+        $isSort = true
+            && isset($taxonomies[0])
+            && !empty($this->selectedTermsIds[$taxonomies[0]])
+            && $args['orderby'] == 'name';
+
+        if (!$isSort) {
+            return $orderBy;
+        }
+
+        $ids   = implode(',', $this->selectedTermsIds[$taxonomies[0]]);
+        $order = $args['order'];
+        return "FIELD(t.term_id, $ids) $order, name";
     }
 
     public function renderSubmitMiscActions()
@@ -96,6 +139,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_result_page_show_scales' => array(
                 'default' => '1',
                 'title'   => __('Show scales', 'wp-testing'),
+            ),
+            'wpt_result_page_sort_scales_by_score' => array(
+                'default' => '0',
+                'title'   => __('Sort scales by score', 'wp-testing'),
             ),
             'wpt_result_page_show_test_description' => array(
                 'default' => '0',
@@ -163,6 +210,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
             'wpt_result_page_show_scales',
+            'wpt_result_page_sort_scales_by_score',
             'wpt_result_page_show_test_description',
         );
 

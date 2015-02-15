@@ -103,3 +103,15 @@ table.wpt_quick_scores td.questions input {
     height: 5em;
     width: 100%;    
 }
+
+ul.categorychecklist.ui-sortable li {
+    background-image: url(../img/icon-grippable.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 10px;
+    cursor: move;
+}
+
+ul.categorychecklist.ui-sortable li.sortable-placeholder {
+    background: none;
+}

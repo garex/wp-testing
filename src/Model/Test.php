@@ -55,8 +55,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildScales()
     {
+        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_scale');
         return fRecordSet::build('WpTesting_Model_Scale', array(
-            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_scale'),
+            'term_id=' => $ids,
+        ), array(
+            'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
         ));
     }
 
@@ -110,8 +113,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildResults()
     {
+        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_result');
         $results = fRecordSet::build('WpTesting_Model_Result', array(
             'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_result'),
+        ), array(
+            'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
         ));
 
         /* @var $result WpTesting_Model_Result */
@@ -150,8 +156,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildGlobalAnswers()
     {
+        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_answer');
         return fRecordSet::build('WpTesting_Model_GlobalAnswer', array(
-            'term_id=' => $this->getTermIdFromFilteredTaxonomies('wpt_answer'),
+            'term_id=' => $ids,
+        ), array(
+            'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
         ));
     }
 
@@ -185,7 +194,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         foreach ($this->buildTaxonomiesOnce()->filter(array('getTaxonomy=' => $taxonomy)) as $taxonomy) {
             $ids[] = $taxonomy->getTermId();
         }
-        return $ids;
+        return (count($ids) == 0) ? array(-1) : $ids;
     }
 
     protected function getQuestionsPrefix()
@@ -417,6 +426,8 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         /** @var fRecordSet $globalAnswers */
         $globalAnswers    = $this->buildGlobalAnswers();
         $globalAnswersIds = $globalAnswers->call('getId');
+        $globalAnswerSort = array_flip($globalAnswersIds);
+        $globalAnswerSort[null] = 100;
         foreach ($this->buildQuestions() as $question) {
             $existingGlobalAnswersIds = array();
             foreach ($question->buildAnswers() as $answer) {
@@ -424,6 +435,10 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                     $answer->delete();
                 } else {
                     $existingGlobalAnswersIds[] = $answer->getGlobalAnswerId();
+                    $newAnswerSort = $globalAnswerSort[$answer->getGlobalAnswerId()];
+                    if ($answer->getSort() != $newAnswerSort) {
+                        $answer->setSort($newAnswerSort)->store();
+                    }
                 }
             }
 
@@ -433,6 +448,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                 $answer = new WpTesting_Model_Answer();
                 $answer->setGlobalAnswerId($globalAnswerId);
                 $answer->setQuestionId($question->getId());
+                $answer->setSort($globalAnswerSort[$answer->getGlobalAnswerId()]);
                 $answer->store();
             }
         }
@@ -455,5 +471,14 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $post->$key = (string)$value;
         }
         return $post;
+    }
+
+    protected function configure()
+    {
+        fORMRelated::setOrderBys(
+            $this,
+            'WpTesting_Model_Taxonomy',
+            array(WP_DB_PREFIX . 'term_relationships.`term_order`' => 'asc')
+        );
     }
 }

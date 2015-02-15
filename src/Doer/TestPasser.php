@@ -187,11 +187,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                 'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
             );
         } elseif (self::ACTION_GET_RESULTS == $action) {
+            $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
             $params  = array(
                 'content'    => $content,
                 'test'       => $this->test,
                 'passing'    => $this->passing,
-                'scales'     => $this->passing->buildScalesWithRangeOnce(),
+                'scales'     => $this->passing->buildScalesWithRangeOnce($isSortByScore),
                 'results'    => $this->passing->buildResults(),
                 'isShowScales'      => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales')),
                 'isShowDescription' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_test_description')),
