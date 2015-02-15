@@ -64,3 +64,9 @@ script:
   - mocha-casperjs --grep=Test
   - mocha-casperjs --grep=Passings
   - mocha-casperjs --grep=Plugin_deactivation
+
+after_failure:
+  - sudo free -ltm
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - ./debug-to-mail.sh a@ustimen.co 'Failed build dump' /tmp/*.dmp
+  - ./debug-to-mail.sh a@ustimen.co 'Debug screenshots' /tmp/*.screen.png
