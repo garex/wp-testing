@@ -484,6 +484,33 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Removes a function from a specified filter hook.
+     *
+     * This function removes a function attached to a specified filter hook. This
+     * method can be used to remove default functions attached to a specific filter
+     * hook and possibly replace them with a substitute.
+     *
+     * To remove a hook, the $function_to_remove and $priority arguments must match
+     * when the hook was added. This goes for both filters and actions. No warning
+     * will be given on removal failure.
+     *
+     * @package WordPress
+     * @subpackage Plugin
+     * @since 1.2
+     *
+     * @param string $tag The filter hook to which the function to be removed is hooked.
+     * @param callback $functionToRemove The name of the function which should be removed.
+     * @param int $priority optional. The priority of the function (default: 10).
+     * @param int $acceptedArgs optional. The number of arguments the function accpets (default: 1).
+     * @return WpTesting_WordPressFacade
+     */
+    public function removeFilter($tag, $functionToRemove, $priority = 10, $acceptedArgs = 1)
+    {
+        remove_filter($tag, $functionToRemove, $priority, $acceptedArgs);
+        return $this;
+    }
+
+    /**
      * Add hook for shortcode tag.
      *
      * @since 2.5.0

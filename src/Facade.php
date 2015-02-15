@@ -113,7 +113,7 @@ class WpTesting_Facade
      */
     public function setupTestEditor($screen)
     {
-        $this->getTestEditor()->customizeUi($screen);
+        $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies($screen);
         return $screen;
     }
 
