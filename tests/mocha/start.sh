@@ -6,7 +6,6 @@ set -e
 # Define vars
 HERE=$(dirname $(realpath $0))
 TRAVIS_BUILD_DIR=$(realpath $HERE/../..)
-export IS_APT_UPDATE=0
 
 # Prepare environment
 cd $TRAVIS_BUILD_DIR
