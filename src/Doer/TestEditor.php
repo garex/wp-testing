@@ -21,6 +21,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3'), false, true)
             ->enqueuePluginScript('wpt_test_edit_answers',     'js/test-edit-answers.js',           array('jquery'), false, true)
             ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
+            ->enqueuePluginScript('wpt_test_sort_taxonomies',  'js/test-sort-taxonomies.js',        array('jquery', 'jquery-ui-sortable'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
