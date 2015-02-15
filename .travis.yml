@@ -27,6 +27,11 @@ matrix:
       env: DB_ENGINE=MyISAM
     - php: 5.4
       env: PLUGINS=akismet.3.0.4:jetpack.3.3:wordpress-seo.1.7.1:wordfence.5.3.4:contact-form-7.4.0.3:google-sitemap-generator.4.0.8
+  allow_failures:
+    - php: 5.2
+      env: WP_VERSION=3.6
+    - php: 5.2
+      env: WP_VERSION=3.7
 
 addons:
   hosts:
@@ -47,4 +52,21 @@ before_script:
 script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - mocha-casperjs --timeout=360000
+  - mocha-casperjs --grep=Plugin_activation --timeout=360000
+  - mocha-casperjs --grep=Answers
+  - mocha-casperjs --grep=Page
+  - mocha-casperjs --grep=Questions
+  - mocha-casperjs --grep=Quick
+  - mocha-casperjs --grep=Results
+  - mocha-casperjs --grep=Scores
+  - mocha-casperjs --grep=Shortcode
+  - mocha-casperjs --grep=Taxonomies
+  - mocha-casperjs --grep=Test
+  - mocha-casperjs --grep=Passings
+  - mocha-casperjs --grep=Plugin_deactivation
+
+after_failure:
+  - sudo free -ltm
+  - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - ./debug-to-mail.sh a@ustimen.co 'Failed build dump' /tmp/*.dmp
+  - ./debug-to-mail.sh a@ustimen.co 'Debug screenshots' /tmp/*.screen.png
