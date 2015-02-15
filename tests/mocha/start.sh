@@ -16,5 +16,4 @@ export PATH=$PATH:./node_modules/.bin/
 export TZ="UTC"
 
 # Run tests
-mocha-casperjs --grep=Plugin_activation --timeout=360000
-mocha-casperjs --grep=Plugin --invert
+mocha-casperjs --grep=Plugin_deactivation --invert --timeout=360000
