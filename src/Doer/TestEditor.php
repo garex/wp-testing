@@ -11,11 +11,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
     /**
      * @param WP_Screen $screen
+     * @return WpTesting_Doer_TestEditor
      */
     public function customizeUi($screen)
     {
         if (!$this->isTestScreen($screen)) {
-            return;
+            return $this;
         }
         $this->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
@@ -41,6 +42,27 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
+        return $this;
+    }
+
+    /**
+     * Allow more HTML tags in taxonomies
+     * @param WP_Screen $screen
+     * @return WpTesting_Doer_TestEditor
+     */
+    public function allowMoreHtmlInTaxonomies($screen)
+    {
+        if (!$this->isTestTaxonomy($screen)) {
+            return $this;
+        }
+
+        if ($this->isWordPressAlready('3.5')) {
+            $this->wp->addFilter('wp_kses_allowed_html', array($this, 'filterAllowedHtmlInTaxonomies'), 10, 2);
+        } else {
+            $this->wp->removeFilter('pre_term_description', 'wp_filter_kses');
+        }
+
+        return $this;
     }
 
     /**
@@ -87,6 +109,19 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $ids   = implode(',', $this->selectedTermsIds[$taxonomies[0]]);
         $order = $args['order'];
         return "FIELD(t.term_id, $ids) $order, name";
+    }
+
+    public function filterAllowedHtmlInTaxonomies($allowedTags, $context)
+    {
+        $newTags = array(
+            'h1', 'h2', 'h3', 'h4', 'h5',
+            'ol', 'ul', 'li',
+            'hr'
+        );
+        foreach ($newTags as $tag) {
+            $allowedTags[$tag] = array('class' => true);
+        }
+        return $allowedTags;
     }
 
     public function renderSubmitMiscActions()
@@ -273,6 +308,18 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $isTest = ($test->getId()) ? true : false;
         $test->reset();
         return $isTest;
+    }
+
+    private function isTestTaxonomy($screen)
+    {
+        if (empty($screen->taxonomy)) {
+            return false;
+        }
+        $taxonomy = $screen->taxonomy;
+        if (!$this->isWordPressAlready('3.3') && $this->isPost()) {
+            $taxonomy = $this->getRequestValue('taxonomy');
+        }
+        return preg_match('/^wpt_/', $taxonomy);
     }
 
     private function isUnderApache()
