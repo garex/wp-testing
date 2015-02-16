@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         button.removeAttr('disabled').removeClass('disabled');
     });
 
-    form.on('question_answered.wpt', function(event, question) {
+    form.on('question_answered_initially.wpt', function(event, question) {
         question.addClass('answered');
     });
 
@@ -62,22 +62,30 @@ jQuery(document).ready(function ($) {
     form.trigger('init_answers.wpt', [answersInputs]);
 
     form.find('.question').each(function () {
-        var question = $(this);
+        var question = $(this),
+            title    = question.find('.title .title');
+
+        title.html(title.html().replace(/(_{2,})/, '<span class="placeholder">$1</span>'));
+        var placeholder = title.find('.placeholder');
+
         question.data('isAnswered', false);
         question.find('.answer').each(function () {
             var answer = $(this);
             answer.find('input').on('change', function () {
-                if (!$(this).attr('checked') || question.data('isAnswered')) {
+                if (!$(this).attr('checked')) {
                     return;
                 }
-                question.data('isAnswered', true);
-                questionsAnswered++;
-                form.trigger('question_answered.wpt', [question, questionsAnswered, questionsTotal]);
+                if (!question.data('isAnswered')) {
+                    question.data('isAnswered', true);
+                    questionsAnswered++;
+                    form.trigger('question_answered_initially.wpt', [question, questionsAnswered, questionsTotal]);
+                }
+                form.trigger('question_answered.wpt', [question, answer, placeholder]);
             });
         });
     });
 
-    form.on('question_answered.wpt', function(event, question, answered, total) {
+    form.on('question_answered_initially.wpt', function(event, question, answered, total) {
         var percent = Math.round(100 * (answered / total));
         $(document).trigger('percentage_change.wpt', [percent]);
         if (answered == total) {
