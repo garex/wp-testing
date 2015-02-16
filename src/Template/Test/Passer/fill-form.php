@@ -32,10 +32,11 @@
 
         <div class="answer">
 
-            <input type="radio" id="<?php echo $answerId ?>"
-                name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="<?php echo $answer->getId() ?>" />
-
-            <label for="<?php echo $answerId ?>"><?php echo $answer->getTitle() ?></label>
+            <label for="<?php echo $answerId ?>">
+                <input type="radio" id="<?php echo $answerId ?>"
+                    name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="<?php echo $answer->getId() ?>" />
+                <?php echo $answer->getTitle() ?>
+            </label>
 
         </div>
 
