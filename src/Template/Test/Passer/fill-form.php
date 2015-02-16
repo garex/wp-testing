@@ -7,9 +7,8 @@
 /* @var $questions WpTesting_Model_Question[] */
 /* @var $isFinal boolean */
 
+/* @var $javascriptSettings string */
 /* @var $submitButtonCaption string */
-/* @var $wp WpTesting_WordPressFacade */
-/* @var $isResetAnswersOnBack boolean */
 ?>
 <div class="wpt_test fill_form">
 
@@ -17,7 +16,7 @@
     <?php echo $content ?>
 </div>
 
-<div class="content"><form method="post" id="wpt-test-form" data-is-reset-answers-on-back="<?php echo json_encode($isResetAnswersOnBack) ?>">
+<div class="content"><form method="post" id="wpt-test-form" data-wpt="<?php echo $javascriptSettings ?>">
 
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
 

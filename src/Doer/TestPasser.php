@@ -34,6 +34,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
      */
     private $filteredTestContent = null;
 
+    /**
+     * Current WordPress title separator
+     * @var string
+     */
+    private $titleSeparator = '-';
+
     public function addContentFilter()
     {
         $object        = $this->wp->getQuery()->get_queried_object();
@@ -133,6 +139,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
                 ->enqueuePluginScript('samyk_swfobject',  'vendor/samyk/evercookie/js/swfobject-2.2.min.js', array(),     false, true)
                 ->enqueuePluginScript('samyk_evercookie', 'vendor/samyk/evercookie/js/evercookie.js',  array(),           false, true)
+                ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
                 ->localizeScript('samyk_evercookie', 'wpt_evercookie', array(
                     'baseurl' => $this->wp->getPluginUrl('vendor/samyk/evercookie'),
                 ))
@@ -152,6 +159,14 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
     {
         $classes[] = 'wpt_test-' . $this->getTestPassingAction();
         return $classes;
+    }
+
+    public function extractTitleSeparator($title, $separator)
+    {
+        if (!empty($separator)) {
+            $this->titleSeparator = html_entity_decode($separator);
+        }
+        return $title;
     }
 
     public function renderTestContent($content)
@@ -184,8 +199,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
-                'wp'           => $this->wp,
-                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
+                'javascriptSettings' => htmlspecialchars(json_encode(array(
+                    'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
+                    'isShowProgressMeter'  => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_show_progress_meter')),
+                    'titleSeparator'       => $this->titleSeparator,
+                    'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
+                )), ENT_QUOTES, 'UTF-8'),
             );
         } elseif (self::ACTION_GET_RESULTS == $action) {
             $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
