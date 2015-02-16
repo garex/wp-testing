@@ -173,15 +173,19 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function renderTestPageOptions($item)
     {
         $options = array(
+            'wpt_test_page_show_progress_meter' => array(
+                'default' => '1',
+                'title'   => __('Show in title percentage of questions that respondent already answered', 'wp-testing'),
+            ),
+            'wpt_test_page_reset_answers_on_back' => array(
+                'default' => '0',
+                'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
+            ),
             'wpt_test_page_submit_button_caption' => array(
                 'default' => '',
                 'title'   => __('Button caption', 'wp-testing'),
                 'type'    => 'text',
                 'placeholder' => __('Get Test Results', 'wp-testing'),
-            ),
-            'wpt_test_page_reset_answers_on_back' => array(
-                'default' => '0',
-                'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
             ),
         );
 
@@ -267,6 +271,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_publish_on_home',
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
+            'wpt_test_page_show_progress_meter',
             'wpt_result_page_show_scales',
             'wpt_result_page_sort_scales_by_score',
             'wpt_result_page_show_test_description',
