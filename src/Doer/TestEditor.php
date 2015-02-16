@@ -32,7 +32,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
-            ->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), 10, 2)
             ->addMetaBox('wpt_test_page_options', __('Test Page Options', 'wp-testing'),
                 array($this, 'renderTestPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
@@ -42,6 +41,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
+        // Respect metabox sort order
+        if ($this->isWordPressAlready('3.4')) {
+            $this->wp->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), 10, 2);
+        } else {
+            $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), 10, 4);
+        }
         return $this;
     }
 
@@ -95,8 +100,26 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $args;
     }
 
-    public function filterTermsOrderBy($orderBy, $args, $taxonomies)
+    public function filterForceSortObjectTerms($terms, $objectIds, $taxonomies, $args)
     {
+        if (!isset($args['taxonomy']) || !in_array($args['taxonomy'], array('wpt_answer', 'wpt_scale', 'wpt_result'))) {
+            return $terms;
+        }
+        $model = new WpTesting_Model_Taxonomy();
+        $terms = $model->sortTermIdsByTermOrder($objectIds, $terms);
+        $this->selectedTermsIds[$args['taxonomy']] = $terms;
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        return $terms;
+    }
+
+    public function filterTermsOrderBy($orderBy, $args, $taxonomies = null)
+    {
+        if (is_null($taxonomies)) { // Old WP versions workaround
+            $this->wp->removeFilter('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+            end($this->selectedTermsIds);
+            $taxonomies = array(key($this->selectedTermsIds));
+        }
+
         $isSort = true
             && isset($taxonomies[0])
             && !empty($this->selectedTermsIds[$taxonomies[0]])
