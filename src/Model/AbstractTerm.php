@@ -33,4 +33,16 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return $result->getRecord(0)->getDescription();
     }
 
+    public function getCssClass($index = null)
+    {
+        $name = strtolower(end(explode('_', get_class($this))));
+        $id   = $this->getId();
+        $slug = $this->getSlug();
+        $css  = "$name $name-id-$id $name-slug-$slug";
+        if (!is_null($index)) {
+            $css .= " $name-index-$index";
+        }
+        return $css;
+    }
+
 }

@@ -16,11 +16,11 @@
 
     <h2><?php echo __('Results', 'wp-testing') ?></h2>
 
-    <?php foreach ($results as $result): /* @var $result WpTesting_Model_Result */ ?>
+    <?php foreach ($results as $i => $result): /* @var $result WpTesting_Model_Result */ ?>
 
-        <h3 class="result title"><?php echo $result->getTitle() ?></h4>
+        <h3 class="<?php echo $result->getCssClass($i) ?> title"><?php echo $result->getTitle() ?></h4>
 
-        <div class="result description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($result->getDescription())) ?></div>
+        <div class="<?php echo $result->getCssClass($i) ?> description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($result->getDescription())) ?></div>
 
     <?php endforeach ?>
 
@@ -30,18 +30,18 @@
         <hr/>
     <?php endif ?>
 
-    <?php foreach ($scales as $scale): /* @var $scale WpTesting_Model_Scale */ ?>
+    <?php foreach ($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
 
-        <h3 class="scale title"><?php echo $scale->getTitle() ?></h4>
+        <h3 class="<?php echo $scale->getCssClass($i) ?> title"><?php echo $scale->getTitle() ?></h4>
 
-        <div class="scale scores">
+        <div class="<?php echo $scale->getCssClass($i) ?> scores">
             <?php echo __(sprintf(__('%1$d out of %2$d', 'wp-testing'), $scale->getValue(), $scale->getMaximum()), 'wp-testing') ?>
         </div>
-        <div class="meter">
+        <div class="<?php echo $scale->getCssClass($i) ?> meter">
             <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>
         </div>
 
-        <div class="scale description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($scale->getDescription())) ?></div>
+        <div class="<?php echo $scale->getCssClass($i) ?> description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($scale->getDescription())) ?></div>
 
     <?php endforeach ?>
 
