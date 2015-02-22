@@ -23,6 +23,12 @@ abstract class WpTesting_Doer_AbstractDoer
             ->registerPluginScript('lodash-source', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
             ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.no-conflict.js', array('lodash-source'))
             ->registerPluginScript('npm-stub', 'js/vendor/npm/stub.js', array(), '1.0')
+
+            // Vector graphics for diagramming
+            ->registerPluginScript('raphael', 'js/vendor/dmitrybaranovskiy/raphael-min.js', array(), '2.0.2')
+            ->registerPluginScript('raphael-diagrams', 'js/vendor/dmitrybaranovskiy/g.raphael.js', array('raphael'), '0.51')
+            ->registerPluginScript('raphael-line-diagram', 'js/vendor/dmitrybaranovskiy/g.line.js', array('raphael-diagrams'), '0.51')
+            ->registerPluginScript('raphael-scale', 'js/vendor/zevanrosser/scale.raphael.js', array('raphael'), '0.8')
         ;
     }
 
@@ -135,6 +141,24 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function arrayMoveItemAfter($input, $sourceKey, $destinationKey)
     {
         return $this->arrayMoveItemTo($input, $sourceKey, $destinationKey, 'after');
+    }
+
+    protected function toJson($object)
+    {
+        if ($object instanceof fRecordSet) {
+            return $this->toJson($object->getRecords());
+        }
+        if (is_array($object)) {
+            $result = array();
+            foreach ($object as $key => $value) {
+                $result[$key] = $this->toJson($value);
+            }
+            return $result;
+        }
+        if ($object instanceof JsonSerializable) {
+            return $object->jsonSerialize();
+        }
+        return $object;
     }
 
     /**

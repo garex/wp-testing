@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm
+class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements JsonSerializable
 {
 
     private $minimum = null;
@@ -101,6 +101,15 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm
     public function getValueAsPercentage()
     {
         return sprintf("%u%%", $this->getValueAsRatio() * 100);
+    }
+
+    public function jsonSerialize() {
+        return array(
+            'title'   => $this->getTitle(),
+            'value'   => $this->getValue(),
+            'minimum' => $this->minimum,
+            'maximum' => $this->getMaximum(),
+        );
     }
 
     /**

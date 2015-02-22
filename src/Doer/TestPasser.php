@@ -134,6 +134,17 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     )
                 );
             }
+            if (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')) {
+                $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
+                $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
+                $this->wp
+                    ->enqueuePluginScript('wpt_line_diagram', 'js/line-diagram.js', array('jquery', 'raphael-scale', 'raphael-line-diagram'), false, true)
+                    ->localizeScript('wpt_line_diagram', 'wpt_line_diagram', array(
+                        'scales' => $this->toJson($this->passing->buildScalesWithRangeOnce($isSortByScore)),
+                        'warningIncompatibleBrowser' => $sorryBrowser,
+                    ))
+                ;
+            }
         } elseif (self::ACTION_FILL_FORM == $action) {
             $this->wp
                 ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
@@ -215,6 +226,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 'passing'    => $this->passing,
                 'scales'     => $this->passing->buildScalesWithRangeOnce($isSortByScore),
                 'results'    => $this->passing->buildResults(),
+                'isShowScalesDiagram' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')),
                 'isShowScales'      => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales')),
                 'isShowDescription' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_test_description')),
             );
