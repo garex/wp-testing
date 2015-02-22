@@ -13,6 +13,12 @@ class WpTesting_Facade
      */
     private $testEditor = null;
 
+
+    /**
+     * @var WpTesting_Doer_PassingBrowser
+     */
+    private $passingBrowser = null;
+
     /**
      * @var WpTesting_Doer_PostBrowser
      */
@@ -74,6 +80,7 @@ class WpTesting_Facade
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addAction('plugins_loaded',    array($this,  'loadLocale'))
+            ->addAction('admin_menu',        array($this,  'registerAdminPages'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
         ;
 
@@ -106,6 +113,23 @@ class WpTesting_Facade
         $pluginDirectory = basename(dirname(dirname(__FILE__)));
         $languages       = $pluginDirectory . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR;
         $this->wp->loadPluginTextdomain('wp-testing', false, $languages);
+    }
+
+    public function registerAdminPages()
+    {
+        $this->wp->addSubmenuPage(
+            'edit.php?post_type=wpt_test',
+            __('Respondents’ test results', 'wp-testing'),
+            __('Respondents’ results', 'wp-testing'),
+            'activate_plugins',
+            'wpt_test_respondents_results',
+            array($this, 'renderRespondentsResultsPage')
+        );
+    }
+
+    public function renderRespondentsResultsPage()
+    {
+        $this->getPassingBrowser()->renderAdminPassingsPage();
     }
 
     /**
@@ -157,6 +181,18 @@ class WpTesting_Facade
         $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
 
         return $this->testEditor;
+    }
+
+    protected function getPassingBrowser()
+    {
+        if (!is_null($this->passingBrowser)) {
+            return $this->passingBrowser;
+        }
+
+        $this->setupORM();
+        $this->passingBrowser = new WpTesting_Doer_PassingBrowser($this->wp);
+
+        return $this->passingBrowser;
     }
 
     protected function getPostBrowser()

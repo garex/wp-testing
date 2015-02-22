@@ -384,6 +384,38 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve edit posts link for post.
+     *
+     * Can be used within the WordPress loop or outside of it. Can be used with
+     * pages, posts, attachments, and revisions.
+     *
+     * @since 2.3.0
+     *
+     * @param int $id Optional. Post ID.
+     * @param string $context Optional, defaults to display. How to write the '&', defaults to '&amp;'.
+     * @return string The edit post link for the given post.
+     */
+    public function getEditPostLink($id = 0, $context = 'display')
+    {
+        return get_edit_post_link($id, $context);
+    }
+
+    /**
+     * Retrieve edit term url.
+     *
+     * @since 3.1.0
+     *
+     * @param int $id Term ID
+     * @param string $taxonomy Taxonomy
+     * @param string $objectType The object type
+     * @return string The edit term link URL for the given term.
+     */
+    function getEditTermLink($id, $taxonomy, $objectType = '')
+    {
+        return get_edit_term_link($id, $taxonomy, $objectType);
+    }
+
+    /**
      * Redirects to another page.
      *
      * @since 1.5.1
@@ -608,6 +640,29 @@ class WpTesting_WordPressFacade
             $wp_meta_boxes[$page][$context][$priority] = $values;
             return $this;
         }
+    }
+
+    /**
+     * Add a sub menu page
+     *
+     * This function takes a capability which will be used to determine whether
+     * or not a page is included in the menu.
+     *
+     * The function which is hooked in to handle the output of the page must check
+     * that the user has the required capability as well.
+     *
+     * @param string $parentSlug The slug name for the parent menu (or the file name of a standard WordPress admin page)
+     * @param string $pageTitle The text to be displayed in the title tags of the page when the menu is selected
+     * @param string $menuTitle The text to be used for the menu
+     * @param string $capability The capability required for this menu to be displayed to the user.
+     * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
+     * @param callback $function The function to be called to output the content for this page.
+     * @return WpTesting_WordPressFacade
+     */
+    public function addSubmenuPage($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function = '')
+    {
+        add_submenu_page($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function);
+        return $this;
     }
 
     /**

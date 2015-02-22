@@ -30,7 +30,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 
     public function __construct($key = null, $salt = null)
     {
-        if (preg_match('/^([a-z0-9]+)[a-f0-9]{32}$/i', $key, $matches)) {
+        if (is_string($key) && preg_match('/^([a-z0-9]+)[a-f0-9]{32}$/i', $key, $matches)) {
             $id  = base_convert($matches[1], 36, 10);
             $key = ($this->generateSlug($id, $salt) == $key) ? $id : null;
         }
@@ -52,6 +52,22 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     public function getSlug($salt = null)
     {
         return $this->generateSlug($this->getId(), $salt);
+    }
+
+    /**
+     * @param WpTesting_WordPressFacade $wp
+     * @return string
+     */
+    public function getUrl($wp)
+    {
+        $slug = $this->getSlug($wp->getSalt());
+        $link = rtrim($wp->getPostPermalink($this->getTestId()), '/&');
+        if ($wp->getRewrite()->using_permalinks() && $this->createTest()->isPublished()) {
+            $link .= '/' . $slug . '/';
+        } else {
+            $link .= '&wpt_passing_slug=' . $slug;
+        }
+        return $link;
     }
 
     /**
@@ -121,6 +137,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         $variables = $test->buildFormulaVariables($this->buildScalesWithRangeOnce());
         $result    = array();
         foreach ($test->buildFormulas() as $formula) {
+            $formula->resetValues();
             foreach ($variables as $variable) {
                 $formula->addValue($variable->getSource(), $variable->getValue(), $variable->getValueAsRatio());
             }
@@ -134,7 +151,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     /**
      * @return WpTesting_Model_Test
      */
-    protected function createTest()
+    public function createTest()
     {
         return $this->createWpTesting_Model_Test();
     }
