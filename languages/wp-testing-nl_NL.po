@@ -2,13 +2,14 @@
 # This file is distrubuted under the GPL-3.0+
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
+# jacha <info@orthomanueeldierenarts.nl>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-01 23:09+0700\n"
-"PO-Revision-Date: 2015-02-02 09:21+0000\n"
-"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"PO-Revision-Date: 2015-02-20 11:24+0000\n"
+"Last-Translator: jacha <info@orthomanueeldierenarts.nl>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Test is in aanbouw"
 
 #: Doer/TestPasser.php:52
 msgid "You can not get any results from it yet."
-msgstr "U kunt niet krijgen geen resultaten van het nog."
+msgstr "Er zijn nog geen resultaten beschikbaar. "
 
 #: Doer/TestPasser.php:94
 msgid "Test data not valid"
@@ -35,7 +36,7 @@ msgstr "Testgegevens niet geldig"
 
 #: Doer/TestPasser.php:95
 msgid "You passed not valid data to test."
-msgstr "U doorgegeven niet geldige gegevens te testen."
+msgstr "U heeft ongeldige gegevens ingevoerd. "
 
 #: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
@@ -43,15 +44,15 @@ msgstr "Testresultaat niet gevonden"
 
 #: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
-msgstr "U kunt om het even wat niet krijgen uit het niets."
+msgstr "Er kan niet iets uit niets worden verkregen"
 
 #: Doer/TestPasser.php:184 Doer/TestEditor.php:79
 msgid "Get Test Results"
-msgstr "Testresultaten te krijgen"
+msgstr "Ga naar test resultaten"
 
 #: Doer/TestEditor.php:27
 msgid "Test Page Options"
-msgstr "Test Paginaopties"
+msgstr "Test pagina opties"
 
 #: Doer/TestEditor.php:29
 msgid "Result Page Options"
@@ -59,7 +60,7 @@ msgstr "Resultaat Paginaopties"
 
 #: Doer/TestEditor.php:31
 msgid "Edit Questions and Scores"
-msgstr "Rediger spørgsmål og scoringer"
+msgstr "Vragen en scores bewerken"
 
 #: Doer/TestEditor.php:32
 msgid "Add New Questions"
@@ -75,15 +76,15 @@ msgstr "Knop bijschrift"
 
 #: Doer/TestEditor.php:83
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "Reset respondent antwoorden wanneer \"Terug\" knop ingedrukt"
+msgstr "Antwoorden wissen wanneer de \"terug\" knop wordt gebruikt"
 
 #: Doer/TestEditor.php:98
 msgid "Show scales"
-msgstr "Vis skalaer"
+msgstr "Toon schalen"
 
 #: Doer/TestEditor.php:102
 msgid "Show test description"
-msgstr "Viser beskrivelsen af testen"
+msgstr "Toon test beschrijving"
 
 #: Doer/TestEditor.php:188
 msgid "Test data not saved"
@@ -92,7 +93,7 @@ msgstr "Testgegevens niet opgeslagen"
 #: Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Proeven"
+msgstr "Testen"
 
 #: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
@@ -105,7 +106,7 @@ msgstr "Nieuwe toevoegen"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Toevoegen van nieuwe Test"
+msgstr "Nieuwe test toevoegen"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
@@ -113,23 +114,23 @@ msgstr "Test bewerken"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Weergave Test"
+msgstr "Test weergeven"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Zoek Tests"
+msgstr "Zoek in Testen"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Bovenliggende Test:"
+msgstr "Overkoepelende Test:"
 
 #: Doer/WordPressEntitiesRegistrator.php:23
 msgid "All Tests"
-msgstr "Alle Tests"
+msgstr "Alle Testen"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Update Test"
+msgstr "Test bijwerken"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
@@ -137,7 +138,7 @@ msgstr "Nieuwe Test naam"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Bovenliggende Test"
+msgstr "Overkoepelende Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
@@ -145,17 +146,17 @@ msgstr "Nieuwe Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Geen Tests gevonden"
+msgstr "Geen Testen gevonden"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Geen Tests gevonden in Prullenbak"
+msgstr "Geen Testen gevonden in Prullenbak"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "En psykologisk test er en standardiseret måling af forskellige aspekter af menneskelig adfærd, såsom intelligens eller personlighed."
+msgstr "Een instrument om verborgen constructies (latente variabelen) te meten. Doorgaans een serie opdrachten of problemen die de beantwoorder moet oplossen."
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 msgid "Test Answers"
@@ -183,7 +184,7 @@ msgstr "Zoek antwoorden"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Parent Answer:"
-msgstr "Bovenliggende antwoord:"
+msgstr "Overkoepelende antwoord:"
 
 #: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Answers"
@@ -195,7 +196,7 @@ msgstr "Alle antwoorden"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
-msgstr "Bijwerken antwoord"
+msgstr "Antwoord bijwerken"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
@@ -203,11 +204,11 @@ msgstr "Nieuwe antwoord naam"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "Parent Answer"
-msgstr "Bovenliggende antwoord"
+msgstr "Overkoepelende antwoord"
 
 #: Doer/WordPressEntitiesRegistrator.php:76
 msgid "New Answer"
-msgstr "Nieuwe antwoord"
+msgstr "Nieuw antwoord"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "No Answers found"
@@ -243,7 +244,7 @@ msgstr "Zoek schalen"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Parent Scale:"
-msgstr "Bovenliggende schaal:"
+msgstr "Overkoepelende schaal:"
 
 #: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
@@ -263,7 +264,7 @@ msgstr "Nieuwe schaal naam"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "Parent Scale"
-msgstr "Bovenliggende schaal"
+msgstr "Overkoepelende schaal"
 
 #: Doer/WordPressEntitiesRegistrator.php:97
 msgid "New Scale"
@@ -287,7 +288,7 @@ msgstr "Testresultaat"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Add New Result"
-msgstr "Toevoegen van nieuwe resultaat"
+msgstr "Toevoegen van nieuw resultaat"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Edit Result"
@@ -303,7 +304,7 @@ msgstr "Zoekresultaten"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
-msgstr "Bovenliggende resultaat:"
+msgstr "Overkoepelende resultaat:"
 
 #: Doer/WordPressEntitiesRegistrator.php:112
 msgid "Results"
@@ -323,7 +324,7 @@ msgstr "Nieuwe resultaat naam"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "Parent Result"
-msgstr "Bovenliggende resultaat"
+msgstr "Overkoepelende resultaat"
 
 #: Doer/WordPressEntitiesRegistrator.php:118
 msgid "New Result"
@@ -364,7 +365,7 @@ msgstr "Categorieën zoeken"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Parent Category:"
-msgstr "Bovenliggende categorie:"
+msgstr "Overkoepelende categorie:"
 
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "All Categories"
@@ -380,7 +381,7 @@ msgstr "Nieuwe categorienaam"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "Parent Category"
-msgstr "Bovenliggende categorie"
+msgstr "Overkoepelende categorie"
 
 #: Doer/WordPressEntitiesRegistrator.php:139
 msgid "New Category"
@@ -397,7 +398,7 @@ msgstr "Er zijn geen rubrieken gevonden in Prullenbak"
 #: Model/Formula.php:217
 #, php-format
 msgid "Formula for %s has error"
-msgstr "Formule voor %s heeft fout"
+msgstr "Formule voor %s heeft een fout"
 
 #: Model/FormulaVariable.php:17
 #, php-format
@@ -422,7 +423,7 @@ msgstr "Resultaat"
 
 #: Template/Test/Editor/edit-formulas.php:29
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Geen formules te bewerken. Als u wilt formules bewerken hebt u resultaten geselecteerd."
+msgstr "Geen formules om te bewerken. Selecteer eerst resultaten om formules te kunnen bewerken."
 
 #: Template/Test/Editor/edit-formulas.php:38
 msgid "Variables"
@@ -430,7 +431,7 @@ msgstr "Variabelen"
 
 #: Template/Test/Editor/edit-formulas.php:39
 msgid "Comparisions"
-msgstr "Comparisions"
+msgstr "Vergelijkingen"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
@@ -440,33 +441,33 @@ msgstr "Vergelijking"
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
-msgstr "Geen variabelen voor formules beschikbaar. Hiermee schaalt u geselecteerde voor het gebruik van variabelen die u moet hebben."
+msgstr "Geen variabelen voor formules beschikbaar. Om variabelen te gebruiken moet u eerst schalen selecteren. "
 
 #: Template/Test/Editor/edit-formulas.php:66
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Både tal og procenter tilladt. For eksempel vil \"scale-bla\" har samlede 30, derefter \"scale-bla > 15\" og \"scale-bla > 50%\" er samme."
+msgstr "Cijfers en percentages toegestaan. Bijvoorbeeld: als \"schaal-bla\" totaal 30 is, dan geeft \"schaal-bla\" >15 en \"schaal-bla\" >50% hetzelfde."
 
 #: Template/Test/Editor/add-questions.php:4
 #: Template/Test/Editor/add-questions.php:9
 msgid "Quick Fill From Text"
-msgstr "Quick Fyld fra Tekst"
+msgstr "Snel invullen via tekst"
 
 #: Template/Test/Editor/add-questions.php:8
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Indsæt her dine spørgsmål, og de vil udfylde nedenstående felter. Numre og andre indekser strippes automatisk."
+msgstr "Plak hier uw antwoorden en de velden hieronder worden ingevuld. Cijfers en andere indexen worden automatisch verwijderd."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
-msgstr "Publiceren op de home page"
+msgstr "Publiceren op de thuispagina"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
 msgid "Quick Fill Scores"
-msgstr "Hurtigt fylde point"
+msgstr "Snel scores invullen"
 
 #: Template/Test/Editor/edit-questions.php:37
 msgid "Scale"
@@ -478,22 +479,22 @@ msgstr "Score"
 
 #: Template/Test/Editor/edit-questions.php:39
 msgid "Answer"
-msgstr "Besvar"
+msgstr "Antwoord"
 
 #: Template/Test/Editor/edit-questions.php:40
 msgid "Questions"
-msgstr "Spørgsmål"
+msgstr "Vragen"
 
 #: Template/Test/Editor/edit-questions.php:88
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Geen vragen om te bewerken. Toevoegen van nieuwe vragen en dan ze hier zal verschijnen."
+msgstr "Geen vragen om te bewerken. Nieuw toegevoegde vragen zullen hier verschijnen"
 
 #: Template/Test/Editor/edit-questions.php:96
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
-msgstr "Geen scores te bewerken. Als u wilt bewerken van partituren moet u antwoorden en schalen geselecteerd."
+msgstr "Geen scores om te bewerken. Om scores te bewerken moet u eerst antwoorden en schalen selecteren."
 
 #: Template/Test/Editor/edit-questions.php:155
 msgid "Add Individual Answers"
@@ -504,14 +505,14 @@ msgstr "Individuele antwoorden toevoegen"
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— unikke for hvert spørgsmål. Hvis du har samme svar på alle test spørgsmål, skal du bruge %s"
+msgstr "— uniek voor iedere vraag. Als u dezelfde antwoorden heeft voor alle test vragen, gebruik dan %s."
 
 #: Template/Test/Editor/edit-questions.php:160
 msgid ""
 "Add here your individual answers as text; after test saving they will be "
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
-msgstr "Voeg hier uw individuele antwoorden als tekst; na het opslaan van de test zal worden geëxtraheerd en gemaakt. Nummers en andere indexen zal automatisch worden ontdaan."
+msgstr "Voeg hier uw individuele antwoorden toe als tekst; na het opslaan van de test zullen deze worden gecreeerd. Nummers en andere indexen worden automatisch verwijderd. "
 
 #: Template/Test/Passer/get-results.php:37
 #, php-format

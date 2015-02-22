@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.8.1 ###
+
+Fix external library and update translations
+
+* Fix external library to allow uppercased table names
+* Update translations (Dutch now native)
+
+
 ### 0.8 ###
 Add test page settings
 

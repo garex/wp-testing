@@ -3,7 +3,7 @@
  * Plugin Name: Wp-testing
  * Plugin URI: http://wordpress.org/extend/plugins/wp-testing/
  * Description: Helps to create psychological tests.
- * Version: 0.8
+ * Version: 0.8.1
  * Author: Alexander Ustimenko
  * Author URI: http://ustimen.co
  * License: GPL3
