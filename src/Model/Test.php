@@ -9,9 +9,15 @@
  * @method fTimestamp getModified() getModified() Gets the current value of modified
  * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
  * @method string getContent() getContent() Gets the current value of content
+ * @method string getStatus() getStatus() Gets the current value of status
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
+
+    /**
+     * Test is public and viewable by everyone
+     */
+    const STATUS_PUBLISHED = 'publish';
 
     protected $columnAliases = array(
         'id'        => 'ID',
@@ -19,6 +25,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'created'   => 'post_date',
         'modified'  => 'post_modified',
         'content'   => 'post_content',
+        'status'    => 'post_status',
     );
 
     /**
@@ -238,6 +245,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             }
         }
         return false;
+    }
+
+    /**
+     * Can respondent see this test currently?
+     *
+     * @return boolean
+     */
+    public function isPublished()
+    {
+        return $this->getStatus() == self::STATUS_PUBLISHED;
     }
 
     protected function hasAnswers()

@@ -77,14 +77,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
             try {
                 $passing->store(true);
-
-                $link = rtrim($this->wp->getPostPermalink($this->test->getId()), '/&');
-                $slug = $passing->getSlug($this->wp->getSalt());
-                if ($this->wp->getRewrite()->using_permalinks() && !$this->getRequestValue('preview')) {
-                    $link .= '/' . $slug . '/';
-                } else {
-                    $link .= '&wpt_passing_slug=' . $slug;
-                }
+                $link = $passing->getUrl($this->wp);
                 $this->wp->redirect($link, 302);
                 $this->wp->dieMessage(
                     $this->render('Test/Passer/redirect-message', array(

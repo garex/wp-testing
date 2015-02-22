@@ -27,6 +27,15 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     private $substituteValues = array();
 
     /**
+     * @return WpTesting_Model_Formula
+     */
+    public function resetValues()
+    {
+        $this->substituteValues = array();
+        return $this;
+    }
+
+    /**
      * Adds value to values list without rewriting. Converts value type to integer if it's not double.
      *
      * @param string $name
