@@ -80,7 +80,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
                 $link = rtrim($this->wp->getPostPermalink($this->test->getId()), '/&');
                 $slug = $passing->getSlug($this->wp->getSalt());
-                if ($this->wp->getRewrite()->using_permalinks()) {
+                if ($this->wp->getRewrite()->using_permalinks() && !$this->getRequestValue('preview')) {
                     $link .= '/' . $slug . '/';
                 } else {
                     $link .= '&wpt_passing_slug=' . $slug;
