@@ -122,7 +122,7 @@
                 "source": {
                     "url": "https://github.com/garex/flourish-classes",
                     "type": "git",
-                    "reference": "8e57220fdcd2153d5872fb87a6f64fd933a972f1"
+                    "reference": "3ef6840d6259f9cf990f70d070de2ae5bed4a652"
                 },
                 "dist": {
                     "url": "https://github.com/garex/flourish-classes/archive/master.zip",
