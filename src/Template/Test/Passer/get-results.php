@@ -24,11 +24,15 @@
 
     <?php endforeach ?>
 
-<?php if ($isShowScales): ?>
+<?php if ($isShowScales && count($results)): ?>
+    <hr/>
+<?php endif ?>
 
-    <?php if (count($results)): ?>
-        <hr/>
-    <?php endif ?>
+<?php if ($isShowScalesDiagram): ?>
+    <div class="scales diagram"></div>
+<?php endif ?>
+
+<?php if ($isShowScales): ?>
 
     <?php foreach ($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
 
