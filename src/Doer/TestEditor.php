@@ -198,6 +198,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function renderResultPageOptions($item)
     {
         $options = array(
+            'wpt_result_page_show_scales_diagram' => array(
+                'default' => '0',
+                'title'   => __('Show scales diagram', 'wp-testing'),
+            ),
             'wpt_result_page_show_scales' => array(
                 'default' => '1',
                 'title'   => __('Show scales', 'wp-testing'),
@@ -272,6 +276,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
             'wpt_test_page_show_progress_meter',
+            'wpt_result_page_show_scales_diagram',
             'wpt_result_page_show_scales',
             'wpt_result_page_sort_scales_by_score',
             'wpt_result_page_show_test_description',
