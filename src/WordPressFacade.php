@@ -384,6 +384,38 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve edit posts link for post.
+     *
+     * Can be used within the WordPress loop or outside of it. Can be used with
+     * pages, posts, attachments, and revisions.
+     *
+     * @since 2.3.0
+     *
+     * @param int $id Optional. Post ID.
+     * @param string $context Optional, defaults to display. How to write the '&', defaults to '&amp;'.
+     * @return string The edit post link for the given post.
+     */
+    public function getEditPostLink($id = 0, $context = 'display')
+    {
+        return get_edit_post_link($id, $context);
+    }
+
+    /**
+     * Retrieve edit term url.
+     *
+     * @since 3.1.0
+     *
+     * @param int $id Term ID
+     * @param string $taxonomy Taxonomy
+     * @param string $objectType The object type
+     * @return string The edit term link URL for the given term.
+     */
+    function getEditTermLink($id, $taxonomy, $objectType = '')
+    {
+        return get_edit_term_link($id, $taxonomy, $objectType);
+    }
+
+    /**
      * Redirects to another page.
      *
      * @since 1.5.1
