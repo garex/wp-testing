@@ -13,6 +13,10 @@
     padding-left: 3px;
 }
 
+#wpt_edit_questions .inside {
+    overflow: auto;
+}
+
 table.wpt_questions {
     width: 100%;
 }
