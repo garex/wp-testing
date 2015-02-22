@@ -137,6 +137,24 @@ abstract class WpTesting_Doer_AbstractDoer
         return $this->arrayMoveItemTo($input, $sourceKey, $destinationKey, 'after');
     }
 
+    protected function toJson($object)
+    {
+        if ($object instanceof fRecordSet) {
+            return $this->toJson($object->getRecords());
+        }
+        if (is_array($object)) {
+            $result = array();
+            foreach ($object as $key => $value) {
+                $result[$key] = $this->toJson($value);
+            }
+            return $result;
+        }
+        if ($object instanceof JsonSerializable) {
+            return $object->jsonSerialize();
+        }
+        return $object;
+    }
+
     /**
      * @param array $input
      * @param string $sourceKey
