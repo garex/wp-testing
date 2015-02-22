@@ -643,6 +643,29 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Add a sub menu page
+     *
+     * This function takes a capability which will be used to determine whether
+     * or not a page is included in the menu.
+     *
+     * The function which is hooked in to handle the output of the page must check
+     * that the user has the required capability as well.
+     *
+     * @param string $parentSlug The slug name for the parent menu (or the file name of a standard WordPress admin page)
+     * @param string $pageTitle The text to be displayed in the title tags of the page when the menu is selected
+     * @param string $menuTitle The text to be used for the menu
+     * @param string $capability The capability required for this menu to be displayed to the user.
+     * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
+     * @param callback $function The function to be called to output the content for this page.
+     * @return WpTesting_WordPressFacade
+     */
+    public function addSubmenuPage($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function = '')
+    {
+        add_submenu_page($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function);
+        return $this;
+    }
+
+    /**
      * Retrieves the terms associated with the given object(s), in the supplied taxonomies.
      *
      * The following information has to do the $args parameter and for what can be
