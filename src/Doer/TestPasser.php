@@ -244,7 +244,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             return $content;
         }
         if (empty($extended['more_text'])) {
-            $extended['more_text'] = trim(__('(more&hellip;)'), '()');
+            $extended['more_text'] = trim($this->wp->translate('(more&hellip;)'), '()');
         }
         return $this->render('Test/Passer/text-with-more', array(
             'excerpt' => $extended['main'],

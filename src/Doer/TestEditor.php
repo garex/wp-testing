@@ -200,7 +200,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $options = array(
             'wpt_result_page_show_scales_diagram' => array(
                 'default' => '0',
-                'title'   => __('Show scales diagram', 'wp-testing'),
+                'title'   => __('Show scales chart', 'wp-testing'),
             ),
             'wpt_result_page_show_scales' => array(
                 'default' => '1',

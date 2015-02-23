@@ -25,8 +25,8 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
             'test_title'  => __('Test', 'wp-testing'),
             'results'     => __('Results', 'wp-testing'),
             'scales'      => __('Scales', 'wp-testing'),
-            'created'     => __('Date'),
-            'actions'     => __('Actions'),
+            'created'     => $this->wp->translate('Date'),
+            'actions'     => $this->wp->translate('Actions'),
             'device_uuid' => __('Device', 'wp-testing'),
             'ip'          => __('IP address', 'wp-testing'),
             'user_agent'  => __('Browser', 'wp-testing'),
@@ -115,7 +115,7 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
                 $actions = array();
                 $actions[] = $this->renderLink(
                     $item->getUrl($this->wp),
-                    __('View')
+                    $this->wp->translate('View')
                 );
                 return implode(' | ', $actions);
         }

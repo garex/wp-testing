@@ -815,4 +815,23 @@ class WpTesting_WordPressFacade
     {
         wp_die($message, $title, $arguments);
     }
+
+    /**
+     * Retrieve the translation of $text.
+     *
+     * If there is no translation, or the text domain isn't loaded, the original text is returned.
+     *
+     * <strong>Note:</strong> Use it directly instead of <em>__()</em> when you want to hide some translation.
+     *
+     * @see __()
+     * @since 2.2.0
+     *
+     * @param string $text   Text to translate.
+     * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Translated text
+     */
+    public function translate($text, $domain = 'default')
+    {
+        return translate($text, $domain);
+    }
 }
