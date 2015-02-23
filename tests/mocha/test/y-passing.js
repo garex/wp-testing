@@ -53,7 +53,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     })
 
     it('should open test for visitor', function() {
-        casper.open('http://wpti.dev/')
+        casper.open('http://wpti.dev/?p=1')
 
         casper.then(function() {
             '.wp-testing.shortcode.list'.should.be.inDOM

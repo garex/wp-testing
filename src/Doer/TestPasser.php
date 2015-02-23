@@ -259,7 +259,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
     private function stripNewLines($matches)
     {
-        return str_replace('> <', '><', preg_replace('/[\n\r\s]+/s', ' ', $matches[0]));
+        $result = $matches[0];
+        $result = preg_replace('/[\n\r\s]+/s', ' ', $result);
+        $result = str_replace('> <', '><', $result);
+        $result = preg_replace('/(>) ([^<])/s', '$1$2', $result);
+        $result = preg_replace('|([^>]) (</)|s', '$1$2', $result);
+        return $result;
     }
 
     private function getTestPassingAction()

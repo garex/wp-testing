@@ -145,8 +145,8 @@ describe('Answers and Scales', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'jQuery("td.wpt_scale").length'.should.evaluate.to.equal(2)
-            'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('1')
-            'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('2')
+            'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('3')
+            'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('4')
             'wpt_score_value_0_1.value'.should.evaluate.to.be.equal(null)
             'wpt_score_value_1_1.value'.should.evaluate.to.be.equal(null)
         })
