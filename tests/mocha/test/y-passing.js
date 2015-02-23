@@ -112,6 +112,13 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
+    it('should show scales sorted by biggest score', function() {
+        casper.then(function() {
+            'jQuery(".scale-index-0.title").text()'.should.evaluate.to.equal('Lie')
+            'jQuery(".scale-index-1.title").text()'.should.evaluate.to.equal('Extraversion/Introversion')
+        })
+    })
+
     it('should reset answers on back if this option enabled', function() {
         casper.back().then(function() {
             '#wpt-test-form input[type=submit]'.should.have.attr('disabled')

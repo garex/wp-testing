@@ -33,7 +33,9 @@ describe('Results with formulas', function() {
                 '#wpt_question_title_2': 'Question 3?'
             })
             this.click('.misc-pub-wpt-test-page-reset-answers-on-back input[type=checkbox]') // Reset answers on back
+            this.click('.misc-pub-wpt-result-page-sort-scales-by-score input[type=checkbox]') // Sort scales by score
             this.clickLabel(' Yes',         'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.clickLabel(' Lie',         'label')
             this.clickLabel(' Choleric',    'label')
             this.clickLabel(' Melancholic', 'label')
@@ -46,9 +48,9 @@ describe('Results with formulas', function() {
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
 
             this.fillSelectors('form#post', {
-                '#wpt_score_value_0_0': '5',
-                '#wpt_score_value_1_0': '5',
-                '#wpt_score_value_2_0': '5',
+                '#wpt_score_value_0_1': '5',
+                '#wpt_score_value_1_1': '5',
+                '#wpt_score_value_2_1': '5',
                 '#wpt_answer_title_0_0': 'Yezzzzzzz!',
                 '#wpt_answer_title_1_0': 'I said yes. I confirm it.'
             }, true)
