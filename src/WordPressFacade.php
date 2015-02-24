@@ -410,9 +410,30 @@ class WpTesting_WordPressFacade
      * @param string $objectType The object type
      * @return string The edit term link URL for the given term.
      */
-    function getEditTermLink($id, $taxonomy, $objectType = '')
+    public function getEditTermLink($id, $taxonomy, $objectType = '')
     {
         return get_edit_term_link($id, $taxonomy, $objectType);
+    }
+
+    /**
+     * Get extended entry info (<!--more-->).
+     *
+     * There should not be any space after the second dash and before the word
+     * 'more'. There can be text or space(s) after the word 'more', but won't be
+     * referenced.
+     *
+     * The returned array has 'main', 'extended', and 'more_text' keys. Main has the text before
+     * the `<!--more-->`. The 'extended' key has the content after the
+     * `<!--more-->` comment. The 'more_text' key has the custom "Read More" text.
+     *
+     * @since 1.0.0
+     *
+     * @param string $post Post content.
+     * @return array Post before ('main'), after ('extended'), and custom readmore ('more_text').
+     */
+    public function getExtended($post)
+    {
+        return get_extended($post);
     }
 
     /**
@@ -424,7 +445,7 @@ class WpTesting_WordPressFacade
      * @param int $status Status code to use.
      * @return bool False if $location is not provided, true otherwise.
      */
-    function redirect($location, $status = 302)
+    public function redirect($location, $status = 302)
     {
         return wp_redirect($location, $status);
     }

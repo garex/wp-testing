@@ -70,6 +70,32 @@ describe('Taxonomies', function() {
         })
     })
 
+    it('should allow to use read more tag', function() {
+        casper.then(function() {
+            this.clickLabel('Scales', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            'Scales'.should.be.inTitle
+
+            this.clickLabel('Lie', 'a')
+        })
+
+        casper.then(function() {
+            this.fill('form#edittag', {
+                'description' : 'Lie is bad<!--more-->\nIt measures how socially desirable you are trying to be in your answers. Those who score 5 or more on this scale are probably trying to make themselves look good and are not being totally honest in their responses.'
+            }, true)
+
+            this.waitForUrl(/message/, function() {
+                this.clickLabel('Lie', 'a')
+            })
+        })
+
+        casper.then(function() {
+            'description.value'.should.evaluate.to.be.equal('Lie is bad<!--more-->\nIt measures how socially desirable you are trying to be in your answers. Those who score 5 or more on this scale are probably trying to make themselves look good and are not being totally honest in their responses.')
+        })
+    })
+
     it('should allow to edit results', function() {
         casper.then(function() {
             this.clickLabel('Results', '*[@id="menu-posts-wpt_test"]/*//a')

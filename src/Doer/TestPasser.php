@@ -127,6 +127,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     )
                 );
             }
+            $this->wp
+                ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('detect-javascript', 'jquery'), false, true)
+            ;
             if (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')) {
                 $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
                 $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
@@ -152,7 +155,6 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
         $this->wp
             ->enqueuePluginStyle('wpt_public', 'css/public.css')
             ->enqueuePluginScript('wpt_test_pass_' . $action, 'js/test-pass-' . $action . '.js', array('jquery', 'lodash'), false, true)
-            ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('jquery'), false, true)
             ->addFilter('the_content', array($this, 'renderTestContent'))
         ;
         return $this;
@@ -238,7 +240,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
     public function renderWithMoreSplitted($content)
     {
-        $extended = get_extended($content);
+        $extended = $this->wp->getExtended($content);
         if (empty($extended['extended'])) {
             return $content;
         }

@@ -119,6 +119,18 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
+    it('should show scale description with read more text', function() {
+        casper.then(function() {
+            'document.documentElement.className'.should.evaluate.to.contain('js')
+            'document.documentElement.className'.should.evaluate.to.not.contain('no-js')
+            '.scale-slug-scale-lie.description .wpt_text_with_more'.should.be.inDOM
+            var boundsBefore = this.getElementBounds('.scale-slug-scale-lie.description')
+            this.clickLabel('more…', 'a')
+            var boundsAfter = this.getElementBounds('.scale-slug-scale-lie.description')
+            boundsAfter.height.should.be.above(boundsBefore.height)
+        })
+    })
+
     it('should reset answers on back if this option enabled', function() {
         casper.back().then(function() {
             '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
