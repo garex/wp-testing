@@ -92,6 +92,7 @@ class WpTesting_Facade
             ;
         } else {
             $this->wp
+                ->addAction('admin_init',        array($this,  'setupTestEditorInBackground'))
                 ->addFilter('current_screen',    array($this,  'setupTestEditor'))
             ;
         }
@@ -130,6 +131,14 @@ class WpTesting_Facade
     public function renderRespondentsResultsPage()
     {
         $this->getPassingBrowser()->renderAdminPassingsPage();
+    }
+
+    /**
+     * Allows us to add hooks for ajax too
+     */
+    public function setupTestEditorInBackground()
+    {
+        $this->getTestEditor()->allowMoreHtmlInTaxonomies();
     }
 
     /**

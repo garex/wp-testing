@@ -52,12 +52,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
     /**
      * Allow more HTML tags in taxonomies
-     * @param WP_Screen $screen
      * @return WpTesting_Doer_TestEditor
      */
-    public function allowMoreHtmlInTaxonomies($screen)
+    public function allowMoreHtmlInTaxonomies()
     {
-        if (!$this->isTestTaxonomy($screen)) {
+        if (!$this->isTestTaxonomy()) {
             return $this;
         }
 
@@ -139,11 +138,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $newTags = array(
             'h1', 'h2', 'h3', 'h4', 'h5',
             'ol', 'ul', 'li',
-            'hr'
+            'hr', 'img',
         );
         foreach ($newTags as $tag) {
             $allowedTags[$tag] = array('class' => true);
         }
+        $allowedTags['img']['src'] = true;
         return $allowedTags;
     }
 
@@ -343,16 +343,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $isTest;
     }
 
-    private function isTestTaxonomy($screen)
+    private function isTestTaxonomy()
     {
-        if (empty($screen->taxonomy)) {
-            return false;
-        }
-        $taxonomy = $screen->taxonomy;
-        if (!$this->isWordPressAlready('3.3') && $this->isPost()) {
-            $taxonomy = $this->getRequestValue('taxonomy');
-        }
-        return preg_match('/^wpt_/', $taxonomy);
+        return preg_match('/^wpt_/', $this->getRequestValue('taxonomy'));
     }
 
     private function isUnderApache()
