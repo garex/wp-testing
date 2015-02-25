@@ -102,6 +102,15 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * For example: /path?param=value /path/
+     * @return string
+     */
+    protected function getCurrentUrl()
+    {
+        return fURL::getWithQueryString();
+    }
+
+    /**
      * Checks if current WordPress version greater than or equal provided version
      *
      * @param string $version

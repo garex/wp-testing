@@ -77,7 +77,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
             try {
                 $passing->store(true);
-                $link = $passing->getUrl($this->wp);
+                $link = $passing->getUrl($this->wp, $this->getCurrentUrl());
                 $this->wp->redirect($link, 302);
                 $this->wp->dieMessage(
                     $this->render('Test/Passer/redirect-message', array(
