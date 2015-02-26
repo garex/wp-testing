@@ -218,7 +218,16 @@ WptLineDiagram.prototype.setupPaper = function(wrapper, holder, $) {
 };
 
 WptLineDiagram.prototype.setupData = function(data) {
+    var isSingle = 1 == data.length;
     this.data = data;
+    if (isSingle) {
+        this.data.unshift({
+            value   : data[0].value,
+            title   : '',
+            minimum : 0,
+            maximum : 0
+        });
+    }
 
     this.dataX = [];
     this.dataY = [];
@@ -232,6 +241,10 @@ WptLineDiagram.prototype.setupData = function(data) {
 
         this.dataMinimum = Math.min(this.dataMinimum, this.data[i].minimum);
         this.dataMaximum = Math.max(this.dataMaximum, this.data[i].maximum);
+    }
+
+    if (isSingle) {
+        this.dataX[0] = 1;
     }
 
     return this;
@@ -265,6 +278,9 @@ WptLineDiagram.prototype.createDiagram = function(holder, $) {
 
     // Show annotations
     this.diagram.hoverColumn(function () {
+        if ('' == me.data[this.axis].title) {
+            return;
+        }
         var text  = me.data[this.axis].title + '\n' + this.values[0],
             angle = me.data[this.axis].angle;
         this.tags = me.paper.set();

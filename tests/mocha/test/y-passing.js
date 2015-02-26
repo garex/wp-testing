@@ -211,8 +211,19 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM
-            'Lie'.should.not.be.textInDOM
+             '.scale-slug-scale-lie'.should.not.be.inDOM
             'Allow others to rate the vacuum on the Earth'.should.not.be.textInDOM
+        })
+    })
+
+    it('should show scales diagram', function() {
+        casper.then(function() {
+            '.scales.diagram'.should.be.inDOM
+            var bounds = this.getElementBounds('.scales.diagram')
+            bounds.height.should.be.above(10)
+            bounds.height.should.be.within(bounds.width/1.7, bounds.width/1.6)
+            'document.querySelectorAll("circle").length'.should.evaluate.to.be.equal(5)
+            'document.querySelector("tspan").textContent'.should.evaluate.match(/^E.+[\.]{3}$/)
         })
     })
 
