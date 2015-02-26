@@ -485,6 +485,22 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve the number times an action is fired.
+     *
+     * @package WordPress
+     * @subpackage Plugin
+     * @since 2.1
+     * @global array $wp_actions Increments the amount of times action was triggered.
+     *
+     * @param string $tag The name of the action hook.
+     * @return int The number of times action hook <tt>$tag</tt> is fired
+     */
+    public function didAction($tag)
+    {
+        return did_action($tag);
+    }
+
+    /**
      * Hooks a function or method to a specific filter action.
      *
      * @since 0.71

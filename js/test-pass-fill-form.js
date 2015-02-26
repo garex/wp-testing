@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 
     var ec = new evercookie({
         tests           : 3,
-        baseurl         : wpt_evercookie.baseurl,
+        baseurl         : Wpt.evercookieBaseurl,
         history         : false,
         silverlight     : false,
         java            : false,
@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
     var form = $('#wpt-test-form');
-    if (!form.data('wpt').isResetAnswersOnBack) {
+    if (!Wpt.isResetAnswersOnBack) {
         return;
     }
     form.on('init_answers.wpt', function(event, answersInputs) {
@@ -39,13 +39,13 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
     var form = $('#wpt-test-form');
-    if (!form.data('wpt').isShowProgressMeter) {
+    if (!Wpt.isShowProgressMeter) {
         return;
     }
 
     var initialTitle = document.title,
-        separator    = form.data('wpt').titleSeparator,
-        template     = form.data('wpt').percentsAnswered;
+        separator    = Wpt.titleSeparator,
+        template     = Wpt.percentsAnswered;
 
     $(document).on('percentage_change.wpt', function(event, percent) {
         document.title = template.replace('{percentage}', percent) +  ' ' + separator + ' ' + initialTitle;

@@ -130,23 +130,22 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             if (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')) {
                 $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
                 $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
+                $scales        = $this->toJson($this->passing->buildScalesWithRangeOnce($isSortByScore));
+                $this
+                    ->addJsData('warningIncompatibleBrowser', $sorryBrowser)
+                    ->addJsData('scales', $scales)
+                ;
                 $this->wp
                     ->enqueuePluginScript('wpt_line_diagram', 'js/line-diagram.js', array('jquery', 'raphael-scale', 'raphael-line-diagram'), false, true)
-                    ->localizeScript('wpt_line_diagram', 'wpt_line_diagram', array(
-                        'scales' => $this->toJson($this->passing->buildScalesWithRangeOnce($isSortByScore)),
-                        'warningIncompatibleBrowser' => $sorryBrowser,
-                    ))
                 ;
             }
         } elseif (self::ACTION_FILL_FORM == $action) {
+            $this->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'));
             $this->wp
                 ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
                 ->enqueuePluginScript('samyk_swfobject',  'vendor/samyk/evercookie/js/swfobject-2.2.min.js', array(),     false, true)
                 ->enqueuePluginScript('samyk_evercookie', 'vendor/samyk/evercookie/js/evercookie.js',  array(),           false, true)
                 ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
-                ->localizeScript('samyk_evercookie', 'wpt_evercookie', array(
-                    'baseurl' => $this->wp->getPluginUrl('vendor/samyk/evercookie'),
-                ))
             ;
         }
 
@@ -203,13 +202,13 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
-                'javascriptSettings' => htmlspecialchars(json_encode(array(
-                    'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
-                    'isShowProgressMeter'  => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_show_progress_meter')),
-                    'titleSeparator'       => $this->titleSeparator,
-                    'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
-                )), ENT_QUOTES, 'UTF-8'),
             );
+            $this->addJsDataValues(array(
+                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
+                'isShowProgressMeter'  => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_show_progress_meter')),
+                'titleSeparator'       => $this->titleSeparator,
+                'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
+            ));
         } elseif (self::ACTION_GET_RESULTS == $action) {
             $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
             $params  = array(
