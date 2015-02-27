@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 12:23+0700\n"
-"PO-Revision-Date: 2015-02-23 07:20+0000\n"
+"PO-Revision-Date: 2015-02-24 18:53+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/wp-testing/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,11 @@ msgstr ""
 
 #: Facade.php:122
 msgid "Respondents’ test results"
-msgstr "Risultati dei test intervistati"
+msgstr "Risultati del test del soggetto"
 
 #: Facade.php:123
 msgid "Respondents’ results"
-msgstr "Risultati intervistati"
+msgstr "Risultati dei soggetti"
 
 #: Widget/PassingTable.php:25 Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
@@ -86,7 +86,7 @@ msgstr "Pagina non trovata. L'URL della pagina potrebbe non essere corretto."
 #: Doer/TestPasser.php:132
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Ci dispiace ma il browser %s non è compatibile per visualizzare il grafico"
+msgstr "Siamo spiacenti ma il tuo browser non è compatibile per %s per visualizzare il grafico"
 
 #: Doer/TestPasser.php:204 Doer/TestEditor.php:188
 msgid "Get Test Results"
@@ -94,7 +94,7 @@ msgstr "Vai ai Risultati"
 
 #: Doer/TestPasser.php:210
 msgid "{percentage}% answered"
-msgstr "{percentage}% risponde"
+msgstr "{percentage}% di risposte"
 
 #: Doer/TestEditor.php:35
 msgid "Test Page Options"
@@ -118,7 +118,7 @@ msgstr "Modica Formule"
 
 #: Doer/TestEditor.php:178
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Mostra in percentuale titolo di domande che rispondente già risposto"
+msgstr "Mostra nel titolo la percentuale di domande a cui il soggetto a risposto"
 
 #: Doer/TestEditor.php:182
 msgid "Reset respondent answers when \"Back\" button pressed"
@@ -130,7 +130,7 @@ msgstr "Testo del Pulsante"
 
 #: Doer/TestEditor.php:203
 msgid "Show scales chart"
-msgstr "Mostra tabella di scale"
+msgstr "Mostra la tabella delle scale"
 
 #: Doer/TestEditor.php:207
 msgid "Show scales"
@@ -138,7 +138,7 @@ msgstr "Mostra scale"
 
 #: Doer/TestEditor.php:211
 msgid "Sort scales by score"
-msgstr "Ordina scale per il punteggio"
+msgstr "Ordina le scale per punteggio"
 
 #: Doer/TestEditor.php:215
 msgid "Show test description"
