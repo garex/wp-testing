@@ -2,6 +2,31 @@
 ## Changelog ##
 
 
+### 0.9 ###
+
+Scales chart, progress percentage, sorting and respondents' results
+
+* Visualize scales values with chart (at the same time scales can be hidden)
+* Show percentage of answered questions in browser title
+* Allow to sort test's answers/scales/results manually and scales by scores sum (implies from more to less)
+* Add simple "Respondents' tests results" table in admin area
+* Improve scales/results descriptions: allow more HTML tags (headers, lists, images and hr) and add support for "read more"
+* Translate new strings and update reviewed locales for IT, NL and BG langs
+
+Fixes:
+
+* Fix results getting in non-published yet test (for example in preview mode)
+* Fix questions/scores editor width when test has too many scales
+
+Internal improvements:
+
+* Research and fix stable continious integration fails
+* Move answers input inside labels (will improve rendering on some theme)
+* Add semantic CSS classes to scales/results, for example: "result result-id-11 result-slug-result-phlegmatic result-index-0 title"
+* Add placeholders to questions form
+* Pass data to javascript in more stable way
+
+
 ### 0.8.1 ###
 
 Fix external library and update translations
