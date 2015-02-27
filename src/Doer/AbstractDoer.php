@@ -8,10 +8,52 @@ abstract class WpTesting_Doer_AbstractDoer
      */
     protected $wp = null;
 
+    /**
+     * Data passed to javascript in a global Wpt object
+     * @var array
+     */
+    private $jsData = array();
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
         $this->registerScripts();
+    }
+
+    public function renderJsData()
+    {
+        $this->output('Abstract/js-data', array(
+            'Wpt' => $this->jsData,
+        ));
+        $this->jsData = array();
+    }
+
+    /**
+     * Adds data to Wpt global object
+     * @param string $key
+     * @param mixed $value
+     * @return WpTesting_Doer_AbstractDoer
+     */
+    protected function addJsData($key, $value) {
+        if (empty($this->jsData)) {
+            $actionTag = (!$this->wp->didAction('wp_print_scripts')) ? 'wp_print_scripts' : 'wp_print_footer_scripts';
+            $this->wp->addAction($actionTag, array($this, 'renderJsData'));
+        }
+        $this->jsData[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * Adds multiple data values to Wpt global object from values array
+     * @see addJsData
+     * @param array $values [key1 => value1, keyN => valueN]
+     * @return WpTesting_Doer_AbstractDoer
+     */
+    protected function addJsDataValues($values) {
+        foreach ($values as $key => $value) {
+            $this->addJsData($key, $value);
+        }
+        return $this;
     }
 
     /**
@@ -20,6 +62,7 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function registerScripts()
     {
         $this->wp
+            ->registerPluginScript('detect-javascript', 'js/detect-javascript.js', array(), '1.0')
             ->registerPluginScript('lodash-source', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
             ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.no-conflict.js', array('lodash-source'))
             ->registerPluginScript('npm-stub', 'js/vendor/npm/stub.js', array(), '1.0')
@@ -56,6 +99,15 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function getRequestValue($key)
     {
         return fRequest::get($key);
+    }
+
+    /**
+     * For example: /path?param=value /path/
+     * @return string
+     */
+    protected function getCurrentUrl()
+    {
+        return fURL::getWithQueryString();
     }
 
     /**
@@ -146,7 +198,7 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function toJson($object)
     {
         if ($object instanceof fRecordSet) {
-            return $this->toJson($object->getRecords());
+            return $this->toJson(array_values($object->getRecords()));
         }
         if (is_array($object)) {
             $result = array();

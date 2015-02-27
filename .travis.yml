@@ -14,7 +14,7 @@ env:
     - WP_VERSION=3.9
     - WP_VERSION=4.0.1
     - WP_VERSION=3.8
-    - WP_VERSION=4.1
+    - WP_VERSION=4.1.1
     - WP_VERSION=3.6
     - WP_VERSION=3.4
     - WP_VERSION=3.7
@@ -28,6 +28,8 @@ matrix:
     - php: 5.4
       env: PLUGINS=akismet.3.0.4:jetpack.3.3:wordpress-seo.1.7.1:wordfence.5.3.4:contact-form-7.4.0.3:google-sitemap-generator.4.0.8
   allow_failures:
+    - php: 5.2
+      env: WP_VERSION=3.5
     - php: 5.2
       env: WP_VERSION=3.6
     - php: 5.2
@@ -53,7 +55,8 @@ script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - mocha-casperjs --grep=Plugin_activation --timeout=360000
-  - mocha-casperjs --grep=Answers
+  - mocha-casperjs --grep=Answers1
+  - mocha-casperjs --grep=Answers2
   - mocha-casperjs --grep=Page
   - mocha-casperjs --grep=Questions
   - mocha-casperjs --grep=Quick
@@ -63,6 +66,7 @@ script:
   - mocha-casperjs --grep=Taxonomies
   - mocha-casperjs --grep=Test
   - mocha-casperjs --grep=Passings
+  - mocha-casperjs --grep=Respondents
   - mocha-casperjs --grep=Plugin_deactivation
 
 after_failure:

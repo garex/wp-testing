@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
     ];
 
     $.each(taxonomies, function(i, taxonomy) {
-        var all  = $('#' + taxonomy + '-all'),
+        var all  = $('#' + taxonomy + 'div'),
             list = $('#' + taxonomy + 'checklist');
 
         list.sortable({

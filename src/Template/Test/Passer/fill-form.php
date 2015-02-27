@@ -16,7 +16,7 @@
     <?php echo $content ?>
 </div>
 
-<div class="content"><form method="post" id="wpt-test-form" data-wpt="<?php echo $javascriptSettings ?>">
+<div class="content"><form method="post" id="wpt-test-form">
 
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
 

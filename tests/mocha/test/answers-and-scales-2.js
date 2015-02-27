@@ -1,4 +1,4 @@
-describe('Answers and Scales', function() {
+describe('Answers2 and Scales2', function() {
 
     before(function () {
         this.timeout(3600000)
@@ -8,102 +8,6 @@ describe('Answers and Scales', function() {
                 log: 'wpti',
                 pwd: 'wpti'
             }
-        })
-    })
-
-    it('should be added to new test without questions', function() {
-        casper.then(function() {
-            this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
-        })
-
-        casper.then(function() {
-            'Fatal'.should.not.be.textInDOM
-            'Add New Test'.should.be.inTitle
-            'jQuery("#wpt_answer-all input:checked").length'.should.evaluate.to.equal(0)
-            'jQuery("#wpt_scale-all input:checked").length'.should.evaluate.to.equal(0)
-
-            this.fillSelectors('form#post', {
-                '#title': 'Test With Answers and Scales Without Questions'
-            })
-            this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]')
-            this.clickLabel(' Yes', 'label')
-            this.clickLabel(' Lie', 'label')
-            this.click('#publish')
-        })
-
-        casper.waitForUrl(/message/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '#message'.should.be.inDOM
-            'jQuery("#wpt_answer-all input:checked").length'.should.evaluate.to.equal(1)
-            'jQuery("#wpt_scale-all input:checked").length'.should.evaluate.to.equal(1)
-        })
-    })
-
-    it('should be added to new test with questions', function() {
-        casper.then(function() {
-            this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
-        })
-
-        casper.then(function() {
-            this.fillSelectors('form#post', {
-                '#title': 'Test With Answers, Scales and Questions',
-                '#wpt_question_title_0': '`5 + 5 is "10?',
-                '#wpt_question_title_1': '6 + 6 is \'10?'
-            })
-            this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]')
-            this.clickLabel(' Yes', 'label')
-            this.clickLabel(' Lie', 'label')
-            this.click('#publish')
-        })
-
-        casper.waitForUrl(/message/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '#message'.should.be.inDOM
-            'jQuery("#wpt_edit_questions .wpt_scale input[type=text]").attr("title")'.should.evaluate.to.equal('Lie, Yes')
-            'wpt_question_title_0.value'.should.evaluate.to.be.equal('`5 + 5 is "10?')
-            'wpt_question_title_1.value'.should.evaluate.to.be.equal('6 + 6 is \'10?')
-        })
-    })
-
-    it('should be visible on test page', function() {
-        casper.evaluate(function() {
-            document.location = jQuery('#view-post-btn a').attr('href')
-        })
-
-        casper.waitForUrl(/wpt_test/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '`5 + 5 is "10?'.should.be.textInDOM
-            '6 + 6 is \'10?'.should.be.textInDOM
-            '#wpt-test-form .answer label'.should.be.inDOM
-            '#wpt-test-form .answer label'.should.contain.text('Yes')
-        })
-    })
-
-    it('should be removed from existing test', function() {
-        casper.then(function() {
-            this.clickLabel('Edit Test', 'a')
-        })
-
-        casper.then(function() {
-            this.clickLabel(' Yes', 'label')
-            this.click('#publish')
-        })
-
-        casper.waitForUrl(/message/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '#message'.should.be.inDOM
-            '#wpt_edit_questions .wpt_scale input[type=text]'.should.not.be.inDOM
-        })
-    })
-
-    it('should then gone from existing test page', function() {
-        casper.evaluate(function() {
-            document.location = jQuery('#view-post-btn a').attr('href')
-        })
-
-        casper.waitForUrl(/wpt_test/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '#wpt-test-form .answer label'.should.not.be.inDOM
         })
     })
 
@@ -145,8 +49,8 @@ describe('Answers and Scales', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'jQuery("td.wpt_scale").length'.should.evaluate.to.equal(2)
-            'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('1')
-            'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('2')
+            'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('3')
+            'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('4')
             'wpt_score_value_0_1.value'.should.evaluate.to.be.equal(null)
             'wpt_score_value_1_1.value'.should.evaluate.to.be.equal(null)
         })
@@ -220,6 +124,64 @@ describe('Answers and Scales', function() {
             '#message'.should.be.inDOM
             'wpt_answer_title_0_0.value'.should.evaluate.to.be.equal('"Anoter" answer!')
             '#wpt_answer_title_0_1.value'.should.not.be.inDOM
+        })
+    })
+
+    it('should be able to be sorted by user', function() {
+        casper.then(function() {
+            this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            this.fillSelectors('form#post', {
+                '#title': 'Test With Answers Sorted',
+                '#wpt_question_title_0': 'Question 1',
+            })
+            this.clickLabel(' No', 'label')
+            this.clickLabel(' Yes', 'label')
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            'wpt_answer_title_0_0.title'.should.evaluate.to.be.equal('No')
+            'wpt_answer_title_0_1.title'.should.evaluate.to.be.equal('Yes')
+            this.evaluate(function() {
+                document.location = jQuery('#view-post-btn a').attr('href')
+            })
+        })
+
+        casper.waitForUrl(/answers-sorted/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'jQuery(".question .answer:first").text()'.should.evaluate.to.be.equal('No')
+        })
+
+        casper.back().viewport(1280, 720).then(function() {
+            '#message'.should.be.inDOM
+
+            this.clickLabel(' Yes', 'label')
+            this.clickLabel(' Yes', 'label')
+
+            // Manually move Yes before No
+            var yesId = '#' + this.evaluate(function() {
+                return jQuery('#wpt_answer-all label').parent().next().attr('id')
+            })
+            this.mouse.down(yesId)
+            var b = this.getElementBounds(yesId)
+            for (var i=0; i < b.height + 5; i++) {
+                this.mouse.move(b.left, b.top - i)
+            }
+            this.mouse.up(b.left, b.top)
+
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            'wpt_answer_title_0_0.title'.should.evaluate.to.be.equal('Yes')
+            'wpt_answer_title_0_1.title'.should.evaluate.to.be.equal('No')
         })
     })
 })

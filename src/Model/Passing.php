@@ -56,18 +56,19 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 
     /**
      * @param WpTesting_WordPressFacade $wp
+     * @param string $postLink
      * @return string
      */
-    public function getUrl($wp)
+    public function getUrl($wp, $postLink = null)
     {
-        $slug = $this->getSlug($wp->getSalt());
-        $link = rtrim($wp->getPostPermalink($this->getTestId()), '/&');
-        if ($wp->getRewrite()->using_permalinks() && $this->createTest()->isPublished()) {
-            $link .= '/' . $slug . '/';
-        } else {
-            $link .= '&wpt_passing_slug=' . $slug;
+        if (empty($postLink)) {
+            $postLink = $wp->getPostPermalink($this->getTestId());
         }
-        return $link;
+        $postLink       = rtrim($postLink, '/&');
+        $slug           = $this->getSlug($wp->getSalt());
+        $hasQueryString = !is_null(parse_url($postLink, PHP_URL_QUERY));
+        $postLink      .= ($hasQueryString) ? '&wpt_passing_slug=' . $slug : '/' . $slug . '/';
+        return $postLink;
     }
 
     /**

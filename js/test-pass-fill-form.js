@@ -3,17 +3,17 @@ jQuery(document).ready(function($) {
 
     var button = form.find('.button');
     button.addClass('disabled').attr('disabled', 'disabled');
-    form.on('test_filled.wpt', function() {
+    form.bind('test_filled.wpt', function() {
         button.removeAttr('disabled').removeClass('disabled');
     });
 
-    form.on('question_answered_initially.wpt', function(event, question) {
+    form.bind('question_answered_initially.wpt', function(event, question) {
         question.addClass('answered');
     });
 
     var ec = new evercookie({
         tests           : 3,
-        baseurl         : wpt_evercookie.baseurl,
+        baseurl         : Wpt.evercookieBaseurl,
         history         : false,
         silverlight     : false,
         java            : false,
@@ -29,25 +29,25 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
     var form = $('#wpt-test-form');
-    if (!form.data('wpt').isResetAnswersOnBack) {
+    if (!Wpt.isResetAnswersOnBack) {
         return;
     }
-    form.on('init_answers.wpt', function(event, answersInputs) {
+    form.bind('init_answers.wpt', function(event, answersInputs) {
         answersInputs.attr('checked', false);
     });
 });
 
 jQuery(document).ready(function($) {
     var form = $('#wpt-test-form');
-    if (!form.data('wpt').isShowProgressMeter) {
+    if (!Wpt.isShowProgressMeter) {
         return;
     }
 
     var initialTitle = document.title,
-        separator    = form.data('wpt').titleSeparator,
-        template     = form.data('wpt').percentsAnswered;
+        separator    = Wpt.titleSeparator,
+        template     = Wpt.percentsAnswered;
 
-    $(document).on('percentage_change.wpt', function(event, percent) {
+    $(document).bind('percentage_change.wpt', function(event, percent) {
         document.title = template.replace('{percentage}', percent) +  ' ' + separator + ' ' + initialTitle;
     });
 });
@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
         question.data('isAnswered', false);
         question.find('.answer').each(function () {
             var answer = $(this);
-            answer.find('input').on('change', function () {
+            answer.find('input').bind('change', function () {
                 if (!$(this).attr('checked')) {
                     return;
                 }
@@ -85,7 +85,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    form.on('question_answered_initially.wpt', function(event, question, answered, total) {
+    form.bind('question_answered_initially.wpt', function(event, question, answered, total) {
         var percent = Math.round(100 * (answered / total));
         $(document).trigger('percentage_change.wpt', [percent]);
         if (answered == total) {
