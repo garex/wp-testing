@@ -64,8 +64,13 @@ describe('Test', function() {
                 '#wpt_question_title_0': 'Are You Hot?',
             })
             this.click('.misc-pub-wpt-result-page-show-scales input[type=checkbox]') // not show scales later
+            this.click('.misc-pub-wpt-result-page-show-scales-diagram input[type=checkbox]') // but show scales diagram
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
+            this.clickLabel(' Neuroticism/Stability', 'label')
+            this.clickLabel(' Temperature', 'label')
+            this.clickLabel(' свобода', 'label')
             this.click('#save-post')
         })
 
@@ -75,7 +80,9 @@ describe('Test', function() {
             expect('post_title').to.have.fieldValue('Are You Hot or Not?!')
             expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth!')
             this.fillSelectors('form#post', {
-                '#wpt_score_value_0_0': '5'
+                '#wpt_score_value_0_0': '5',
+                '#wpt_score_value_0_1': '25',
+                '#wpt_score_value_0_2': '10'
             }, true)
         })
     })

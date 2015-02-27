@@ -3,6 +3,8 @@
 /**
  * @method integer getId() getId() Gets the current value of id
  * @method integer getGlobalAnswerId() getGlobalAnswerId() Gets the current value of global answer id
+ * @method integer getSort() getSort() Gets the current value of sort
+ * @method WpTesting_Model_Answer setSort() setSort(integer $sort) Sets the value for sort
  */
 class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 {
@@ -30,6 +32,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     protected $columnAliases = array(
         'id'    => 'answer_id',
         'title' => 'answer_title',
+        'sort'  => 'answer_sort',
     );
 
     /**

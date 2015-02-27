@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-01 23:09+0700\n"
-"PO-Revision-Date: 2015-02-01 17:11+0000\n"
+"POT-Creation-Date: 2015-02-23 12:23+0700\n"
+"PO-Revision-Date: 2015-02-23 06:51+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: English (United States) (http://www.transifex.com/projects/p/wp-testing/language/en_US/)\n"
 "MIME-Version: 1.0\n"
@@ -20,71 +20,129 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestPasser.php:51 Doer/TestPasser.php:54
+#: Facade.php:122
+msgid "Respondents’ test results"
+msgstr "Respondents’ test results"
+
+#: Facade.php:123
+msgid "Respondents’ results"
+msgstr "Respondents’ results"
+
+#: Widget/PassingTable.php:25 Doer/WordPressEntitiesRegistrator.php:14
+msgid "Test"
+msgstr "Test"
+
+#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:112
+msgid "Results"
+msgstr "Results"
+
+#: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
+msgid "Scales"
+msgstr "Scales"
+
+#: Widget/PassingTable.php:30
+msgid "Device"
+msgstr "Device"
+
+#: Widget/PassingTable.php:31
+msgid "IP address"
+msgstr "IP address"
+
+#: Widget/PassingTable.php:32
+msgid "Browser"
+msgstr "Browser"
+
+#: Widget/PassingTable.php:105
+#, php-format
+msgid "%1$d out of %2$d"
+msgstr "%1$d out of %2$d"
+
+#: Doer/TestPasser.php:57 Doer/TestPasser.php:60
 msgid "Test is under construction"
 msgstr "Test is under construction"
 
-#: Doer/TestPasser.php:52
+#: Doer/TestPasser.php:58
 msgid "You can not get any results from it yet."
 msgstr "You can not get any results from it yet."
 
-#: Doer/TestPasser.php:94
+#: Doer/TestPasser.php:93
 msgid "Test data not valid"
 msgstr "Test data not valid"
 
-#: Doer/TestPasser.php:95
+#: Doer/TestPasser.php:94
 msgid "You passed not valid data to test."
 msgstr "You passed not valid data to test."
 
-#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
+#: Doer/TestPasser.php:120 Doer/TestPasser.php:123
 msgid "Test result not found"
 msgstr "Test result not found"
 
-#: Doer/TestPasser.php:122
+#: Doer/TestPasser.php:121
 msgid "You can not get anything from nothing."
 msgstr "You can not get anything from nothing."
 
-#: Doer/TestPasser.php:184 Doer/TestEditor.php:79
+#: Doer/TestPasser.php:132
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "Sorry but your browser %s is not compatible to display the chart"
+
+#: Doer/TestPasser.php:204 Doer/TestEditor.php:188
 msgid "Get Test Results"
 msgstr "Get Test Results"
 
-#: Doer/TestEditor.php:27
+#: Doer/TestPasser.php:210
+msgid "{percentage}% answered"
+msgstr "{percentage}% answered"
+
+#: Doer/TestEditor.php:35
 msgid "Test Page Options"
 msgstr "Test Page Options"
 
-#: Doer/TestEditor.php:29
+#: Doer/TestEditor.php:37
 msgid "Result Page Options"
 msgstr "Result Page Options"
 
-#: Doer/TestEditor.php:31
+#: Doer/TestEditor.php:39
 msgid "Edit Questions and Scores"
 msgstr "Edit Questions and Scores"
 
-#: Doer/TestEditor.php:32
+#: Doer/TestEditor.php:40
 msgid "Add New Questions"
 msgstr "Add New Questions"
 
-#: Doer/TestEditor.php:33
+#: Doer/TestEditor.php:41
 msgid "Edit Formulas"
 msgstr "Edit Formulas"
 
-#: Doer/TestEditor.php:77
-msgid "Button caption"
-msgstr "Button caption"
+#: Doer/TestEditor.php:178
+msgid "Show in title percentage of questions that respondent already answered"
+msgstr "Show in title percentage of questions that respondent already answered"
 
-#: Doer/TestEditor.php:83
+#: Doer/TestEditor.php:182
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Reset respondent answers when \"Back\" button pressed"
 
-#: Doer/TestEditor.php:98
+#: Doer/TestEditor.php:186
+msgid "Button caption"
+msgstr "Button caption"
+
+#: Doer/TestEditor.php:203
+msgid "Show scales chart"
+msgstr "Show scales chart"
+
+#: Doer/TestEditor.php:207
 msgid "Show scales"
 msgstr "Show scales"
 
-#: Doer/TestEditor.php:102
+#: Doer/TestEditor.php:211
+msgid "Sort scales by score"
+msgstr "Sort scales by score"
+
+#: Doer/TestEditor.php:215
 msgid "Show test description"
 msgstr "Show test description"
 
-#: Doer/TestEditor.php:188
+#: Doer/TestEditor.php:304
 msgid "Test data not saved"
 msgstr "Test data not saved"
 
@@ -92,10 +150,6 @@ msgstr "Test data not saved"
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
 msgstr "Tests"
-
-#: Doer/WordPressEntitiesRegistrator.php:14
-msgid "Test"
-msgstr "Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
@@ -244,10 +298,6 @@ msgstr "Search Scales"
 msgid "Parent Scale:"
 msgstr "Parent Scale:"
 
-#: Doer/WordPressEntitiesRegistrator.php:91
-msgid "Scales"
-msgstr "Scales"
-
 #: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
 msgstr "All Scales"
@@ -303,10 +353,6 @@ msgstr "Search Results"
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
 msgstr "Parent Result:"
-
-#: Doer/WordPressEntitiesRegistrator.php:112
-msgid "Results"
-msgstr "Results"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
@@ -393,7 +439,7 @@ msgstr "No Categories found"
 msgid "No Categories found in Trash"
 msgstr "No Categories found in Trash"
 
-#: Model/Formula.php:217
+#: Model/Formula.php:226
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formula for %s has error"
@@ -511,8 +557,3 @@ msgid ""
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
 msgstr "Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically."
-
-#: Template/Test/Passer/get-results.php:37
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%1$d out of %2$d"

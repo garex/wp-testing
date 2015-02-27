@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-01 23:09+0700\n"
-"PO-Revision-Date: 2015-02-02 09:11+0000\n"
+"POT-Creation-Date: 2015-02-23 12:23+0700\n"
+"PO-Revision-Date: 2015-02-23 07:40+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,71 +21,129 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Doer/TestPasser.php:51 Doer/TestPasser.php:54
+#: Facade.php:122
+msgid "Respondents’ test results"
+msgstr "Yanıtlayanların test sonuçları"
+
+#: Facade.php:123
+msgid "Respondents’ results"
+msgstr "Yanıtlayanların sonuçları"
+
+#: Widget/PassingTable.php:25 Doer/WordPressEntitiesRegistrator.php:14
+msgid "Test"
+msgstr "Test"
+
+#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:112
+msgid "Results"
+msgstr "Sonuçlar"
+
+#: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
+msgid "Scales"
+msgstr "Ölçekler"
+
+#: Widget/PassingTable.php:30
+msgid "Device"
+msgstr "Aygıt"
+
+#: Widget/PassingTable.php:31
+msgid "IP address"
+msgstr "IP adresi"
+
+#: Widget/PassingTable.php:32
+msgid "Browser"
+msgstr "Tarayıcı"
+
+#: Widget/PassingTable.php:105
+#, php-format
+msgid "%1$d out of %2$d"
+msgstr "%2$d üzerinden %1$d"
+
+#: Doer/TestPasser.php:57 Doer/TestPasser.php:60
 msgid "Test is under construction"
 msgstr "Test Yapım Aşamasındadır"
 
-#: Doer/TestPasser.php:52
+#: Doer/TestPasser.php:58
 msgid "You can not get any results from it yet."
 msgstr "Henüz Sonuç Alamazsınız"
 
-#: Doer/TestPasser.php:94
+#: Doer/TestPasser.php:93
 msgid "Test data not valid"
 msgstr "Sınama verileri geçerli değil"
 
-#: Doer/TestPasser.php:95
+#: Doer/TestPasser.php:94
 msgid "You passed not valid data to test."
 msgstr "Test için geçerli olmayan veri geçti."
 
-#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
+#: Doer/TestPasser.php:120 Doer/TestPasser.php:123
 msgid "Test result not found"
 msgstr "Test sonuç bulunamadı"
 
-#: Doer/TestPasser.php:122
+#: Doer/TestPasser.php:121
 msgid "You can not get anything from nothing."
 msgstr "Sana bir şey hiçbir şey elde edemezsiniz."
 
-#: Doer/TestPasser.php:184 Doer/TestEditor.php:79
+#: Doer/TestPasser.php:132
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "Üzgünüm ama senin kaş %s grafiği görüntülemek için uyumlu değil"
+
+#: Doer/TestPasser.php:204 Doer/TestEditor.php:188
 msgid "Get Test Results"
 msgstr "Test Sonuçlarını Al"
 
-#: Doer/TestEditor.php:27
+#: Doer/TestPasser.php:210
+msgid "{percentage}% answered"
+msgstr "{percentage}% yanıtladı"
+
+#: Doer/TestEditor.php:35
 msgid "Test Page Options"
 msgstr "Test Sayfası Seçenekleri"
 
-#: Doer/TestEditor.php:29
+#: Doer/TestEditor.php:37
 msgid "Result Page Options"
 msgstr "Sonuç sayfası seçenekleri"
 
-#: Doer/TestEditor.php:31
+#: Doer/TestEditor.php:39
 msgid "Edit Questions and Scores"
 msgstr "Soru ve Sonuçları Düzenle"
 
-#: Doer/TestEditor.php:32
+#: Doer/TestEditor.php:40
 msgid "Add New Questions"
 msgstr "Yeni Soru Ekle"
 
-#: Doer/TestEditor.php:33
+#: Doer/TestEditor.php:41
 msgid "Edit Formulas"
 msgstr "Formülleri Düzenle"
 
-#: Doer/TestEditor.php:77
-msgid "Button caption"
-msgstr "Düğme başlık"
+#: Doer/TestEditor.php:178
+msgid "Show in title percentage of questions that respondent already answered"
+msgstr "Başlık bu davalı soruların yüzdesini göstermek zaten cevap"
 
-#: Doer/TestEditor.php:83
+#: Doer/TestEditor.php:182
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "\"Geri\" butonuna basıldığında davalı cevapları sıfırlayın"
 
-#: Doer/TestEditor.php:98
+#: Doer/TestEditor.php:186
+msgid "Button caption"
+msgstr "Düğme başlık"
+
+#: Doer/TestEditor.php:203
+msgid "Show scales chart"
+msgstr "Ölçekler grafik göster"
+
+#: Doer/TestEditor.php:207
 msgid "Show scales"
 msgstr "Ölçekler göster"
 
-#: Doer/TestEditor.php:102
+#: Doer/TestEditor.php:211
+msgid "Sort scales by score"
+msgstr "Puana göre sıralama ölçekler"
+
+#: Doer/TestEditor.php:215
 msgid "Show test description"
 msgstr "Test açıklama göster"
 
-#: Doer/TestEditor.php:188
+#: Doer/TestEditor.php:304
 msgid "Test data not saved"
 msgstr "Test verisi kaydedilmedi"
 
@@ -93,10 +151,6 @@ msgstr "Test verisi kaydedilmedi"
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
 msgstr "Testler"
-
-#: Doer/WordPressEntitiesRegistrator.php:14
-msgid "Test"
-msgstr "Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
@@ -245,10 +299,6 @@ msgstr "Ölçekleri Ara"
 msgid "Parent Scale:"
 msgstr "Ana Ölçek"
 
-#: Doer/WordPressEntitiesRegistrator.php:91
-msgid "Scales"
-msgstr "Ölçekler"
-
 #: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
 msgstr "Tüm Ölçekler"
@@ -304,10 +354,6 @@ msgstr "Arama Sonuçları"
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
 msgstr "Ana Sonuç"
-
-#: Doer/WordPressEntitiesRegistrator.php:112
-msgid "Results"
-msgstr "Sonuçlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
@@ -394,7 +440,7 @@ msgstr "Kategori Bulunamadı"
 msgid "No Categories found in Trash"
 msgstr "Çöp Kutusunda Kategori Bulunamadı"
 
-#: Model/Formula.php:217
+#: Model/Formula.php:226
 #, php-format
 msgid "Formula for %s has error"
 msgstr "%s için formül hatası"
@@ -512,8 +558,3 @@ msgid ""
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
 msgstr "Buraya bireysel cevaplarınızı metin olarak ekleyin, testin kaydedilmesinden sonra cevaplarınız buraya açılacaktır. Sayılar ve diğer indeksler otomatik olarak ayıklanacaktır."
-
-#: Template/Test/Passer/get-results.php:37
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%2$d üzerinden %1$d"

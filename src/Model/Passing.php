@@ -30,7 +30,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 
     public function __construct($key = null, $salt = null)
     {
-        if (preg_match('/^([a-z0-9]+)[a-f0-9]{32}$/i', $key, $matches)) {
+        if (is_string($key) && preg_match('/^([a-z0-9]+)[a-f0-9]{32}$/i', $key, $matches)) {
             $id  = base_convert($matches[1], 36, 10);
             $key = ($this->generateSlug($id, $salt) == $key) ? $id : null;
         }
@@ -55,6 +55,23 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @param WpTesting_WordPressFacade $wp
+     * @param string $postLink
+     * @return string
+     */
+    public function getUrl($wp, $postLink = null)
+    {
+        if (empty($postLink)) {
+            $postLink = $wp->getPostPermalink($this->getTestId());
+        }
+        $postLink       = rtrim($postLink, '/&');
+        $slug           = $this->getSlug($wp->getSalt());
+        $hasQueryString = !is_null(parse_url($postLink, PHP_URL_QUERY));
+        $postLink      .= ($hasQueryString) ? '&wpt_passing_slug=' . $slug : '/' . $slug . '/';
+        return $postLink;
+    }
+
+    /**
      * @return WpTesting_Model_Answer[]
      */
     public function buildAnswers()
@@ -65,9 +82,10 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     /**
      * Build scales and setup their ranges from test's questions
      *
+     * @param boolean $isSortByScore
      * @return WpTesting_Model_Scale[]
      */
-    public function buildScalesWithRange()
+    public function buildScalesWithRange($isSortByScore = false)
     {
         $result = array();
         foreach ($this->createTest()->buildScalesWithRange() as $testScale) {
@@ -87,19 +105,24 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
             $scale->setValue($scoresByScales[$id]);
         }
 
-        return fRecordSet::buildFromArray('WpTesting_Model_Scale', $result);
+        $records = fRecordSet::buildFromArray('WpTesting_Model_Scale', array_values($result));
+        if ($isSortByScore) {
+            $records = $records->sort('getValue', 'desc');
+        }
+        return $records;
     }
 
     /**
      * Build scales and setup their ranges from test's questions.
      * Cached version.
      *
+     * @param boolean $isSortByScore
      * @return WpTesting_Model_Scale[]
      */
-    public function buildScalesWithRangeOnce()
+    public function buildScalesWithRangeOnce($isSortByScore = false)
     {
         if (is_null($this->scalesWithRange)) {
-            $this->scalesWithRange = $this->buildScalesWithRange();
+            $this->scalesWithRange = $this->buildScalesWithRange($isSortByScore);
         }
         return $this->scalesWithRange;
     }
@@ -115,6 +138,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         $variables = $test->buildFormulaVariables($this->buildScalesWithRangeOnce());
         $result    = array();
         foreach ($test->buildFormulas() as $formula) {
+            $formula->resetValues();
             foreach ($variables as $variable) {
                 $formula->addValue($variable->getSource(), $variable->getValue(), $variable->getValueAsRatio());
             }
@@ -128,7 +152,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     /**
      * @return WpTesting_Model_Test
      */
-    protected function createTest()
+    public function createTest()
     {
         return $this->createWpTesting_Model_Test();
     }

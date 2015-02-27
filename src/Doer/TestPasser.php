@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
+class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements WpTesting_Doer_IRenderer
 {
 
     /**
@@ -33,6 +33,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
      * @var string
      */
     private $filteredTestContent = null;
+
+    /**
+     * Current WordPress title separator
+     * @var string
+     */
+    private $titleSeparator = '-';
 
     public function addContentFilter()
     {
@@ -71,14 +77,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
             try {
                 $passing->store(true);
-
-                $link = rtrim($this->wp->getPostPermalink($this->test->getId()), '/&');
-                $slug = $passing->getSlug($this->wp->getSalt());
-                if ($this->wp->getRewrite()->using_permalinks()) {
-                    $link .= '/' . $slug . '/';
-                } else {
-                    $link .= '&wpt_passing_slug=' . $slug;
-                }
+                $link = $passing->getUrl($this->wp, $this->getCurrentUrl());
                 $this->wp->redirect($link, 302);
                 $this->wp->dieMessage(
                     $this->render('Test/Passer/redirect-message', array(
@@ -128,14 +127,28 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                     )
                 );
             }
+            $this->wp
+                ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('detect-javascript', 'jquery'), false, true)
+            ;
+            if (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')) {
+                $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
+                $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
+                $scales        = $this->toJson($this->passing->buildScalesWithRangeOnce($isSortByScore));
+                $this
+                    ->addJsData('warningIncompatibleBrowser', $sorryBrowser)
+                    ->addJsData('scales', $scales)
+                ;
+                $this->wp
+                    ->enqueuePluginScript('wpt_line_diagram', 'js/line-diagram.js', array('jquery', 'raphael-scale', 'raphael-line-diagram'), false, true)
+                ;
+            }
         } elseif (self::ACTION_FILL_FORM == $action) {
+            $this->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'));
             $this->wp
                 ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
                 ->enqueuePluginScript('samyk_swfobject',  'vendor/samyk/evercookie/js/swfobject-2.2.min.js', array(),     false, true)
                 ->enqueuePluginScript('samyk_evercookie', 'vendor/samyk/evercookie/js/evercookie.js',  array(),           false, true)
-                ->localizeScript('samyk_evercookie', 'wpt_evercookie', array(
-                    'baseurl' => $this->wp->getPluginUrl('vendor/samyk/evercookie'),
-                ))
+                ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
             ;
         }
 
@@ -151,6 +164,14 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     {
         $classes[] = 'wpt_test-' . $this->getTestPassingAction();
         return $classes;
+    }
+
+    public function extractTitleSeparator($title, $separator)
+    {
+        if (!empty($separator)) {
+            $this->titleSeparator = html_entity_decode($separator);
+        }
+        return $title;
     }
 
     public function renderTestContent($content)
@@ -183,16 +204,23 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
-                'wp'           => $this->wp,
-                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
             );
+            $this->addJsDataValues(array(
+                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
+                'isShowProgressMeter'  => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_show_progress_meter')),
+                'titleSeparator'       => $this->titleSeparator,
+                'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
+            ));
         } elseif (self::ACTION_GET_RESULTS == $action) {
+            $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
             $params  = array(
                 'content'    => $content,
+                'renderer'   => $this,
                 'test'       => $this->test,
                 'passing'    => $this->passing,
-                'scales'     => $this->passing->buildScalesWithRangeOnce(),
+                'scales'     => $this->passing->buildScalesWithRangeOnce($isSortByScore),
                 'results'    => $this->passing->buildResults(),
+                'isShowScalesDiagram' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')),
                 'isShowScales'      => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales')),
                 'isShowDescription' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_test_description')),
             );
@@ -202,6 +230,30 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         return $this->filteredTestContent;
     }
 
+    public function renderTextAsHtml($content)
+    {
+        $content = preg_replace('|(<\/[^>]+>)\r?\n|', '$1', $content);
+        $content = preg_replace('|[\r\n]+(<!--)|',    '$1', $content);
+        $content = preg_replace('|(-->)[\r\n]+|',     '$1', $content);
+        return nl2br($content);
+    }
+
+    public function renderWithMoreSplitted($content)
+    {
+        $extended = $this->wp->getExtended($content);
+        if (empty($extended['extended'])) {
+            return $content;
+        }
+        if (empty($extended['more_text'])) {
+            $extended['more_text'] = trim($this->wp->translate('(more&hellip;)'), '()');
+        }
+        return $this->render('Test/Passer/text-with-more', array(
+            'excerpt' => $extended['main'],
+            'more'    => $extended['more_text'],
+            'content' => $extended['extended'],
+        ));
+    }
+
     private function prepareToLevenshein($input)
     {
         return substr(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($input))), 0, 255);
@@ -209,7 +261,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     private function stripNewLines($matches)
     {
-        return str_replace('> <', '><', preg_replace('/[\n\r\s]+/s', ' ', $matches[0]));
+        $result = $matches[0];
+        $result = preg_replace('/[\n\r\s]+/s', ' ', $result);
+        $result = str_replace('> <', '><', $result);
+        $result = preg_replace('/(>) ([^<])/s', '$1$2', $result);
+        $result = preg_replace('|([^>]) (</)|s', '$1$2', $result);
+        return $result;
     }
 
     private function getTestPassingAction()

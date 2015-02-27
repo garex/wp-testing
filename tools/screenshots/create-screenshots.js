@@ -66,7 +66,7 @@ var screenshots = [
            })
        }
    }, {
-       title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar',
+       title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.',
        offset  : 1050,
        actions : function () {
            casper.then(function() {
@@ -132,6 +132,11 @@ var screenshots = [
             })
         }
     }, {
+        title   : 'Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results')
+        }
+    }, {
         title   : 'Ready test on the home page',
         actions : function () {
             casper.thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
@@ -171,6 +176,19 @@ var screenshots = [
             }).waitForUrl(/test.+eysencks/)
         }
     }, {
+        title   : 'Scale description with "more..." text closed',
+        offset  : 1500,
+        actions : function () {
+        }
+    }, {
+        title   : 'Scale description with "more..." text opened (after clicking on "more" link)',
+        offset  : 1500,
+        actions : function () {
+            casper.then(function() {
+                this.clickLabel('more…', 'a')
+            })
+        }
+    }, {
         title   : 'A test without scores is shown like a "Test is under construction". Answers titles are those that was entered',
         actions : function () {
             casper.thenOpen('http://wpti.dev/')
@@ -178,6 +196,20 @@ var screenshots = [
             casper.then(function() {
                 this.clickLabel('Simple Test With Scores')
             }).waitForUrl(/simple/)
+        }
+    }, {
+        title   : 'Test results with scales chart when scales are hidden. Hovered scale shows it`s value and title in dynamic tag',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev/')
+
+            casper.then(function() {
+                this.clickLabel('Are You Hot or Not?!')
+            }).waitForUrl(/are-you-hot-or-not/, function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+                this.fill('form#wpt-test-form', {}, true)
+            }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
+                this.mouse.move('.scales.diagram')
+            })
         }
     }
 ];

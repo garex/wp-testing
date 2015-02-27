@@ -4,12 +4,19 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 {
 
     /**
+     * Current test taxonomies, broken by taxonomy
+     * @var array
+     */
+    private $selectedTermsIds = array();
+
+    /**
      * @param WP_Screen $screen
+     * @return WpTesting_Doer_TestEditor
      */
     public function customizeUi($screen)
     {
         if (!$this->isTestScreen($screen)) {
-            return;
+            return $this;
         }
         $this->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
@@ -21,6 +28,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3'), false, true)
             ->enqueuePluginScript('wpt_test_edit_answers',     'js/test-edit-answers.js',           array('jquery'), false, true)
             ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
+            ->enqueuePluginScript('wpt_test_sort_taxonomies',  'js/test-sort-taxonomies.js',        array('jquery', 'jquery-ui-sortable'), false, true)
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
@@ -33,6 +41,32 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
         ;
+        // Respect metabox sort order
+        if ($this->isWordPressAlready('3.4')) {
+            $this->wp->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), 10, 2);
+        } else {
+            $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), 10, 4);
+        }
+        return $this;
+    }
+
+    /**
+     * Allow more HTML tags in taxonomies
+     * @return WpTesting_Doer_TestEditor
+     */
+    public function allowMoreHtmlInTaxonomies()
+    {
+        if (!$this->isTestTaxonomy()) {
+            return $this;
+        }
+
+        if ($this->isWordPressAlready('3.5')) {
+            $this->wp->addFilter('wp_kses_allowed_html', array($this, 'filterAllowedHtmlInTaxonomies'), 10, 2);
+        } else {
+            $this->wp->removeFilter('pre_term_description', 'wp_filter_kses');
+        }
+
+        return $this;
     }
 
     /**
@@ -44,6 +78,73 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_result_page_options', 'submitdiv');
         $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_test_page_options', 'submitdiv');
         $this->wp->setMetaBoxes($boxes, 'wpt_test', 'side', 'core');
+    }
+
+    public function filterTermsChecklistArgs($args, $postId = null)
+    {
+        $taxonomy = $args['taxonomy'];
+        if (!in_array($taxonomy, array('wpt_answer', 'wpt_scale', 'wpt_result'))) {
+            return $args;
+        }
+        if (empty($postId)) {
+            return $args;
+        }
+        $args['selected_cats'] = $this->wp->getObjectTerms($postId, $taxonomy, array(
+            'taxonomy' => $taxonomy,
+            'fields'   => 'ids',
+            'orderby'  => 'term_order',
+        ));
+        $this->selectedTermsIds[$taxonomy] = $args['selected_cats'];
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        return $args;
+    }
+
+    public function filterForceSortObjectTerms($terms, $objectIds, $taxonomies, $args)
+    {
+        if (!isset($args['taxonomy']) || !in_array($args['taxonomy'], array('wpt_answer', 'wpt_scale', 'wpt_result'))) {
+            return $terms;
+        }
+        $model = new WpTesting_Model_Taxonomy();
+        $terms = $model->sortTermIdsByTermOrder($objectIds, $terms);
+        $this->selectedTermsIds[$args['taxonomy']] = $terms;
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        return $terms;
+    }
+
+    public function filterTermsOrderBy($orderBy, $args, $taxonomies = null)
+    {
+        if (is_null($taxonomies)) { // Old WP versions workaround
+            $this->wp->removeFilter('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+            end($this->selectedTermsIds);
+            $taxonomies = array(key($this->selectedTermsIds));
+        }
+
+        $isSort = true
+            && isset($taxonomies[0])
+            && !empty($this->selectedTermsIds[$taxonomies[0]])
+            && $args['orderby'] == 'name';
+
+        if (!$isSort) {
+            return $orderBy;
+        }
+
+        $ids   = implode(',', $this->selectedTermsIds[$taxonomies[0]]);
+        $order = $args['order'];
+        return "FIELD(t.term_id, $ids) $order, name";
+    }
+
+    public function filterAllowedHtmlInTaxonomies($allowedTags, $context)
+    {
+        $newTags = array(
+            'h1', 'h2', 'h3', 'h4', 'h5',
+            'ol', 'ul', 'li',
+            'hr', 'img',
+        );
+        foreach ($newTags as $tag) {
+            $allowedTags[$tag] = array('class' => true);
+        }
+        $allowedTags['img']['src'] = true;
+        return $allowedTags;
     }
 
     public function renderSubmitMiscActions()
@@ -72,15 +173,19 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function renderTestPageOptions($item)
     {
         $options = array(
+            'wpt_test_page_show_progress_meter' => array(
+                'default' => '1',
+                'title'   => __('Show in title percentage of questions that respondent already answered', 'wp-testing'),
+            ),
+            'wpt_test_page_reset_answers_on_back' => array(
+                'default' => '0',
+                'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
+            ),
             'wpt_test_page_submit_button_caption' => array(
                 'default' => '',
                 'title'   => __('Button caption', 'wp-testing'),
                 'type'    => 'text',
                 'placeholder' => __('Get Test Results', 'wp-testing'),
-            ),
-            'wpt_test_page_reset_answers_on_back' => array(
-                'default' => '0',
-                'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
             ),
         );
 
@@ -93,9 +198,17 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function renderResultPageOptions($item)
     {
         $options = array(
+            'wpt_result_page_show_scales_diagram' => array(
+                'default' => '0',
+                'title'   => __('Show scales chart', 'wp-testing'),
+            ),
             'wpt_result_page_show_scales' => array(
                 'default' => '1',
                 'title'   => __('Show scales', 'wp-testing'),
+            ),
+            'wpt_result_page_sort_scales_by_score' => array(
+                'default' => '0',
+                'title'   => __('Sort scales by score', 'wp-testing'),
             ),
             'wpt_result_page_show_test_description' => array(
                 'default' => '0',
@@ -162,7 +275,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_publish_on_home',
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
+            'wpt_test_page_show_progress_meter',
+            'wpt_result_page_show_scales_diagram',
             'wpt_result_page_show_scales',
+            'wpt_result_page_sort_scales_by_score',
             'wpt_result_page_show_test_description',
         );
 
@@ -225,6 +341,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $isTest = ($test->getId()) ? true : false;
         $test->reset();
         return $isTest;
+    }
+
+    private function isTestTaxonomy()
+    {
+        return preg_match('/^wpt_/', $this->getRequestValue('taxonomy'));
     }
 
     private function isUnderApache()

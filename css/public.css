@@ -19,11 +19,14 @@
 }
 
 .wpt_test .answer label {
-    margin-left: 0.25em;
+    display: inline-block;
+    width: 100%;
 }
 
 .wpt_test .answer input {
     margin-top: -2px;
+    margin-right: 0.25em;
+    margin-bottom: 0px;
     vertical-align: middle;
 }
 
@@ -50,7 +53,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 .wpt_test .get_results .meter {
@@ -68,6 +71,28 @@
     padding-left: 7px;
     position: absolute;
     z-index: 1;
+}
+
+.wpt_test .get_results div.description {
+    margin-bottom: 1.6842em;
+}
+
+.wpt_text_with_more .more_link {
+    display: none;
+}
+.wpt_text_with_more .text_before_more {
+    margin-bottom: 1.6842em;
+}
+html.js .wpt_text_with_more .text_under_more {
+    display: none;
+}
+html.js .wpt_text_with_more .more_link {
+    display: inline;
+    text-decoration: none;
+    border-bottom: 1px dashed;
+}
+html.js .wpt_text_with_more .more_link.open {
+    color: gray;
 }
 
 .wpt_test .get_results .content {

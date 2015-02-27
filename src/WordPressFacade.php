@@ -384,6 +384,59 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve edit posts link for post.
+     *
+     * Can be used within the WordPress loop or outside of it. Can be used with
+     * pages, posts, attachments, and revisions.
+     *
+     * @since 2.3.0
+     *
+     * @param int $id Optional. Post ID.
+     * @param string $context Optional, defaults to display. How to write the '&', defaults to '&amp;'.
+     * @return string The edit post link for the given post.
+     */
+    public function getEditPostLink($id = 0, $context = 'display')
+    {
+        return get_edit_post_link($id, $context);
+    }
+
+    /**
+     * Retrieve edit term url.
+     *
+     * @since 3.1.0
+     *
+     * @param int $id Term ID
+     * @param string $taxonomy Taxonomy
+     * @param string $objectType The object type
+     * @return string The edit term link URL for the given term.
+     */
+    public function getEditTermLink($id, $taxonomy, $objectType = '')
+    {
+        return get_edit_term_link($id, $taxonomy, $objectType);
+    }
+
+    /**
+     * Get extended entry info (<!--more-->).
+     *
+     * There should not be any space after the second dash and before the word
+     * 'more'. There can be text or space(s) after the word 'more', but won't be
+     * referenced.
+     *
+     * The returned array has 'main', 'extended', and 'more_text' keys. Main has the text before
+     * the `<!--more-->`. The 'extended' key has the content after the
+     * `<!--more-->` comment. The 'more_text' key has the custom "Read More" text.
+     *
+     * @since 1.0.0
+     *
+     * @param string $post Post content.
+     * @return array Post before ('main'), after ('extended'), and custom readmore ('more_text').
+     */
+    public function getExtended($post)
+    {
+        return get_extended($post);
+    }
+
+    /**
      * Redirects to another page.
      *
      * @since 1.5.1
@@ -392,7 +445,7 @@ class WpTesting_WordPressFacade
      * @param int $status Status code to use.
      * @return bool False if $location is not provided, true otherwise.
      */
-    function redirect($location, $status = 302)
+    public function redirect($location, $status = 302)
     {
         return wp_redirect($location, $status);
     }
@@ -453,6 +506,22 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Retrieve the number times an action is fired.
+     *
+     * @package WordPress
+     * @subpackage Plugin
+     * @since 2.1
+     * @global array $wp_actions Increments the amount of times action was triggered.
+     *
+     * @param string $tag The name of the action hook.
+     * @return int The number of times action hook <tt>$tag</tt> is fired
+     */
+    public function didAction($tag)
+    {
+        return did_action($tag);
+    }
+
+    /**
      * Hooks a function or method to a specific filter action.
      *
      * @since 0.71
@@ -466,6 +535,47 @@ class WpTesting_WordPressFacade
     public function addFilter($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
         add_filter($tag, $function, $priority, $functionArgsCount);
+        return $this;
+    }
+
+    /**
+     * Adds filter once
+     *
+     * @see WpTesting_WordPressFacade::addFilter
+     * @return WpTesting_WordPressFacade
+     */
+    public function addFilterOnce($tag, $function, $priority = 10, $functionArgsCount = 1)
+    {
+        if (has_filter($tag, $function)) {
+            return $this;
+        }
+        return $this->addFilter($tag, $function, $priority, $functionArgsCount);
+    }
+
+    /**
+     * Removes a function from a specified filter hook.
+     *
+     * This function removes a function attached to a specified filter hook. This
+     * method can be used to remove default functions attached to a specific filter
+     * hook and possibly replace them with a substitute.
+     *
+     * To remove a hook, the $function_to_remove and $priority arguments must match
+     * when the hook was added. This goes for both filters and actions. No warning
+     * will be given on removal failure.
+     *
+     * @package WordPress
+     * @subpackage Plugin
+     * @since 1.2
+     *
+     * @param string $tag The filter hook to which the function to be removed is hooked.
+     * @param callback $functionToRemove The name of the function which should be removed.
+     * @param int $priority optional. The priority of the function (default: 10).
+     * @param int $acceptedArgs optional. The number of arguments the function accpets (default: 1).
+     * @return WpTesting_WordPressFacade
+     */
+    public function removeFilter($tag, $functionToRemove, $priority = 10, $acceptedArgs = 1)
+    {
+        remove_filter($tag, $functionToRemove, $priority, $acceptedArgs);
         return $this;
     }
 
@@ -567,6 +677,65 @@ class WpTesting_WordPressFacade
             $wp_meta_boxes[$page][$context][$priority] = $values;
             return $this;
         }
+    }
+
+    /**
+     * Add a sub menu page
+     *
+     * This function takes a capability which will be used to determine whether
+     * or not a page is included in the menu.
+     *
+     * The function which is hooked in to handle the output of the page must check
+     * that the user has the required capability as well.
+     *
+     * @param string $parentSlug The slug name for the parent menu (or the file name of a standard WordPress admin page)
+     * @param string $pageTitle The text to be displayed in the title tags of the page when the menu is selected
+     * @param string $menuTitle The text to be used for the menu
+     * @param string $capability The capability required for this menu to be displayed to the user.
+     * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
+     * @param callback $function The function to be called to output the content for this page.
+     * @return WpTesting_WordPressFacade
+     */
+    public function addSubmenuPage($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function = '')
+    {
+        add_submenu_page($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function);
+        return $this;
+    }
+
+    /**
+     * Retrieves the terms associated with the given object(s), in the supplied taxonomies.
+     *
+     * The following information has to do the $args parameter and for what can be
+     * contained in the string or array of that parameter, if it exists.
+     *
+     * The first argument is called, 'orderby' and has the default value of 'name'.
+     * The other value that is supported is 'count'.
+     *
+     * The second argument is called, 'order' and has the default value of 'ASC'.
+     * The only other value that will be acceptable is 'DESC'.
+     *
+     * The final argument supported is called, 'fields' and has the default value of
+     * 'all'. There are multiple other options that can be used instead. Supported
+     * values are as follows: 'all', 'ids', 'names', and finally
+     * 'all_with_object_id'.
+     *
+     * The fields argument also decides what will be returned. If 'all' or
+     * 'all_with_object_id' is chosen or the default kept intact, then all matching
+     * terms objects will be returned. If either 'ids' or 'names' is used, then an
+     * array of all matching term ids or term names will be returned respectively.
+     *
+     * @since 2.3.0
+     *
+     * @global wpdb $wpdb WordPress database abstraction object.
+     *
+     * @param int|array $objectIds The ID(s) of the object(s) to retrieve.
+     * @param string|array $taxonomies The taxonomies to retrieve terms from.
+     * @param array|string $args Change what is returned
+     * @return array|WP_Error The requested term data or empty array if no terms found. WP_Error if any of the $taxonomies don't exist.
+     */
+    public function getObjectTerms($objectIds, $taxonomies, $args = array())
+    {
+        return wp_get_object_terms($objectIds, $taxonomies, $args);
     }
 
     /**
@@ -682,5 +851,24 @@ class WpTesting_WordPressFacade
     public function dieMessage($message='', $title='', $arguments=array())
     {
         wp_die($message, $title, $arguments);
+    }
+
+    /**
+     * Retrieve the translation of $text.
+     *
+     * If there is no translation, or the text domain isn't loaded, the original text is returned.
+     *
+     * <strong>Note:</strong> Use it directly instead of <em>__()</em> when you want to hide some translation.
+     *
+     * @see __()
+     * @since 2.2.0
+     *
+     * @param string $text   Text to translate.
+     * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Translated text
+     */
+    public function translate($text, $domain = 'default')
+    {
+        return translate($text, $domain);
     }
 }

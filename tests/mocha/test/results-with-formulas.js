@@ -33,11 +33,13 @@ describe('Results with formulas', function() {
                 '#wpt_question_title_2': 'Question 3?'
             })
             this.click('.misc-pub-wpt-test-page-reset-answers-on-back input[type=checkbox]') // Reset answers on back
+            this.click('.misc-pub-wpt-result-page-sort-scales-by-score input[type=checkbox]') // Sort scales by score
             this.clickLabel(' Yes',         'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.clickLabel(' Lie',         'label')
             this.clickLabel(' Choleric',    'label')
             this.clickLabel(' Melancholic', 'label')
-            this.click('#publish')
+            this.click('#save-post')
         })
 
         casper.waitForUrl(/message/, function() {
@@ -46,13 +48,40 @@ describe('Results with formulas', function() {
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
 
             this.fillSelectors('form#post', {
-                '#wpt_score_value_0_0': '5',
-                '#wpt_score_value_1_0': '5',
-                '#wpt_score_value_2_0': '5',
+                '#wpt_score_value_0_1': '5',
+                '#wpt_score_value_1_1': '5',
+                '#wpt_score_value_2_1': '5',
                 '#wpt_answer_title_0_0': 'Yezzzzzzz!',
                 '#wpt_answer_title_1_0': 'I said yes. I confirm it.'
-            }, true)
+            })
+
+            this.click('#save-post')
         })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+        })
+    })
+
+    it('should show results page even in preview mode', function() {
+        casper.evaluate(function() {
+            document.location = jQuery('#post-preview').attr('href')
+        })
+
+        casper.waitForUrl(/wpt_test/, function() {
+            this.clickLabel('Yezzzzzzz!',                '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
+            this.clickLabel('Yes',                       '*[@id="wpt-test-form"]/*[3]/*//label')
+            this.fill('form#wpt-test-form', {}, true)
+        })
+
+        casper.waitForUrl(/[a-z0-9]+[a-f0-9]{32}/, function() {
+            'Fatal'.should.not.be.textInDOM
+            'Results'.should.be.textInDOM
+        })
+
+        casper.back().back()
     })
 
     it('should be saved when formulas is good', function() {
