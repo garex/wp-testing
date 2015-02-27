@@ -105,7 +105,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
             $scale->setValue($scoresByScales[$id]);
         }
 
-        $records = fRecordSet::buildFromArray('WpTesting_Model_Scale', $result);
+        $records = fRecordSet::buildFromArray('WpTesting_Model_Scale', array_values($result));
         if ($isSortByScore) {
             $records = $records->sort('getValue', 'desc');
         }
