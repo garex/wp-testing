@@ -70,14 +70,18 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 
 01. Test editing section with menu in admin
 02. There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar
-03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar
+03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
 07. The example of the test without  scores. Some answers are individual and some are individualized
-08. Ready test on the home page
-09. The page with the description of the test, questions and answers
-10. The button is disabled until all questions are not answered
-11. Get test results after all questions are answered
-12. The result page on it`s own URL contains both the result of the test and the scales that create a result
-13. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+08. Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result
+09. Ready test on the home page
+10. The page with the description of the test, questions and answers
+11. The button is disabled until all questions are not answered
+12. Get test results after all questions are answered
+13. The result page on it`s own URL contains both the result of the test and the scales that create a result
+14. Scale description with "more..." text closed
+15. Scale description with "more..." text opened (after clicking on "more" link)
+16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+17. Test results with scales chart when scales are hidden. Hovered scale shows it`s value and title in dynamic tag

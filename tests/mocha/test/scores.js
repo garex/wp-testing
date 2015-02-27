@@ -40,6 +40,7 @@ describe('Scores', function() {
                 '#wpt_score_value_0_0': '-1',
                 '#wpt_score_value_1_0': '5',
                 '#wpt_score_value_2_0': '0',
+                '#wpt_answer_title_1_0': 'Yeah!',
                 '#wpt-add-individual-answers-to-question-0': 'I am color blind!'
             }, true)
         })
