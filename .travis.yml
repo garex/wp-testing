@@ -66,6 +66,7 @@ script:
   - mocha-casperjs --grep=Taxonomies
   - mocha-casperjs --grep=Test
   - mocha-casperjs --grep=Passings
+  - mocha-casperjs --grep=Respondents
   - mocha-casperjs --grep=Plugin_deactivation
 
 after_failure:
