@@ -1,6 +1,6 @@
 # Psychological tests & quizes #
 
-**Contributors:** ustimenko, borrypsy, coach2talk, ilariarizzo, ikurtuldu, jacha  
+**Contributors:** ustimenko, borrypsy, ilariarizzo, jacha, coach2talk, ikurtuldu  
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
