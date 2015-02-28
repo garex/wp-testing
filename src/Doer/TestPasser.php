@@ -200,6 +200,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 'test'         => $this->test,
                 'questions'    => $this->test->buildQuestions(),
                 'isFinal'      => $this->test->isFinal(),
+                'isMultipleAnswers'    => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_multiple_answers')),
                 'submitButtonCaption'  => current(array_filter(array(
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),

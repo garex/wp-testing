@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-23 12:23+0700\n"
-"PO-Revision-Date: 2015-02-24 18:53+0000\n"
+"POT-Creation-Date: 2015-02-28 21:00+0700\n"
+"PO-Revision-Date: 2015-02-28 15:08+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/wp-testing/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:122
+#: Facade.php:123
 msgid "Respondents’ test results"
 msgstr "Risultati del test del soggetto"
 
-#: Facade.php:123
+#: Facade.php:124
 msgid "Respondents’ results"
 msgstr "Risultati dei soggetti"
 
@@ -83,16 +83,16 @@ msgstr "Risultato del test non trovato"
 msgid "You can not get anything from nothing."
 msgstr "Pagina non trovata. L'URL della pagina potrebbe non essere corretto."
 
-#: Doer/TestPasser.php:132
+#: Doer/TestPasser.php:135
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Siamo spiacenti ma il tuo browser non è compatibile per %s per visualizzare il grafico"
 
-#: Doer/TestPasser.php:204 Doer/TestEditor.php:188
+#: Doer/TestPasser.php:206 Doer/TestEditor.php:192
 msgid "Get Test Results"
 msgstr "Vai ai Risultati"
 
-#: Doer/TestPasser.php:210
+#: Doer/TestPasser.php:213
 msgid "{percentage}% answered"
 msgstr "{percentage}% di risposte"
 
@@ -121,30 +121,34 @@ msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Mostra nel titolo la percentuale di domande a cui il soggetto a risposto"
 
 #: Doer/TestEditor.php:182
+msgid "Allow multiple answers per question"
+msgstr "Consentire risposte multiple per ogni domanda"
+
+#: Doer/TestEditor.php:186
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Resetta le risposte del soggetto una volta premuto il pulsante \"Indietro\"  "
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:190
 msgid "Button caption"
 msgstr "Testo del Pulsante"
 
-#: Doer/TestEditor.php:203
+#: Doer/TestEditor.php:207
 msgid "Show scales chart"
 msgstr "Mostra la tabella delle scale"
 
-#: Doer/TestEditor.php:207
+#: Doer/TestEditor.php:211
 msgid "Show scales"
 msgstr "Mostra scale"
 
-#: Doer/TestEditor.php:211
+#: Doer/TestEditor.php:215
 msgid "Sort scales by score"
 msgstr "Ordina le scale per punteggio"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:219
 msgid "Show test description"
 msgstr "Mostra descrizione del test"
 
-#: Doer/TestEditor.php:304
+#: Doer/TestEditor.php:309
 msgid "Test data not saved"
 msgstr "Dati del test non salvati"
 

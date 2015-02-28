@@ -2,6 +2,11 @@
 ## Changelog ##
 
 
+### 0.9.1 ###
+
+Allow respondent to select multiple answers per question on test page
+
+
 ### 0.9 ###
 
 Scales chart, progress percentage, sorting and respondents' results

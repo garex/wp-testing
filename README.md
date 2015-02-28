@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1.1  
-**Stable tag:** 0.9  
+**Stable tag:** 0.9.1  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -31,12 +31,12 @@ To minimize author's time we have **Quick Fill** for questions and scores. You c
 
 Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. They are shown at "Respondents' results" table under "Tests" menu. It allow to see if someone will have many passings from same computer/smartphone/another device, which scales/results respondent have for concrete passing and ability to open it from there.
 
-**Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button and show percentage of answered questions.
+**Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button. allow multiple answers per question and show percentage of answered questions.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
 Wp-testing localized into nine languages: English, Russian (native speaker), German, French, Dutch (native speaker), Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, Bulgarian, Italian, Turkish and Dutch have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
-**Quality** and **compatibility** are taken really seriously. Plugin tested on [37 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.0) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
+**Quality** and **compatibility** are taken really seriously. Plugin tested on [40 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.1.1) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 
@@ -85,3 +85,4 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 15. Scale description with "more..." text opened (after clicking on "more" link)
 16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
 17. Test results with scales chart when scales are hidden. Hovered scale shows it`s value and title in dynamic tag
+18. Multiple answers per question are also possible

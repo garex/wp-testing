@@ -211,6 +211,16 @@ var screenshots = [
                 this.mouse.move('.scales.diagram')
             })
         }
+    }, {
+        title   : 'Multiple answers per question are also possible',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/)
+
+            casper.then(function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+                this.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
+            })
+        }
     }
 ];
 
