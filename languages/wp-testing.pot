@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-23 12:23+0700\n"
+"POT-Creation-Date: 2015-02-28 21:00+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Facade.php:122
+#: Facade.php:123
 msgid "Respondents’ test results"
 msgstr ""
 
-#: Facade.php:123
+#: Facade.php:124
 msgid "Respondents’ results"
 msgstr ""
 
@@ -85,17 +85,17 @@ msgstr ""
 msgid "You can not get anything from nothing."
 msgstr ""
 
-#: Doer/TestPasser.php:132
+#: Doer/TestPasser.php:135
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr ""
 
-#: Doer/TestPasser.php:204
-#: Doer/TestEditor.php:188
+#: Doer/TestPasser.php:206
+#: Doer/TestEditor.php:192
 msgid "Get Test Results"
 msgstr ""
 
-#: Doer/TestPasser.php:210
+#: Doer/TestPasser.php:213
 msgid "{percentage}% answered"
 msgstr ""
 
@@ -124,30 +124,34 @@ msgid "Show in title percentage of questions that respondent already answered"
 msgstr ""
 
 #: Doer/TestEditor.php:182
-msgid "Reset respondent answers when \"Back\" button pressed"
+msgid "Allow multiple answers per question"
 msgstr ""
 
 #: Doer/TestEditor.php:186
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr ""
+
+#: Doer/TestEditor.php:190
 msgid "Button caption"
 msgstr ""
 
-#: Doer/TestEditor.php:203
+#: Doer/TestEditor.php:207
 msgid "Show scales chart"
 msgstr ""
 
-#: Doer/TestEditor.php:207
+#: Doer/TestEditor.php:211
 msgid "Show scales"
 msgstr ""
 
-#: Doer/TestEditor.php:211
+#: Doer/TestEditor.php:215
 msgid "Sort scales by score"
 msgstr ""
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:219
 msgid "Show test description"
 msgstr ""
 
-#: Doer/TestEditor.php:304
+#: Doer/TestEditor.php:309
 msgid "Test data not saved"
 msgstr ""
 

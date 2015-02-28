@@ -6,8 +6,7 @@
 /* @var $test WpTesting_Model_Test */
 /* @var $questions WpTesting_Model_Question[] */
 /* @var $isFinal boolean */
-
-/* @var $javascriptSettings string */
+/* @var $isMultipleAnswers boolean */
 /* @var $submitButtonCaption string */
 ?>
 <div class="wpt_test fill_form">
@@ -19,12 +18,14 @@
 <div class="content"><form method="post" id="wpt-test-form">
 
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
-
+    <?php $answerIndex = ($isMultipleAnswers) ? '' : $q ?>
     <div class="question">
 
         <div class="title">
             <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?></span>
-            <input type="hidden" name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="" />
+        <?php if (!$isMultipleAnswers): ?>
+            <input type="hidden" name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="" />
+        <?php endif ?>
         </div>
 
     <?php foreach($question->buildAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
@@ -33,8 +34,8 @@
         <div class="answer">
 
             <label for="<?php echo $answerId ?>">
-                <input type="radio" id="<?php echo $answerId ?>"
-                    name="<?php echo $answerIdName ?>[<?php echo $q ?>]" value="<?php echo $answer->getId() ?>" />
+                <input type="<?php echo $isMultipleAnswers ? 'checkbox' : 'radio' ?>" id="<?php echo $answerId ?>"
+                    name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="<?php echo $answer->getId() ?>" />
                 <?php echo $answer->getTitle() ?>
             </label>
 
