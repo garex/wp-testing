@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-23 12:23+0700\n"
-"PO-Revision-Date: 2015-02-23 07:42+0000\n"
+"POT-Creation-Date: 2015-02-28 21:00+0700\n"
+"PO-Revision-Date: 2015-02-28 15:08+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/wp-testing/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:122
+#: Facade.php:123
 msgid "Respondents’ test results"
 msgstr "Svarande resultat"
 
-#: Facade.php:123
+#: Facade.php:124
 msgid "Respondents’ results"
 msgstr "Svarande resultat"
 
@@ -82,16 +82,16 @@ msgstr "Testresultat hittades inte"
 msgid "You can not get anything from nothing."
 msgstr "Du kan inte få något från ingenting."
 
-#: Doer/TestPasser.php:132
+#: Doer/TestPasser.php:135
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Ledsen men din webbläsare %s är inte kompatibel att visa diagrammet"
 
-#: Doer/TestPasser.php:204 Doer/TestEditor.php:188
+#: Doer/TestPasser.php:206 Doer/TestEditor.php:192
 msgid "Get Test Results"
 msgstr "Få testresultat"
 
-#: Doer/TestPasser.php:210
+#: Doer/TestPasser.php:213
 msgid "{percentage}% answered"
 msgstr "{percentage}% svarade"
 
@@ -120,30 +120,34 @@ msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Utställning i titeln andelen frågor som respondenten redan svarat"
 
 #: Doer/TestEditor.php:182
+msgid "Allow multiple answers per question"
+msgstr "Tillåt flera svar per fråga"
+
+#: Doer/TestEditor.php:186
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Återställa respondentens svar när du trycker på \"Tillbaka\"-knappen"
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:190
 msgid "Button caption"
 msgstr "Knappen bildtext"
 
-#: Doer/TestEditor.php:203
+#: Doer/TestEditor.php:207
 msgid "Show scales chart"
 msgstr "Visa skalor diagram"
 
-#: Doer/TestEditor.php:207
+#: Doer/TestEditor.php:211
 msgid "Show scales"
 msgstr "Visa skalor"
 
-#: Doer/TestEditor.php:211
+#: Doer/TestEditor.php:215
 msgid "Sort scales by score"
 msgstr "Sortera skalor poäng"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:219
 msgid "Show test description"
 msgstr "Visa test beskrivning"
 
-#: Doer/TestEditor.php:304
+#: Doer/TestEditor.php:309
 msgid "Test data not saved"
 msgstr "Testdata sparas inte"
 
