@@ -95,9 +95,6 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     it('should show results with scales on submit', function() {
         casper.then(function() {
             'London is the capital of great britan'.should.be.textInDOM
-            this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         })
 
@@ -236,7 +233,6 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             'Eysenck'.should.be.inTitle
 
             for (var i = 1, iMax = 57; i <= iMax; i++) {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
                 this.clickLabel('No',  '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
             }
             '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
