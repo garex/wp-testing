@@ -45,4 +45,20 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return $css;
     }
 
+    /**
+     * @return number
+     */
+    public function getSum()
+    {
+        return null;
+    }
+
+    /**
+     * @return number
+     */
+    public function getMaximum()
+    {
+        return null;
+    }
+
 }

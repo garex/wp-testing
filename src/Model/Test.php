@@ -85,6 +85,8 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         if (empty($questionIds)) {
             return $scales;
         }
+        $isMultipleAnswers = (1 == $this->getWp()->getPostMeta($this->getId(), 'wpt_test_page_multiple_answers', true));
+        $lastColumnInRow   = ($isMultipleAnswers) ? 's.answer_id' : 'question_id';
         /* @var $db fDatabase */
         $db           = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
         $scoresTable  = fORM::tablize('WpTesting_Model_Score');
@@ -92,15 +94,24 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $result       = $db->translatedQuery('
             SELECT
                 scale_id,
-                SUM(IF(score_value > 0, 0, score_value)) AS total_negative,
-                SUM(IF(score_value > 0, score_value, 0)) AS total_positive
-            FROM ' . $scoresTable  . ' AS s
-            JOIN ' . $answersTable . ' AS a ON s.answer_id = a.answer_id
-            WHERE TRUE
-                AND question_id IN (' . implode(',', $questionIds) . ')
-                AND scale_id    IN (' . implode(',', $scales->getPrimaryKeys()) . ')
+                MIN(minimum_in_row) AS minimum_in_column,
+                SUM(maximum_in_row) AS maximum_in_column,
+                SUM(sum_in_row)     AS sum_in_column
+            FROM (
+                SELECT
+                    scale_id,
+                    MIN(IF(score_value > 0, 0, score_value)) AS minimum_in_row,
+                    MAX(IF(score_value > 0, score_value, 0)) AS maximum_in_row,
+                    SUM(score_value)                         AS sum_in_row
+                FROM ' . $scoresTable  . ' AS s
+                JOIN ' . $answersTable . ' AS a ON s.answer_id = a.answer_id
+                WHERE TRUE
+                    AND question_id IN (' . implode(',', $questionIds) . ')
+                    AND scale_id    IN (' . implode(',', $scales->getPrimaryKeys()) . ')
+                GROUP BY scale_id, question_id, ' . $lastColumnInRow . '
+                HAVING minimum_in_row < maximum_in_row
+            ) AS groupped
             GROUP BY scale_id
-            HAVING total_negative < total_positive
         ');
         $resultByPk = array();
         foreach ($result->fetchAllRows() as $row) {
@@ -109,7 +120,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         foreach ($scales as $scale) {
             if (isset($resultByPk[$scale->getId()])) {
                 $values = $resultByPk[$scale->getId()];
-                $scale->setRange($values['total_negative'], $values['total_positive']);
+                $scale->setRange($values['minimum_in_column'], $values['maximum_in_column'], $values['sum_in_column']);
             }
         }
         return $scales;
