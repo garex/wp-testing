@@ -48,7 +48,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             return $this;
         }
 
-        $this->test = new WpTesting_Model_Test($object);
+        $this->test = $this->createTest($object);
         $action     = $this->getTestPassingAction();
         $isDie      = (self::ACTION_FILL_FORM != $action && !$this->test->isFinal());
         if ($isDie) {
@@ -69,7 +69,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
         $this->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
         if (self::ACTION_PROCESS_FORM == $action) {
             $passing = new WpTesting_Model_Passing();
-            $passing->populate($this->test)
+            $passing->setWp($this->wp)->populate($this->test)
                 ->setIp($this->getClientIp())
                 ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE))
                 ->setUserAgent($this->getUserAgent())
@@ -77,7 +77,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
 
             try {
                 $passing->store(true);
-                $link = $passing->getUrl($this->wp, $this->getCurrentUrl());
+                $link = $passing->getUrl($this->getCurrentUrl());
                 $this->wp->redirect($link, 302);
                 $this->wp->dieMessage(
                     $this->render('Test/Passer/redirect-message', array(
@@ -111,6 +111,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     $this->wp->getQuery()->get('wpt_passing_slug'),
                     $this->wp->getSalt()
                 );
+                $this->passing->setWp($this->wp);
                 if (!$this->passing->getId()) {
                     throw new fNotFoundException();
                 }

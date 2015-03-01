@@ -55,17 +55,16 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @param WpTesting_WordPressFacade $wp
      * @param string $postLink
      * @return string
      */
-    public function getUrl($wp, $postLink = null)
+    public function getUrl($postLink = null)
     {
         if (empty($postLink)) {
-            $postLink = $wp->getPostPermalink($this->getTestId());
+            $postLink = $this->getWp()->getPostPermalink($this->getTestId());
         }
         $postLink       = rtrim($postLink, '/&');
-        $slug           = $this->getSlug($wp->getSalt());
+        $slug           = $this->getSlug($this->getWp()->getSalt());
         $hasQueryString = !is_null(parse_url($postLink, PHP_URL_QUERY));
         $postLink      .= ($hasQueryString) ? '&wpt_passing_slug=' . $slug : '/' . $slug . '/';
         return $postLink;
@@ -154,7 +153,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
      */
     public function createTest()
     {
-        return $this->createWpTesting_Model_Test();
+        return $this->createWpTesting_Model_Test()->setWp($this->getWp());
     }
 
     /**

@@ -11,11 +11,30 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected $columnAliases = array();
 
+    /**
+     * @var WpTesting_WordPressFacade
+     */
+    private $wp = null;
+
     public function populate($recursive = false)
     {
         parent::populate($recursive);
 
         return $this->stripValuesSlashes();
+    }
+
+    /**
+     * @param WpTesting_WordPressFacade $wp
+     * @throws InvalidArgumentException
+     * @return self
+     */
+    public function setWp($wp)
+    {
+        if (!($wp instanceof WpTesting_WordPressFacade)) {
+            throw new InvalidArgumentException('Wordpress facade is not those who you think it is.');
+        }
+        $this->wp = $wp;
+        return $this;
     }
 
     /**
@@ -116,6 +135,14 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             return iconv_strlen($string);
         }
         return strlen($string);
+    }
+
+    protected function getWp()
+    {
+        if (is_null($this->wp)) {
+            $this->setWp(new WpTesting_WordPressFacade('../../wp-testing.php'));
+        }
+        return $this->wp;
     }
 
     /**
