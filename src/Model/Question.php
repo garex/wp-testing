@@ -35,7 +35,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
      */
     public function createTest()
     {
-        return $this->createWpTesting_Model_Test();
+        return $this->createWpTesting_Model_Test()->setWp($this->getWp());
     }
 
     protected function configure()

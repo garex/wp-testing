@@ -2,6 +2,11 @@
 ## Changelog ##
 
 
+### 0.9.2 ###
+
+Fix scale`s max calc when in question we have few answers with scores
+
+
 ### 0.9.1 ###
 
 Allow respondent to select multiple answers per question on test page

@@ -228,7 +228,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditQuestions($item)
     {
-        $test = new WpTesting_Model_Test($item);
+        $test = $this->createTest($item);
         $this->output('Test/Editor/edit-questions', array(
             'scales'              => $test->buildScalesWithRange(),
             'answers'             => $test->buildGlobalAnswers(),
@@ -245,7 +245,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderAddQuestions($item)
     {
-        $test = new WpTesting_Model_Test($item);
+        $test = $this->createTest($item);
         $this->output('Test/Editor/add-questions', array(
             'addNewCount' => WpTesting_Model_Question::ADD_NEW_COUNT,
             'startFrom'   => $test->buildQuestions()->count(),
@@ -257,7 +257,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditFormulas($item)
     {
-        $test = new WpTesting_Model_Test($item);
+        $test = $this->createTest($item);
         $this->output('Test/Editor/edit-formulas', array(
             'results'    => $test->buildResults(),
             'variables'  => $test->buildFormulaVariables(),
@@ -270,7 +270,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function saveTest($id, $item)
     {
-        $test = new WpTesting_Model_Test($item);
+        $test = $this->createTest($item);
         if (!$test->getId()) {
             return;
         }
@@ -342,7 +342,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$id) {
             return false;
         }
-        $test   = new WpTesting_Model_Test($id);
+        $test   = $this->createTest($id);
         $isTest = ($test->getId()) ? true : false;
         $test->reset();
         return $isTest;

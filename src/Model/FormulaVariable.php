@@ -14,7 +14,7 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return sprintf(__('%1$s, ∑ %2$d', 'wp-testing'), $model->getTitle(), $model->getSum());
+            return $model->getTitle() . ', ' . $model->getAggregatesTitle();
         }
         return null;
     }
