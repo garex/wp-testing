@@ -49,7 +49,7 @@ describe('Scores', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_answer_title_0_1'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ 4"]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 4, max 5"]'.should.be.inDOM
             'jQuery("#wpt_edit_questions .wpt_scale input#wpt_score_value_0_1").attr("title")'.should.evaluate.to.equal('Lie, I am color blind!')
         })
     })
@@ -89,7 +89,7 @@ describe('Scores', function() {
 
     it('should have total sum by each scale', function() {
         casper.then(function() {
-            '#wpt_edit_formulas input[value="Lie, ∑ 5"]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 5, max 6"]'.should.be.inDOM
         })
     })
 

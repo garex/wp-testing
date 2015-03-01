@@ -14,13 +14,7 @@ class WpTesting_Model_FormulaVariable
     {
         $model = $this->model;
         if ($model instanceof WpTesting_Model_AbstractTerm) {
-            $parts   = array();
-            $parts[] = $model->getTitle();
-            $parts[] = sprintf('∑ %d', $model->getSum());
-            if ($model->getSum() != $model->getMaximum()) {
-                $parts[] = sprintf('max %d', $model->getMaximum());
-            }
-            return implode(', ', $parts);
+            return $model->getTitle() . ', ' . $model->getAggregatesTitle();
         }
         return null;
     }

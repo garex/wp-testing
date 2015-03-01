@@ -61,4 +61,16 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return null;
     }
 
+    public function getAggregatesTitle()
+    {
+        $parts   = array();
+        if (!is_null($this->getSum())) {
+            $parts[] = sprintf('∑ %d', $this->getSum());
+        }
+        if ($this->getSum() != $this->getMaximum()) {
+            $parts[] = sprintf('max %d', $this->getMaximum());
+        }
+        return implode(', ', $parts);
+    }
+
 }

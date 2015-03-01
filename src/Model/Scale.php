@@ -91,6 +91,9 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
      */
     public function getSum()
     {
+        if (empty($this->sum)) {
+            return 0;
+        }
         return $this->sum;
     }
 
