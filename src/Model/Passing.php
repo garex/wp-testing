@@ -81,10 +81,9 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     /**
      * Build scales and setup their ranges from test's questions
      *
-     * @param boolean $isSortByScore
      * @return WpTesting_Model_Scale[]
      */
-    public function buildScalesWithRange($isSortByScore = false)
+    public function buildScalesWithRange()
     {
         $result = array();
         foreach ($this->createTest()->buildScalesWithRange() as $testScale) {
@@ -105,7 +104,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         }
 
         $records = fRecordSet::buildFromArray('WpTesting_Model_Scale', array_values($result));
-        if ($isSortByScore) {
+        if ($this->createTest()->isSortScalesByScore()) {
             $records = $records->sort('getValue', 'desc');
         }
         return $records;
@@ -115,13 +114,12 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
      * Build scales and setup their ranges from test's questions.
      * Cached version.
      *
-     * @param boolean $isSortByScore
      * @return WpTesting_Model_Scale[]
      */
-    public function buildScalesWithRangeOnce($isSortByScore = false)
+    public function buildScalesWithRangeOnce()
     {
         if (is_null($this->scalesWithRange)) {
-            $this->scalesWithRange = $this->buildScalesWithRange($isSortByScore);
+            $this->scalesWithRange = $this->buildScalesWithRange();
         }
         return $this->scalesWithRange;
     }

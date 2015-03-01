@@ -131,10 +131,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             $this->wp
                 ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('detect-javascript', 'jquery'), false, true)
             ;
-            if (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')) {
-                $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
+            if ($this->test->isShowScalesDiagram()) {
                 $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
-                $scales        = $this->toJson($this->passing->buildScalesWithRangeOnce($isSortByScore));
+                $scales        = $this->toJson($this->passing->buildScalesWithRangeOnce());
                 $this
                     ->addJsData('warningIncompatibleBrowser', $sorryBrowser)
                     ->addJsData('scales', $scales)
@@ -201,30 +200,29 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 'test'         => $this->test,
                 'questions'    => $this->test->buildQuestions(),
                 'isFinal'      => $this->test->isFinal(),
-                'isMultipleAnswers'    => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_multiple_answers')),
+                'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
                 'submitButtonCaption'  => current(array_filter(array(
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
             );
             $this->addJsDataValues(array(
-                'isResetAnswersOnBack' => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_reset_answers_on_back')),
-                'isShowProgressMeter'  => (1 == $this->wp->getCurrentPostMeta('wpt_test_page_show_progress_meter')),
+                'isResetAnswersOnBack' => $this->test->isResetAnswersOnBack(),
+                'isShowProgressMeter'  => $this->test->isShowProgressMeter(),
                 'titleSeparator'       => $this->titleSeparator,
                 'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
             ));
         } elseif (self::ACTION_GET_RESULTS == $action) {
-            $isSortByScore = (1 == $this->wp->getCurrentPostMeta('wpt_result_page_sort_scales_by_score'));
             $params  = array(
                 'content'    => $content,
                 'renderer'   => $this,
                 'test'       => $this->test,
                 'passing'    => $this->passing,
-                'scales'     => $this->passing->buildScalesWithRangeOnce($isSortByScore),
+                'scales'     => $this->passing->buildScalesWithRangeOnce(),
                 'results'    => $this->passing->buildResults(),
-                'isShowScalesDiagram' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales_diagram')),
-                'isShowScales'      => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_scales')),
-                'isShowDescription' => (1 == $this->wp->getCurrentPostMeta('wpt_result_page_show_test_description')),
+                'isShowScalesDiagram' => $this->test->isShowScalesDiagram(),
+                'isShowScales'        => $this->test->isShowScales(),
+                'isShowDescription'   => $this->test->isShowTestDescription(),
             );
         }
 

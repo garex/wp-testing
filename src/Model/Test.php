@@ -85,8 +85,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         if (empty($questionIds)) {
             return $scales;
         }
-        $isMultipleAnswers = (1 == $this->getWp()->getPostMeta($this->getId(), 'wpt_test_page_multiple_answers', true));
-        $lastColumnInRow   = ($isMultipleAnswers) ? 's.answer_id' : 'question_id';
+        $lastColumnInRow = ($this->isMultipleAnswers()) ? 's.answer_id' : 'question_id';
         /* @var $db fDatabase */
         $db           = fORMDatabase::retrieve('WpTesting_Model_Score', 'read');
         $scoresTable  = fORM::tablize('WpTesting_Model_Score');
@@ -266,6 +265,46 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function isPublished()
     {
         return $this->getStatus() == self::STATUS_PUBLISHED;
+    }
+
+    public function isMultipleAnswers()
+    {
+        return $this->isOptionEnabled('wpt_test_page_multiple_answers');
+    }
+
+    public function isResetAnswersOnBack()
+    {
+        return $this->isOptionEnabled('wpt_test_page_reset_answers_on_back');
+    }
+
+    public function isShowProgressMeter()
+    {
+        return $this->isOptionEnabled('wpt_test_page_show_progress_meter');
+    }
+
+    public function isShowScales()
+    {
+        return $this->isOptionEnabled('wpt_result_page_show_scales');
+    }
+
+    public function isShowScalesDiagram()
+    {
+        return $this->isOptionEnabled('wpt_result_page_show_scales_diagram');
+    }
+
+    public function isShowTestDescription()
+    {
+        return $this->isOptionEnabled('wpt_result_page_show_test_description');
+    }
+
+    public function isSortScalesByScore()
+    {
+        return $this->isOptionEnabled('wpt_result_page_sort_scales_by_score');
+    }
+
+    protected function isOptionEnabled($key)
+    {
+        return (1 == $this->getWp()->getPostMeta($this->getId(), $key, true));
     }
 
     protected function hasAnswers()
