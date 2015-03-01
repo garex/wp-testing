@@ -213,7 +213,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
     {
         /* @var $test WpTesting_Model_Test */
-        $test = $me->createWpTesting_Model_Test();
+        $test = $me->createWpTesting_Model_Test()->setWp($this->getWp());
         $varNames = array();
         foreach ($test->buildFormulaVariables() as $var) {
             $varNames[] = $var->getSource();

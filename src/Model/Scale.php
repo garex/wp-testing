@@ -5,6 +5,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
 
     private $minimum = null;
     private $maximum = null;
+    private $sum     = null;
     private $value   = null;
 
     /**
@@ -12,16 +13,12 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
      *
      * @param integer $minimum
      * @param integer $maximum
+     * @param integer $sum
      * @throws InvalidArgumentException
      * @return WpTesting_Model_Scale
      */
-    public function setRange($minimum, $maximum)
+    public function setRange($minimum, $maximum, $sum = null)
     {
-        if ($minimum instanceof WpTesting_Model_Scale) {
-            $another = $minimum;
-            $minimum = $another->minimum;
-            $maximum = $another->maximum;
-        }
         $minimum = $this->filterValue($minimum, 'minimum');
         $maximum = $this->filterValue($maximum, 'maximum');
         if (!($minimum < $maximum)) {
@@ -32,6 +29,11 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         }
         $this->minimum = $minimum;
         $this->maximum = $maximum;
+
+        if (is_null($sum)) {
+            $sum = $this->getLength();
+        }
+        $this->sum = $this->filterValue($sum, 'sum');
         return $this;
     }
 
@@ -44,7 +46,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
      */
     public function extractRangeFrom(WpTesting_Model_Scale $another)
     {
-        return $this->setRange($another->minimum, $another->maximum);
+        return $this->setRange($another->minimum, $another->maximum, $another->sum);
     }
 
     public function setValue($value)
@@ -76,12 +78,23 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
     /**
      * @return number
      */
-    public function getSum()
+    public function getLength()
     {
         if (is_null($this->maximum)) {
             return null;
         }
         return $this->maximum + min(array($this->minimum, 0));
+     }
+
+    /**
+     * @return number
+     */
+    public function getSum()
+    {
+        if (empty($this->sum)) {
+            return 0;
+        }
+        return $this->sum;
     }
 
     /**

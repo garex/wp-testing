@@ -59,6 +59,7 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     public function column_default($item, $column_name)
     {
+        $item->setWp($this->wp);
         switch($column_name) {
             case 'id':
                 return $item->getId();
@@ -95,7 +96,6 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
             case 'scales':
                 $links = array();
 
-                /* @var $result WpTesting_Model_Result */
                 foreach ($item->buildScalesWithRangeOnce() as $scale) {
                     $link = $this->renderLink(
                         $this->wp->getEditTermLink($scale->getId(), 'wpt_scale', 'wpt_test'),
@@ -114,7 +114,7 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
             case 'actions':
                 $actions = array();
                 $actions[] = $this->renderLink(
-                    $item->getUrl($this->wp),
+                    $item->getUrl(),
                     $this->wp->translate('View')
                 );
                 return implode(' | ', $actions);

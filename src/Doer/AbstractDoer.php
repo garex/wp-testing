@@ -29,6 +29,17 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * Creates test with injected WP facade
+     * @param mixed $key
+     * @return WpTesting_Model_Test
+     */
+    protected function createTest($key = null)
+    {
+        $test = new WpTesting_Model_Test($key);
+        return $test->setWp($this->wp);
+    }
+
+    /**
      * Adds data to Wpt global object
      * @param string $key
      * @param mixed $value
