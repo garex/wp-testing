@@ -55,19 +55,35 @@ script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - mocha-casperjs --grep=Plugin_activation --timeout=360000
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Answers1
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Answers2
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Multiple
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Page
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Questions
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Quick
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Results
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
+  - mocha-casperjs --grep=Scale_Aggregates
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Scores
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Shortcode
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Taxonomies
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Test
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Passings
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Respondents
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Plugin_deactivation
 
 after_failure:
