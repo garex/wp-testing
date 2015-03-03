@@ -120,6 +120,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         return array(
             'title'   => $this->getTitle(),
             'value'   => $this->getValue(),
+            'ratio'   => $this->getValueAsRatio(),
             'minimum' => $this->minimum,
             'maximum' => $this->getMaximum(),
         );

@@ -63,11 +63,13 @@ WptLineDiagramOptions.prototype.setLineColor = function(value) {
 
 WptLineDiagramOptions.prototype.axis = '0 0 0 0';
 WptLineDiagramOptions.prototype.textAxisIndex = null;
+WptLineDiagramOptions.prototype.valueAxisIndex = null;
 /**
  * @returns {WptLineDiagramOptions}
  */
 WptLineDiagramOptions.prototype.hideAxises = function() {
     this.textAxisIndex = null;
+    this.valueAxisIndex = null;
     this.axis = '0 0 0 0';
     return this;
 };
@@ -103,9 +105,20 @@ WptLineDiagramOptions.prototype.showAxis = function(name) {
         axisesIndex++;
         if (0 == i || 2 == i) {
             this.textAxisIndex = axisesIndex;
+        } else {
+            this.valueAxisIndex = axisesIndex;
         }
     }
 
+    return this;
+};
+
+WptLineDiagramOptions.prototype.valueAxisTemplate = null;
+/**
+ * @returns {WptLineDiagramOptions}
+ */
+WptLineDiagramOptions.prototype.setValueAxisTemplate = function(value) {
+    this.valueAxisTemplate = value;
     return this;
 };
 
@@ -180,6 +193,7 @@ function WptLineDiagram(wrapper, holder, data, $, options) {
         .setupData(data)
         .createDiagram(holder, $)
         .addTextLabels()
+        .addValueLabels()
     ;
 };
 
@@ -253,7 +267,12 @@ WptLineDiagram.prototype.setupData = function(data) {
 WptLineDiagram.prototype.createDiagram = function(holder, $) {
     var me = this;
 
-    this.diagram = this.paper.linechart(
+    var axisYStep = this.dataMaximum - this.dataMinimum;
+    while (axisYStep > 20) {
+        axisYStep = Math.round(axisYStep / 10);
+    }
+
+    this.diagram  = this.paper.linechart(
         0, 0, $(holder).width(), $(holder).height(),
         [this.dataX, [0, 0]], [this.dataY, [this.dataMinimum, this.dataMaximum]],
         {
@@ -261,8 +280,9 @@ WptLineDiagram.prototype.createDiagram = function(holder, $) {
             dash        : this.options.dash,
             colors      : [this.options.lineColor],
             symbol      : 'circle',
+            shade       : true,
             axisxstep   : this.dataX.length - 1,
-            axisystep   : this.dataMaximum - this.dataMinimum,
+            axisystep   : axisYStep,
             axis        : this.options.axis,
             smooth      : this.options.isSmooth
         }
@@ -349,6 +369,21 @@ WptLineDiagram.prototype.addTextLabels = function() {
             words.splice(-1, 1);
         }
     };
+
+    return this;
+};
+
+WptLineDiagram.prototype.addValueLabels = function() {
+    if (null === this.options.valueAxisIndex || null === this.options.valueAxisTemplate) {
+        return this;
+    }
+
+    var data  = this.data,
+        axis  = this.diagram.axis[this.options.valueAxisIndex];
+
+    axis.text.forEach(function(text, index) {
+        text.attr('text', this.options.valueAxisTemplate.replace('{value}', text.attr('text')));
+    }, this);
 
     return this;
 };
