@@ -1,13 +1,13 @@
 function WptLineDiagramOptions() {
     return this
         .setGoldenSizeRatio()
-        .setGutter(30)
-        .setDash('-')
+        .setGutter(32)
+        .setDash('.')
         .setLineColor('#888')
         .showAxis('left')
         .showAxis('bottom')
         .setAxisColor('#999')
-        .setAxisTextColor('#999')
+        .setAxisTextColor('#000')
         .setIsSmooth(true)
         .setSymbolColorOpacity(0.8)
         .setAnnotationRadius(6)
@@ -110,6 +110,15 @@ WptLineDiagramOptions.prototype.showAxis = function(name) {
         }
     }
 
+    return this;
+};
+
+WptLineDiagramOptions.prototype.textAxisAngle = 0;
+/**
+ * @returns {WptLineDiagramOptions}
+ */
+WptLineDiagramOptions.prototype.setTextAxisAngle = function(value) {
+    this.textAxisAngle = value;
     return this;
 };
 
@@ -297,11 +306,12 @@ WptLineDiagram.prototype.createDiagram = function(holder, $) {
     });
 
     // Show annotations
+    var valueTemplate = this.options.valueAxisTemplate;
     this.diagram.hoverColumn(function () {
         if ('' == me.data[this.axis].title) {
             return;
         }
-        var text  = me.data[this.axis].title + '\n' + this.values[0],
+        var text  = me.data[this.axis].title + '\n' + me.data[this.axis].valueTitle,
             angle = me.data[this.axis].angle;
         this.tags = me.paper.set();
         this.tags.push(
@@ -329,11 +339,22 @@ WptLineDiagram.prototype.addTextLabels = function() {
 
     var data  = this.data,
         axis  = this.diagram.axis[this.options.textAxisIndex],
+        angle = -this.options.textAxisAngle,
         texts = axis.text,
-        lastIndex = texts.length - 1,
-        maxWidth  = axis.paper.width/texts.length;
+        lastIndex  = texts.length - 1,
+        maxWidth   = axis.paper.width/lastIndex,
+        moveWidth  = Math.round(maxWidth * -0.05),
+        moveHeight = Math.round(this.options.gutter / 3);
 
     texts.forEach(function(text, index) {
+        if (angle != 0) {
+            text
+                .attr('text-anchor', 'start')
+                .transform('t' + moveWidth + ',' + moveHeight + 'r' + angle)
+                .attr('text', data[index].title)
+            ;
+            return;
+        }
         var align   = 'middle',
             divisor = 1;
 

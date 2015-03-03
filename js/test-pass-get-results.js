@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
         maximums = [];
     $.each(Wpt.scales, function(i, scale) {
         maximums.push(scale.maximum);
+        scale.valueTitle = scale.outOf;
         scales.push(scale);
     });
     maximums.sort();
@@ -27,11 +28,17 @@ jQuery(document).ready(function($) {
         isSwitchToPercents = !isScalesLengthSame;
     if (isSwitchToPercents) {
         $.each(scales, function(i, scale) {
-            scale.value      = Math.round(scale.ratio * 100);
+            var newValue  = Math.round(scale.ratio * 100);
+            scale.valueTitle = newValue + '%\n' + scale.outOf;
+            scale.value   = newValue;
             scale.minimum = 0;
             scale.maximum = 100;
         });
         options.setValueAxisTemplate('{value}%');
+    }
+
+    if (scales.length > 5) {
+        options.setTextAxisAngle(45);
     }
 
     var holder  = $('<div/>').appendTo(wrapper).attr('id', 'holder-' + Raphael.createUUID()),

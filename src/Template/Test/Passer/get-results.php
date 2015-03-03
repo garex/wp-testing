@@ -39,7 +39,7 @@
         <h3 class="<?php echo $scale->getCssClass($i) ?> title"><?php echo $scale->getTitle() ?></h4>
 
         <div class="<?php echo $scale->getCssClass($i) ?> scores">
-            <?php echo sprintf(__('%1$d out of %2$d', 'wp-testing'), $scale->getValue(), $scale->getMaximum()) ?>
+            <?php echo $scale->formatValueAsOutOf() ?>
         </div>
         <div class="<?php echo $scale->getCssClass($i) ?> meter">
             <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>
