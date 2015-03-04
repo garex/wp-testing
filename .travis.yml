@@ -60,6 +60,8 @@ script:
   - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Answers2
   - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
+  - mocha-casperjs --grep=Diagrams
+  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Multiple
   - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
   - mocha-casperjs --grep=Page

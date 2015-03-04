@@ -213,17 +213,6 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         })
     })
 
-    it('should show scales diagram', function() {
-        casper.then(function() {
-            '.scales.diagram'.should.be.inDOM
-            var bounds = this.getElementBounds('.scales.diagram')
-            bounds.height.should.be.above(10)
-            bounds.height.should.be.within(bounds.width/1.7, bounds.width/1.6)
-            'document.querySelectorAll("circle").length'.should.evaluate.to.be.equal(5)
-            'document.querySelector("tspan").textContent'.should.evaluate.match(/^E.+[\.]{3}$/)
-        })
-    })
-
     it('should be same after answers migrations', function() {
         var url = isPermalinks
                 ? 'http://wpti.dev/test/eysencks-personality-inventory-epi-extroversionintroversion/'
