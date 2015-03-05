@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1.1  
-**Stable tag:** 0.9.2  
+**Stable tag:** 0.9.3  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -84,5 +84,6 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 14. Scale description with "more..." text closed
 15. Scale description with "more..." text opened (after clicking on "more" link)
 16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
-17. Test results with scales chart when scales are hidden. Hovered scale shows it`s value and title in dynamic tag
-18. Multiple answers per question are also possible
+17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
+18. In case of too many scales their labels are rotated. Also when scales has different length (possible max total) they are shown as percents
+19. Multiple answers per question are also possible
