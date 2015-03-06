@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.9.3 ###
+
+Improve scales' chart
+
+* Use ratio (percents) when scales lengths differs
+* Rotate text labels to 45 degrees when we have too many scales
+
 ### 0.9.2 ###
 
 Fix scale`s max calc when in question we have few answers with scores
@@ -96,7 +103,7 @@ Individual answers
 * Update locales for main languages
 * Migrate existing tests on new questions-answers model
 * Allow to individualize answers: custom global answer title for question
-* Use "Test Categories" in admin menu to differ with post categories 
+* Use "Test Categories" in admin menu to differ with post categories
 
 
 ### 0.5.4 ###
@@ -155,7 +162,7 @@ Display tests in blog everywhere same as posts
 * Allow to hide individual tests from homepage by "Publish on the home page" setting at publish box
 * Fix quickedit for posts
 * Fix quickedit for tests by saving test part only in full edit mode
-* Minimize possibility of "Max post vars" warning by minizing the number of hidden inputs 
+* Minimize possibility of "Max post vars" warning by minizing the number of hidden inputs
 
 ### 0.3 ###
 Test plugin functionality in 37 combinations of WP and PHP and fix found problems
