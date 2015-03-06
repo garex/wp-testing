@@ -76,6 +76,15 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
     }
 
     /**
+     * Get scale value in "x out of Y" format
+     * @return string
+     */
+    public function formatValueAsOutOf()
+    {
+        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $this->getValue(), $this->getMaximum());
+    }
+
+    /**
      * @return number
      */
     public function getLength()
@@ -120,6 +129,8 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         return array(
             'title'   => $this->getTitle(),
             'value'   => $this->getValue(),
+            'outOf'   => $this->formatValueAsOutOf(),
+            'ratio'   => $this->getValueAsRatio(),
             'minimum' => $this->minimum,
             'maximum' => $this->getMaximum(),
         );

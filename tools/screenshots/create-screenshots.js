@@ -198,13 +198,19 @@ var screenshots = [
             }).waitForUrl(/simple/)
         }
     }, {
-        title   : 'Test results with scales chart when scales are hidden. Hovered scale shows it`s value and title in dynamic tag',
+        title   : 'Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/')
-
-            casper.then(function() {
-                this.clickLabel('Are You Hot or Not?!')
-            }).waitForUrl(/are-you-hot-or-not/, function() {
+            casper.thenOpen('http://wpti.dev/test/diagram-with-few-scales-of-same-length/').waitForUrl(/diagram-with-few/, function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+                this.fill('form#wpt-test-form', {}, true)
+            }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
+                this.mouse.move('.scales.diagram')
+            })
+        }
+    }, {
+        title   : 'In case of too many scales their labels are rotated. Also when scales has different length (possible max total) they are shown as percents',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev/test/diagram-with-many-scales-of-different-length/').waitForUrl(/diagram-with-many/, function() {
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
                 this.fill('form#wpt-test-form', {}, true)
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
