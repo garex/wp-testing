@@ -113,15 +113,6 @@ WptLineDiagramOptions.prototype.showAxis = function(name) {
     return this;
 };
 
-WptLineDiagramOptions.prototype.textAxisAngle = 0;
-/**
- * @returns {WptLineDiagramOptions}
- */
-WptLineDiagramOptions.prototype.setTextAxisAngle = function(value) {
-    this.textAxisAngle = value;
-    return this;
-};
-
 WptLineDiagramOptions.prototype.valueAxisTemplate = null;
 /**
  * @returns {WptLineDiagramOptions}
@@ -244,12 +235,14 @@ WptLineDiagram.prototype.setupData = function(data) {
     var isSingle = 1 == data.length;
     this.data = data;
     if (isSingle) {
-        this.data.unshift({
+        var empty = {
             value   : data[0].value,
             title   : '',
             minimum : 0,
             maximum : 0
-        });
+        };
+        this.data.unshift(empty);
+        this.data.push(empty);
     }
 
     this.dataX = [];
@@ -257,17 +250,22 @@ WptLineDiagram.prototype.setupData = function(data) {
     this.dataMinimum = 0;
     this.dataMaximum = 0;
 
-    for (var i=0, iMax = this.data.length, middle = Math.ceil(iMax/2); i < iMax; i++) {
-        this.data[i].angle = 90 * (((i+1) <= middle) ? 0 : 2);
+    for (var i = 0, iMax = this.data.length - 1; i <= iMax; i++) {
+        if (i == 0) {
+            this.data[i].hoverDir = 'right';
+        } else if (i == iMax) {
+            this.data[i].hoverDir = 'left';
+        } else if (this.data[i].ratio <= 0.5) {
+            this.data[i].hoverDir = 'up';
+        } else {
+            this.data[i].hoverDir = 'down';
+        }
+
         this.dataX.push(i);
         this.dataY.push(this.data[i].value);
 
         this.dataMinimum = Math.min(this.dataMinimum, this.data[i].minimum);
         this.dataMaximum = Math.max(this.dataMaximum, this.data[i].maximum);
-    }
-
-    if (isSingle) {
-        this.dataX[0] = 1;
     }
 
     return this;
@@ -302,25 +300,40 @@ WptLineDiagram.prototype.createDiagram = function(holder, $) {
 
     // Color symbols
     this.diagram.eachColumn(function() {
-        this.symbols.attr({fill: Raphael.getColor(me.options.symbolColorOpacity)});
+        if ('' == me.data[this.axis].title) {
+            this.symbols.hide();
+        } else {
+            this.symbols.attr({fill: Raphael.getColor(me.options.symbolColorOpacity)});
+        }
     });
 
     // Show annotations
-    var valueTemplate = this.options.valueAxisTemplate;
+    var hoverAttr = [
+         {fill: me.options.annotationTextColor},
+         {fill: me.options.annotationColor}
+     ];
     this.diagram.hoverColumn(function () {
-        if ('' == me.data[this.axis].title) {
+        var data = me.data[this.axis];
+        if ('' == data.title) {
             return;
         }
-        var text  = me.data[this.axis].title + '\n' + me.data[this.axis].valueTitle,
-            angle = me.data[this.axis].angle;
-        this.tags = me.paper.set();
-        this.tags.push(
-            me.paper.tag(this.x, this.y[0], text, angle, me.options.annotationRadius)
-                .insertBefore(this)
-                .attr([{fill: me.options.annotationColor}, {fill: me.options.annotationTextColor}])
-        );
+        data.abbr.hide();
+        var text = $.grep([
+            data.ratioTitle,
+            data.title.replace(/\s+/g, '\n').replace(/(\/)/g, '$1\n'),
+            data.valueTitle
+        ], function(n) { return (n); }).join('\n');
+        this.hoverPopup = me.paper
+            .popup(this.x, this.y[0], text, data.hoverDir)
+            .attr(hoverAttr)
+            .insertBefore(this);
     }, function () {
-        this.tags && this.tags.remove();
+        var data = me.data[this.axis];
+        if ('' == data.title) {
+            return;
+        }
+        this.hoverPopup && this.hoverPopup.remove();
+        data.abbr && data.abbr.show();
     });
 
     // Color axises
@@ -339,38 +352,43 @@ WptLineDiagram.prototype.addTextLabels = function() {
 
     var data  = this.data,
         axis  = this.diagram.axis[this.options.textAxisIndex],
-        angle = -this.options.textAxisAngle,
         texts = axis.text,
         lastIndex  = texts.length - 1,
-        maxWidth   = axis.paper.width/lastIndex,
-        moveWidth  = Math.round(maxWidth * -0.05),
-        moveHeight = Math.round(this.options.gutter / 3);
+        maxWidth   = axis.paper.width/lastIndex - 5,
+        eMaxWidth  = maxWidth / 2 + this.options.gutter * 0.6,
+        me         = this;
 
-    texts.forEach(function(text, index) {
-        if (angle != 0) {
-            text
-                .attr('text-anchor', 'start')
-                .transform('t' + moveWidth + ',' + moveHeight + 'r' + angle)
-                .attr('text', data[index].title)
-            ;
+    var abbrAngle  = 45,
+        abbrRadius = this.options.annotationRadius * 0.6,
+        abbrAttr   = [
+          {fill: this.options.annotationColor, stroke: this.options.lineColor},
+          {fill: this.options.annotationTextColor}
+       ];
+
+    this.diagram.eachColumn(function() {
+        if ('' == me.data[this.axis].title) {
             return;
         }
-        var align   = 'middle',
-            divisor = 1;
+        var text  = me.data[this.axis].abbrTitle;
+        me.data[this.axis].abbr = me.paper
+            .tag(this.x, this.y[0], text, abbrAngle, abbrRadius)
+            .attr(abbrAttr)
+            .insertBefore(this.symbols)
+        ;
+    })
 
-        if (lastIndex > 0) {
-            if (index == 0) {
-                align   = 'start';
-            } else if (index == lastIndex) {
-                align   = 'end';
-            }
-        }
-        if (align != 'middle' && lastIndex > 1) {
-            divisor = 2;
+    texts.forEach(function(text, index) {
+        var iMaxWidth = maxWidth;
+
+        if (lastIndex > 0 && (index == 0 || index == lastIndex)) {
+            iMaxWidth = eMaxWidth;
+            text
+                .attr('text-anchor', (index == 0) ? 'start' : 'end')
+                .transform('t' + (me.options.gutter * ((index == 0) ? -0.5 : 0.5)) + ',0')
+            ;
         }
 
-        text.attr('text-anchor', align);
-        setTextToFit(text, data[index].title, maxWidth / divisor, ' ');
+        setTextToFit(text, data[index].title, iMaxWidth, ' ');
     });
 
     function setTextToFit(el, text, maxWidth, splitBy) {
