@@ -45,7 +45,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
     public function onlyAllowedSymbolsLeftProvider()
     {
         return array(
-            array('45 > 123 +*/\\  ;"!@#$%^*() hey! and 34 > 23 %', '45>123&&34>0.23'),
+            array('45 > 123 +1*1/1\\  ;"!@#$%^1*1() hey! 5 and 34 > 23 %', '45>123+1*1/1&&1*1&&5&&34>0.23'),
             array('45 > 123 and 34 > 23',  '45>123&&34>23'),
             array('somefunction(45) < 23', '(45)<23'),
         );
@@ -180,6 +180,16 @@ class FormulaTest extends PHPUnit_Framework_TestCase
                 array('scale40', 1, 0.35),
                 array('scale10', 1, 0.02),
             )),
+
+            array('total-1 / 3*2 > 90% and total-2 < 150/10-0', false, array(
+                array('total-1', 6,  1),
+                array('total-2', 10, 0.5),
+            )),
+
+            array('( unique-to-each-question + quick-fill-from-text ) / 6 > 0', true, array(
+                array('unique-to-each-question', 6,  1),
+                array('quick-fill-from-text', 6, 1),
+            )),
         );
     }
 
@@ -229,4 +239,5 @@ class FormulaTest extends PHPUnit_Framework_TestCase
             array('var_dump(file("/etc/passwd"))', false, array('Scale X')),
         );
     }
+
 }

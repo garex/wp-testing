@@ -1,11 +1,11 @@
 # Psychological tests & quizes #
 
-**Contributors:** ustimenko, borrypsy, ilariarizzo, jacha, coach2talk, ikurtuldu  
+**Contributors:** ustimenko, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1.1  
-**Stable tag:** 0.9.3  
+**Stable tag:** 0.9.4  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -34,7 +34,7 @@ Respondent will get **results** on it's own individual passing page, which will 
 **Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button. allow multiple answers per question and show percentage of answered questions.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
-Wp-testing localized into nine languages: English, Russian (native speaker), German, French, Dutch (native speaker), Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, Bulgarian, Italian, Turkish and Dutch have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+Wp-testing localized into nine languages: English, Russian (native speaker), German, French (native speaker), Dutch (native speaker), Swedish, Bulgarian (native speaker), Italian (native speaker) and Turkish (native speaker). English, Russian, French, Bulgarian, Italian, Turkish and Dutch have good quality — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
 **Quality** and **compatibility** are taken really seriously. Plugin tested on [40 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.1.1) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
@@ -49,6 +49,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Italian translation thanks to Ilaria Rizzo (dott.rizzo.ilaria@gmail.com)
 * For Turkish translation thanks to Islam Kurtuldu
 * For Dutch translation thanks to Jacha Heukels (info@orthomanueeldierenarts.nl)
+* For French translation thanks to Christophe Peiffer <chris.peiffer@gmail.com>
 
 
 ## Installation ##
@@ -85,5 +86,5 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 15. Scale description with "more..." text opened (after clicking on "more" link)
 16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
 17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
-18. In case of too many scales their labels are rotated. Also when scales has different length (possible max total) they are shown as percents
+18. In case when scales has different length (possible max total) they are shown as percents
 19. Multiple answers per question are also possible

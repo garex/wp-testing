@@ -54,4 +54,19 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
             WHERE meta_key = '$key'
         ");
     }
+
+    protected function update_meta_in_example($key, $value)
+    {
+        $meta  = WP_DB_PREFIX  . 'postmeta';
+        $posts = WP_DB_PREFIX  . 'posts';
+        $this->execute("
+            UPDATE $posts AS p, $meta AS m
+            SET m.meta_value = '$value'
+            WHERE TRUE
+            AND m.meta_key   = '$key'
+            AND p.post_type  = 'wpt_test'
+            AND p.post_title = 'Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)'
+            AND m.post_id    = p.ID
+        ");
+    }
 }

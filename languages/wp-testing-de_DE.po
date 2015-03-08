@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-28 21:00+0700\n"
-"PO-Revision-Date: 2015-02-28 15:08+0000\n"
+"POT-Creation-Date: 2015-03-08 22:25+0700\n"
+"PO-Revision-Date: 2015-03-08 16:43+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-testing/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "IP-Adresse"
 msgid "Browser"
 msgstr "Browser"
 
-#: Widget/PassingTable.php:105
+#: Widget/PassingTable.php:105 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d von %2$d"
@@ -76,11 +76,11 @@ msgstr "Ungültige Testdaten"
 msgid "You passed not valid data to test."
 msgstr "Sie haben keine gültige Daten zum Testen übergeben."
 
-#: Doer/TestPasser.php:120 Doer/TestPasser.php:123
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
 msgstr "Kein Testergebnis gefunden"
 
-#: Doer/TestPasser.php:121
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Sie können nicht alles aus dem nichts bekommen."
 
@@ -446,15 +446,10 @@ msgstr "Keine Kategorien gefunden"
 msgid "No Categories found in Trash"
 msgstr "Keine Kategorien im Papierkorb gefunden"
 
-#: Model/Formula.php:226
+#: Model/Formula.php:229
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formel für %s hat Fehler"
-
-#: Model/FormulaVariable.php:17
-#, php-format
-msgid "%1$s, ∑ %2$d"
-msgstr "%1$s, ∑ %2$d"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
@@ -484,17 +479,25 @@ msgstr "Variablen"
 msgid "Comparisions"
 msgstr "Vergleiche"
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:40
+msgid "Operators"
+msgstr "Operatoren"
+
+#: Template/Test/Editor/edit-formulas.php:50
 msgid "Comparision"
 msgstr "Vergleich"
 
-#: Template/Test/Editor/edit-formulas.php:57
+#: Template/Test/Editor/edit-formulas.php:55
+msgid "Operator"
+msgstr "Operator"
+
+#: Template/Test/Editor/edit-formulas.php:63
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
 msgstr "Es stehen keine Variablen für Formeln zur Auswahl. Um Variablen verwenden zu können, müssen Sie Skalen ausgewählt haben."
 
-#: Template/Test/Editor/edit-formulas.php:66
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."

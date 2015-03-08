@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-28 21:00+0700\n"
-"PO-Revision-Date: 2015-02-28 15:06+0000\n"
+"POT-Creation-Date: 2015-03-08 22:25+0700\n"
+"PO-Revision-Date: 2015-03-08 16:41+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/wp-testing/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,7 @@ msgstr "IP-адрес"
 msgid "Browser"
 msgstr "Браузер"
 
-#: Widget/PassingTable.php:105
+#: Widget/PassingTable.php:105 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d из %2$d"
@@ -74,11 +74,11 @@ msgstr "Данные теста не правильны"
 msgid "You passed not valid data to test."
 msgstr "Вы отправили неверные данные в тест."
 
-#: Doer/TestPasser.php:120 Doer/TestPasser.php:123
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
 msgstr "Результат теста не найден"
 
-#: Doer/TestPasser.php:121
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Вы не можете получить чего-нибудь из ничего."
 
@@ -444,15 +444,10 @@ msgstr "Категорий не найдено"
 msgid "No Categories found in Trash"
 msgstr "Категорий в корзине не найдено"
 
-#: Model/Formula.php:226
+#: Model/Formula.php:229
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Ошибка в формуле результата «%s»"
-
-#: Model/FormulaVariable.php:17
-#, php-format
-msgid "%1$s, ∑ %2$d"
-msgstr "%1$s, ∑ %2$d"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
@@ -482,17 +477,25 @@ msgstr "Переменные"
 msgid "Comparisions"
 msgstr "Сравнения"
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:40
+msgid "Operators"
+msgstr "Операторы"
+
+#: Template/Test/Editor/edit-formulas.php:50
 msgid "Comparision"
 msgstr "Сравнение"
 
-#: Template/Test/Editor/edit-formulas.php:57
+#: Template/Test/Editor/edit-formulas.php:55
+msgid "Operator"
+msgstr "Оператор"
+
+#: Template/Test/Editor/edit-formulas.php:63
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
 msgstr "Переменные для формул не доступны. Чтобы использовать переменные вы должны выбрать шкалы."
 
-#: Template/Test/Editor/edit-formulas.php:66
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."

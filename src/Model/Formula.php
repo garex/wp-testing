@@ -150,10 +150,14 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         $result = str_replace(array('and', 'or'), array('&&', '||'), $result);
 
         // Leave only allowed
-        $result = preg_replace('/[^\d\-%<>=\(\)&\| \.]+/', '', $result);
+        // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
+        $operators = '-+*/<>=&|';
+        $allowed   = $operators . '().% ';
+        $result    = preg_replace('/[^' . preg_quote($allowed, '/') . '\d]+/', '', $result);
 
         // Normalize comparisions
-        $result = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
+        $result    = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
+        $operators .= '!';
 
         // Normalize equalities
         $result = preg_replace('/=+/', '=', $result);
@@ -174,8 +178,8 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         // Normalize whitespaces
         $result = preg_replace('/ +/', ' ', trim($result));
 
-        // Remove whitespaces around operators
-        $result = preg_replace('/ *([<>!=&\|]+) */', '$1', $result);
+        // Remove whitespaces around operators and parentheses
+        $result = preg_replace('/ *([' . preg_quote($operators . '()', '/') . ']+) */', '$1', $result);
 
         // Replace left whitespaces with ands
         $result = preg_replace('/ +/', '&&', $result);

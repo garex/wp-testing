@@ -6,7 +6,7 @@ describe('Diagrams', function() {
 
     before(function () {
         this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').viewport(400, 300).thenOpen('http://wpti.dev/wp-login.php', {
+        casper.start('http://wpti.dev/wp-admin/').viewport(400, 1000).thenOpen('http://wpti.dev/wp-login.php', {
             method: 'post',
             data  : {
                 log: 'wpti',
@@ -54,21 +54,11 @@ describe('Diagrams', function() {
             if (options.isEnableDiagram) {
                 this.click('.misc-pub-wpt-result-page-show-scales-diagram input[type=checkbox]')
             }
-        })
 
-        if (options.isAddScales) {
-            casper.then(function () {
-                this.click('#wpt_scale-add-toggle')
-                this.sendKeys('#newwpt_scale', 'Scale 4')
-                this.click('#wpt_scale-add-submit')
-            }).wait(1000, function() {
-                this.sendKeys('#newwpt_scale', 'Scale 5')
-                this.click('#wpt_scale-add-submit')
-            }).wait(1000, function() {
-                this.sendKeys('#newwpt_scale', 'Scale 6')
-                this.click('#wpt_scale-add-submit')
-            }).wait(1000)
-        }
+            if (!options.isShowScales) {
+                this.click('.misc-pub-wpt-result-page-show-scales input[type=checkbox]')
+            }
+        })
 
         casper.then(function() {
             this.fill('form#post', {}, true)
@@ -80,8 +70,8 @@ describe('Diagrams', function() {
                 '#wpt_score_value_0_0': '5',
                 '#wpt_score_value_0_1': '2',
                 '#wpt_score_value_0_2': '4',
-                '#wpt_score_value_1_0': '0',
-                '#wpt_score_value_1_1': '3',
+                '#wpt_score_value_1_0': options.isSameLength ? '0' : '5',
+                '#wpt_score_value_1_1': options.isSameLength ? '3' : '0',
                 '#wpt_score_value_1_2': '1'
             })
 
@@ -99,9 +89,10 @@ describe('Diagrams', function() {
     }}
 
     it('should create standard test without diagram and same length scales', createTest({
-        title           : 'Diagram with few scales of same length',
+        title           : 'Diagram with same length scales',
         isEnableDiagram : false,
-        isAddScales     : false
+        isShowScales    : true,
+        isSameLength    : true
     }))
 
     function openTestResult() {return function() {
@@ -165,28 +156,26 @@ describe('Diagrams', function() {
         })
     })
 
-    it('should create test with different scales lengths and many scales', createTest({
-        title           : 'Diagram with many scales  of different length',
+    it('should create test with different scales lengths', createTest({
+        title           : 'Diagram with different length scales uses percents',
         isEnableDiagram : true,
-        isAddScales     : true
+        isShowScales    : false,
+        isSameLength    : false
     }))
 
-    it('should open result for test with many scales', openTestResult())
+    it('should open result for test with different scales lengths', openTestResult())
 
-    it('should have percentages with different scales lengths', function() {
-        casper.thenOpen(resultUrl, function() {
-            'Scale 4'.should.be.textInDOM
-            'Scale 5'.should.be.textInDOM
-            'Scale 6'.should.be.textInDOM
-            '100%'.should.be.textInDOM
+    it('should have percentages when different scales lengths', function() {
+        casper.then(function() {
+            '80%'.should.be.textInDOM
         })
     })
 
-    it('should not have text labels fit to width as they are rotated', function() {
-        casper.thenOpen(resultUrl, function() {
-            'Neuroticism/Stability'.should.be.textInDOM
-            this.getElementAttribute('text', 'transform').should.not.be.empty
+    it('should show annotations on mouse hover', function() {
+        casper.then(function() {
+            'Neuroticism or emotionality is characterized by high levels of negative affect'.should.not.be.textInDOM
+            this.mouse.move('.scales.diagram')
+            '2 out of 2'.should.be.textInDOM
         })
     })
-
 })
