@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-28 21:00+0700\n"
-"PO-Revision-Date: 2015-02-28 15:07+0000\n"
+"POT-Creation-Date: 2015-03-08 22:25+0700\n"
+"PO-Revision-Date: 2015-03-08 16:43+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "IP-adres"
 msgid "Browser"
 msgstr "Browser"
 
-#: Widget/PassingTable.php:105
+#: Widget/PassingTable.php:105 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d ud af %2$d"
@@ -75,11 +75,11 @@ msgstr "Testgegevens niet geldig"
 msgid "You passed not valid data to test."
 msgstr "U heeft ongeldige gegevens ingevoerd. "
 
-#: Doer/TestPasser.php:120 Doer/TestPasser.php:123
+#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
 msgid "Test result not found"
 msgstr "Testresultaat niet gevonden"
 
-#: Doer/TestPasser.php:121
+#: Doer/TestPasser.php:122
 msgid "You can not get anything from nothing."
 msgstr "Er kan niet iets uit niets worden verkregen"
 
@@ -445,15 +445,10 @@ msgstr "Er zijn geen rubrieken gevonden"
 msgid "No Categories found in Trash"
 msgstr "Er zijn geen rubrieken gevonden in Prullenbak"
 
-#: Model/Formula.php:226
+#: Model/Formula.php:229
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formule voor %s heeft een fout"
-
-#: Model/FormulaVariable.php:17
-#, php-format
-msgid "%1$s, ∑ %2$d"
-msgstr "%1$s, ∑ %2$d"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
@@ -483,17 +478,25 @@ msgstr "Variabelen"
 msgid "Comparisions"
 msgstr "Vergelijkingen"
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:40
+msgid "Operators"
+msgstr "Operatører"
+
+#: Template/Test/Editor/edit-formulas.php:50
 msgid "Comparision"
 msgstr "Vergelijking"
 
-#: Template/Test/Editor/edit-formulas.php:57
+#: Template/Test/Editor/edit-formulas.php:55
+msgid "Operator"
+msgstr "Operatør"
+
+#: Template/Test/Editor/edit-formulas.php:63
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
 msgstr "Geen variabelen voor formules beschikbaar. Om variabelen te gebruiken moet u eerst schalen selecteren. "
 
-#: Template/Test/Editor/edit-formulas.php:66
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
