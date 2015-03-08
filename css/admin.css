@@ -49,6 +49,10 @@ table.wpt_formulas_helper {
     margin-top: 1em;
 }
 
+table.wpt_formulas_helper .operators input {
+    min-width: 3.5em;
+}
+
 .wpt_formulas .wpt_title {
     width: 1em;
     white-space: nowrap;

@@ -200,7 +200,7 @@ var screenshots = [
     }, {
         title   : 'Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/test/diagram-with-few-scales-of-same-length/').waitForUrl(/diagram-with-few/, function() {
+            casper.thenOpen('http://wpti.dev/test/diagram-with-same-length-scales/').waitForUrl(/diagram-with-same/, function() {
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
                 this.fill('form#wpt-test-form', {}, true)
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
@@ -208,9 +208,9 @@ var screenshots = [
             })
         }
     }, {
-        title   : 'In case of too many scales their labels are rotated. Also when scales has different length (possible max total) they are shown as percents',
+        title   : 'In case when scales has different length (possible max total) they are shown as percents',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/test/diagram-with-many-scales-of-different-length/').waitForUrl(/diagram-with-many/, function() {
+            casper.thenOpen('http://wpti.dev/test/diagram-with-different-length-scales-uses-percents/').waitForUrl(/diagram-with-different/, function() {
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
                 this.fill('form#wpt-test-form', {}, true)
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {

@@ -2,12 +2,26 @@
 ## Changelog ##
 
 
+### 0.9.4 ###
+
+Add more math operators, native FR lang and improve scales' chart #2  
+
+* Avoid rotating text labels when we have too many scales
+* Show mini-annotations like abbrevirations always near data values
+* Make annotations as popups instead of tags
+* Improve one-scale case
+* Translate update reviewed locale for FR lang
+* Add more math operators: "+*/"
+* Enable advanced options for default test
+
+
 ### 0.9.3 ###
 
 Improve scales' chart
 
 * Use ratio (percents) when scales lengths differs
 * Rotate text labels to 45 degrees when we have too many scales
+
 
 ### 0.9.2 ###
 
