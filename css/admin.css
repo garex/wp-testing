@@ -112,12 +112,16 @@ table.wpt_quick_scores td.questions input {
     width: 100%;    
 }
 
-ul.categorychecklist.ui-sortable li {
+ul.categorychecklist.ui-sortable li.wpt-sortable {
     background-image: url(../img/icon-grippable.png);
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 10px;
     cursor: move;
+}
+
+ul.categorychecklist.ui-sortable li.wpt-sortable.wpt-sortable-container {
+    background-position: left 5px;
 }
 
 ul.categorychecklist.ui-sortable li.sortable-placeholder {

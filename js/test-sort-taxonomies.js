@@ -10,10 +10,17 @@ jQuery(document).ready(function($) {
         var all  = $('#' + taxonomy + 'div'),
             list = $('#' + taxonomy + 'checklist');
 
+        list.find('li').addClass('wpt-sortable').each(function() {
+            var hasChildren = $(this).find('> ul').length > 0;
+            if (hasChildren) {
+                $(this).addClass('wpt-sortable-container');
+            }
+        });
+
         list.sortable({
             forcePlaceholderSize    : true,
             placeholder             : 'sortable-placeholder',
-            items                   : '> li',
+            items                   : '.wpt-sortable',
             cursor                  : 'move',
             axis                    : 'y',
             containment             : all
