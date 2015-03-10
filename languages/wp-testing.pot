@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-08 22:25+0700\n"
+"POT-Creation-Date: 2015-03-10 10:31+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -19,11 +19,15 @@ msgstr ""
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Facade.php:123
-msgid "Respondents’ test results"
+#: Facade.php:46
+msgid "Helps to create psychological tests."
 msgstr ""
 
 #: Facade.php:124
+msgid "Respondents’ test results"
+msgstr ""
+
+#: Facade.php:125
 msgid "Respondents’ results"
 msgstr ""
 
@@ -447,7 +451,7 @@ msgstr ""
 msgid "No Categories found in Trash"
 msgstr ""
 
-#: Model/Formula.php:229
+#: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
 msgstr ""
