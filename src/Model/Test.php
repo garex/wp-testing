@@ -250,7 +250,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function isFinal()
     {
         foreach ($this->buildScalesWithRange() as $scale) {
-            if ($scale->getMaximum()) {
+            if ($scale->getLength()) {
                 return true;
             }
         }
