@@ -1,9 +1,14 @@
 <?php
-require_once dirname(__FILE__) . '/../../vendor/autoload_52.php';
+$pluginFile = realpath(dirname(__FILE__) . '/../../wp-testing.php');
+require_once dirname($pluginFile) . '/src/WordPressFacade.php';
+require_once dirname($pluginFile) . '/src/Facade.php';
+require_once dirname(__FILE__) . '/Mock/WordPressFacade.php';
+require_once dirname(__FILE__) . '/Mock/Facade.php';
+
 $migration = require_once dirname(__FILE__) . '/../../db/ruckusing.conf.php';
-$db        = $migration['db']['development'];
-$database  = new fDatabase('mysql', $db['database'], $db['user'], $db['password'], $db['host'], $db['port']);
-// $database->enableDebugging(true);
-fORMDatabase::attach($database);
-fORM::mapClassToTable('WpTesting_Model_Formula', WPT_DB_PREFIX  . 'formulas');
-fORM::mapClassToTable('WpTesting_Model_Scale',   WP_DB_PREFIX   . 'terms');
+new WpTesting_Mock_Facade(
+    new WpTesting_Mock_WordPressFacade(
+        $pluginFile,
+        $migration['db']['development']
+    )
+);
