@@ -112,4 +112,8 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         return 'http://wpti.dev/?p='.$id;
     }
 
+    public function getPostMeta($postId, $key, $isSingle)
+    {
+        return null;
+    }
 }
