@@ -94,7 +94,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     {
         $row = $result->current();
         foreach ($row as $key => $value) {
-            $row[strtolower($key)] = $value;
+            $row[$key] = $value;
         }
         return parent::loadFromResult(new ArrayIterator(array($row)), $ignore_identity_map);
     }
