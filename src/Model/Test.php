@@ -110,7 +110,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $result       = $db->translatedQuery('
             SELECT
                 scale_id,
-                MIN(minimum_in_row) AS minimum_in_column,
+                SUM(minimum_in_row) AS minimum_in_column,
                 SUM(maximum_in_row) AS maximum_in_column,
                 SUM(sum_in_row)     AS sum_in_column
             FROM (
