@@ -3,69 +3,54 @@
 class TestTest extends PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @var fDatabase
+     */
+    private $db;
+
     protected function setUp()
     {
-        /* @var $db fDatabase */
-        $db = fORMDatabase::retrieve('WpTesting_Model_Test', 'write');
         $_SERVER['REQUEST_METHOD'] = 'GET';
-        $db->translatedExecute('BEGIN');
+        $this->db = fORMDatabase::retrieve('WpTesting_Model_Test', 'write');
+        $this->db->translatedExecute('BEGIN');
     }
 
     protected function tearDown()
     {
-        /* @var $db fDatabase */
-        $db = fORMDatabase::retrieve('WpTesting_Model_Test', 'write');
-        $db->translatedExecute('ROLLBACK');
+        $this->db->translatedExecute('ROLLBACK');
+    }
+
+    public function testTestCanBeCreatedAndStored()
+    {
+        $test = $this->createTest()->store();
+        $this->greaterThan($test->getId());
+    }
+
+    public function testAddQuestion()
+    {
+        $test = $this->createTest()->store();
+        $test->addQuestion('Question 1');
+        $test->addQuestion('Question 2');
+        $test->store(true);
+
+        $test2 = new WpTesting_Model_Test($test->getId());
+        $this->assertCount(2, $test2->buildQuestions());
     }
 
     public function testMinimalScaleScore()
     {
-        $test = new WpTesting_Model_Test();
-        $test->setWp($GLOBALS['wp_facade_mock'])
-            ->setTitle('test ' . date(DateTime::ATOM))->setContent('.')->setExcerpt('.')->setContentFiltered('.')
-            ->setToPing('http://localhost/')->setPinged('http://localhost/')->setType('wpt_test')
-            ->setName('test-' . time());
-        $test->store();
-        $this->greaterThan($test->getId());
-
-        $scales = fRecordSet::build('WpTesting_Model_Scale', array(
-            'name=' => 'Lie',
-        ));
-        $this->assertNotEmpty($scales);
-        /* @var $scale WpTesting_Model_Scale */
-        $scale = $scales[0];
-        $scaleTaxonomies = $scale->buildWpTesting_Model_Taxonomy();
-        $this->assertNotEmpty($scaleTaxonomies);
-        /* @var $scaleTaxonomy WpTesting_Model_Taxonomy */
-        $scaleTaxonomy = $scaleTaxonomies[0];
-
-        $answers = fRecordSet::build('WpTesting_Model_GlobalAnswer', array(
-            'name=' => 'Yes',
-        ));
-        $this->assertNotEmpty($answers);
-        /* @var $scale WpTesting_Model_GlobalAnswer */
-        $answer = $answers[0];
-        $answerTaxonomies = $answer->buildWpTesting_Model_Taxonomy();
-        $this->assertNotEmpty($answerTaxonomies);
-        /* @var $answerTaxonomy WpTesting_Model_Taxonomy */
-        $answerTaxonomy = $answerTaxonomies[0];
-
-        $test->associateWpTesting_Model_Taxonomies(array($scaleTaxonomy, $answerTaxonomy));
-
-        $question1 = new WpTesting_Model_Question();
-        $question1->setTitle('Question 1');
-        $question2 = new WpTesting_Model_Question();
-        $question2->setTitle('Question 2');
-        $test->associateWpTesting_Model_Questions(array($question1, $question2));
-
-        $test->store(true);
-        $test->syncQuestionsAnswers();
+        $test   = $this->createTest()->store();
+        $scale  = WpTesting_Query_Scale::create()->findByName('Lie');
+        $answer = WpTesting_Query_GlobalAnswer::create()->findByName('Yes');
+        $test
+            ->associateScale($scale)->associateGlobalAnswer($answer)
+            ->addQuestion('Question 1')->addQuestion('Question 2')
+            ->store(true)->syncQuestionsAnswers()
+        ;
 
         foreach ($test->buildQuestions() as $question) { /* @var $question WpTesting_Model_Question */
             foreach ($question->buildAnswers() as $answer) { /* @var $answer WpTesting_Model_Answer */
-                $score = new WpTesting_Model_Score();
-                $score->setValue(-1)->setScaleId($scale->getId());
-                $answer->associateWpTesting_Model_Scores(array($score));
+                $answer->getScoreByScale($scale)->setValue(-1);
             }
         }
         $test->store(true);
@@ -80,4 +65,26 @@ class TestTest extends PHPUnit_Framework_TestCase
         $scaleWithRange->setValue(-2);
     }
 
+    private function createTest()
+    {
+        $test = new WpTesting_Model_Test();
+        return $test
+            ->setWp($this->getWpFacade())
+            ->setTitle('Test ' . date(DateTime::ATOM))
+            ->setContent('Content')
+            ->setExcerpt('Excerpt')
+            ->setContentFiltered('Content')
+            ->setToPing('http://localhost/')
+            ->setPinged('http://localhost/')
+            ->setType('wpt_test')
+            ->setName('test-' . time());
+    }
+
+    /**
+     * @return WpTesting_WordPressFacade
+     */
+    private function getWpFacade()
+    {
+        return $GLOBALS['wp_facade_mock'];
+    }
 }

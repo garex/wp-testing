@@ -255,6 +255,38 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Adds new question associated to this test
+     * @param string $title
+     * @return WpTesting_Model_Test
+     */
+    public function addQuestion($title)
+    {
+        $question = new WpTesting_Model_Question();
+        $question->setTitle($title);
+        $this->associateWpTesting_Model_Questions($this->buildQuestions()->merge($question));
+        return $this;
+    }
+
+    public function associateScale(WpTesting_Model_Scale $scale)
+    {
+        return $this->associateAbstractTerm($scale);
+    }
+
+    public function associateGlobalAnswer(WpTesting_Model_GlobalAnswer $globalAnswer)
+    {
+        return $this->associateAbstractTerm($globalAnswer);
+    }
+
+    private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
+    {
+        $this->associateWpTesting_Model_Taxonomies(
+            $this->buildWpTesting_Model_Taxonomies()
+                ->merge($term->createTaxonomy())
+        );
+        return $this;
+    }
+
+    /**
      * Can respondent use this test to get results?
      *
      * Final test is test, that have scores.

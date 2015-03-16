@@ -14,6 +14,14 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
     );
 
     /**
+     * @return WpTesting_Model_Taxonomy
+     */
+    public function createTaxonomy()
+    {
+        return $this->buildWpTesting_Model_Taxonomy()->getRecord(0);
+    }
+
+    /**
      * Abbreviration of title
      *
      * @return string
