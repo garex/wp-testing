@@ -8,8 +8,21 @@
  * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
  * @method fTimestamp getModified() getModified() Gets the current value of modified
  * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method WpTesting_Model_Test setContent() setContent(string $content) Sets the value for content
  * @method string getContent() getContent() Gets the current value of content
  * @method string getStatus() getStatus() Gets the current value of status
+ * @method WpTesting_Model_Test setExcerpt() setExcerpt(string $excerpt) Sets the value for excerpt
+ * @method string getExcerpt() getExcerpt() Gets the current value of excerpt
+ * @method WpTesting_Model_Test setContentFiltered() setContentFiltered(string $contentFiltered) Sets the value for content filtered
+ * @method string getContentFiltered() getContentFiltered() Gets the current value of content filtered
+ * @method WpTesting_Model_Test setToPing() setToPing(string $toPing) Sets the value for URLs that should be pinged
+ * @method string getToPing() getToPing() Gets the current value for URLs that should be pinged
+ * @method WpTesting_Model_Test setPinged() setPinged(string $pinged) Sets the value for URLs that already pinged
+ * @method string getPinged() getPinged() Gets the current value for URLs that already pinged
+ * @method WpTesting_Model_Test setType() setType(string $type) Sets the value for type that should be wpt_test
+ * @method string getType() getType() Gets the current value for type
+ * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
+ * @method string getName() getName() Gets the current value for name (url unique part)
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
@@ -25,7 +38,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'created'   => 'post_date',
         'modified'  => 'post_modified',
         'content'   => 'post_content',
+        'content_filtered' => 'post_content_filtered',
         'status'    => 'post_status',
+        'excerpt'   => 'post_excerpt',
+        'type'      => 'post_type',
+        'name'      => 'post_name',
     );
 
     /**
@@ -93,7 +110,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $result       = $db->translatedQuery('
             SELECT
                 scale_id,
-                MIN(minimum_in_row) AS minimum_in_column,
+                SUM(minimum_in_row) AS minimum_in_column,
                 SUM(maximum_in_row) AS maximum_in_column,
                 SUM(sum_in_row)     AS sum_in_column
             FROM (
@@ -238,6 +255,38 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Adds new question associated to this test
+     * @param string $title
+     * @return WpTesting_Model_Test
+     */
+    public function addQuestion($title)
+    {
+        $question = new WpTesting_Model_Question();
+        $question->setTitle($title);
+        $this->associateWpTesting_Model_Questions($this->buildQuestions()->merge($question));
+        return $this;
+    }
+
+    public function associateScale(WpTesting_Model_Scale $scale)
+    {
+        return $this->associateAbstractTerm($scale);
+    }
+
+    public function associateGlobalAnswer(WpTesting_Model_GlobalAnswer $globalAnswer)
+    {
+        return $this->associateAbstractTerm($globalAnswer);
+    }
+
+    private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
+    {
+        $this->associateWpTesting_Model_Taxonomies(
+            $this->buildWpTesting_Model_Taxonomies()
+                ->merge($term->createTaxonomy())
+        );
+        return $this;
+    }
+
+    /**
      * Can respondent use this test to get results?
      *
      * Final test is test, that have scores.
@@ -250,7 +299,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function isFinal()
     {
         foreach ($this->buildScalesWithRange() as $scale) {
-            if ($scale->getMaximum()) {
+            if ($scale->getLength()) {
                 return true;
             }
         }
@@ -517,6 +566,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                 $answer->setQuestionId($question->getId());
                 $answer->setSort($globalAnswerSort[$answer->getGlobalAnswerId()]);
                 $answer->store();
+                $question->associateAnswers(array($answer));
             }
         }
     }

@@ -270,7 +270,7 @@ class WpTesting_Facade
             array(
                 'column'         => 'test_id',
                 'foreign_table'  => WP_DB_PREFIX   . 'posts',
-                'foreign_column' => 'id',
+                'foreign_column' => 'ID',
             ) + $fkOptions,
         ), WPT_DB_PREFIX . 'questions', 'foreign');
 
@@ -291,12 +291,12 @@ class WpTesting_Facade
             array(
                 'column'         => 'test_id',
                 'foreign_table'  => WP_DB_PREFIX . 'posts',
-                'foreign_column' => 'id',
+                'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'respondent_id',
                 'foreign_table'  => WP_DB_PREFIX . 'users',
-                'foreign_column' => 'id',
+                'foreign_column' => 'ID',
             ) + $fkOptions,
         ), WPT_DB_PREFIX . 'passings', 'foreign');
 
@@ -317,7 +317,7 @@ class WpTesting_Facade
             array(
                 'column'         => 'test_id',
                 'foreign_table'  => WP_DB_PREFIX . 'posts',
-                'foreign_column' => 'id',
+                'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'result_id',
@@ -331,7 +331,7 @@ class WpTesting_Facade
             array(
                 'column'         => 'object_id',
                 'foreign_table'  => WP_DB_PREFIX . 'posts',
-                'foreign_column' => 'id',
+                'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'term_taxonomy_id',
