@@ -2,12 +2,13 @@
 # This file is distrubuted under the GPL-3.0+
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
+# FxB <fxb@wp-translations.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-08 22:25+0700\n"
-"PO-Revision-Date: 2015-03-08 16:43+0000\n"
+"POT-Creation-Date: 2015-03-10 10:31+0700\n"
+"PO-Revision-Date: 2015-03-10 19:52+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +22,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:123
+#: Facade.php:46
+msgid "Helps to create psychological tests."
+msgstr "Aide à créer des tests psychologiques."
+
+#: Facade.php:124
 msgid "Respondents’ test results"
 msgstr "Résultats des tests des personnes interrogées"
 
-#: Facade.php:124
+#: Facade.php:125
 msgid "Respondents’ results"
 msgstr "Résultats des personnes interrogées"
 
@@ -444,7 +449,7 @@ msgstr "Aucune catégorie trouvée"
 msgid "No Categories found in Trash"
 msgstr "Aucune catégorie trouvée dans la corbeille"
 
-#: Model/Formula.php:229
+#: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
 msgstr "La formule pour %s contient une erreur"

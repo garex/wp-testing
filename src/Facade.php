@@ -43,6 +43,7 @@ class WpTesting_Facade
         $this->wp = $wp;
         $this->autoloadComposer();
         $this->registerWordPressHooks();
+        __('Helps to create psychological tests.', 'wp-testing');
     }
 
     public function onPluginActivate()

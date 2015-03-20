@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-08 22:25+0700\n"
-"PO-Revision-Date: 2015-03-08 16:43+0000\n"
+"POT-Creation-Date: 2015-03-10 10:31+0700\n"
+"PO-Revision-Date: 2015-03-10 19:55+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/wp-testing/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:123
+#: Facade.php:46
+msgid "Helps to create psychological tests."
+msgstr "Aiuta a creare test psicologici."
+
+#: Facade.php:124
 msgid "Respondents’ test results"
 msgstr "Risultati del test del soggetto"
 
-#: Facade.php:124
+#: Facade.php:125
 msgid "Respondents’ results"
 msgstr "Risultati dei soggetti"
 
@@ -445,7 +449,7 @@ msgstr "Nessuna categoria trovata"
 msgid "No Categories found in Trash"
 msgstr "Nessuna categoria nel cestino"
 
-#: Model/Formula.php:229
+#: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formula in cui è presente una percentuale di errori %s"
