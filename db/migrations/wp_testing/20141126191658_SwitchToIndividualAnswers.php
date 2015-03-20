@@ -25,7 +25,6 @@ class SwitchToIndividualAnswers extends BaseMigration
         ));
         $table->column('answer_title', 'text', array(
             'null'    => true,
-            'default' => '',
         ));
         $table->finish();
 
