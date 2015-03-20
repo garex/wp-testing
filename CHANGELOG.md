@@ -2,6 +2,17 @@
 ## Changelog ##
 
 
+### 0.9.5 ###
+
+Update locales, minor fixes and cleanup download file
+
+* Add Chinese and Brazilian locales
+* Fix activation under windows
+* Fix taxonomy sortable containers look
+* Fix plugin uninstallation
+* Remove excessive and old files from download zip
+
+
 ### 0.9.4 ###
 
 Add more math operators, native FR lang and improve scales' chart #2  
