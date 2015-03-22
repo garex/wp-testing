@@ -412,23 +412,27 @@ class WpTesting_Facade
 
     protected function autoloadComposer()
     {
-        // 1. Try to find composer.json if PHP is 5.3 and up
+        $DS              = DIRECTORY_SEPARATOR;
+        $vendorDirectory = dirname(dirname(__FILE__)) . $DS . 'vendor';
+        $autoloadPath    = $vendorDirectory . $DS . 'autoload_52.php';
+
+        // 1. Try to find default old autoload path
+        if (file_exists($autoloadPath)) {
+            require_once ($autoloadPath);
+            return;
+        }
+
+        // 2. Try to find composer.json if PHP is 5.3 and up
+        $isModern         = version_compare(PHP_VERSION, '5.3', '>=');
         $composerFullName = null;
-        if (version_compare(PHP_VERSION, '5.3', '>=')) {
+        if ($isModern) {
             foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
-                $candidateFile = $path . DIRECTORY_SEPARATOR . 'composer.json';
+                $candidateFile = $path . $DS . 'composer.json';
                 if (file_exists($candidateFile)) {
                     $composerFullName = $candidateFile;
                     break;
                 }
             }
-        }
-
-        // 2. Not found? Use default php52 generated autoloader
-        if (!$composerFullName) {
-            $autoloadPath = implode(DIRECTORY_SEPARATOR, array(dirname(dirname(__FILE__)), 'vendor', 'autoload_52.php'));
-            require_once ($autoloadPath);
-            return;
         }
 
         // 3. Found? Determine vendor dirname and load autoload file
@@ -440,7 +444,7 @@ class WpTesting_Facade
             }
         }
 
-        $autoloadPath = implode(DIRECTORY_SEPARATOR, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
+        $autoloadPath = implode($DS, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
         require_once ($autoloadPath);
     }
 
