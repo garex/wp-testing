@@ -1,9 +1,10 @@
 <?php
+require_once dirname(__FILE__) . '/Addon/IWordPressFacade.php';
 
 /**
  * Facade into wordpress
  */
-class WpTesting_WordPressFacade
+class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 {
 
     /**
@@ -18,6 +19,17 @@ class WpTesting_WordPressFacade
     public function __construct($pluginFile)
     {
         $this->pluginFile = $pluginFile;
+    }
+
+    /**
+     * Creates
+     * @param string $pluginFile
+     * @return WpTesting_WordPressFacade
+     */
+    public function duplicate($pluginFile)
+    {
+        $class = get_class($this);
+        return new $class($pluginFile);
     }
 
     public function getDbHost()
@@ -503,6 +515,25 @@ class WpTesting_WordPressFacade
     {
         add_action($tag, $function, $priority, $functionArgsCount);
         return $this;
+    }
+
+    /**
+     * Execute functions hooked on a specific action hook.
+     *
+     * This function invokes all functions attached to action hook `$tag`. It is
+     * possible to create new action hooks by simply calling this function,
+     * specifying the name of the new hook using the `$tag` parameter.
+     *
+     * @since 1.2.0
+     *
+     * @param string $tag The name of the action to be executed.
+     * @param mixed  $arg Optional. Additional arguments which are passed on to the
+     *                    functions hooked to the action. Default empty.
+     * @return null Will return null if $tag does not exist in $wp_filter array.
+     */
+    public function doAction($tag, $arg = '')
+    {
+        return call_user_func_array('do_action', func_get_args());
     }
 
     /**

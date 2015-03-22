@@ -1,6 +1,7 @@
 <?php
+require_once dirname(__FILE__) . '/Addon/IFacade.php';
 
-class WpTesting_Facade
+class WpTesting_Facade implements WpTesting_Addon_IFacade
 {
 
     /**
@@ -38,6 +39,11 @@ class WpTesting_Facade
 
     private $isOrmSettedUp = false;
 
+    /**
+     * @var WpTesting_Component_Loader
+     */
+    private $loader = null;
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
@@ -66,6 +72,18 @@ class WpTesting_Facade
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
         $me->wp->getRewrite()->flush_rules();
+    }
+
+    /**
+     * @return WpTesting_WordPressFacade
+     */
+    public function registerAddon($addon)
+    {
+        if (is_null($this->loader)) {
+            $this->loader = new WpTesting_Component_Loader('WpTesting');
+        }
+        $this->loader->addPrefixPath($addon->setWp($this->wp->duplicate($addon->getRoot())));
+        return $this;
     }
 
     public function shortcodeList()
@@ -148,7 +166,9 @@ class WpTesting_Facade
      */
     public function setupTestEditor($screen)
     {
+        $this->wp->doAction('wp_testing_editor_setup_before');
         $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies($screen);
+        $this->wp->doAction('wp_testing_editor_setup_after');
         return $screen;
     }
 

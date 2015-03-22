@@ -18,6 +18,13 @@ abstract class WpTesting_Doer_AbstractDoer
     {
         $this->wp = $wp;
         $this->registerScripts();
+
+        $this->templateRoot = dirname(dirname($this->getClassFile())) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+    }
+
+    protected function getClassFile()
+    {
+        return __FILE__;
     }
 
     public function renderJsData()
@@ -89,7 +96,7 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function output($__template, $__params = array())
     {
         if (substr($__template, -4) != '.php') {
-            $__template = dirname(dirname(__FILE__)) . '/Template/' . $__template . '.php';
+            $__template = $this->templateRoot . $__template . '.php';
         }
         extract($__params, EXTR_SKIP);
         include $__template;

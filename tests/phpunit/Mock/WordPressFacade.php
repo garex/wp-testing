@@ -79,6 +79,11 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         return $this;
     }
 
+    public function doAction($tag, $arg = '')
+    {
+        return true;
+    }
+
     public function addFilter($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
         return $this;
