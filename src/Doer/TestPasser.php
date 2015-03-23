@@ -66,7 +66,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             return $this;
         }
 
-        $this->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
+        $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
         if (self::ACTION_PROCESS_FORM == $action) {
             $passing = new WpTesting_Model_Passing();
             $passing->setWp($this->wp)->populate($this->test)

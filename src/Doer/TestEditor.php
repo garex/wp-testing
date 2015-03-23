@@ -19,7 +19,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return $this;
         }
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
-        $this->wp
+        $this->registerScripts()->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
             ->enqueuePluginScript('wpt_test_edit_fix_styles',  'js/test-edit-fix-styles.js',        array('jquery'), false, true)
             ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array(), false, true)
