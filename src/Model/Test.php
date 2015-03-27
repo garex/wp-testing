@@ -50,6 +50,12 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     protected $taxonomies = null;
 
+    /**
+     * Used in addons when adding behaviours
+     * @var WpTesting_Model_Test
+     */
+    private $parent = null;
+
     public function __construct($key = null)
     {
         if (is_object($key) && isset($key->post_type)) {
@@ -442,12 +448,53 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Saves all objects related to test.
+     *
+     * @throws fValidationException
+     * @return WpTesting_Model_Test
+     */
+    public function storeAll()
+    {
+        $this->wp->doAction('wp_testing_test_store_all_before', $this);
+
+        $this
+            ->populateAll()
+            ->store(true)
+            ->syncQuestionsAnswers()
+        ;
+
+        $this->wp->doAction('wp_testing_test_store_all_after', $this);
+
+        return $this;
+    }
+
+    /**
+     * Populates all related objects.
+     *
+     * @return WpTesting_Model_Test
+     */
+    public function populateAll()
+    {
+        $this->wp->doAction('wp_testing_test_populate_all_before', $this);
+
+        $_POST = $this->adaptForPopulate($_POST, $this->getId());
+        $this
+            ->populateQuestions(true)
+            ->populateFormulas()
+        ;
+        $this->wp->doAction('wp_testing_test_populate_all_after', $this);
+
+        return $this;
+    }
+
+    /**
      * Unpack request for subsequent population from it to ORM naming standards
      *
      * @param array $input
+     * @param int $testId
      * @return array
      */
-    public function adaptForPopulate($request)
+    public function adaptForPopulate($request, $testId)
     {
         $questionsPrefix = $this->getQuestionsPrefix();
         $answersPrefix   = $this->getAnswersPrefix();
@@ -499,13 +546,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 
         foreach ($request['wpt_formula_source'] as $key => $value) {
             $key = json_decode(stripslashes($key), $isAssoc);
-            $request[$formulasPrefix . 'test_id']        [$key['i']] = $key['test_id'];
+            $request[$formulasPrefix . 'test_id']        [$key['i']] = $testId;
             $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
             $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
             $request[$formulasPrefix . 'formula_source'] [$key['i']] = $value;
         }
 
-        return $request;
+        return $this->wp->applyFilters('wp_testing_test_adapt_for_populate', $request, $testId, $this);
     }
 
     /**
@@ -515,9 +562,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function populateQuestions($isRecursive = false)
     {
         $this->populateWpTesting_Model_Questions($isRecursive);
-        $table     = fORM::tablize('WpTesting_Model_Question');
-        $questions =& $this->related_records[$table]['test_id']['record_set'];
-        $questions = $questions->filter(array('getTitle!=' => ''));
+        $table   = fORM::tablize('WpTesting_Model_Question');
+        $records =& $this->related_records[$table]['test_id']['record_set'];
+        $records = $records->filter(array('getTitle!=' => ''));
         return $this;
     }
 
@@ -588,6 +635,20 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $post->$key = (string)$value;
         }
         return $post;
+    }
+
+    public function setParent(WpTesting_Model_Test $parent)
+    {
+        $this->parent = $parent;
+        return $this;
+    }
+
+    /**
+     * @return WpTesting_Model_Test
+     */
+    protected function me()
+    {
+        return is_null($this->parent) ? $this : $this->parent;
     }
 
     protected function configure()

@@ -10,7 +10,6 @@
             <input type="text"
                 name='wpt_formula_source[<?php echo json_encode(array(
                     'i'          => $r,
-                    'test_id'    => $formula->getTestId(),
                     'formula_id' => $formula->getId(),
                     'result_id'  => $formula->getResultId(),
                 ))  ?>]'

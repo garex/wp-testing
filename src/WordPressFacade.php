@@ -533,7 +533,8 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function doAction($tag, $arg = '')
     {
-        return call_user_func_array('do_action', func_get_args());
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('do_action', $argsPhp52Workaround);
     }
 
     /**
@@ -608,6 +609,27 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     {
         remove_filter($tag, $functionToRemove, $priority, $acceptedArgs);
         return $this;
+    }
+
+    /**
+     * Call the functions added to a filter hook.
+     *
+     * The callback functions attached to filter hook $tag are invoked by calling
+     * this function. This function can be used to create a new filter hook by
+     * simply calling this function with the name of the new hook specified using
+     * the $tag parameter.
+     *
+     * @since 0.71
+     *
+     * @param string $tag   The name of the filter hook.
+     * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
+     * @param mixed  $var   Additional variables passed to the functions hooked to `$tag`.
+     * @return mixed The filtered value after all hooked functions are applied to it.
+     */
+    public function applyFilters($tag, $value)
+    {
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('apply_filters', $argsPhp52Workaround);
     }
 
     /**

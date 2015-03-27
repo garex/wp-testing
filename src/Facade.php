@@ -383,6 +383,8 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
             ) + $fkOptions,
         ), WPT_DB_PREFIX  . 'answers', 'foreign');
 
+        $this->wp->doAction('wp_testing_orm_setup', $schema, $database);
+
         $this->isOrmSettedUp = true;
     }
 

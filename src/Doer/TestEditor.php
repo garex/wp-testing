@@ -300,13 +300,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
         }
 
-        $_POST = $test->adaptForPopulate($_POST);
-        $test->populateQuestions(true);
-        $test->populateFormulas();
-
         try {
-            $test->store(true);
-            $test->syncQuestionsAnswers();
+            $test->storeAll();
         } catch (fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
             $this->wp->dieMessage(

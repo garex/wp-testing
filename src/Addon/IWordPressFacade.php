@@ -4,6 +4,12 @@ interface WpTesting_Addon_IWordPressFacade
 {
 
     /**
+     * Used to specify the order in which the functions associated with a particular action are executed (default: 10). Lower numbers correspond with earlier execution, and functions with the same priority are executed in the order in which they were added to the action.
+     * @var integer
+     */
+    const PRIORITY_DEFAULT = 10;
+
+    /**
      * Hooks a function on to a specific action.
      *
      * @since 1.2.0
@@ -15,7 +21,7 @@ interface WpTesting_Addon_IWordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_Addon_IWordPressFacade
      */
-    public function addAction($tag, $function, $priority = 10, $functionArgsCount = 1);
+    public function addAction($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1);
 
     /**
      * Add a meta box to an edit form.
@@ -42,5 +48,18 @@ interface WpTesting_Addon_IWordPressFacade
      * @return WpTesting_Addon_IWordPressFacade
      */
     public function addMetaBox($id, $title, $function, $screen = null, $context = 'advanced', $priority = 'default', $functionArgs = null);
+
+    /**
+     * Hooks a function or method to a specific filter action.
+     *
+     * @since 0.71
+     *
+     * @param string $tag The name of the action to which the $function is hooked.
+     * @param callback $function The name of the function you wish to be called.
+     * @param int $priority optional. Used to specify the order in which the functions associated with a particular action are executed (default: 10). Lower numbers correspond with earlier execution, and functions with the same priority are executed in the order in which they were added to the action.
+     * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
+     * @return WpTesting_WordPressFacade
+     */
+    public function addFilter($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1);
 
 }
