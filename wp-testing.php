@@ -14,4 +14,4 @@
 require_once dirname(__FILE__) . '/src/WordPressFacade.php';
 require_once dirname(__FILE__) . '/src/Facade.php';
 
-new WpTesting_Facade(new WpTesting_WordPressFacade(__FILE__));
+$WpTesting_Facade = new WpTesting_Facade(new WpTesting_WordPressFacade(__FILE__));

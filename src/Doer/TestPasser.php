@@ -66,7 +66,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
             return $this;
         }
 
-        $this->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
+        $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
         if (self::ACTION_PROCESS_FORM == $action) {
             $passing = new WpTesting_Model_Passing();
             $passing->setWp($this->wp)->populate($this->test)
@@ -193,6 +193,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
         $template = $this->wp->locateTemplate('entry-content-wpt-test-' . $action . '.php');
         $template = ($template) ? $template : 'Test/Passer/' . $action;
 
+        $this->wp->doAction('wp_testing_passer_render_content',             $this->test);
+        $this->wp->doAction('wp_testing_passer_render_content_' . $action,  $this->test);
+
         if (self::ACTION_FILL_FORM == $action) {
             $params = array(
                 'answerIdName' => fOrm::tablize('WpTesting_Model_Answer') . '::answer_id',
@@ -205,6 +208,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
                     __('Get Test Results', 'wp-testing'),
                 ))),
+                'wp'            => $this->wp,
             );
             $this->addJsDataValues(array(
                 'isResetAnswersOnBack' => $this->test->isResetAnswersOnBack(),

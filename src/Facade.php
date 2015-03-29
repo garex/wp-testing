@@ -1,6 +1,7 @@
 <?php
+require_once dirname(__FILE__) . '/Addon/IFacade.php';
 
-class WpTesting_Facade
+class WpTesting_Facade implements WpTesting_Addon_IFacade
 {
 
     /**
@@ -38,6 +39,11 @@ class WpTesting_Facade
 
     private $isOrmSettedUp = false;
 
+    /**
+     * @var WpTesting_Component_Loader
+     */
+    private $loader = null;
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
@@ -66,6 +72,18 @@ class WpTesting_Facade
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
         $adapter->logger->close();
         $me->wp->getRewrite()->flush_rules();
+    }
+
+    /**
+     * @return WpTesting_WordPressFacade
+     */
+    public function registerAddon($addon)
+    {
+        if (is_null($this->loader)) {
+            $this->loader = new WpTesting_Component_Loader('WpTesting');
+        }
+        $this->loader->addPrefixPath($addon->setWp($this->wp->duplicate($addon->getRoot())));
+        return $this;
     }
 
     public function shortcodeList()
@@ -148,7 +166,9 @@ class WpTesting_Facade
      */
     public function setupTestEditor($screen)
     {
+        $this->wp->doAction('wp_testing_editor_setup_before');
         $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies($screen);
+        $this->wp->doAction('wp_testing_editor_setup_after');
         return $screen;
     }
 
@@ -363,6 +383,8 @@ class WpTesting_Facade
             ) + $fkOptions,
         ), WPT_DB_PREFIX  . 'answers', 'foreign');
 
+        $this->wp->doAction('wp_testing_orm_setup', $schema, $database);
+
         $this->isOrmSettedUp = true;
     }
 
@@ -412,23 +434,27 @@ class WpTesting_Facade
 
     protected function autoloadComposer()
     {
-        // 1. Try to find composer.json if PHP is 5.3 and up
+        $DS              = DIRECTORY_SEPARATOR;
+        $vendorDirectory = dirname(dirname(__FILE__)) . $DS . 'vendor';
+        $autoloadPath    = $vendorDirectory . $DS . 'autoload_52.php';
+
+        // 1. Try to find default old autoload path
+        if (file_exists($autoloadPath)) {
+            require_once ($autoloadPath);
+            return;
+        }
+
+        // 2. Try to find composer.json if PHP is 5.3 and up
+        $isModern         = version_compare(PHP_VERSION, '5.3', '>=');
         $composerFullName = null;
-        if (version_compare(PHP_VERSION, '5.3', '>=')) {
+        if ($isModern) {
             foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
-                $candidateFile = $path . DIRECTORY_SEPARATOR . 'composer.json';
+                $candidateFile = $path . $DS . 'composer.json';
                 if (file_exists($candidateFile)) {
                     $composerFullName = $candidateFile;
                     break;
                 }
             }
-        }
-
-        // 2. Not found? Use default php52 generated autoloader
-        if (!$composerFullName) {
-            $autoloadPath = implode(DIRECTORY_SEPARATOR, array(dirname(dirname(__FILE__)), 'vendor', 'autoload_52.php'));
-            require_once ($autoloadPath);
-            return;
         }
 
         // 3. Found? Determine vendor dirname and load autoload file
@@ -440,7 +466,7 @@ class WpTesting_Facade
             }
         }
 
-        $autoloadPath = implode(DIRECTORY_SEPARATOR, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
+        $autoloadPath = implode($DS, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
         require_once ($autoloadPath);
     }
 

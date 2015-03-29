@@ -1,9 +1,10 @@
 <?php
+require_once dirname(__FILE__) . '/Addon/IWordPressFacade.php';
 
 /**
  * Facade into wordpress
  */
-class WpTesting_WordPressFacade
+class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 {
 
     /**
@@ -18,6 +19,17 @@ class WpTesting_WordPressFacade
     public function __construct($pluginFile)
     {
         $this->pluginFile = $pluginFile;
+    }
+
+    /**
+     * Creates
+     * @param string $pluginFile
+     * @return WpTesting_WordPressFacade
+     */
+    public function duplicate($pluginFile)
+    {
+        $class = get_class($this);
+        return new $class($pluginFile);
     }
 
     public function getDbHost()
@@ -506,6 +518,26 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Execute functions hooked on a specific action hook.
+     *
+     * This function invokes all functions attached to action hook `$tag`. It is
+     * possible to create new action hooks by simply calling this function,
+     * specifying the name of the new hook using the `$tag` parameter.
+     *
+     * @since 1.2.0
+     *
+     * @param string $tag The name of the action to be executed.
+     * @param mixed  $arg Optional. Additional arguments which are passed on to the
+     *                    functions hooked to the action. Default empty.
+     * @return null Will return null if $tag does not exist in $wp_filter array.
+     */
+    public function doAction($tag, $arg = '')
+    {
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('do_action', $argsPhp52Workaround);
+    }
+
+    /**
      * Retrieve the number times an action is fired.
      *
      * @package WordPress
@@ -577,6 +609,27 @@ class WpTesting_WordPressFacade
     {
         remove_filter($tag, $functionToRemove, $priority, $acceptedArgs);
         return $this;
+    }
+
+    /**
+     * Call the functions added to a filter hook.
+     *
+     * The callback functions attached to filter hook $tag are invoked by calling
+     * this function. This function can be used to create a new filter hook by
+     * simply calling this function with the name of the new hook specified using
+     * the $tag parameter.
+     *
+     * @since 0.71
+     *
+     * @param string $tag   The name of the filter hook.
+     * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
+     * @param mixed  $var   Additional variables passed to the functions hooked to `$tag`.
+     * @return mixed The filtered value after all hooked functions are applied to it.
+     */
+    public function applyFilters($tag, $value)
+    {
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('apply_filters', $argsPhp52Workaround);
     }
 
     /**

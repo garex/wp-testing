@@ -16,8 +16,13 @@ abstract class WpTesting_Doer_AbstractDoer
 
     public function __construct(WpTesting_WordPressFacade $wp)
     {
-        $this->wp = $wp;
-        $this->registerScripts();
+        $this->wp           = $wp;
+        $this->templateRoot = dirname(dirname($this->getClassFile())) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+    }
+
+    protected function getClassFile()
+    {
+        return __FILE__;
     }
 
     public function renderJsData()
@@ -69,6 +74,7 @@ abstract class WpTesting_Doer_AbstractDoer
 
     /**
      * Register common used scripts for future dependencies
+     * @return self
      */
     protected function registerScripts()
     {
@@ -84,12 +90,13 @@ abstract class WpTesting_Doer_AbstractDoer
             ->registerPluginScript('raphael-line-diagram', 'js/vendor/dmitrybaranovskiy/g.line.js', array('raphael-diagrams'), '0.51')
             ->registerPluginScript('raphael-scale', 'js/vendor/zevanrosser/scale.raphael.js', array('raphael'), '0.8')
         ;
+        return $this;
     }
 
     protected function output($__template, $__params = array())
     {
         if (substr($__template, -4) != '.php') {
-            $__template = dirname(dirname(__FILE__)) . '/Template/' . $__template . '.php';
+            $__template = $this->templateRoot . $__template . '.php';
         }
         extract($__params, EXTR_SKIP);
         include $__template;
