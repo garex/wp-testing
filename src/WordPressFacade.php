@@ -237,6 +237,72 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieve user info by user ID.
+     *
+     * @since 0.71
+     *
+     * @param int $userId User ID
+     * @return WP_User|bool WP_User object on success, false on failure.
+     */
+    public function getUserdata($userId)
+    {
+        return get_userdata($userId);
+    }
+
+    /**
+     * Retrieve the avatar for a user who provided a user ID or email address.
+     *
+     * @since 2.5.0
+     *
+     * @param int|string|object $idOrEmail A user ID,  email address, or comment object
+     * @param int $size Size of the avatar image
+     * @param string $default URL to a default image to use if no avatar is available
+     * @param string $alt Alternative text to use in image tag. Defaults to blank
+     * @return false|string `<img>` tag for the user's avatar.
+     */
+    function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
+    {
+        return get_avatar($idOrEmail, $size, $default, $alt);
+    }
+
+    /**
+     * Retrieve edit user link
+     *
+     * @since 3.5.0
+     *
+     * @param int $userId Optional. User ID. Defaults to the current user.
+     * @return string URL to edit user page or empty string.
+     */
+    public function getEditUserLink($userId = null)
+    {
+        if (function_exists('get_edit_user_link')) {
+            return get_edit_user_link($userId);
+        }
+
+        $currentUserId = $this->getCurrentUserId();
+        if (!$userId) {
+            $userId = $currentUserId;
+        }
+
+        if (empty($userId) || !current_user_can('edit_user', $userId)) {
+            return '';
+        }
+
+        $user = $this->getUserdata($userId);
+        if (!$user) {
+            return '';
+        }
+
+        if ($currentUserId == $user->ID) {
+            $link = get_edit_profile_url($user->ID);
+        } else {
+            $link = add_query_arg('user_id', $user->ID, self_admin_url('user-edit.php'));
+        }
+
+        return $this->applyFilters('get_edit_user_link', $link, $user->ID);
+    }
+
+    /**
      * The WordPress version string
      *
      * @return string
