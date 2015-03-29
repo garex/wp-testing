@@ -227,6 +227,16 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Get the current user's ID
+     *
+     * @return int The current user's ID or zero
+     */
+    public function getCurrentUserId()
+    {
+        return get_current_user_id();
+    }
+
+    /**
      * The WordPress version string
      *
      * @return string

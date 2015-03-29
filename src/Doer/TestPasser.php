@@ -73,6 +73,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 ->setIp($this->getClientIp())
                 ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE))
                 ->setUserAgent($this->getUserAgent())
+                ->setRespondentId($this->wp->getCurrentUserId())
             ;
 
             try {
