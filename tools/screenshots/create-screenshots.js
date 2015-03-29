@@ -134,7 +134,7 @@ var screenshots = [
     }, {
         title   : 'Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results')
+            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&paged=2')
         }
     }, {
         title   : 'Ready test on the home page',
@@ -143,7 +143,7 @@ var screenshots = [
                 this.clickLabel('log out', 'a')
             }).waitForUrl(/loggedout/)
 
-            casper.thenOpen('http://wpti.dev/')
+            casper.thenOpen('http://wpti.dev/page/2/')
         }
     }, {
         title   : 'The page with the description of the test, questions and answers',
@@ -157,6 +157,7 @@ var screenshots = [
         title   : 'The button is disabled until all questions are not answered',
         offset  : 7200,
         actions : function () {
+            casper.wait(400)
         }
     }, {
         title   : 'Get test results after all questions are answered',

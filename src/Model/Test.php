@@ -8,8 +8,21 @@
  * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
  * @method fTimestamp getModified() getModified() Gets the current value of modified
  * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method WpTesting_Model_Test setContent() setContent(string $content) Sets the value for content
  * @method string getContent() getContent() Gets the current value of content
  * @method string getStatus() getStatus() Gets the current value of status
+ * @method WpTesting_Model_Test setExcerpt() setExcerpt(string $excerpt) Sets the value for excerpt
+ * @method string getExcerpt() getExcerpt() Gets the current value of excerpt
+ * @method WpTesting_Model_Test setContentFiltered() setContentFiltered(string $contentFiltered) Sets the value for content filtered
+ * @method string getContentFiltered() getContentFiltered() Gets the current value of content filtered
+ * @method WpTesting_Model_Test setToPing() setToPing(string $toPing) Sets the value for URLs that should be pinged
+ * @method string getToPing() getToPing() Gets the current value for URLs that should be pinged
+ * @method WpTesting_Model_Test setPinged() setPinged(string $pinged) Sets the value for URLs that already pinged
+ * @method string getPinged() getPinged() Gets the current value for URLs that already pinged
+ * @method WpTesting_Model_Test setType() setType(string $type) Sets the value for type that should be wpt_test
+ * @method string getType() getType() Gets the current value for type
+ * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
+ * @method string getName() getName() Gets the current value for name (url unique part)
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 {
@@ -25,13 +38,23 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         'created'   => 'post_date',
         'modified'  => 'post_modified',
         'content'   => 'post_content',
+        'content_filtered' => 'post_content_filtered',
         'status'    => 'post_status',
+        'excerpt'   => 'post_excerpt',
+        'type'      => 'post_type',
+        'name'      => 'post_name',
     );
 
     /**
      * @var WpTesting_Model_Taxonomy[]
      */
     protected $taxonomies = null;
+
+    /**
+     * Used in addons when adding behaviours
+     * @var WpTesting_Model_Test
+     */
+    private $parent = null;
 
     public function __construct($key = null)
     {
@@ -93,7 +116,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $result       = $db->translatedQuery('
             SELECT
                 scale_id,
-                MIN(minimum_in_row) AS minimum_in_column,
+                SUM(minimum_in_row) AS minimum_in_column,
                 SUM(maximum_in_row) AS maximum_in_column,
                 SUM(sum_in_row)     AS sum_in_column
             FROM (
@@ -238,6 +261,38 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Adds new question associated to this test
+     * @param string $title
+     * @return WpTesting_Model_Test
+     */
+    public function addQuestion($title)
+    {
+        $question = new WpTesting_Model_Question();
+        $question->setTitle($title);
+        $this->associateWpTesting_Model_Questions($this->buildQuestions()->merge($question));
+        return $this;
+    }
+
+    public function associateScale(WpTesting_Model_Scale $scale)
+    {
+        return $this->associateAbstractTerm($scale);
+    }
+
+    public function associateGlobalAnswer(WpTesting_Model_GlobalAnswer $globalAnswer)
+    {
+        return $this->associateAbstractTerm($globalAnswer);
+    }
+
+    private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
+    {
+        $this->associateWpTesting_Model_Taxonomies(
+            $this->buildWpTesting_Model_Taxonomies()
+                ->merge($term->createTaxonomy())
+        );
+        return $this;
+    }
+
+    /**
      * Can respondent use this test to get results?
      *
      * Final test is test, that have scores.
@@ -250,7 +305,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function isFinal()
     {
         foreach ($this->buildScalesWithRange() as $scale) {
-            if ($scale->getMaximum()) {
+            if ($scale->getLength()) {
                 return true;
             }
         }
@@ -393,12 +448,53 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Saves all objects related to test.
+     *
+     * @throws fValidationException
+     * @return WpTesting_Model_Test
+     */
+    public function storeAll()
+    {
+        $this->wp->doAction('wp_testing_test_store_all_before', $this);
+
+        $this
+            ->populateAll()
+            ->store(true)
+            ->syncQuestionsAnswers()
+        ;
+
+        $this->wp->doAction('wp_testing_test_store_all_after', $this);
+
+        return $this;
+    }
+
+    /**
+     * Populates all related objects.
+     *
+     * @return WpTesting_Model_Test
+     */
+    public function populateAll()
+    {
+        $this->wp->doAction('wp_testing_test_populate_all_before', $this);
+
+        $_POST = $this->adaptForPopulate($_POST, $this->getId());
+        $this
+            ->populateQuestions(true)
+            ->populateFormulas()
+        ;
+        $this->wp->doAction('wp_testing_test_populate_all_after', $this);
+
+        return $this;
+    }
+
+    /**
      * Unpack request for subsequent population from it to ORM naming standards
      *
      * @param array $input
+     * @param int $testId
      * @return array
      */
-    public function adaptForPopulate($request)
+    public function adaptForPopulate($request, $testId)
     {
         $questionsPrefix = $this->getQuestionsPrefix();
         $answersPrefix   = $this->getAnswersPrefix();
@@ -450,13 +546,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
 
         foreach ($request['wpt_formula_source'] as $key => $value) {
             $key = json_decode(stripslashes($key), $isAssoc);
-            $request[$formulasPrefix . 'test_id']        [$key['i']] = $key['test_id'];
+            $request[$formulasPrefix . 'test_id']        [$key['i']] = $testId;
             $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
             $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
             $request[$formulasPrefix . 'formula_source'] [$key['i']] = $value;
         }
 
-        return $request;
+        return $this->wp->applyFilters('wp_testing_test_adapt_for_populate', $request, $testId, $this);
     }
 
     /**
@@ -466,9 +562,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function populateQuestions($isRecursive = false)
     {
         $this->populateWpTesting_Model_Questions($isRecursive);
-        $table     = fORM::tablize('WpTesting_Model_Question');
-        $questions =& $this->related_records[$table]['test_id']['record_set'];
-        $questions = $questions->filter(array('getTitle!=' => ''));
+        $table   = fORM::tablize('WpTesting_Model_Question');
+        $records =& $this->related_records[$table]['test_id']['record_set'];
+        $records = $records->filter(array('getTitle!=' => ''));
         return $this;
     }
 
@@ -517,6 +613,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
                 $answer->setQuestionId($question->getId());
                 $answer->setSort($globalAnswerSort[$answer->getGlobalAnswerId()]);
                 $answer->store();
+                $question->associateAnswers(array($answer));
             }
         }
     }
@@ -538,6 +635,20 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $post->$key = (string)$value;
         }
         return $post;
+    }
+
+    public function setParent(WpTesting_Model_Test $parent)
+    {
+        $this->parent = $parent;
+        return $this;
+    }
+
+    /**
+     * @return WpTesting_Model_Test
+     */
+    protected function me()
+    {
+        return is_null($this->parent) ? $this : $this->parent;
     }
 
     protected function configure()

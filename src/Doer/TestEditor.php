@@ -18,7 +18,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$this->isTestScreen($screen)) {
             return $this;
         }
-        $this->wp
+        $this->wp->doAction('wp_testing_editor_customize_ui_before');
+        $this->registerScripts()->wp
             ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
             ->enqueuePluginScript('wpt_test_edit_fix_styles',  'js/test-edit-fix-styles.js',        array('jquery'), false, true)
             ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array(), false, true)
@@ -47,6 +48,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         } else {
             $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), 10, 4);
         }
+        $this->wp->doAction('wp_testing_editor_customize_ui_after');
         return $this;
     }
 
@@ -298,13 +300,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
         }
 
-        $_POST = $test->adaptForPopulate($_POST);
-        $test->populateQuestions(true);
-        $test->populateFormulas();
-
         try {
-            $test->store(true);
-            $test->syncQuestionsAnswers();
+            $test->storeAll();
         } catch (fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
             $this->wp->dieMessage(

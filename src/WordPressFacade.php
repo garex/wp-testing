@@ -1,9 +1,10 @@
 <?php
+require_once dirname(__FILE__) . '/Addon/IWordPressFacade.php';
 
 /**
  * Facade into wordpress
  */
-class WpTesting_WordPressFacade
+class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 {
 
     /**
@@ -18,6 +19,17 @@ class WpTesting_WordPressFacade
     public function __construct($pluginFile)
     {
         $this->pluginFile = $pluginFile;
+    }
+
+    /**
+     * Creates
+     * @param string $pluginFile
+     * @return WpTesting_WordPressFacade
+     */
+    public function duplicate($pluginFile)
+    {
+        $class = get_class($this);
+        return new $class($pluginFile);
     }
 
     public function getDbHost()
@@ -212,6 +224,82 @@ class WpTesting_WordPressFacade
     public function updatePostMeta($postId, $key, $value, $previousValue = '')
     {
         return update_post_meta($postId, $key, $value, $previousValue);
+    }
+
+    /**
+     * Get the current user's ID
+     *
+     * @return int The current user's ID or zero
+     */
+    public function getCurrentUserId()
+    {
+        return get_current_user_id();
+    }
+
+    /**
+     * Retrieve user info by user ID.
+     *
+     * @since 0.71
+     *
+     * @param int $userId User ID
+     * @return WP_User|bool WP_User object on success, false on failure.
+     */
+    public function getUserdata($userId)
+    {
+        return get_userdata($userId);
+    }
+
+    /**
+     * Retrieve the avatar for a user who provided a user ID or email address.
+     *
+     * @since 2.5.0
+     *
+     * @param int|string|object $idOrEmail A user ID,  email address, or comment object
+     * @param int $size Size of the avatar image
+     * @param string $default URL to a default image to use if no avatar is available
+     * @param string $alt Alternative text to use in image tag. Defaults to blank
+     * @return false|string `<img>` tag for the user's avatar.
+     */
+    function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
+    {
+        return get_avatar($idOrEmail, $size, $default, $alt);
+    }
+
+    /**
+     * Retrieve edit user link
+     *
+     * @since 3.5.0
+     *
+     * @param int $userId Optional. User ID. Defaults to the current user.
+     * @return string URL to edit user page or empty string.
+     */
+    public function getEditUserLink($userId = null)
+    {
+        if (function_exists('get_edit_user_link')) {
+            return get_edit_user_link($userId);
+        }
+
+        $currentUserId = $this->getCurrentUserId();
+        if (!$userId) {
+            $userId = $currentUserId;
+        }
+
+        if (empty($userId) || !current_user_can('edit_user', $userId)) {
+            return '';
+        }
+
+        $user = $this->getUserdata($userId);
+        if (!$user) {
+            return '';
+        }
+
+        if ($currentUserId == $user->ID) {
+            $link = get_edit_profile_url($user->ID);
+        } else {
+            $link = add_query_arg('user_id', $user->ID, self_admin_url('user-edit.php'));
+        }
+
+        return $this->applyFilters('get_edit_user_link', $link, $user->ID);
     }
 
     /**
@@ -506,6 +594,26 @@ class WpTesting_WordPressFacade
     }
 
     /**
+     * Execute functions hooked on a specific action hook.
+     *
+     * This function invokes all functions attached to action hook `$tag`. It is
+     * possible to create new action hooks by simply calling this function,
+     * specifying the name of the new hook using the `$tag` parameter.
+     *
+     * @since 1.2.0
+     *
+     * @param string $tag The name of the action to be executed.
+     * @param mixed  $arg Optional. Additional arguments which are passed on to the
+     *                    functions hooked to the action. Default empty.
+     * @return null Will return null if $tag does not exist in $wp_filter array.
+     */
+    public function doAction($tag, $arg = '')
+    {
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('do_action', $argsPhp52Workaround);
+    }
+
+    /**
      * Retrieve the number times an action is fired.
      *
      * @package WordPress
@@ -577,6 +685,27 @@ class WpTesting_WordPressFacade
     {
         remove_filter($tag, $functionToRemove, $priority, $acceptedArgs);
         return $this;
+    }
+
+    /**
+     * Call the functions added to a filter hook.
+     *
+     * The callback functions attached to filter hook $tag are invoked by calling
+     * this function. This function can be used to create a new filter hook by
+     * simply calling this function with the name of the new hook specified using
+     * the $tag parameter.
+     *
+     * @since 0.71
+     *
+     * @param string $tag   The name of the filter hook.
+     * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
+     * @param mixed  $var   Additional variables passed to the functions hooked to `$tag`.
+     * @return mixed The filtered value after all hooked functions are applied to it.
+     */
+    public function applyFilters($tag, $value)
+    {
+        $argsPhp52Workaround = func_get_args();
+        return call_user_func_array('apply_filters', $argsPhp52Workaround);
     }
 
     /**

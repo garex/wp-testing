@@ -8,6 +8,7 @@
 /* @var $isFinal boolean */
 /* @var $isMultipleAnswers boolean */
 /* @var $submitButtonCaption string */
+/* @var $wp WpTesting_WordPressFacade */
 ?>
 <div class="wpt_test fill_form">
 
@@ -17,8 +18,10 @@
 
 <div class="content"><form method="post" id="wpt-test-form">
 
+<?php $wp->doAction('wp_testing_template_fill_form_questions_before') ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
     <?php $answerIndex = ($isMultipleAnswers) ? '' : $q ?>
+    <?php $wp->doAction('wp_testing_template_fill_form_question_before', $question, $q) ?>
     <div class="question">
 
         <div class="title">
@@ -44,8 +47,9 @@
     <?php endforeach ?>
 
     </div>
-
+    <?php $wp->doAction('wp_testing_template_fill_form_question_after', $question, $q) ?>
 <?php endforeach ?>
+<?php $wp->doAction('wp_testing_template_fill_form_questions_after') ?>
 
 <?php if($isFinal): ?>
     <p><input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" /></p>

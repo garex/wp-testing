@@ -2,6 +2,15 @@
 ## Changelog ##
 
 
+### 0.10 ###
+
+Save respondent in results and add addons base
+
+* Save respondent from logged in user
+* Add external addons base
+* Test minimum score error
+
+
 ### 0.9.5 ###
 
 Update locales, minor fixes and cleanup download file

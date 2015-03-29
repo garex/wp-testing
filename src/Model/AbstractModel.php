@@ -14,13 +14,21 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     /**
      * @var WpTesting_WordPressFacade
      */
-    private $wp = null;
+    protected $wp = null;
 
     public function populate($recursive = false)
     {
         parent::populate($recursive);
 
         return $this->stripValuesSlashes();
+    }
+
+    public function equals(WpTesting_Model_AbstractModel $object)
+    {
+        if (is_null($object)) {
+            return false;
+        }
+        return ($this->get('id') == $object->get('id'));
     }
 
     /**
@@ -94,7 +102,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     {
         $row = $result->current();
         foreach ($row as $key => $value) {
-            $row[strtolower($key)] = $value;
+            $row[$key] = $value;
         }
         return parent::loadFromResult(new ArrayIterator(array($row)), $ignore_identity_map);
     }

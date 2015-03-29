@@ -109,13 +109,17 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function getScoreByScale(WpTesting_Model_Scale $scale)
     {
-        $result = $this->buildScoresOnce()->filter(array(
+        $scores = $this->buildScoresOnce();
+        $result = $scores->filter(array(
             'getScaleId='  => $scale->getId(),
         ));
         if ($result->count()) {
             return $result->getRecord(0);
         }
-        return new WpTesting_Model_Score();
+        $score = new WpTesting_Model_Score();
+        $score->setScaleId($scale->getId());
+        $this->associateWpTesting_Model_Scores($scores->merge($score));
+        return $score;
     }
 
     /**

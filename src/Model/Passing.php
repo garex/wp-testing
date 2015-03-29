@@ -15,6 +15,7 @@
  * @method WpTesting_Model_Passing setDeviceUuid() setDeviceUuid(string $uuid) Sets the value for device's uuid
  * @method integer getUserAgent() getUserAgent() Gets the current value of user agent
  * @method WpTesting_Model_Passing setUserAgent() setUserAgent(string $userAgent) Sets the value for user agent
+ * @method integer getRespondentId() getRespondentId() Gets the current value of respondent id
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
 {
@@ -68,6 +69,20 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         $hasQueryString = !is_null(parse_url($postLink, PHP_URL_QUERY));
         $postLink      .= ($hasQueryString) ? '&wpt_passing_slug=' . $slug : '/' . $slug . '/';
         return $postLink;
+    }
+
+    /**
+     * Sets the value for respondent id
+     *
+     * @param integer $respondentId
+     * @return WpTesting_Model_Passing
+     */
+    public function  setRespondentId($respondentId)
+    {
+        if (empty($respondentId)) {
+            $respondentId = null;
+        }
+        return parent::set('respondent_id', $respondentId);
     }
 
     /**
