@@ -22,14 +22,15 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
     public function get_columns()
     {
         return array(
-            'test_title'  => __('Test', 'wp-testing'),
-            'results'     => __('Results', 'wp-testing'),
-            'scales'      => __('Scales', 'wp-testing'),
-            'created'     => $this->wp->translate('Date'),
             'actions'     => $this->wp->translate('Actions'),
+            'test_title'  => __('Test', 'wp-testing'),
+            'scales'      => __('Scales', 'wp-testing'),
+            'results'     => __('Results', 'wp-testing'),
+            'user'        => $this->wp->translate('Username'),
             'device_uuid' => __('Device', 'wp-testing'),
             'ip'          => __('IP address', 'wp-testing'),
             'user_agent'  => __('Browser', 'wp-testing'),
+            'created'     => $this->wp->translate('Date'),
         );
     }
 
@@ -110,10 +111,18 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
 
                 return (count($links)) ? implode(', ', $links) : '-';
 
+            case 'user':
+                $user = $this->wp->getUserdata($item->getRespondentId());
+                if (!$user) {
+                    return '-';
+                }
+                $avatar   = $this->wp->getAvatar($user->ID, 32);
+                $editLink = $this->wp->getEditUserLink($user->ID);
+                return "$avatar <strong><a href=\"$editLink\">$user->user_login</a></strong>";
 
             case 'actions':
                 $actions = array();
-                $actions[] = $this->renderLink(
+                $actions[] = $item->getId() . '. ' . $this->renderLink(
                     $item->getUrl(),
                     $this->wp->translate('View')
                 );

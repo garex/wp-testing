@@ -127,3 +127,9 @@ ul.categorychecklist.ui-sortable li.wpt-sortable.wpt-sortable-container {
 ul.categorychecklist.ui-sortable li.sortable-placeholder {
     background: none;
 }
+
+.wp-list-table.passings .column-user img {
+    float: left;
+    margin-top: 1px;
+    margin-right: 10px;
+}

@@ -18,6 +18,7 @@ describe('Respondents results', function() {
 
         casper.waitForUrl(/respondents/, function() {
             'Respondents'.should.be.inTitle
+            'Fatal'.should.not.be.textInDOM
         })
     })
 
@@ -40,6 +41,12 @@ describe('Respondents results', function() {
             'Are You Hot or Not?!'.should.be.textInDom
             'Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)'.should.be.textInDom
             'Simple Test With Scores'.should.not.be.textInDom
+        })
+    })
+
+    it('should have usernames attached to results', function() {
+        casper.then(function() {
+            "document.querySelectorAll('.column-user strong > a').length".should.evaluate.to.be.at.least(2)
         })
     })
 
