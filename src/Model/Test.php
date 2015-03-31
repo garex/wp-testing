@@ -500,7 +500,6 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         $answersPrefix   = $this->getAnswersPrefix();
         $scoresPrefix    = $this->getScoresPrefix();
         $formulasPrefix  = $this->getFormulasPrefix();
-        $isAssoc         = true;
         $request        += array(
             'wpt_question_title'              => array(),
             'wpt_answer_title'                => array(),
@@ -510,19 +509,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         );
 
         foreach ($request['wpt_question_title'] as $key => $value) {
-            $key = json_decode(stripslashes($key), $isAssoc);
+            $key = $this->decodeSafeUriValue($key);
             $request[$questionsPrefix . 'question_id']    [$key['q']] = $key['id'];
             $request[$questionsPrefix . 'question_title'] [$key['q']] = $value;
         }
 
         foreach ($request['wpt_answer_title'] as $key => $value) {
-            $key = json_decode(stripslashes($key), $isAssoc);
+            $key = $this->decodeSafeUriValue($key);
             $request[$answersPrefix . 'answer_id']    [$key['q']][$key['a']] = $key['id'];
             $request[$answersPrefix . 'answer_title'] [$key['q']][$key['a']] = $value;
         }
 
         foreach ($request['wpt_question_individual_answers'] as $key => $value) {
-            $key = json_decode(stripslashes($key), $isAssoc);
+            $key = $this->decodeSafeUriValue($key);
 
             $value = trim($value);
             if ($value == '') {
@@ -538,14 +537,14 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         }
 
         foreach ($request['wpt_score_value'] as $key => $value) {
-            $key = json_decode(stripslashes($key), $isAssoc);
+            $key = $this->decodeSafeUriValue($key);
             $request[$scoresPrefix . 'answer_id']   [$key['q']][$key['a']][$key['s']] = $key['answer_id'];
             $request[$scoresPrefix . 'scale_id']    [$key['q']][$key['a']][$key['s']] = $key['scale_id'];
             $request[$scoresPrefix . 'score_value'] [$key['q']][$key['a']][$key['s']] = $value;
         }
 
         foreach ($request['wpt_formula_source'] as $key => $value) {
-            $key = json_decode(stripslashes($key), $isAssoc);
+            $key = $this->decodeSafeUriValue($key);
             $request[$formulasPrefix . 'test_id']        [$key['i']] = $testId;
             $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
             $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
