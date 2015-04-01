@@ -8,11 +8,11 @@
         <td class="wpt_formula">
             <?php $formula = $result->getFormula() ?>
             <input type="text"
-                name='wpt_formula_source[<?php echo json_encode(array(
+                name="wpt_formula_source[<?php echo $formula->encodeSafeUriValue(array(
                     'i'          => $r,
                     'formula_id' => $formula->getId(),
                     'result_id'  => $formula->getResultId(),
-                ))  ?>]'
+                ))  ?>]"
                 id="wpt_formula_source_<?php echo $r ?>"
                 value="<?php echo htmlspecialchars($formula->getSource()) ?>" />
         </td>

@@ -83,6 +83,7 @@ abstract class WpTesting_Doer_AbstractDoer
             ->registerPluginScript('lodash-source', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
             ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.no-conflict.js', array('lodash-source'))
             ->registerPluginScript('npm-stub', 'js/vendor/npm/stub.js', array(), '1.0')
+            ->registerPluginScript('base64', 'js/vendor/dankogai/base64.min.js', array(), '2.1.7')
 
             // Vector graphics for diagramming
             ->registerPluginScript('raphael', 'js/vendor/dmitrybaranovskiy/raphael-min.js', array(), '2.0.2')

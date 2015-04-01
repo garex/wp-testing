@@ -105,10 +105,10 @@
         </th>
         <td class="wpt_title bar" colspan="<?php echo count($scales) ?>">
             <input type="text"
-                name='wpt_question_title[<?php echo json_encode(array(
+                name="wpt_question_title[<?php echo $question->encodeSafeUriValue(array(
                     'q'  => $q,
                     'id' => $question->getId(),
-                ))  ?>]'
+                )) ?>]"
                 id="wpt_question_title_<?php echo $q ?>"
                 value="<?php echo htmlspecialchars($question->getTitle()) ?>" />
         </td>
@@ -119,11 +119,11 @@
             <td class="wpt_answer subtitle answer-<?php echo $answer->getIndividuality() ?>">
                 <input type="text"
                     placeholder="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>"
-                    name='wpt_answer_title[<?php echo json_encode(array(
+                    name="wpt_answer_title[<?php echo $answer->encodeSafeUriValue(array(
                         'q'  => $q,
                         'a'  => $a,
                         'id' => $answer->getId(),
-                    ))  ?>]'
+                    )) ?>]"
                     id="wpt_answer_title_<?php echo $q ?>_<?php echo $a ?>"
                     value="<?php echo htmlspecialchars($answer->getIndividualTitle()) ?>"
                     title="<?php echo htmlspecialchars($answer->getGlobalTitle()) ?>" />
@@ -133,13 +133,13 @@
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">
                 <input type="text"
                     placeholder="<?php echo htmlspecialchars($scale->getAbbr()) ?>"
-                    name='wpt_score_value[<?php echo json_encode(array(
+                    name="wpt_score_value[<?php echo $scale->encodeSafeUriValue(array(
                         'q'         => $q,
                         'a'         => $a,
                         's'         => $scoreIndex,
                         'answer_id' => $answer->getId(),
                         'scale_id'  => $scale->getId(),
-                    ))  ?>]'
+                    )) ?>]"
                     data-question-number="<?php echo $q+1 ?>"
                     class="quick-score-<?php echo $scale->getId() ?>-<?php echo $answer->getGlobalAnswerId() ?> question-<?php echo $q+1 ?>"
                     id="wpt_score_value_<?php echo $q ?>_<?php echo $scoreIndex ?>"
@@ -158,10 +158,10 @@
             <div class="wp-hidden-child">
                 <textarea
                     placeholder="<?php echo __('Add here your individual answers as text; after test saving they will be extracted and created. Numbers and other indexes will be stripped automatically.', 'wp-testing') ?>"
-                    name='wpt_question_individual_answers[<?php echo json_encode(array(
+                    name="wpt_question_individual_answers[<?php echo $question->encodeSafeUriValue(array(
                         'q'  => $q,
                         'id' => $question->getId(),
-                    ))  ?>]'
+                    )) ?>]"
                     id="wpt-add-individual-answers-to-question-<?php echo $q ?>"
                     rows="5" cols="120"></textarea>
             </div>

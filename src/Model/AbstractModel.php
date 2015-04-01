@@ -23,6 +23,31 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->stripValuesSlashes();
     }
 
+    /**
+     * Encode complex value that is safe to pass as a part of URI
+     *
+     * @param mixed $value
+     * @return string
+     */
+    public function encodeSafeUriValue($value)
+    {
+        return strtr(base64_encode(json_encode($value)), '+/', '-_');
+    }
+
+    /**
+     * Decode value, encoded by encodeSafeUriValue
+     *
+     * @see WpTesting_Model_AbstractModel::encodeSafeUriValue
+     *
+     * @param string $encodedValue
+     * @param string $isConvertIntoAssociativeArray
+     * @return array|object
+     */
+    public function decodeSafeUriValue($encodedValue, $isConvertIntoAssociativeArray = true)
+    {
+        return json_decode(base64_decode(strtr($encodedValue, '-_', '+/')), $isConvertIntoAssociativeArray);
+    }
+
     public function equals(WpTesting_Model_AbstractModel $object)
     {
         if (is_null($object)) {
