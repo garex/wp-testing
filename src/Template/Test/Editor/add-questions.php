@@ -1,3 +1,4 @@
+<?php /* @var $test WpTesting_Model_Test */ ?>
 <div id="wpt_quick_fill_questions" class="hide-if-no-js wp-hidden-children">
 
 <h4>
@@ -18,10 +19,10 @@
             *
         </th>
         <td class="wpt_title">
-            <input type="text" name='wpt_question_title[<?php echo json_encode(array(
+            <input type="text" name="wpt_question_title[<?php echo $test->encodeSafeUriValue(array(
                 'q'  => $startFrom + $q,
                 'id' => '',
-            ))  ?>]' id="wpt_question_title_<?php echo $startFrom + $q ?>" />
+            )) ?>]" id="wpt_question_title_<?php echo $startFrom + $q ?>" />
         </td>
     </tr>
 <?php endforeach ?>

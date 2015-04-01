@@ -2,6 +2,19 @@
 ## Changelog ##
 
 
+### 0.10.1 ###
+
+Fix incompatibility with themes/plugins that changes post form attributes
+
+* Use more robust way to pack metadata in edit form fields
+* All these dances are to minify fields numbers
+
+Upgrade notice:
+
+* You shouldn't upgrade to this version if all is working
+* Only if it was working, then you install something (another plugin/theme) and all was broken 
+
+
 ### 0.10 ###
 
 Save respondent in results and add addons base
