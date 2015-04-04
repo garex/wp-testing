@@ -288,6 +288,17 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * Checks whether queried object type same as passed
+     * @param string $type
+     * @return boolean
+     */
+    protected function isPostType($type)
+    {
+        $object = $this->wp->getQuery()->get_queried_object();
+        return (is_object($object) && !empty($object->post_type) && $object->post_type == $type);
+    }
+
+    /**
      * @param array $input
      * @param string $sourceKey
      * @param string $destinationKey
