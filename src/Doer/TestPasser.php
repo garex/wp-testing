@@ -129,8 +129,9 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                     )
                 );
             }
-            $this->wp
-                ->enqueuePluginScript('wpt_render_text_with_more', 'js/render-text-with-more.js', array('detect-javascript', 'jquery'), false, true)
+            $this
+                ->enqueueScript('render-text-with-more', array('detect-javascript', 'jquery'))
+                ->enqueueScript('test-pass-get-results', array('jquery'))
             ;
             if ($this->test->isShowScalesDiagram()) {
                 $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());
@@ -138,24 +139,20 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer implements W
                 $this
                     ->addJsData('warningIncompatibleBrowser', $sorryBrowser)
                     ->addJsData('scales', $scales)
-                ;
-                $this->wp
-                    ->enqueuePluginScript('wpt_line_diagram', 'js/line-diagram.js', array('jquery', 'raphael-scale', 'raphael-line-diagram'), false, true)
+                    ->enqueueScript('line-diagram', array('jquery', 'raphael-scale', 'raphael-line-diagram'))
                 ;
             }
         } elseif (self::ACTION_FILL_FORM == $action) {
-            $this->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'));
+            $this
+                ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
+                ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie'))
+            ;
             $this->wp
-                ->enqueuePluginScript('pnegri_uuid',      'vendor/pnegri/uuid-js/lib/uuid.js',         array('npm-stub'), false, true)
-                ->enqueuePluginScript('samyk_swfobject',  'vendor/samyk/evercookie/js/swfobject-2.2.min.js', array(),     false, true)
-                ->enqueuePluginScript('samyk_evercookie', 'vendor/samyk/evercookie/js/evercookie.js',  array(),           false, true)
                 ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
             ;
         }
 
-        $this->wp
-            ->enqueuePluginStyle('wpt_public', 'css/public.css')
-            ->enqueuePluginScript('wpt_test_pass_' . $action, 'js/test-pass-' . $action . '.js', array('jquery', 'lodash'), false, true)
+        $this->enqueueStyle('public')->wp
             ->addFilter('the_content', array($this, 'renderTestContent'))
         ;
         return $this;
