@@ -3,12 +3,7 @@
 class WpTesting_Doer_TestPasser_GetResults extends WpTesting_Doer_TestPasser_Action implements WpTesting_Doer_IRenderer
 {
 
-    /**
-     * @var WpTesting_Model_Passing
-     */
-    private $passing = null;
-
-    public function beforeRender(WpTesting_Model_Test $test)
+    public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
     {
         $this->test = $test;
         try {

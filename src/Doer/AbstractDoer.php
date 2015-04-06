@@ -170,9 +170,9 @@ abstract class WpTesting_Doer_AbstractDoer
         return fRequest::isPost();
     }
 
-    protected function getRequestValue($key)
+    protected function getRequestValue($key, $castTo = null)
     {
-        return fRequest::get($key);
+        return fRequest::get($key, $castTo);
     }
 
     /**

@@ -9,9 +9,17 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
      */
     private $titleSeparator = '-';
 
-    public function beforeRender(WpTesting_Model_Test $test)
+    public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
     {
-        $this->test = $test;
+        $this->test    = $test;
+        $this->passing = $passing;
+
+        $stepStrategy  = $this->wp->applyFilters(
+            'wp_testing_passer_step_strategy',
+            new WpTesting_Component_StepStrategy_AllInOne($test, $passing->buildAnswers())
+        );
+        $this->passing->setStepStrategy($stepStrategy);
+
         $this
             ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
             ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie'))
@@ -38,18 +46,26 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
         ));
 
+        $step = $this->passing->getCurrentStep();
+        $submitButtonCaption = current(array_filter(array(
+            $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
+            __('Get Test Results', 'wp-testing'),
+        )));
+        if (!$step->isLast()) {
+            $submitButtonCaption = __('Next', 'wp-testing');
+        }
         $params = array(
             'wp'           => $this->wp,
+            'hiddens'      => $this->generateHiddens($step),
             'answerIdName' => fOrm::tablize('WpTesting_Model_Answer') . '::answer_id',
             'content'      => $content,
             'test'         => $this->test,
-            'questions'    => $this->test->buildQuestions(),
+            'questions'    => $step->getQuestions(),
+            'isShowContent'=> $step->isFirst(),
+            'subTitle'     => $step->getTitle(),
             'isFinal'      => $this->test->isFinal(),
             'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
-            'submitButtonCaption'  => current(array_filter(array(
-                $this->wp->getCurrentPostMeta('wpt_test_page_submit_button_caption'),
-                __('Get Test Results', 'wp-testing'),
-            ))),
+            'submitButtonCaption'  => $submitButtonCaption,
         );
 
         return preg_replace_callback(
@@ -57,6 +73,28 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             array($this, 'stripNewLines'),
             $this->render($template, $params)
         );
+    }
+
+    private function generateHiddens(WpTesting_Model_Step $step)
+    {
+        $hiddens = array();
+        $hiddens['passer_action'] = ($step->isLast())
+            ? WpTesting_Doer_TestPasser::ACTION_PROCESS_FORM
+            : WpTesting_Doer_TestPasser::ACTION_FILL_FORM;
+        if (!fRequest::isPost()) {
+            return $hiddens;
+        }
+        unset($_POST['passer_action']);
+        foreach ($_POST as $key => $value) {
+            if (!is_array($value)) {
+                $hiddens[$key] = $value;
+                continue;
+            }
+            foreach($value as $index => $subValue) {
+                $hiddens["{$key}[$index]"] = $subValue;
+            }
+        }
+        return $hiddens;
     }
 
     private function stripNewLines($matches)

@@ -3,11 +3,11 @@
 class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Action
 {
 
-    public function beforeRender(WpTesting_Model_Test $test)
+    public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
     {
-        $this->test = $test;
-        $passing = new WpTesting_Model_Passing();
-        $passing->setWp($this->wp)->populate($this->test)
+        $this->test    = $test;
+        $this->passing = $passing;
+        $passing
             ->setIp($this->getClientIp())
             ->setDeviceUuid($this->extractUuid('device_uuid', $_COOKIE))
             ->setUserAgent($this->getUserAgent())

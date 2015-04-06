@@ -24,6 +24,11 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     private $test = null;
 
     /**
+     * @var WpTesting_Model_Passing
+     */
+    private $passing = null;
+
+    /**
      * @var WpTesting_Doer_TestPasser_Action
      */
     private $actionProcessor = null;
@@ -48,7 +53,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         }
 
         $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
-        $this->createActionProcessor($action)->beforeRender($this->test);
+        $this->createActionProcessor($action)->beforeRender($this->test, $this->passing);
         $this->enqueueStyle('public');
         $this->wp->addFilter('the_content', array($this, 'renderTestContent'));
         return $this;
@@ -113,8 +118,13 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         if ($this->wp->getQuery()->get('wpt_passing_slug')) {
             return self::ACTION_GET_RESULTS;
         }
+        $this->passing = new WpTesting_Model_Passing();
+        $this->passing->setWp($this->wp);
         if ($this->isPost()) {
-            return self::ACTION_PROCESS_FORM;
+            $this->passing->populate($this->test);
+            if (self::ACTION_PROCESS_FORM == $this->getRequestValue('passer_action')) {
+                return self::ACTION_PROCESS_FORM;
+            }
         }
         return self::ACTION_FILL_FORM;
     }
