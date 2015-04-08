@@ -14,9 +14,15 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         $this->test    = $test;
         $this->passing = $passing;
 
+        if ($this->test->isOneQuestionPerStep()) {
+            $stepStrategy  = new WpTesting_Component_StepStrategy_OneToOne($test, $passing->buildAnswers());
+        } else {
+            $stepStrategy  = new WpTesting_Component_StepStrategy_AllInOne($test, $passing->buildAnswers());
+        }
+
         $stepStrategy  = $this->wp->applyFilters(
             'wp_testing_passer_step_strategy',
-            new WpTesting_Component_StepStrategy_AllInOne($test, $passing->buildAnswers())
+            $stepStrategy
         );
         $this->passing->setStepStrategy($stepStrategy);
 

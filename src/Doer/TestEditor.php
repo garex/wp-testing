@@ -179,6 +179,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 'default' => '1',
                 'title'   => __('Show in title percentage of questions that respondent already answered', 'wp-testing'),
             ),
+            'wpt_test_page_one_question_per_step' => array(
+                'default' => '0',
+                'title'   => __('Show one question per page', 'wp-testing'),
+            ),
             'wpt_test_page_multiple_answers' => array(
                 'default' => '0',
                 'title'   => __('Allow multiple answers per question', 'wp-testing'),
@@ -283,6 +287,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
             'wpt_test_page_show_progress_meter',
+            'wpt_test_page_one_question_per_step',
             'wpt_test_page_multiple_answers',
             'wpt_result_page_show_scales_diagram',
             'wpt_result_page_show_scales',
