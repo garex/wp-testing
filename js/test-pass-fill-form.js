@@ -58,9 +58,10 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function ($) {
     var form               = $('#wpt-test-form'),
-        questionsAnswered  = 0,
+        questionsAnswered  = Wpt.questionsAnswered,
         questions          = form.find('.question'),
-        questionsTotal     = questions.length;
+        questionsMinFilled = questionsAnswered + questions.length,
+        questionsTotal     = Wpt.questionsTotal;
 
     var answersInputs = form.find('input:radio,input:checkbox');
     form.trigger('init_answers.wpt', [answersInputs])
@@ -83,7 +84,7 @@ jQuery(document).ready(function ($) {
                     if (isAllCheckboxesEmpty) {
                         question.data('isAnswered', false);
                         questionsAnswered--;
-                        form.trigger('question_unanswered_initially.wpt', [question, questionsAnswered, questionsTotal]);
+                        form.trigger('question_unanswered_initially.wpt', [question, questionsAnswered, questionsTotal, questionsMinFilled]);
                         form.trigger('question_unanswered.wpt', [question, answer, placeholder]);
                     }
                     return;
@@ -91,17 +92,17 @@ jQuery(document).ready(function ($) {
                 if (!question.data('isAnswered')) {
                     question.data('isAnswered', true);
                     questionsAnswered++;
-                    form.trigger('question_answered_initially.wpt', [question, questionsAnswered, questionsTotal]);
+                    form.trigger('question_answered_initially.wpt', [question, questionsAnswered, questionsTotal, questionsMinFilled]);
                 }
                 form.trigger('question_answered.wpt', [question, answer, placeholder]);
             });
         });
     });
 
-    function calculateAnswersPercentage(event, question, answered, total) {
+    function calculateAnswersPercentage(event, question, answered, total, minFilled) {
         var percent = Math.round(100 * (answered / total));
         $(document).trigger('percentage_change.wpt', [percent]);
-        if (answered == total) {
+        if (answered == minFilled) {
             form.trigger('test_filled.wpt');
         } else {
             form.trigger('test_unfilled.wpt');
@@ -110,5 +111,8 @@ jQuery(document).ready(function ($) {
     form.bind('question_answered_initially.wpt',   calculateAnswersPercentage)
         .bind('question_unanswered_initially.wpt', calculateAnswersPercentage);
 
+    if (questionsAnswered > 0) {
+        calculateAnswersPercentage({}, form.find('.question:first'), questionsAnswered, questionsTotal, questionsMinFilled);
+    }
     answersInputs.filter(':checked').change();
 });

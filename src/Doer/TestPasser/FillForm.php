@@ -50,6 +50,8 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'isShowProgressMeter'  => $this->test->isShowProgressMeter(),
             'titleSeparator'       => $this->titleSeparator,
             'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
+            'questionsAnswered'    => $this->passing->getAnsweredQuestionsCount(),
+            'questionsTotal'       => $this->passing->getQuestionsCount(),
         ));
 
         $step = $this->passing->getCurrentStep();

@@ -70,6 +70,16 @@ abstract class WpTesting_Component_StepStrategy
         return $this->fillSteps()->setupTotalsAndNumbers()->currentStep;
     }
 
+    public function getQuestionsCount()
+    {
+        return $this->test->buildQuestions()->count();
+    }
+
+    public function getAnsweredQuestionsCount()
+    {
+        return $this->answeredQuestions->count();
+    }
+
     /**
      * @param WpTesting_Model_Step $step
      * @param string $isCurrent
