@@ -49,44 +49,29 @@ before_script:
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - npm install
   - cd $TRAVIS_BUILD_DIR
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/:$TRAVIS_BUILD_DIR/tests/integration-environment/
 
 script:
   - vendor/bin/phpunit-php52
-  - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - mocha-casperjs --grep=Plugin_activation --timeout=360000
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Answers1
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Answers2
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Diagrams
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Multiple
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Page
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Questions
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Quick
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Results
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Scale_Aggregates
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Scores
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Shortcode
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Taxonomies
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Test
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Passings
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Respondents
-  - $TRAVIS_BUILD_DIR/tests/integration-environment/restart.sh
-  - mocha-casperjs --grep=Plugin_deactivation
+  - cd $TRAVIS_BUILD_DIR/tests/mocha/test
+  - mocha-casperjs --timeout=360000 0-plugin.js
+  - restart.sh && mocha-casperjs answers-and-scales-1.js
+  - restart.sh && mocha-casperjs answers-and-scales-2.js
+  - restart.sh && mocha-casperjs diagrams.js
+  - restart.sh && mocha-casperjs multiple-answers.js
+  - restart.sh && mocha-casperjs page.js
+  - restart.sh && mocha-casperjs questions.js
+  - restart.sh && mocha-casperjs quick-edit.js
+  - restart.sh && mocha-casperjs results-with-formulas.js
+  - restart.sh && mocha-casperjs scale-aggregates.js
+  - restart.sh && mocha-casperjs scores.js
+  - restart.sh && mocha-casperjs shortcode.js
+  - restart.sh && mocha-casperjs steps.js
+  - restart.sh && mocha-casperjs taxonomies.js
+  - restart.sh && mocha-casperjs test.js
+  - restart.sh && mocha-casperjs y-passing.js
+  - restart.sh && mocha-casperjs y-respondents-results.js
+  - restart.sh && mocha-casperjs z-plugin.js
 
 after_failure:
   - sudo free -ltm
