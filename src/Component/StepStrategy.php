@@ -32,14 +32,18 @@ abstract class WpTesting_Component_StepStrategy
     /**
      * @var WpTesting_Model_Step
      */
-    private $currentStep;
+    private $currentStep = null;
+
+    /**
+     * @var boolean
+     */
+    private $isShowStepsCounter = false;
 
     public function __construct(WpTesting_Model_Test $test = null, fRecordSet $answeredQuestions = null)
     {
         $this->test              = $test;
         $this->answeredQuestions = $answeredQuestions;
         $emptyQuestions          = fRecordSet::buildFromArray('WpTesting_Model_Question', array());
-        $this->currentStep       = new WpTesting_Model_Step('', $emptyQuestions, 1, true, true);
     }
 
     /**
@@ -67,7 +71,29 @@ abstract class WpTesting_Component_StepStrategy
      */
     public function getCurrentStep()
     {
-        return $this->fillSteps()->setupTotalsAndNumbers()->currentStep;
+        if (!is_null($this->currentStep)) {
+            return $this->currentStep;
+        }
+        $this->fillSteps()->setupTotalsAndNumbers();
+        if (is_null($this->currentStep)) {
+            $this->currentStep = new WpTesting_Model_Step('', $emptyQuestions, 1, true, true);
+        }
+        return $this->currentStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStepsCounter()
+    {
+        if (!$this->isShowStepsCounter) {
+            return '';
+        }
+        $step = $this->getCurrentStep();
+        if ($step->isLast()) {
+            return '';
+        }
+        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $step->getNumber(), $step->getTotal());
     }
 
     public function getQuestionsCount()
@@ -91,6 +117,12 @@ abstract class WpTesting_Component_StepStrategy
         if ($isCurrent) {
             $this->currentStep = $step;
         }
+        return $this;
+    }
+
+    protected function enableStepsCounter()
+    {
+        $this->isShowStepsCounter = true;
         return $this;
     }
 

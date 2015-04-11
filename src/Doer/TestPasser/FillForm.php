@@ -74,6 +74,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'isFinal'      => $this->test->isFinal(),
             'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
             'submitButtonCaption'  => $submitButtonCaption,
+            'stepsCounter' => $this->passing->getStepsCounter(),
         );
 
         return preg_replace_callback(

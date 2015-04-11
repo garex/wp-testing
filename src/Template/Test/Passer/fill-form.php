@@ -10,6 +10,7 @@
 /* @var $isFinal boolean */
 /* @var $isMultipleAnswers boolean */
 /* @var $submitButtonCaption string */
+/* @var $stepsCounter string */
 /* @var $wp WpTesting_WordPressFacade */
 /* @var $hiddens array */
 ?>
@@ -57,7 +58,10 @@
 <?php $wp->doAction('wp_testing_template_fill_form_questions_after') ?>
 
 <?php if($isFinal): ?>
-    <p><input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" /></p>
+    <p>
+        <input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" />
+        <?php if($stepsCounter): ?><span class="steps-counter"><?php echo $stepsCounter ?></span><?php endif ?>
+    </p>
 <?php else: ?>
     <div class="wpt_warning">
         <h4><?php echo __('Test is under construction', 'wp-testing') ?></h4>

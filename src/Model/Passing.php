@@ -115,6 +115,14 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return string
+     */
+    public function getStepsCounter()
+    {
+        return $this->stepStrategy->getStepsCounter();
+    }
+
+    /**
      * @return integer
      */
     public function getQuestionsCount()
