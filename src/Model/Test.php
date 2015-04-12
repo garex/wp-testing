@@ -357,6 +357,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         return $this->isOptionEnabled('wpt_result_page_sort_scales_by_score');
     }
 
+    public function isOneQuestionPerStep()
+    {
+        return $this->isOptionEnabled('wpt_test_page_one_question_per_step');
+    }
+
     protected function isOptionEnabled($key)
     {
         return (1 == $this->getWp()->getPostMeta($this->getId(), $key, true));

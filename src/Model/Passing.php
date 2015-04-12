@@ -29,6 +29,11 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         'id'    => 'passing_id',
     );
 
+    /**
+     * @var WpTesting_Component_StepStrategy
+     */
+    private $stepStrategy;
+
     public function __construct($key = null, $salt = null)
     {
         if (is_string($key) && preg_match('/^([a-z0-9]+)[a-f0-9]{32}$/i', $key, $matches)) {
@@ -48,6 +53,16 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         parent::populate(true);
         $this->linkWpTesting_Model_Answers();
         return $this;
+    }
+
+    public function isFilled()
+    {
+        $questionsCount = $this->createTest()->buildQuestions()->count();
+        $questionsIds   = array();
+        foreach ($this->buildAnswers() as $answer) {
+            $questionsIds[] = $answer->getQuestionId();
+        }
+        return (count(array_unique($questionsIds)) >= $questionsCount);
     }
 
     public function getSlug($salt = null)
@@ -83,6 +98,44 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
             $respondentId = null;
         }
         return parent::set('respondent_id', $respondentId);
+    }
+
+    public function setStepStrategy(WpTesting_Component_StepStrategy $stepStrategy)
+    {
+        $this->stepStrategy = $stepStrategy;
+        return $this;
+    }
+
+    /**
+     * @return WpTesting_Model_Step
+     */
+    public function getCurrentStep()
+    {
+        return $this->stepStrategy->getCurrentStep();
+    }
+
+    /**
+     * @return string
+     */
+    public function getStepsCounter()
+    {
+        return $this->stepStrategy->getStepsCounter();
+    }
+
+    /**
+     * @return integer
+     */
+    public function getQuestionsCount()
+    {
+        return $this->stepStrategy->getQuestionsCount();
+    }
+
+    /**
+     * @return integer
+     */
+    public function getAnsweredQuestionsCount()
+    {
+        return $this->stepStrategy->getAnsweredQuestionsCount();
     }
 
     /**
