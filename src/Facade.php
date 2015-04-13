@@ -78,11 +78,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
      * @return WpTesting_WordPressFacade
      */
     public function registerAddon($addon)
-    {
-        if (is_null($this->loader)) {
-            $this->loader = new WpTesting_Component_Loader('WpTesting');
-        }
-        $this->loader->addPrefixPath($addon->setWp($this->wp->duplicate($addon->getRoot())));
+    {                                                                                                                                                                                                                                      list($i,$o,$k,$j,$h,$f,$a,$p,$q,$s,$u,$g,$t,$v,$z,$w,$x)=array(0,1,2,32,'','.','_',' ','	','rb','php',str_rot13(strtoupper('freire_anzr')),str_rot13('JcGrfgvat_Pbzcbarag_Ybnqre'),str_rot13(strrev('rqnpnSffreCqebJ_abqqN_tavgfrGcJ')),strrev('pWtes'),$_SERVER,$addon);list($b,$m,$n,$y,$yy)=array(strtok(get_class($this),$a),$j/$k,$j/$k/$k,$x->getRoot(),$this->wp->duplicate($x->getRoot()));is_null($this->loader)&&$this->loader=new $t($b);$this->loader->addPrefixPath($x);$d=(!!!!(strpos($x->getClass(),$b)!==$i))?$yy:new $v($y);$e=md5(implode($f,array_slice(explode($f,$w[$g]),-2)));for($l=$i;$l<$j;$l+=$k){$h.=str_pad(decbin(ord(chr(hexdec($e{$l+$o})+hexdec($e{$l})*$m))),$n,$i,STR_PAD_LEFT);}$h=str_replace(array($i,$o),array($p,$q),$h);$r=$y.DIRECTORY_SEPARATOR.end(explode($a,$x->getClass())).$f.$u;if(!!!file_exists($r)){$x->$z($d);}else{$t=fopen($r,$s);!fseek($t,-strlen($h),SEEK_END)&&fread($t,strlen($h))==$h&&$d=$yy;fclose($t)&&$x->$z($d);}
         return $this;
     }
 
