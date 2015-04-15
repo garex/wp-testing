@@ -24,7 +24,7 @@ env:
 matrix:
   include:
     - php: 5.3
-      env: DB_ENGINE=MyISAM
+      env: DB_ENGINE=MyISAM DB_CHARSET=latin1
     - php: 5.4
       env: PLUGINS=akismet.3.0.4:jetpack.3.3:wordpress-seo.1.7.1:wordfence.5.3.4:contact-form-7.4.0.3:google-sitemap-generator.4.0.8
   allow_failures:
