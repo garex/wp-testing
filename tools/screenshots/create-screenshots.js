@@ -228,6 +228,31 @@ var screenshots = [
                 this.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
             })
         }
+    }, {
+        title   : 'One question per page also allowed. On first page we see test description, "Next" button and pages counter',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev/test/three-steps/').waitForUrl(/three/, function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+            })
+        }
+    }, {
+        title   : 'On second page description not shown',
+        actions : function () {
+            casper.then(function() {
+                this.fill('form#wpt-test-form', {}, true)
+            }).waitForUrl(/three-steps/, function() {
+                this.clickLabel('No', '*[@id="wpt-test-form"]/*//label')
+            })
+        }
+    }, {
+        title   : 'On last page counter not shown and button changes back to "Get Test Results"',
+        actions : function () {
+            casper.then(function() {
+                this.fill('form#wpt-test-form', {}, true)
+            }).waitForUrl(/three-steps/, function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+            })
+        }
     }
 ];
 

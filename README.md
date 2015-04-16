@@ -90,3 +90,6 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
 18. In case when scales has different length (possible max total) they are shown as percents
 19. Multiple answers per question are also possible
+20. One question per page also allowed. On first page we see test description, "Next" button and pages counter
+21. On second page description not shown
+22. On last page counter not shown and button changes back to "Get Test Results"
