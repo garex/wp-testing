@@ -9,7 +9,7 @@ class EnableAdvancedOptionsForDefaultTest extends BaseMigration
     {
         $this->update_meta_in_example('wpt_result_page_show_test_description', 0);
         $this->update_meta_in_example('wpt_test_page_show_progress_meter',     1);
-        $this->update_meta_in_example('wpt_result_page_show_scales_diagram',   1);
+        $this->update_meta_in_example('wpt_result_page_show_scales_diagram',   0);
     }
 
     public function down()
