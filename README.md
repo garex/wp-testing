@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.1.1  
-**Stable tag:** 0.10.1  
+**Stable tag:** 0.11  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -31,7 +31,7 @@ To minimize author's time we have **Quick Fill** for questions and scores. You c
 
 Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. They are shown at "Respondents' results" table under "Tests" menu. It allow to see if someone will have many passings from same computer/smartphone/another device, which scales/results respondent have for concrete passing and ability to open it from there. If respondent was a logged in user — then you will see it in "Username" column with a link to profile.
 
-**Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button. allow multiple answers per question and show percentage of answered questions.
+**Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button, allow multiple answers per question, show percentage of answered questions and show one question per page.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
 Wp-testing localized into eleven languages: English, Russian, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese and Brazilian. English, Russian, French, Dutch, Bulgarian, Italian, Turkish, Chinese and Brazilian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
@@ -90,3 +90,6 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
 18. In case when scales has different length (possible max total) they are shown as percents
 19. Multiple answers per question are also possible
+20. One question per page also allowed. On first page we see test description, "Next" button and pages counter
+21. On second page description not shown
+22. On last page counter not shown and button changes back to "Get Test Results"
