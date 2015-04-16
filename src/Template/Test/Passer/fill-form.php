@@ -2,22 +2,28 @@
 // Can be overriden in your theme as entry-content-wpt-test-fill-form.php
 
 /* @var $answerIdName string */
+/* @var $isShowContent boolean */
 /* @var $content string */
+/* @var $subTitle string */
 /* @var $test WpTesting_Model_Test */
 /* @var $questions WpTesting_Model_Question[] */
 /* @var $isFinal boolean */
 /* @var $isMultipleAnswers boolean */
 /* @var $submitButtonCaption string */
+/* @var $stepsCounter string */
 /* @var $wp WpTesting_WordPressFacade */
+/* @var $hiddens array */
 ?>
 <div class="wpt_test fill_form">
 
+<?php if ($isShowContent): ?>
 <div class="content">
     <?php echo $content ?>
 </div>
+<?php endif ?>
 
 <div class="content"><form method="post" id="wpt-test-form">
-
+<?php if ($subTitle): ?><h2 class="subtitle"><?php echo $subTitle ?></h2><?php endif ?>
 <?php $wp->doAction('wp_testing_template_fill_form_questions_before') ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
     <?php $answerIndex = ($isMultipleAnswers) ? '' : $q ?>
@@ -52,14 +58,17 @@
 <?php $wp->doAction('wp_testing_template_fill_form_questions_after') ?>
 
 <?php if($isFinal): ?>
-    <p><input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" /></p>
+    <p>
+        <input type="submit" class="button" value="<?php echo $submitButtonCaption ?>" />
+        <?php if($stepsCounter): ?><span class="steps-counter"><?php echo $stepsCounter ?></span><?php endif ?>
+    </p>
 <?php else: ?>
     <div class="wpt_warning">
         <h4><?php echo __('Test is under construction', 'wp-testing') ?></h4>
         <p><?php echo __('You can not get any results from it yet.', 'wp-testing') ?></p>
     </div>
 <?php endif ?>
-
+<?php foreach($hiddens as $name => $value): ?><input type="hidden" name="<?php echo htmlspecialchars($name) ?>" value="<?php echo htmlspecialchars($value) ?>" /><?php endforeach ?>
 </form></div>
 
 </div>

@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.11 ###
+Add one-per-page questions and fix annoing database collation issue
+
+* Add option when respondent could read only one question at a time on page, to avoid to see through pattern
+* Fix annoing database latin1 collation problem for non-latin languages when question marks shown instead of text
+
+
 ### 0.10.1 ###
 
 Fix incompatibility with themes/plugins that changes post form attributes

@@ -5,6 +5,7 @@ set -e
 
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
+DB_CHARSET=${DB_CHARSET:-utf8}
 WP_VERSION=${WP_VERSION:-4.1.1}
 PLUGINS=${PLUGINS:-}
 
@@ -18,7 +19,7 @@ function db {
     log 'Creating DB and user'
     sudo mysql --execute '
         DROP DATABASE IF EXISTS wpti;
-        CREATE DATABASE wpti DEFAULT CHARACTER SET utf8;
+        CREATE DATABASE wpti DEFAULT CHARACTER SET '$DB_CHARSET';
 
         GRANT USAGE ON wpti.* TO wpti;
         DROP USER wpti;

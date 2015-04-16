@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-10 10:31+0700\n"
-"PO-Revision-Date: 2015-03-10 04:41+0000\n"
+"POT-Creation-Date: 2015-04-09 02:33+0700\n"
+"PO-Revision-Date: 2015-04-10 16:26+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/wp-testing/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -15,35 +15,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:46
+#: Facade.php:53
 msgid "Helps to create psychological tests."
 msgstr "Помогает создавать психологические тесты."
 
-#: Facade.php:124
+#: Facade.php:143 Template/Passing/Browser/view-all.php:7
 msgid "Respondents’ test results"
 msgstr "Результаты тестирования респондентов"
 
-#: Facade.php:125
+#: Facade.php:144
 msgid "Respondents’ results"
 msgstr "Результаты респондентов"
 
-#: Widget/PassingTable.php:25 Doer/WordPressEntitiesRegistrator.php:14
+#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "Тест"
-
-#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:112
-msgid "Results"
-msgstr "Результаты"
 
 #: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "Шкалы"
+
+#: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
+#: Template/Test/Passer/get-results.php:17
+msgid "Results"
+msgstr "Результаты"
 
 #: Widget/PassingTable.php:30
 msgid "Device"
@@ -57,101 +59,82 @@ msgstr "IP-адрес"
 msgid "Browser"
 msgstr "Браузер"
 
-#: Widget/PassingTable.php:105 Model/Scale.php:84
+#: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
+#: Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d из %2$d"
 
-#: Doer/TestPasser.php:57 Doer/TestPasser.php:60
+#: Doer/TestPasser.php:99 Doer/TestPasser.php:102
+#: Template/Test/Passer/fill-form.php:63
 msgid "Test is under construction"
 msgstr "Тест в процессе разработки"
 
-#: Doer/TestPasser.php:58
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
 msgid "You can not get any results from it yet."
 msgstr "Пока вы не можете получить из него результаты."
 
-#: Doer/TestPasser.php:93
-msgid "Test data not valid"
-msgstr "Данные теста не правильны"
-
-#: Doer/TestPasser.php:94
-msgid "You passed not valid data to test."
-msgstr "Вы отправили неверные данные в тест."
-
-#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
-msgid "Test result not found"
-msgstr "Результат теста не найден"
-
-#: Doer/TestPasser.php:122
-msgid "You can not get anything from nothing."
-msgstr "Вы не можете получить чего-нибудь из ничего."
-
-#: Doer/TestPasser.php:135
-#, php-format
-msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Извините, но ваш браузер %s не совместим для отображения диаграммы"
-
-#: Doer/TestPasser.php:206 Doer/TestEditor.php:192
-msgid "Get Test Results"
-msgstr "Узнать результаты"
-
-#: Doer/TestPasser.php:213
-msgid "{percentage}% answered"
-msgstr "{percentage}% отвечено"
-
-#: Doer/TestEditor.php:35
+#: Doer/TestEditor.php:36
 msgid "Test Page Options"
 msgstr "Настройки страницы теста"
 
-#: Doer/TestEditor.php:37
+#: Doer/TestEditor.php:38
 msgid "Result Page Options"
 msgstr "Настройки страницы результатов"
 
-#: Doer/TestEditor.php:39
+#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Questions and Scores"
 msgstr "Редактировать вопросы и баллы"
 
-#: Doer/TestEditor.php:40
+#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Add New Questions"
 msgstr "Добавить новые вопросы"
 
-#: Doer/TestEditor.php:41
+#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Edit Formulas"
 msgstr "Редактировать формулы"
 
-#: Doer/TestEditor.php:178
+#: Doer/TestEditor.php:180
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Показывать в заголовке процент вопросов, которые респондент уже ответил"
 
-#: Doer/TestEditor.php:182
+#: Doer/TestEditor.php:184
+msgid "Show one question per page"
+msgstr "Показывать один вопрос на страницу"
+
+#: Doer/TestEditor.php:188
 msgid "Allow multiple answers per question"
 msgstr "Разрешить несколько ответов на каждый вопрос"
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:192
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Сброс ответов респондента при нажатии кнопки «Назад»"
 
-#: Doer/TestEditor.php:190
+#: Doer/TestEditor.php:196
 msgid "Button caption"
 msgstr "Подпись кнопки"
 
-#: Doer/TestEditor.php:207
+#: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
+msgid "Get Test Results"
+msgstr "Узнать результаты"
+
+#: Doer/TestEditor.php:213
 msgid "Show scales chart"
 msgstr "Показать диаграмму шкал"
 
-#: Doer/TestEditor.php:211
+#: Doer/TestEditor.php:217
 msgid "Show scales"
 msgstr "Показывать шкалы"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:221
 msgid "Sort scales by score"
 msgstr "Сортировать шкалы по баллам"
 
-#: Doer/TestEditor.php:219
+#: Doer/TestEditor.php:225
 msgid "Show test description"
 msgstr "Показывать описание теста"
 
-#: Doer/TestEditor.php:309
+#: Doer/TestEditor.php:312
 msgid "Test data not saved"
 msgstr "Данные теста не сохранены"
 
@@ -220,6 +203,7 @@ msgid ""
 msgstr "Стандартизированное задание, по результатам выполнения которого судят о психофизиологических и личностных характеристиках, знаниях, умениях и навыках испытуемого."
 
 #: Doer/WordPressEntitiesRegistrator.php:62
+#: Template/Test/Editor/edit-questions.php:156
 msgid "Test Answers"
 msgstr "Ответы теста"
 
@@ -448,6 +432,35 @@ msgstr "Категорий не найдено"
 msgid "No Categories found in Trash"
 msgstr "Категорий в корзине не найдено"
 
+#: Doer/TestPasser/FillForm.php:52
+msgid "{percentage}% answered"
+msgstr "{percentage}% отвечено"
+
+#: Doer/TestPasser/FillForm.php:63
+msgid "Next"
+msgstr "Далее"
+
+#: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
+msgid "Test data not valid"
+msgstr "Данные теста не правильны"
+
+#: Doer/TestPasser/ProcessForm.php:70
+msgid "You passed not valid data to test."
+msgstr "Вы отправили неверные данные в тест."
+
+#: Doer/TestPasser/GetResults.php:73 Doer/TestPasser/GetResults.php:76
+msgid "Test result not found"
+msgstr "Результат теста не найден"
+
+#: Doer/TestPasser/GetResults.php:74
+msgid "You can not get anything from nothing."
+msgstr "Вы не можете получить чего-нибудь из ничего."
+
+#: Doer/TestPasser/GetResults.php:90
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "Извините, но ваш браузер %s не совместим для отображения диаграммы"
+
 #: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
@@ -469,48 +482,48 @@ msgstr "Формула"
 msgid "Result"
 msgstr "Результат"
 
-#: Template/Test/Editor/edit-formulas.php:29
+#: Template/Test/Editor/edit-formulas.php:28
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "Формулы отсутствуют. Чтобы редактировать формулы вы должны выбрать результаты."
 
-#: Template/Test/Editor/edit-formulas.php:38
+#: Template/Test/Editor/edit-formulas.php:37
 msgid "Variables"
 msgstr "Переменные"
 
-#: Template/Test/Editor/edit-formulas.php:39
+#: Template/Test/Editor/edit-formulas.php:38
 msgid "Comparisions"
 msgstr "Сравнения"
 
-#: Template/Test/Editor/edit-formulas.php:40
+#: Template/Test/Editor/edit-formulas.php:39
 msgid "Operators"
 msgstr "Операторы"
 
-#: Template/Test/Editor/edit-formulas.php:50
+#: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
 msgstr "Сравнение"
 
-#: Template/Test/Editor/edit-formulas.php:55
+#: Template/Test/Editor/edit-formulas.php:54
 msgid "Operator"
 msgstr "Оператор"
 
-#: Template/Test/Editor/edit-formulas.php:63
+#: Template/Test/Editor/edit-formulas.php:62
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
 msgstr "Переменные для формул не доступны. Чтобы использовать переменные вы должны выбрать шкалы."
 
-#: Template/Test/Editor/edit-formulas.php:72
+#: Template/Test/Editor/edit-formulas.php:71
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Разрешены как числа, так и проценты. Например всего по шкале «scale-bla» 30, тогда «scale-bla > 15» и «scale-bla > 50%» будет идентично."
 
-#: Template/Test/Editor/add-questions.php:4
-#: Template/Test/Editor/add-questions.php:9
+#: Template/Test/Editor/add-questions.php:5
+#: Template/Test/Editor/add-questions.php:10
 msgid "Quick Fill From Text"
 msgstr "Быстро заполнить из текста"
 
-#: Template/Test/Editor/add-questions.php:8
+#: Template/Test/Editor/add-questions.php:9
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."

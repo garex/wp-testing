@@ -1,12 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Kyle Wang, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-10 10:31+0700\n"
-"PO-Revision-Date: 2015-03-10 07:34+0000\n"
+"POT-Creation-Date: 2015-04-09 02:33+0700\n"
+"PO-Revision-Date: 2015-04-09 06:52+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/wp-testing/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -14,35 +16,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:46
+#: Facade.php:53
 msgid "Helps to create psychological tests."
 msgstr "帮助创建心理测试。"
 
-#: Facade.php:124
+#: Facade.php:143 Template/Passing/Browser/view-all.php:7
 msgid "Respondents’ test results"
 msgstr "答卷"
 
-#: Facade.php:125
+#: Facade.php:144
 msgid "Respondents’ results"
 msgstr "答卷"
 
-#: Widget/PassingTable.php:25 Doer/WordPressEntitiesRegistrator.php:14
+#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "测试"
-
-#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:112
-msgid "Results"
-msgstr "结果"
 
 #: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "指标"
+
+#: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
+#: Template/Test/Passer/get-results.php:17
+msgid "Results"
+msgstr "结果"
 
 #: Widget/PassingTable.php:30
 msgid "Device"
@@ -56,101 +60,82 @@ msgstr "IP地址"
 msgid "Browser"
 msgstr "浏览器"
 
-#: Widget/PassingTable.php:105 Model/Scale.php:84
+#: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
+#: Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d/%2$d"
 
-#: Doer/TestPasser.php:57 Doer/TestPasser.php:60
+#: Doer/TestPasser.php:99 Doer/TestPasser.php:102
+#: Template/Test/Passer/fill-form.php:63
 msgid "Test is under construction"
 msgstr "测试尚在开发"
 
-#: Doer/TestPasser.php:58
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
 msgid "You can not get any results from it yet."
 msgstr "您暂时无法得到结果。"
 
-#: Doer/TestPasser.php:93
-msgid "Test data not valid"
-msgstr "测试数据无效"
-
-#: Doer/TestPasser.php:94
-msgid "You passed not valid data to test."
-msgstr "您传入的测试数据无效。"
-
-#: Doer/TestPasser.php:121 Doer/TestPasser.php:124
-msgid "Test result not found"
-msgstr "未发现测试结果"
-
-#: Doer/TestPasser.php:122
-msgid "You can not get anything from nothing."
-msgstr "您不能不劳而获。"
-
-#: Doer/TestPasser.php:135
-#, php-format
-msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "您的浏览器 %s 不兼容，无法显示图表"
-
-#: Doer/TestPasser.php:206 Doer/TestEditor.php:192
-msgid "Get Test Results"
-msgstr "获取测试结果"
-
-#: Doer/TestPasser.php:213
-msgid "{percentage}% answered"
-msgstr "回答了 {percentage}%"
-
-#: Doer/TestEditor.php:35
+#: Doer/TestEditor.php:36
 msgid "Test Page Options"
 msgstr "测试页选项"
 
-#: Doer/TestEditor.php:37
+#: Doer/TestEditor.php:38
 msgid "Result Page Options"
 msgstr "结果页选项"
 
-#: Doer/TestEditor.php:39
+#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Questions and Scores"
 msgstr "编辑问题与得分"
 
-#: Doer/TestEditor.php:40
+#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Add New Questions"
 msgstr "新建问题"
 
-#: Doer/TestEditor.php:41
+#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Edit Formulas"
 msgstr "编辑公式"
 
-#: Doer/TestEditor.php:178
+#: Doer/TestEditor.php:180
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "在标题中显示答题进度"
 
-#: Doer/TestEditor.php:182
+#: Doer/TestEditor.php:184
+msgid "Show one question per page"
+msgstr "每页显示一个问题"
+
+#: Doer/TestEditor.php:188
 msgid "Allow multiple answers per question"
 msgstr "允许多选"
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:192
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "按返回键时重置答案"
 
-#: Doer/TestEditor.php:190
+#: Doer/TestEditor.php:196
 msgid "Button caption"
 msgstr "按键标题"
 
-#: Doer/TestEditor.php:207
+#: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
+msgid "Get Test Results"
+msgstr "获取测试结果"
+
+#: Doer/TestEditor.php:213
 msgid "Show scales chart"
 msgstr "显示指标图"
 
-#: Doer/TestEditor.php:211
+#: Doer/TestEditor.php:217
 msgid "Show scales"
 msgstr "显示指标"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:221
 msgid "Sort scales by score"
 msgstr "按得分排列指标"
 
-#: Doer/TestEditor.php:219
+#: Doer/TestEditor.php:225
 msgid "Show test description"
 msgstr "显示测试描述"
 
-#: Doer/TestEditor.php:309
+#: Doer/TestEditor.php:312
 msgid "Test data not saved"
 msgstr "测试数据未保存"
 
@@ -219,6 +204,7 @@ msgid ""
 msgstr "测量潜在变量的工具。通常是让答题者解决一系列的任务或问题。"
 
 #: Doer/WordPressEntitiesRegistrator.php:62
+#: Template/Test/Editor/edit-questions.php:156
 msgid "Test Answers"
 msgstr "测试答案"
 
@@ -447,6 +433,35 @@ msgstr "未发现分类"
 msgid "No Categories found in Trash"
 msgstr "回收站未发现分类"
 
+#: Doer/TestPasser/FillForm.php:52
+msgid "{percentage}% answered"
+msgstr "回答了 {percentage}%"
+
+#: Doer/TestPasser/FillForm.php:63
+msgid "Next"
+msgstr "下一步"
+
+#: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
+msgid "Test data not valid"
+msgstr "测试数据无效"
+
+#: Doer/TestPasser/ProcessForm.php:70
+msgid "You passed not valid data to test."
+msgstr "您传入的测试数据无效。"
+
+#: Doer/TestPasser/GetResults.php:73 Doer/TestPasser/GetResults.php:76
+msgid "Test result not found"
+msgstr "未发现测试结果"
+
+#: Doer/TestPasser/GetResults.php:74
+msgid "You can not get anything from nothing."
+msgstr "您不能不劳而获。"
+
+#: Doer/TestPasser/GetResults.php:90
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "您的浏览器 %s 不兼容，无法显示图表"
+
 #: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
@@ -468,48 +483,48 @@ msgstr "公式"
 msgid "Result"
 msgstr "结果"
 
-#: Template/Test/Editor/edit-formulas.php:29
+#: Template/Test/Editor/edit-formulas.php:28
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "无公式可编辑。请选择结果后，再编辑公式。"
 
-#: Template/Test/Editor/edit-formulas.php:38
+#: Template/Test/Editor/edit-formulas.php:37
 msgid "Variables"
 msgstr "变量"
 
-#: Template/Test/Editor/edit-formulas.php:39
+#: Template/Test/Editor/edit-formulas.php:38
 msgid "Comparisions"
 msgstr "比较"
 
-#: Template/Test/Editor/edit-formulas.php:40
+#: Template/Test/Editor/edit-formulas.php:39
 msgid "Operators"
 msgstr "运算符"
 
-#: Template/Test/Editor/edit-formulas.php:50
+#: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
 msgstr "比较"
 
-#: Template/Test/Editor/edit-formulas.php:55
+#: Template/Test/Editor/edit-formulas.php:54
 msgid "Operator"
 msgstr "运算符"
 
-#: Template/Test/Editor/edit-formulas.php:63
+#: Template/Test/Editor/edit-formulas.php:62
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
 msgstr "公式无可用变量。请先选择指标，再使用变量。"
 
-#: Template/Test/Editor/edit-formulas.php:72
+#: Template/Test/Editor/edit-formulas.php:71
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "数字或百分比均可。比如 \"scale-bla\" 总分30分，那麼\"scale-bla > 15\" 或 \"scale-bla > 50%\" 都可以。"
 
-#: Template/Test/Editor/add-questions.php:4
-#: Template/Test/Editor/add-questions.php:9
+#: Template/Test/Editor/add-questions.php:5
+#: Template/Test/Editor/add-questions.php:10
 msgid "Quick Fill From Text"
 msgstr "从文本快速填充"
 
-#: Template/Test/Editor/add-questions.php:8
+#: Template/Test/Editor/add-questions.php:9
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."

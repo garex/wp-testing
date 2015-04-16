@@ -32,6 +32,7 @@
 
 .wpt_test .button {
     margin-top: 0.75em;
+    margin-right: 0.75em;
 }
 
 .wpt_test .button.disabled {

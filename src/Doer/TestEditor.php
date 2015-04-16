@@ -19,17 +19,17 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return $this;
         }
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
-        $this->registerScripts()->wp
-            ->enqueuePluginStyle('wpt_admin', 'css/admin.css')
-            ->enqueuePluginScript('wpt_test_edit_fix_styles',  'js/test-edit-fix-styles.js',        array('jquery'), false, true)
-            ->enqueuePluginScript('field_selection',           'js/vendor/kof/field-selection.js',  array(), false, true)
-            ->enqueuePluginScript('wpt_test_edit_formulas',    'js/test-edit-formulas.js',          array('jquery', 'field_selection'), false, true)
-            ->enqueuePluginScript('json3',                     'js/vendor/bestiejs/json3.min.js',   array(), false, true)
-            ->enqueuePluginScript('wpt_test_quick_scores',     'js/test-quick-scores.js',           array('jquery', 'lodash'), false, true)
-            ->enqueuePluginScript('wpt_test_quick_questions',  'js/test-quick-questions.js',        array('jquery', 'json3', 'base64'), false, true)
-            ->enqueuePluginScript('wpt_test_edit_answers',     'js/test-edit-answers.js',           array('jquery'), false, true)
-            ->enqueuePluginScript('wpt_test_add_answers',      'js/test-add-answers.js',            array('jquery', 'lodash'), false, true)
-            ->enqueuePluginScript('wpt_test_sort_taxonomies',  'js/test-sort-taxonomies.js',        array('jquery', 'jquery-ui-sortable'), false, true)
+        $this->registerScripts()
+            ->enqueueStyle('admin')
+            ->enqueueScript('test-edit-fix-styles', array('jquery'))
+            ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
+            ->enqueueScript('test-quick-scores',    array('jquery', 'lodash'))
+            ->enqueueScript('test-quick-questions', array('jquery', 'json3', 'base64'))
+            ->enqueueScript('test-edit-answers',    array('jquery'))
+            ->enqueueScript('test-add-answers',     array('jquery', 'lodash'))
+            ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
+        ;
+        $this->wp
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
@@ -179,6 +179,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 'default' => '1',
                 'title'   => __('Show in title percentage of questions that respondent already answered', 'wp-testing'),
             ),
+            'wpt_test_page_one_question_per_step' => array(
+                'default' => '0',
+                'title'   => __('Show one question per page', 'wp-testing'),
+            ),
             'wpt_test_page_multiple_answers' => array(
                 'default' => '0',
                 'title'   => __('Allow multiple answers per question', 'wp-testing'),
@@ -283,6 +287,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'wpt_test_page_submit_button_caption',
             'wpt_test_page_reset_answers_on_back',
             'wpt_test_page_show_progress_meter',
+            'wpt_test_page_one_question_per_step',
             'wpt_test_page_multiple_answers',
             'wpt_result_page_show_scales_diagram',
             'wpt_result_page_show_scales',

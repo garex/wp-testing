@@ -48,7 +48,7 @@ abstract class WpTesting_Doer_AbstractDoer
      * Adds data to Wpt global object
      * @param string $key
      * @param mixed $value
-     * @return WpTesting_Doer_AbstractDoer
+     * @return self
      */
     protected function addJsData($key, $value) {
         if (empty($this->jsData)) {
@@ -63,7 +63,7 @@ abstract class WpTesting_Doer_AbstractDoer
      * Adds multiple data values to Wpt global object from values array
      * @see addJsData
      * @param array $values [key1 => value1, keyN => valueN]
-     * @return WpTesting_Doer_AbstractDoer
+     * @return self
      */
     protected function addJsDataValues($values) {
         foreach ($values as $key => $value) {
@@ -73,24 +73,79 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * Enqueue plugin's CSS stylesheet.
+     * @param string $pluginRelatedPath Can be in full form like "css/bla.css" or in short like "bla"
+     * @return self
+     */
+    protected function enqueueStyle($pluginRelatedPath)
+    {
+        if (substr($pluginRelatedPath, -4) != '.css') {
+            $pluginRelatedPath = 'css/' . $pluginRelatedPath . '.css';
+        }
+        $name = basename($pluginRelatedPath, '.css');
+        $name = str_replace('-', '_', $name);
+        $name = 'wpt_' . $name;
+        $this->wp->enqueuePluginStyle($name, $pluginRelatedPath);
+        return $this;
+    }
+
+    /**
+     * Enqueue plugin's JS script.
+     *
+     * Comparing to `enqueuePluginScript` it has no 1st param, last params are switched and defaults changed.
+     *
+     * @see WpTesting_WordPressFacade::enqueuePluginScript
+     *
+     * @param string $pluginRelatedPath Can be in full form like "js/do-something.js" or in short like "do-something"
+     * @param array $dependencies
+     * @param string $isInFooter
+     * @param string $version
+     * @return self
+     */
+    protected function enqueueScript($pluginRelatedPath, array $dependencies = array(), $isInFooter = true, $version = false)
+    {
+        if (substr($pluginRelatedPath, -3) != '.js') {
+            $pluginRelatedPath = 'js/' . $pluginRelatedPath . '.js';
+        }
+        $name = basename($pluginRelatedPath, '.js');
+        $name = str_replace('-', '_', $name);
+        $name = 'wpt_' . $name;
+        $this->wp->enqueuePluginScript($name, $pluginRelatedPath, $dependencies, $version, $isInFooter);
+        return $this;
+    }
+
+    /**
      * Register common used scripts for future dependencies
      * @return self
      */
     protected function registerScripts()
     {
-        $this->wp
-            ->registerPluginScript('detect-javascript', 'js/detect-javascript.js', array(), '1.0')
-            ->registerPluginScript('lodash-source', 'js/vendor/lodash/lodash.compat.min.js', array(), '2.4.1')
-            ->registerPluginScript('lodash', 'js/vendor/lodash/lodash.no-conflict.js', array('lodash-source'))
-            ->registerPluginScript('npm-stub', 'js/vendor/npm/stub.js', array(), '1.0')
-            ->registerPluginScript('base64', 'js/vendor/dankogai/base64.min.js', array(), '2.1.7')
+        $e       = array();
+        $scripts = array(
+            array('detect-javascript', 'js/detect-javascript.js',                  $e, '1.0'),
+            array('lodash-source',     'js/vendor/lodash/lodash.compat.min.js',    $e, '2.4.1'),
+            array('lodash',            'js/vendor/lodash/lodash.no-conflict.js',   array('lodash-source')),
+            array('npm-stub',          'js/vendor/npm/stub.js',                    $e, '1.0'),
+            array('base64',            'js/vendor/dankogai/base64.min.js',         $e, '2.1.7'),
+            array('pnegri_uuid',       'vendor/pnegri/uuid-js/lib/uuid.js',        array('npm-stub')),
+            array('samyk_swfobject',   'vendor/samyk/evercookie/js/swfobject-2.2.min.js'),
+            array('samyk_evercookie',  'vendor/samyk/evercookie/js/evercookie.js', array('samyk_swfobject')),
+            array('field_selection',   'js/vendor/kof/field-selection.js'),
+            array('json3',             'js/vendor/bestiejs/json3.min.js'),
 
             // Vector graphics for diagramming
-            ->registerPluginScript('raphael', 'js/vendor/dmitrybaranovskiy/raphael-min.js', array(), '2.0.2')
-            ->registerPluginScript('raphael-diagrams', 'js/vendor/dmitrybaranovskiy/g.raphael.js', array('raphael'), '0.51')
-            ->registerPluginScript('raphael-line-diagram', 'js/vendor/dmitrybaranovskiy/g.line.js', array('raphael-diagrams'), '0.51')
-            ->registerPluginScript('raphael-scale', 'js/vendor/zevanrosser/scale.raphael.js', array('raphael'), '0.8')
-        ;
+            array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),
+            array('raphael-diagrams',      'js/vendor/dmitrybaranovskiy/g.raphael.js',     array('raphael'), '0.51'),
+            array('raphael-line-diagram',  'js/vendor/dmitrybaranovskiy/g.line.js',        array('raphael-diagrams'), '0.51'),
+            array('raphael-scale',         'js/vendor/zevanrosser/scale.raphael.js',       array('raphael'), '0.8'),
+        );
+
+        foreach ($scripts as $script) {
+            $script += array('', '', array(), false);
+            list($name, $pluginRelatedPath, $dependencies, $version) = $script;
+            $this->wp->registerPluginScript($name, $pluginRelatedPath, $dependencies, $version);
+        }
+
         return $this;
     }
 
@@ -115,9 +170,9 @@ abstract class WpTesting_Doer_AbstractDoer
         return fRequest::isPost();
     }
 
-    protected function getRequestValue($key)
+    protected function getRequestValue($key, $castTo = null)
     {
-        return fRequest::get($key);
+        return fRequest::get($key, $castTo);
     }
 
     /**
@@ -230,6 +285,17 @@ abstract class WpTesting_Doer_AbstractDoer
             return $object->jsonSerialize();
         }
         return $object;
+    }
+
+    /**
+     * Checks whether queried object type same as passed
+     * @param string $type
+     * @return boolean
+     */
+    protected function isPostType($type)
+    {
+        $object = $this->wp->getQuery()->get_queried_object();
+        return (is_object($object) && !empty($object->post_type) && $object->post_type == $type);
     }
 
     /**
