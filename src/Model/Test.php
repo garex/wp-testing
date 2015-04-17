@@ -77,7 +77,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function buildQuestions()
     {
-        return $this->buildWpTesting_Model_Questions();
+        return $this->me()->buildWpTesting_Model_Questions();
     }
 
     /**
@@ -644,6 +644,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     public function setParent(WpTesting_Model_Test $parent)
     {
         $this->parent = $parent;
+        if (is_null($this->wp)) {
+            $this->wp = $parent->wp;
+        }
         return $this;
     }
 
