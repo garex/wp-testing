@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.11.1 ###
+Improve steps generating (for sections addon)
+
+Upgrade notice:
+
+* You should upgrade to this version only if you have sections addon
+
+
 ### 0.11 ###
 Add one-per-page questions and fix annoing database collation issue
 
