@@ -41,9 +41,8 @@ abstract class WpTesting_Component_StepStrategy
 
     public function __construct(WpTesting_Model_Test $test = null, fRecordSet $answeredQuestions = null)
     {
-        $this->test              = $test;
+        is_null($test) || $this->setTest($test);
         $this->answeredQuestions = $answeredQuestions;
-        $emptyQuestions          = fRecordSet::buildFromArray('WpTesting_Model_Question', array());
     }
 
     /**
@@ -53,12 +52,9 @@ abstract class WpTesting_Component_StepStrategy
      */
     public function fillFrom(WpTesting_Component_StepStrategy $another)
     {
-        $this->test              = $another->test;
+        $this->setTest($another->test);
         $this->answeredQuestions = $another->answeredQuestions;
 
-        if (is_null($this->test)) {
-            throw new InvalidArgumentException('Empty test provided!');
-        }
         if (is_null($this->answeredQuestions)) {
             throw new InvalidArgumentException('Empty answered questions provided!');
         }
@@ -67,16 +63,20 @@ abstract class WpTesting_Component_StepStrategy
     }
 
     /**
+     * @return WpTesting_Model_Test
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
+
+    /**
      * @return WpTesting_Model_Step
      */
     public function getCurrentStep()
     {
-        if (!is_null($this->currentStep)) {
-            return $this->currentStep;
-        }
-        $this->fillSteps()->setupTotalsAndNumbers();
         if (is_null($this->currentStep)) {
-            $this->currentStep = new WpTesting_Model_Step('', $emptyQuestions, 1, true, true);
+            $this->getSteps();
         }
         return $this->currentStep;
     }
@@ -107,6 +107,17 @@ abstract class WpTesting_Component_StepStrategy
     }
 
     /**
+     * @param WpTesting_Model_Test $test
+     * @throws InvalidArgumentException
+     * @return WpTesting_Component_StepStrategy
+     */
+    protected function setTest(WpTesting_Model_Test $test)
+    {
+        $this->test = $test;
+        return $this;
+    }
+
+    /**
      * @param WpTesting_Model_Step $step
      * @param string $isCurrent
      * @return self
@@ -130,6 +141,26 @@ abstract class WpTesting_Component_StepStrategy
      * @return self
      */
     abstract protected function fillSteps();
+
+    /**
+     * @return WpTesting_Model_Step[]
+     */
+    protected function getSteps()
+    {
+        if (is_null($this->currentStep)) {
+            $this->fillSteps();
+            if (!count($this->steps)) {
+                $emptyQuestions = fRecordSet::buildFromArray('WpTesting_Model_Question', array());
+                $this->addStep(new WpTesting_Model_Step('', $emptyQuestions));
+            }
+            if (is_null($this->currentStep)) {
+                $this->currentStep = reset($this->steps);
+            }
+            $this->setupTotalsAndNumbers();
+        }
+
+        return $this->steps;
+    }
 
     /**
      * @return self

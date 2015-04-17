@@ -6,7 +6,7 @@
 class WpTesting_Component_StepStrategy_OneToOne extends WpTesting_Component_StepStrategy
 {
 
-    public function fillSteps()
+    protected function fillSteps()
     {
         $questions = $this->test->buildQuestions();
         $total     = $questions->count();
