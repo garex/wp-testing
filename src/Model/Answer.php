@@ -42,6 +42,11 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     protected $scores = null;
 
     /**
+     * @var WpTesting_Model_Score[]
+     */
+    protected $scoresByScaleId = null;
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -85,6 +90,10 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     {
         if (is_null($this->scores)) {
             $this->scores = $this->buildWpTesting_Model_Scores();
+            $this->scoresByScaleId = array();
+            foreach ($this->scores as $score) {
+                $this->scoresByScaleId[$score->get('scale_id')] = $score;
+            }
         }
         return $this->scores;
     }
@@ -124,16 +133,12 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     public function getScoreByScale(WpTesting_Model_Scale $scale)
     {
         $scores = $this->buildScoresOnce();
-        $result = $scores->filter(array(
-            'getScaleId='  => $scale->getId(),
-        ));
-        if ($result->count()) {
-            return $result->getRecord(0);
+        if (!isset($this->scoresByScaleId[$scale->getId()])) {
+            $this->scoresByScaleId[$scale->getId()] = new WpTesting_Model_Score();
+            $this->scoresByScaleId[$scale->getId()]->setScaleId($scale->getId());
+            $this->associateWpTesting_Model_Scores($scores->merge($this->scoresByScaleId[$scale->getId()]));
         }
-        $score = new WpTesting_Model_Score();
-        $score->setScaleId($scale->getId());
-        $this->associateWpTesting_Model_Scores($scores->merge($score));
-        return $score;
+        return $this->scoresByScaleId[$scale->getId()];
     }
 
     /**
