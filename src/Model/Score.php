@@ -2,7 +2,6 @@
 
 /**
  * @method int getValue() getValue() Gets the current value for score
- * @method WpTesting_Model_Score setValue() setValue(int $value) Sets the value for score
  * @method int getScaleId() getScaleId() Gets the current value for scale id
  * @method WpTesting_Model_Score setScaleId() setScaleId(int $scaleId) Sets the scale id for score
  */
@@ -22,6 +21,15 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
     {
         $value = $this->getValue();
         return empty($value) ? '' : $value;
+    }
+
+    public function setScoreValue($value)
+    {
+        if (empty($value)) {
+            $value = 0;
+        }
+        $this->set('score_value', $value);
+        return $this;
     }
 
     /**

@@ -47,6 +47,19 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     protected $scoresByScaleId = null;
 
+    public function populate($recursive = false)
+    {
+        $this->populateSelf()->populateRelated($recursive);
+    }
+
+    protected function populateRelated($recursive = false)
+    {
+        if ($recursive) {
+            $this->populateWpTesting_Model_Score(true, 'answer_id');
+        }
+        return $this;
+    }
+
     /**
      * @return string
      */

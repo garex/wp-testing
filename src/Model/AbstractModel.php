@@ -1,4 +1,7 @@
 <?php
+/**
+ * @method array getColumnsAsMethodsOnce() getColumnsAsMethodsOnce()
+ */
 abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 {
 
@@ -21,11 +24,71 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     private $methodCallCache = array();
 
+    /**
+     * @var array [Class][Column] => Method
+     */
+    private static $columnsAsMethodsCache = array();
+
+    /**
+     * @var boolean
+     */
+    private $isTransactionStarted = false;
+
     public function populate($recursive = false)
     {
         parent::populate($recursive);
 
         return $this->stripValuesSlashes();
+    }
+
+    protected function populateSelf()
+    {
+        foreach ($this->getColumnsAsMethodsOnce($this) as $column => $method) {
+            $isExists = (isset($_POST[$column]) || array_key_exists($column, $_POST));
+            if (!$isExists) {
+                continue;
+            }
+            $this->$method($_POST[$column]);
+        }
+        return $this->stripValuesSlashes();
+    }
+
+    protected function populateRelated($recursive = false)
+    {
+        if ($recursive) {
+            $one_to_many_relationships = $schema->getRelationships($table, 'one-to-many');
+            foreach ($one_to_many_relationships as $relationship) {
+                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-many', $relationship);
+                $related_class = fORM::classize($relationship['related_table']);
+                $method = 'populate' . fGrammar::pluralize($related_class);
+                $this->$method(TRUE, $route_name);
+            }
+
+            $one_to_one_relationships = $schema->getRelationships($table, 'one-to-one');
+            foreach ($one_to_one_relationships as $relationship) {
+                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-one', $relationship);
+                $related_class = fORM::classize($relationship['related_table']);
+                $this->__call('populate' . $related_class, array(TRUE, $route_name));
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getColumnsAsMethodsOnce($me)
+    {
+        $class = get_class($me);
+        if (!isset(self::$columnsAsMethodsCache[$class])) {
+            $schema = fORMSchema::retrieve($class);
+            $table  = fORM::tablize($class);
+            self::$columnsAsMethodsCache[$class] = array();
+            foreach ($schema->getColumnInfo($table) as $column => $info) {
+                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, TRUE);
+            }
+        }
+        return self::$columnsAsMethodsCache[$class];
     }
 
     public function exists()
@@ -249,6 +312,39 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             $recordsById[$foreignKeyValue]->$associateMethodName($relatedRecords);
         }
         return $relatedRecordsById;
+    }
+
+    protected function transactionStart()
+    {
+        $db = $this->getDb();
+        if (!$db->isInsideTransaction()) {
+            $db->translatedQuery('BEGIN');
+            $this->isTransactionStarted = true;
+        }
+        return $this;
+    }
+
+    protected function transactionFinish()
+    {
+        if ($this->isTransactionStarted) {
+            $this->getDb()->translatedQuery('COMMIT');
+            $this->isTransactionStarted = false;
+        }
+        return $this;
+    }
+
+    protected function transactionRollback()
+    {
+        $db = $this->getDb();
+        if (!$db->isInsideTransaction()) {
+            $db->translatedQuery('ROLLBACK');
+        }
+        return $this;
+    }
+
+    protected function getDb($role = 'write')
+    {
+        return fORMDatabase::retrieve(get_class($this), $role);
     }
 
     /**

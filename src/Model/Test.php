@@ -471,7 +471,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function storeAll()
     {
+        $this->transactionStart();
         $this->wp->doAction('wp_testing_test_store_all_before', $this);
+
+        $this->buildQuestionsWithAnswersAndScores();
+        fORMValidation::disableForeignKeyConstraintsCheck();
 
         $this
             ->populateAll()
@@ -480,6 +484,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         ;
 
         $this->wp->doAction('wp_testing_test_store_all_after', $this);
+        $this->transactionFinish();
 
         return $this;
     }
