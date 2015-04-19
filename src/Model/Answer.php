@@ -2,6 +2,7 @@
 
 /**
  * @method integer getId() getId() Gets the current value of id
+ * @method string getTitleOnce() getTitleOnce() Gets cached value of title
  * @method integer getGlobalAnswerId() getGlobalAnswerId() Gets the current value of global answer id
  * @method integer getSort() getSort() Gets the current value of sort
  * @method integer getQuestionId() getQuestionId() Gets the current value of question id
@@ -121,7 +122,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function getAbbr()
     {
-        return mb_substr($this->getTitle(), 0, 1, 'UTF-8');
+        return mb_substr($this->getTitleOnce(), 0, 1, 'UTF-8');
     }
 
     /**

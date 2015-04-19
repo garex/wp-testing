@@ -16,6 +16,11 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected $wp = null;
 
+    /**
+     * @var array
+     */
+    private $methodCallCache = array();
+
     public function populate($recursive = false)
     {
         parent::populate($recursive);
@@ -118,6 +123,25 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         }
 
         return $signatures;
+    }
+
+    /**
+     * Helps to cache method results
+     * @see fActiveRecord::__call()
+     */
+    public function __call($methodName, $params)
+    {
+        // Call method only once
+        if (strrpos($methodName, 'Once') !== false) {
+            $methodName = str_replace('Once', '', $methodName);
+            if (!isset($this->methodCallCache[$methodName])) {
+                $this->methodCallCache[$methodName] = (method_exists($this, $methodName))
+                    ? $this->$methodName($params)
+                    : parent::__call($methodName, $params);
+            }
+            return $this->methodCallCache[$methodName];
+        }
+        return parent::__call($methodName, $params);
     }
 
     protected function generateMagicMethodPhpDoc($methodName, $params, $returnType, $comment)
