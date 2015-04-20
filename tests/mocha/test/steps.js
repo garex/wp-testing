@@ -43,6 +43,7 @@ describe('Steps', function() {
                 '#wpt_question_title_3': 'How many steps are there in accident prevention?'
             })
             this.click('.misc-pub-wpt-test-page-one-question-per-step input[type=checkbox]')
+            this.click('.misc-pub-wpt-test-page-multiple-answers input[type=checkbox]')
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' No',  'label')
             this.clickLabel(' Lie', 'label')
@@ -119,6 +120,7 @@ describe('Steps', function() {
     it('should have 33% answered and next non-disabled after answer', function() {
         casper.then(function() {
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
             this.getTitle().should.match(/^33% ans/)
             '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
         })
@@ -158,6 +160,7 @@ describe('Steps', function() {
         isOpened = false
         casper.then(function() {
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
@@ -183,12 +186,13 @@ describe('Steps', function() {
         isOpened = false
         casper.then(function() {
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM
             'Lie'.should.be.textInDOM
-            '3 out of 3'.should.be.textInDOM
+            '6 out of 6'.should.be.textInDOM
             isOpened = true
         })
     })

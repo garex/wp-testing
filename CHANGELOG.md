@@ -2,6 +2,12 @@
 ## Changelog ##
 
 
+### 0.11.2 ###
+Fix many answers on many steps
+
+* Was stuck on 2nd step
+
+
 ### 0.11.1 ###
 Improve steps generating (for sections addon)
 
