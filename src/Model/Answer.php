@@ -93,6 +93,14 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return WpTesting_Model_Question
+     */
+    public function createQuestion()
+    {
+        return $this->createWpTesting_Model_Question();
+    }
+
+    /**
      * Abbreviration of title
      *
      * @return string
