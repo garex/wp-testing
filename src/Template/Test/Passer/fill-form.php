@@ -2,6 +2,7 @@
 // Can be overriden in your theme as entry-content-wpt-test-fill-form.php
 
 /* @var $answerIdName string */
+/* @var $answerIndex integer */
 /* @var $isShowContent boolean */
 /* @var $content string */
 /* @var $subTitle string */
@@ -26,7 +27,6 @@
 <?php if ($subTitle): ?><h2 class="subtitle"><?php echo $subTitle ?></h2><?php endif ?>
 <?php $wp->doAction('wp_testing_template_fill_form_questions_before') ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
-    <?php $answerIndex = ($isMultipleAnswers) ? '' : $q ?>
     <?php $wp->doAction('wp_testing_template_fill_form_question_before', $question, $q) ?>
     <div class="question">
 
@@ -49,11 +49,12 @@
             </label>
 
         </div>
-
+        <?php if ($isMultipleAnswers) {$answerIndex++;} ?>
     <?php endforeach ?>
 
     </div>
     <?php $wp->doAction('wp_testing_template_fill_form_question_after', $question, $q) ?>
+    <?php if (!$isMultipleAnswers) {$answerIndex++;} ?>
 <?php endforeach ?>
 <?php $wp->doAction('wp_testing_template_fill_form_questions_after') ?>
 

@@ -62,10 +62,16 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         if (!$step->isLast()) {
             $submitButtonCaption = __('Next', 'wp-testing');
         }
+        $answerIdName = fOrm::tablize('WpTesting_Model_Answer') . '::answer_id';
+        $answerIndex  = 0;
+        if (isset($_POST[$answerIdName]) && is_array($_POST[$answerIdName])) {
+            $answerIndex = max(array_keys($_POST[$answerIdName])) + 1;
+        }
         $params = array(
             'wp'           => $this->wp,
             'hiddens'      => $this->generateHiddens($step),
-            'answerIdName' => fOrm::tablize('WpTesting_Model_Answer') . '::answer_id',
+            'answerIdName' => $answerIdName,
+            'answerIndex'  => $answerIndex,
             'content'      => $content,
             'test'         => $this->test,
             'questions'    => $step->getQuestions(),

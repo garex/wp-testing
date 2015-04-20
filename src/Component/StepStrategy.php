@@ -39,10 +39,10 @@ abstract class WpTesting_Component_StepStrategy
      */
     private $isShowStepsCounter = false;
 
-    public function __construct(WpTesting_Model_Test $test = null, fRecordSet $answeredQuestions = null)
+    public function __construct(WpTesting_Model_Test $test = null, fRecordSet $answeredAnswers = null)
     {
         is_null($test) || $this->setTest($test);
-        $this->answeredQuestions = $answeredQuestions;
+        $this->answeredQuestions = $this->extractQuestionsFromAnswers($answeredAnswers);
     }
 
     /**
@@ -174,4 +174,16 @@ abstract class WpTesting_Component_StepStrategy
         return $this;
     }
 
+    /**
+     * @param fRecordSet $answers
+     * @return fRecordSet
+     */
+    private function extractQuestionsFromAnswers(fRecordSet $answers)
+    {
+        $questions = array();
+        foreach ($answers as $answer) { /* @var $answer WpTesting_Model_Answer */
+            $questions[$answer->getQuestionId()] = $answer->createQuestion();
+        }
+        return fRecordSet::buildFromArray('WpTesting_Model_Question', $questions);
+    }
 }
