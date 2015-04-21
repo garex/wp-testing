@@ -23,6 +23,14 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->stripValuesSlashes();
     }
 
+    public function exists()
+    {
+        if (isset($this->columnAliases['id']) && !is_null(parent::get($this->columnAliases['id']))) {
+            return true;
+        }
+        return parent::exists();
+    }
+
     /**
      * Encode complex value that is safe to pass as a part of URI
      *
@@ -176,6 +184,47 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             $this->setWp(new WpTesting_WordPressFacade('../../wp-testing.php'));
         }
         return $this->wp;
+    }
+
+    /**
+     * Associate many records with it's related records by foreign key in one query
+     * @param fRecordset|array $records
+     * @param string $relatedClassName
+     * @param string $foreignKeyName
+     * @return array Objects fo type relatedClassName by it's ids
+     */
+    protected function associateManyRelated($records, $relatedClassName, $foreignKeyName)
+    {
+        $recordsById = array();
+        if ($records instanceof fRecordSet) {
+            foreach ($records as $record) {
+                $recordsById[$record->getId()] = $record;
+            }
+        } else {
+            $recordsById = $records;
+        }
+
+        if (empty($recordsById)) {
+            return array();
+        }
+
+        // Get related records
+        $orderBys = fORMRelated::getOrderBys(get_class(reset($recordsById)), $relatedClassName, $foreignKeyName);
+        $relatedRecords = fRecordSet::build($relatedClassName, array(
+            $foreignKeyName . '=' => array_keys($recordsById),
+        ), $orderBys);
+        $relatedRecordsById           = array();
+        $relatedRecordsByByForeignKey = array();
+        foreach ($relatedRecords as $relatedRecord) {
+            $relatedRecordsById[$relatedRecord->getId()] = $relatedRecord;
+            $relatedRecordsByByForeignKey[$relatedRecord->get($foreignKeyName)][] = $relatedRecord;
+        }
+        // Assoc related records to records
+        $associateMethodName = 'associate' . $relatedClassName;
+        foreach ($relatedRecordsByByForeignKey as $foreignKeyValue => $relatedRecords) {
+            $recordsById[$foreignKeyValue]->$associateMethodName($relatedRecords);
+        }
+        return $relatedRecordsById;
     }
 
     /**

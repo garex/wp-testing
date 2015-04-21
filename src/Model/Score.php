@@ -13,6 +13,11 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
         'value' => 'score_value',
     );
 
+    public function getId()
+    {
+        return $this->get('scale_id') . '|' . $this->get('answer_id');
+    }
+
     public function getValueWithoutZeros()
     {
         $value = $this->getValue();

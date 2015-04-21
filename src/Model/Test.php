@@ -81,6 +81,17 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return WpTesting_Model_Question[]
+     */
+    public function buildQuestionsWithAnswersAndScores()
+    {
+        $questions   = $this->me()->buildQuestions();
+        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
+        $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
+        return $questions;
+    }
+
+    /**
      * @return WpTesting_Model_Scale[]
      */
     public function buildScales()

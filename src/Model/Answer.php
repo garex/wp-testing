@@ -73,6 +73,11 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
         return $this->buildScoresOnce();
     }
 
+    public function associateScores($scores)
+    {
+        $this->associateWpTesting_Model_Score($scores);
+    }
+
     /**
      * @return fRecordSet of WpTesting_Model_Score
      */
