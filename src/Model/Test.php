@@ -81,6 +81,17 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * @return WpTesting_Model_Question[]
+     */
+    public function buildQuestionsWithAnswersAndScores()
+    {
+        $questions   = $this->me()->buildQuestions();
+        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
+        $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
+        return $questions;
+    }
+
+    /**
      * @return WpTesting_Model_Scale[]
      */
     public function buildScales()
@@ -460,7 +471,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      */
     public function storeAll()
     {
+        $this->transactionStart();
         $this->wp->doAction('wp_testing_test_store_all_before', $this);
+
+        $this->buildQuestionsWithAnswersAndScores();
+        fORMValidation::disableForeignKeyConstraintsCheck();
 
         $this
             ->populateAll()
@@ -469,6 +484,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
         ;
 
         $this->wp->doAction('wp_testing_test_store_all_after', $this);
+        $this->transactionFinish();
 
         return $this;
     }

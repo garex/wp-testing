@@ -133,3 +133,8 @@ ul.categorychecklist.ui-sortable li.sortable-placeholder {
     margin-top: 1px;
     margin-right: 10px;
 }
+
+pre.exposed {
+    width: 100%;
+    white-space: pre-wrap;
+}
