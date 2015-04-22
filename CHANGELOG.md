@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.11.3 ###
+Fix strict settings catchable error in steps
+
+Upgrade notice:
+
+* You should upgrade to this version only if nothing works on test page and your PHP error settings are strict 
+
+
 ### 0.11.2 ###
 Fix many answers on many steps
 
