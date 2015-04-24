@@ -187,7 +187,7 @@ describe('Steps', function() {
         casper.then(function() {
             this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
             this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.wait(300).fill('form#wpt-test-form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM

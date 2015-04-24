@@ -102,7 +102,7 @@ describe('Answers1 and Scales1', function() {
             document.location = jQuery('#view-post-btn a').attr('href')
         })
 
-        casper.waitForUrl(/wpt_test/, function() {
+        casper.waitForUrl(/questions/, function() {
             'Fatal'.should.not.be.textInDOM
             '`5 + 5 is "10?'.should.be.textInDOM
             '6 + 6 is \'10?'.should.be.textInDOM
@@ -133,7 +133,7 @@ describe('Answers1 and Scales1', function() {
             document.location = jQuery('#view-post-btn a').attr('href')
         })
 
-        casper.waitForUrl(/wpt_test/, function() {
+        casper.waitForUrl(/questions/, function() {
             'Fatal'.should.not.be.textInDOM
             '#wpt-test-form .answer label'.should.not.be.inDOM
         })

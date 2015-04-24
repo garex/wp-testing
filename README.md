@@ -4,7 +4,7 @@
 **Donate link:** http://apsiholog.ru/psychological-tests/  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
-**Tested up to:** 4.1.2  
+**Tested up to:** 4.2  
 **Stable tag:** 0.11.3  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
@@ -36,7 +36,7 @@ Respondent will get **results** on it's own individual passing page, which will 
 
 Wp-testing localized into eleven languages: English, Russian, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese and Brazilian. English, Russian, French, Dutch, Bulgarian, Italian, Turkish, Chinese and Brazilian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
-**Quality** and **compatibility** are taken really seriously. Plugin tested on [40 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.1.1) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
+**Quality** and **compatibility** are taken really seriously. Plugin tested on [44 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.2) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 

@@ -14,7 +14,8 @@ env:
     - WP_VERSION=3.9
     - WP_VERSION=4.0.1
     - WP_VERSION=3.8
-    - WP_VERSION=4.1.2
+    - WP_VERSION=4.1.3
+    - WP_VERSION=4.2
     - WP_VERSION=3.6
     - WP_VERSION=3.4
     - WP_VERSION=3.7
@@ -26,7 +27,7 @@ matrix:
     - php: 5.3
       env: DB_ENGINE=MyISAM DB_CHARSET=latin1
     - php: 5.4
-      env: PLUGINS=akismet.3.0.4:jetpack.3.3:wordpress-seo.1.7.1:wordfence.5.3.4:contact-form-7.4.0.3:google-sitemap-generator.4.0.8
+      env: PLUGINS=akismet.3.1.1:jetpack.3.5:wordpress-seo.2.1.1:wordfence.5.3.12:contact-form-7.4.1.2:google-sitemap-generator.4.0.8
   allow_failures:
     - php: 5.2
       env: WP_VERSION=3.5
