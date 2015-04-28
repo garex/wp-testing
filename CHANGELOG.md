@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.11.4 ###
+Fix content comparing in duplicate protection
+
+You should upgrade to this version only if:
+
+* There are no questions on test page
+* Test's content text is small (less than 255 chars)
+* You have plugin that also adds something to content
+
+
 ### 0.11.3 ###
 Fix strict settings catchable error in steps
 
