@@ -110,6 +110,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     private function prepareToLevenshein($input)
     {
+        $input = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $input);
         return substr(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($input))), 0, 255);
     }
 
