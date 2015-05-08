@@ -17,7 +17,7 @@
  * @method WpTesting_Model_Passing setUserAgent() setUserAgent(string $userAgent) Sets the value for user agent
  * @method integer getRespondentId() getRespondentId() Gets the current value of respondent id
  */
-class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
+class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 {
 
     /**
@@ -52,6 +52,41 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
         $this->setCreated(time())->setModified(time())->setTestId($test->getId());
         parent::populate(true);
         $this->linkWpTesting_Model_Answers();
+        return $this;
+    }
+
+    /**
+     * Saves passing and all objects related to it.
+     *
+     * @throws fValidationException
+     * @return WpTesting_Model_Passing
+     */
+    public function storeAll()
+    {
+        $this->wp->doAction('wp_testing_passing_store_all_before', $this);
+
+        $this
+            ->populateAll()
+            ->store(true)
+        ;
+
+        $this->wp->doAction('wp_testing_passing_store_all_after', $this);
+        return $this;
+    }
+
+    /**
+     * Populates all related objects.
+     *
+     * @return WpTesting_Model_Passing
+     */
+    public function populateAll()
+    {
+        $this->wp->doAction('wp_testing_passing_populate_all_before', $this);
+
+        $_POST = $this->wp->applyFilters('wp_testing_passing_adapt_for_populate', $_POST, $this);
+        parent::populate(true);
+
+        $this->wp->doAction('wp_testing_passing_populate_all_after', $this);
         return $this;
     }
 
@@ -92,7 +127,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractModel
      * @param integer $respondentId
      * @return WpTesting_Model_Passing
      */
-    public function  setRespondentId($respondentId)
+    public function setRespondentId($respondentId)
     {
         if (empty($respondentId)) {
             $respondentId = null;
