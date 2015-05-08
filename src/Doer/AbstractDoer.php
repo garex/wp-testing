@@ -27,7 +27,8 @@ abstract class WpTesting_Doer_AbstractDoer
 
     public function renderJsData()
     {
-        $this->output('Abstract/js-data', array(
+        $root = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+        $this->output($root . 'Abstract/js-data.php', array(
             'Wpt' => $this->jsData,
         ));
         $this->jsData = array();
@@ -132,6 +133,7 @@ abstract class WpTesting_Doer_AbstractDoer
             array('samyk_evercookie',  'vendor/samyk/evercookie/js/evercookie.js', array('samyk_swfobject')),
             array('field_selection',   'js/vendor/kof/field-selection.js'),
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
+            array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
 
             // Vector graphics for diagramming
             array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),
