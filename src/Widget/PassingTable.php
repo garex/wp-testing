@@ -9,6 +9,12 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     protected $wp = null;
 
+    /**
+     * Dynamic columns, that allows to extend this table
+     * @var array key => WpTesting_Widget_PassingTableColumn
+     */
+    private $dynamic_columns = array();
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp = $wp;
@@ -19,9 +25,20 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
         ));
     }
 
+    public function get_table_classes()
+    {
+        return array('widefat', 'striped', $this->_args['plural']);
+    }
+
+    public function add_dynamic_column(WpTesting_Widget_PassingTableColumn $column)
+    {
+        $this->dynamic_columns[$column->key()] = $column;
+        return $this;
+    }
+
     public function get_columns()
     {
-        return array(
+        $columns = array(
             'actions'     => $this->wp->translate('Actions'),
             'test_title'  => __('Test', 'wp-testing'),
             'scales'      => __('Scales', 'wp-testing'),
@@ -32,6 +49,15 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
             'user_agent'  => __('Browser', 'wp-testing'),
             'created'     => $this->wp->translate('Date'),
         );
+        foreach ($this->dynamic_columns as $key => $column) { /* @var $column WpTesting_Widget_PassingTableColumn */
+            $index   = array_search($column->placeAfter(), array_keys($columns)) + 1;
+            $columns =
+                array_slice($columns, 0, $index, true) +
+                array($key => $column->title()) +
+                array_slice($columns, $index, count($columns) - 1, true)
+            ;
+        }
+        return $columns;
     }
 
     public function prepare_items()
@@ -56,11 +82,16 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return strnig
+     * @return string
      */
     public function column_default($item, $column_name)
     {
         $item->setWp($this->wp);
+
+        if (isset($this->dynamic_columns[$column_name])) {
+            return $this->dynamic_columns[$column_name]->value($item);
+        }
+
         switch($column_name) {
             case 'id':
                 return $item->getId();
@@ -122,7 +153,7 @@ class WpTesting_Widget_PassingTable extends WP_List_Table
 
             case 'actions':
                 $actions = array();
-                $actions[] = $item->getId() . '. ' . $this->renderLink(
+                $actions[] = $item->getId() . '.&nbsp;' . $this->renderLink(
                     $item->getUrl(),
                     $this->wp->translate('View')
                 );
