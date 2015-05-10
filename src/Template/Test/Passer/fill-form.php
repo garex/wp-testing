@@ -45,7 +45,7 @@
             <label for="<?php echo $answerId ?>">
                 <input type="<?php echo $isMultipleAnswers ? 'checkbox' : 'radio' ?>" id="<?php echo $answerId ?>"
                     name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="<?php echo $answer->getId() ?>" />
-                <?php echo $answer->getTitle() ?>
+                <?php echo $answer->getTitleOnce() ?>
             </label>
 
         </div>

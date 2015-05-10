@@ -238,7 +238,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/edit-questions', array(
             'scales'              => $test->buildScalesWithRange(),
             'answers'             => $test->buildGlobalAnswers(),
-            'questions'           => $test->buildQuestions(),
+            'questions'           => $test->buildQuestionsWithAnswersAndScores(),
             'isWarnOfSettings'    => $test->isWarnOfSettings(),
             'memoryWarnSettings'  => $test->getMemoryWarnSettings(),
             'isUnderApache'       => $this->isUnderApache(),

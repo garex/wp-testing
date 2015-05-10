@@ -155,25 +155,38 @@ describe('Answers2 and Scales2', function() {
         casper.waitForUrl(/answers-sorted/, function() {
             'Fatal'.should.not.be.textInDOM
             'jQuery(".question .answer:first").text()'.should.evaluate.to.be.equal('No')
+            this.clickLabel('Edit Test')
         })
 
-        casper.back().viewport(1280, 720).then(function() {
-            '#message'.should.be.inDOM
+        casper.waitForUrl(/edit/, function() {
+            'Edit Test'.should.be.textInDOM
+        })
 
-            this.clickLabel(' Yes', 'label')
-            this.clickLabel(' Yes', 'label')
-
+        casper.viewport(1280, 3000).then(function() {
             // Manually move Yes before No
-            var yesId = '#' + this.evaluate(function() {
-                return jQuery('#wpt_answer-all label').parent().next().attr('id')
+            var els = this.evaluate(function() {
+                return {
+                    no  : '#' + jQuery('#wpt_answer-all label:first').parent().attr('id') + ' label',
+                    yes : '#' + jQuery('#wpt_answer-all label:first').parent().next().attr('id') + ' label'
+                };
             })
-            this.mouse.down(yesId)
-            var b = this.getElementBounds(yesId)
-            for (var i=0; i < b.height + 5; i++) {
-                this.mouse.move(b.left, b.top - i)
-            }
-            this.mouse.up(b.left, b.top)
 
+            this.wait(10).mouse.down(els.no)
+
+            this.wait(10).mouse.move(els.yes)
+            this.wait(10).mouse.move(els.yes)
+            this.wait(10).mouse.move(els.yes)
+            this.wait(10).mouse.move('#wpt_answer-adder')
+            this.wait(10).mouse.move(els.yes)
+            this.wait(10).mouse.move('#wpt_answer-adder')
+            this.wait(10).mouse.move(els.yes)
+            this.wait(10).mouse.move('#wpt_answer-adder')
+
+            this.wait(10).mouse.move('#wpt_answer-all .sortable-placeholder')
+            this.wait(10).mouse.up('#wpt_answer-all .sortable-placeholder')
+        })
+
+        casper.then(function() {
             this.click('#publish')
         })
 

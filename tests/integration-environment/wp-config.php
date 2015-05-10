@@ -26,3 +26,12 @@ if ( !defined('ABSPATH') )
 defined('JETPACK_DEV_DEBUG') or define('JETPACK_DEV_DEBUG', true);
 
 require_once(ABSPATH . 'wp-settings.php');
+
+/**
+ * Disable wp_admin_canonical_url
+ * @since 4.2.0
+ */
+add_filter('removable_query_args', '_wpt_test_removable_query_args');
+function _wpt_test_removable_query_args() {
+    return array();
+}

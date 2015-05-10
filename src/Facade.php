@@ -380,6 +380,8 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         ), WPT_DB_PREFIX  . 'answers', 'foreign');
 
         $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'sections', 'foreign');
+        $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'fields',   'foreign');
+        $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'field_values', 'foreign');
 
         $this->wp->doAction('wp_testing_orm_setup', $schema, $database);
 

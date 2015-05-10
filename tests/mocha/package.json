@@ -1,7 +1,9 @@
 {
   "dependencies": {
-    "chai": ">= 1.8.1",
+    "chai": ">= 2.2.0",
     "casper-chai": "^0.2.1",
-    "mocha-casperjs": "^0.5.2"
+    "mocha-phantomjs": "^3.5.3",
+    "mocha-casperjs": "^0.5.3",
+    "phantomjs": "1.9.11"
   }
 }

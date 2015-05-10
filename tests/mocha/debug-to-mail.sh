@@ -6,6 +6,7 @@ ATTACH="$3"
 
 ls $ATTACH 2>/dev/null || exit 0
 
+which mutt || sudo apt-get update
 which mutt || sudo apt-get install mutt
 
 echo "$SUBJECT" | mutt -s "$SUBJECT" $(printf -- '-a %q ' $ATTACH) -- $TO

@@ -99,7 +99,7 @@ describe('Questions', function() {
             document.location = jQuery('#view-post-btn a').attr('href')
         })
 
-        casper.waitForUrl(/wpt_test/, function() {
+        casper.waitForUrl(/not/, function() {
             'Fatal'.should.not.be.textInDOM
             '"Quick"'.should.be.textInDOM
             '.wpt_test.fill_form'.should.be.inDOM

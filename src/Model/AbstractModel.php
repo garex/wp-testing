@@ -1,4 +1,7 @@
 <?php
+/**
+ * @method array getColumnsAsMethodsOnce() getColumnsAsMethodsOnce()
+ */
 abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 {
 
@@ -16,11 +19,84 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected $wp = null;
 
+    /**
+     * @var array
+     */
+    private $methodCallCache = array();
+
+    /**
+     * @var array [Class][Column] => Method
+     */
+    private static $columnsAsMethodsCache = array();
+
+    /**
+     * @var boolean
+     */
+    private $isTransactionStarted = false;
+
     public function populate($recursive = false)
     {
         parent::populate($recursive);
 
         return $this->stripValuesSlashes();
+    }
+
+    protected function populateSelf()
+    {
+        foreach ($this->getColumnsAsMethodsOnce($this) as $column => $method) {
+            $isExists = (isset($_POST[$column]) || array_key_exists($column, $_POST));
+            if (!$isExists) {
+                continue;
+            }
+            $this->$method($_POST[$column]);
+        }
+        return $this->stripValuesSlashes();
+    }
+
+    protected function populateRelated($recursive = false)
+    {
+        if ($recursive) {
+            $one_to_many_relationships = $schema->getRelationships($table, 'one-to-many');
+            foreach ($one_to_many_relationships as $relationship) {
+                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-many', $relationship);
+                $related_class = fORM::classize($relationship['related_table']);
+                $method = 'populate' . fGrammar::pluralize($related_class);
+                $this->$method(TRUE, $route_name);
+            }
+
+            $one_to_one_relationships = $schema->getRelationships($table, 'one-to-one');
+            foreach ($one_to_one_relationships as $relationship) {
+                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-one', $relationship);
+                $related_class = fORM::classize($relationship['related_table']);
+                $this->__call('populate' . $related_class, array(TRUE, $route_name));
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getColumnsAsMethodsOnce($me)
+    {
+        $class = get_class($me);
+        if (!isset(self::$columnsAsMethodsCache[$class])) {
+            $schema = fORMSchema::retrieve($class);
+            $table  = fORM::tablize($class);
+            self::$columnsAsMethodsCache[$class] = array();
+            foreach ($schema->getColumnInfo($table) as $column => $info) {
+                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, TRUE);
+            }
+        }
+        return self::$columnsAsMethodsCache[$class];
+    }
+
+    public function exists()
+    {
+        if (isset($this->columnAliases['id']) && !is_null(parent::get($this->columnAliases['id']))) {
+            return true;
+        }
+        return parent::exists();
     }
 
     /**
@@ -112,6 +188,25 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $signatures;
     }
 
+    /**
+     * Helps to cache method results
+     * @see fActiveRecord::__call()
+     */
+    public function __call($methodName, $params)
+    {
+        // Call method only once
+        if (strrpos($methodName, 'Once') !== false) {
+            $methodName = str_replace('Once', '', $methodName);
+            if (!isset($this->methodCallCache[$methodName])) {
+                $this->methodCallCache[$methodName] = (method_exists($this, $methodName))
+                    ? $this->$methodName($params)
+                    : parent::__call($methodName, $params);
+            }
+            return $this->methodCallCache[$methodName];
+        }
+        return parent::__call($methodName, $params);
+    }
+
     protected function generateMagicMethodPhpDoc($methodName, $params, $returnType, $comment)
     {
         $paramsDoc = array();
@@ -170,12 +265,89 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return strlen($string);
     }
 
+    /**
+     * @return WpTesting_WordPressFacade
+     */
     protected function getWp()
     {
         if (is_null($this->wp)) {
             $this->setWp(new WpTesting_WordPressFacade('../../wp-testing.php'));
         }
         return $this->wp;
+    }
+
+    /**
+     * Associate many records with it's related records by foreign key in one query
+     * @param fRecordset|array $records
+     * @param string $relatedClassName
+     * @param string $foreignKeyName
+     * @return array Objects fo type relatedClassName by it's ids
+     */
+    protected function associateManyRelated($records, $relatedClassName, $foreignKeyName)
+    {
+        $recordsById = array();
+        if ($records instanceof fRecordSet) {
+            foreach ($records as $record) {
+                $recordsById[$record->getId()] = $record;
+            }
+        } else {
+            $recordsById = $records;
+        }
+
+        if (empty($recordsById)) {
+            return array();
+        }
+
+        // Get related records
+        $orderBys = fORMRelated::getOrderBys(get_class(reset($recordsById)), $relatedClassName, $foreignKeyName);
+        $relatedRecords = fRecordSet::build($relatedClassName, array(
+            $foreignKeyName . '=' => array_keys($recordsById),
+        ), $orderBys);
+        $relatedRecordsById           = array();
+        $relatedRecordsByByForeignKey = array();
+        foreach ($relatedRecords as $relatedRecord) {
+            $relatedRecordsById[$relatedRecord->getId()] = $relatedRecord;
+            $relatedRecordsByByForeignKey[$relatedRecord->get($foreignKeyName)][] = $relatedRecord;
+        }
+        // Assoc related records to records
+        $associateMethodName = 'associate' . $relatedClassName;
+        foreach ($relatedRecordsByByForeignKey as $foreignKeyValue => $relatedRecords) {
+            $recordsById[$foreignKeyValue]->$associateMethodName($relatedRecords);
+        }
+        return $relatedRecordsById;
+    }
+
+    protected function transactionStart()
+    {
+        $db = $this->getDb();
+        if (!$db->isInsideTransaction()) {
+            $db->translatedQuery('BEGIN');
+            $this->isTransactionStarted = true;
+        }
+        return $this;
+    }
+
+    protected function transactionFinish()
+    {
+        if ($this->isTransactionStarted) {
+            $this->getDb()->translatedQuery('COMMIT');
+            $this->isTransactionStarted = false;
+        }
+        return $this;
+    }
+
+    protected function transactionRollback()
+    {
+        $db = $this->getDb();
+        if (!$db->isInsideTransaction()) {
+            $db->translatedQuery('ROLLBACK');
+        }
+        return $this;
+    }
+
+    protected function getDb($role = 'write')
+    {
+        return fORMDatabase::retrieve(get_class($this), $role);
     }
 
     /**

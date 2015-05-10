@@ -4,6 +4,8 @@
  * @method integer getId() getId() Gets the current value of id
  * @method string getTitle() getTitle() Gets the current value of title
  * @method string getSlug() getSlug() Gets the current value of slug
+ * @method string getAbbrOnce() getAbbrOnce() Gets cached value of abbreviration
+ * @method string getTitleOnce() getTitleOnce() Gets cached value of title
  */
 abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel
 {
@@ -28,7 +30,7 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
      */
     public function getAbbr()
     {
-        return mb_substr($this->getTitle(), 0, 1, 'UTF-8');
+        return mb_substr($this->getTitleOnce(), 0, 1, 'UTF-8');
     }
 
     public function getDescription()
