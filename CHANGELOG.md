@@ -2,6 +2,17 @@
 ## Changelog ##
 
 
+### 0.12 ###
+
+Speed-up tests saving, improve respondents results' and add new locale
+
+* Radically speed-up saving of tests with many scores (many questions, answers and scales)
+* Improve respondents results' table look by making it non-fixed
+* Add Spanish locale
+* Update tests to the latest WP version
+* Add extension points for fields addon
+
+
 ### 0.11.4 ###
 Fix content comparing in duplicate protection
 
