@@ -14,8 +14,8 @@ env:
     - WP_VERSION=3.9
     - WP_VERSION=4.0.1
     - WP_VERSION=3.8
-    - WP_VERSION=4.1.3
-    - WP_VERSION=4.2
+    - WP_VERSION=4.1.5
+    - WP_VERSION=4.2.2
     - WP_VERSION=3.6
     - WP_VERSION=3.4
     - WP_VERSION=3.7
