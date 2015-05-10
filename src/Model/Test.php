@@ -24,7 +24,7 @@
  * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
  * @method string getName() getName() Gets the current value for name (url unique part)
  */
-class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
+class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {
 
     /**
@@ -49,12 +49,6 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
      * @var WpTesting_Model_Taxonomy[]
      */
     protected $taxonomies = null;
-
-    /**
-     * Used in addons when adding behaviours
-     * @var WpTesting_Model_Test
-     */
-    private $parent = null;
 
     public function __construct($key = null)
     {
@@ -511,7 +505,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
     /**
      * Unpack request for subsequent population from it to ORM naming standards
      *
-     * @param array $input
+     * @param array $request
      * @param int $testId
      * @return array
      */
@@ -655,23 +649,6 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractModel
             $post->$key = (string)$value;
         }
         return $post;
-    }
-
-    public function setParent(WpTesting_Model_Test $parent)
-    {
-        $this->parent = $parent;
-        if (is_null($this->wp)) {
-            $this->wp = $parent->wp;
-        }
-        return $this;
-    }
-
-    /**
-     * @return WpTesting_Model_Test
-     */
-    protected function me()
-    {
-        return is_null($this->parent) ? $this : $this->parent;
     }
 
     protected function configure()

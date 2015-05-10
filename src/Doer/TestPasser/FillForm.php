@@ -32,6 +32,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         ;
         $this->wp
             ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
+            ->doAction('wp_testing_passer_fill_form_before_render', $this->passing, $this->test)
         ;
     }
 
@@ -83,6 +84,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'stepsCounter' => $this->passing->getStepsCounter(),
         );
 
+        $this->wp->doAction('wp_testing_passer_fill_form_render_content', $this->passing, $this->test);
         return preg_replace_callback(
             '|<form.+</form>|s',
             array($this, 'stripNewLines'),

@@ -265,6 +265,9 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return strlen($string);
     }
 
+    /**
+     * @return WpTesting_WordPressFacade
+     */
     protected function getWp()
     {
         if (is_null($this->wp)) {

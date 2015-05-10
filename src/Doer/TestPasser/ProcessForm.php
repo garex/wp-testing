@@ -15,7 +15,7 @@ class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Ac
         ;
 
         try {
-            $passing->store(true);
+            $passing->storeAll();
             $link = $passing->getUrl($this->getCurrentUrl());
             return $this->redirectAndDie($link);
         } catch (fValidationException $e) {
