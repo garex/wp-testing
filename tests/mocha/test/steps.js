@@ -146,7 +146,6 @@ describe('Steps', function() {
     it('should have 33% answered on 2nd step initially', function() {
         casper.then(function() {
             this.getTitle().should.match(/^33% ans/)
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
         })
     })
 
