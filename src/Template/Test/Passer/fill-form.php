@@ -37,13 +37,14 @@
         <?php endif ?>
         </div>
 
-    <?php foreach($question->buildAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
         <div class="answer">
 
             <label for="<?php echo $answerId ?>">
                 <input type="<?php echo $isMultipleAnswers ? 'checkbox' : 'radio' ?>" id="<?php echo $answerId ?>"
+                    <?php if (0 == $a): ?>required="required" aria-required="true"<?php endif ?>
                     name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="<?php echo $answer->getId() ?>" />
                 <?php echo $answer->getTitleOnce() ?>
             </label>
