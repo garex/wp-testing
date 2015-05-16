@@ -134,6 +134,7 @@ abstract class WpTesting_Doer_AbstractDoer
             array('field_selection',   'js/vendor/kof/field-selection.js'),
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
             array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
+            array('webshim',           'js/vendor/afarkas/webshim/polyfiller.js',  array('jquery'), '1.15.7'),
 
             // Vector graphics for diagramming
             array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),
