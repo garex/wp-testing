@@ -77,6 +77,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'test'         => $this->test,
             'questions'    => $step->getQuestions(),
             'isShowContent'=> $step->isFirst(),
+            'formClasses'  => $this->getFormClasses(),
             'subTitle'     => $step->getTitle(),
             'isFinal'      => $this->test->isFinal(),
             'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
@@ -122,5 +123,15 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         $result = preg_replace('/(>) ([^<])/s', '$1$2', $result);
         $result = preg_replace('|([^>]) (</)|s', '$1$2', $result);
         return $result;
+    }
+
+    /**
+     * @return string
+     */
+    private function getFormClasses()
+    {
+        $formClasses = array(
+        );
+        return implode(' ', $this->wp->applyFilters('wp_testing_passer_fill_form_form_classes', $formClasses));
     }
 }
