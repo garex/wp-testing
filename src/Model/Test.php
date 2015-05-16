@@ -367,9 +367,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         return $this->isOptionEnabled('wpt_test_page_one_question_per_step');
     }
 
-    protected function isOptionEnabled($key)
+    protected function isOptionEnabled($key, $default = null)
     {
-        return (1 == $this->getWp()->getPostMeta($this->getId(), $key, true));
+        $value = $this->getWp()->getPostMeta($this->getId(), $key, true);
+        if ('' === $value && is_bool($default)) {
+            return $default;
+        }
+        return (1 == $value);
     }
 
     protected function hasAnswers()

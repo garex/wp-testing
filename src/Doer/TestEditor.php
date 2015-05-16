@@ -30,7 +30,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
         ;
         $this->wp
-            ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscActions'))
+            ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscOptions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
             ->addAction('add_meta_boxes_wpt_test', array($this, 'setDefaultMetaboxesOrder'))
             ->addMetaBox('wpt_test_page_options', __('Test Page Options', 'wp-testing'),
@@ -149,18 +149,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $allowedTags;
     }
 
-    public function renderSubmitMiscActions()
-    {
-        // Set metadata defaults
-        $isPublishOnHome = $this->wp->getCurrentPostMeta('wpt_publish_on_home');
-        if ($isPublishOnHome == '') {
-            $isPublishOnHome = '1';
-        }
-        $this->output('Test/Editor/submit-misc-actions', array(
-            'isPublishOnHome' => $isPublishOnHome,
-        ));
-    }
-
     public function renderContentEditorButtons($editorId)
     {
         if ('content' != $editorId) {
@@ -169,10 +157,24 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/content-editor-buttons');
     }
 
-    /**
-     * @param WP_Post $item
-     */
-    public function renderTestPageOptions($item)
+    private function getSubmitMiscOptions()
+    {
+        $options = array(
+            'wpt_publish_on_home' => array(
+                'default' => '1',
+                'title'   => __('Publish on the home page', 'wp-testing'),
+            ),
+        );
+
+        return $this->wp->applyFilters('wpt_test_editor_submit_misc_options', $options);
+    }
+
+    public function renderSubmitMiscOptions()
+    {
+        $this->renderMetaboxOptions($this->getSubmitMiscOptions());
+    }
+
+    private function getTestPageOptions()
     {
         $options = array(
             'wpt_test_page_show_progress_meter' => array(
@@ -199,13 +201,18 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
-        $this->renderMetaboxOptions($options);
+        return $this->wp->applyFilters('wpt_test_editor_test_page_options', $options);
     }
 
     /**
      * @param WP_Post $item
      */
-    public function renderResultPageOptions($item)
+    public function renderTestPageOptions($item)
+    {
+        $this->renderMetaboxOptions($this->getTestPageOptions());
+    }
+
+    private function getResultPageOptions()
     {
         $options = array(
             'wpt_result_page_show_scales_diagram' => array(
@@ -226,7 +233,15 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
-        $this->renderMetaboxOptions($options);
+        return $this->wp->applyFilters('wpt_test_editor_result_page_options', $options);
+    }
+
+    /**
+     * @param WP_Post $item
+     */
+    public function renderResultPageOptions($item)
+    {
+        $this->renderMetaboxOptions($this->getResultPageOptions());
     }
 
     /**
@@ -282,17 +297,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return;
         }
 
-        $metaOptions = array(
-            'wpt_publish_on_home',
-            'wpt_test_page_submit_button_caption',
-            'wpt_test_page_reset_answers_on_back',
-            'wpt_test_page_show_progress_meter',
-            'wpt_test_page_one_question_per_step',
-            'wpt_test_page_multiple_answers',
-            'wpt_result_page_show_scales_diagram',
-            'wpt_result_page_show_scales',
-            'wpt_result_page_sort_scales_by_score',
-            'wpt_result_page_show_test_description',
+        $metaOptions = array_keys(
+            $this->getSubmitMiscOptions()
+            + $this->getTestPageOptions()
+            + $this->getResultPageOptions()
         );
 
         // Update metadata only when we have appropriate keys
@@ -376,6 +384,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             }
             if (empty($option['placeholder'])) {
                 $option['placeholder'] = '';
+            }
+            if (empty($option['break'])) {
+                $option['break'] = false;
             }
             $options[$key] = $option;
         }
