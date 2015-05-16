@@ -16,6 +16,13 @@
 <?php elseif ('text' == $option['type']): ?>
     <label><?php echo $option['title'] ?></label>
     <input type="text" name="<?php echo $key ?>" value="<?php echo $option['value'] ?>" placeholder="<?php echo $option['placeholder'] ?>" />
+<?php elseif ('select' == $option['type']): ?>
+    <label><?php echo $option['title'] ?></label>
+    <select name="<?php echo $key ?>">
+    <?php foreach ($option['values'] as $valueKey => $valueTitle): ?>
+        <option value="<?php echo $valueKey ?>" <?php if ($valueKey == $option['value']): ?>selected="selected"<?php endif ?>><?php echo $valueTitle ?></option>
+    <?php endforeach ?>
+    </select>
 <?php endif ?>
 </div>
 <?php endforeach ?>

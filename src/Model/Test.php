@@ -369,11 +369,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     protected function isOptionEnabled($key, $default = null)
     {
-        $value = $this->getWp()->getPostMeta($this->getId(), $key, true);
-        if ('' === $value && is_bool($default)) {
-            return $default;
+        return $this->isOptionEqual($key, 1, $default);
+    }
+
+    protected function isOptionEqual($key, $expectedValue, $defaultValue = null)
+    {
+        $actualValue = $this->getWp()->getPostMeta($this->getId(), $key, true);
+        if ('' === $actualValue && !is_null($defaultValue)) {
+            $actualValue = $defaultValue;
         }
-        return (1 == $value);
+        return ($expectedValue == $actualValue);
     }
 
     protected function hasAnswers()
