@@ -327,6 +327,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Sanitizes a title, or returns a fallback title.
+     *
+     * Specifically, HTML and PHP tags are stripped. Further actions can be added
+     * via the plugin API. If $title is empty and $fallback_title is set, the latter
+     * will be used.
+     *
+     * @since 1.0.0
+     *
+     * @param string $title The string to be sanitized.
+     * @param string $fallbackTitle Optional. A title to use if $title is empty.
+     * @param string $context Optional. The operation for which the string is sanitized
+     * @return string The sanitized string.
+     */
+    public function sanitizeTitle($title, $fallbackTitle = '', $context = 'save')
+    {
+        return sanitize_title($title, $fallbackTitle, $context);
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
