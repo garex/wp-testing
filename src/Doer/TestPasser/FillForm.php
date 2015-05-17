@@ -28,7 +28,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
 
         $this
             ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
-            ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie'))
+            ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie', 'webshim'))
         ;
         $this->wp
             ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)

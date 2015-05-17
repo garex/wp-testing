@@ -99,7 +99,8 @@ describe('Diagrams', function() {
         resultUrl = ''
 
         casper.thenOpen(testViewUrl).waitForUrl(/test/, function() {
-            this.clickLabel('Yes')
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
             this.fill('form#wpt-test-form', {}, true)
         })
 

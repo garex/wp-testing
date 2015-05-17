@@ -78,12 +78,6 @@ describe('Multiple answers test', function() {
         })
     })
 
-    it('should have button disabled', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
-        })
-    })
-
     it('should not have percentage in title initially', function() {
         casper.then(function() {
             this.getTitle().should.not.match(/^\d+% ans/)
@@ -125,22 +119,10 @@ describe('Multiple answers test', function() {
         })
     })
 
-    it('should have button enabled after all answers clicks', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
-        })
-    })
-
     it('should have zero percentage after all answers unclicks', function() {
         casper.then(function() {
             clickAllAnswers()
             this.getTitle().should.match(/^0% ans/)
-        })
-    })
-
-    it('should have button disabled after all answers clicks', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
         })
     })
 
@@ -165,7 +147,6 @@ describe('Multiple answers test', function() {
     it('should reset answers on back', function() {
         casper.back().then(function() {
             'Results'.should.not.be.textInDOM
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
             this.getTitle().should.match(/^Multi/)
         })
     })

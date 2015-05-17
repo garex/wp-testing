@@ -69,7 +69,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     })
 
     var uuidCookie = null;
-    it('should block "Get results" button until all answers selected', function() {
+    it('should not allow submit until all answers selected', function() {
         casper.then(function() {
 
             this.wait(1000, function() {
@@ -80,14 +80,23 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
                 expect(uuidCookie).should.not.be.null
             })
 
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
+            this.evaluate(function(){
+                return document.getElementById('wpt-test-form').checkValidity()
+            }).should.be.false
 
             this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
             this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
 
-            '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
+            this.evaluate(function(){
+                return document.getElementById('wpt-test-form').checkValidity()
+            }).should.be.false
+
+            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
+            'Yezzzzzzz!'.should.be.textInDOM
+
+            this.evaluate(function(){
+                return document.getElementById('wpt-test-form').checkValidity()
+            }).should.be.true
         })
     })
 
@@ -130,7 +139,13 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
 
     it('should reset answers on back if this option enabled', function() {
         casper.back().then(function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
+            this.evaluate(function(){
+                return document.getElementById('wpt-test-form').checkValidity()
+            }).should.be.false
+        })
+
+        casper.then(function() {
+            'Yezzzzzzz!'.should.be.textInDOM
         })
     })
 
@@ -224,7 +239,6 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             for (var i = 1, iMax = 57; i <= iMax; i++) {
                 this.clickLabel('No',  '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
             }
-            '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
             this.fill('form#wpt-test-form', {}, true)
         })
 
