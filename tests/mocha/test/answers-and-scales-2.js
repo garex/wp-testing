@@ -25,7 +25,7 @@ describe('Answers2 and Scales2', function() {
             this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]')
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' No', 'label')
-            this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.click('#publish')
         })
 
@@ -37,6 +37,7 @@ describe('Answers2 and Scales2', function() {
 
         casper.then(function() {
             this.clickLabel(' No', 'label')
+
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '1',
                 '#wpt_score_value_1_0': '2',
@@ -69,7 +70,7 @@ describe('Answers2 and Scales2', function() {
                 '#wpt_question_title_1': 'Question 2?'
             })
             this.click('.misc-pub-wpt-publish-on-home input[type=checkbox]')
-            this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.click('#publish')
         })
 
