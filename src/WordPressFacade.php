@@ -18,7 +18,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function __construct($pluginFile)
     {
-        $this->pluginFile = $pluginFile;
+        $this->setPluginFile($pluginFile);
     }
 
     /**
@@ -343,6 +343,32 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function sanitizeTitle($title, $fallbackTitle = '', $context = 'save')
     {
         return sanitize_title($title, $fallbackTitle, $context);
+    }
+
+    protected function setPluginFile($pluginFile)
+    {
+        $this->pluginFile = $this->guessPluginFilePath($pluginFile);
+        return $this;
+    }
+
+    private function guessPluginFilePath($pluginFile)
+    {
+        if (!defined('WP_PLUGIN_DIR')) {
+            return $pluginFile;
+        }
+
+        $pluginFileParts = explode(DIRECTORY_SEPARATOR, $pluginFile);
+        if (count($pluginFileParts) <= 2) {
+            return $pluginFile;
+        }
+
+        $pluginBaseName = implode(DIRECTORY_SEPARATOR, array_slice($pluginFileParts, -2));
+        $candidate      = rtrim(WP_PLUGIN_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $pluginBaseName;
+        if (file_exists($candidate) && realpath($candidate) == $pluginFile) {
+            return $candidate;
+        }
+
+        return $pluginFile;
     }
 
     /**
