@@ -405,7 +405,6 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         return $this;
     }
 
-
     /**
      * Register an JS script related to plugin path.
      *
@@ -423,7 +422,49 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
         $path = $this->getPluginUrl($pluginRelatedPath);
+        return $this->registerScript($name, $path, $dependencies, $version, $isInFooter);
+    }
+
+    /**
+     * Register new JavaScript file.
+     *
+     * @since r16
+     *
+     * @param string $name
+     * @param string $path
+     * @param array $dependencies
+     * @param string $version
+     * @param string $isInFooter
+     * @return WpTesting_WordPressFacade
+     */
+    public function registerScript($name, $path, array $dependencies = array(), $version = false, $isInFooter = false)
+    {
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
+        return $this;
+    }
+
+    /**
+     * Determine if SSL is used.
+     *
+     * @since 2.6.0
+     *
+     * @return bool True if SSL, false if not used.
+     */
+    public function isSsl()
+    {
+        return is_ssl();
+    }
+
+    /**
+     * Remove a registered script (-s)
+     *
+     * @since r16
+     * @param string|array $name
+     * @return WpTesting_WordPressFacade
+     */
+    public function deregisterScript($name)
+    {
+        wp_deregister_script($name);
         return $this;
     }
 
