@@ -1,18 +1,17 @@
+webshim.setOptions({waitReady: false});
+webshims.polyfill('forms forms-ext');
+
 jQuery(document).ready(function($) {
     var form = $('#wpt-test-form');
 
     var button = form.find('.button');
 
-    form.bind('test_filled.wpt', function() {
-        button.removeAttr('disabled').removeClass('disabled');
-    }).bind('test_unfilled.wpt', function() {
-        button.addClass('disabled').attr('disabled', 'disabled');
-    });
-
     form.bind('question_answered_initially.wpt', function(event, question) {
         question.addClass('answered');
+        question.find('.answer input:first').removeAttr('required').removeAttr('aria-required');
     }).bind('question_unanswered_initially.wpt', function(event, question) {
         question.removeClass('answered');
+        question.find('.answer input:first').attr('required', 'required').attr('aria-required', 'true');
     });
 
     var ec = new evercookie({

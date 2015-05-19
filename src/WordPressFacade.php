@@ -18,7 +18,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function __construct($pluginFile)
     {
-        $this->pluginFile = $pluginFile;
+        $this->setPluginFile($pluginFile);
     }
 
     /**
@@ -327,6 +327,51 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Sanitizes a title, or returns a fallback title.
+     *
+     * Specifically, HTML and PHP tags are stripped. Further actions can be added
+     * via the plugin API. If $title is empty and $fallback_title is set, the latter
+     * will be used.
+     *
+     * @since 1.0.0
+     *
+     * @param string $title The string to be sanitized.
+     * @param string $fallbackTitle Optional. A title to use if $title is empty.
+     * @param string $context Optional. The operation for which the string is sanitized
+     * @return string The sanitized string.
+     */
+    public function sanitizeTitle($title, $fallbackTitle = '', $context = 'save')
+    {
+        return sanitize_title($title, $fallbackTitle, $context);
+    }
+
+    protected function setPluginFile($pluginFile)
+    {
+        $this->pluginFile = $this->guessPluginFilePath($pluginFile);
+        return $this;
+    }
+
+    private function guessPluginFilePath($pluginFile)
+    {
+        if (!defined('WP_PLUGIN_DIR')) {
+            return $pluginFile;
+        }
+
+        $pluginFileParts = explode(DIRECTORY_SEPARATOR, $pluginFile);
+        if (count($pluginFileParts) <= 2) {
+            return $pluginFile;
+        }
+
+        $pluginBaseName = implode(DIRECTORY_SEPARATOR, array_slice($pluginFileParts, -2));
+        $candidate      = rtrim(WP_PLUGIN_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $pluginBaseName;
+        if (file_exists($candidate) && realpath($candidate) == $pluginFile) {
+            return $candidate;
+        }
+
+        return $pluginFile;
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
@@ -360,7 +405,6 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         return $this;
     }
 
-
     /**
      * Register an JS script related to plugin path.
      *
@@ -378,7 +422,49 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
     {
         $path = $this->getPluginUrl($pluginRelatedPath);
+        return $this->registerScript($name, $path, $dependencies, $version, $isInFooter);
+    }
+
+    /**
+     * Register new JavaScript file.
+     *
+     * @since r16
+     *
+     * @param string $name
+     * @param string $path
+     * @param array $dependencies
+     * @param string $version
+     * @param string $isInFooter
+     * @return WpTesting_WordPressFacade
+     */
+    public function registerScript($name, $path, array $dependencies = array(), $version = false, $isInFooter = false)
+    {
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
+        return $this;
+    }
+
+    /**
+     * Determine if SSL is used.
+     *
+     * @since 2.6.0
+     *
+     * @return bool True if SSL, false if not used.
+     */
+    public function isSsl()
+    {
+        return is_ssl();
+    }
+
+    /**
+     * Remove a registered script (-s)
+     *
+     * @since r16
+     * @param string|array $name
+     * @return WpTesting_WordPressFacade
+     */
+    public function deregisterScript($name)
+    {
+        wp_deregister_script($name);
         return $this;
     }
 

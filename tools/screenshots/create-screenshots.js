@@ -154,19 +154,32 @@ var screenshots = [
             }).waitForUrl(/eysencks/)
         }
     }, {
-        title   : 'The button is disabled until all questions are not answered',
+        title   : 'Unanswered questions are highlighted to respondent',
         offset  : 7200,
         actions : function () {
-            casper.wait(400)
+            casper
+            .thenOpen('http://wpti.dev/test/eysencks-personality-inventory-epi-extroversionintroversion/')
+            .waitForUrl(/eysencks/)
+            .wait(100, function() {
+                for (var i = 1, iMax = 57; i <= iMax; i++) {
+                    if (54 == i) {
+                        continue;
+                    }
+                    this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
+                }
+                this.evaluate(function(){
+                    jQuery('#wpt-test-form :submit').click()
+                    setTimeout(function(){ jQuery('.ws-po-box').css('color', 'darkred') }, 0)
+                })
+            }).wait(100)
         }
     }, {
         title   : 'Get test results after all questions are answered',
         offset  : 7200,
         actions : function () {
             casper.then(function() {
-                for (var i = 1, iMax = 57; i <= iMax; i++) {
-                    this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
-                }
+                i = 54
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
             })
         }
     }, {
@@ -202,8 +215,10 @@ var screenshots = [
         title   : 'Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag',
         actions : function () {
             casper.thenOpen('http://wpti.dev/test/diagram-with-same-length-scales/').waitForUrl(/diagram-with-same/, function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
-                this.fill('form#wpt-test-form', {}, true)
+                this.clickLabel('Yes')
+                this.evaluate(function(){
+                    jQuery('#wpt-test-form').submit()
+                })
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
                 this.mouse.move('.scales.diagram')
             })
@@ -212,8 +227,10 @@ var screenshots = [
         title   : 'In case when scales has different length (possible max total) they are shown as percents',
         actions : function () {
             casper.thenOpen('http://wpti.dev/test/diagram-with-different-length-scales-uses-percents/').waitForUrl(/diagram-with-different/, function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
-                this.fill('form#wpt-test-form', {}, true)
+                this.clickLabel('Yes')
+                this.evaluate(function(){
+                    jQuery('#wpt-test-form').submit()
+                })
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
                 this.mouse.move('.scales.diagram')
             })

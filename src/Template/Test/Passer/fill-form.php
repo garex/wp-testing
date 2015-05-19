@@ -4,6 +4,7 @@
 /* @var $answerIdName string */
 /* @var $answerIndex integer */
 /* @var $isShowContent boolean */
+/* @var $formClasses string */
 /* @var $content string */
 /* @var $subTitle string */
 /* @var $test WpTesting_Model_Test */
@@ -23,7 +24,7 @@
 </div>
 <?php endif ?>
 
-<div class="content"><form method="post" id="wpt-test-form">
+<div class="content"><form method="post" id="wpt-test-form" class="<?php echo $formClasses ?>">
 <?php if ($subTitle): ?><h2 class="subtitle"><?php echo $subTitle ?></h2><?php endif ?>
 <?php $wp->doAction('wp_testing_template_fill_form_questions_before') ?>
 <?php foreach($questions as $q => $question): /* @var $question WpTesting_Model_Question */ ?>
@@ -31,19 +32,21 @@
     <div class="question">
 
         <div class="title">
-            <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?></span>
+            <span class="number"><?php echo $q+1 ?>.</span><span class="title"><?php echo $question->getTitle() ?>
+            <?php $wp->doAction('wp_testing_template_fill_form_label_end', array('required' => true)) ?></span>
         <?php if (!$isMultipleAnswers): ?>
             <input type="hidden" name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="" />
         <?php endif ?>
         </div>
 
-    <?php foreach($question->buildAnswers() as $answer): /* @var $answer WpTesting_Model_Answer */ ?>
+    <?php foreach($question->buildAnswers() as $a => $answer): /* @var $answer WpTesting_Model_Answer */ ?>
         <?php $answerId = 'wpt-test-question-' . $question->getId() . '-answer-' . $answer->getId() ?>
 
         <div class="answer">
 
             <label for="<?php echo $answerId ?>">
                 <input type="<?php echo $isMultipleAnswers ? 'checkbox' : 'radio' ?>" id="<?php echo $answerId ?>"
+                    <?php if (0 == $a): ?>required="required" aria-required="true"<?php endif ?>
                     name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="<?php echo $answer->getId() ?>" />
                 <?php echo $answer->getTitleOnce() ?>
             </label>

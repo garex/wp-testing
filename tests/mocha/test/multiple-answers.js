@@ -37,7 +37,7 @@ describe('Multiple answers test', function() {
             this.click('.misc-pub-wpt-test-page-multiple-answers input[type=checkbox]')
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' No',  'label')
-            this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.click('#publish')
         })
 
@@ -78,12 +78,6 @@ describe('Multiple answers test', function() {
         })
     })
 
-    it('should have button disabled', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
-        })
-    })
-
     it('should not have percentage in title initially', function() {
         casper.then(function() {
             this.getTitle().should.not.match(/^\d+% ans/)
@@ -113,41 +107,29 @@ describe('Multiple answers test', function() {
     })
 
     function clickAllAnswers() {
-        casper.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-        casper.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
-        casper.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
-        casper.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
+        this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+        this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
+        this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
+        this.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
     }
     it('should have all percentage after all answers clicks', function() {
         casper.then(function() {
-            clickAllAnswers()
+            clickAllAnswers.call(this)
             this.getTitle().should.match(/^100% ans/)
-        })
-    })
-
-    it('should have button enabled after all answers clicks', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
         })
     })
 
     it('should have zero percentage after all answers unclicks', function() {
         casper.then(function() {
-            clickAllAnswers()
+            clickAllAnswers.call(this)
             this.getTitle().should.match(/^0% ans/)
-        })
-    })
-
-    it('should have button disabled after all answers clicks', function() {
-        casper.then(function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
         })
     })
 
     it('should open result page', function() {
         isOpened = false
         casper.then(function() {
-            clickAllAnswers()
+            clickAllAnswers.call(this)
             this.fill('form#wpt-test-form', {}, true)
         }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Fatal'.should.not.be.textInDOM
@@ -165,7 +147,6 @@ describe('Multiple answers test', function() {
     it('should reset answers on back', function() {
         casper.back().then(function() {
             'Results'.should.not.be.textInDOM
-            '#wpt-test-form input[type=submit]'.should.have.attr('disabled')
             this.getTitle().should.match(/^Multi/)
         })
     })
