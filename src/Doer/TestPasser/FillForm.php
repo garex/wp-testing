@@ -27,6 +27,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         $this->passing->setStepStrategy($stepStrategy);
 
         $this
+            ->upgradeJqueryForOldWordPress()
             ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
             ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie', 'webshim'))
         ;
@@ -91,6 +92,26 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             array($this, 'stripNewLines'),
             $this->render($template, $params)
         );
+    }
+
+    /**
+     * Webshim HTML5 forms polyfill requires jQuery at least 1.8.3
+     *
+     * @return WpTesting_Doer_TestPasser_FillForm
+     */
+    private function upgradeJqueryForOldWordPress()
+    {
+        if ($this->isWordPressAlready('3.3')) {
+            return $this;
+        }
+
+        $schema = ($this->wp->isSsl()) ? 'https' : 'http';
+        $this->wp
+            ->deregisterScript('jquery')
+            ->registerScript('jquery', $schema . '://code.jquery.com/jquery-1.8.3.min.js', array(), '1.8.3')
+        ;
+
+        return $this;
     }
 
     private function generateHiddens(WpTesting_Model_Step $step)
