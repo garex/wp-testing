@@ -84,7 +84,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 08. Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result
 09. Ready test on the home page
 10. The page with the description of the test, questions and answers
-11. The button is disabled until all questions are not answered
+11. Unanswered questions are highlighted to respondent
 12. Get test results after all questions are answered
 13. The result page on it`s own URL contains both the result of the test and the scales that create a result
 14. Scale description with "more..." text closed
