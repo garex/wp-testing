@@ -2,6 +2,21 @@
 ## Changelog ##
 
 
+### 0.12.1 ###
+
+Improve questions fill usability by highlighting non-answered
+
+* Remove disabled button state and highlight to respondent non-answered questions
+* Make required attributes compatible with screen-readers
+* Make sure new validation is compatible with old browsers
+
+Internal improvements:
+
+* Upgrade jQuery for old WordPress at form fill
+* Fix tests under old WP by using only extraversion scale (1st always)
+* Add more extension points for fields addon
+
+
 ### 0.12 ###
 
 Speed-up tests saving, improve respondents results' and add new locale
