@@ -52,7 +52,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
                     $links[] = $result->getTitle();
                 }
 
-                return (count($links)) ? implode(', ', $links) : '-';
+                return (count($links)) ? implode(', ', $links) : $this->empty_value;
 
             case 'scales':
                 $links = array();
@@ -66,7 +66,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
                     $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
                 }
 
-                return (count($links)) ? implode(', ', $links) : '-';
+                return (count($links)) ? implode(', ', $links) : $this->empty_value;
 
             case 'view':
                 return $this->render_link($item->getUrl());

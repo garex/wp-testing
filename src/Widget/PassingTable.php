@@ -9,6 +9,8 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     protected $wp = null;
 
+    protected $empty_value = '-';
+
     private $row_number = 0;
 
     private $order_by = 'passing_id';
@@ -120,7 +122,8 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
         $item->setWp($this->wp);
 
         if (isset($this->dynamic_columns[$column_name])) {
-            return $this->dynamic_columns[$column_name]->value($item);
+            $value = $this->dynamic_columns[$column_name]->value($item);
+            return ($value === '' || is_null($value)) ? $this->empty_value : $value;
         }
 
         return $this->render_static_column($item, $column_name);
@@ -138,7 +141,7 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
                 return $item->getCreated();
         }
 
-        return '-';
+        return $this->empty_value;
     }
 
     protected function render_link($url, $text = null)

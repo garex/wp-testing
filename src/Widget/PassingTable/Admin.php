@@ -63,7 +63,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                     );
                 }
 
-                return (count($links)) ? implode(', ', $links) : '-';
+                return (count($links)) ? implode(', ', $links) : $this->empty_value;
 
 
             case 'scales':
@@ -81,12 +81,12 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                     $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
                 }
 
-                return (count($links)) ? implode(', ', $links) : '-';
+                return (count($links)) ? implode(', ', $links) : $this->empty_value;
 
             case 'user':
                 $user = $this->wp->getUserdata($item->getRespondentId());
                 if (!$user) {
-                    return '-';
+                    return $this->empty_value;
                 }
                 $avatar   = $this->wp->getAvatar($user->ID, 32);
                 $editLink = $this->wp->getEditUserLink($user->ID);
