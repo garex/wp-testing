@@ -9,9 +9,13 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
         return parent::create($className);
     }
 
-    public function findAllPagedSorted($page, $recordsPerPage = 10, $orderBy)
+    public function findAllPagedSorted($page, $recordsPerPage = 10, $orderBy = array())
     {
-        return fRecordSet::build($this->modelName, array(), $orderBy, $recordsPerPage, $page);
+        return $this->findAllPagedSortedByParams(array(), $page, $recordsPerPage, $orderBy);
     }
 
+    public function findAllPagedSortedByParams($params, $page, $recordsPerPage = 10, $orderBy = array())
+    {
+        return fRecordSet::build($this->modelName, $params, $orderBy, $recordsPerPage, $page);
+    }
 }

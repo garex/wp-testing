@@ -237,6 +237,19 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Whether current user has capability or role.
+     *
+     * @since 2.0.0
+     *
+     * @param string $capability Capability or role name.
+     * @return bool
+     */
+    public function isCurrentUserCan($capability)
+    {
+        return current_user_can($capability);
+    }
+
+    /**
      * Retrieve user info by user ID.
      *
      * @since 0.71
@@ -892,6 +905,35 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
             $wp_meta_boxes[$page][$context][$priority] = $values;
             return $this;
         }
+    }
+
+    /**
+     * Add a top level menu page
+     *
+     * This function takes a capability which will be used to determine whether
+     * or not a page is included in the menu.
+     *
+     * The function which is hooked in to handle the output of the page must check
+     * that the user has the required capability as well.
+     *
+     * @param string $pageTitle The text to be displayed in the title tags of the page when the menu is selected
+     * @param string $menuTitle The text to be used for the menu
+     * @param string $capability The capability required for this menu to be displayed to the user.
+     * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
+     * @param callback $function The function to be called to output the content for this page.
+     * @param string $iconUrl The url to the icon to be used for this menu.
+     *     * [WP >= 3.8] Pass a base64-encoded SVG using a data URI, which will be colored to match the color scheme.
+     *       This should begin with 'data:image/svg+xml;base64,'.
+     *     * [WP >= 3.8] Pass the name of a Dashicons helper class to use a font icon, e.g. 'dashicons-chart-pie'.
+     *     * Pass 'none' to leave div.wp-menu-image empty so an icon can be added via CSS.
+     * @param int $position The position in the menu order this one should appear
+     *
+     * @return WpTesting_WordPressFacade
+     */
+    public function addMenuPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '', $position = null)
+    {
+        add_menu_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl, $position);
+        return $this;
     }
 
     /**
