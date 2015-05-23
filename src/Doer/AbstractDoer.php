@@ -302,6 +302,17 @@ abstract class WpTesting_Doer_AbstractDoer
     }
 
     /**
+     * Retrieve user meta field for current logged in user
+     *
+     * @param string $key
+     * @return string
+     */
+    protected function getCurrentUserMeta($key)
+    {
+        return $this->wp->getUserMeta($this->wp->getCurrentUserId(), $key, true);
+    }
+
+    /**
      * @param array $input
      * @param string $sourceKey
      * @param string $destinationKey

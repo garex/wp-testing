@@ -138,3 +138,29 @@ pre.exposed {
     width: 100%;
     white-space: pre-wrap;
 }
+
+#screen-options-wrap label[for=id-hide],
+#screen-options-wrap label[for=actions-hide],
+#screen-options-wrap label[for=row_number-hide],
+#screen-options-wrap label[for=view-hide] {
+    display: none;
+}
+
+.screen-options label[for=passing_browser_per_page] {
+    float: left;
+    margin-right: 4px;
+    padding-right: 0px;
+    line-height: 28px;
+}
+
+#adv-settings h5 {
+    display: none;
+}
+
+#adv-settings h5:first-child {
+    display: block;
+}
+
+#adv-settings > .screen-options {
+    padding-top: 10px;
+}

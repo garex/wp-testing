@@ -12,10 +12,10 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
             'scales'      => __('Scales', 'wp-testing'),
             'results'     => __('Results', 'wp-testing'),
             'user'        => $this->wp->translate('Username'),
-            'device_uuid' => __('Device', 'wp-testing'),
-            'ip'          => __('IP address', 'wp-testing'),
-            'user_agent'  => __('Browser', 'wp-testing'),
-            'created'     => $this->wp->translate('Date'),
+            'passing_device_uuid' => __('Device', 'wp-testing'),
+            'passing_ip'          => __('IP address', 'wp-testing'),
+            'passing_user_agent'  => __('Browser', 'wp-testing'),
+            'passing_created'     => $this->wp->translate('Date'),
         );
     }
 
@@ -36,13 +36,13 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
             case 'id':
                 return $item->getId();
 
-            case 'device_uuid':
+            case 'passing_device_uuid':
                 return $item->getDeviceUuid();
 
-            case 'ip':
+            case 'passing_ip':
                 return $item->getIp();
 
-            case 'user_agent':
+            case 'passing_user_agent':
                 return $item->getUserAgent();
 
             case 'test_title':
@@ -63,7 +63,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                     );
                 }
 
-                return (count($links)) ? implode(', ', $links) : $this->empty_value;
+                return implode(', ', $links);
 
 
             case 'scales':
@@ -81,12 +81,12 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                     $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
                 }
 
-                return (count($links)) ? implode(', ', $links) : $this->empty_value;
+                return implode(', ', $links);
 
             case 'user':
                 $user = $this->wp->getUserdata($item->getRespondentId());
                 if (!$user) {
-                    return $this->empty_value;
+                    return '';
                 }
                 $avatar   = $this->wp->getAvatar($user->ID, 32);
                 $editLink = $this->wp->getEditUserLink($user->ID);

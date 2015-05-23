@@ -23,14 +23,25 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     private $dynamic_columns = array();
 
-    public function __construct(WpTesting_WordPressFacade $wp)
+    public function __construct($args = array())
     {
-        $this->wp = $wp;
+        if (empty($args['wp']) || !($args['wp'] instanceof WpTesting_WordPressFacade)) {
+            throw new InvalidArgumentException('WordPress facade is required');
+        }
+        $this->wp = $args['wp'];
         parent::__construct(array(
             'singular'  => 'passing',
             'plural'    => 'passings',
             'ajax'      => false,
-        ));
+        ) + $args);
+    }
+
+    public function set_records_per_page($value)
+    {
+        if ($value > 0 && $value < 1000) {
+            $this->records_per_page = intval($value);
+        }
+        return $this;
     }
 
     public function get_table_classes()
@@ -66,8 +77,6 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
 
     public function prepare_items()
     {
-        $this->_column_headers = array($this->get_columns(), array(), array());
-
         $this->items = $this->find_items();
 
         $total = $this->items->count(true);
@@ -123,10 +132,11 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
 
         if (isset($this->dynamic_columns[$column_name])) {
             $value = $this->dynamic_columns[$column_name]->value($item);
-            return ($value === '' || is_null($value)) ? $this->empty_value : $value;
+        } else {
+            $value = $this->render_static_column($item, $column_name);
         }
 
-        return $this->render_static_column($item, $column_name);
+        return ($value === '' || is_null($value)) ? $this->empty_value : $value;
     }
 
     /**
@@ -137,11 +147,11 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
         switch($column_name) {
-            case 'created':
+            case 'passing_created':
                 return $item->getCreated();
         }
 
-        return $this->empty_value;
+        return '';
     }
 
     protected function render_link($url, $text = null)

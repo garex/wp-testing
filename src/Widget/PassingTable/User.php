@@ -17,7 +17,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
             'test_title'  => __('Test', 'wp-testing'),
             'scales'      => __('Scales', 'wp-testing'),
             'results'     => __('Results', 'wp-testing'),
-            'created'     => $this->wp->translate('Date'),
+            'passing_created' => $this->wp->translate('Date'),
         );
     }
 
@@ -58,7 +58,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
                     $links[] = $result->getTitle();
                 }
 
-                return (count($links)) ? implode(', ', $links) : $this->empty_value;
+                return implode(', ', $links);
 
             case 'scales':
                 $links = array();
@@ -72,7 +72,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
                     $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
                 }
 
-                return (count($links)) ? implode(', ', $links) : $this->empty_value;
+                return implode(', ', $links);
 
             case 'view':
                 return $this->render_link($item->getUrl());

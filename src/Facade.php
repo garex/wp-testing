@@ -134,25 +134,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
 
     public function registerAdminPages()
     {
-        $adminUserCapability = 'activate_plugins';
-        $isAdminUser         = $this->wp->isCurrentUserCan('activate_plugins');
-        if ($isAdminUser) {
-            $this->wp->addSubmenuPage(
-                'edit.php?post_type=wpt_test',
-                __('Respondents’ test results', 'wp-testing'),
-                __('Respondents’ results', 'wp-testing'),
-                $adminUserCapability,
-                'wpt_test_respondents_results',
-                array($this, 'renderRespondentsResultsPage')
-            );
-        } else {
-            $this->getPassingBrowser()->registerUserPages();
-        }
-    }
-
-    public function renderRespondentsResultsPage()
-    {
-        $this->getPassingBrowser()->renderAdminPassingsPage();
+        $this->getPassingBrowser()->registerPages();
     }
 
     /**
@@ -223,7 +205,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         }
 
         $this->setupORM();
-        $this->passingBrowser = new WpTesting_Doer_PassingBrowser($this->wp);
+        $this->passingBrowser = ($this->wp->isCurrentUserCan('activate_plugins'))
+            ? new WpTesting_Doer_PassingBrowser_Admin($this->wp)
+            : new WpTesting_Doer_PassingBrowser_User($this->wp);
 
         return $this->passingBrowser;
     }
