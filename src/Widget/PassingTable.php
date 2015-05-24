@@ -44,9 +44,25 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
         return $this;
     }
 
+    public function set_order_by($field, $direction)
+    {
+        if (!in_array($field, $this->get_sortable_columns())) {
+            return $this;
+        }
+        if (!in_array($direction, array('asc', 'desc'))) {
+            return $this;
+        }
+        $this->order_by = $field;
+        $this->order_direction = $direction;
+        return $this;
+    }
+
     public function get_table_classes()
     {
-        return array('widefat', 'striped', $this->_args['plural']);
+        $classes = parent::get_table_classes();
+        $classes = array_combine($classes, $classes);
+        unset($classes['fixed']);
+        return array_values($classes);
     }
 
     public function add_dynamic_column(WpTesting_Widget_PassingTableColumn $column)

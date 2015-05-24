@@ -3,6 +3,18 @@
 class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 {
 
+    protected function get_sortable_columns() {
+        return array(
+            'id'            => 'passing_id',
+            'test_title'    => 'test_id',
+            'user'          => 'respondent_id',
+            'passing_device_uuid'   => 'passing_device_uuid',
+            'passing_ip'            => 'passing_ip',
+            'passing_user_agent'    => 'passing_user_agent',
+            'passing_created'       => 'passing_created',
+        );
+    }
+
     protected function get_static_columns()
     {
         return array(
@@ -48,8 +60,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
             case 'test_title':
                 $test = $item->createTest();
                 return $this->render_link(
-                        $this->wp->getEditPostLink($test->getId()),
-                        $test->getTitle()
+                    $this->wp->getEditPostLink($test->getId()),
+                    $test->getTitle()
                 );
 
             case 'results':
@@ -58,8 +70,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                 /* @var $result WpTesting_Model_Result */
                 foreach ($item->buildResults() as $result) {
                     $links[] = $this->render_link(
-                            $this->wp->getEditTermLink($result->getId(), 'wpt_result', 'wpt_test'),
-                            $result->getTitle()
+                        $this->wp->getEditTermLink($result->getId(), 'wpt_result', 'wpt_test'),
+                        $result->getTitle()
                     );
                 }
 
@@ -71,8 +83,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
                 foreach ($item->buildScalesWithRangeOnce() as $scale) {
                     $link = $this->render_link(
-                            $this->wp->getEditTermLink($scale->getId(), 'wpt_scale', 'wpt_test'),
-                            $scale->getTitle()
+                        $this->wp->getEditTermLink($scale->getId(), 'wpt_scale', 'wpt_test'),
+                        $scale->getTitle()
                     );
                     $outOf = ' (' . sprintf(
                             __('%1$d out of %2$d', 'wp-testing'),

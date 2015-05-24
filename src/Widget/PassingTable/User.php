@@ -9,6 +9,14 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
         return $this;
     }
 
+    protected function get_sortable_columns() {
+        return array(
+            'row_number'    => 'passing_id',
+            'test_title'    => 'test_id',
+            'passing_created' => 'passing_created',
+        );
+    }
+
     protected function get_static_columns()
     {
         return array(

@@ -61,7 +61,10 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
             'wp'    => $this->wp,
             'screen'=> $this->screenHook,
         ));
-        $this->passingTable->set_records_per_page($this->getCurrentUserMeta('passing_browser_per_page'));
+        $this->passingTable
+            ->set_records_per_page($this->getCurrentUserMeta('passing_browser_per_page'))
+            ->set_order_by($this->getRequestValue('orderby'), $this->getRequestValue('order'))
+        ;
         $this->wp->doAction('wp_testing_passing_browser_create_table', $this->passingTable);
         return $this->passingTable;
     }
