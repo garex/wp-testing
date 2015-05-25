@@ -31,13 +31,22 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
 
     protected function find_items()
     {
-        $passingTable = fORM::tablize('WpTesting_Model_Passing');
-        $params       = array(
-            $passingTable . '.respondent_id=' => $this->wp->getCurrentUserId(),
-        );
-
+        $params = $this->get_filter_params(array(
+            'test_id',
+        ));
+        $params['respondent_id='] = $this->wp->getCurrentUserId();
         return WpTesting_Query_Passing::create()
             ->findAllPagedSortedByParams($params, $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+    }
+
+    protected function find_tests()
+    {
+        return WpTesting_Query_Test::create()->findAllByPassingRespondent($this->wp->getCurrentUserId());
+    }
+
+    protected function find_years_months()
+    {
+        return WpTesting_Query_Passing::create()->queryAllMonthsByRespondent($this->wp->getCurrentUserId());
     }
 
     /**

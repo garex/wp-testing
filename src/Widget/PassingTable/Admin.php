@@ -33,8 +33,26 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
     protected function find_items()
     {
+        $params = $this->get_filter_params(array(
+            'test_id',
+            'passing_created',
+            'user',
+            'passing_device_uuid',
+            'passing_ip',
+            'passing_user_agent',
+        ));
         return WpTesting_Query_Passing::create()
-            ->findAllPagedSorted($this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+            ->findAllPagedSortedByParams($params, $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+    }
+
+    protected function find_tests()
+    {
+        return WpTesting_Query_Test::create()->findAllPublished();
+    }
+
+    protected function find_years_months()
+    {
+        return WpTesting_Query_Passing::create()->queryAllMonths();
     }
 
     /**

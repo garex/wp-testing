@@ -1172,6 +1172,35 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * @return WP_Locale
+     */
+    public function getLocale()
+    {
+        return $GLOBALS['wp_locale'];
+    }
+
+    /**
+     * Add leading zeros when necessary.
+     *
+     * If you set the threshold to '4' and the number is '10', then you will get
+     * back '0010'. If you set the threshold to '4' and the number is '5000', then you
+     * will get back '5000'.
+     *
+     * Uses sprintf to append the amount of zeros based on the $threshold parameter
+     * and the size of the number. If the number is large enough, then no zeros will
+     * be appended.
+     *
+     * @since 0.71
+     *
+     * @param mixed $number Number to append zeros to if not greater than threshold.
+     * @param integer $threshold Digit places number needs to be to not have zeros added.
+     * @return string Adds leading zeros to number if needed.
+     */
+    public function zeroise($number, $threshold) {
+        return zeroise($number, $threshold);
+    }
+
+    /**
      * Retrieve the translation of $text.
      *
      * If there is no translation, or the text domain isn't loaded, the original text is returned.

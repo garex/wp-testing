@@ -18,4 +18,26 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
     {
         return fRecordSet::build($this->modelName, $params, $orderBy, $recordsPerPage, $page);
     }
+
+    /**
+     * @return fResult
+     */
+    public function queryAllMonths()
+    {
+        return $this->queryAllMonthsByRespondent(0);
+    }
+
+    /**
+     * @param integer $respondentId
+     * @return fResult
+     */
+    public function queryAllMonthsByRespondent($respondentId)
+    {
+        return $this->db->translatedQuery('
+            SELECT DISTINCT YEAR(passing_created) AS created_year, MONTH(passing_created) AS created_month
+            FROM %r
+            WHERE (respondent_id = %i OR %i = 0)
+            ORDER BY passing_id
+        ', $this->tableName, $respondentId, $respondentId);
+    }
 }

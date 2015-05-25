@@ -110,6 +110,14 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
         return $this;
     }
 
+    public function has_items() {
+        if ($this->items instanceof fRecordSet) {
+            return (count($this->items) > 0);
+        }
+
+        return parent::has_items();
+    }
+
     protected function get_row_number()
     {
         return $this->row_number;
@@ -131,6 +139,36 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
      * @return fRecordSet
      */
     abstract protected function find_items();
+
+    protected function get_filter_params($allowedKeys)
+    {
+        $params = array();
+        foreach (fRequest::get('filter_condition', 'array') as $key => $value) {
+            if (!in_array($key, $allowedKeys) || empty($value)) {
+                continue;
+            }
+            if ('created' == $key) {
+                if (strlen($value) != 6) {
+                    continue;
+                }
+                $year   = intval(substr($value, 0, 4));
+                $month  = intval(substr($value, 4));
+                $day    = 1;
+                $format = '%04s-%02s-%02s';
+                $params[$key . '>='] = sprintf($format, $year, $month, $day);
+                if ($month < 12) {
+                    $month++;
+                } else {
+                    $year++;
+                    $month = 1;
+                }
+                $params[$key . '<']  = sprintf($format, $year, $month, $day);
+            } else {
+                $params[$key . '='] = $value;
+            }
+        }
+        return $params;
+    }
 
     public function single_row($item) {
         $this->row_number += $this->is_order_desc() ? -1 : +1;
@@ -156,6 +194,22 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
     }
 
     /**
+     * @param string $which Where this nav outputs? top|bottom
+     */
+    public function extra_tablenav($which) {
+        if ('top' != $which) {
+            return;
+        }
+
+        echo $this->render_tag('div', array('class' => 'alignleft actions filteractions'), implode(PHP_EOL, array(
+            $this->render_hidden('post_type', 'wpt_test'),
+            $this->render_test_select(fRequest::get('filter_condition[test_id]')),
+            $this->render_date_select(fRequest::get('filter_condition[created]')),
+            $this->render_submit($this->wp->translate('Filter'), 'filter_action'),
+        )));
+    }
+
+    /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
      * @return string
@@ -173,10 +227,126 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
     protected function render_link($url, $text = null)
     {
         $text = (is_null($text)) ? $url : $text;
-        return sprintf('<a href="%s">%s</a>',
-            $url,
-            $text
-        );
+        return $this->render_tag('a', array('href' => $url), $text);
     }
 
+    /**
+     * @return WpTesting_Model_Test[]
+     */
+    abstract protected function find_tests();
+
+    protected function render_test_select($selectedValue = '')
+    {
+        $options = array('' => __('All Tests', 'wp-testing'));
+        foreach ($this->find_tests() as $test) {
+            $options[$test->getId()] = $test->getTitle();
+        }
+        return $this->render_select('filter_condition[test_id]', $options, $selectedValue);
+    }
+
+    /**
+     * @return fResult [ [ created_year => .., created_month => .. ] ]
+     */
+    abstract protected function find_years_months();
+
+    protected function render_date_select($selectedValue = '')
+    {
+        $options = array('' => $this->wp->translate('All dates'));
+        foreach ($this->find_years_months() as $row) {
+            $value = $row['created_year'] . $this->wp->zeroise($row['created_month'], 2);
+            $title = sprintf(
+                $this->wp->translate('%1$s %2$d'),
+                $this->wp->getLocale()->get_month($row['created_month']),
+                $row['created_year']
+            );
+            $options[$value] = $title;
+        }
+        return $this->render_select('filter_condition[passing_created]', $options);
+    }
+
+    protected function render_search_input($name, $label = '')
+    {
+        $value = fRequest::get($name, 'string');
+        $id    = trim(preg_replace('/[^a-z\d]+/', '-', $name), '-');
+        return $this->render_tag('label', array(
+            'for'   => $id,
+            'class' => 'search-input ' . ($value === '' ? 'no-value' : 'has-value'),
+        ), $this->render_tag('input', array(
+            'type'        => 'search',
+            'value'       => $value,
+            'name'        => $name,
+            'id'          => $id,
+            'placeholder' => ($value === '' ? $label : ''),
+            'title'       => $label,
+        )) . $this->render_tag('span', array(), $label));
+    }
+
+    protected function render_submit($label, $name = false, $id = false)
+    {
+        return $this->render_tag('input', array(
+            'type'  => 'submit',
+            'class' => 'button',
+            'value' => $label,
+            'name'  => $name,
+            'id'    => $id,
+        ));
+    }
+
+    private function render_select($name, $options, $selectedValue = '')
+    {
+        $optionsHtml = '';
+        foreach ($options as $value => $text) {
+            $optionAttributes = array('value' => $value);
+            if ($value == $selectedValue) {
+                $optionAttributes['selected'] = 'selected';
+            }
+            $optionsHtml .= $this->render_tag('option', $optionAttributes, $text);
+        }
+        return $this->render_tag('select', array(
+            'name' => $name,
+        ), $optionsHtml);
+    }
+
+    private function render_hiddens($values)
+    {
+        $result = '';
+        foreach ($values as $name => $value) {
+            $result .= $this->render_hidden($name, $value) . PHP_EOL;
+        }
+        return $result;
+    }
+
+    private function render_hidden($name, $value)
+    {
+        return $this->render_tag('input', array(
+            'type'  => 'hidden',
+            'name'  => $name,
+            'value' => $value,
+        ));
+    }
+
+    /**
+     * Renders HTML tag with attributes escaped
+     *
+     * @param string $tag
+     * @param array $attributes [Attribute name => Unescaped value]
+     * @param string $innerHtml false|string When false, tag will be without any inner HTML. When empty it will be with start and end tags
+     * @return string
+     */
+    private function render_tag($tag, $attributes = array(), $innerHtml = false)
+    {
+        $attributesHtml = '';
+        foreach ($attributes as $name => $value) {
+            if (false === $value) {
+                continue;
+            }
+            $attributesHtml .= sprintf(' %s="%s"', $name, htmlspecialchars($value));
+        }
+
+        if (false === $innerHtml) {
+            return sprintf('<%s%s/>', $tag, $attributesHtml);
+        }
+
+        return sprintf('<%s%s>%s</%s>', $tag, $attributesHtml, $innerHtml, $tag);
+    }
 }
