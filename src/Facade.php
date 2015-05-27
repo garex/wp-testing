@@ -264,6 +264,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');
         fORM::mapClassToTable('WpTesting_Model_Result',        WP_DB_PREFIX   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Formula',       WPT_DB_PREFIX  . 'formulas');
+        fORM::mapClassToTable('WpTesting_Model_Respondent',    WP_DB_PREFIX   . 'users');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');

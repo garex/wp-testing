@@ -133,4 +133,15 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
         return parent::render_static_column($item, $column_name);
     }
+
+    protected function render_filter_controls()
+    {
+        $labels = $this->get_static_columns();
+        return parent::render_filter_controls() . implode(PHP_EOL, array(
+            $this->render_search_input('filter_condition[user]',        $labels['user']),
+            $this->render_search_input('filter_condition[passing_device_uuid]', $labels['passing_device_uuid']),
+            $this->render_search_input('filter_condition[passing_ip]',          $labels['passing_ip']),
+            $this->render_search_input('filter_condition[passing_user_agent]',  $labels['passing_user_agent']),
+        ));
+    }
 }

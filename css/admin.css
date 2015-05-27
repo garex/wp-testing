@@ -138,6 +138,29 @@ ul.categorychecklist.ui-sortable li.sortable-placeholder {
     max-width: 200px;
 }
 
+#passings-filter .search-input {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    max-width: 200px;
+    vertical-align: middle;
+}
+
+#passings-filter .search-input span {
+    display: none;
+}
+
+#passings-filter .search-input.has-value span {
+    display: block;
+    margin: 6px 4px;
+    margin-top: 0px;
+    color: #777;
+}
+
+#passings-filter .search-input input {
+    width: 10em;
+}
+
 .wp-list-table.passings .column-user img {
     float: left;
     margin-top: 1px;

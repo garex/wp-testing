@@ -34,7 +34,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
         $params = $this->get_filter_params(array(
             'test_id',
         ));
-        $params['respondent_id='] = $this->wp->getCurrentUserId();
+        $params['respondent_id'] = $this->wp->getCurrentUserId();
         return WpTesting_Query_Passing::create()
             ->findAllPagedSortedByParams($params, $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
     }

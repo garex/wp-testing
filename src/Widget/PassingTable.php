@@ -147,25 +147,7 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
             if (!in_array($key, $allowedKeys) || empty($value)) {
                 continue;
             }
-            if ('created' == $key) {
-                if (strlen($value) != 6) {
-                    continue;
-                }
-                $year   = intval(substr($value, 0, 4));
-                $month  = intval(substr($value, 4));
-                $day    = 1;
-                $format = '%04s-%02s-%02s';
-                $params[$key . '>='] = sprintf($format, $year, $month, $day);
-                if ($month < 12) {
-                    $month++;
-                } else {
-                    $year++;
-                    $month = 1;
-                }
-                $params[$key . '<']  = sprintf($format, $year, $month, $day);
-            } else {
-                $params[$key . '='] = $value;
-            }
+            $params[$key] = $value;
         }
         return $params;
     }
@@ -193,6 +175,13 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
         return ($value === '' || is_null($value)) ? $this->empty_value : $value;
     }
 
+    protected function display_tablenav($which) {
+        if ('top' == $which) {
+            $_SERVER['REQUEST_URI'] = $this->wp->removeQueryArgument('_wp_http_referer', $_SERVER['REQUEST_URI']);
+        }
+        parent::display_tablenav($which);
+    }
+
     /**
      * @param string $which Where this nav outputs? top|bottom
      */
@@ -203,10 +192,17 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
 
         echo $this->render_tag('div', array('class' => 'alignleft actions filteractions'), implode(PHP_EOL, array(
             $this->render_hidden('post_type', 'wpt_test'),
-            $this->render_test_select(fRequest::get('filter_condition[test_id]')),
-            $this->render_date_select(fRequest::get('filter_condition[created]')),
+            $this->render_filter_controls(),
             $this->render_submit($this->wp->translate('Filter'), 'filter_action'),
         )));
+    }
+
+    protected function render_filter_controls()
+    {
+        return implode(PHP_EOL, array(
+            $this->render_date_select(),
+            $this->render_test_select(),
+        ));
     }
 
     /**
@@ -235,13 +231,13 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     abstract protected function find_tests();
 
-    protected function render_test_select($selectedValue = '')
+    protected function render_test_select()
     {
         $options = array('' => __('All Tests', 'wp-testing'));
         foreach ($this->find_tests() as $test) {
             $options[$test->getId()] = $test->getTitle();
         }
-        return $this->render_select('filter_condition[test_id]', $options, $selectedValue);
+        return $this->render_select('filter_condition[test_id]', $options);
     }
 
     /**
@@ -249,7 +245,7 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
      */
     abstract protected function find_years_months();
 
-    protected function render_date_select($selectedValue = '')
+    protected function render_date_select()
     {
         $options = array('' => $this->wp->translate('All dates'));
         foreach ($this->find_years_months() as $row) {
@@ -292,8 +288,9 @@ abstract class WpTesting_Widget_PassingTable extends WP_List_Table
         ));
     }
 
-    private function render_select($name, $options, $selectedValue = '')
+    private function render_select($name, $options)
     {
+        $selectedValue = fRequest::get($name);
         $optionsHtml = '';
         foreach ($options as $value => $text) {
             $optionAttributes = array('value' => $value);

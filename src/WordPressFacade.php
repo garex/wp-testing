@@ -157,6 +157,20 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Removes an item or list from the query string.
+     *
+     * @since 1.5.0
+     *
+     * @param string|array $argument   Query key or keys to remove.
+     * @param bool|string  $uri Optional. When false uses the $_SERVER value. Default false.
+     * @return string New URL query string.
+     */
+    public function removeQueryArgument($argument, $uri = false)
+    {
+        return remove_query_arg($argument, $uri);
+    }
+
+    /**
      * Retrieve the ID of the current post
      *
      * @since 2.1.0

@@ -16,7 +16,46 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
 
     public function findAllPagedSortedByParams($params, $page, $recordsPerPage = 10, $orderBy = array())
     {
-        return fRecordSet::build($this->modelName, $params, $orderBy, $recordsPerPage, $page);
+        $conditions = array();
+        foreach ($params as $key => $value) {
+            if ($value == '-') {
+                if ('user' == $key) {
+                    $key = 'respondent_id';
+                }
+                $conditions[$key . '='] = array(null, '');
+                continue;
+            }
+            if ('passing_created' == $key) {
+                if (strlen($value) != 6) {
+                    continue;
+                }
+                $year   = intval(substr($value, 0, 4));
+                $month  = intval(substr($value, 4));
+                $day    = 1;
+                $format = '%04s-%02s-%02s';
+                $conditions[$key . '>='] = sprintf($format, $year, $month, $day);
+                if ($month < 12) {
+                    $month++;
+                } else {
+                    $year++;
+                    $month = 1;
+                }
+                $conditions[$key . '<']  = sprintf($format, $year, $month, $day);
+            } elseif ('user' == $key) {
+                $key   = 'respondent_id';
+                $value = fRecordSet::build('WpTesting_Model_Respondent', array(
+                    'user_login|user_nicename|user_email|display_name~' => $value,
+                ))->getPrimaryKeys();
+                $conditions[$key . '='] = $value;
+            } elseif ('passing_ip' == $key) {
+                $conditions[$key . '^~'] = $value;
+            } elseif ('passing_user_agent' == $key) {
+                $conditions[$key . '~'] = $value;
+            } else {
+                $conditions[$key . '='] = $value;
+            }
+        }
+        return fRecordSet::build($this->modelName, $conditions, $orderBy, $recordsPerPage, $page);
     }
 
     /**
