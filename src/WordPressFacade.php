@@ -1210,7 +1210,8 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param integer $threshold Digit places number needs to be to not have zeros added.
      * @return string Adds leading zeros to number if needed.
      */
-    public function zeroise($number, $threshold) {
+    public function zeroise($number, $threshold)
+    {
         return zeroise($number, $threshold);
     }
 

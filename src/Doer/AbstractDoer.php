@@ -51,7 +51,8 @@ abstract class WpTesting_Doer_AbstractDoer
      * @param mixed $value
      * @return self
      */
-    protected function addJsData($key, $value) {
+    protected function addJsData($key, $value)
+    {
         if (empty($this->jsData)) {
             $actionTag = (!$this->wp->didAction('wp_print_scripts')) ? 'wp_print_scripts' : 'wp_print_footer_scripts';
             $this->wp->addAction($actionTag, array($this, 'renderJsData'));
@@ -66,7 +67,8 @@ abstract class WpTesting_Doer_AbstractDoer
      * @param array $values [key1 => value1, keyN => valueN]
      * @return self
      */
-    protected function addJsDataValues($values) {
+    protected function addJsDataValues($values)
+    {
         foreach ($values as $key => $value) {
             $this->addJsData($key, $value);
         }

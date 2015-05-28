@@ -1,19 +1,7 @@
 <?php
-
-abstract class WpTesting_Widget_PassingTableColumn
+/**
+ * @deprecated since 0.13
+ */
+abstract class WpTesting_Widget_PassingTableColumn extends WpTesting_Widget_ListTableColumn
 {
-
-    abstract public function key();
-
-    public function placeAfter()
-    {
-        return null;
-    }
-
-    abstract public function title();
-
-    /**
-     * @param WpTesting_Model_Passing $item
-     */
-    abstract public function value($item);
 }

@@ -28,7 +28,8 @@ class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Ac
         // nothing here
     }
 
-    private function extractUuid($key, $data) {
+    private function extractUuid($key, $data)
+    {
         $candidates = array();
 
         foreach ($data as $candidateKey => $candidateValue) {

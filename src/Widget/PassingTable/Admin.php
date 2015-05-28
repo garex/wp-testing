@@ -3,7 +3,8 @@
 class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 {
 
-    protected function get_sortable_columns() {
+    public function get_sortable_columns()
+    {
         return array(
             'id'            => 'passing_id',
             'test_title'    => 'test_id',
