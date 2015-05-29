@@ -12,7 +12,7 @@ class WpTesting_Doer_TestPasser_GetResults extends WpTesting_Doer_TestPasser_Act
                 $this->wp->getSalt()
             );
             $this->passing->setWp($this->wp);
-            if (!$this->passing->getId()) {
+            if (!$this->passing->isViewable()) {
                 throw new fNotFoundException();
             }
         } catch (fNotFoundException $e) {

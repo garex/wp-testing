@@ -55,6 +55,22 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
         return $this;
     }
 
+    public function get_form_classes()
+    {
+        $parentClass = explode('_', __CLASS__);
+        $objectClass = explode('_', get_class($this));
+        $diffParts   = array_diff($objectClass, $parentClass);
+
+        $classes     = array();
+        $currentName = 'form';
+        foreach ($diffParts as $part) {
+            $currentName .= '-' . $part;
+            $classes[] = $currentName;
+        }
+
+        return strtolower(implode(' ', $classes));
+    }
+
     public function get_table_classes()
     {
         $classes = parent::get_table_classes();
@@ -186,10 +202,10 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
         parent::display_tablenav($which);
     }
 
-    protected function render_link($url, $text = null)
+    protected function render_link($url, $text = null, $class = null, $attributes = array())
     {
         $text = (is_null($text)) ? $url : $text;
-        return $this->render_tag('a', array('href' => $url), $text);
+        return $this->render_tag('a', array('href' => $url, 'class' => $class) + $attributes, $text);
     }
 
     protected function render_search_input($name, $label = '')

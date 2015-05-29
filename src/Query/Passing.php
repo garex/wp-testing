@@ -59,6 +59,17 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
     }
 
     /**
+     * @param array $ids
+     * @return fRecordSet
+     */
+    public function findAllByIds($ids)
+    {
+        return fRecordSet::build($this->modelName, array(
+            'passing_id=' => $ids,
+        ));
+    }
+
+    /**
      * @return fResult
      */
     public function queryAllMonths()
@@ -78,5 +89,17 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
             WHERE (respondent_id = %i OR %i = 0)
             ORDER BY passing_id
         ', $this->tableName, $respondentId, $respondentId);
+    }
+
+    /**
+     * @return fResult
+     */
+    public function countAllStatuses()
+    {
+        return $this->db->translatedQuery('
+            SELECT passing_status, COUNT(*) AS passing_count
+            FROM %r
+            GROUP BY passing_status
+        ', $this->tableName);
     }
 }

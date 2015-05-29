@@ -26,6 +26,9 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 
     public function managePassingsPageColumns($columns)
     {
+        $table = $this->createPassingTableOnce();
+        $this->processAction($table->current_action(), fRequest::get('passing_id', 'array'));
+
         $this->wp
             ->addScreenOption('per_page', array(
                 'label'     => $this->wp->translate('Number of items per page:'),
@@ -37,6 +40,11 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
         ;
 
         return $columns;
+    }
+
+    protected function processAction($action, $ids)
+    {
+        return $this;
     }
 
     public function validatePerPageOption($defaultFalse, $option, $value)

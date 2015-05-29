@@ -128,7 +128,7 @@ ul.categorychecklist.ui-sortable li.sortable-placeholder {
     background: none;
 }
 
-#passings-filter .bulkactions {
+#passings-filter.form-passingtable-user .bulkactions {
     display: none;
 }
 

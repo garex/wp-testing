@@ -171,6 +171,20 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieve referer from '_wp_http_referer' or HTTP referer.
+     *
+     * If it's the same as the current request URL, will return false.
+     *
+     * @since 2.0.4
+     *
+     * @return false|string False on failure. Referer URL on success.
+     */
+    public function getReferer()
+    {
+        return wp_get_referer();
+    }
+
+    /**
      * Retrieve the ID of the current post
      *
      * @since 2.1.0
@@ -683,6 +697,26 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function redirect($location, $status = 302)
     {
         return wp_redirect($location, $status);
+    }
+
+    /**
+     * Performs a safe (local) redirect, using redirect().
+     *
+     * Checks whether the $location is using an allowed host, if it has an absolute
+     * path. A plugin can therefore set or remove allowed host(s) to or from the
+     * list.
+     *
+     * If the host is not allowed, then the redirect is to wp-admin on the siteurl
+     * instead. This prevents malicious redirects which redirect to another host,
+     * but only used in a few places.
+     *
+     * @since 2.3.0
+     *
+     * @return void Does not return anything
+     **/
+    public function safeRedirect($location, $status = 302)
+    {
+        return wp_safe_redirect($location, $status);
     }
 
     /**
@@ -1232,5 +1266,48 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function translate($text, $domain = 'default')
     {
         return translate($text, $domain);
+    }
+
+    /**
+     * Retrieve the plural or single form based on the supplied amount.
+     *
+     * If the text domain is not set in the $l10n list, then a comparison will be made
+     * and either $plural or $single parameters returned.
+     *
+     * If the text domain does exist, then the parameters $single, $plural, and $number
+     * will first be passed to the text domain's ngettext method. Then it will be passed
+     * to the 'ngettext' filter hook along with the same parameters. The expected
+     * type will be a string.
+     *
+     * @since 2.8.0
+     *
+     * @param string $single The text that will be used if $number is 1.
+     * @param string $plural The text that will be used if $number is not 1.
+     * @param int    $number The number to compare against to use either $single or $plural.
+     * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Either $single or $plural translated text.
+     */
+    public function translatePlural($single, $plural, $number, $domain = 'default')
+    {
+        return _n($single, $plural, $number, $domain);
+    }
+
+    /**
+     * Retrieve the plural or single form based on the supplied amount with gettext context.
+     *
+     * This is a hybrid of _n() and _x(). It supports contexts and plurals.
+     *
+     * @since 2.8.0
+     *
+     * @param string $single  The text that will be used if $number is 1.
+     * @param string $plural  The text that will be used if $number is not 1.
+     * @param int    $number  The number to compare against to use either $single or $plural.
+     * @param string $context Context information for the translators.
+     * @param string $domain  Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Either $single or $plural translated text with context.
+     */
+    public function translatePluralWithContext($single, $plural, $number, $context, $domain = 'default')
+    {
+        return _nx($single, $plural, $number, $context, $domain);
     }
 }
