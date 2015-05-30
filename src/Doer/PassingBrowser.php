@@ -1,41 +1,90 @@
 <?php
 
-class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
+abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 {
 
-    public function registerUserPages()
+    protected $screenHook = '';
+
+    protected $passingTableClass = '';
+
+    /**
+     * @var WpTesting_Widget_PassingTable
+     */
+    private $passingTable = null;
+
+    public function registerPages()
     {
-        $mainTitle      = __('Tests', 'wp-testing');
-        $resultsTitle   = __('Results', 'wp-testing');
-        $capability     = 'read';
-        $mainSlug       = 'wpt_test_user_results';
-        $callback       = array($this, 'renderUserPassingsPage');
-        $menuIcon       = $this->isWordPressAlready('3.8') ? 'dashicons-editor-paste-text' : null;
+        $this->addMenuPages()->enqueueStyle('admin');
+        $this->wp->addFilter('manage_' . $this->screenHook . '_columns', array($this, 'managePassingsPageColumns'));
+        return $this;
+    }
+
+    /**
+     * @return WpTesting_Doer_PassingBrowser
+     */
+    abstract protected function addMenuPages();
+
+    public function managePassingsPageColumns($columns)
+    {
+        $table = $this->createPassingTableOnce();
+        $this->processAction($table->current_action(), fRequest::get('passing_id', 'array'));
 
         $this->wp
-        ->addMenuPage(              $mainTitle,    $mainTitle,    $capability, $mainSlug, $callback, $menuIcon, 5)
-        ->addSubmenuPage($mainSlug, $resultsTitle, $resultsTitle, $capability, $mainSlug, $callback)
+            ->addScreenOption('per_page', array(
+                'label'     => $this->wp->translate('Number of items per page:'),
+                'default'   => 10,
+                'option'    => 'passing_browser_per_page',
+            ))
+            ->addFilter('set-screen-option', array($this, 'validatePerPageOption'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 3)
+            ->setScreenOptions()
         ;
+
+        return $columns;
     }
 
-    public function renderAdminPassingsPage()
+    protected function processAction($action, $ids)
     {
-        $this->renderPassingTable(new WpTesting_Widget_PassingTable_Admin($this->wp));
+        return $this;
     }
 
-    public function renderUserPassingsPage()
+    public function validatePerPageOption($defaultFalse, $option, $value)
     {
-        $this->renderPassingTable(new WpTesting_Widget_PassingTable_User($this->wp));
+        if ('passing_browser_per_page' == $option) {
+            $value = intval($value);
+            if ($value >= 1 && $value < 1000) {
+                return $value;
+            }
+        }
     }
 
-    private function renderPassingTable(WpTesting_Widget_PassingTable $table)
+    /**
+     * @return WpTesting_Widget_PassingTable
+     */
+    protected function createPassingTableOnce()
     {
-        $this->wp->doAction('wp_testing_passing_browser_create_table', $table);
+        if (!is_null($this->passingTable)) {
+            return $this->passingTable;
+        }
+        $this->passingTable = new $this->passingTableClass(array(
+            'wp'    => $this->wp,
+            'screen'=> $this->screenHook,
+        ));
+        $this->passingTable
+            ->set_records_per_page($this->getCurrentUserMeta('passing_browser_per_page'))
+            ->set_order_by($this->getRequestValue('orderby'), $this->getRequestValue('order'))
+        ;
+        $this->wp->doAction('wp_testing_passing_browser_create_table', $this->passingTable);
+        return $this->passingTable;
+    }
+
+    public function renderPassingsPage()
+    {
+        $table = $this->createPassingTableOnce();
         $table->prepare_items();
 
         $this->output('Passing/Browser/view-all', array(
-                'page'  => $this->getRequestValue('page'),
-                'table' => $table,
+            'page'  => $this->getRequestValue('page'),
+            'table' => $table,
         ));
     }
 }
