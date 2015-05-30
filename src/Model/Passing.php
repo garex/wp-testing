@@ -26,7 +26,12 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     protected $scalesWithRange = null;
 
     protected $columnAliases = array(
-        'id'    => 'passing_id',
+        'id'            => 'passing_id',
+        'created'       => 'passing_created',
+        'modified'      => 'passing_modified',
+        'ip'            => 'passing_ip',
+        'device_uuid'   => 'passing_device_uuid',
+        'user_agent'    => 'passing_user_agent',
     );
 
     /**
