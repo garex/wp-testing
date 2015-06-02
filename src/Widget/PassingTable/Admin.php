@@ -78,7 +78,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
     protected function find_tests()
     {
-        return WpTesting_Query_Test::create()->findAllPublished();
+        return WpTesting_Query_Test::create()->findAllPublished(array('post_title' => 'ASC'));
     }
 
     protected function find_years_months()
