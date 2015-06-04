@@ -1,5 +1,7 @@
 function wptDescribePassings(isPermalinks) {
-describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
+var isUnderUser = isPermalinks
+describe('Passings' + (isPermalinks ? ' with permalinks' : '')
+                    + (isUnderUser ? ' under user' : ''), function() {
 
     before(function () {
         this.timeout(3600000)
@@ -38,10 +40,22 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
         casper.waitForUrl(/loggedout/)
     })
 
+    if (isUnderUser) {
+    it('should login under user', function() {
+        casper.thenOpen('http://wpti.dev/wp-login.php', {
+            method: 'post',
+            data  : {
+                log: 'user',
+                pwd: 'user'
+            }
+        })
+    })
+    }
+
     it('should error on non-good passing slug', function() {
         var url = isPermalinks
             ? 'http://wpti.dev/test/test-containing-results/wtf/'
-            : 'http://wpti.dev/?wpt_test=test-containing-results&wpt_passing_slug=wtf';
+            : 'http://wpti.dev/?wpt_test=test-containing-results&wpt_passing_slug=wtf'
 
         casper.open(url).waitForUrl(/wtf/, function() {
             'Fatal'.should.not.be.textInDOM
@@ -53,9 +67,11 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     })
 
     it('should open test for visitor', function() {
-        casper.open('http://wpti.dev/?p=1')
+        var url = isPermalinks
+            ? 'http://wpti.dev/hello-world/'
+            : 'http://wpti.dev/?p=1'
 
-        casper.then(function() {
+        casper.thenOpen(url).waitForText('Hello World!', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.contain.text('Test Containing Results')
             this.clickLabel('Test Containing Results')

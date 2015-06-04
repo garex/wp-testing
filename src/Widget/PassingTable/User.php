@@ -42,12 +42,14 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
 
     protected function find_tests()
     {
-        return WpTesting_Query_Test::create()->findAllByPassingRespondent($this->wp->getCurrentUserId());
+        return WpTesting_Query_Test::create()
+            ->findAllByPassingRespondent($this->wp->getCurrentUserId(), array('Test.post_title'));
     }
 
     protected function find_years_months()
     {
-        return WpTesting_Query_Passing::create()->queryAllMonthsByRespondent($this->wp->getCurrentUserId());
+        return WpTesting_Query_Passing::create()
+            ->queryAllMonthsByRespondent($this->wp->getCurrentUserId());
     }
 
     /**

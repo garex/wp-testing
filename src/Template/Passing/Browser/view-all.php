@@ -1,10 +1,11 @@
 <?php
 /* @var $page integer */
+/* @var $title string */
 /* @var $table WpTesting_Widget_PassingTable */
 ?>
 <div class="wrap">
 
-    <h2><?php echo __('Respondents’ test results', 'wp-testing') ?></h2>
+    <h2><?php echo $title ?></h2>
 
     <?php $table->views() ?>
 
