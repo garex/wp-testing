@@ -7,6 +7,8 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 
     protected $passingTableClass = '';
 
+    protected $passingsPageTitle = '';
+
     /**
      * @var WpTesting_Widget_PassingTable
      */
@@ -84,6 +86,7 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 
         $this->output('Passing/Browser/view-all', array(
             'page'  => $this->getRequestValue('page'),
+            'title' => $this->passingsPageTitle,
             'table' => $table,
         ));
     }

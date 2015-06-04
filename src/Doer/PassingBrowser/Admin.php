@@ -55,6 +55,8 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
             array($this, 'renderPassingsPage')
         );
 
+        $this->passingsPageTitle = __('Respondents’ test results', 'wp-testing');
+
         return $this;
     }
 }
