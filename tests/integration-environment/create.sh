@@ -39,7 +39,7 @@ function setup_link {
 
 function nginx {
     log 'Configuring and reloading nginx'
-    sudo apt-get install nginx
+    sudo service nginx status || sudo apt-get install nginx-light
     sudo rm --force /etc/nginx/sites-enabled/wpti
     sudo ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
     sudo service nginx restart
