@@ -86,7 +86,7 @@ function install_wp {
     fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
-    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2'
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2' | grep installed
 }
 
 function set_db_engine {
