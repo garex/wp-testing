@@ -102,13 +102,14 @@ function install_plugin {
     cd $HERE/../..
     git checkout-index --all --force --prefix=$PLUGIN/
     cd $PLUGIN
+    ln --symbolic composer.lock.dist composer.lock
     if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
     then
         phpenv shell 5.3
-        composer install --no-interaction --no-dev --prefer-dist
+        composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
         phpenv shell --unset
     else
-        composer install --no-interaction --no-dev --prefer-dist
+        composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
     fi
     sudo chown -R www-data:www-data .
     cd $HERE
