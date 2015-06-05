@@ -93,13 +93,13 @@
                 "type": "library",
                 "version": "dev-master",
                 "dist" : {
-                    "url": "https://github.com/pnegri/uuid-js/archive/32d4aac39bca32726dbd8689b86515de7b09bdcc.zip",
+                    "url": "https://github.com/pnegri/uuid-js/archive/c0ed26d9e7de6ca8be2d3e1896fb2c920ee965c0.zip",
                     "type": "zip"
                 },
                 "source": {
                     "url": "https://github.com/pnegri/uuid-js",
                     "type": "git",
-                    "reference": "32d4aac39bca32726dbd8689b86515de7b09bdcc"
+                    "reference": "c0ed26d9e7de6ca8be2d3e1896fb2c920ee965c0"
                 }
             }
         },
