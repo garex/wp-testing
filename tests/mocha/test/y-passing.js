@@ -4,14 +4,7 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : '')
                     + (isUnderUser ? ' under user' : ''), function() {
 
     before(function () {
-        this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this, true)
     })
 
     it('should setup permalinks', function() {
@@ -33,22 +26,14 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : '')
             this.click('#submit')
         })
 
-        casper.waitForUrl(/options/).thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
-            this.clickLabel('log out', 'a')
-        })
+        casper.waitForUrl(/options/)
 
-        casper.waitForUrl(/loggedout/)
+        require('../login-as').adminLogout()
     })
 
     if (isUnderUser) {
     it('should login under user', function() {
-        casper.thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'user',
-                pwd: 'user'
-            }
-        })
+        require('../login-as').user()
     })
     }
 
@@ -298,6 +283,12 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : '')
             'The Eysenck Personality Inventory (EPI) measures two pervasive'.should.be.textInDOM
         })
     })
+
+    if (isUnderUser) {
+    it('should logout from user', function() {
+        require('../login-as').userLogout()
+    })
+    }
 
 })
 }

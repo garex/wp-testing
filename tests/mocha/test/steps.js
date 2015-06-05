@@ -1,18 +1,9 @@
 describe('Steps', function() {
 
-    var isOpened = null,
-        site     = 'http://wpti.dev',
-        wp       = ''
+    var isOpened = null
 
     before(function () {
-        this.timeout(3600000)
-        casper.start(site + wp + '/wp-admin/').thenOpen(site + wp + '/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this)
     })
 
     afterEach(function() {
@@ -78,7 +69,7 @@ describe('Steps', function() {
 
     it('should be opened', function() {
         isOpened = false
-        casper.open(site + '/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
+        casper.open('http://wpti.dev/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
             'Three Steps'.should.be.textInDOM
         }).then(function() {
             isOpened = true

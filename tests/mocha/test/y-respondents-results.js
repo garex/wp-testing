@@ -1,14 +1,7 @@
 describe('Respondents results', function() {
 
     before(function () {
-        this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this)
     })
 
 describe('Basic', function() {
@@ -176,17 +169,8 @@ describe('Sorting', function() {
 describe('Respondent', function() {
 
     it('should login under user', function() {
-        casper.thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
-            this.clickLabel('log out', 'a')
-        })
-
-        casper.waitForUrl(/loggedout/).thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'user',
-                pwd: 'user'
-            }
-        })
+        require('../login-as').adminLogout()
+        require('../login-as').user()
     })
 
     it('should have tests in menu', function() {

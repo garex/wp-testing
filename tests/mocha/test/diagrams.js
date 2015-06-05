@@ -5,14 +5,8 @@ describe('Diagrams', function() {
         resultUrl   = null
 
     before(function () {
-        this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').viewport(400, 1000).thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this)
+        casper.viewport(400, 1000)
     })
 
     afterEach(function() {
