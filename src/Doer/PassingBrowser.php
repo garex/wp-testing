@@ -16,8 +16,12 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 
     public function registerPages()
     {
-        $this->addMenuPages()->enqueueStyle('admin');
-        $this->wp->addFilter('manage_' . $this->screenHook . '_columns', array($this, 'managePassingsPageColumns'));
+        $this->addMenuPages();
+        $this->wp
+            ->addAction('load-' . $this->screenHook, array($this, 'loadPassingsPage'))
+            ->addFilter('manage_' . $this->screenHook . '_columns', array($this, 'managePassingsPageColumns'))
+        ;
+        $this->enqueueStyle('admin');
         return $this;
     }
 
@@ -26,11 +30,20 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
      */
     abstract protected function addMenuPages();
 
-    public function managePassingsPageColumns($columns)
+    /**
+     * Process action on page load
+     */
+    public function loadPassingsPage()
     {
         $table = $this->createPassingTableOnce();
+        if (!fRequest::check('passing_id')) {
+            return;
+        }
         $this->processAction($table->current_action(), fRequest::get('passing_id', 'array'));
+    }
 
+    public function managePassingsPageColumns($columns)
+    {
         $this->wp
             ->addScreenOption('per_page', array(
                 'label'     => $this->wp->translate('Number of items per page:'),

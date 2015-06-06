@@ -141,7 +141,7 @@ describe('View results', function() {
             this.clickLabel('Untrash', '*/strong/a[@class="row-title"]')
         })
 
-        casper.waitForSelector('.subsubsub .all .current', function() {
+        casper.waitForUrl(/passing_status=trash/, function() {
             'Trash (1)'.should.not.be.textInDOM
         })
     })
@@ -151,6 +151,10 @@ describe('Sorting', function() {
 
     it('should sort results by date', function() {
         casper.then(function() {
+            this.clickLabel('Respondents’ results', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.waitForUrl(/respondents/, function() {
             this.evaluate(function() {
                 return jQuery('#the-list td:first').text()
             }).should.not.be.equal('1')
