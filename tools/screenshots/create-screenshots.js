@@ -1,13 +1,19 @@
 var casper = require('casper').create()
 casper.options.viewportSize = {width: 1060, height: 1016}
 
-casper.start('http://wpti.dev/').thenOpen('http://wpti.dev/wp-login.php', {
-    method: 'post',
-    data  : {
-        log: 'wpti',
-        pwd: 'wpti'
-    }
-})
+casper.start('http://wpti.dev/')
+
+function loginAs(who) {
+    casper.thenOpen('http://wpti.dev/wp-login.php', {
+        method: 'post',
+        data  : {
+            log: who,
+            pwd: who
+        }
+    })
+};
+
+loginAs('wpti')
 
 var screenshots = [
    {
@@ -62,6 +68,7 @@ var screenshots = [
                this.evaluate(function() {
                    switchEditors.switchto(jQuery('#content-html')[0])
                })
+               this.mouse.move('#wp-admin-bar-view')
                this.wait(400)
            })
        }
@@ -118,7 +125,7 @@ var screenshots = [
             })
         }
     }, {
-        title   : 'The example of the test without  scores. Some answers are individual and some are individualized',
+        title   : 'The example of the test without scores. Some answers are individual and some are individualized',
         offset  : 600,
         actions : function () {
             casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
@@ -132,11 +139,48 @@ var screenshots = [
             })
         }
     }, {
-        title   : 'Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result',
+        title   : 'Respondents’ test results in admin area. Test link will open test in edit mode and view link allow to see test result',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&paged=2')
+            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&filter_condition[passing_created]=201506&orderby=test_id&order=asc', function() {
+                this.click('#show-settings-link')
+                this.evaluate(function() {
+                    jQuery('#passing_device_uuid-hide').attr('checked', true).click()
+                    jQuery('#passing_ip-hide').attr('checked', true).click()
+                    jQuery('#passing_user_agent-hide').attr('checked', true).click()
+                })
+                this.wait(400)
+                this.mouse.move('label[for=cb-select-1]')
+                this.evaluate(function() {
+                    jQuery('#cb-select-1').click()
+                })
+            })
+
         }
     }, {
+        title   : 'User see own tests results in admin area',
+        actions : function () {
+            loginAs('user')
+
+            casper.thenOpen('http://wpti.dev/wp-admin/profile.php', function() {
+               this.clickLabel('Light', 'label')
+               this.fill('form#your-profile', {
+                   nickname     : 'Tests Respondent',
+                   display_name : 'Tests Respondent',
+                   email        : 'alla@angloved.ru'
+               }, true)
+            }).waitForUrl(/updated/)
+
+            casper.thenOpen('http://wpti.dev/wp-admin/admin.php?page=wpt_test_user_results', function() {
+                this.evaluate(function() {
+                    jQuery('.widefat td').css('max-width', '230px')
+                    return jQuery('body.folded').length > 0
+                }) || this.clickLabel('Collapse menu') && this.wait(400)
+
+                this.mouse.move('#wp-admin-bar-my-account')
+                this.wait(100)
+            })
+        }
+    },{
         title   : 'Ready test on the home page',
         actions : function () {
             casper.thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
@@ -288,18 +332,28 @@ casper.each(screenshots, function(self, screenshot, index) {
             if (urlDiv.length == 0) {
                 urlDiv = jQuery('<div/>').attr('id', 'url-element').css({
                     position    : 'absolute',
+                    zIndex      : 10,
                     height      : divHeight,
                     left        : 0,
                     background  : 'gainsboro',
                     color       : 'black',
                     padding     : '2px 10px 0px 2px',
+                    border      : '1px solid #c6c6c6',
                     borderTopRightRadius: '10px',
                     fontFamily  : 'sans-serif',
                     fontSize    : '14px',
                     opacity     : 0.8
                 }).appendTo('body')
             }
-            urlDiv.text(document.location).css({top: offsetTop - divHeight})
+
+            var url      = document.location.pathname + decodeURI(document.location.search),
+                urlWidth = 145;
+
+            if (url.length > urlWidth) {
+                url = url.substring(0, urlWidth) + ' ...'
+            }
+
+            urlDiv.text(url).css({top: offsetTop - divHeight})
         }, options.height + options.top)
 
         this.capture('screenshot-' + screenIndex + '.png', options)

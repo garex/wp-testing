@@ -83,19 +83,20 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
-07. The example of the test without  scores. Some answers are individual and some are individualized
-08. Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result
-09. Ready test on the home page
-10. The page with the description of the test, questions and answers
-11. Unanswered questions are highlighted to respondent
-12. Get test results after all questions are answered
-13. The result page on it`s own URL contains both the result of the test and the scales that create a result
-14. Scale description with "more..." text closed
-15. Scale description with "more..." text opened (after clicking on "more" link)
-16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
-17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
-18. In case when scales has different length (possible max total) they are shown as percents
-19. Multiple answers per question are also possible
-20. One question per page also allowed. On first page we see test description, "Next" button and pages counter
-21. On second page description not shown
-22. On last page counter not shown and button changes back to "Get Test Results"
+07. The example of the test without scores. Some answers are individual and some are individualized
+08. Respondents’ test results in admin area. Test link will open test in edit mode and view link allow to see test result
+09. User see own tests results in admin area
+10. Ready test on the home page
+11. The page with the description of the test, questions and answers
+12. Unanswered questions are highlighted to respondent
+13. Get test results after all questions are answered
+14. The result page on it`s own URL contains both the result of the test and the scales that create a result
+15. Scale description with "more..." text closed
+16. Scale description with "more..." text opened (after clicking on "more" link)
+17. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+18. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
+19. In case when scales has different length (possible max total) they are shown as percents
+20. Multiple answers per question are also possible
+21. One question per page also allowed. On first page we see test description, "Next" button and pages counter
+22. On second page description not shown
+23. On last page counter not shown and button changes back to "Get Test Results"
