@@ -15,5 +15,8 @@ npm install
 export PATH=$PATH:./node_modules/.bin/
 export TZ="UTC"
 
+# Reset shared cookies
+rm -f /tmp/cookies.*.txt
+
 # Run tests
 mocha-casperjs --grep=Plugin_deactivation --invert --timeout=360000

@@ -1,15 +1,10 @@
 function wptDescribePassings(isPermalinks) {
-describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
+var isUnderUser = isPermalinks
+describe('Passings' + (isPermalinks ? ' with permalinks' : '')
+                    + (isUnderUser ? ' under user' : ''), function() {
 
     before(function () {
-        this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this, true)
     })
 
     it('should setup permalinks', function() {
@@ -31,17 +26,21 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             this.click('#submit')
         })
 
-        casper.waitForUrl(/options/).thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
-            this.clickLabel('log out', 'a')
-        })
+        casper.waitForUrl(/options/)
 
-        casper.waitForUrl(/loggedout/)
+        require('../login-as').adminLogout()
     })
+
+    if (isUnderUser) {
+    it('should login under user', function() {
+        require('../login-as').user()
+    })
+    }
 
     it('should error on non-good passing slug', function() {
         var url = isPermalinks
             ? 'http://wpti.dev/test/test-containing-results/wtf/'
-            : 'http://wpti.dev/?wpt_test=test-containing-results&wpt_passing_slug=wtf';
+            : 'http://wpti.dev/?wpt_test=test-containing-results&wpt_passing_slug=wtf'
 
         casper.open(url).waitForUrl(/wtf/, function() {
             'Fatal'.should.not.be.textInDOM
@@ -53,9 +52,11 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
     })
 
     it('should open test for visitor', function() {
-        casper.open('http://wpti.dev/?p=1')
+        var url = isPermalinks
+            ? 'http://wpti.dev/hello-world/'
+            : 'http://wpti.dev/?p=1'
 
-        casper.then(function() {
+        casper.thenOpen(url).waitForText('Hello World!', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.contain.text('Test Containing Results')
             this.clickLabel('Test Containing Results')
@@ -282,6 +283,12 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : ''), function() {
             'The Eysenck Personality Inventory (EPI) measures two pervasive'.should.be.textInDOM
         })
     })
+
+    if (isUnderUser) {
+    it('should logout from user', function() {
+        require('../login-as').userLogout()
+    })
+    }
 
 })
 }

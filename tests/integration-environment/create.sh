@@ -39,7 +39,7 @@ function setup_link {
 
 function nginx {
     log 'Configuring and reloading nginx'
-    sudo apt-get install nginx
+    sudo service nginx status || sudo apt-get install nginx-light
     sudo rm --force /etc/nginx/sites-enabled/wpti
     sudo ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
     sudo service nginx restart
@@ -86,7 +86,7 @@ function install_wp {
     fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
-    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2'
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2' | grep installed
 }
 
 function set_db_engine {
@@ -102,13 +102,14 @@ function install_plugin {
     cd $HERE/../..
     git checkout-index --all --force --prefix=$PLUGIN/
     cd $PLUGIN
+    ln --symbolic composer.lock.dist composer.lock
     if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
     then
         phpenv shell 5.3
-        composer install --no-interaction --no-dev --prefer-dist
+        composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
         phpenv shell --unset
     else
-        composer install --no-interaction --no-dev --prefer-dist
+        composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
     fi
     sudo chown -R www-data:www-data .
     cd $HERE

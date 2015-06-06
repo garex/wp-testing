@@ -157,6 +157,34 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Removes an item or list from the query string.
+     *
+     * @since 1.5.0
+     *
+     * @param string|array $argument   Query key or keys to remove.
+     * @param bool|string  $uri Optional. When false uses the $_SERVER value. Default false.
+     * @return string New URL query string.
+     */
+    public function removeQueryArgument($argument, $uri = false)
+    {
+        return remove_query_arg($argument, $uri);
+    }
+
+    /**
+     * Retrieve referer from '_wp_http_referer' or HTTP referer.
+     *
+     * If it's the same as the current request URL, will return false.
+     *
+     * @since 2.0.4
+     *
+     * @return false|string False on failure. Referer URL on success.
+     */
+    public function getReferer()
+    {
+        return wp_get_referer();
+    }
+
+    /**
      * Retrieve the ID of the current post
      *
      * @since 2.1.0
@@ -183,6 +211,23 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function getCurrentPostMeta($key)
     {
         return $this->getPostMeta($this->getCurrentPostId(), $key, true);
+    }
+
+    /**
+     * Retrieve a post status object by name.
+     *
+     * @since 3.0.0
+     *
+     * @global array $wp_post_statuses List of post statuses.
+     *
+     * @see register_post_status()
+     *
+     * @param string $postStatus The name of a registered post status.
+     * @return object A post status object.
+     */
+    public function getPostStatusObject($postStatus)
+    {
+        return get_post_status_object($postStatus);
     }
 
     /**
@@ -237,6 +282,19 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Whether current user has capability or role.
+     *
+     * @since 2.0.0
+     *
+     * @param string $capability Capability or role name.
+     * @return bool
+     */
+    public function isCurrentUserCan($capability)
+    {
+        return current_user_can($capability);
+    }
+
+    /**
      * Retrieve user info by user ID.
      *
      * @since 0.71
@@ -247,6 +305,23 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function getUserdata($userId)
     {
         return get_userdata($userId);
+    }
+
+    /**
+     * Retrieve user meta field for a user.
+     *
+     * @since 3.0.0
+     * @link https://codex.wordpress.org/Function_Reference/get_user_meta
+     *
+     * @param int $userId User ID.
+     * @param string $key Optional. The meta key to retrieve. By default, returns data for all keys.
+     * @param bool $isSingle Whether to return a single value.
+     * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
+     *  is true.
+     */
+    public function getUserMeta($userId, $key = '', $isSingle = false)
+    {
+        return get_user_meta($userId, $key, $isSingle);
     }
 
     /**
@@ -625,6 +700,26 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Performs a safe (local) redirect, using redirect().
+     *
+     * Checks whether the $location is using an allowed host, if it has an absolute
+     * path. A plugin can therefore set or remove allowed host(s) to or from the
+     * list.
+     *
+     * If the host is not allowed, then the redirect is to wp-admin on the siteurl
+     * instead. This prevents malicious redirects which redirect to another host,
+     * but only used in a few places.
+     *
+     * @since 2.3.0
+     *
+     * @return void Does not return anything
+     **/
+    public function safeRedirect($location, $status = 302)
+    {
+        return wp_safe_redirect($location, $status);
+    }
+
+    /**
      * Get salt to add to hashes.
      *
      * Salts are created using secret keys. Secret keys are located in two places:
@@ -895,6 +990,63 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Saves option for number of rows when listing posts, pages, comments, etc.
+     *
+     * @since 2.8.0
+     *
+     * @return WpTesting_WordPressFacade
+     */
+    public function setScreenOptions()
+    {
+        set_screen_options();
+        return $this;
+    }
+
+    /**
+     * Register and configure an admin screen option
+     *
+     * @since 3.1.0
+     *
+     * @param string $option An option name.
+     * @param mixed $args Option-dependent arguments.
+     *
+     * @return WpTesting_WordPressFacade
+     */
+    public function addScreenOption($option, $args = array())
+    {
+        add_screen_option($option, $args);
+        return $this;
+    }
+
+    /**
+     * Add a top level menu page
+     *
+     * This function takes a capability which will be used to determine whether
+     * or not a page is included in the menu.
+     *
+     * The function which is hooked in to handle the output of the page must check
+     * that the user has the required capability as well.
+     *
+     * @param string $pageTitle The text to be displayed in the title tags of the page when the menu is selected
+     * @param string $menuTitle The text to be used for the menu
+     * @param string $capability The capability required for this menu to be displayed to the user.
+     * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
+     * @param callback $function The function to be called to output the content for this page.
+     * @param string $iconUrl The url to the icon to be used for this menu.
+     *     * [WP >= 3.8] Pass a base64-encoded SVG using a data URI, which will be colored to match the color scheme.
+     *       This should begin with 'data:image/svg+xml;base64,'.
+     *     * [WP >= 3.8] Pass the name of a Dashicons helper class to use a font icon, e.g. 'dashicons-chart-pie'.
+     *     * Pass 'none' to leave div.wp-menu-image empty so an icon can be added via CSS.
+     * @param int $position The position in the menu order this one should appear
+     *
+     * @return string The resulting page's hook_suffix
+     */
+    public function addMenuPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '', $position = null)
+    {
+        return add_menu_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl, $position);
+    }
+
+    /**
      * Add a sub menu page
      *
      * This function takes a capability which will be used to determine whether
@@ -909,12 +1061,11 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $capability The capability required for this menu to be displayed to the user.
      * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
      * @param callback $function The function to be called to output the content for this page.
-     * @return WpTesting_WordPressFacade
+     * @return false|string The resulting page's hook_suffix, or false if the user does not have the capability required.
      */
     public function addSubmenuPage($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function = '')
     {
-        add_submenu_page($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function);
-        return $this;
+        return add_submenu_page($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function);
     }
 
     /**
@@ -1069,6 +1220,36 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * @return WP_Locale
+     */
+    public function getLocale()
+    {
+        return $GLOBALS['wp_locale'];
+    }
+
+    /**
+     * Add leading zeros when necessary.
+     *
+     * If you set the threshold to '4' and the number is '10', then you will get
+     * back '0010'. If you set the threshold to '4' and the number is '5000', then you
+     * will get back '5000'.
+     *
+     * Uses sprintf to append the amount of zeros based on the $threshold parameter
+     * and the size of the number. If the number is large enough, then no zeros will
+     * be appended.
+     *
+     * @since 0.71
+     *
+     * @param mixed $number Number to append zeros to if not greater than threshold.
+     * @param integer $threshold Digit places number needs to be to not have zeros added.
+     * @return string Adds leading zeros to number if needed.
+     */
+    public function zeroise($number, $threshold)
+    {
+        return zeroise($number, $threshold);
+    }
+
+    /**
      * Retrieve the translation of $text.
      *
      * If there is no translation, or the text domain isn't loaded, the original text is returned.
@@ -1085,5 +1266,48 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function translate($text, $domain = 'default')
     {
         return translate($text, $domain);
+    }
+
+    /**
+     * Retrieve the plural or single form based on the supplied amount.
+     *
+     * If the text domain is not set in the $l10n list, then a comparison will be made
+     * and either $plural or $single parameters returned.
+     *
+     * If the text domain does exist, then the parameters $single, $plural, and $number
+     * will first be passed to the text domain's ngettext method. Then it will be passed
+     * to the 'ngettext' filter hook along with the same parameters. The expected
+     * type will be a string.
+     *
+     * @since 2.8.0
+     *
+     * @param string $single The text that will be used if $number is 1.
+     * @param string $plural The text that will be used if $number is not 1.
+     * @param int    $number The number to compare against to use either $single or $plural.
+     * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Either $single or $plural translated text.
+     */
+    public function translatePlural($single, $plural, $number, $domain = 'default')
+    {
+        return _n($single, $plural, $number, $domain);
+    }
+
+    /**
+     * Retrieve the plural or single form based on the supplied amount with gettext context.
+     *
+     * This is a hybrid of _n() and _x(). It supports contexts and plurals.
+     *
+     * @since 2.8.0
+     *
+     * @param string $single  The text that will be used if $number is 1.
+     * @param string $plural  The text that will be used if $number is not 1.
+     * @param int    $number  The number to compare against to use either $single or $plural.
+     * @param string $context Context information for the translators.
+     * @param string $domain  Optional. Text domain. Unique identifier for retrieving translated strings.
+     * @return string Either $single or $plural translated text with context.
+     */
+    public function translatePluralWithContext($single, $plural, $number, $context, $domain = 'default')
+    {
+        return _nx($single, $plural, $number, $context, $domain);
     }
 }

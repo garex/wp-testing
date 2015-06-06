@@ -1,11 +1,11 @@
 # Psychological tests & quizes #
 
-**Contributors:** ustimenko, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
+**Contributors:** ustimenko, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
 **Donate link:** https://goo.gl/igulor  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.2.2  
-**Stable tag:** 0.12.1  
+**Stable tag:** 0.13  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -31,12 +31,14 @@ Tests are treated for WordPress like posts — they appear on home page and insi
 
 To minimize author's time we have **Quick Fill** for questions and scores. You can **quick fill questions from text** and they will fill appropriate fields. Same way you can **Quick Fill Scores** in many questions some answer+scale combination.
 
-Respondent will get **results** on it's own individual passing page, which will allow share it. **Passings** are saved in DB with respondent's ip and device unique identifier. They are shown at "Respondents' results" table under "Tests" menu. It allow to see if someone will have many passings from same computer/smartphone/another device, which scales/results respondent have for concrete passing and ability to open it from there. If respondent was a logged in user — then you will see it in "Username" column with a link to profile.
+Respondent will get **results** on it's own individual passing page, which will allow share it. Logged in respondent can see own results in admin area above the "Profile" page. There will be table with columns like: passing number, link, test, scales, results and date. It's possible to search/sort by test and date columns.
+
+**Passings** are saved in DB with respondent's ip and device unique identifier. They are shown at "Respondents' results" table under "Tests" menu. It allow to see if someone will have many passings from same computer/smartphone/another device, which scales/results respondent have for concrete passing and ability to open it from there. If respondent was a logged in user — then you will see it in "Username" column with a link to profile. "Respondents' results" can be searched/sorted by most of it's columns. You can setup which columns you want to see there and how many passings per page you want to see.
 
 **Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button, allow multiple answers per question, show percentage of answered questions and show one question per page.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
-Wp-testing localized into twelve languages: English, Russian, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian and Spanish. English, Russian, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian and Spanish have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+Wp-testing localized into thirteen languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
 **Quality** and **compatibility** are taken really seriously. Plugin tested on [44 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.2) and PHP (from 5.2 to 5.5) plus two custom combinations for old MySQL storage engine (MyISAM) and with few popular plugins. So you can be sure, that it will just work, even if you don't have  the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
@@ -55,6 +57,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Chinese translation thanks to Kyle Wang — https://github.com/osfans
 * For Brazilian translation thanks to Cristiano Pereira da Conceição <cristiano@cristiano-coach.com.br>
 * For Spanish translation thanks to Jon Ca — https://facebook.com/joncast
+* For Persian (Iran) translation thanks to Reza Maleki <rezaa.maleki@gmail.com>
 
 
 ## Installation ##
@@ -80,19 +83,20 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
 05. Fast adding questions from text
 06. Editing formulas
-07. The example of the test without  scores. Some answers are individual and some are individualized
-08. Respondents’ test results in admin area. Test link will open test in edit more and view link allow to see test result
-09. Ready test on the home page
-10. The page with the description of the test, questions and answers
-11. Unanswered questions are highlighted to respondent
-12. Get test results after all questions are answered
-13. The result page on it`s own URL contains both the result of the test and the scales that create a result
-14. Scale description with "more..." text closed
-15. Scale description with "more..." text opened (after clicking on "more" link)
-16. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
-17. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
-18. In case when scales has different length (possible max total) they are shown as percents
-19. Multiple answers per question are also possible
-20. One question per page also allowed. On first page we see test description, "Next" button and pages counter
-21. On second page description not shown
-22. On last page counter not shown and button changes back to "Get Test Results"
+07. The example of the test without scores. Some answers are individual and some are individualized
+08. Respondents’ test results in admin area. Test link will open test in edit mode and view link allow to see test result
+09. User see own tests results in admin area
+10. Ready test on the home page
+11. The page with the description of the test, questions and answers
+12. Unanswered questions are highlighted to respondent
+13. Get test results after all questions are answered
+14. The result page on it`s own URL contains both the result of the test and the scales that create a result
+15. Scale description with "more..." text closed
+16. Scale description with "more..." text opened (after clicking on "more" link)
+17. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
+18. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
+19. In case when scales has different length (possible max total) they are shown as percents
+20. Multiple answers per question are also possible
+21. One question per page also allowed. On first page we see test description, "Next" button and pages counter
+22. On second page description not shown
+23. On last page counter not shown and button changes back to "Get Test Results"

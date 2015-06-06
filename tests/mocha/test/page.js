@@ -1,14 +1,7 @@
 describe('Page', function() {
 
     before(function () {
-        this.timeout(3600000)
-        casper.start('http://wpti.dev/wp-admin/').thenOpen('http://wpti.dev/wp-login.php', {
-            method: 'post',
-            data  : {
-                log: 'wpti',
-                pwd: 'wpti'
-            }
-        })
+        require('../login-as').admin(this)
     })
 
     it('should not disappear when plugin activated', function() {

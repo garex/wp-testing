@@ -128,13 +128,91 @@ ul.categorychecklist.ui-sortable li.sortable-placeholder {
     background: none;
 }
 
+#passings-filter.form-passingtable-user .bulkactions {
+    display: none;
+}
+
+#passings-filter .tablenav .actions select {
+    float: left;
+    margin-right: 6px;
+    max-width: 200px;
+}
+
+#passings-filter .search-input {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    max-width: 200px;
+    vertical-align: middle;
+}
+
+#passings-filter .search-input span {
+    display: none;
+}
+
+#passings-filter .search-input.has-value span {
+    display: block;
+    margin: 6px 4px;
+    margin-top: 0px;
+    color: #777;
+}
+
+#passings-filter .search-input input {
+    width: 10em;
+}
+
 .wp-list-table.passings .column-user img {
     float: left;
     margin-top: 1px;
     margin-right: 10px;
 }
 
+.wp-list-table.passings th.sortable span {
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
+.wp-list-table.passings th.sortable .sorting-indicator {
+    display: block;
+    margin-left: -10px;
+    padding-right: 0px;
+    visibility: hidden;
+}
+
+.wp-list-table.passings th.sorted.asc .sorting-indicator,
+.wp-list-table.passings th.desc:hover span.sorting-indicator,
+.wp-list-table.passings th.sorted.desc .sorting-indicator,
+.wp-list-table.passings th.asc:hover span.sorting-indicator {
+    visibility: visible;
+}
+
 pre.exposed {
     width: 100%;
     white-space: pre-wrap;
+}
+
+#screen-options-wrap label[for=id-hide],
+#screen-options-wrap label[for=actions-hide],
+#screen-options-wrap label[for=row_number-hide],
+#screen-options-wrap label[for=view-hide] {
+    display: none;
+}
+
+.screen-options label[for=passing_browser_per_page] {
+    float: left;
+    margin-right: 4px;
+    padding-right: 0px;
+    line-height: 28px;
+}
+
+#adv-settings h5 {
+    display: none;
+}
+
+#adv-settings h5:first-child {
+    display: block;
+}
+
+#adv-settings > .screen-options {
+    padding-top: 10px;
 }

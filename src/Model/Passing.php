@@ -16,9 +16,21 @@
  * @method integer getUserAgent() getUserAgent() Gets the current value of user agent
  * @method WpTesting_Model_Passing setUserAgent() setUserAgent(string $userAgent) Sets the value for user agent
  * @method integer getRespondentId() getRespondentId() Gets the current value of respondent id
+ * @method string getStatus() getStatus() Gets the current value of status
+ * @method WpTesting_Model_Passing setStatus() setStatus(string $status) Sets the value for status
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 {
+
+    /**
+     * Passing is public and viewable by everyone
+     */
+    const STATUS_PUBLISHED = 'publish';
+
+    /**
+     * Passing is in trash and can be restored or deleted
+     */
+    const STATUS_TRASHED = 'trash';
 
     /**
      * @var WpTesting_Model_Scale[]
@@ -26,7 +38,13 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     protected $scalesWithRange = null;
 
     protected $columnAliases = array(
-        'id'    => 'passing_id',
+        'id'            => 'passing_id',
+        'status'        => 'passing_status',
+        'created'       => 'passing_created',
+        'modified'      => 'passing_modified',
+        'ip'            => 'passing_ip',
+        'device_uuid'   => 'passing_device_uuid',
+        'user_agent'    => 'passing_user_agent',
     );
 
     /**
@@ -98,6 +116,17 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
             $questionsIds[] = $answer->getQuestionId();
         }
         return (count(array_unique($questionsIds)) >= $questionsCount);
+    }
+
+    public function isTrashed()
+    {
+        return (self::STATUS_TRASHED == $this->getStatus());
+    }
+
+    public function isViewable()
+    {
+        $viewable = array(self::STATUS_PUBLISHED);
+        return ($this->getId() && in_array($this->getStatus(), $viewable));
     }
 
     public function getSlug($salt = null)
@@ -255,6 +284,21 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     public function createTest()
     {
         return $this->createWpTesting_Model_Test()->setWp($this->getWp());
+    }
+
+    public function trash()
+    {
+        return $this->changeStatus(self::STATUS_TRASHED);
+    }
+
+    public function publish()
+    {
+        return $this->changeStatus(self::STATUS_PUBLISHED);
+    }
+
+    protected function changeStatus($to)
+    {
+        return $this->setModified(time())->setStatus($to)->store();
     }
 
     /**
