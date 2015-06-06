@@ -2,6 +2,20 @@
 ## Changelog ##
 
 
+### 0.13 ###
+
+Respondent passings for user and admin with improved usability   
+
+* Respondent can view own passings in wordpress admin area
+* Significantly improved respondents passings: search/sort/toggle by columns and setup items per page
+* Add Persian (Iran) locale
+* Fix test page in Internet Explorers before 9.0 
+
+Internal improvements:
+
+* Speed-up build, which will allow to test new features faster
+* Rename passing columns in WP style, which is just perfectionism, but who knows
+
 ### 0.12.1 ###
 
 Improve questions fill usability by highlighting non-answered
