@@ -19,4 +19,4 @@ export TZ="UTC"
 rm -f /tmp/cookies.*.txt
 
 # Run tests
-mocha-casperjs --grep=Plugin_deactivation --invert --timeout=360000
+mocha-casperjs --grep=deactivation --invert --timeout=360000
