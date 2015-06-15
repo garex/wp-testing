@@ -1,4 +1,4 @@
-describe('Scale_Aggregates', function() {
+describe('Scale aggregates', function() {
 
     before(function () {
         require('../login-as').admin(this)

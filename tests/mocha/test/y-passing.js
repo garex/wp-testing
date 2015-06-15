@@ -1,20 +1,18 @@
-function wptDescribePassings(isPermalinks) {
-var isUnderUser = isPermalinks
-describe('Passings' + (isPermalinks ? ' with permalinks' : '')
-                    + (isUnderUser ? ' under user' : ''), function() {
+function wptSetupPermalinks(structure) {
+    var structureLabel = (structure == '') ? 'default' : structure
 
     before(function () {
         require('../login-as').admin(this, true)
     })
 
-    it('should setup permalinks', function() {
+    it('should setup permalinks to ' + structureLabel, function() {
         casper.thenOpen('http://wpti.dev/wp-admin/options-permalink.php')
 
         casper.waitForUrl(/options/).then(function() {
             'Permalink Settings'.should.be.textInDOM
-            if (isPermalinks) {
+            if (structure !== '') {
                 this.click('#permalink_structure')
-                this.sendKeys('#permalink_structure', '/%postname%/');
+                this.sendKeys('#permalink_structure', structure);
             } else {
                 this.clickLabel(' Default', 'label')
             }
@@ -30,6 +28,14 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : '')
 
         require('../login-as').adminLogout()
     })
+}
+
+function wptDescribePassings(isPermalinks) {
+var isUnderUser = isPermalinks
+describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
+       + (isUnderUser  ? 'under user' : 'as anonymous'), function() {
+
+    wptSetupPermalinks(isPermalinks ? '/%postname%/' : '')
 
     if (isUnderUser) {
     it('should login under user', function() {
@@ -293,5 +299,33 @@ describe('Passings' + (isPermalinks ? ' with permalinks' : '')
 })
 }
 
-wptDescribePassings(false);
-wptDescribePassings(true);
+describe('Passings', function() {
+    describe('With numerical permalinks', function() {
+        wptSetupPermalinks('/archives/%post_id%')
+
+        it('should pass test', function() {
+            casper.open('http://wpti.dev/')
+
+            casper.then(function() {
+                this.clickLabel('Are You Hot or Not?!')
+            })
+
+            casper.waitForUrl(/test/, function() {
+                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
+                this.fill('form#wpt-test-form', {}, true)
+            })
+        })
+
+        it('should show result page', function() {
+            casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
+                'Fatal'.should.not.be.textInDOM
+                'Results'.should.be.textInDOM
+                'Allow others to rate the vacuum on the Earth'.should.not.be.textInDOM
+                this.getTitle().should.not.match(/^Page not found/)
+            })
+        })
+    })
+
+    wptDescribePassings(false)
+    wptDescribePassings(true)
+})
