@@ -55,9 +55,29 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
 
     public function onPluginActivate()
     {
+        $this->upgradePlugin();
+    }
+
+    protected function upgradePlugin()
+    {
         $this->migrateDatabase(array(__FILE__, 'db:migrate'));
         $this->registerWordPressEntities();
         $this->wp->getRewrite()->flush_rules();
+    }
+
+    /**
+     * @param boolean $return
+     * @param array $extra
+     * @return boolean
+     */
+    public function onPluginUpgrade($return, $extra)
+    {
+        $isCurrentPluginUpgrade = (isset($extra['plugin']) && $extra['plugin'] == $this->wp->getPluginBaseName());
+        if (!$isCurrentPluginUpgrade) {
+            return $return;
+        }
+        $this->upgradePlugin();
+        return $return;
     }
 
     public function onPluginDeactivate()
@@ -92,6 +112,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         $class = get_class($this);
         $this->wp
             ->registerActivationHook(        array($this,  'onPluginActivate'))
+            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), 10, 2)
             ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))

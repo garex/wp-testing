@@ -402,6 +402,24 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Gets the basename of a plugin.
+     *
+     * This method extracts the name of a plugin from its filename.
+     *
+     * @since 1.5
+     *
+     * @param string $file The filename of plugin.
+     * @return string The name of a plugin.
+     */
+    public function getPluginBaseName($file = null)
+    {
+        if (is_null($file)) {
+            $file = $this->pluginFile;
+        }
+        return plugin_basename($file);
+    }
+
+    /**
      * Sanitizes a title, or returns a fallback title.
      *
      * Specifically, HTML and PHP tags are stripped. Further actions can be added
