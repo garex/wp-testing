@@ -1,4 +1,4 @@
-describe('Plugin_deactivation', function() {
+describe('Plugin deactivation', function() {
 
     before(function () {
         require('../login-as').admin(this)

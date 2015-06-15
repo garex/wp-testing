@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.13.1 ###
+
+Fix result permalinks with front prefixes
+
+* Make permalinks like /archives/%post_id% work for both tests and results
+
+
 ### 0.13 ###
 
 Respondent passings for user and admin with improved usability   

@@ -59,7 +59,7 @@ describe('Filtering', function() {
         })
 
         casper.waitForUrl(/filter_condition[^=]+test_id[^=]+=\d+/, function() {
-            '2 items'.should.be.textInDOM
+            '3 items'.should.be.textInDOM
             expect('#the-list').to.contain.text('Are You Hot or Not?!')
             expect('#the-list').to.not.contain.text('Test Containing Results')
         })
@@ -73,7 +73,7 @@ describe('Filtering', function() {
         })
 
         casper.waitForUrl(/filter_condition[^=]+user[^=]+=[^&]/, function() {
-            '1 item'.should.be.textInDOM
+            '2 items'.should.be.textInDOM
             expect('#the-list').to.not.contain.text('user')
         })
     })
