@@ -7,6 +7,7 @@ HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
 DB_CHARSET=${DB_CHARSET:-utf8}
 WP_VERSION=${WP_VERSION:-4.2.2}
+WP_UPGRADE=${WP_UPGRADE:-0}
 PLUGINS=${PLUGINS:-}
 
 function init {
@@ -115,6 +116,16 @@ function install_plugin {
     cd $HERE
 }
 
+function install_upgrade_plugin {
+    [[ "$WP_UPGRADE" == "0" ]] && return 0
+
+    log 'Installing plugin for upgrade test'
+    cd /tmp/wpti
+    mkdir --parents wordpress/wp-content/plugins/hello-dolly
+    cp hello.php wordpress/wp-content/plugins/hello-dolly
+    sudo chown --recursive www-data:www-data wordpress
+}
+
 function install_other_plugins {
     [[ "$PLUGINS" == "" ]] && return 0
 
@@ -154,6 +165,7 @@ function main {
     set_db_engine
     install_other_plugins
     install_plugin
+    install_upgrade_plugin
     log 'Done.'
 }
 
