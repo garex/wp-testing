@@ -111,13 +111,8 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
     {
         $class = get_class($this);
         $this->wp
-            ->registerActivationHook(        array($this,  'onPluginActivate'))
-            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), 10, 2)
-            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
-            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addAction('plugins_loaded',    array($this,  'loadLocale'))
-            ->addAction('admin_menu',        array($this,  'registerAdminPages'))
             ->addShortcode('wptlist',        array($this,  'shortcodeList'))
         ;
 
@@ -127,12 +122,17 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
                 ->addFilter('pre_get_posts',     array($this,  'setupPostBrowser'))
                 ->addFilter('single_template',   array($this,  'setupTestPasser'))
             ;
-        } else {
-            $this->wp
-                ->addAction('admin_init',        array($this,  'setupTestEditorInBackground'))
-                ->addFilter('current_screen',    array($this,  'setupTestEditor'))
-            ;
+            return;
         }
+        $this->wp
+            ->registerActivationHook(        array($this,  'onPluginActivate'))
+            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), 10, 2)
+            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
+            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
+            ->addAction('admin_menu',        array($this,  'registerAdminPages'))
+            ->addAction('admin_init',        array($this,  'setupTestEditorInBackground'))
+            ->addFilter('current_screen',    array($this,  'setupTestEditor'))
+        ;
     }
 
     public function registerWordPressEntities()
