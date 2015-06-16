@@ -25,7 +25,7 @@ env:
 matrix:
   include:
     - php: 5.3
-      env: DB_ENGINE=MyISAM DB_CHARSET=latin1
+      env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
     - php: 5.4
       env: PLUGINS=akismet.3.1.1:jetpack.3.5:wordpress-seo.2.1.1:wordfence.5.3.12:contact-form-7.4.1.2:google-sitemap-generator.4.0.8
   allow_failures:
@@ -73,7 +73,8 @@ script:
   - restart.sh && mocha-casperjs test.js
   - restart.sh && mocha-casperjs y-passing.js
   - restart.sh && mocha-casperjs y-respondents-results.js
-  - restart.sh && mocha-casperjs z-plugin.js
+  - restart.sh && mocha-casperjs z-plugin-deactivation.js
+  - restart.sh && mocha-casperjs z-plugin-upgrade.js
 
 after_failure:
   - sudo free -ltm
