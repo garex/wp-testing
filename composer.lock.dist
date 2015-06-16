@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "97dbc341c6184f828bcdc60b5446bc81",
+    "hash": "00f3d72c029e1e13ada4cc5e9a6dbc02",
     "packages": [
         {
             "name": "composer/installers",
@@ -261,6 +261,45 @@
             ],
             "homepage": "http://www.xrstf.de/",
             "time": "2015-02-01 14:28:15"
+        },
+        {
+            "name": "yahnis-elsts/plugin-update-checker",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
+                "reference": "323e80fa1991fb84c37f7c54bef2348b48c72bb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/323e80fa1991fb84c37f7c54bef2348b48c72bb6",
+                "reference": "323e80fa1991fb84c37f7c54bef2348b48c72bb6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yahnis Elsts",
+                    "email": "whiteshadow@w-shadow.com",
+                    "homepage": "http://w-shadow.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A custom update checker for WordPress plugins. Useful if you can't host your plugin in the official WP plugin repository but still want it to support automatic plugin updates.",
+            "homepage": "https://github.com/YahnisElsts/plugin-update-checker/",
+            "keywords": [
+                "automatic updates",
+                "plugin updates",
+                "wordpress"
+            ],
+            "time": "2015-02-10 10:00:06"
         }
     ],
     "packages-dev": [
