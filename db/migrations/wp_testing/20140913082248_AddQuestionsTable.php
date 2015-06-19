@@ -9,7 +9,7 @@ class AddQuestionsTable extends BaseMigration
         $this->drop_table(WPT_DB_PREFIX . 'questions');
         $table = $this->create_table(WPT_DB_PREFIX . 'questions', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $table->column('question_id',    'biginteger', array(
             'unsigned'       => true,

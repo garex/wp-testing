@@ -12,7 +12,7 @@ class AddFieldsTables extends BaseMigration
         // Fields
         $table = $this->create_table(WPT_DB_PREFIX . 'fields', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $table->column('field_id', 'biginteger', array(
             'unsigned'       => true,
@@ -59,7 +59,7 @@ class AddFieldsTables extends BaseMigration
         // Fields values
         $table = $this->create_table(WPT_DB_PREFIX . 'field_values', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $table->column('field_value_id', 'biginteger', array(
             'unsigned'       => true,

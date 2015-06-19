@@ -7,16 +7,37 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
      * Get default wordpress tables engine
      * @return string
      */
+    protected function get_table_engine_option()
+    {
+        try {
+            return 'ENGINE=' . $this->get_wp_table_engine();
+        } catch (Exception $e) {
+            $this->get_adapter()->logger->log('Engine option is unknown: ' . $e->getMessage());
+        }
+
+        return '';
+    }
+
+
+    /**
+     * Get default wordpress tables engine
+     *
+     * @throws Ruckusing_Exception
+     * @return string
+     */
     protected function get_wp_table_engine()
     {
-        $engine = $this->field('
-            SELECT ENGINE FROM information_schema.TABLES
-            WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = "' . WP_DB_PREFIX . 'posts"
-        ');
-        if (empty($engine)) {
-            $engine = 'InnoDB';
+        $posts  = WP_DB_PREFIX . 'posts';
+        $status = $this->select_one("SHOW TABLE STATUS LIKE '$posts'");
+
+        if (empty($status['Engine'])) {
+            throw new Ruckusing_Exception(
+                'Default WP table is missing or it has unknown engine',
+                Ruckusing_Exception::INVALID_TABLE_DEFINITION
+            );
         }
-        return $engine;
+
+        return $status['Engine'];
     }
 
     /**
