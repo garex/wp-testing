@@ -2,6 +2,19 @@
 ## Changelog ##
 
 
+### 0.14 ###
+
+Update addons centrally via standard plugins updates
+
+* Add addon updater and setup it
+* Add Czech and Slovak translations
+
+Internal improvements:
+
+* Improve activation and update reliability (fix migrations)
+* Avoid section's questions false-duplicates (for sections addon)
+
+
 ### 0.13.2 ###
 
 Update database after plugin update
