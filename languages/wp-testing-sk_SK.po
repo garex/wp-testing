@@ -1,22 +1,21 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
-# coach2talk <info@newwaystec.com>, 2014-2015
-# Tomas Darius Davainis <tomasdd@gmail.com>, 2014
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Martin Oravec <oravec@it2core.sk>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-09 02:33+0700\n"
-"PO-Revision-Date: 2015-06-08 17:16+0000\n"
+"PO-Revision-Date: 2015-06-23 08:52+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-testing/language/de_DE/)\n"
+"Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/wp-testing/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: ../src/\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
@@ -26,15 +25,15 @@ msgstr ""
 
 #: Facade.php:53
 msgid "Helps to create psychological tests."
-msgstr "Hilft, um psychologische Tests zu erstellen."
+msgstr "Pomôžte vytvoriť psychologický test."
 
 #: Facade.php:143 Template/Passing/Browser/view-all.php:7
 msgid "Respondents’ test results"
-msgstr "Befragten Testergebnisse"
+msgstr "Výsledky testov respondentov."
 
 #: Facade.php:144
 msgid "Respondents’ results"
-msgstr "Ergebnisse der Befragten"
+msgstr "Výsledky respondenta"
 
 #: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
@@ -42,545 +41,545 @@ msgstr "Test"
 
 #: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
-msgstr "Skalen"
+msgstr "Škály"
 
 #: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
 #: Template/Test/Passer/get-results.php:17
 msgid "Results"
-msgstr "Ergebnisse"
+msgstr "Výsledky"
 
 #: Widget/PassingTable.php:30
 msgid "Device"
-msgstr "Gerät"
+msgstr "Zariadenie"
 
 #: Widget/PassingTable.php:31
 msgid "IP address"
-msgstr "IP-Adresse"
+msgstr "IP adresa"
 
 #: Widget/PassingTable.php:32
 msgid "Browser"
-msgstr "Browser"
+msgstr "Prehliadač"
 
 #: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
 #: Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
-msgstr "%1$d von %2$d"
+msgstr "%1$d z %2$d"
 
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
 #: Template/Test/Passer/fill-form.php:63
 msgid "Test is under construction"
-msgstr "Test befindet sich im Aufbau"
+msgstr "Test sa práve pripravuje"
 
 #: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
 msgid "You can not get any results from it yet."
-msgstr "Ihnen können noch keine Ergebnisse angezeigt werden."
+msgstr "Momentálne nemôžete dostať žiadne výsledky."
 
 #: Doer/TestEditor.php:36
 msgid "Test Page Options"
-msgstr "Testseite Optionen"
+msgstr "Možnosti testu"
 
 #: Doer/TestEditor.php:38
 msgid "Result Page Options"
-msgstr "Einstellung Ergebnisseite"
+msgstr "Možnosti výsledkov"
 
 #: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Questions and Scores"
-msgstr "Bearbeiten Sie Fragen und Partituren"
+msgstr "Uprav otázky a skóre"
 
 #: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Add New Questions"
-msgstr "Neue Fragen hinzufügen"
+msgstr "Pridaj novú otázku"
 
 #: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Edit Formulas"
-msgstr "Bearbeiten von Formeln"
+msgstr "Upraviť výpočty"
 
 #: Doer/TestEditor.php:180
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Karte Titel prozentual Fragen d. Beklagten bereits beantwortet"
+msgstr "Ukázať v úvode percento otázok na ktoré respondent odpovedal"
 
 #: Doer/TestEditor.php:184
 msgid "Show one question per page"
-msgstr "Zeigen Sie eine Frage pro Seite"
+msgstr "Ukázať jednu otázku na stranku"
 
 #: Doer/TestEditor.php:188
 msgid "Allow multiple answers per question"
-msgstr "Können Sie mehrere Antworten pro Frage"
+msgstr "Povoliť viaceré možné odpovede"
 
 #: Doer/TestEditor.php:192
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "Zurücksetzen Befragten Antworten, wenn Sie \"Zurück\" Taste gedrückt"
+msgstr "Zresetovať odpovede respondenta, keď stlačí tlačidlo “Späť”"
 
 #: Doer/TestEditor.php:196
 msgid "Button caption"
-msgstr "Button Beschriftung"
+msgstr "Názov tlačidla"
 
 #: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
 msgid "Get Test Results"
-msgstr "Testergebnisse anzeigen"
+msgstr "Zobraz výsledky testu"
 
 #: Doer/TestEditor.php:213
 msgid "Show scales chart"
-msgstr "Waage-Chart anzeigen"
+msgstr "Ukáž grafy škál"
 
 #: Doer/TestEditor.php:217
 msgid "Show scales"
-msgstr "Zeige Skalen"
+msgstr "Ukáž škály"
 
 #: Doer/TestEditor.php:221
 msgid "Sort scales by score"
-msgstr "Art-Scales von score"
+msgstr "Zoraď škály podľa ich skóre"
 
 #: Doer/TestEditor.php:225
 msgid "Show test description"
-msgstr "Testbeschreibung anzeigen"
+msgstr "Ukáž popis testu"
 
 #: Doer/TestEditor.php:312
 msgid "Test data not saved"
-msgstr "Testdaten nicht gespeichert"
+msgstr "Testové dáta neboli uložené"
 
 #: Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Tests"
+msgstr "Testy"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Hinzufügen"
+msgstr "Pridaj nový"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Neuen Test hinzufügen"
+msgstr "Pridaj nový test"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Test bearbeiten"
+msgstr "Uprav test"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Ansicht-Test"
+msgstr "Zobraz test"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Suche Tests"
+msgstr "Vyhľadávaj testy"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Eltern-Test:"
+msgstr "Nadradený test:"
 
 #: Doer/WordPressEntitiesRegistrator.php:23
 msgid "All Tests"
-msgstr "Alle Tests"
+msgstr "Všetky testy"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Test aktualisieren"
+msgstr "Aktualizuj test"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Neue Test-Name"
+msgstr "Nový názov testu"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Eltern-Test"
+msgstr "Nadradený test"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Neuer Test"
+msgstr "Nový test"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Keine Tests gefunden"
+msgstr "Testy neboli nájdené"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Keine Tests im Papierkorb gefunden"
+msgstr "Testy neboli nájdené v koši"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Als psychologischer Test oder psychologisches Testverfahren wird ein Instrument bezeichnet, welches psychische Merkmale von Personen, Personengruppen oder Organisationen erfassen soll."
+msgstr "Inštrument na meranie nepozorovaných konštruktov (latentné premenné). Typicky je to séria úloh a problémov, ktoré má respondent vyriešiť."
 
 #: Doer/WordPressEntitiesRegistrator.php:62
 #: Template/Test/Editor/edit-questions.php:156
 msgid "Test Answers"
-msgstr "Test-Antworten"
+msgstr "Testové odpovede"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 msgid "Test Answer"
-msgstr "Test-Antwort"
+msgstr "Testové odpovede"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Add New Answer"
-msgstr "Neue Antwort hinzufügen"
+msgstr "Pridať novú odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Edit Answer"
-msgstr "Antwort bearbeiten"
+msgstr "Upraviť odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "View Answer"
-msgstr "Antwort anzeigen"
+msgstr "Zobraziť odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "Search Answers"
-msgstr "Suche Antworten"
+msgstr "Vyhľadávať odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Parent Answer:"
-msgstr "Übergeordnete Antwort:"
+msgstr "Nadradená odpoveď:"
 
 #: Doer/WordPressEntitiesRegistrator.php:70
 msgid "Answers"
-msgstr "Antworten"
+msgstr "Odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "All Answers"
-msgstr "Alle Antworten"
+msgstr "Všetky odpovede"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "Update Answer"
-msgstr "Antwort aktualisieren"
+msgstr "Aktualizovať odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "New Answer Name"
-msgstr "Neue Antwort-Name"
+msgstr "Nový názov odpovede"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "Parent Answer"
-msgstr "Übergeordnete Antwort"
+msgstr "Nadradená odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:76
 msgid "New Answer"
-msgstr "Neue Antwort"
+msgstr "Nová odpoveď"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "No Answers found"
-msgstr "Keine Antworten gefunden"
+msgstr "Odpovede neboli nájdené"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found in Trash"
-msgstr "Keine Antworten, die im Papierkorb gefunden"
+msgstr "Odpovede neboli nájdené v koši"
 
 #: Doer/WordPressEntitiesRegistrator.php:83
 msgid "Test Scales"
-msgstr "Test-Skalen"
+msgstr "Testové škály"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scale"
-msgstr "Test-Skala"
+msgstr "Testová škála"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Add New Scale"
-msgstr "Neue Skala hinzufügen"
+msgstr "Pridať novú testovú škálu"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Edit Scale"
-msgstr "Skala bearbeiten"
+msgstr "Upraviť škálu"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "View Scale"
-msgstr "Ansichtsmaßstab"
+msgstr "Zobraziť škálu"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "Search Scales"
-msgstr "Skala Suche"
+msgstr "Vyhľadávať škály"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Parent Scale:"
-msgstr "Übergeordneten Skala:"
+msgstr "Nadradená škála:"
 
 #: Doer/WordPressEntitiesRegistrator.php:92
 msgid "All Scales"
-msgstr "Allen Skalen"
+msgstr "Všetky škály"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "Update Scale"
-msgstr "Skala aktualisieren"
+msgstr "Aktualizuj škálu"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "New Scale Name"
-msgstr "Neuen Maßstab-Namen"
+msgstr "Názov novej škály"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "Parent Scale"
-msgstr "Übergeordneten Skala"
+msgstr "Nadradená škála"
 
 #: Doer/WordPressEntitiesRegistrator.php:97
 msgid "New Scale"
-msgstr "Neue Skala"
+msgstr "Nová škála"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "No Scales found"
-msgstr "Keine Skalen gefunden"
+msgstr "Škály neboli nájdené"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found in Trash"
-msgstr "Keine Skalen im Papierkorb gefunden"
+msgstr "Škály neboli nájdené v koši"
 
 #: Doer/WordPressEntitiesRegistrator.php:104
 msgid "Test Results"
-msgstr "Testergebnisse"
+msgstr "Výsledky testov"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Result"
-msgstr "Testergebnis"
+msgstr "Výsledky testu"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Add New Result"
-msgstr "Neues Ergebnis hinzufügen"
+msgstr "Pridaj nový výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Edit Result"
-msgstr "Ergebnis bearbeiten"
+msgstr "Upraviť výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "View Result"
-msgstr "Ergebnis anzeigen"
+msgstr "Zobraz výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "Search Results"
-msgstr "Suchergebnisse"
+msgstr "Vyhľadávať výsledky"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Parent Result:"
-msgstr "Übergeordnete Ergebnis:"
+msgstr "Nadradený výsledok:"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 msgid "All Results"
-msgstr "Alle Ergebnisse"
+msgstr "Všetky výsledky"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "Update Result"
-msgstr "Ergebnis aktualisieren"
+msgstr "Aktualizuj výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "New Result Name"
-msgstr "Neuer Ergebnisname"
+msgstr "Nový názov výsledku"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "Parent Result"
-msgstr "Übergeordnetes Ergebnis"
+msgstr "Nadradený výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:118
 msgid "New Result"
-msgstr "Neues Ergebnis"
+msgstr "Nový výsledok"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "No Results found"
-msgstr "Keine Ergebnisse gefunden"
+msgstr "Výsledky neboli nájdené"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found in Trash"
-msgstr "Keine Ergebnisse in Papierkorb gefunden"
+msgstr "Výsledky neboli nájdené v koši"
 
 #: Doer/WordPressEntitiesRegistrator.php:125
 #: Doer/WordPressEntitiesRegistrator.php:133
 msgid "Test Categories"
-msgstr "Testkategorien"
+msgstr "Kategórie testov"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 msgid "Test Category"
-msgstr "Testkategorie"
+msgstr "Kategória testov"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Add New Category"
-msgstr "Neue Kategorie hinzufügen"
+msgstr "Pridať novú kategóriu"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Edit Category"
-msgstr "Kategorie bearbeiten"
+msgstr "Upraviť kategóriu"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "View Category"
-msgstr "Kategorie anzeigen"
+msgstr "Zobraziť kategóriu"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "Search Categories"
-msgstr "Kategorien durchsuchen"
+msgstr "Vyhľadávať v kategóriách"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Parent Category:"
-msgstr "Übergeordnete Kategorie:"
+msgstr "Nadradená kategória:"
 
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "All Categories"
-msgstr "Alle Kategorien"
+msgstr "Všetky kategórie"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "Update Category"
-msgstr "Kategorie aktualisieren"
+msgstr "Aktualizovať kategóriu"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "New Category Name"
-msgstr "Neuer Kategorie-Name"
+msgstr "Názov novej kategórie"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "Parent Category"
-msgstr "Übergeordnete Kategorie"
+msgstr "Nadradená kategória"
 
 #: Doer/WordPressEntitiesRegistrator.php:139
 msgid "New Category"
-msgstr "Neue Kategorie"
+msgstr "Nová kategória"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "No Categories found"
-msgstr "Keine Kategorien gefunden"
+msgstr "Kategórie neboli nájdené"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found in Trash"
-msgstr "Keine Kategorien im Papierkorb gefunden"
+msgstr "Žiadne kategórie neboli nájdené v koši"
 
 #: Doer/TestPasser/FillForm.php:52
 msgid "{percentage}% answered"
-msgstr "{percentage}% beantwortet"
+msgstr "{percentage}% zodpovedané"
 
 #: Doer/TestPasser/FillForm.php:63
 msgid "Next"
-msgstr "Weiter"
+msgstr "Ďalej"
 
 #: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
 msgid "Test data not valid"
-msgstr "Ungültige Testdaten"
+msgstr "Testové dáta nie sú platné"
 
 #: Doer/TestPasser/ProcessForm.php:70
 msgid "You passed not valid data to test."
-msgstr "Sie haben keine gültige Daten zum Testen übergeben."
+msgstr "Odoslali ste neplatné testové dáta."
 
 #: Doer/TestPasser/GetResults.php:73 Doer/TestPasser/GetResults.php:76
 msgid "Test result not found"
-msgstr "Kein Testergebnis gefunden"
+msgstr "Výsledky testu neboli nájdené"
 
 #: Doer/TestPasser/GetResults.php:74
 msgid "You can not get anything from nothing."
-msgstr "Sie können nicht alles aus dem nichts bekommen."
+msgstr "Nie je možné zobraziť niečo z ničoho."
 
 #: Doer/TestPasser/GetResults.php:90
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Sorry, aber Ihr Browser %s ist nicht kompatibel zum Anzeigen des Diagramms"
+msgstr "Ľutujeme, váš prehliadač %s nie je kompatibilný pre zobrazenie grafov"
 
 #: Model/Formula.php:230
 #, php-format
 msgid "Formula for %s has error"
-msgstr "Formel für %s hat Fehler"
+msgstr "Výpočet pre %s má chybu"
 
 #: Model/FormulaVariable.php:26
 msgid "Scale Variable"
-msgstr "Skala-Variable"
+msgstr "Premenná škály"
 
 #: Model/FormulaVariable.php:28
 msgid "Variable"
-msgstr "Variable"
+msgstr "Premenná"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
-msgstr "Formel"
+msgstr "Výpočet"
 
 #: Template/Test/Editor/edit-formulas.php:4
 msgid "Result"
-msgstr "Ergebnis"
+msgstr "Výsledok"
 
 #: Template/Test/Editor/edit-formulas.php:28
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Formeln können nicht bearbeitet werden. Um Formeln bearbeiten zu können, müssen Ergebnisse ausgewählt werden."
+msgstr "Nie je možné upravovať vzorce. Najprv je potrebné zvoliť výsledky."
 
 #: Template/Test/Editor/edit-formulas.php:37
 msgid "Variables"
-msgstr "Variablen"
+msgstr "Premenné"
 
 #: Template/Test/Editor/edit-formulas.php:38
 msgid "Comparisions"
-msgstr "Vergleiche"
+msgstr "Porovnania"
 
 #: Template/Test/Editor/edit-formulas.php:39
 msgid "Operators"
-msgstr "Operatoren"
+msgstr "Operátory"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid "Comparision"
-msgstr "Vergleich"
+msgstr "Porovnanie"
 
 #: Template/Test/Editor/edit-formulas.php:54
 msgid "Operator"
-msgstr "Operator"
+msgstr "Operátor"
 
 #: Template/Test/Editor/edit-formulas.php:62
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected."
-msgstr "Es stehen keine Variablen für Formeln zur Auswahl. Um Variablen verwenden zu können, müssen Sie Skalen ausgewählt haben."
+msgstr "Žiadne premenné pre výpočet nie sú dostupné. Pre použitie premenných, je nutné zvoliť škály."
 
 #: Template/Test/Editor/edit-formulas.php:71
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Zahlen und Prozente sind erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
+msgstr "Aj čísla, aj percentá sú povolené. Napríklad “skala-blabla” má maximálny počet 30, tak “skala-blabla > 15” a “skala-blabla > 50%” je to isté."
 
 #: Template/Test/Editor/add-questions.php:5
 #: Template/Test/Editor/add-questions.php:10
 msgid "Quick Fill From Text"
-msgstr "Schnellfüllung aus Text"
+msgstr "Rýchle vyplnenie z textu"
 
 #: Template/Test/Editor/add-questions.php:9
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Fügen Sie hier Ihre Fragen ein und die Felder darüber werden ausgefüllt. Zahlen und andere Indizes werden automatisch abgezogen."
+msgstr "Sem vložte svoje otázky, ktoré budú automaticky pridané do polí nižšie. Čísla a iné indexy budú automaticky odstránené."
 
 #: Template/Test/Editor/submit-misc-actions.php:6
 msgid "Publish on the home page"
-msgstr "Auf der Homepage veröffentlichen"
+msgstr "Zobraziť na titulnej stránke"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
 msgid "Quick Fill Scores"
-msgstr "Füllen schnell Punkte"
+msgstr "Rýchle vyplnenie skóre"
 
 #: Template/Test/Editor/edit-questions.php:37
 msgid "Scale"
-msgstr "Skalierung"
+msgstr "Škála"
 
 #: Template/Test/Editor/edit-questions.php:38
 msgid "Score"
-msgstr "Punkt"
+msgstr "Skóre"
 
 #: Template/Test/Editor/edit-questions.php:39
 msgid "Answer"
-msgstr "Antwort"
+msgstr "Odpoveď"
 
 #: Template/Test/Editor/edit-questions.php:40
 msgid "Questions"
-msgstr "Fragen"
+msgstr "Otázky"
 
 #: Template/Test/Editor/edit-questions.php:88
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Es können keine Fragen bearbeitet werden. Füge neue Fragen hinzu und sie werden hier erscheinen."
+msgstr "Nie sú dostupné otázky pre úpravu. Zadajte otázky. Zobrazia sa na tomto mieste."
 
 #: Template/Test/Editor/edit-questions.php:96
 msgid ""
 "No scores to edit. To edit scores you must have both answers and scales "
 "selected."
-msgstr "Es können keine Punkte bearbeitet werden. Um Punkte bearbeiten zu können, müssen Sie beide Antworten und Skalen ausgewählt haben."
+msgstr "Nie sú dostupné skóre pre úpravu. Potrebné sú zaznačené aj otázky, aj škály."
 
 #: Template/Test/Editor/edit-questions.php:155
 msgid "Add Individual Answers"
-msgstr "Individuelle Antworten hinzufügen"
+msgstr "Pridať individuálne odpovede"
 
 #: Template/Test/Editor/edit-questions.php:156
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— einzigartig für jede Frage. Wenn Sie dieselben Antworten auf alle Testfragen haben, verwenden Sie die %s"
+msgstr "— unikátne pre každú otázku. Ak sú všetky odpovede pre všetky otázky rovnaké, použite %s"
 
 #: Template/Test/Editor/edit-questions.php:160
 msgid ""
 "Add here your individual answers as text; after test saving they will be "
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
-msgstr "Fügen Sie hier Ihre individuellen Antworten als Text; nach dem Test speichern sie extrahiert und erstellt werden. Zahlen und andere Indizes werden automatisch entfernt werden."
+msgstr "Pridať individuálne odpovede ako text; po uložení testu budú vytvorené. Čísla a iné indexy, budú automaticky odstránené."
