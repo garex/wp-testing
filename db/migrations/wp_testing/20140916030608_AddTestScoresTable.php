@@ -8,7 +8,7 @@ class AddTestScoresTable extends BaseMigration
     {
         $table = $this->create_table(WPT_DB_PREFIX . 'scores', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $pkOptions = array(
             'unsigned'       => true,

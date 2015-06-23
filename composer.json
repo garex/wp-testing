@@ -17,6 +17,7 @@
         , "nikic/php-parser": "0.9.5"
         , "samyk/evercookie": "dev-2014-10-21"
         , "pnegri/uuid-js": "dev-master"
+        , "yahnis-elsts/plugin-update-checker": "^2.0"
     },
     "scripts": {
         "post-install-cmd": [
@@ -31,7 +32,8 @@
     },
     "autoload": {
         "classmap": [
-            "src/"
+            "src/",
+            "vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php"
         ]
     },
     "require-dev": {

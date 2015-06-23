@@ -9,7 +9,7 @@ class AddSectionsTable extends BaseMigration
         $this->drop_table(WPT_DB_PREFIX . 'sections');
         $table = $this->create_table(WPT_DB_PREFIX . 'sections', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $table->column('section_id',    'biginteger', array(
             'unsigned'       => true,

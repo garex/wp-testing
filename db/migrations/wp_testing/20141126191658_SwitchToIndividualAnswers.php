@@ -8,7 +8,7 @@ class SwitchToIndividualAnswers extends BaseMigration
         // create wp_t_answers
         $table = $this->create_table(WPT_DB_PREFIX . 'answers', array(
             'id'      => false,
-            'options' => 'ENGINE=' . $this->get_wp_table_engine(),
+            'options' => $this->get_table_engine_option(),
         ));
         $table->column('answer_id', 'biginteger', array(
             'unsigned'       => true,
