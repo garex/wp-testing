@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.14.1 ###
+
+Make compatible with polylang plugin
+
+* Add post_type in result's rewrite to integrate with polylang
+
+
 ### 0.14 ###
 
 Update addons centrally via standard plugins updates
