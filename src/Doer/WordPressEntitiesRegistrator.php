@@ -151,13 +151,13 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
         $this->wp->getWP()->add_query_var('wpt_passing_slug');
         $rewrite = $this->wp->getRewrite();
         $prefix  = implode('/', array_filter(array(
-        		trim($rewrite->root,  '/'),
-        		trim($rewrite->front, '/'),
-        		$testSlug,
+                trim($rewrite->root,  '/'),
+                trim($rewrite->front, '/'),
+                $testSlug,
         )));
         $rewrite->add_rule(
             $prefix . '/([^/]+)/([a-z0-9]+[a-f0-9]{32})/?$',
-            $rewrite->index . '?wpt_test=$matches[1]&wpt_passing_slug=$matches[2]',
+            $rewrite->index . '?wpt_test=$matches[1]&wpt_passing_slug=$matches[2]&post_type=wpt_test',
             'top'
         );
     }
