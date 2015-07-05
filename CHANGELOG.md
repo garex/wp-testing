@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.14.2 ###
+
+Prepare plugin to styling addon
+
+* Allow dependencies in plugin's style
+* Fix links to tests in respondents results
+
+
 ### 0.14.1 ###
 
 Make compatible with polylang plugin

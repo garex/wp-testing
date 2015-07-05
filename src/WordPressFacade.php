@@ -471,11 +471,12 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @param string $name Name of the stylesheet.
      * @param string $pluginRelatedPath
+     * @param array $dependencies An array of registered style handles this stylesheet depends on. Default empty array.
      * @return WpTesting_WordPressFacade
      */
-    public function enqueuePluginStyle($name, $pluginRelatedPath)
+    public function enqueuePluginStyle($name, $pluginRelatedPath, array $dependencies = array())
     {
-        wp_enqueue_style($name, $this->getPluginUrl($pluginRelatedPath));
+        wp_enqueue_style($name, $this->getPluginUrl($pluginRelatedPath), $dependencies);
         return $this;
     }
 
