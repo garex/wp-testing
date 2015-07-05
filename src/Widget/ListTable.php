@@ -276,7 +276,8 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
             if (false === $value) {
                 continue;
             }
-            $attributesHtml .= sprintf(' %s="%s"', $name, htmlspecialchars($value));
+            $value = (in_array($name, array('href'))) ? $value : htmlspecialchars($value);
+            $attributesHtml .= sprintf(' %s="%s"', $name, $value);
         }
 
         if (false === $innerHtml) {
