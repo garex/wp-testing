@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00f3d72c029e1e13ada4cc5e9a6dbc02",
+    "hash": "c0db79325076ada23c3bc4767381f731",
     "packages": [
         {
             "name": "composer/installers",
@@ -264,16 +264,16 @@
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
-            "version": "v2.0",
+            "version": "v2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-                "reference": "323e80fa1991fb84c37f7c54bef2348b48c72bb6"
+                "reference": "fd5feddfef20e6c9f37e1f3c41872b50041072e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/323e80fa1991fb84c37f7c54bef2348b48c72bb6",
-                "reference": "323e80fa1991fb84c37f7c54bef2348b48c72bb6",
+                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/fd5feddfef20e6c9f37e1f3c41872b50041072e3",
+                "reference": "fd5feddfef20e6c9f37e1f3c41872b50041072e3",
                 "shasum": ""
             },
             "require": {
@@ -299,7 +299,7 @@
                 "plugin updates",
                 "wordpress"
             ],
-            "time": "2015-02-10 10:00:06"
+            "time": "2015-06-26 13:37:25"
         }
     ],
     "packages-dev": [
@@ -611,16 +611,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "4a29a5248aed4fb45f626a7bbbd330291492f5c3"
+                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/4a29a5248aed4fb45f626a7bbbd330291492f5c3",
-                "reference": "4a29a5248aed4fb45f626a7bbbd330291492f5c3",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9808e75c609a14f6db02f70fccf4ca4aab53c160",
+                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160",
                 "shasum": ""
             },
             "require": {
@@ -656,7 +656,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-05-02 15:21:08"
+            "time": "2015-06-10 15:30:22"
         }
     ],
     "aliases": [],
