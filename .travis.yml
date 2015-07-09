@@ -59,6 +59,7 @@ script:
   - restart.sh && mocha-casperjs 1-admin.js
   - restart.sh && mocha-casperjs answers-and-scales-1.js
   - restart.sh && mocha-casperjs answers-and-scales-2.js
+  - restart.sh && mocha-casperjs answers-variables.js
   - restart.sh && mocha-casperjs diagrams.js
   - restart.sh && mocha-casperjs multiple-answers.js
   - restart.sh && mocha-casperjs page.js
