@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.14.3 ###
+
+Improve compatibility with other custom categories (for example WooCommerce)
+
+* Check for taxonomy object type on archieve pages
+
+
 ### 0.14.2 ###
 
 Prepare plugin to styling addon
