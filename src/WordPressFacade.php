@@ -1157,6 +1157,21 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieves the taxonomy object of $taxonomy.
+     *
+     * @since 2.3.0
+     *
+     * @uses $wp_taxonomies
+     *
+     * @param string $taxonomy Name of taxonomy object to return
+     * @return object|bool The Taxonomy Object or false if $taxonomy doesn't exist
+     */
+    public function getTaxonomy($taxonomy)
+    {
+        return get_taxonomy($taxonomy);
+    }
+
+    /**
      * Whether the current request is for a network or blog admin page
      *
      * Does not inform on whether the user is an admin! Use capability checks to

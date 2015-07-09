@@ -14,6 +14,10 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
             return;
         }
 
+        if ($query->is_archive() && !$this->isTaxonomyOf($query, 'wpt_test')) {
+            return;
+        }
+
         $query->set('post_type', $this->addTestToPostTypes($query));
         if (!$query->is_home()) {
             return;
@@ -94,5 +98,26 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
     private function getQueryVariableAsArray($query, $variable)
     {
         return array_filter((array)$query->get($variable));
+    }
+
+    /**
+     * Does current query taxonomy has required object type?
+     *
+     * @param WP_Query $query
+     * @param string $objectType
+     * @return boolean
+     */
+    private function isTaxonomyOf($query, $objectType)
+    {
+        if (!isset($query->tax_query->queries[0]['taxonomy'])) {
+            return false;
+        }
+
+        $taxonomy = $this->wp->getTaxonomy($query->tax_query->queries[0]['taxonomy']);
+        if (!$taxonomy || !isset($taxonomy->object_type)) {
+            return false;
+        }
+
+        return in_array($objectType, $taxonomy->object_type);
     }
 }
