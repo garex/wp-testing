@@ -86,6 +86,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
+     * @return WpTesting_Model_Question[]
+     */
+    public function buildQuestionsWithAnswers()
+    {
+        $questions   = $this->me()->buildQuestions();
+        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
+        return $questions;
+    }
+
+    /**
      * @return WpTesting_Model_Scale[]
      */
     public function buildScales()
@@ -658,6 +668,22 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             $post->$key = (string)$value;
         }
         return $post;
+    }
+
+    public function getQuestionsCount()
+    {
+        return count($this->buildQuestions());
+    }
+
+    public function getMaxAnswersCount()
+    {
+        $maxCount = 0;
+
+        foreach ($this->buildQuestionsWithAnswers() as $question) {
+            $maxCount = max($maxCount, count($question->buildAnswers()));
+        }
+
+        return $maxCount;
     }
 
     protected function configure()
