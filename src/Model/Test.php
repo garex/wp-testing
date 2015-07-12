@@ -185,18 +185,29 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
+     * @param WpTesting_Model_Passing $passing
      * @return WpTesting_Model_FormulaVariable[]
      */
-    public function buildFormulaVariables($scalesWithRange = null)
+    public function buildPublicFormulaVariables(WpTesting_Model_Passing $passing = null)
     {
         $variables = array();
-        if (is_null($scalesWithRange)) {
-            $scalesWithRange = $this->buildScalesWithRange();
-        }
-        foreach ($scalesWithRange as $scale) {
-            $variables[] = new WpTesting_Model_FormulaVariable($scale);
-        }
-        return $variables;
+
+        $variables += WpTesting_Model_FormulaVariable_ScaleValue::buildAllFrom($this, $passing);
+
+        return $this->wp->applyFilters('wp_testing_test_build_public_formula_variables', $variables, $this, $passing);
+    }
+
+    /**
+     * @param WpTesting_Model_Passing $passing
+     * @return WpTesting_Model_FormulaVariable[]
+     */
+    public function buildFormulaVariables(WpTesting_Model_Passing $passing = null)
+    {
+        $variables = $this->buildPublicFormulaVariables($passing);
+
+        $variables += WpTesting_Model_FormulaVariable_SelectedAnswer::buildAllFrom($this, $passing);
+
+        return $this->wp->applyFilters('wp_testing_test_build_formula_variables', $variables, $this, $passing);
     }
 
     /**

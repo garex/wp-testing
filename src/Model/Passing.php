@@ -18,6 +18,7 @@
  * @method integer getRespondentId() getRespondentId() Gets the current value of respondent id
  * @method string getStatus() getStatus() Gets the current value of status
  * @method WpTesting_Model_Passing setStatus() setStatus(string $status) Sets the value for status
+ * @method WpTesting_Model_Answer[] buildAnswersOnce() buildAnswersOnce() Gets passing's answers with cache
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 {
@@ -224,7 +225,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         }
 
         $scoresByScales = array_fill_keys(array_keys($result), 0);
-        foreach ($this->buildAnswers() as $answer) {
+        foreach ($this->buildAnswersOnce() as $answer) {
             $scores = $answer->buildScores();
             foreach ($scores as $score) { /* @var $score WpTesting_Model_Score */
                 $scoresByScales[$score->getScaleId()] += $score->getValue();
@@ -264,7 +265,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     public function buildResults()
     {
         $test      = $this->createTest();
-        $variables = $test->buildFormulaVariables($this->buildScalesWithRangeOnce());
+        $variables = $test->buildFormulaVariables($this);
         $result    = array();
         foreach ($test->buildFormulas() as $formula) {
             $formula->resetValues();
