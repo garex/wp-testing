@@ -23,6 +23,7 @@
  * @method string getType() getType() Gets the current value for type
  * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
  * @method string getName() getName() Gets the current value for name (url unique part)
+ * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {
@@ -310,7 +311,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Can respondent use this test to get results?
      *
-     * Final test is test, that have scores.
+     * Final test is test, that have scores or at least one non-empty formula.
      * Scores can be only, when test have questions, answers and scales.
      * Results are good to have but not required: they are humanize "scientific" language
      * of scales to more understandable words.
@@ -319,11 +320,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function isFinal()
     {
-        foreach ($this->buildScalesWithRange() as $scale) {
+        foreach ($this->buildScalesWithRangeOnce() as $scale) {
             if ($scale->getLength()) {
                 return true;
             }
         }
+
+        // If we have at least one result with formula — we assume, that it was added legally
+        foreach ($this->buildFormulas() as $formula) {
+            if (!$formula->isEmpty()) {
+                return true;
+            }
+        }
+
         return false;
     }
 
