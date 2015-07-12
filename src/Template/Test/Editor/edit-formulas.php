@@ -40,6 +40,13 @@
     </tr>
     <tr>
         <td>
+        <?php if ($isShowQuestionAnswer): ?>
+            <button type="button" class="question-answer" data-source-template="<?php echo 'question_%1$s_answer_%2$s' ?>">
+            <?php echo sprintf(__('Question %1$s answer %2$s', 'wp-testing'),
+                '<input data-replace-from="%1$s" max="' . $maxQuestionsCount . '" min="1" value="1" type="number" />',
+                '<input data-replace-from="%2$s" max="' . $maxAnswersCount   . '" min="1" value="1" type="number" />') ?>
+            </button>
+        <?php endif ?>
         <?php foreach($variables as $variable): /* @var $variable WpTesting_Model_FormulaVariable */ ?>
             <input type="button" data-source="<?php echo htmlspecialchars($variable->getSource()) ?>" title="<?php echo $variable->getTypeLabel() ?>" value="<?php echo htmlspecialchars($variable->getTitle()) ?>"/>
         <?php endforeach ?>
@@ -55,11 +62,11 @@
         <?php endforeach ?>
         </td>
     </tr>
-<?php if (!count($variables)): ?>
+<?php if (!$hasVariables): ?>
     <tr class="alternate">
         <td colspan="3">
             <p class="highlight">
-                <?php echo __('No variables for formulas available. To use variables you must have scales selected.', 'wp-testing') ?>
+                <?php echo __('No variables for formulas available. To use variables you must have scales selected or have at least one question and answer.', 'wp-testing') ?>
             </p>
         </td>
     </tr>
