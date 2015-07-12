@@ -7,6 +7,10 @@ require_once dirname($pluginFile) . '/src/Facade.php';
 require_once dirname(__FILE__) . '/Mock/WordPressFacade.php';
 require_once dirname(__FILE__) . '/Mock/Facade.php';
 
+if (!function_exists('__')) {
+    function __($key) { return $key; }
+}
+
 $migration = require_once dirname(__FILE__) . '/../../db/ruckusing.conf.php';
 $GLOBALS['wp_facade_mock'] = new WpTesting_Mock_WordPressFacade(
     $pluginFile,
