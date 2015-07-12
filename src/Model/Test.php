@@ -404,6 +404,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     protected function isOptionEqual($key, $expectedValue, $defaultValue = null)
     {
+        if (!$this->getId()) {
+            return null;
+        }
         $actualValue = $this->getWp()->getPostMeta($this->getId(), $key, true);
         if ('' === $actualValue && !is_null($defaultValue)) {
             $actualValue = $defaultValue;

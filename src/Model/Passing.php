@@ -66,7 +66,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      * @param WpTesting_Model_Test $test
      * @return WpTesting_Model_Passing
      */
-    public function populate(WpTesting_Model_Test $test)
+    public function populateFromTest(WpTesting_Model_Test $test)
     {
         $this->setCreated(time())->setModified(time())->setTestId($test->getId());
         parent::populate(true);
@@ -212,6 +212,20 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     }
 
     /**
+     * @return WpTesting_Model_Score[]
+     */
+    public function buildAnswersScores()
+    {
+        $result = array();
+        foreach ($this->buildAnswersOnce() as $answer) {
+            foreach ($answer->buildScores() as $score) {
+                $result[] = $score;
+            }
+        }
+        return fRecordSet::buildFromArray('WpTesting_Model_Score', array_values($result));
+    }
+
+    /**
      * Build scales and setup their ranges from test's questions
      *
      * @return WpTesting_Model_Scale[]
@@ -225,11 +239,8 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         }
 
         $scoresByScales = array_fill_keys(array_keys($result), 0);
-        foreach ($this->buildAnswersOnce() as $answer) {
-            $scores = $answer->buildScores();
-            foreach ($scores as $score) { /* @var $score WpTesting_Model_Score */
-                $scoresByScales[$score->getScaleId()] += $score->getValue();
-            }
+        foreach ($this->buildAnswersScores() as $score) {
+            $scoresByScales[$score->getScaleId()] += $score->getValue();
         }
 
         foreach ($result as $id => $scale) {

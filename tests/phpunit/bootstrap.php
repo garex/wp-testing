@@ -1,4 +1,6 @@
 <?php
+ini_set('error_reporting', E_ALL | E_STRICT);
+
 $pluginFile = realpath(dirname(__FILE__) . '/../../wp-testing.php');
 require_once dirname($pluginFile) . '/src/WordPressFacade.php';
 require_once dirname($pluginFile) . '/src/Facade.php';
