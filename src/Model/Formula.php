@@ -76,6 +76,16 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Does this formula has some source?
+     *
+     * @return boolean
+     */
+    public function isEmpty()
+    {
+        return (trim($this->getSource()) == '');
+    }
+
+    /**
      * Tests formula, knowing it's possible values for correctnes.
      *
      * @param array $valueNames If not provided, tries to get current values if they are exists.

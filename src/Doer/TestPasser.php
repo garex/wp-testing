@@ -122,7 +122,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $this->passing = new WpTesting_Model_Passing();
         $this->passing->setWp($this->wp);
         if ($this->isPost()) {
-            $this->passing->populate($this->test);
+            $this->passing->populateFromTest($this->test);
             if (self::ACTION_PROCESS_FORM == $this->getRequestValue('passer_action')) {
                 return self::ACTION_PROCESS_FORM;
             }

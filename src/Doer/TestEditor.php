@@ -279,10 +279,20 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditFormulas($item)
     {
-        $test = $this->createTest($item);
+        $test                   = $this->createTest($item);
+        $variables              = $test->buildPublicFormulaVariables();
+        $maxQuestionsCount      = $test->getQuestionsCount();
+        $maxAnswersCount        = $test->getMaxAnswersCount();
+        $isShowQuestionAnswer   = ($maxQuestionsCount * $maxAnswersCount > 0);
+        $hasVariables           = (count($variables) > 0 || $isShowQuestionAnswer);
+
         $this->output('Test/Editor/edit-formulas', array(
-            'results'    => $test->buildResults(),
-            'variables'  => $test->buildFormulaVariables(),
+            'results'               => $test->buildResults(),
+            'variables'             => $variables,
+            'maxQuestionsCount'     => $maxQuestionsCount,
+            'maxAnswersCount'       => $maxAnswersCount,
+            'isShowQuestionAnswer'  => $isShowQuestionAnswer,
+            'hasVariables'          => $hasVariables,
         ));
     }
 

@@ -1,57 +1,66 @@
 <?php
 
-class WpTesting_Model_FormulaVariable
+abstract class WpTesting_Model_FormulaVariable
 {
 
-    private $model = null;
-
-    public function __construct(WpTesting_Model_AbstractModel $model)
-    {
-        $this->model = $model;
-    }
+    private $title        = '';
+    private $typeLabel    = '';
+    private $source       = '';
+    private $value        = 0;
+    private $valueAsRatio = 0;
 
     public function getTitle()
     {
-        $model = $this->model;
-        if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return $model->getTitle() . ', ' . $model->getAggregatesTitle();
-        }
-        return null;
+        return $this->title;
     }
 
     public function getTypeLabel()
     {
-        $model = $this->model;
-        if ($model instanceof WpTesting_Model_Scale) {
-            return __('Scale Variable', 'wp-testing');
-        }
-        return __('Variable', 'wp-testing');
+        return $this->typeLabel;
     }
 
     public function getSource()
     {
-        $model = $this->model;
-        if ($model instanceof WpTesting_Model_AbstractTerm) {
-            return urldecode($model->getSlug());
-        }
-        return null;
+        return $this->source;
     }
 
     public function getValue()
     {
-        $model = $this->model;
-        if ($model instanceof WpTesting_Model_Scale) {
-            return $model->getValue();
-        }
-        return 0;
+        return $this->value;
     }
 
     public function getValueAsRatio()
     {
-        $model = $this->model;
-        if ($model instanceof WpTesting_Model_Scale) {
-            return $model->getValueAsRatio();
-        }
-        return 0;
+        return $this->valueAsRatio;
+    }
+
+    protected function setTitle($value)
+    {
+        $this->title = $value;
+        return $this;
+    }
+
+    protected function setTypeLabel($value)
+    {
+        $this->typeLabel = $value;
+        return $this;
+    }
+
+    protected function setSource($value)
+    {
+        $this->source = $value;
+        return $this;
+    }
+
+    protected function setValue($value)
+    {
+        $this->value = $value;
+        return $this;
+    }
+
+    protected function setValueAsRatio($value)
+    {
+        $this->valueAsRatio = $value;
+        return $this;
     }
 }
