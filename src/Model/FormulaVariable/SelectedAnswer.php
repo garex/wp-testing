@@ -11,7 +11,9 @@ class WpTesting_Model_FormulaVariable_SelectedAnswer extends WpTesting_Model_For
             $answeredIds = array();
         } else {
             $answeredIds = $passing->buildAnswersOnce()->getPrimaryKeys();
-            $answeredIds = array_combine($answeredIds, $answeredIds);
+            if (count($answeredIds)) {
+                $answeredIds = array_combine($answeredIds, $answeredIds);
+            }
         }
         $titleFormat = __('Question %1$s answer %2$s', 'wp-testing');
         $typeLabel   = __('Answer Variable', 'wp-testing');
