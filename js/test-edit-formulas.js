@@ -10,8 +10,9 @@ jQuery(document).ready(function($) {
 
     helpers.click(function() {
         var helper       = $(this),
-            insertValue  = helper.data('source'),
-            isSelected   = activeFormula.fieldSelection().length > 0;
+            selection    = activeFormula.fieldSelection(),
+            insertValue  = helper.data('source').replace('{selection}', selection.text),
+            isSelected   = selection.length > 0;
 
         if (isSelected) {
             activeFormula.fieldSelection(insertValue);

@@ -52,8 +52,11 @@
         <?php endforeach ?>
         </td>
         <td class="operators">
-        <?php foreach(explode(', ', '<, >, <=, =>, <>, AND, OR, (, )') as $operator):  ?>
-            <input type="button" data-source="<?php echo htmlspecialchars($operator) ?>" title="<?php echo __('Comparision', 'wp-testing') ?>" value="<?php echo htmlspecialchars($operator) ?>"/>
+        <?php foreach(explode(', ', '<, >, <=, =>, <>, AND, OR, ( {selection} ), NOT ( {selection} )') as $operator):  ?>
+            <input type="button"
+                data-source="<?php echo htmlspecialchars($operator) ?>"
+                title="<?php echo __('Comparision', 'wp-testing') ?>"
+                value="<?php echo htmlspecialchars(str_replace(array('{selection}'), array('...'), $operator)) ?>"/>
         <?php endforeach ?>
         </td>
         <td class="operators">
