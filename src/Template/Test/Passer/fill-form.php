@@ -46,6 +46,9 @@
 
             <label for="<?php echo $answerId ?>">
                 <input type="<?php echo $isMultipleAnswers ? 'checkbox' : 'radio' ?>" id="<?php echo $answerId ?>"
+                    data-errormessage="<?php echo $isMultipleAnswers
+                        ? __('Please select at least one answer.', 'wp-testing')
+                        : __('Please choose only one answer.', 'wp-testing') ?>"
                     <?php if (0 == $a): ?>required="required" aria-required="true"<?php endif ?>
                     name="<?php echo $answerIdName ?>[<?php echo $answerIndex ?>]" value="<?php echo $answer->getId() ?>" />
                 <?php echo $answer->getTitleOnce() ?>
