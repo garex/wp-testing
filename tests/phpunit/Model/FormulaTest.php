@@ -30,6 +30,35 @@ class FormulaTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider andsOrsNotsReplacedOnlyAsStandaloneProvider
+     * @param string $passedFormula
+     * @param string $expectedResult
+     */
+    public function testAndsOrsNotsReplacedOnlyAsStandalone($passedFormula, $expectedResult)
+    {
+        $this->assertEquals($expectedResult, $this->formula
+            ->setSource($passedFormula)
+            ->addValue('scale-1', 1)
+            ->addValue('scale-2', 2)
+            ->addValue('scale-not-and-or-3', 3)
+            ->addValue('question_1_answer_2', 0)
+            ->substitute()
+        );
+    }
+
+    public function andsOrsNotsReplacedOnlyAsStandaloneProvider()
+    {
+        return array(
+            array('1 and 2', '1&&2'),
+            array('scale-1 and not(question_1_answer_2)',   '1&&!(0)'),
+            array('scale-1 not(question_1_answer_2)',       '1&&!(0)'),
+            array('scale-1not(question_1_answer_2)',        '1&&!(0)'),
+            array('scale-1notquestion_1_answer_2',          '1&&!0'),
+            array('scale-not-and-or-3 nothing',             '3'),
+        );
+    }
+
+    /**
      * @dataProvider onlyAllowedSymbolsLeftProvider
      * @param string $passedFormula
      * @param string $expectedResult
@@ -45,7 +74,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
     public function onlyAllowedSymbolsLeftProvider()
     {
         return array(
-            array('45 > 123 +1*1/1\\  ;"!@#$%^1*1() hey! 5 and 34 > 23 %', '45>123+1*1/1&&1*1&&5&&34>0.23'),
+            array('45 > 123 +1*1/1\\  ;"!@#$%^1*1() hey! 5 and 34 > 23 %', '45>123+1*1/1&&!1*1&&!5&&34>0.23'),
             array('45 > 123 and 34 > 23',  '45>123&&34>23'),
             array('somefunction(45) < 23', '(45)<23'),
         );
@@ -74,6 +103,33 @@ class FormulaTest extends PHPUnit_Framework_TestCase
             array('12 <= 12', '12<=12'),
             array('12 => 12', '12>=12'),
             array('12 =< 12', '12<=12'),
+
+            array('NOT(12 =< 12)', '!(12<=12)'),
+        );
+    }
+
+    /**
+     * @dataProvider notsBetweenValuesPrefixedsByAndsProvider
+     * @param string $passedFormula
+     * @param string $expectedResult
+     */
+    public function testNotsBetweenValuesPrefixedsByAnds($passedFormula, $expectedResult)
+    {
+        $this->assertEquals($expectedResult, $this->formula
+            ->setSource($passedFormula)
+            ->substitute()
+        );
+    }
+
+    public function notsBetweenValuesPrefixedsByAndsProvider()
+    {
+        return array(
+            array('12 NOT(12 =< 12)',   '12&&!(12<=12)'),
+            array('12NOT(12)',          '12&&!(12)'),
+            array('12NOT12',            '12&&!12'),
+            array('NOT12',              '!12'),
+            array(' NOT 12 ',           '!12'),
+            array(' 12 not0',           '12&&!0'),
         );
     }
 
