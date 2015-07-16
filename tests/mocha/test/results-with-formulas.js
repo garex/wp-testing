@@ -77,11 +77,34 @@ describe('Results with formulas', function() {
         casper.back().back()
     })
 
-    it('should be saved when formulas is good', function() {
+    it('should add formulas by buttons', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source=">"]')
             this.sendKeys('#wpt_formula_source_0', '10 "nothing"')
+        })
+
+        casper.then(function() {
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10 "nothing"')
+        })
+    })
+
+    it('should replace selection for parentheses', function() {
+        casper.evaluate(function() {
+            wpt_formula_source_0.select()
+        })
+
+        casper.then(function() {
+            this.click('.wpt_formulas_helper input[data-source="( {selection} )"]')
+        })
+
+        casper.then(function() {
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 10 "nothing" )')
+        })
+    })
+
+    it('should be saved when formulas is good', function() {
+        casper.then(function() {
             this.click('#publish')
         })
 
@@ -89,7 +112,7 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
-            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10 "nothing"')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 10 "nothing" )')
         })
     })
 
