@@ -1,4 +1,4 @@
-# Psychological tests & quizes #
+# Psychological tests & quizzes #
 
 **Contributors:** ustimenko, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
 **Donate link:** https://goo.gl/igulor  
@@ -9,11 +9,11 @@
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
-Create psychological tests/quizes with scales connected with results through simple formulas like "extraversion > 50%"
+Create psychological tests/quizzes with scales connected with results through simple formulas like "extraversion > 50%"
 
 ## Description ##
 
-With the help of this plugin now you can create typical and advanced psychological tests (quizes, assessments).
+With the help of this plugin now you can create typical and advanced psychological tests (quizzes, assessments).
 
 Typical psychological test consists of **questions** and **answers**. A respondent answers all of the questions and gets **results**. This is how the box outside looks like.
 

@@ -30,7 +30,7 @@ var screenshots = [
 
            casper.thenOpen('http://wpti.dev/wp-admin/options-general.php', function() {
                this.fill('form', {
-                   blogname     : 'Psychological tests and quizes'
+                   blogname     : 'Psychological tests and quizzes'
                }, true)
            }).waitForUrl(/updated/)
 
