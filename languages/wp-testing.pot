@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-09 02:33+0700\n"
+"POT-Creation-Date: 2015-07-17 06:40+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -21,55 +21,58 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Facade.php:53
+#: Facade.php:71
 msgid "Helps to create psychological tests."
 msgstr ""
 
-#: Facade.php:143 Template/Passing/Browser/view-all.php:7
-msgid "Respondents’ test results"
+#: Widget/PassingTable.php:62 Doer/WordPressEntitiesRegistrator.php:23
+msgid "All Tests"
 msgstr ""
 
-#: Facade.php:144
-msgid "Respondents’ results"
+#: Widget/PassingTable/User.php:24
+msgid "#"
 msgstr ""
 
-#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
+#: Widget/PassingTable/User.php:26 Widget/PassingTable/Admin.php:45
+#: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr ""
 
-#: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
+#: Widget/PassingTable/User.php:27 Widget/PassingTable/Admin.php:46
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr ""
 
-#: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
-#: Template/Test/Passer/get-results.php:17
+#: Widget/PassingTable/User.php:28 Widget/PassingTable/Admin.php:47
+#: Doer/WordPressEntitiesRegistrator.php:112 Doer/PassingBrowser/User.php:11
+#: Doer/PassingBrowser/User.php:19 Template/Test/Passer/get-results.php:17
 msgid "Results"
 msgstr ""
 
-#: Widget/PassingTable.php:30
-msgid "Device"
-msgstr ""
-
-#: Widget/PassingTable.php:31
-msgid "IP address"
-msgstr ""
-
-#: Widget/PassingTable.php:32
-msgid "Browser"
-msgstr ""
-
-#: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
-#: Model/Scale.php:84
+#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
+#: Component/StepStrategy.php:96 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr ""
 
+#: Widget/PassingTable/Admin.php:49
+msgid "Device"
+msgstr ""
+
+#: Widget/PassingTable/Admin.php:50
+msgid "IP address"
+msgstr ""
+
+#: Widget/PassingTable/Admin.php:51
+msgid "Browser"
+msgstr ""
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:63
+#: Template/Test/Passer/fill-form.php:74
 msgid "Test is under construction"
 msgstr ""
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
 msgid "You can not get any results from it yet."
 msgstr ""
 
@@ -93,52 +96,56 @@ msgstr ""
 msgid "Edit Formulas"
 msgstr ""
 
-#: Doer/TestEditor.php:180
+#: Doer/TestEditor.php:165
+msgid "Publish on the home page"
+msgstr ""
+
+#: Doer/TestEditor.php:182
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr ""
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:186
 msgid "Show one question per page"
 msgstr ""
 
-#: Doer/TestEditor.php:188
+#: Doer/TestEditor.php:190
 msgid "Allow multiple answers per question"
 msgstr ""
 
-#: Doer/TestEditor.php:192
+#: Doer/TestEditor.php:194
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr ""
 
-#: Doer/TestEditor.php:196
+#: Doer/TestEditor.php:198
 msgid "Button caption"
 msgstr ""
 
-#: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
 msgid "Get Test Results"
 msgstr ""
 
-#: Doer/TestEditor.php:213
+#: Doer/TestEditor.php:220
 msgid "Show scales chart"
 msgstr ""
 
-#: Doer/TestEditor.php:217
+#: Doer/TestEditor.php:224
 msgid "Show scales"
 msgstr ""
 
-#: Doer/TestEditor.php:221
+#: Doer/TestEditor.php:228
 msgid "Sort scales by score"
 msgstr ""
 
-#: Doer/TestEditor.php:225
+#: Doer/TestEditor.php:232
 msgid "Show test description"
 msgstr ""
 
-#: Doer/TestEditor.php:312
+#: Doer/TestEditor.php:330
 msgid "Test data not saved"
 msgstr ""
 
 #: Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/WordPressEntitiesRegistrator.php:22 Doer/PassingBrowser/User.php:10
 msgid "Tests"
 msgstr ""
 
@@ -165,10 +172,6 @@ msgstr ""
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr ""
-
-#: Doer/WordPressEntitiesRegistrator.php:23
-msgid "All Tests"
 msgstr ""
 
 #: Doer/WordPressEntitiesRegistrator.php:24
@@ -431,19 +434,19 @@ msgstr ""
 msgid "No Categories found in Trash"
 msgstr ""
 
-#: Doer/TestPasser/FillForm.php:52
+#: Doer/TestPasser/FillForm.php:54
 msgid "{percentage}% answered"
 msgstr ""
 
-#: Doer/TestPasser/FillForm.php:63
+#: Doer/TestPasser/FillForm.php:65
 msgid "Next"
 msgstr ""
 
-#: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
+#: Doer/TestPasser/ProcessForm.php:70 Doer/TestPasser/ProcessForm.php:74
 msgid "Test data not valid"
 msgstr ""
 
-#: Doer/TestPasser/ProcessForm.php:70
+#: Doer/TestPasser/ProcessForm.php:71
 msgid "You passed not valid data to test."
 msgstr ""
 
@@ -460,17 +463,31 @@ msgstr ""
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr ""
 
-#: Model/Formula.php:230
+#: Doer/PassingBrowser/Admin.php:51 Doer/PassingBrowser/Admin.php:58
+msgid "Respondents’ test results"
+msgstr ""
+
+#: Doer/PassingBrowser/Admin.php:52
+msgid "Respondents’ results"
+msgstr ""
+
+#: Model/Formula.php:244
 #, php-format
 msgid "Formula for %s has error"
 msgstr ""
 
-#: Model/FormulaVariable.php:26
-msgid "Scale Variable"
+#: Model/FormulaVariable/SelectedAnswer.php:18
+#: Template/Test/Editor/edit-formulas.php:45
+#, php-format
+msgid "Question %1$s answer %2$s"
 msgstr ""
 
-#: Model/FormulaVariable.php:28
-msgid "Variable"
+#: Model/FormulaVariable/SelectedAnswer.php:19
+msgid "Answer Variable"
+msgstr ""
+
+#: Model/FormulaVariable/ScaleValue.php:18
+msgid "Scale Variable"
 msgstr ""
 
 #: Template/Test/Editor/edit-formulas.php:3
@@ -497,21 +514,21 @@ msgstr ""
 msgid "Operators"
 msgstr ""
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:58
 msgid "Comparision"
 msgstr ""
 
-#: Template/Test/Editor/edit-formulas.php:54
+#: Template/Test/Editor/edit-formulas.php:64
 msgid "Operator"
 msgstr ""
 
-#: Template/Test/Editor/edit-formulas.php:62
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
-"selected."
+"selected or have at least one question and answer."
 msgstr ""
 
-#: Template/Test/Editor/edit-formulas.php:71
+#: Template/Test/Editor/edit-formulas.php:81
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
@@ -526,10 +543,6 @@ msgstr ""
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other "
 "indexes will be stripped automatically."
-msgstr ""
-
-#: Template/Test/Editor/submit-misc-actions.php:6
-msgid "Publish on the home page"
 msgstr ""
 
 #: Template/Test/Editor/edit-questions.php:29
@@ -579,4 +592,12 @@ msgid ""
 "Add here your individual answers as text; after test saving they will be "
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
+msgstr ""
+
+#: Template/Test/Passer/fill-form.php:50
+msgid "Please select at least one answer."
+msgstr ""
+
+#: Template/Test/Passer/fill-form.php:51
+msgid "Please choose only one answer."
 msgstr ""

@@ -89,6 +89,11 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         return $this;
     }
 
+    public function applyFilters($tag, $value)
+    {
+        return $value;
+    }
+
     public function addShortcode($tag, $function)
     {
         return $this;

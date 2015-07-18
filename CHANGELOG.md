@@ -2,6 +2,25 @@
 ## Changelog ##
 
 
+### 0.15 ###
+
+Add question-answer variables in formulas
+
+* Link results without scales and scores — only questions and answers needed
+* Add NOT comparisions in formulas
+* Warn about required answers in more understandable way
+
+In formulas now there is button titled "Question [..] answer [..]" that on click adds variable like `question_1_answer_2`. This variable will be true only when respondent will choose in 1st question 2nd answer.
+
+Before when you have two opposite results and you was enforced to negate their formulas manually. For example: `scale-1 > scale-2 AND scale-1 < scale-3` for 1st result and opposite `scale-1 <= scale-2 OR scale-1 >= scale-3`.
+Now you can do it without moving your mind on 2nd: `NOT(scale-1 > scale-2 AND scale-1 < scale-3)`.
+
+Internal improvements:
+
+* Cleanup external modules: remove bad and excessive files (184KB)
+* Replace "quizes" to "quizzes" in plugin descriptions ))
+
+
 ### 0.14.3 ###
 
 Improve compatibility with other custom categories (for example WooCommerce)

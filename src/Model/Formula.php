@@ -76,6 +76,16 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     }
 
     /**
+     * Does this formula has some source?
+     *
+     * @return boolean
+     */
+    public function isEmpty()
+    {
+        return (trim($this->getSource()) == '');
+    }
+
+    /**
      * Tests formula, knowing it's possible values for correctnes.
      *
      * @param array $valueNames If not provided, tries to get current values if they are exists.
@@ -146,18 +156,19 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         // Lowercase
         $result = strtolower($result);
 
-        // Replace and/or
-        $result = str_replace(array('and', 'or'), array('&&', '||'), $result);
+        // Replace and/or/not
+        foreach (array('and' => '&&', 'or' => '||', 'not' => '!') as $from => $to) {
+            $result = preg_replace('/([^a-z]?)' . $from . '([^a-z])/', '$1' . $to . '$2', $result);
+        }
 
         // Leave only allowed
         // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
-        $operators = '-+*/<>=&|';
+        $operators = '-+*/<>=&|!';
         $allowed   = $operators . '().% ';
         $result    = preg_replace('/[^' . preg_quote($allowed, '/') . '\d]+/', '', $result);
 
         // Normalize comparisions
         $result    = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
-        $operators .= '!';
 
         // Normalize equalities
         $result = preg_replace('/=+/', '=', $result);
@@ -180,6 +191,9 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 
         // Remove whitespaces around operators and parentheses
         $result = preg_replace('/ *([' . preg_quote($operators . '()', '/') . ']+) */', '$1', $result);
+
+        // Add whitespace between values and NOT operator
+        $result = preg_replace('/(\d)(' . preg_quote('!') . '[\d\(])/', '$1 $2', $result);
 
         // Replace left whitespaces with ands
         $result = preg_replace('/ +/', '&&', $result);

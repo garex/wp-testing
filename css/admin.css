@@ -49,6 +49,17 @@ table.wpt_formulas_helper {
     margin-top: 1em;
 }
 
+table.wpt_formulas_helper button {
+    padding: 3px 12px;
+}
+
+table.wpt_formulas_helper .question-answer input {
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
 table.wpt_formulas_helper .operators input {
     min-width: 3.5em;
 }

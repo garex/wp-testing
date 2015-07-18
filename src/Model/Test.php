@@ -23,6 +23,7 @@
  * @method string getType() getType() Gets the current value for type
  * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
  * @method string getName() getName() Gets the current value for name (url unique part)
+ * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {
@@ -82,6 +83,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         $questions   = $this->me()->buildQuestions();
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
+        return $questions;
+    }
+
+    /**
+     * @return WpTesting_Model_Question[]
+     */
+    public function buildQuestionsWithAnswers()
+    {
+        $questions   = $this->me()->buildQuestions();
+        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         return $questions;
     }
 
@@ -174,18 +185,29 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
+     * @param WpTesting_Model_Passing $passing
      * @return WpTesting_Model_FormulaVariable[]
      */
-    public function buildFormulaVariables($scalesWithRange = null)
+    public function buildPublicFormulaVariables(WpTesting_Model_Passing $passing = null)
     {
         $variables = array();
-        if (is_null($scalesWithRange)) {
-            $scalesWithRange = $this->buildScalesWithRange();
-        }
-        foreach ($scalesWithRange as $scale) {
-            $variables[] = new WpTesting_Model_FormulaVariable($scale);
-        }
-        return $variables;
+
+        $variables += WpTesting_Model_FormulaVariable_ScaleValue::buildAllFrom($this, $passing);
+
+        return $this->wp->applyFilters('wp_testing_test_build_public_formula_variables', $variables, $this, $passing);
+    }
+
+    /**
+     * @param WpTesting_Model_Passing $passing
+     * @return WpTesting_Model_FormulaVariable[]
+     */
+    public function buildFormulaVariables(WpTesting_Model_Passing $passing = null)
+    {
+        $variables = $this->buildPublicFormulaVariables($passing);
+
+        $variables += WpTesting_Model_FormulaVariable_SelectedAnswer::buildAllFrom($this, $passing);
+
+        return $this->wp->applyFilters('wp_testing_test_build_formula_variables', $variables, $this, $passing);
     }
 
     /**
@@ -300,7 +322,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Can respondent use this test to get results?
      *
-     * Final test is test, that have scores.
+     * Final test is test, that have scores or at least one non-empty formula.
      * Scores can be only, when test have questions, answers and scales.
      * Results are good to have but not required: they are humanize "scientific" language
      * of scales to more understandable words.
@@ -309,11 +331,19 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function isFinal()
     {
-        foreach ($this->buildScalesWithRange() as $scale) {
+        foreach ($this->buildScalesWithRangeOnce() as $scale) {
             if ($scale->getLength()) {
                 return true;
             }
         }
+
+        // If we have at least one result with formula — we assume, that it was added legally
+        foreach ($this->buildFormulas() as $formula) {
+            if (!$formula->isEmpty()) {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -374,6 +404,9 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     protected function isOptionEqual($key, $expectedValue, $defaultValue = null)
     {
+        if (!$this->getId()) {
+            return null;
+        }
         $actualValue = $this->getWp()->getPostMeta($this->getId(), $key, true);
         if ('' === $actualValue && !is_null($defaultValue)) {
             $actualValue = $defaultValue;
@@ -658,6 +691,22 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             $post->$key = (string)$value;
         }
         return $post;
+    }
+
+    public function getQuestionsCount()
+    {
+        return count($this->buildQuestions());
+    }
+
+    public function getMaxAnswersCount()
+    {
+        $maxCount = 0;
+
+        foreach ($this->buildQuestionsWithAnswers() as $question) {
+            $maxCount = max($maxCount, count($question->buildAnswers()));
+        }
+
+        return $maxCount;
     }
 
     protected function configure()

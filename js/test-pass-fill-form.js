@@ -1,4 +1,16 @@
-webshim.setOptions({waitReady: false});
+webshim.setOptions({
+    waitReady : true,
+    forms     : {
+        replaceValidationUI: true,
+        messagePopover: {
+            position: {
+                at: 'top',
+                my: 'bottom',
+                collision: 'flipfit'
+            }
+        }
+    }
+});
 webshims.polyfill('forms forms-ext');
 
 jQuery(document).ready(function($) {

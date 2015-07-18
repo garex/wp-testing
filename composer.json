@@ -21,10 +21,12 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+            "xrstf\\Composer52\\Generator::onPostInstallCmd",
+            "tools/deploy/clean-up-vendor.sh"
         ],
         "post-update-cmd": [
-            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+            "xrstf\\Composer52\\Generator::onPostInstallCmd",
+            "tools/deploy/clean-up-vendor.sh"
         ],
         "post-autoload-dump": [
             "xrstf\\Composer52\\Generator::onPostInstallCmd"
