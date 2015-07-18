@@ -1,31 +1,33 @@
-# Psychological tests & quizes #
+# Psychological tests & quizzes #
 
 **Contributors:** ustimenko, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
 **Donate link:** https://goo.gl/igulor  
 **Tags:** psychological, testing, test, quiz  
 **Requires at least:** 3.2  
 **Tested up to:** 4.2.2  
-**Stable tag:** 0.14.3  
+**Stable tag:** 0.15  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
-Create psychological tests/quizes with scales connected with results through simple formulas like "extraversion > 50%"
+Create psychological tests/quizzes with scales connected with results through simple formulas like "extraversion > 50%"
 
 ## Description ##
 
-With the help of this plugin now you can create typical and advanced psychological tests (quizes, assessments).
+With the help of this plugin now you can create typical and advanced psychological tests (quizzes, assessments).
 
 Typical psychological test consists of **questions** and **answers**. A respondent answers all of the questions and gets **results**. This is how the box outside looks like.
 
-Inside the box we also have **scales** each connected with the particular answer with **scores** and **results**, that are calculated with the help of **simple formulas** like: "extraversion > 50%". Where "extraversion" is a sum of respondent's scores from extraversion scale. We didn't invent anything new — all this has been already invented in 19th century.
+Inside the box we also have **scales** each connected with the particular answer with **scores** and **results**, that are calculated with the help of **simple formulas** like: `extraversion > 50%`. Where "extraversion" is a sum of respondent's scores from extraversion scale. Concrete respondent's question's answer in formulas also possible: `question_5_1 OR question_9_7`. 
 
-> If you like the plugin, feel free to rate it (on the right side of this page) or [donate via PayPal](https://goo.gl/igulor). Thanks a lot! :)
+We didn't invent anything new — all this has been already invented in 19th century.
+
+> If you like the plugin, feel free to [donate via PayPal](https://goo.gl/igulor) or rate it (on the right side of this page). Thanks a lot! :)
 
 Test answers, scales, results and categories are edited through **wordpress standard editors**, similar to categories editor. You can associate them in sidebar. Whether test questions, answers and formulas are edited with standard wordpress metaboxes, behind content. You can even reorder them if you like by drag-n-drop. At the top of content editor you have **button for quick access** to those metaboxes: Add New Questions, Edit Questions and Scores, Edit Formulas. If you want more control then you are allowed to add to them not allowed out-of-the box HTML tags like: headers, lists, images, hr and "read more" tag taken from post editor.
 
 **Answers**  can be global to test — when all questions have the same answers. For example: "Yes", "No", "I'm not sure". Or you can use **individual answers** to add individual answer to each question. And the third option is to use global answers, but individualize their titles: not just "Yes", but "Yes, I do so and so", when you use it for the particular question. Some tests have this pattern.
 
-As to **formulas** you can be sure — we have simple formula editor, that has buttons for each scale (with sum of it's scores) and allowed comparisions.
+As to **formulas** you can be sure — we have simple formula editor, that has buttons for each scale (with sum of it's scores), question/answer button and allowed comparisions/operators: `<`, `>`, `<=`, `=>`, `<>`, `AND`, `OR`, `( .. )`, `NOT ( .. )`, `+`, `-`, `*`,  `/`. 
 
 Tests are treated for WordPress like posts — they appear on home page and inside their categories pages if selected. But if you don't want your test to appear on home page you can uncheck **"Publish on the home page"** in "Publish" metabox and this particular test will not appear on homepage.
 

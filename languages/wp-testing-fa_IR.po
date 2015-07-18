@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-09 02:33+0700\n"
-"PO-Revision-Date: 2015-06-04 20:52+0000\n"
+"POT-Creation-Date: 2015-07-17 06:40+0700\n"
+"PO-Revision-Date: 2015-07-17 09:56+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/wp-testing/language/fa_IR/)\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/p/wp-testing/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,55 +24,58 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:53
+#: Facade.php:71
 msgid "Helps to create psychological tests."
 msgstr "وسیله‌ای برای ساخت پرسشنامه‌های روانشناختی"
 
-#: Facade.php:143 Template/Passing/Browser/view-all.php:7
-msgid "Respondents’ test results"
-msgstr "نتیجه سنجه‌های  مشارکت‌کنندگان"
+#: Widget/PassingTable.php:62 Doer/WordPressEntitiesRegistrator.php:23
+msgid "All Tests"
+msgstr "همه سنجه ها"
 
-#: Facade.php:144
-msgid "Respondents’ results"
-msgstr "نتایج مشارکت‌کنندگان"
+#: Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
 
-#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
+#: Widget/PassingTable/User.php:26 Widget/PassingTable/Admin.php:45
+#: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "سنجه"
 
-#: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
+#: Widget/PassingTable/User.php:27 Widget/PassingTable/Admin.php:46
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "مقیاس‌ها"
 
-#: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
-#: Template/Test/Passer/get-results.php:17
+#: Widget/PassingTable/User.php:28 Widget/PassingTable/Admin.php:47
+#: Doer/WordPressEntitiesRegistrator.php:112 Doer/PassingBrowser/User.php:11
+#: Doer/PassingBrowser/User.php:19 Template/Test/Passer/get-results.php:17
 msgid "Results"
 msgstr "نتیجه‌ها"
 
-#: Widget/PassingTable.php:30
-msgid "Device"
-msgstr "دستگاه"
-
-#: Widget/PassingTable.php:31
-msgid "IP address"
-msgstr "نشانی IP "
-
-#: Widget/PassingTable.php:32
-msgid "Browser"
-msgstr "مرورگر"
-
-#: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
-#: Model/Scale.php:84
+#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
+#: Component/StepStrategy.php:96 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d از %2$d"
 
+#: Widget/PassingTable/Admin.php:49
+msgid "Device"
+msgstr "دستگاه"
+
+#: Widget/PassingTable/Admin.php:50
+msgid "IP address"
+msgstr "نشانی IP "
+
+#: Widget/PassingTable/Admin.php:51
+msgid "Browser"
+msgstr "مرورگر"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:63
+#: Template/Test/Passer/fill-form.php:74
 msgid "Test is under construction"
 msgstr "این سنجه در حال توسعه است"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
 msgid "You can not get any results from it yet."
 msgstr "هنوز امکان ارایه نتیجه برای شما وجود ندارد"
 
@@ -96,52 +99,56 @@ msgstr "افزودن گویه"
 msgid "Edit Formulas"
 msgstr "ویرایش معادلات"
 
-#: Doer/TestEditor.php:180
+#: Doer/TestEditor.php:165
+msgid "Publish on the home page"
+msgstr "انتشار در صفحه اول خانه"
+
+#: Doer/TestEditor.php:182
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "نمایش درصد گویه‌های پاسخ داده شده توسط مشارکت‌کننده"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:186
 msgid "Show one question per page"
 msgstr "نمایش یک گویه در هر صفحه"
 
-#: Doer/TestEditor.php:188
+#: Doer/TestEditor.php:190
 msgid "Allow multiple answers per question"
 msgstr "مشارکت‌کنندگان اجازه انتخاب چند پاسخ را دارد"
 
-#: Doer/TestEditor.php:192
+#: Doer/TestEditor.php:194
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "با زدن دکمه \"بازگشت\" پاسخ‌های مشارکت کننده را از نو تنظیم کن"
 
-#: Doer/TestEditor.php:196
+#: Doer/TestEditor.php:198
 msgid "Button caption"
 msgstr "لوح دکمه"
 
-#: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
 msgid "Get Test Results"
 msgstr "دریافت نتایج"
 
-#: Doer/TestEditor.php:213
+#: Doer/TestEditor.php:220
 msgid "Show scales chart"
 msgstr "نمایش نمودار مقیاس‌ها"
 
-#: Doer/TestEditor.php:217
+#: Doer/TestEditor.php:224
 msgid "Show scales"
 msgstr "نمایش مقیاس‌ها"
 
-#: Doer/TestEditor.php:221
+#: Doer/TestEditor.php:228
 msgid "Sort scales by score"
 msgstr "مقیاس‌ها را براساس نمرات مرتب کن"
 
-#: Doer/TestEditor.php:225
+#: Doer/TestEditor.php:232
 msgid "Show test description"
 msgstr "نمایش توضیحات سنجه"
 
-#: Doer/TestEditor.php:312
+#: Doer/TestEditor.php:330
 msgid "Test data not saved"
 msgstr "اطلاعات سنجه ذخیره نشد"
 
 #: Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/WordPressEntitiesRegistrator.php:22 Doer/PassingBrowser/User.php:10
 msgid "Tests"
 msgstr "سنجه‌ها"
 
@@ -169,10 +176,6 @@ msgstr "جستجوی سنجه‌"
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "سنجه مادر:"
-
-#: Doer/WordPressEntitiesRegistrator.php:23
-msgid "All Tests"
-msgstr "همه سنجه ها"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
@@ -434,19 +437,19 @@ msgstr "دسته‌ای یافت نشد"
 msgid "No Categories found in Trash"
 msgstr "دسته‌ای در زباله‌دان یافت نشد"
 
-#: Doer/TestPasser/FillForm.php:52
+#: Doer/TestPasser/FillForm.php:54
 msgid "{percentage}% answered"
 msgstr "{percentage}% پاسخ داده شده است"
 
-#: Doer/TestPasser/FillForm.php:63
+#: Doer/TestPasser/FillForm.php:65
 msgid "Next"
 msgstr "بعدی"
 
-#: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
+#: Doer/TestPasser/ProcessForm.php:70 Doer/TestPasser/ProcessForm.php:74
 msgid "Test data not valid"
 msgstr "اطلاعات سنجه معتبر نمی‌باشد"
 
-#: Doer/TestPasser/ProcessForm.php:70
+#: Doer/TestPasser/ProcessForm.php:71
 msgid "You passed not valid data to test."
 msgstr "اطلاعات ارایه شده به سنجه معتبر نمی‌باشد"
 
@@ -463,18 +466,32 @@ msgstr "اگر پاسخی ندهید نتیجه‌ای دریافت نمی‌ک�
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "متاسفیم ولی مرورگر  %s  شما برای نمایش نمودار متناسب سازی نشده است."
 
-#: Model/Formula.php:230
+#: Doer/PassingBrowser/Admin.php:51 Doer/PassingBrowser/Admin.php:58
+msgid "Respondents’ test results"
+msgstr "نتیجه سنجه‌های  مشارکت‌کنندگان"
+
+#: Doer/PassingBrowser/Admin.php:52
+msgid "Respondents’ results"
+msgstr "نتایج مشارکت‌کنندگان"
+
+#: Model/Formula.php:244
 #, php-format
 msgid "Formula for %s has error"
 msgstr "در معادله  %s  خطا وجود دارد."
 
-#: Model/FormulaVariable.php:26
+#: Model/FormulaVariable/SelectedAnswer.php:18
+#: Template/Test/Editor/edit-formulas.php:45
+#, php-format
+msgid "Question %1$s answer %2$s"
+msgstr "پاسخ %2$s به سوال %1$s"
+
+#: Model/FormulaVariable/SelectedAnswer.php:19
+msgid "Answer Variable"
+msgstr "متغییر پاسخ"
+
+#: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
 msgstr "متغییر مقیاس"
-
-#: Model/FormulaVariable.php:28
-msgid "Variable"
-msgstr "متغییر"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
@@ -500,21 +517,21 @@ msgstr "مقایسه‌گرها"
 msgid "Operators"
 msgstr "عمل‌گرها"
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:58
 msgid "Comparision"
 msgstr "مقایسه‌‌گر"
 
-#: Template/Test/Editor/edit-formulas.php:54
+#: Template/Test/Editor/edit-formulas.php:64
 msgid "Operator"
 msgstr "عمل‌گر"
 
-#: Template/Test/Editor/edit-formulas.php:62
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
-"selected."
-msgstr "متغییری برای معادله‌سازی وجود ندارد. مقیاس‌هایی را برای این کار انتخاب کنید."
+"selected or have at least one question and answer."
+msgstr "متغییری برای فرمول در دسترس نیست. برای استفاده از متغییرها می‌بایست یکی از مقیاس‌ها یا حداقل یکی از گویه‌ها و پاسخ‌ها را انتخاب کنید."
 
-#: Template/Test/Editor/edit-formulas.php:71
+#: Template/Test/Editor/edit-formulas.php:81
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
@@ -530,10 +547,6 @@ msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
 msgstr "گویه‌های خود را این جا بچسبانید، آن ها در جعبه‌های زیرین جای خواهند گرفت. شماره‌گذای‌ها و فهرست‌بندی‌ها خود به خود تفکیک خواهند شد."
-
-#: Template/Test/Editor/submit-misc-actions.php:6
-msgid "Publish on the home page"
-msgstr "انتشار در صفحه اول خانه"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
@@ -584,3 +597,11 @@ msgid ""
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
 msgstr "پاسخ‌های جداگانه خود را اینجا به صورت متن بچسبانید؛ بعد از ذخیره سنجه، آن‌ها استخراج و ایجاد می‌شوند. شماره‌گذاری‌ها و سایر فهرست‌بندی‌ها به صورت خودکار حذف می گردد."
+
+#: Template/Test/Passer/fill-form.php:50
+msgid "Please select at least one answer."
+msgstr "لطفا حداقل یکی از پاسخ‌ها را انتخاب نمایید"
+
+#: Template/Test/Passer/fill-form.php:51
+msgid "Please choose only one answer."
+msgstr "لطفا فقط یکی از پاسخ‌ها را انتخاب نمایید"

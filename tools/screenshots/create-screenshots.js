@@ -30,7 +30,7 @@ var screenshots = [
 
            casper.thenOpen('http://wpti.dev/wp-admin/options-general.php', function() {
                this.fill('form', {
-                   blogname     : 'Psychological tests and quizes'
+                   blogname     : 'Psychological tests and quizzes'
                }, true)
            }).waitForUrl(/updated/)
 
@@ -141,7 +141,9 @@ var screenshots = [
     }, {
         title   : 'Respondents’ test results in admin area. Test link will open test in edit mode and view link allow to see test result',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&filter_condition[passing_created]=201506&orderby=test_id&order=asc', function() {
+            var d = new Date
+            filterMonth = d.getFullYear() + ('0' + (d.getMonth()+1)).substr(-2)
+            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&filter_condition[passing_created]=' + filterMonth + '&orderby=test_id&order=asc', function() {
                 this.click('#show-settings-link')
                 this.evaluate(function() {
                     jQuery('#passing_device_uuid-hide').attr('checked', true).click()

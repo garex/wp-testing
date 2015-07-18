@@ -2,16 +2,17 @@
 # This file is distrubuted under the GPL-3.0+
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
+# Christophe PEIFFER <chris.peiffer@gmail.com>, 2015
 # Franck, 2015
 # FxB <fxb@wp-translations.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-09 02:33+0700\n"
-"PO-Revision-Date: 2015-06-15 18:33+0000\n"
-"Last-Translator: FxB <fxb@wp-translations.org>\n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/wp-testing/language/fr_FR/)\n"
+"POT-Creation-Date: 2015-07-17 06:40+0700\n"
+"PO-Revision-Date: 2015-07-17 04:07+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"Language-Team: French (France) (http://www.transifex.com/p/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,55 +25,58 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:53
+#: Facade.php:71
 msgid "Helps to create psychological tests."
 msgstr "Aide à créer des tests psychologiques."
 
-#: Facade.php:143 Template/Passing/Browser/view-all.php:7
-msgid "Respondents’ test results"
-msgstr "Résultats des tests des personnes interrogées"
+#: Widget/PassingTable.php:62 Doer/WordPressEntitiesRegistrator.php:23
+msgid "All Tests"
+msgstr "Tous les tests"
 
-#: Facade.php:144
-msgid "Respondents’ results"
-msgstr "Résultats des personnes interrogées"
+#: Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "n°"
 
-#: Widget/PassingTable.php:26 Doer/WordPressEntitiesRegistrator.php:14
+#: Widget/PassingTable/User.php:26 Widget/PassingTable/Admin.php:45
+#: Doer/WordPressEntitiesRegistrator.php:14
 msgid "Test"
 msgstr "Test"
 
-#: Widget/PassingTable.php:27 Doer/WordPressEntitiesRegistrator.php:91
+#: Widget/PassingTable/User.php:27 Widget/PassingTable/Admin.php:46
+#: Doer/WordPressEntitiesRegistrator.php:91
 msgid "Scales"
 msgstr "Echelles"
 
-#: Widget/PassingTable.php:28 Doer/WordPressEntitiesRegistrator.php:112
-#: Template/Test/Passer/get-results.php:17
+#: Widget/PassingTable/User.php:28 Widget/PassingTable/Admin.php:47
+#: Doer/WordPressEntitiesRegistrator.php:112 Doer/PassingBrowser/User.php:11
+#: Doer/PassingBrowser/User.php:19 Template/Test/Passer/get-results.php:17
 msgid "Results"
 msgstr "Résultats"
 
-#: Widget/PassingTable.php:30
-msgid "Device"
-msgstr "Formule"
-
-#: Widget/PassingTable.php:31
-msgid "IP address"
-msgstr "Adresse IP"
-
-#: Widget/PassingTable.php:32
-msgid "Browser"
-msgstr "Navigateur"
-
-#: Widget/PassingTable.php:106 Component/StepStrategy/OneToOne.php:15
-#: Model/Scale.php:84
+#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
+#: Component/StepStrategy.php:96 Model/Scale.php:84
 #, php-format
 msgid "%1$d out of %2$d"
 msgstr "%1$d sur %2$d"
 
+#: Widget/PassingTable/Admin.php:49
+msgid "Device"
+msgstr "Formule"
+
+#: Widget/PassingTable/Admin.php:50
+msgid "IP address"
+msgstr "Adresse IP"
+
+#: Widget/PassingTable/Admin.php:51
+msgid "Browser"
+msgstr "Navigateur"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:63
+#: Template/Test/Passer/fill-form.php:74
 msgid "Test is under construction"
 msgstr "Test en construction"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:64
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
 msgid "You can not get any results from it yet."
 msgstr "Vous ne pouvez pas encore obtenir les résultats"
 
@@ -96,52 +100,56 @@ msgstr "Ajouter de nouvelles questions"
 msgid "Edit Formulas"
 msgstr "Modifier les formules"
 
-#: Doer/TestEditor.php:180
+#: Doer/TestEditor.php:165
+msgid "Publish on the home page"
+msgstr "Publier sur la page d'accueil"
+
+#: Doer/TestEditor.php:182
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Afficher dans le titre le pourcentage de questions  auquel la personne interrogée a déjà répondu"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:186
 msgid "Show one question per page"
 msgstr "Afficher une question par page"
 
-#: Doer/TestEditor.php:188
+#: Doer/TestEditor.php:190
 msgid "Allow multiple answers per question"
 msgstr "Permettre plusieurs réponses par question"
 
-#: Doer/TestEditor.php:192
+#: Doer/TestEditor.php:194
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Effacer les réponses de la personne interrogée quand clic sur le bouton \"Retour\""
 
-#: Doer/TestEditor.php:196
+#: Doer/TestEditor.php:198
 msgid "Button caption"
 msgstr "Bouton de légende"
 
-#: Doer/TestEditor.php:198 Doer/TestPasser/FillForm.php:60
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
 msgid "Get Test Results"
 msgstr "Obtenez les résultats du test"
 
-#: Doer/TestEditor.php:213
+#: Doer/TestEditor.php:220
 msgid "Show scales chart"
 msgstr "Montrer les échelles graphiques"
 
-#: Doer/TestEditor.php:217
+#: Doer/TestEditor.php:224
 msgid "Show scales"
 msgstr "Montrer les échelles"
 
-#: Doer/TestEditor.php:221
+#: Doer/TestEditor.php:228
 msgid "Sort scales by score"
 msgstr "Classer les échelles par score"
 
-#: Doer/TestEditor.php:225
+#: Doer/TestEditor.php:232
 msgid "Show test description"
 msgstr "Montrer la description du test"
 
-#: Doer/TestEditor.php:312
+#: Doer/TestEditor.php:330
 msgid "Test data not saved"
 msgstr "Les données du test n'on pas été sauvegardées"
 
 #: Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/WordPressEntitiesRegistrator.php:22 Doer/PassingBrowser/User.php:10
 msgid "Tests"
 msgstr "Tests"
 
@@ -169,10 +177,6 @@ msgstr "Chercher un test"
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "Test parent"
-
-#: Doer/WordPressEntitiesRegistrator.php:23
-msgid "All Tests"
-msgstr "Tous les tests"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
@@ -434,19 +438,19 @@ msgstr "Aucune catégorie trouvée"
 msgid "No Categories found in Trash"
 msgstr "Aucune catégorie trouvée dans la corbeille"
 
-#: Doer/TestPasser/FillForm.php:52
+#: Doer/TestPasser/FillForm.php:54
 msgid "{percentage}% answered"
 msgstr "{percentage}% répondu"
 
-#: Doer/TestPasser/FillForm.php:63
+#: Doer/TestPasser/FillForm.php:65
 msgid "Next"
 msgstr "Suivant"
 
-#: Doer/TestPasser/ProcessForm.php:69 Doer/TestPasser/ProcessForm.php:73
+#: Doer/TestPasser/ProcessForm.php:70 Doer/TestPasser/ProcessForm.php:74
 msgid "Test data not valid"
 msgstr "Les données du test ne sont pas valables"
 
-#: Doer/TestPasser/ProcessForm.php:70
+#: Doer/TestPasser/ProcessForm.php:71
 msgid "You passed not valid data to test."
 msgstr "Vous avez pris des données invalides à tester"
 
@@ -463,18 +467,32 @@ msgstr "Vous ne pouvez pas obtenir quelque chose à partir de rien"
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Désolé, votre navigateur %s n'est pas compatible pour afficher le graphique"
 
-#: Model/Formula.php:230
+#: Doer/PassingBrowser/Admin.php:51 Doer/PassingBrowser/Admin.php:58
+msgid "Respondents’ test results"
+msgstr "Résultats des tests des personnes interrogées"
+
+#: Doer/PassingBrowser/Admin.php:52
+msgid "Respondents’ results"
+msgstr "Résultats des personnes interrogées"
+
+#: Model/Formula.php:244
 #, php-format
 msgid "Formula for %s has error"
 msgstr "La formule pour %s contient une erreur"
 
-#: Model/FormulaVariable.php:26
+#: Model/FormulaVariable/SelectedAnswer.php:18
+#: Template/Test/Editor/edit-formulas.php:45
+#, php-format
+msgid "Question %1$s answer %2$s"
+msgstr "Question %1$s réponse %2$s"
+
+#: Model/FormulaVariable/SelectedAnswer.php:19
+msgid "Answer Variable"
+msgstr "Réponse variable"
+
+#: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
 msgstr "Echelle variable"
-
-#: Model/FormulaVariable.php:28
-msgid "Variable"
-msgstr "Variable"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
@@ -500,21 +518,21 @@ msgstr "Comparaisons"
 msgid "Operators"
 msgstr "Opérateurs"
 
-#: Template/Test/Editor/edit-formulas.php:49
+#: Template/Test/Editor/edit-formulas.php:58
 msgid "Comparision"
 msgstr "Comparaison"
 
-#: Template/Test/Editor/edit-formulas.php:54
+#: Template/Test/Editor/edit-formulas.php:64
 msgid "Operator"
 msgstr "Opérateur"
 
-#: Template/Test/Editor/edit-formulas.php:62
+#: Template/Test/Editor/edit-formulas.php:72
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
-"selected."
-msgstr "Aucune variable disponible pour les formules. Pour utiliser les variables, vous devez sélectionner des échelles"
+"selected or have at least one question and answer."
+msgstr "Aucune variable disponible pour les formules. Pour utiliser les variables vous devez sélectionner des échelles ou avoir au moins une question et la réponse"
 
-#: Template/Test/Editor/edit-formulas.php:71
+#: Template/Test/Editor/edit-formulas.php:81
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
@@ -530,10 +548,6 @@ msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
 msgstr "Collez ici vos questions et elles rempliront les champs ci-dessous. Les chiffres et les autres indices seront supprimés automatiquement."
-
-#: Template/Test/Editor/submit-misc-actions.php:6
-msgid "Publish on the home page"
-msgstr "Publier sur la page d'accueil"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
@@ -584,3 +598,11 @@ msgid ""
 "extracted and created. Numbers and other indexes will be stripped "
 "automatically."
 msgstr "Ajoutez ici vos réponses individuelles sous forme de texte; après avoir enregistré le test, elles seront extraites et créés. Les chiffres et les autres indices seront supprimés automatiquement."
+
+#: Template/Test/Passer/fill-form.php:50
+msgid "Please select at least one answer."
+msgstr "S'il vous plaît sélectionner au moins une réponse."
+
+#: Template/Test/Passer/fill-form.php:51
+msgid "Please choose only one answer."
+msgstr "S'il vous plaît choisir une seule réponse."
