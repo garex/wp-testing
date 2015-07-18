@@ -36,9 +36,15 @@ matrix:
     - php: 5.2
       env: WP_VERSION=3.7
 
+sudo: false
+
 addons:
   hosts:
     - wpti.dev
+  apt:
+    packages:
+      - nginx-light
+      - heirloom-mailx
 
 before_script:
   - tests/integration-environment/composer-update.sh
@@ -54,31 +60,16 @@ before_script:
 
 script:
   - vendor/bin/phpunit-php52
-  - cd $TRAVIS_BUILD_DIR/tests/mocha/test
-  - mocha-casperjs --timeout=360000 0-plugin.js
-  - restart.sh && mocha-casperjs 1-admin.js
-  - restart.sh && mocha-casperjs answers-and-scales-1.js
-  - restart.sh && mocha-casperjs answers-and-scales-2.js
-  - restart.sh && mocha-casperjs answers-variables.js
-  - restart.sh && mocha-casperjs diagrams.js
-  - restart.sh && mocha-casperjs multiple-answers.js
-  - restart.sh && mocha-casperjs page.js
-  - restart.sh && mocha-casperjs questions.js
-  - restart.sh && mocha-casperjs quick-edit.js
-  - restart.sh && mocha-casperjs results-with-formulas.js
-  - restart.sh && mocha-casperjs scale-aggregates.js
-  - restart.sh && mocha-casperjs scores.js
-  - restart.sh && mocha-casperjs shortcode.js
-  - restart.sh && mocha-casperjs steps.js
-  - restart.sh && mocha-casperjs taxonomies.js
-  - restart.sh && mocha-casperjs test.js
-  - restart.sh && mocha-casperjs y-passing.js
-  - restart.sh && mocha-casperjs y-respondents-results.js
-  - restart.sh && mocha-casperjs z-plugin-deactivation.js
-  - restart.sh && mocha-casperjs z-plugin-upgrade.js
+  - cd $TRAVIS_BUILD_DIR/tests/mocha && mocha-casperjs --timeout=360000
+
+cache:
+  directories:
+    - vendor
+    - tests/integration-environment/cache
+    - tests/mocha/node_modules
 
 after_failure:
-  - sudo free -ltm
+  - free -ltm
   - cd $TRAVIS_BUILD_DIR/tests/mocha
   - ./debug-to-mail.sh a@ustimen.co 'Failed build dump' '/tmp/*.dmp'
   - ./debug-to-mail.sh a@ustimen.co 'Debug screenshots' '/tmp/*.screen.png'

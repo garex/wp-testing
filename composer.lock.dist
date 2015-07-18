@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c0db79325076ada23c3bc4767381f731",
+    "hash": "9b4ee743c12d6486c21a83d9572c03a9",
     "packages": [
         {
             "name": "composer/installers",
@@ -232,35 +232,27 @@
         },
         {
             "name": "xrstf/composer-php52",
-            "version": "v1.0.17",
-            "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/xrstf/composer-php52",
-                "reference": "70b853668d6c3f97b63dafcfaeebb622bf08fd30"
-            },
+            "version": "v1.99",
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/xrstf/composer-php52/get/70b853668d6c3f97b63dafcfaeebb622bf08fd30.zip",
-                "reference": "70b853668d6c3f97b63dafcfaeebb622bf08fd30",
-                "shasum": ""
+                "url": "https://bitbucket.org/garex/composer-php52/get/respect-autoloader-suffix.zip",
+                "reference": null,
+                "shasum": null
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-default": "1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "xrstf\\Composer52": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "http://www.xrstf.de/",
-            "time": "2015-02-01 14:28:15"
+            "scripts": {
+                "post-install-cmd": [
+                    "xrstf\\Composer52\\Generator::onPostInstallCmd"
+                ],
+                "post-update-cmd": [
+                    "xrstf\\Composer52\\Generator::onPostInstallCmd"
+                ]
+            }
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
@@ -611,16 +603,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160"
+                "reference": "4bfbe0ed3909bfddd75b70c094391ec1f142f860"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9808e75c609a14f6db02f70fccf4ca4aab53c160",
-                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/4bfbe0ed3909bfddd75b70c094391ec1f142f860",
+                "reference": "4bfbe0ed3909bfddd75b70c094391ec1f142f860",
                 "shasum": ""
             },
             "require": {
@@ -656,7 +648,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-10 15:30:22"
+            "time": "2015-07-01 11:25:50"
         }
     ],
     "aliases": [],
