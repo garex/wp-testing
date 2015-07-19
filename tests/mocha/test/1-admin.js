@@ -7,7 +7,7 @@ describe('Admin', function() {
     describe('Create default user in subscriber role', function() {
 
         it('should fill new user form', function() {
-            casper.thenOpen('http://wpti.dev/wp-admin/user-new.php', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/user-new.php', function() {
                 this.fill('form#createuser', {
                     'user_login' : 'user',
                     'email'      : 'user@wpti.dev',

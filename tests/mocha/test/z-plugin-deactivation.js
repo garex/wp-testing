@@ -5,7 +5,7 @@ describe('Plugin deactivation', function() {
     })
 
     it('should be deactivated', function() {
-       casper.thenOpen('http://wpti.dev/wp-admin/plugins.php', function () {
+       casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php', function () {
            expect(/Plugins/).to.matchTitle
            '.plugin-title'.should.contain.text('Wp-testing')
        })
