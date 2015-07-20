@@ -1,5 +1,5 @@
 var casper = require('casper').create()
-casper.options.viewportSize = {width: 1060, height: 1016}
+casper.options.viewportSize = {width: 1280, height: 850}
 
 casper.start('http://wpti.dev:8000/')
 
@@ -74,7 +74,7 @@ var screenshots = [
        }
    }, {
        title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.',
-       offset  : 1050,
+       offset  : 1050 - 175,
        actions : function () {
            casper.then(function() {
                this.evaluate(function() {
@@ -89,7 +89,7 @@ var screenshots = [
        }
    }, {
        title   : 'The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same',
-       offset  : 1050,
+       offset  : 1050 - 175,
        actions : function () {
            casper.then(function() {
                this.clickLabel('Quick Fill Scores')
@@ -151,10 +151,10 @@ var screenshots = [
                     jQuery('#passing_user_agent-hide').attr('checked', true).click()
                 })
                 this.wait(400)
-                this.mouse.move('label[for=cb-select-1]')
-                this.evaluate(function() {
-                    jQuery('#cb-select-1').click()
+                var forAttr = this.evaluate(function() {
+                    return jQuery('label:contains(Select):nth(6)').click().attr('for')
                 })
+                this.mouse.move('label[for=' + forAttr + ']')
             })
 
         }
@@ -193,7 +193,7 @@ var screenshots = [
         }
     }, {
         title   : 'The page with the description of the test, questions and answers',
-        offset  : 1150,
+        offset  : 1150 + 580,
         actions : function () {
             casper.then(function() {
                 this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)')
@@ -201,7 +201,7 @@ var screenshots = [
         }
     }, {
         title   : 'Unanswered questions are highlighted to respondent',
-        offset  : 7200,
+        offset  : 7200 + 2400,
         actions : function () {
             casper
             .thenOpen('http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/')
@@ -215,34 +215,40 @@ var screenshots = [
                 }
                 this.evaluate(function(){
                     jQuery('#wpt-test-form :submit').click()
-                    setTimeout(function(){ jQuery('.ws-po-box').css('color', 'darkred') }, 0)
                 })
             }).wait(100)
         }
     }, {
         title   : 'Get test results after all questions are answered',
-        offset  : 7200,
+        offset  : 7200 + 2400,
         actions : function () {
             casper.then(function() {
                 i = 54
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
-            })
+            }).wait(200)
         }
     }, {
         title   : 'The result page on it`s own URL contains both the result of the test and the scales that create a result',
+        offset  : 400,
         actions : function () {
             casper.then(function() {
                 this.fill('form#wpt-test-form', {}, true)
-            }).waitForUrl(/test.+eysencks/)
+            }).waitForUrl(/test.+eysencks/, function() {
+                this.evaluate(function() {
+                    var r = jQuery('div.result-slug-result-choleric')
+                    r.html(r.html().replace(/They tend.+/, ''))
+                    r.find('br:last').remove()
+                })
+            })
         }
     }, {
         title   : 'Scale description with "more..." text closed',
-        offset  : 1500,
+        offset  : 1500 + 800,
         actions : function () {
         }
     }, {
         title   : 'Scale description with "more..." text opened (after clicking on "more" link)',
-        offset  : 1500,
+        offset  : 1500 + 800 + 200,
         actions : function () {
             casper.then(function() {
                 this.clickLabel('more…', 'a')
@@ -327,42 +333,40 @@ casper.each(screenshots, function(self, screenshot, index) {
         options.top  = screenshot.offset || 0
         options.left = 0
         screenIndex  = ('0' + (index + 1)).slice(-2)
-
-        this.evaluate(function(offsetTop) {
-            var divHeight = 25;
-            var urlDiv    = jQuery('#url-element');
-            if (urlDiv.length == 0) {
-                urlDiv = jQuery('<div/>').attr('id', 'url-element').css({
-                    position    : 'absolute',
-                    zIndex      : 10,
-                    height      : divHeight,
-                    left        : 0,
-                    background  : 'gainsboro',
-                    color       : 'black',
-                    padding     : '2px 10px 0px 2px',
-                    border      : '1px solid #c6c6c6',
-                    borderTopRightRadius: '10px',
-                    fontFamily  : 'sans-serif',
-                    fontSize    : '14px',
-                    opacity     : 0.8
-                }).appendTo('body')
-            }
-
-            var url      = document.location.pathname + decodeURI(document.location.search),
-                urlWidth = 145;
-
-            if (url.length > urlWidth) {
-                url = url.substring(0, urlWidth) + ' ...'
-            }
-
-            urlDiv.text(url).css({top: offsetTop - divHeight})
-        }, options.height + options.top)
-
-        this.capture('screenshot-' + screenIndex + '.png', options)
-        this.capture(screenIndex + '-' + screenshot.title + '.png', options)
+        this.evaluate(function() {
+            jQuery('a:contains(:8000)').each(function() {
+                this.textContent = this.textContent.replace(':8000', '')
+            })
+        })
+        this.capture('raw/screenshot-' + screenIndex + '.png', options)
+        this.capture('raw/' + screenIndex + '-' + screenshot.title + '.png', options)
         this.echo(screenIndex + '. ' + screenshot.title)
+        screenshot.currentUrl = this.getCurrentUrl() . replace('http://wpti.dev:8000', '')
     })
 
+})
+
+casper.thenOpen('http://wpti.dev:8000/wp-content/plugins/wp-testing/tools/screenshots/nice.html', function() {
+    this.viewport(1364, 965);
+})
+
+casper.each(screenshots, function(self, screenshot, index) {
+    casper.then(function() {
+        var options  = {
+            width:  1364,
+            height: 965,
+            top:    0,
+            left:   0
+        }
+        screenIndex  = ('0' + (index + 1)).slice(-2)
+        var r = this.evaluate(function(path, title, url) {
+            return openScreenShot(path, title, url)
+        }, 'raw/screenshot-' + screenIndex + '.png', screenshot.title, screenshot.currentUrl)
+        this.wait(100, function() {
+            this.capture('decorated/screenshot-' + screenIndex + '.png', options)
+            this.capture('decorated/' + screenIndex + '-' + screenshot.title + '.png', options)
+        })
+    })
 })
 
 casper.run(function() {
