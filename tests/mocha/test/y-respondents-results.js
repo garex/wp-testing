@@ -202,6 +202,10 @@ describe('Respondent', function() {
             '4 items'.should.be.textInDOM
         })
     })
+
+    it('should logout from user', function() {
+        require('../login-as').userLogout()
+    })
 })
 
 })

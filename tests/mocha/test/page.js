@@ -5,7 +5,7 @@ describe('Page', function() {
     })
 
     it('should not disappear when plugin activated', function() {
-        casper.thenOpen('http://wpti.dev/wp-admin/post-new.php?post_type=page', function() {
+        casper.thenOpen('http://wpti.dev:8000/wp-admin/post-new.php?post_type=page', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Page'.should.be.inTitle
 

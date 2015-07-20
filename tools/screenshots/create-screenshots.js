@@ -1,10 +1,10 @@
 var casper = require('casper').create()
 casper.options.viewportSize = {width: 1060, height: 1016}
 
-casper.start('http://wpti.dev/')
+casper.start('http://wpti.dev:8000/')
 
 function loginAs(who) {
-    casper.thenOpen('http://wpti.dev/wp-login.php', {
+    casper.thenOpen('http://wpti.dev:8000/wp-login.php', {
         method: 'post',
         data  : {
             log: who,
@@ -19,7 +19,7 @@ var screenshots = [
    {
        title   : 'Test editing section with menu in admin',
        actions : function () {
-           casper.thenOpen('http://wpti.dev/wp-admin/profile.php', function() {
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/profile.php', function() {
                this.clickLabel('Midnight', 'label')
                this.fill('form#your-profile', {
                    nickname     : 'Tests Author',
@@ -28,19 +28,19 @@ var screenshots = [
                }, true)
            }).waitForUrl(/updated/)
 
-           casper.thenOpen('http://wpti.dev/wp-admin/options-general.php', function() {
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/options-general.php', function() {
                this.fill('form', {
                    blogname     : 'Psychological tests and quizzes'
                }, true)
            }).waitForUrl(/updated/)
 
-           casper.thenOpen('http://wpti.dev/wp-admin/options-permalink.php', function() {
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/options-permalink.php', function() {
                this.click('#permalink_structure')
                this.sendKeys('#permalink_structure', '/%postname%/')
                this.click('#submit')
            }).waitForUrl(/options/)
 
-           casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
                    var ids = '#categories-hide,#tags-hide,#taxonomy-wpt_category-hide,#comments-hide';
                    jQuery(ids).attr('checked', false).click().click()
@@ -54,7 +54,7 @@ var screenshots = [
    }, {
        title   : 'There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar',
        actions : function () {
-           casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
                    return jQuery('body.folded').length > 0
                }) || this.clickLabel('Collapse menu') && this.wait(400)
@@ -100,7 +100,7 @@ var screenshots = [
         title   : 'Fast adding questions from text',
         offset  : 900,
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                 this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)')
             }).waitForUrl(/action=edit/)
 
@@ -128,7 +128,7 @@ var screenshots = [
         title   : 'The example of the test without scores. Some answers are individual and some are individualized',
         offset  : 600,
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                 this.clickLabel('Simple Test With Scores')
             }).waitForUrl(/action=edit/)
 
@@ -143,7 +143,7 @@ var screenshots = [
         actions : function () {
             var d = new Date
             filterMonth = d.getFullYear() + ('0' + (d.getMonth()+1)).substr(-2)
-            casper.thenOpen('http://wpti.dev/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&filter_condition[passing_created]=' + filterMonth + '&orderby=test_id&order=asc', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test&page=wpt_test_respondents_results&filter_condition[passing_created]=' + filterMonth + '&orderby=test_id&order=asc', function() {
                 this.click('#show-settings-link')
                 this.evaluate(function() {
                     jQuery('#passing_device_uuid-hide').attr('checked', true).click()
@@ -163,7 +163,7 @@ var screenshots = [
         actions : function () {
             loginAs('user')
 
-            casper.thenOpen('http://wpti.dev/wp-admin/profile.php', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/profile.php', function() {
                this.clickLabel('Light', 'label')
                this.fill('form#your-profile', {
                    nickname     : 'Tests Respondent',
@@ -172,7 +172,7 @@ var screenshots = [
                }, true)
             }).waitForUrl(/updated/)
 
-            casper.thenOpen('http://wpti.dev/wp-admin/admin.php?page=wpt_test_user_results', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-admin/admin.php?page=wpt_test_user_results', function() {
                 this.evaluate(function() {
                     jQuery('.widefat td').css('max-width', '230px')
                     return jQuery('body.folded').length > 0
@@ -185,11 +185,11 @@ var screenshots = [
     },{
         title   : 'Ready test on the home page',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
+            casper.thenOpen('http://wpti.dev:8000/wp-login.php?action=logout', function() {
                 this.clickLabel('log out', 'a')
             }).waitForUrl(/loggedout/)
 
-            casper.thenOpen('http://wpti.dev/page/2/')
+            casper.thenOpen('http://wpti.dev:8000/page/2/')
         }
     }, {
         title   : 'The page with the description of the test, questions and answers',
@@ -204,7 +204,7 @@ var screenshots = [
         offset  : 7200,
         actions : function () {
             casper
-            .thenOpen('http://wpti.dev/test/eysencks-personality-inventory-epi-extroversionintroversion/')
+            .thenOpen('http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/')
             .waitForUrl(/eysencks/)
             .wait(100, function() {
                 for (var i = 1, iMax = 57; i <= iMax; i++) {
@@ -251,7 +251,7 @@ var screenshots = [
     }, {
         title   : 'A test without scores is shown like a "Test is under construction". Answers titles are those that was entered',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/')
+            casper.thenOpen('http://wpti.dev:8000/')
 
             casper.then(function() {
                 this.clickLabel('Simple Test With Scores')
@@ -260,7 +260,7 @@ var screenshots = [
     }, {
         title   : 'Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/test/diagram-with-same-length-scales/').waitForUrl(/diagram-with-same/, function() {
+            casper.thenOpen('http://wpti.dev:8000/test/diagram-with-same-length-scales/').waitForUrl(/diagram-with-same/, function() {
                 this.clickLabel('Yes')
                 this.evaluate(function(){
                     jQuery('#wpt-test-form').submit()
@@ -272,7 +272,7 @@ var screenshots = [
     }, {
         title   : 'In case when scales has different length (possible max total) they are shown as percents',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/test/diagram-with-different-length-scales-uses-percents/').waitForUrl(/diagram-with-different/, function() {
+            casper.thenOpen('http://wpti.dev:8000/test/diagram-with-different-length-scales-uses-percents/').waitForUrl(/diagram-with-different/, function() {
                 this.clickLabel('Yes')
                 this.evaluate(function(){
                     jQuery('#wpt-test-form').submit()
@@ -284,7 +284,7 @@ var screenshots = [
     }, {
         title   : 'Multiple answers per question are also possible',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/)
+            casper.thenOpen('http://wpti.dev:8000/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/)
 
             casper.then(function() {
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
@@ -294,7 +294,7 @@ var screenshots = [
     }, {
         title   : 'One question per page also allowed. On first page we see test description, "Next" button and pages counter',
         actions : function () {
-            casper.thenOpen('http://wpti.dev/test/three-steps/').waitForUrl(/three/, function() {
+            casper.thenOpen('http://wpti.dev:8000/test/three-steps/').waitForUrl(/three/, function() {
                 this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
             })
         }

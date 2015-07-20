@@ -16,7 +16,7 @@ function cookiesSave(file) {
 function logOut(user) {
     var cookies = '/tmp/cookies.' + user + '.txt'
 
-    casper.thenOpen('http://wpti.dev/wp-login.php?action=logout', function() {
+    casper.thenOpen('http://wpti.dev:8000/wp-login.php?action=logout', function() {
         this.clickLabel('log out', 'a')
     })
 
@@ -35,7 +35,7 @@ function loginAs(mocha, user, password, isForce) {
 
     exists && !isForce && cookiesRestore(cookies)
 
-    var startUrl = isForce ? 'http://wpti.dev/wp-login.php' : 'http://wpti.dev/wp-admin/'
+    var startUrl = isForce ? 'http://wpti.dev:8000/wp-login.php' : 'http://wpti.dev:8000/wp-admin/'
     casper.start(startUrl, function() {
         var isLoginForm = this.evaluate(function() {
             return typeof window.loginform !== 'undefined'
@@ -67,7 +67,7 @@ module.exports.adminLogout = function () {
 };
 
 module.exports.user = function (mocha) {
-    casper.thenOpen('http://wpti.dev/wp-login.php', {
+    casper.thenOpen('http://wpti.dev:8000/wp-login.php', {
         method: 'post',
         data  : {
             log: 'user',

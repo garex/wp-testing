@@ -69,7 +69,7 @@ describe('Steps', function() {
 
     it('should be opened', function() {
         isOpened = false
-        casper.open('http://wpti.dev/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
+        casper.open('http://wpti.dev:8000/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
             'Three Steps'.should.be.textInDOM
         }).then(function() {
             isOpened = true

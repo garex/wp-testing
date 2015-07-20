@@ -6,9 +6,12 @@
 /js/vendor/uuid-js
 /phpunit.xml
 /tests/mocha/node_modules/
+/tests/integration-environment/cache/*.*
 /tests/integration-environment/wordpress/
 /tests/integration-environment/wordpress-*.tar.gz
 /tests/integration-environment/*.zip
+/tests/integration-environment/*.log
+/tests/integration-environment/*.pid
 /tools/screenshots/node_modules/
 /tools/screenshots/*.png
 /vendor/
