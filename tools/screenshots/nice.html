@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nice Style Screenshots</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: #ffffff;
+}
+
+
+body,
+.site-container,
+.site {
+    width: 1280px;
+    height: 850px;
+}
+body {
+    height: 875px; /* +=25px */
+}
+
+
+body {
+    margin: auto;
+    margin-top: 22px;
+    box-shadow: 0px 25px 35px 10px rgba(180, 180, 180, 1);
+    border-radius: 10px 10px 5px 5px;
+}
+
+.title {
+    width: 100%;
+    text-shadow: 1px -1px 1px #ffffff, -1px 1px 1px #ffffff;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: #4c4c4c;
+    box-sizing: border-box;
+    background-image:
+        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAZCAMAAADHTrRNAAAARVBMVEXW1tbY19fY2Nja2trc29vd3Nze3t7f3t7g4ODh4ODi4uLj4uLk5OTl5OTm5eXn5ubo6Ojp6Ojq6urr6urs7Ozt7Ozv7u6v0fL0AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB98HFBY4NRtgv5gAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAALElEQVQI1w3BCQKAEAAAsBWFLun6/1Oz+bwet0tzqg67zWpRZMlsEoV+NOh+It4BAfcJBI4AAAAASUVORK5CYII=);
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #9d9d9d;
+    border-top-color: #b8b8b8;
+    border-bottom-color: #cacaca;
+    border-left-color: #adadad;
+    border-right-color: #adadad;
+    margin: 0px;
+    outline: 0px;
+    padding: 7px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.title #titleText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 85%;
+  display: inline-block;
+}
+
+.title .buttons {
+    position: absolute;
+}
+
+.title .button {
+    border: 1px solid gray;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 2px;
+    background: black;
+    box-shadow: 0px 0px 32px 0px #ffffff;
+}
+
+.title .button.close {
+    background: #ff0b0b;
+    border-color: #ed594c;
+}
+
+.title .button.minimize {
+    background: #ffbe05;
+    border-color: #e6ab05;
+}
+
+.title .button.maximize {
+    background: #15cc37;
+    border-color: #12b330;
+}
+
+.site-container {
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #9d9d9d;
+    border-top-color: #c4c4c4;
+}
+
+.site {
+    border: none;
+    margin: 0px;
+    display: block;
+}
+
+.site-container,
+.site {
+    border-radius: 0px 0px 5px 5px;
+}
+
+.status-bar {
+    background: gainsboro;
+    position: relative;
+    bottom: 21px;
+    left: 1px;
+    border: 1px solid #c6c6c6;
+    border-left: none;
+    border-bottom: none;
+    max-width: 95%;
+    display: inline-block;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: #4c4c4c;
+    padding: 0px 7px 2px 4px;
+    opacity: 0.8;
+    border-radius: 0px 10px 0px 4px;
+}
+
+.bottom-line {
+    height: 10px;
+    position: relative;
+    bottom: 31px;
+    border: 1px solid #9d9d9d;
+    border-top: none;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.status-bar>div {
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+    <div class="title">
+        <div class="buttons">
+            <div class="button close"></div>
+            <div class="button minimize"></div>
+            <div class="button maximize"></div>
+        </div>
+        <div id="titleText">Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.</div>
+    </div>
+    <div class="site-container">
+        <img class="site" id="screenShot" src="nice/nichosi.jpg" />
+    </div>
+    <div class="status-bar">
+        <div id="urlBar">...</div>
+    </div>
+    <div class="bottom-line"></div>
+<script type="text/javascript">
+function openScreenShot(path, title, url) {
+    screenShot.src        = path;
+    titleText.textContent = title;
+    urlBar.textContent    = url;
+}
+</script>
+</body>
+</html>

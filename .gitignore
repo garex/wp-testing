@@ -13,5 +13,6 @@
 /tests/integration-environment/*.log
 /tests/integration-environment/*.pid
 /tools/screenshots/node_modules/
-/tools/screenshots/*.png
+/tools/screenshots/raw/*.png
+/tools/screenshots/decorated/*.png
 /vendor/
