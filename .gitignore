@@ -15,4 +15,7 @@
 /tools/screenshots/node_modules/
 /tools/screenshots/raw/*.png
 /tools/screenshots/decorated/*.png
+/tools/support/*.txt
+/tools/support/*.md
+/tools/support/wordpress-support-mirror/
 /vendor/
