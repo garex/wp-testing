@@ -5,7 +5,7 @@ describe('Taxonomies', function() {
     })
 
     it('tests menu should exists', function() {
-        casper.thenOpen('http://wpti.dev/wp-admin/', function() {
+        casper.thenOpen('http://wpti.dev:8000/wp-admin/', function() {
             '#menu-posts-wpt_test'.should.be.inDOM
         })
     })

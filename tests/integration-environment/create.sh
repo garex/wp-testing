@@ -6,7 +6,7 @@ set -e
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
 DB_CHARSET=${DB_CHARSET:-utf8}
-WP_VERSION=${WP_VERSION:-4.2.2}
+WP_VERSION=${WP_VERSION:-4.2.3}
 WP_UPGRADE=${WP_UPGRADE:-0}
 PLUGINS=${PLUGINS:-}
 
@@ -18,7 +18,7 @@ function init {
 
 function db {
     log 'Creating DB and user'
-    sudo mysql --execute '
+    mysql --user=root --execute='
         DROP DATABASE IF EXISTS wpti;
         CREATE DATABASE wpti DEFAULT CHARACTER SET '$DB_CHARSET';
 
@@ -33,17 +33,14 @@ function db {
 
 function setup_link {
     log 'Setting up symbolic link'
-    sudo rm --force /tmp/wpti
+    rm --force /tmp/wpti
     ln --symbolic $HERE /tmp/wpti
-    sudo chown --no-dereference :www-data /tmp/wpti
 }
 
-function nginx {
+function start_nginx {
     log 'Configuring and reloading nginx'
-    sudo service nginx status || sudo apt-get install nginx-light
-    sudo rm --force /etc/nginx/sites-enabled/wpti
-    sudo ln --symbolic /tmp/wpti/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
-    sudo service nginx restart
+    ps ax | grep "[n]ginx -g" && nginx -g "error_log /tmp/wpti/error.log;" -c /tmp/wpti/nginx.conf -s stop
+    nginx -g "error_log /tmp/wpti/error.log;" -c /tmp/wpti/nginx.conf
 }
 
 function php_cgi {
@@ -56,12 +53,12 @@ function php_cgi {
     then
         PHP_52=$(phpenv version-name)
         PHP_CGI=$(realpath ~/.phpenv/versions/$PHP_52/bin/php-cgi)
-        USER=www-data PHP_FCGI_CHILDREN=15 PHP_FCGI_MAX_REQUESTS=1000 sudo $PHP_CGI --bindpath 127.0.0.1:9000 &
+        USER=www-data PHP_FCGI_CHILDREN=15 PHP_FCGI_MAX_REQUESTS=1000 $PHP_CGI --bindpath 127.0.0.1:9000 &
     else
-        sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-        echo 'user  = www-data' | sudo tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
-        echo 'group = www-data' | sudo tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
-        sudo ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+        cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+        echo 'user  = www-data' | tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
+        echo 'group = www-data' | tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
+        ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
     fi
 }
 
@@ -71,11 +68,12 @@ function install_wp {
     local WP_PATCH=../wordpress-$WP_VERSION.patch
 
     cd /tmp/wpti
-    sudo rm --recursive --force wordpress
+    rm --recursive --force wordpress
     log '.. downloading'
+    cd /tmp/wpti/cache
     wget --no-clobber $WP_LINK
-    tar --extract --ungzip --file=wordpress-$WP_VERSION.tar.gz
-    cd wordpress
+    tar --extract --ungzip --file=wordpress-$WP_VERSION.tar.gz --directory=..
+    cd ../wordpress
     log '.. clean up plugins'
     rm --recursive --force wp-content/plugins
     mkdir --parents wp-content/plugins
@@ -87,12 +85,12 @@ function install_wp {
     fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
-    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2' | grep installed
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev:8000/wp-admin/install.php?step=2' | grep installed
 }
 
 function set_db_engine {
     log "Setting DB engine to $DB_ENGINE"
-    mysql wpti --execute 'SHOW TABLES' | tail -n+2 | xargs -i mysql wpti --execute "ALTER TABLE {} ENGINE=$DB_ENGINE"
+    mysql --user=root wpti --execute 'SHOW TABLES' | tail -n+2 | xargs -i mysql wpti --execute "ALTER TABLE {} ENGINE=$DB_ENGINE"
 }
 
 function install_plugin {
@@ -112,7 +110,6 @@ function install_plugin {
     else
         composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
     fi
-    sudo chown -R www-data:www-data .
     cd $HERE
 }
 
@@ -123,14 +120,13 @@ function install_upgrade_plugin {
     cd /tmp/wpti
     mkdir --parents wordpress/wp-content/plugins/hello-dolly
     cp hello.php wordpress/wp-content/plugins/hello-dolly
-    sudo chown --recursive www-data:www-data wordpress
 }
 
 function install_other_plugins {
     [[ "$PLUGINS" == "" ]] && return 0
 
     log 'Installing other plugins'
-    cd /tmp/wpti
+    cd /tmp/wpti/cache
     items=(${PLUGINS//:/ })
     for i in "${!items[@]}"
     do
@@ -159,7 +155,7 @@ function main {
     init
     db
     setup_link
-    nginx
+    start_nginx
     php_cgi
     install_wp
     set_db_engine

@@ -5,7 +5,7 @@ describe('Shortcode', function() {
     })
 
     it('[wptlist] should be added', function() {
-        casper.thenOpen('http://wpti.dev/wp-admin/post.php?post=1&action=edit', function() {
+        casper.thenOpen('http://wpti.dev:8000/wp-admin/post.php?post=1&action=edit', function() {
             this.evaluateOrDie(function() {
                 return /Edit Post/.test(document.body.innerText)
             })
@@ -26,7 +26,7 @@ describe('Shortcode', function() {
             '#message'.should.be.inDOM
         })
 
-        casper.thenOpen('http://wpti.dev/?p=1', function() {
+        casper.thenOpen('http://wpti.dev:8000/?p=1', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.contain.text('EPI')
         })

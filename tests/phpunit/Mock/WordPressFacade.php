@@ -119,7 +119,7 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         if (is_object($id)) {
             $id = $id->ID;
         }
-        return 'http://wpti.dev/?p='.$id;
+        return 'http://wpti.dev:8000/?p='.$id;
     }
 
     public function getPostMeta($postId, $key, $isSingle)
