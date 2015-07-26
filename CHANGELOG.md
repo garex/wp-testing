@@ -2,6 +2,17 @@
 ## Changelog ##
 
 
+### 0.15.1 ###
+
+Maintenance: FAQ, screenshots, latest WP compatibility
+
+* Add FAQ with links to support forum tags
+* Improve screenshots style
+* Test latest WP version compatibility (4.2.3)
+* Minor locale update
+* Speed up testing auto-builds for 30 minutes
+
+
 ### 0.15 ###
 
 Add question-answer variables in formulas
