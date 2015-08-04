@@ -20,9 +20,10 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             $stepStrategy  = new WpTesting_Component_StepStrategy_AllInOne($test, $passing->buildAnswers());
         }
 
+        /* @var $stepStrategy WpTesting_Component_StepStrategy */
         $stepStrategy  = $this->wp->applyFilters(
             'wp_testing_passer_step_strategy',
-            $stepStrategy
+            $stepStrategy->answeredQuestionsPossible($this->isPost())
         );
         $this->passing->setStepStrategy($stepStrategy);
 
