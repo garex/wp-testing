@@ -5,7 +5,7 @@
  * @method string getTitle() getTitle() Gets the current value of title
  * @method WpTesting_Model_Question setTitle() setTitle(string $title) Sets the value for title
  */
-class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
+class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
 
     /**
@@ -50,6 +50,13 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel
     public function createTest()
     {
         return $this->createWpTesting_Model_Test()->setWp($this->getWp());
+    }
+
+    public function jsonSerialize() {
+        return array(
+            'id'    => $this->getId(),
+            'title' => $this->getTitle(),
+        );
     }
 
     protected function configure()
