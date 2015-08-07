@@ -1284,6 +1284,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Replaces double line-breaks with paragraph elements.
+     *
+     * A group of regex replaces used to identify text formatted with newlines and
+     * replace double line-breaks with HTML paragraph tags. The remaining line-breaks
+     * after conversion become <<br />> tags, unless $br is set to '0' or 'false'.
+     *
+     * @since 0.71
+     *
+     * @param string $textToFormat The text which has to be formatted.
+     * @param bool   $isConvertRemainingBreaks  Optional. If set, this will convert all remaining line-breaks
+     *                    after paragraphing. Default true.
+     * @return string Text which has been converted into correct paragraph tags.
+     */
+    public function autoParagraphise($textToFormat, $isConvertRemainingBreaks = true)
+    {
+        return wpautop($textToFormat, $isConvertRemainingBreaks);
+    }
+
+    /**
      * Retrieve the translation of $text.
      *
      * If there is no translation, or the text domain isn't loaded, the original text is returned.
