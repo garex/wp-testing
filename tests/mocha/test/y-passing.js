@@ -39,6 +39,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     if (isUnderUser) {
     it('should login under user', function() {
+        require('../login-as').adminLogout()
         require('../login-as').user()
     })
     }
