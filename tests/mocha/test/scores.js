@@ -49,6 +49,9 @@ describe('Scores', function() {
 
     it('should allow to save only numbers', function() {
         casper.then(function() {
+            this.evaluate(function() {
+                wpt_score_value_2_0.type = 'text'
+            })
             this.fillSelectors('form#post', {
                 '#wpt_score_value_2_0': 'bad value'
             }, true)
@@ -57,7 +60,7 @@ describe('Scores', function() {
         casper.waitForUrl(/post/, function() {
             'Fatal'.should.not.be.textInDOM
             'Test data not saved'.should.be.textInDOM
-            'Score Value: Please enter a whole number'.should.be.textInDOM
+            'Score Value: Please enter a number'.should.be.textInDOM
             this.clickLabel('« Back')
         })
 
