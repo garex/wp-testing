@@ -75,10 +75,10 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
     {
         $parts   = array();
         if (!is_null($this->getSum())) {
-            $parts[] = sprintf('∑ %d', $this->getSum());
+            $parts[] = sprintf('∑ %g', $this->getSum());
         }
         if ($this->getSum() != $this->getMaximum()) {
-            $parts[] = sprintf('max %d', $this->getMaximum());
+            $parts[] = sprintf('max %g', $this->getMaximum());
         }
         return implode(', ', $parts);
     }
