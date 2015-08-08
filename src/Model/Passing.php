@@ -278,7 +278,8 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         $test      = $this->createTest();
         $variables = $test->buildFormulaVariables($this);
         $result    = array();
-        foreach ($test->buildFormulas() as $formula) {
+        foreach ($test->buildResults() as $testResult) {
+            $formula = $testResult->getFormula();
             $formula->resetValues();
             foreach ($variables as $variable) {
                 $formula->addValue($variable->getSource(), $variable->getValue(), $variable->getValueAsRatio());

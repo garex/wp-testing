@@ -26,7 +26,7 @@ class WpTesting_Model_Result extends WpTesting_Model_AbstractTerm
         $empty->setTestId($this->test->getId());
 
         /* @var $formulas fRecordSet */
-        $formulas = $this->test->buildFormulas();
+        $formulas = $this->test->buildFormulasOnce();
         foreach ($formulas->filter(array('getResultId=' => $this->getId())) as $formula) {
             return $formula;
         }
