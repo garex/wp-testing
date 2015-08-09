@@ -8,18 +8,22 @@ describe('Admin', function() {
 
         it('should fill new user form', function() {
             casper.thenOpen('http://wpti.dev:8000/wp-admin/user-new.php', function() {
-                this.fill('form#createuser', {
-                    'user_login' : 'user',
-                    'email'      : 'user@wpti.dev',
-                    'pass1'      : 'user',
-                    'pass2'      : 'user'
+                this.evaluate(function() {
+                    $=jQuery
+                    $('#user_login').val('user')
+                    $('#email').val('user@wpti.dev')
+                    $('#pass1').data('pw', 'user').val('user')
+                    $('#pass1-text').val('user')
+                    $('#pass2').val('user')
                 })
             })
         })
 
         it('should submit form and check that user added', function() {
             casper.then(function() {
-                this.fill('form#createuser', {}, true)
+                this.evaluate(function() {
+                    $('#createuser').submit()
+                })
             })
 
             casper.waitForUrl(/update/, function() {

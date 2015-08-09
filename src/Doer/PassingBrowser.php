@@ -101,6 +101,7 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
             'page'  => $this->getRequestValue('page'),
             'title' => $this->passingsPageTitle,
             'table' => $table,
+            'isSemanticHeaders' => $this->isWordPressAlready('4.3'),
         ));
     }
 }
