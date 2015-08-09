@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
-"PO-Revision-Date: 2015-07-17 09:56+0000\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
+"PO-Revision-Date: 2015-08-09 19:44+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/p/wp-testing/language/fa_IR/)\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/wp-translations/wp-testing/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,12 +52,6 @@ msgstr "مقیاس‌ها"
 msgid "Results"
 msgstr "نتیجه‌ها"
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%1$d از %2$d"
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr "دستگاه"
@@ -70,12 +64,16 @@ msgstr "نشانی IP "
 msgid "Browser"
 msgstr "مرورگر"
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g از %2$g"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr "این سنجه در حال توسعه است"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr "هنوز امکان ارایه نتیجه برای شما وجود ندارد"
 
@@ -123,7 +121,7 @@ msgstr "با زدن دکمه \"بازگشت\" پاسخ‌های مشارکت ک�
 msgid "Button caption"
 msgstr "لوح دکمه"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr "دریافت نتایج"
 
@@ -437,11 +435,11 @@ msgstr "دسته‌ای یافت نشد"
 msgid "No Categories found in Trash"
 msgstr "دسته‌ای در زباله‌دان یافت نشد"
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr "{percentage}% پاسخ داده شده است"
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr "بعدی"
 
@@ -474,7 +472,13 @@ msgstr "نتیجه سنجه‌های  مشارکت‌کنندگان"
 msgid "Respondents’ results"
 msgstr "نتایج مشارکت‌کنندگان"
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "فرمول برای %s ناسازگار است، به عنوان آن شامل تعداد و درصد"
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr "در معادله  %s  خطا وجود دارد."
@@ -598,10 +602,10 @@ msgid ""
 "automatically."
 msgstr "پاسخ‌های جداگانه خود را اینجا به صورت متن بچسبانید؛ بعد از ذخیره سنجه، آن‌ها استخراج و ایجاد می‌شوند. شماره‌گذاری‌ها و سایر فهرست‌بندی‌ها به صورت خودکار حذف می گردد."
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr "لطفا حداقل یکی از پاسخ‌ها را انتخاب نمایید"
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr "لطفا فقط یکی از پاسخ‌ها را انتخاب نمایید"

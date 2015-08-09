@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Psychological tests & quizes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -49,12 +49,6 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr ""
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr ""
@@ -67,12 +61,16 @@ msgstr ""
 msgid "Browser"
 msgstr ""
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr ""
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr ""
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr ""
 
@@ -120,7 +118,7 @@ msgstr ""
 msgid "Button caption"
 msgstr ""
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr ""
 
@@ -434,11 +432,11 @@ msgstr ""
 msgid "No Categories found in Trash"
 msgstr ""
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr ""
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr ""
 
@@ -471,7 +469,13 @@ msgstr ""
 msgid "Respondents’ results"
 msgstr ""
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr ""
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr ""
@@ -594,10 +598,10 @@ msgid ""
 "automatically."
 msgstr ""
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr ""
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr ""

@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
-"PO-Revision-Date: 2015-07-24 10:01+0000\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
+"PO-Revision-Date: 2015-08-09 19:40+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/wp-testing/language/ru_RU/)\n"
+"Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/wp-testing/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,12 +50,6 @@ msgstr "Шкалы"
 msgid "Results"
 msgstr "Результаты"
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%1$d из %2$d"
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr "Устройство"
@@ -68,12 +62,16 @@ msgstr "IP-адрес"
 msgid "Browser"
 msgstr "Браузер"
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g из %2$g"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr "Тест в процессе разработки"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr "Пока вы не можете получить из него результаты."
 
@@ -121,7 +119,7 @@ msgstr "Сброс ответов респондента при нажатии �
 msgid "Button caption"
 msgstr "Подпись кнопки"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr "Узнать результаты"
 
@@ -435,11 +433,11 @@ msgstr "Категорий не найдено"
 msgid "No Categories found in Trash"
 msgstr "Категорий в корзине не найдено"
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr "{percentage}% отвечено"
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr "Далее"
 
@@ -472,7 +470,13 @@ msgstr "Результаты тестирования респондентов"
 msgid "Respondents’ results"
 msgstr "Результаты респондентов"
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "Формула для %s несовместима, поскольку она содержит как цифры, так и проценты"
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Ошибка в формуле результата «%s»"
@@ -596,10 +600,10 @@ msgid ""
 "automatically."
 msgstr "Добавьте сюда индивидуальные ответы как текст; после сохранения теста они будут распознаны и созданы. Цифры и прочие индексы будут удалены автоматически."
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr "Пожалуйста, выберите хотя бы один ответ."
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr "Пожалуйста, выберите один ответ."
