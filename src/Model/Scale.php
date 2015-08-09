@@ -81,7 +81,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
      */
     public function formatValueAsOutOf()
     {
-        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $this->getValue(), $this->getMaximum());
+        return sprintf(__('%1$g out of %2$g', 'wp-testing'), $this->getValue(), $this->getMaximum());
     }
 
     /**

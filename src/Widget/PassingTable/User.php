@@ -84,12 +84,8 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
                 $links = array();
 
                 foreach ($item->buildScalesWithRangeOnce() as $scale) {
-                    $link  = $scale->getTitle();
-                    $outOf = ' (' . sprintf(
-                            __('%1$d out of %2$d', 'wp-testing'),
-                            $scale->getValue(),
-                            $scale->getMaximum()) . ')';
-                    $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
+                    $link    = $scale->getTitle();
+                    $links[] = $link . str_replace(' ', '&nbsp;', ' (' . $scale->formatValueAsOutOf() . ')');
                 }
 
                 return implode(', ', $links);
