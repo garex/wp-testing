@@ -153,11 +153,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                         $this->wp->getEditTermLink($scale->getId(), 'wpt_scale', 'wpt_test'),
                         $scale->getTitle()
                     );
-                    $outOf = ' (' . sprintf(
-                            __('%1$d out of %2$d', 'wp-testing'),
-                            $scale->getValue(),
-                            $scale->getMaximum()) . ')';
-                    $links[] = $link . str_replace(' ', '&nbsp;', $outOf);
+                    $links[] = $link . str_replace(' ', '&nbsp;', ' (' . $scale->formatValueAsOutOf() . ')');
                 }
 
                 return implode(', ', $links);

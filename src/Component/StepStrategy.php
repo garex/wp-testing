@@ -116,7 +116,7 @@ abstract class WpTesting_Component_StepStrategy
         if ($step->isLast()) {
             return '';
         }
-        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $step->getNumber(), $step->getTotal());
+        return sprintf(__('%1$g out of %2$g', 'wp-testing'), $step->getNumber(), $step->getTotal());
     }
 
     public function getQuestionsCount()

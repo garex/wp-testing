@@ -8,9 +8,21 @@ class FormulaTest extends PHPUnit_Framework_TestCase
      */
     private $formula = null;
 
-    protected function setUp()
+    /**
+     * @var fDatabase
+     */
+    private $db;
+
+    public function setUp()
     {
+        $this->db = fORMDatabase::retrieve('WpTesting_Model_Formula', 'write');
+        $this->db->execute('BEGIN');
         $this->formula = new WpTesting_Model_Formula();
+    }
+
+    public function tearDown()
+    {
+        $this->db->isInsideTransaction() && $this->db->execute('ROLLBACK');
     }
 
     public function testSlugsAndNamesTranslatedIntoValues()
@@ -249,7 +261,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testSimilarScaleNamesSubstitutesCorrectly()
+    public function testSimilarValueNamesSubstitutesCorrectly()
     {
         $this->assertEquals('11>10&&22>20', $this->formula
             ->setSource('ascale55 > 10 ascale555 > 20')
@@ -257,6 +269,13 @@ class FormulaTest extends PHPUnit_Framework_TestCase
             ->addValue('ascale555', 22)
             ->addValue('cale55',    33)
             ->addValue('le',        44)
+            ->substitute()
+        );
+
+        $this->assertEquals('2||3', $this->formula
+            ->setSource('question_1_answer_11 OR question_1_answer_1')
+            ->addValue('question_1_answer_11',  2)
+            ->addValue('question_1_answer_1', 3)
             ->substitute()
         );
     }
@@ -296,4 +315,32 @@ class FormulaTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @dataProvider bothNumberAndPercentageProvider
+     * @param string $source
+     */
+    public function testFormulaWillNotAllowBothNumberAndPercentageAtOnce($source)
+    {
+        $this->setExpectedException('fValidationException', 'incompatible as it contains both numbers and percentages');
+        $results = fRecordSet::build('WpTesting_Model_Result', array(), array(), 1);
+
+        $this->formula
+            ->setTestId(1)
+            ->setResultId($results[0]->getId())
+            ->setSource($source)
+            ->store()
+        ;
+    }
+
+    public function bothNumberAndPercentageProvider()
+    {
+        return array(
+            array('scale1 > 50% scale2 < 2'),
+            array('scale1 > 50 % scale2<2'),
+            array('scale1 > 50% scale2<2.2'),
+            array('scale1 > 50% -1.2>+2.3'),
+            array('50% 1'),
+            array('50% OR 0.5'),
+        );
+    }
 }

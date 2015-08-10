@@ -11,9 +11,9 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
     /**
      * Sets scale range to non-null integer values
      *
-     * @param integer $minimum
-     * @param integer $maximum
-     * @param integer $sum
+     * @param float $minimum
+     * @param float $maximum
+     * @param float $sum
      * @throws InvalidArgumentException
      * @return WpTesting_Model_Scale
      */
@@ -81,7 +81,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
      */
     public function formatValueAsOutOf()
     {
-        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $this->getValue(), $this->getMaximum());
+        return sprintf(__('%1$g out of %2$g', 'wp-testing'), $this->getValue(), $this->getMaximum());
     }
 
     /**
@@ -151,9 +151,6 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         if (!is_numeric($value)) {
             throw new InvalidArgumentException('Scale ' . $name . ' ' . $value . ' must be numeric');
         }
-        if (intval($value) != $value) {
-            throw new InvalidArgumentException('Scale ' . $name . ' ' . $value . ' must be integer');
-        }
-        return intval($value);
+        return floatval($value);
     }
 }
