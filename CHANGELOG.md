@@ -2,6 +2,27 @@
 ## Changelog ##
 
 
+### 0.16 ###
+
+Decimalize scores
+
+Before score value could be from -128 to 127, which is not too usable for tests which have decimal scores. Now it's changed and possible values are from -999.999 to 999.999. So now you can use scores like 0.005 or else. These changes are applied to scales's labels too.
+Decimal-style values are shown only when it's needed. So if you have scale which values are 15 out of 15, it will be shown as "15 out of 15". But when values will be decimal — it will  be shown as decimal: "12.034 out of 24.3".
+
+* WordPress compatibility updated to 4.2.4 and prepared to 4.3.
+* Use [semantic headers](https://make.wordpress.org/core/2015/07/31/headings-in-admin-screens-change-in-wordpress-4-3/) in respondents results as of WP 4.3.
+
+Fixes:
+
+* Respect results orders. Helpful when you have many results and their output order is important at results page.
+* Fix support tags generation.
+
+Internal improvements:
+
+* Step strategy know if answered questions are possible now.
+* Step strategy can show step's description as a short description before questions.
+
+
 ### 0.15.2 ###
 
 Maintenance: Document "Plugin update checker" library role
@@ -95,12 +116,12 @@ Fix result permalinks with front prefixes
 
 ### 0.13 ###
 
-Respondent passings for user and admin with improved usability   
+Respondent passings for user and admin with improved usability
 
 * Respondent can view own passings in wordpress admin area
 * Significantly improved respondents passings: search/sort/toggle by columns and setup items per page
 * Add Persian (Iran) locale
-* Fix test page in Internet Explorers before 9.0 
+* Fix test page in Internet Explorers before 9.0
 
 Internal improvements:
 
@@ -151,7 +172,7 @@ Fix strict settings catchable error in steps
 
 Upgrade notice:
 
-* You should upgrade to this version only if nothing works on test page and your PHP error settings are strict 
+* You should upgrade to this version only if nothing works on test page and your PHP error settings are strict
 
 
 ### 0.11.2 ###
@@ -188,7 +209,7 @@ Fix incompatibility with themes/plugins that changes post form attributes
 Upgrade notice:
 
 * You shouldn't upgrade to this version if all is working
-* Only if it was working, then you install something (another plugin/theme) and all was broken 
+* Only if it was working, then you install something (another plugin/theme) and all was broken
 
 
 ### 0.10 ###
@@ -213,7 +234,7 @@ Update locales, minor fixes and cleanup download file
 
 ### 0.9.4 ###
 
-Add more math operators, native FR lang and improve scales' chart #2  
+Add more math operators, native FR lang and improve scales' chart #2
 
 * Avoid rotating text labels when we have too many scales
 * Show mini-annotations like abbrevirations always near data values
