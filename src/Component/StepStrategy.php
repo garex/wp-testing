@@ -25,6 +25,18 @@ abstract class WpTesting_Component_StepStrategy
     protected $answeredQuestions;
 
     /**
+     * On start when respondent not yet passed to us any data,
+     * answered questions not possible at all.
+     *
+     * This is different from situation when data passed, but there are no any answers in it.
+     *
+     * So this will helps to distinguish NULL from 0 in answered questions count.
+     *
+     * @var boolean
+     */
+    protected $isAnsweredQuestionsPossible = false;
+
+    /**
      * @var WpTesting_Model_Step[]
      */
     private $steps = array();
@@ -46,6 +58,16 @@ abstract class WpTesting_Component_StepStrategy
     }
 
     /**
+     * @param boolean $flag
+     * @return self
+     */
+    public function answeredQuestionsPossible($flag)
+    {
+        $this->isAnsweredQuestionsPossible = (bool)$flag;
+        return $this;
+    }
+
+    /**
      * @param WpTesting_Component_StepStrategy $another
      * @throws InvalidArgumentException
      * @return self
@@ -54,6 +76,7 @@ abstract class WpTesting_Component_StepStrategy
     {
         $this->setTest($another->test);
         $this->answeredQuestions = $another->answeredQuestions;
+        $this->isAnsweredQuestionsPossible = $another->isAnsweredQuestionsPossible;
 
         if (is_null($this->answeredQuestions)) {
             throw new InvalidArgumentException('Empty answered questions provided!');
@@ -93,7 +116,7 @@ abstract class WpTesting_Component_StepStrategy
         if ($step->isLast()) {
             return '';
         }
-        return sprintf(__('%1$d out of %2$d', 'wp-testing'), $step->getNumber(), $step->getTotal());
+        return sprintf(__('%1$g out of %2$g', 'wp-testing'), $step->getNumber(), $step->getTotal());
     }
 
     public function getQuestionsCount()

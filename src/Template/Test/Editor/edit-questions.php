@@ -48,7 +48,7 @@
                     <td rowspan="<?php echo count($answers) ?>"><?php echo $scale->getTitleOnce() ?></td>
                 <?php endif ?>
                     <td class="score <?php echo ($j%2) ? 'bar' : 'alternate' ?>">
-                        <input type="text"
+                        <input type="number" min="-999.999" max="999.999" step="any"
                             id="wpt_quick_fill_scores_score_<?php echo $i ?>_<?php echo $j ?>"
                             placeholder="<?php echo htmlspecialchars($scale->getAbbrOnce()) ?>" />
                     </td>
@@ -131,7 +131,7 @@
         <?php foreach($scales as $s => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
             <?php $score = $answer->getScoreByScale($scale) ?>
             <td class="wpt_scale quick-score <?php echo ($s%2) ? '' : 'alternate' ?>">
-                <input type="text"
+                <input type="number" min="-999.999" max="999.999" step="any"
                     placeholder="<?php echo htmlspecialchars($scale->getAbbrOnce()) ?>"
                     name="wpt_score_value[<?php echo $scale->encodeSafeUriValue(array(
                         'q'         => $q,

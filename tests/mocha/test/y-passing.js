@@ -39,6 +39,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     if (isUnderUser) {
     it('should login under user', function() {
+        require('../login-as').adminLogout()
         require('../login-as').user()
     })
     }
@@ -120,7 +121,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             'Choleric'.should.be.textInDOM
             'Melancholic'.should.not.be.textInDOM
             'Lie'.should.be.textInDOM
-            '15 out of 15'.should.be.textInDOM
+            '15.05 out of 15.05'.should.be.textInDOM
             resultUrl = this.getCurrentUrl();
         })
     })
@@ -170,7 +171,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             'Choleric'.should.be.textInDOM
             'Melancholic'.should.not.be.textInDOM
             'Lie'.should.be.textInDOM
-            '15 out of 15'.should.be.textInDOM
+            '15.05 out of 15.05'.should.be.textInDOM
 
             this.getCurrentUrl().should.not.be.equal(resultUrl)
             resultUrl = this.getCurrentUrl();
@@ -195,7 +196,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             'Choleric'.should.be.textInDOM
             'Melancholic'.should.not.be.textInDOM
             'Lie'.should.be.textInDOM
-            '15 out of 15'.should.be.textInDOM
+            '15.05 out of 15.05'.should.be.textInDOM
         })
     })
 

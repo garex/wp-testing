@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @method int getValue() getValue() Gets the current value for score
  * @method int getScaleId() getScaleId() Gets the current value for scale id
  * @method WpTesting_Model_Score setScaleId() setScaleId(int $scaleId) Sets the scale id for score
  */
@@ -15,6 +14,14 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
     public function getId()
     {
         return $this->get('scale_id') . '|' . $this->get('answer_id');
+    }
+
+    /**
+     * @return float
+     */
+    public function getValue()
+    {
+        return floatval($this->get('value'));
     }
 
     public function getValueWithoutZeros()

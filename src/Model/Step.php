@@ -4,14 +4,16 @@ class WpTesting_Model_Step
 
     private $title = '';
     private $questions = array();
+    private $description = null;
 
     private $total = 1;
     private $number = 1;
 
-    public function __construct($title, fRecordSet $questions)
+    public function __construct($title, fRecordSet $questions, $description = null)
     {
-        $this->title     = $title;
-        $this->questions = $questions;
+        $this->title        = $title;
+        $this->questions    = $questions;
+        $this->description  = $description;
     }
 
     public function setTotalAndNumber($total, $number)
@@ -38,6 +40,14 @@ class WpTesting_Model_Step
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

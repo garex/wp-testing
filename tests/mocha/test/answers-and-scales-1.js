@@ -52,7 +52,7 @@ describe('Answers1 and Scales1', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            'jQuery("#wpt_edit_questions .wpt_scale input[type=text]").attr("title")'.should.evaluate.to.equal('Lie, Yes')
+            'wpt_score_value_0_0.title'.should.evaluate.to.be.equal('Lie, Yes')
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('`5 + 5 is "10?')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('6 + 6 is \'10?')
 
@@ -117,7 +117,7 @@ describe('Answers1 and Scales1', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_questions .wpt_scale input[type=text]'.should.not.be.inDOM
+            '#wpt_edit_questions .wpt_scale input'.should.not.be.inDOM
         })
     })
 

@@ -41,8 +41,8 @@ describe('Results with formulas', function() {
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
 
             this.fillSelectors('form#post', {
-                '#wpt_score_value_0_1': '5',
-                '#wpt_score_value_1_1': '5',
+                '#wpt_score_value_0_1': '5.1',
+                '#wpt_score_value_1_1': '4.95',
                 '#wpt_score_value_2_1': '5',
                 '#wpt_answer_title_0_0': 'Yezzzzzzz!',
                 '#wpt_answer_title_1_0': 'I said yes. I confirm it.'
@@ -58,6 +58,8 @@ describe('Results with formulas', function() {
     })
 
     it('should show results page even in preview mode', function() {
+        var currentUrl = casper.getCurrentUrl()
+
         casper.evaluate(function() {
             document.location = jQuery('#post-preview').attr('href')
         })
@@ -74,18 +76,18 @@ describe('Results with formulas', function() {
             'Results'.should.be.textInDOM
         })
 
-        casper.back().back()
+        casper.thenOpen(currentUrl)
     })
 
     it('should add formulas by buttons', function() {
         casper.then(function() {
             this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
             this.click('.wpt_formulas_helper input[data-source=">"]')
-            this.sendKeys('#wpt_formula_source_0', '10 "nothing"')
+            this.sendKeys('#wpt_formula_source_0', '14.999 "nothing"')
         })
 
         casper.then(function() {
-            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 10 "nothing"')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('scale-lie > 14.999 "nothing"')
         })
     })
 
@@ -99,7 +101,7 @@ describe('Results with formulas', function() {
         })
 
         casper.then(function() {
-            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 10 "nothing" )')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 14.999 "nothing" )')
         })
     })
 
@@ -112,7 +114,7 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
-            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 10 "nothing" )')
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 14.999 "nothing" )')
         })
     })
 

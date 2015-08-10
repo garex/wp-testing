@@ -33,7 +33,7 @@ foreach ($tags as $category => &$categoryTags) {
 }
 
 // Output
-foreach ($tags as $category => $categoryTags) {
+foreach ($tags as $category => &$categoryTags) {
     echo md_popular(ucfirst($category)) . ': ';
     echo implode(', ', array_map(function($tag, $isPopular) {
         return $isPopular ? md_popular_tag_link($tag) : md_tag_link($tag);

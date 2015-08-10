@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
-"PO-Revision-Date: 2015-07-18 06:59+0000\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
+"PO-Revision-Date: 2015-08-09 19:48+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/p/wp-testing/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/wp-translations/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,12 +50,6 @@ msgstr "Ölçekler"
 msgid "Results"
 msgstr "Sonuçlar"
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%2$d üzerinden %1$d"
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr "Aygıt"
@@ -68,12 +62,16 @@ msgstr "IP adresi"
 msgid "Browser"
 msgstr "Tarayıcı"
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%2$g üzerinden %1$g"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr "Test Yapım Aşamasındadır"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr "Henüz Sonuç Alamazsınız"
 
@@ -121,7 +119,7 @@ msgstr "\"Geri\" butonuna basıldığında davalı cevapları sıfırlayın"
 msgid "Button caption"
 msgstr "Düğme başlık"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr "Test Sonuçlarını Al"
 
@@ -435,11 +433,11 @@ msgstr "Kategori Bulunamadı"
 msgid "No Categories found in Trash"
 msgstr "Çöp Kutusunda Kategori Bulunamadı"
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr "{percentage}% yanıtladı"
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr "İleri"
 
@@ -472,7 +470,13 @@ msgstr "Yanıtlayanların test sonuçları"
 msgid "Respondents’ results"
 msgstr "Yanıtlayanların sonuçları"
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "Sayı ve yüzdeler içerdiğinden formül %s için uyumlu değil"
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr "%s için formül hatası"
@@ -596,10 +600,10 @@ msgid ""
 "automatically."
 msgstr "Buraya bireysel cevaplarınızı metin olarak ekleyin, testin kaydedilmesinden sonra cevaplarınız buraya açılacaktır. Sayılar ve diğer indeksler otomatik olarak ayıklanacaktır."
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr "En az bir cevabı seçiniz."
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr "Sadece bir cevabı seçiniz."

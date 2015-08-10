@@ -7,6 +7,7 @@
  *
  * @method integer getId() getId() Gets the current value of id
  * @method integer getTestId() getTestId() Gets the current value of test id
+ * @method WpTesting_Model_Formula setTestId() setTestId(integer $id) Sets the value for test id
  * @method integer getResultId() getResultId() Gets the current value of result id
  * @method WpTesting_Model_Formula setResultId() setResultId(integer $id) Sets the value for result id
  * @method string getSource() getSource() Gets the current value of source
@@ -230,18 +231,30 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
     {
+        // Check for percents with abs values
+        $source         = $me->getSource();
+        $percentRegexp  = '/\d+ ?%/';
+        $hasPercents    = preg_match($percentRegexp, $source);
+        if ($hasPercents) {
+            $sourceWithoutPercents = preg_replace($percentRegexp, '', " $source ");
+            $valueRegexp           = '/[^a-z]\d+[^a-z]/';
+            $hasValues             = preg_match($valueRegexp, $sourceWithoutPercents);
+            if ($hasValues) {
+                $validationMessages['formula_source'] = sprintf(__('Formula for %s is incompatible as it contains both numbers and percentages', 'wp-testing'), $me->createResult()->getTitle());
+                return;
+            }
+        }
+
+        // Check for formula correctness
         /* @var $test WpTesting_Model_Test */
         $test = $me->createWpTesting_Model_Test()->setWp($this->getWp());
         $varNames = array();
         foreach ($test->buildFormulaVariables() as $var) {
             $varNames[] = $var->getSource();
         }
-        if ($me->isCorrect($varNames)) {
-            return;
+        if (!$me->isCorrect($varNames)) {
+            $validationMessages['formula_source'] = sprintf(__('Formula for %s has error', 'wp-testing'), $me->createResult()->getTitle());
         }
-        /* @var $result WpTesting_Model_Result */
-        $result = $me->createWpTesting_Model_Result();
-        $validationMessages['formula_source'] = sprintf(__('Formula for %s has error', 'wp-testing'), $result->getTitle());
     }
 
     protected function configure()

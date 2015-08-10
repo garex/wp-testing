@@ -24,6 +24,7 @@
  * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
  * @method string getName() getName() Gets the current value for name (url unique part)
  * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
+ * @method WpTesting_Model_Formula[] buildFormulasOnce() buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {
@@ -338,7 +339,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         }
 
         // If we have at least one result with formula — we assume, that it was added legally
-        foreach ($this->buildFormulas() as $formula) {
+        foreach ($this->buildFormulasOnce() as $formula) {
             if (!$formula->isEmpty()) {
                 return true;
             }

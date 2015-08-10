@@ -20,9 +20,10 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             $stepStrategy  = new WpTesting_Component_StepStrategy_AllInOne($test, $passing->buildAnswers());
         }
 
+        /* @var $stepStrategy WpTesting_Component_StepStrategy */
         $stepStrategy  = $this->wp->applyFilters(
             'wp_testing_passer_step_strategy',
-            $stepStrategy
+            $stepStrategy->answeredQuestionsPossible($this->isPost())
         );
         $this->passing->setStepStrategy($stepStrategy);
 
@@ -80,7 +81,8 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'isShowContent'=> $step->isFirst(),
             'formClasses'  => $this->getFormClasses(),
             'subTitle'     => $step->getTitle(),
-            'isFinal'      => $this->test->isFinal(),
+            'shortDescription'     => $step->getDescription(),
+            'isFinal'              => $this->test->isFinal(),
             'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
             'submitButtonCaption'  => $submitButtonCaption,
             'stepsCounter' => $this->passing->getStepsCounter(),

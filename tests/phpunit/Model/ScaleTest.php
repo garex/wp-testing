@@ -21,12 +21,11 @@ class ScaleTest extends PHPUnit_Framework_TestCase
         $this->scale->setRange(0, null);
     }
 
-    public function testScaleValuesMustBeJustIntegers()
+    public function testScaleValuesMustBeIntegersOrDecimals()
     {
         $this->scale->setRange('1', '2');
         $this->scale->setRange('1', 2);
         $this->scale->setRange('1', 2.0);
-        $this->setExpectedException('InvalidArgumentException', 'integer');
         $this->scale->setRange('1.8', 2.2);
     }
 

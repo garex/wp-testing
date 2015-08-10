@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
-"PO-Revision-Date: 2015-07-18 07:00+0000\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
+"PO-Revision-Date: 2015-08-09 19:47+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/p/wp-testing/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/wp-translations/wp-testing/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,12 +51,6 @@ msgstr "Redimensionar"
 msgid "Results"
 msgstr "Resultados"
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%1$d de %2$d"
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr "Dispositivo"
@@ -69,12 +63,16 @@ msgstr "Endereço IP"
 msgid "Browser"
 msgstr "Navegador"
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g de %2$g"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr "O teste está em construção"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr "Você ainda não pode obter resultados"
 
@@ -122,7 +120,7 @@ msgstr "Reinicializa as respostas quando o botão \"voltar\" for pressionado."
 msgid "Button caption"
 msgstr "Botão de captura"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr "Obtenha os resultados do teste"
 
@@ -436,11 +434,11 @@ msgstr "Categorias não encontradas"
 msgid "No Categories found in Trash"
 msgstr "Categorias não encontradas na lixeira"
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr "{percentage}% respondido"
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr "Próximo"
 
@@ -473,7 +471,13 @@ msgstr "Resultados dos testes respondidos"
 msgid "Respondents’ results"
 msgstr "Resultados do respondente."
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "Fórmula para %s é incompatível como contém números e percentagens"
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Fórmula para  %s possui erro"
@@ -597,10 +601,10 @@ msgid ""
 "automatically."
 msgstr "Adicione aqui as suas respostas individuais como texto; após salvar o teste, elas serão extraídas e criadas. Números e outros índices serão removidos automaticamente."
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr "Por favor, selecione pelo menos uma resposta."
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr "Por favor, escolha apenas uma resposta."

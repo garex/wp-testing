@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 06:40+0700\n"
-"PO-Revision-Date: 2015-07-17 14:39+0000\n"
+"POT-Creation-Date: 2015-08-10 01:26+0700\n"
+"PO-Revision-Date: 2015-08-09 19:46+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/p/wp-testing/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,12 +51,6 @@ msgstr "Schalen"
 msgid "Results"
 msgstr "Resultaten"
 
-#: Widget/PassingTable/User.php:89 Widget/PassingTable/Admin.php:157
-#: Component/StepStrategy.php:96 Model/Scale.php:84
-#, php-format
-msgid "%1$d out of %2$d"
-msgstr "%1$d ud af %2$d"
-
 #: Widget/PassingTable/Admin.php:49
 msgid "Device"
 msgstr "Apparaat"
@@ -69,12 +63,16 @@ msgstr "IP-adres"
 msgid "Browser"
 msgstr "Browser"
 
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g ud af %2$g"
+
 #: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:74
+#: Template/Test/Passer/fill-form.php:76
 msgid "Test is under construction"
 msgstr "Test is in aanbouw"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:75
+#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
 msgid "You can not get any results from it yet."
 msgstr "Er zijn nog geen resultaten beschikbaar. "
 
@@ -122,7 +120,7 @@ msgstr "Antwoorden wissen wanneer de \"terug\" knop wordt gebruikt"
 msgid "Button caption"
 msgstr "Knop bijschrift"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:62
+#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
 msgid "Get Test Results"
 msgstr "Ga naar test resultaten"
 
@@ -436,11 +434,11 @@ msgstr "Er zijn geen rubrieken gevonden"
 msgid "No Categories found in Trash"
 msgstr "Er zijn geen rubrieken gevonden in Prullenbak"
 
-#: Doer/TestPasser/FillForm.php:54
+#: Doer/TestPasser/FillForm.php:55
 msgid "{percentage}% answered"
 msgstr "{percentage}% beantwoord"
 
-#: Doer/TestPasser/FillForm.php:65
+#: Doer/TestPasser/FillForm.php:66
 msgid "Next"
 msgstr "Volgende"
 
@@ -473,7 +471,13 @@ msgstr "Testresultaten van de beantwoorder"
 msgid "Respondents’ results"
 msgstr "Resultaten van de beantwoorder"
 
-#: Model/Formula.php:244
+#: Model/Formula.php:243
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "Formule voor %s is niet compatibel omdat het bevat zowel getallen en percentages"
+
+#: Model/Formula.php:256
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formule voor %s heeft een fout"
@@ -597,10 +601,10 @@ msgid ""
 "automatically."
 msgstr "Voeg hier uw individuele antwoorden toe als tekst; na het opslaan van de test zullen deze worden gecreeerd. Nummers en andere indexen worden automatisch verwijderd. "
 
-#: Template/Test/Passer/fill-form.php:50
+#: Template/Test/Passer/fill-form.php:52
 msgid "Please select at least one answer."
 msgstr "Selecteer ten minste één antwoord."
 
-#: Template/Test/Passer/fill-form.php:51
+#: Template/Test/Passer/fill-form.php:53
 msgid "Please choose only one answer."
 msgstr "Kies slechts één antwoord."
