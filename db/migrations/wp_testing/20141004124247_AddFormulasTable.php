@@ -34,14 +34,14 @@ class AddFormulasTable extends BaseMigration
         $this->execute("
             ALTER TABLE {$plugin_prefix}formulas
 
-            ADD CONSTRAINT fk_formula_test
+            ADD CONSTRAINT {$plugin_prefix}fk_formula_test
             FOREIGN KEY (test_id)
             REFERENCES {$global_prefix}posts (ID)
             ON DELETE CASCADE
             ON UPDATE CASCADE,
             ADD INDEX fk_formula_test (test_id),
 
-            ADD CONSTRAINT fk_formula_result
+            ADD CONSTRAINT {$plugin_prefix}fk_formula_result
             FOREIGN KEY (result_id)
             REFERENCES {$global_prefix}terms (term_id)
             ON DELETE CASCADE
