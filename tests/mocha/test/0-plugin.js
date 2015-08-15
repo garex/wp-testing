@@ -1,3 +1,5 @@
+require('../after-fail').screenshots()
+
 describe('Plugin activation', function() {
 
     var server = require('../env').server()
