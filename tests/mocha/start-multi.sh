@@ -20,6 +20,4 @@ rm -f /tmp/cookies.*.txt
 
 # Activate plugin and setup admin
 export WP_T_SERVER=http://wpti.dev
-mocha-casperjs test/0-multisite.js
-# activate plugin on 2nd
-# activate plugin on 1st
+mocha-casperjs --timeout=360000

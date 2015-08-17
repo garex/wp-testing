@@ -7,6 +7,10 @@ module.exports.server = function () {
     return server
 }
 
+module.exports.anotherServer = function () {
+    return server.replace('wpti.dev', 'another.wpti.dev')
+}
+
 module.exports.screenshots = function () {
     return screenshots
 }

@@ -1,6 +1,8 @@
 describe('Admin', function() {
 
-    var server = require('../env').server()
+    var server      = require('../env').server(),
+        multisite   = require('../env').multisite()
+
     before(function () {
         require('../login-as').admin(this)
     })
@@ -16,6 +18,7 @@ describe('Admin', function() {
                     $('#pass1').data('pw', 'user').val('user')
                     $('#pass1-text').val('user')
                     $('#pass2').val('user')
+                    $('#noconfirmation').attr('checked', true)
                 })
             })
         })
@@ -28,9 +31,31 @@ describe('Admin', function() {
             })
 
             casper.waitForUrl(/update/, function() {
-                'user@wpti.dev'.should.be.textInDOM
+                if (multisite) {
+                    'User has been added to your site.'.should.be.textInDOM
+                } else {
+                    'user@wpti.dev'.should.be.textInDOM
+                }
             })
         })
 
+        if (!multisite) {
+            return
+        }
+
+        it('should change user password to known one', function() {
+            casper.thenOpen(server + '/wp-admin/user-edit.php?user_id=2', function() {
+                this.evaluate(function() {
+                    $=jQuery
+                    $('#pass1').val('user')
+                    $('#pass2').val('user')
+                    $('#submit').click()
+                })
+            })
+
+            casper.waitForUrl(/updated/, function() {
+                'User updated.'.should.be.textInDOM
+            })
+        })
     })
 })

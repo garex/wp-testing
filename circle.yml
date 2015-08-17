@@ -9,6 +9,7 @@ machine:
 
   environment:
     WP_T_SERVER: http://wpti.dev
+    WP_T_MULTISITE: 1
     PATH: $PATH:/home/ubuntu/wp-testing/tests/mocha/node_modules/.bin/
 
 dependencies:

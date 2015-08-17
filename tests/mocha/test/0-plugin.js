@@ -2,14 +2,20 @@ require('../after-fail').screenshots()
 
 describe('Plugin activation', function() {
 
-    var server = require('../env').server()
+    var server      = require('../env').server(),
+        multisite   = require('../env').multisite()
+
     before(function () {
         require('../login-as').admin(this)
     })
 
     var hasJetpack = false
     it('should open plugins page', function() {
-        casper.thenOpen(server + '/wp-admin/plugins.php', function () {
+        var pluginsUrl = multisite
+            ? '/wp-admin/network/plugins.php'
+            : '/wp-admin/plugins.php'
+
+        casper.thenOpen(server + pluginsUrl, function () {
             expect(/Plugins/).to.matchTitle
             'Wp-testing'.should.be.textInDOM
             hasJetpack = this.evaluate(function() {
