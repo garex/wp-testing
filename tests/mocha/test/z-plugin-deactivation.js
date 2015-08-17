@@ -1,11 +1,12 @@
 describe('Plugin deactivation', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('should be deactivated', function() {
-       casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php', function () {
+       casper.thenOpen(server + '/wp-admin/plugins.php', function () {
            expect(/Plugins/).to.matchTitle
            '.plugin-title'.should.contain.text('Wp-testing')
        })

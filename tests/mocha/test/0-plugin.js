@@ -1,12 +1,13 @@
 describe('Plugin activation', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     var hasJetpack = false
     it('should open plugins page', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php', function () {
+        casper.thenOpen(server + '/wp-admin/plugins.php', function () {
             expect(/Plugins/).to.matchTitle
             'Wp-testing'.should.be.textInDOM
             hasJetpack = this.evaluate(function() {
@@ -29,7 +30,7 @@ describe('Plugin activation', function() {
             '#toplevel_page_jetpack'.should.be.inDOM
         })
 
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/admin.php?page=jetpack_modules', function () {
+        casper.thenOpen(server + '/wp-admin/admin.php?page=jetpack_modules', function () {
             expect(/Jetpack/).to.matchTitle
             this.click('.manage-left input.checkall')
             this.evaluate(function() {
@@ -42,7 +43,7 @@ describe('Plugin activation', function() {
             'Fatal'.should.not.be.textInDOM
         }, null, 60000)
 
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php', function () {
+        casper.thenOpen(server + '/wp-admin/plugins.php', function () {
             expect(/Plugins/).to.matchTitle
             'Wp-testing'.should.be.textInDOM
         })

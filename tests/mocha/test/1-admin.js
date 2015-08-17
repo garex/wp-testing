@@ -1,5 +1,6 @@
 describe('Admin', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
@@ -7,7 +8,7 @@ describe('Admin', function() {
     describe('Create default user in subscriber role', function() {
 
         it('should fill new user form', function() {
-            casper.thenOpen('http://wpti.dev:8000/wp-admin/user-new.php', function() {
+            casper.thenOpen(server + '/wp-admin/user-new.php', function() {
                 this.evaluate(function() {
                     $=jQuery
                     $('#user_login').val('user')

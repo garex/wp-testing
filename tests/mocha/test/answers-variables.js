@@ -1,5 +1,6 @@
 describe('Answers variables', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
@@ -8,7 +9,7 @@ describe('Answers variables', function() {
         testViewUrl = ''
 
     it('should show empty test as under construction initially', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
+        casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
             this.clickLabel('Test With Answers Sorted', '*[@id="posts-filter"]/*//a')
         })
 

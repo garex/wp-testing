@@ -1,11 +1,12 @@
 describe('Page', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('should not disappear when plugin activated', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/post-new.php?post_type=page', function() {
+        casper.thenOpen(server + '/wp-admin/post-new.php?post_type=page', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Page'.should.be.inTitle
 
