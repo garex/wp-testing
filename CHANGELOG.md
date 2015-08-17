@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.16.1 ###
+
+Enable working in multisite mode
+
+* Use unique DB names to allow many installs in same DB
+* Test multisite install as two activations and programming auto-tests on 1st install 
+
+
 ### 0.16 ###
 
 Decimalize scores
