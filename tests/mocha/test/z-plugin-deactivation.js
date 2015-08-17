@@ -1,11 +1,18 @@
 describe('Plugin deactivation', function() {
 
+    var server      = require('../env').server(),
+        multisite   = require('../env').multisite()
+
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('should be deactivated', function() {
-       casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php', function () {
+       var pluginsUrl = multisite
+           ? '/wp-admin/network/plugins.php'
+           : '/wp-admin/plugins.php'
+
+       casper.thenOpen(server + pluginsUrl, function () {
            expect(/Plugins/).to.matchTitle
            '.plugin-title'.should.contain.text('Wp-testing')
        })
@@ -21,6 +28,10 @@ describe('Plugin deactivation', function() {
     })
 
     it('should be deleted', function() {
+       if (multisite) {
+           this.skip()
+           return
+       }
 
        casper.then(function() {
            this.click('#wp-testing .delete a')

@@ -1,11 +1,12 @@
 describe('Taxonomies', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('tests menu should exists', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/', function() {
+        casper.thenOpen(server + '/wp-admin/', function() {
             '#menu-posts-wpt_test'.should.be.inDOM
         })
     })

@@ -1,5 +1,6 @@
 describe('Diagrams', function() {
 
+    var server = require('../env').server()
     var testEditUrl =
         testViewUrl =
         resultUrl   = null
@@ -27,7 +28,7 @@ describe('Diagrams', function() {
         testEditUrl =
         testViewUrl = ''
 
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/').waitForUrl(/admin/, function() {
+        casper.thenOpen(server + '/wp-admin/').waitForUrl(/admin/, function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 

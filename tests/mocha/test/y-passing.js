@@ -1,3 +1,5 @@
+var server = require('../env').server()
+
 function wptSetupPermalinks(structure) {
     var structureLabel = (structure == '') ? 'default' : structure
 
@@ -6,7 +8,7 @@ function wptSetupPermalinks(structure) {
     })
 
     it('should setup permalinks to ' + structureLabel, function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/options-permalink.php')
+        casper.thenOpen(server + '/wp-admin/options-permalink.php')
 
         casper.waitForUrl(/options/).then(function() {
             'Permalink Settings'.should.be.textInDOM
@@ -46,8 +48,8 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     it('should error on non-good passing slug', function() {
         var url = isPermalinks
-            ? 'http://wpti.dev:8000/test/test-containing-results/wtf/'
-            : 'http://wpti.dev:8000/?wpt_test=test-containing-results&wpt_passing_slug=wtf'
+            ? server + '/test/test-containing-results/wtf/'
+            : server + '/?wpt_test=test-containing-results&wpt_passing_slug=wtf'
 
         casper.open(url).waitForUrl(/wtf/, function() {
             'Fatal'.should.not.be.textInDOM
@@ -60,8 +62,8 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     it('should open test for visitor', function() {
         var url = isPermalinks
-            ? 'http://wpti.dev:8000/hello-world/'
-            : 'http://wpti.dev:8000/?p=1'
+            ? server + '/hello-world/'
+            : server + '/?p=1'
 
         casper.thenOpen(url).waitForText('Hello World!', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
@@ -210,7 +212,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
     })
 
     it('should show customized button title', function() {
-        casper.open('http://wpti.dev:8000/')
+        casper.open(server + '/')
 
         casper.then(function() {
             this.clickLabel('Are You Hot or Not?!')
@@ -238,8 +240,8 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     it('should be same after answers migrations', function() {
         var url = isPermalinks
-                ? 'http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/'
-                : 'http://wpti.dev:8000/?wpt_test=eysencks-personality-inventory-epi-extroversionintroversion';
+                ? server + '/test/eysencks-personality-inventory-epi-extroversionintroversion/'
+                : server + '/?wpt_test=eysencks-personality-inventory-epi-extroversionintroversion';
         casper.open(url).waitForUrl(/test.+eysencks/, function() {
             'Fatal'.should.not.be.textInDOM
             'Eysenck'.should.be.inTitle
@@ -267,7 +269,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
     })
 
     it('should be blocked in non-final test on post', function() {
-        casper.open('http://wpti.dev:8000/').then(function() {
+        casper.open(server + '/').then(function() {
             this.clickLabel('To Be or Not to Be?!')
         })
 
@@ -305,7 +307,7 @@ describe('Passings', function() {
         wptSetupPermalinks('/archives/%post_id%')
 
         it('should pass test', function() {
-            casper.open('http://wpti.dev:8000/')
+            casper.open(server + '/')
 
             casper.then(function() {
                 this.clickLabel('Are You Hot or Not?!')
