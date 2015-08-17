@@ -1,5 +1,6 @@
 describe('Multiple answers test', function() {
 
+    var server = require('../env').server()
     var isOpened = null
 
     before(function () {
@@ -57,7 +58,7 @@ describe('Multiple answers test', function() {
 
     it('should be opened', function() {
         isOpened = false
-        casper.open('http://wpti.dev:8000/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/, function() {
+        casper.open(server + '/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/, function() {
             'Multiple Answers'.should.be.textInDOM
         }).then(function() {
             isOpened = true

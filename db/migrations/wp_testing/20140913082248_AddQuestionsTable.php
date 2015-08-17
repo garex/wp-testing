@@ -29,7 +29,7 @@ class AddQuestionsTable extends BaseMigration
         $plugin_prefix = WPT_DB_PREFIX;
         $this->execute("
             ALTER TABLE {$plugin_prefix}questions
-            ADD CONSTRAINT fk_question_test
+            ADD CONSTRAINT {$plugin_prefix}fk_question_test
             FOREIGN KEY (test_id)
             REFERENCES {$global_prefix}posts (ID)
             ON DELETE CASCADE

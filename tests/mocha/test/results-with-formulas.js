@@ -1,5 +1,6 @@
 describe('Results with formulas', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
