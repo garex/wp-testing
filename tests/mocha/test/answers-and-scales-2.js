@@ -1,11 +1,12 @@
 describe('Answers2 and Scales2', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('should be synced with global answers on their check uncheck with scores saving', function() {
-        casper.open('http://wpti.dev:8000/wp-admin/').then(function() {
+        casper.open(server + '/wp-admin/').then(function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 
@@ -51,7 +52,7 @@ describe('Answers2 and Scales2', function() {
     })
 
     it('should take individual answers into account when determining can edit scores', function() {
-        casper.open('http://wpti.dev:8000/wp-admin/').then(function() {
+        casper.open(server + '/wp-admin/').then(function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 

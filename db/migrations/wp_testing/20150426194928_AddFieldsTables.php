@@ -48,7 +48,7 @@ class AddFieldsTables extends BaseMigration
         $this->execute("
             ALTER TABLE {$plugin_prefix}fields
 
-            ADD CONSTRAINT fk_field_test
+            ADD CONSTRAINT {$plugin_prefix}fk_field_test
             FOREIGN KEY (test_id)
             REFERENCES {$global_prefix}posts (ID)
             ON DELETE CASCADE
@@ -81,14 +81,14 @@ class AddFieldsTables extends BaseMigration
         $this->execute("
             ALTER TABLE {$plugin_prefix}field_values
 
-            ADD CONSTRAINT fk_field_value_field
+            ADD CONSTRAINT {$plugin_prefix}fk_field_value_field
             FOREIGN KEY (field_id)
             REFERENCES {$plugin_prefix}fields (field_id)
             ON DELETE RESTRICT
             ON UPDATE CASCADE,
             ADD INDEX fk_field_value_field (field_id),
 
-            ADD CONSTRAINT fk_field_value_passing
+            ADD CONSTRAINT {$plugin_prefix}fk_field_value_passing
             FOREIGN KEY (passing_id)
             REFERENCES {$plugin_prefix}passings (passing_id)
             ON DELETE CASCADE

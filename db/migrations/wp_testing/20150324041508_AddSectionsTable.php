@@ -35,14 +35,14 @@ class AddSectionsTable extends BaseMigration
         $this->execute("
             ALTER TABLE {$plugin_prefix}sections
 
-            ADD CONSTRAINT fk_section_test
+            ADD CONSTRAINT {$plugin_prefix}fk_section_test
             FOREIGN KEY (test_id)
             REFERENCES {$global_prefix}posts (ID)
             ON DELETE CASCADE
             ON UPDATE CASCADE,
             ADD INDEX fk_section_test (test_id),
 
-            ADD CONSTRAINT fk_section_question
+            ADD CONSTRAINT {$plugin_prefix}fk_section_question
             FOREIGN KEY (question_id)
             REFERENCES {$plugin_prefix}questions (question_id)
             ON DELETE CASCADE

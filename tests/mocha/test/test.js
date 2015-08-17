@@ -1,5 +1,6 @@
 describe('Test', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
@@ -80,12 +81,12 @@ describe('Test', function() {
     })
 
     it('should be in [wptlist] shortcode after publish', function() {
-        casper.thenOpen('http://wpti.dev:8000/?p=1', function() {
+        casper.thenOpen(server + '/?p=1', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.not.contain.text('Hot or Not?!')
         })
 
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/', function() {
+        casper.thenOpen(server + '/wp-admin/', function() {
             this.clickLabel('All Tests', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 
@@ -103,14 +104,14 @@ describe('Test', function() {
             '#message'.should.be.inDOM
         })
 
-        casper.thenOpen('http://wpti.dev:8000/?p=1', function() {
+        casper.thenOpen(server + '/?p=1', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.contain.text('Hot or Not?!')
         })
     })
 
     it('should be on home page after publish by default and not when hidden', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/', function() {
+        casper.thenOpen(server + '/wp-admin/', function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 
@@ -149,14 +150,14 @@ describe('Test', function() {
             '#message'.should.be.inDOM
         })
 
-        casper.thenOpen('http://wpti.dev:8000/', function() {
+        casper.thenOpen(server + '/', function() {
             'By default we are all on home'.should.be.textInDOM
             'But I am not on home as I am hidden'.should.not.be.textInDOM
         })
     })
 
     it('should enable disabled by default option for example test', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
+        casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
             this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)', '*[@id="posts-filter"]/*//a')
         })
 

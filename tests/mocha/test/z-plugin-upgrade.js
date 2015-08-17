@@ -5,12 +5,13 @@ describe('Plugin upgrade', function() {
         return
     }
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('should have plugin for upgrade', function() {
-       casper.thenOpen('http://wpti.dev:8000/wp-admin/plugins.php?plugin_status=upgrade', function () {
+       casper.thenOpen(server + '/wp-admin/plugins.php?plugin_status=upgrade', function () {
            expect(/Plugins/).to.matchTitle
            'There is a new version of Hello Dolly'.should.be.textInDOM
        })
@@ -47,7 +48,7 @@ describe('Plugin upgrade', function() {
     it('should update site title through DB', function() {
         casper.withFrame(0, function() {
             this.waitForText(/All updates have been completed/, function() {
-                this.thenOpen('http://wpti.dev:8000/', function() {
+                this.thenOpen(server + '/', function() {
                     'Upgraded from plugin'.should.be.textInDOM
                 })
             })

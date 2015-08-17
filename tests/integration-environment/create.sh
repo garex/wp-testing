@@ -8,6 +8,7 @@ DB_ENGINE=${DB_ENGINE:-InnoDB}
 DB_CHARSET=${DB_CHARSET:-utf8}
 WP_VERSION=${WP_VERSION:-4.2.4}
 WP_UPGRADE=${WP_UPGRADE:-0}
+WP_T_SERVER=${WP_T_SERVER:-http://wpti.dev:8000}
 PLUGINS=${PLUGINS:-}
 
 function init {
@@ -85,7 +86,7 @@ function install_wp {
     fi
     cp ../wp-config.php wp-config.php
     log '.. installing'
-    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev:8000/wp-admin/install.php?step=2' | grep installed
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' $WP_T_SERVER'/wp-admin/install.php?step=2' | grep installed
 }
 
 function set_db_engine {

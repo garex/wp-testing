@@ -2,6 +2,7 @@ describe('Steps', function() {
 
     var isOpened = null
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
@@ -69,7 +70,7 @@ describe('Steps', function() {
 
     it('should be opened', function() {
         isOpened = false
-        casper.open('http://wpti.dev:8000/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
+        casper.open(server + '/?wpt_test=three-steps').waitForUrl(/three-steps/, function() {
             'Three Steps'.should.be.textInDOM
         }).then(function() {
             isOpened = true

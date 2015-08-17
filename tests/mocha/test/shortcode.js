@@ -1,11 +1,12 @@
 describe('Shortcode', function() {
 
+    var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
     })
 
     it('[wptlist] should be added', function() {
-        casper.thenOpen('http://wpti.dev:8000/wp-admin/post.php?post=1&action=edit', function() {
+        casper.thenOpen(server + '/wp-admin/post.php?post=1&action=edit', function() {
             this.evaluateOrDie(function() {
                 return /Edit Post/.test(document.body.innerText)
             })
@@ -26,7 +27,7 @@ describe('Shortcode', function() {
             '#message'.should.be.inDOM
         })
 
-        casper.thenOpen('http://wpti.dev:8000/?p=1', function() {
+        casper.thenOpen(server + '/?p=1', function() {
             '.wp-testing.shortcode.list'.should.be.inDOM
             '.wp-testing.shortcode.list li'.should.contain.text('EPI')
         })

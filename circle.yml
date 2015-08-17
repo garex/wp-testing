@@ -1,0 +1,83 @@
+machine:
+
+  php:
+    version:
+      5.3.3
+
+  hosts:
+    wpti.dev: 127.0.0.1
+
+  environment:
+    WP_T_SERVER: http://wpti.dev
+    WP_T_MULTISITE: 1
+    PATH: $PATH:/home/ubuntu/wp-testing/tests/mocha/node_modules/.bin/
+
+dependencies:
+  pre:
+    - ln -s $(phpenv global) current:
+        pwd:
+          ../.phpenv/versions
+    - ls -la /home/ubuntu/.phpenv/versions
+    - ln --symbolic $(pwd) /tmp/wpti:
+        pwd:
+          tests/integration-environment
+    - cp circle.apache2.conf /etc/apache2/sites-available:
+        pwd:
+          tests/integration-environment
+    - a2dissite 000-default
+    - a2ensite circle.apache2.conf
+    - sudo a2enmod rewrite
+    - sudo service apache2 restart
+    - rm --recursive --force wordpress:
+        pwd:
+          tests/integration-environment
+    - wget --no-clobber https://wordpress.org/wordpress-latest.tar.gz:
+        pwd:
+          tests/integration-environment/cache
+    - tar --extract --ungzip --file=wordpress-latest.tar.gz --directory=..:
+        pwd:
+          tests/integration-environment/cache
+    - rm --recursive --force wp-content/plugins:
+        pwd:
+          tests/integration-environment/wordpress
+    - mkdir --parents wp-content/plugins:
+        pwd:
+          tests/integration-environment/wordpress
+    - cp ../wp-config.php wp-config.php:
+        pwd:
+          tests/integration-environment/wordpress
+    - |
+      mysql --user=root --execute='
+        DROP DATABASE IF EXISTS wpti;
+        CREATE DATABASE wpti DEFAULT CHARACTER SET "utf8";
+
+        GRANT USAGE ON wpti.* TO wpti;
+        DROP USER wpti;
+
+        CREATE USER wpti IDENTIFIED BY "wpti";
+        GRANT ALL ON wpti.* TO wpti;
+      '
+    - npm install:
+        pwd:
+          tests/mocha
+
+  override:
+    - ln --symbolic composer.lock.dist composer.lock
+    - composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
+    - git clone /home/ubuntu/wp-testing:
+        pwd:
+          tests/integration-environment/wordpress/wp-content/plugins
+    - cp -r vendor tests/integration-environment/wordpress/wp-content/plugins/wp-testing
+    - sudo chown -R www-data:www-data /tmp/wpti/wordpress
+    - wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' 'http://wpti.dev/wp-admin/install.php?step=2' | grep installed
+
+  cache_directories:
+    - vendor
+    - tests/integration-environment/cache
+    - tests/mocha/node_modules
+
+test:
+  override:
+    - mocha-casperjs --timeout=360000:
+        pwd:
+          tests/mocha
