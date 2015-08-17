@@ -25,6 +25,20 @@ if ( !defined('ABSPATH') )
 
 defined('JETPACK_DEV_DEBUG') or define('JETPACK_DEV_DEBUG', true);
 
+define('WP_ALLOW_MULTISITE', true);
+
+mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
+mysql_select_db(DB_NAME);
+mysql_query('SHOW TABLE STATUS LIKE "wp_site"');
+if (mysql_affected_rows()) {
+    define('MULTISITE', true);
+    define('SUBDOMAIN_INSTALL', true);
+    define('DOMAIN_CURRENT_SITE', 'wpti.dev');
+    define('PATH_CURRENT_SITE', '/');
+    define('SITE_ID_CURRENT_SITE', 1);
+    define('BLOG_ID_CURRENT_SITE', 1);
+}
+
 require_once(ABSPATH . 'wp-settings.php');
 
 /**
