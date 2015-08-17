@@ -33,14 +33,14 @@ class SwitchToIndividualAnswers extends BaseMigration
         $this->execute("
             ALTER TABLE {$plugin_prefix}answers
 
-            ADD CONSTRAINT fk_answer_question
+            ADD CONSTRAINT {$plugin_prefix}fk_answer_question
             FOREIGN KEY (question_id)
             REFERENCES {$plugin_prefix}questions (question_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE,
             ADD INDEX fk_answer_question (question_id),
 
-            ADD CONSTRAINT fk_answer_global_answer
+            ADD CONSTRAINT {$plugin_prefix}fk_answer_global_answer
             FOREIGN KEY (global_answer_id)
             REFERENCES {$global_prefix}terms (term_id)
             ON DELETE CASCADE
@@ -87,8 +87,8 @@ class SwitchToIndividualAnswers extends BaseMigration
         // switch both scores and passing answers to wp_t_answers
         $this->execute("
             ALTER TABLE {$plugin_prefix}passing_answers
-                DROP FOREIGN KEY fk_passing_answer_question,
-                DROP FOREIGN KEY fk_passing_answer_answer
+                DROP FOREIGN KEY {$plugin_prefix}fk_passing_answer_question,
+                DROP FOREIGN KEY {$plugin_prefix}fk_passing_answer_answer
             ;
             ALTER TABLE {$plugin_prefix}passing_answers
                 DROP COLUMN question_id,
@@ -98,7 +98,7 @@ class SwitchToIndividualAnswers extends BaseMigration
                 DROP INDEX fk_passing_answer_answer
             ;
             ALTER TABLE {$plugin_prefix}passing_answers
-            ADD CONSTRAINT fk_passing_answer_answer
+            ADD CONSTRAINT {$plugin_prefix}fk_passing_answer_answer
             FOREIGN KEY (answer_id)
             REFERENCES {$plugin_prefix}answers (answer_id)
             ON DELETE CASCADE
@@ -107,8 +107,8 @@ class SwitchToIndividualAnswers extends BaseMigration
         ");
         $this->execute("
             ALTER TABLE {$plugin_prefix}scores
-                DROP FOREIGN KEY fk_score_question,
-                DROP FOREIGN KEY fk_score_answer
+                DROP FOREIGN KEY {$plugin_prefix}fk_score_question,
+                DROP FOREIGN KEY {$plugin_prefix}fk_score_answer
             ;
             ALTER TABLE {$plugin_prefix}scores
                 DROP COLUMN question_id,
@@ -118,7 +118,7 @@ class SwitchToIndividualAnswers extends BaseMigration
                 DROP INDEX fk_score_answer
             ;
             ALTER TABLE {$plugin_prefix}scores
-                ADD CONSTRAINT fk_score_answer
+                ADD CONSTRAINT {$plugin_prefix}fk_score_answer
                 FOREIGN KEY (answer_id)
                 REFERENCES {$plugin_prefix}answers (answer_id)
                 ON DELETE CASCADE
@@ -180,7 +180,7 @@ class SwitchToIndividualAnswers extends BaseMigration
         $this->execute("TRUNCATE TABLE {$plugin_prefix}passing_answers");
 
         // switch both scores and passing answers to global answers
-        $this->execute("ALTER TABLE {$plugin_prefix}scores DROP FOREIGN KEY fk_score_answer");
+        $this->execute("ALTER TABLE {$plugin_prefix}scores DROP FOREIGN KEY {$plugin_prefix}fk_score_answer");
         $this->execute("ALTER TABLE {$plugin_prefix}scores DROP INDEX fk_score_answer");
         $this->add_column("{$plugin_prefix}scores", 'question_id', 'biginteger', $questionOptions);
         $this->execute("
@@ -189,14 +189,14 @@ class SwitchToIndividualAnswers extends BaseMigration
             DROP PRIMARY KEY,
             ADD PRIMARY KEY(answer_id, question_id, scale_id),
 
-            ADD CONSTRAINT fk_score_answer
+            ADD CONSTRAINT {$plugin_prefix}fk_score_answer
                 FOREIGN KEY (answer_id)
                 REFERENCES {$global_prefix}terms (term_id)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE,
             ADD INDEX fk_score_answer (answer_id),
 
-            ADD CONSTRAINT fk_score_question
+            ADD CONSTRAINT {$plugin_prefix}fk_score_question
                 FOREIGN KEY (question_id)
                 REFERENCES {$plugin_prefix}questions (question_id)
                 ON DELETE CASCADE
@@ -204,7 +204,7 @@ class SwitchToIndividualAnswers extends BaseMigration
             ADD INDEX fk_score_question (question_id)
         ");
 
-        $this->execute("ALTER TABLE {$plugin_prefix}passing_answers DROP FOREIGN KEY fk_passing_answer_answer");
+        $this->execute("ALTER TABLE {$plugin_prefix}passing_answers DROP FOREIGN KEY {$plugin_prefix}fk_passing_answer_answer");
         $this->execute("ALTER TABLE {$plugin_prefix}passing_answers DROP INDEX fk_passing_answer_answer");
         $this->add_column("{$plugin_prefix}passing_answers", 'question_id', 'biginteger', $questionOptions);
         $this->execute("
@@ -213,14 +213,14 @@ class SwitchToIndividualAnswers extends BaseMigration
             DROP PRIMARY KEY,
             ADD PRIMARY KEY(answer_id, question_id, passing_id),
 
-            ADD CONSTRAINT fk_passing_answer_answer
+            ADD CONSTRAINT {$plugin_prefix}fk_passing_answer_answer
                 FOREIGN KEY (answer_id)
                 REFERENCES {$global_prefix}terms (term_id)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE,
             ADD INDEX fk_passing_answer_answer (answer_id),
 
-            ADD CONSTRAINT fk_passing_answer_question
+            ADD CONSTRAINT {$plugin_prefix}fk_passing_answer_question
                 FOREIGN KEY (question_id)
                 REFERENCES {$plugin_prefix}questions (question_id)
                 ON DELETE CASCADE
