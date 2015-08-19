@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.16.2 ###
+
+Upgrade WP to 4.3 and edit test author
+
+* Upgrade WordPress compatibility to 4.3
+* Allow to switch test's author (same as for posts)
+
+
 ### 0.16.1 ###
 
 Enable working in multisite mode

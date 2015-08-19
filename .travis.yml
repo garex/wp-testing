@@ -10,6 +10,7 @@ env:
   global:
     - DB_ENGINE=InnoDB
   matrix:
+    - WP_VERSION=4.3
     - WP_VERSION=4.2.4
     - WP_VERSION=4.1.5
     - WP_VERSION=4.0.1
