@@ -38,6 +38,7 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                 'editor',
                 'thumbnail',
                 'comments',
+                'author',
             ),
             'taxonomies'    => array(
                 'wpt_answer',
