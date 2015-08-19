@@ -157,7 +157,7 @@ describe('Sorting', function() {
 
         casper.waitForUrl(/respondents/, function() {
             this.evaluate(function() {
-                return jQuery('#the-list td:first').text()
+                return jQuery('#the-list td:first').contents().get(0).nodeValue
             }).should.not.be.equal('1')
 
             this.click('#passing_created a')
@@ -165,7 +165,7 @@ describe('Sorting', function() {
 
         casper.waitForUrl(/order=asc/, function() {
             this.evaluate(function() {
-                return jQuery('#the-list td:first').text()
+                return jQuery('#the-list td:first').contents().get(0).nodeValue
             }).should.be.equal('1')
         })
     })
