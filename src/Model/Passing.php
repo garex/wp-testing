@@ -232,6 +232,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      */
     public function buildScalesWithRange()
     {
+        // WPT isNeedRecalc? Recalc and save
         $result = array();
         foreach ($this->createTest()->buildScalesWithRange() as $testScale) {
             $scale = clone $testScale;
@@ -275,6 +276,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      */
     public function buildResults()
     {
+        // WPT isNeedRecalc? Recalc and save
         $test      = $this->createTest();
         $variables = $test->buildFormulaVariables($this);
         $result    = array();
