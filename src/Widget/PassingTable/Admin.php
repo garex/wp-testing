@@ -3,24 +3,66 @@
 class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 {
 
+    protected $find_items_filter_params = array(
+        'test_id',
+        'passing_created',
+        'user',
+        'passing_device_uuid',
+        'passing_ip',
+        'passing_user_agent',
+    );
+
     /**
      * Do we in Trash now?
      * @var boolean
      */
     private $is_trash;
 
+    private $bulk_actions = array();
+
+    /**
+     * @var WpTesting_Widget_PlaceholderTemplate_Collection
+     */
+    private $templates;
+
+    public function __construct($args = array())
+    {
+        parent::__construct($args);
+
+        $this->templates = new WpTesting_Widget_PlaceholderTemplate_Collection();
+    }
+
     public function get_bulk_actions()
     {
         if ($this->is_trash) {
-            return array(
-                'untrash' => $this->wp->translate('Restore'),
-                'delete'  => $this->wp->translate('Delete Permanently'),
-            );
+            $this
+                ->add_bulk_action('untrash', $this->wp->translate('Restore'))
+                ->add_bulk_action('delete',  $this->wp->translate('Delete Permanently'))
+            ;
+        } else {
+            $this
+                ->add_bulk_action('trash', $this->wp->translate('Move to Trash'))
+            ;
         }
+        return $this->bulk_actions;
+    }
 
-        return array(
-            'trash' => $this->wp->translate('Move to Trash'),
-        );
+    public function add_bulk_action($key, $title)
+    {
+        $this->bulk_actions[$key] = $title;
+        return $this;
+    }
+
+    public function add_filter_param($key)
+    {
+        $this->find_items_filter_params[] = $key;
+        return $this;
+    }
+
+    public function append_actions_templates($template)
+    {
+        $this->templates->append('actions', $template);
+        return $this;
     }
 
     public function get_sortable_columns()
@@ -55,21 +97,18 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
     public function prepare_items()
     {
-        $this->is_trash = ('trash' == fRequest::get('passing_status', 'string'));
+        if ($this->items instanceof fRecordSet) {
+            return $this;
+        }
 
+        $this->is_trash = ('trash' == fRequest::get('passing_status', 'string'));
+        $this->init_templates();
         return parent::prepare_items();
     }
 
     protected function find_items()
     {
-        $params = $this->get_filter_params(array(
-            'test_id',
-            'passing_created',
-            'user',
-            'passing_device_uuid',
-            'passing_ip',
-            'passing_user_agent',
-        ));
+        $params = $this->get_filter_params($this->find_items_filter_params);
         $params['passing_status'] = fRequest::get('passing_status', 'array', array('publish'));
 
         return WpTesting_Query_Passing::create()
@@ -168,39 +207,13 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
                 return "$avatar <strong><a href=\"$editLink\">$user->user_login</a></strong>";
 
             case 'actions':
-                $actions = array();
-                $url     = '?post_type=wpt_test&page=wpt_test_respondents_results&passing_id=' . $item->getId() . '&action=';
-
-                if ($this->is_trash) {
-                    $head = $this->render_link(
-                        $url . 'untrash',
-                        $this->wp->translate('Untrash'),
-                        'row-title',
-                        array('title' => $this->wp->translate('Restore this item from the Trash'))
-                    );
-                    $actions[] = $this->render_tag('span', array('class' => 'delete'), $this->render_link(
-                        $url . 'delete',
-                        $this->wp->translate('Delete Permanently'),
-                        'submitdelete',
-                        array('title' => $this->wp->translate('Delete this item permanently'))
-                    ));
-                } else {
-                    $head = $this->render_link(
-                        $item->getUrl(),
-                        $this->wp->translate('View'),
-                        'row-title',
-                        array('title' => sprintf(
-                            html_entity_decode($this->wp->translate('View &#8220;%s&#8221;')),
-                            $item->getSlug($this->wp->getSalt())
-                        ))
-                    );
-                    $actions[] = $this->render_tag('span', array('class' => 'trash'), $this->render_link(
-                        $url . 'trash',
-                        $this->wp->translate('Trash'),
-                        'submitdelete',
-                        array('title' => $this->wp->translate('Move this item to the Trash'))
-                    ));
-                }
+                $values = array(
+                    '{{ actionUrl }}' => '?post_type=wpt_test&page=wpt_test_respondents_results&passing_id=' . $item->getId() . '&action=',
+                    '{{ itemUrl }}'   => $item->getUrl(),
+                    '{{ itemSlug }}'  => $item->getSlug($this->wp->getSalt()),
+                );
+                $head    = $this->templates->apply('head',     $values);
+                $actions = $this->templates->apply('actions',  $values);
 
                 return
                     $this->render_tag('strong', array(), $head) .
@@ -262,5 +275,45 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
             $this->render_search_input('filter_condition[passing_ip]',          $labels['passing_ip']),
             $this->render_search_input('filter_condition[passing_user_agent]',  $labels['passing_user_agent']),
         ));
+    }
+
+    private function init_templates()
+    {
+        if ($this->is_trash) {
+            $this->templates
+                ->set('head', $this->render_link(
+                    '{{ actionUrl }}untrash',
+                    $this->wp->translate('Untrash'),
+                    'row-title',
+                    array('title' => $this->wp->translate('Restore this item from the Trash'))
+                ))
+                ->append('actions', $this->render_tag('span', array('class' => 'delete'), $this->render_link(
+                    '{{ actionUrl }}delete',
+                    $this->wp->translate('Delete Permanently'),
+                    'submitdelete',
+                    array('title' => $this->wp->translate('Delete this item permanently'))
+                )))
+            ;
+        } else {
+            $this->templates
+                ->set('head', $this->render_link(
+                    '{{ itemUrl }}',
+                    $this->wp->translate('View'),
+                    'row-title',
+                    array('title' => sprintf(
+                        html_entity_decode($this->wp->translate('View &#8220;%s&#8221;')),
+                        '{{ itemSlug }}'
+                    ))
+                ))
+                ->append('actions', $this->render_tag('span', array('class' => 'trash'), $this->render_link(
+                    '{{ actionUrl }}trash',
+                    $this->wp->translate('Trash'),
+                    'submitdelete',
+                    array('title' => $this->wp->translate('Move this item to the Trash'))
+                )))
+            ;
+        }
+
+        return $this;
     }
 }

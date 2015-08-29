@@ -60,13 +60,25 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
 
     /**
      * @param array $ids
+     * @param array $orderBy
      * @return fRecordSet
      */
-    public function findAllByIds($ids)
+    public function findAllByIds($ids, $orderBy = array())
     {
         return fRecordSet::build($this->modelName, array(
             'passing_id=' => $ids,
-        ));
+        ), $orderBy);
+    }
+
+    /**
+     * Passings sorted by the order of provided $ids
+     * @param array $ids
+     * @return fRecordSet
+     */
+    public function findAllByIdsSorted($ids)
+    {
+        $orderBy = (!empty($ids)) ? array('FIELD(passing_id, ' . implode(', ', $ids) . ')' => 'asc') : array();
+        return $this->findAllByIds($ids, $orderBy);
     }
 
     /**
