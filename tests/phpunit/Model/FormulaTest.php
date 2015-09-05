@@ -289,6 +289,15 @@ class FormulaTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testDoubleMinusesOperatorsSeparatesBySpaces()
+    {
+        $this->assertEquals('3- -3', $this->formula
+            ->setSource('3 - somescale')
+            ->addValue('somescale',  -3)
+            ->substitute()
+        );
+    }
+
     /**
      * @dataProvider formulaIsCorrectOrNotProvider
      * @param string $formula

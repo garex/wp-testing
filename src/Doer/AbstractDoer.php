@@ -14,10 +14,13 @@ abstract class WpTesting_Doer_AbstractDoer
      */
     private $jsData = array();
 
+    private $resourceIdPrefix = null;
+
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp           = $wp;
         $this->templateRoot = dirname(dirname($this->getClassFile())) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+        $this->resourceIdPrefix = $this->getResourcePrefix('WpTesting', 'wpt_');
     }
 
     protected function getClassFile()
@@ -85,9 +88,7 @@ abstract class WpTesting_Doer_AbstractDoer
         if (substr($pluginRelatedPath, -4) != '.css') {
             $pluginRelatedPath = 'css/' . $pluginRelatedPath . '.css';
         }
-        $name = basename($pluginRelatedPath, '.css');
-        $name = str_replace('-', '_', $name);
-        $name = 'wpt_' . $name;
+        $name = $this->getResourceNameFromPluginRelatedPath($pluginRelatedPath, '.css');
         $this->wp->enqueuePluginStyle($name, $pluginRelatedPath);
         return $this;
     }
@@ -110,11 +111,32 @@ abstract class WpTesting_Doer_AbstractDoer
         if (substr($pluginRelatedPath, -3) != '.js') {
             $pluginRelatedPath = 'js/' . $pluginRelatedPath . '.js';
         }
-        $name = basename($pluginRelatedPath, '.js');
-        $name = str_replace('-', '_', $name);
-        $name = 'wpt_' . $name;
+        $name = $this->getResourceNameFromPluginRelatedPath($pluginRelatedPath, '.js');
         $this->wp->enqueuePluginScript($name, $pluginRelatedPath, $dependencies, $version, $isInFooter);
         return $this;
+    }
+
+    /**
+     * @param string $pluginRelatedPath
+     * @param string $extension
+     * @return string
+     */
+    private function getResourceNameFromPluginRelatedPath($pluginRelatedPath, $extension)
+    {
+        $name = basename($pluginRelatedPath, $extension);
+        $name = str_replace('-', '_', $name);
+        $name = $this->resourceIdPrefix . $name;
+        return $name;
+    }
+
+    private function getResourcePrefix($mainClassStart, $abbr)
+    {
+        $prefix = reset(explode('_', get_class($this)));
+        if ($prefix == $mainClassStart) {
+            return $abbr;
+        }
+        $prefix = str_replace($mainClassStart, $abbr . '_' , $prefix);
+        return strtolower($prefix) . '_';
     }
 
     /**
