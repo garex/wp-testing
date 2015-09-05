@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.16.3 ###
+
+Fix negative substracting in formulas and improve passing results table
+
+* Fix formulas with negative scale values substracting
+* Improve passing results table internals and addons integration
+
+
 ### 0.16.2 ###
 
 Upgrade WP to 4.3 and edit test author
@@ -15,7 +23,7 @@ Upgrade WP to 4.3 and edit test author
 Enable working in multisite mode
 
 * Use unique DB names to allow many installs in same DB
-* Test multisite install as two activations and programming auto-tests on 1st install 
+* Test multisite install as two activations and programming auto-tests on 1st install
 
 
 ### 0.16 ###
