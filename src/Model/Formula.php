@@ -199,6 +199,9 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         // Replace left whitespaces with ands
         $result = preg_replace('/ +/', '&&', $result);
 
+        // Add whitespaces between doubled operators
+        $result = preg_replace('/([\-\+\*\/])\1/', '$1 $1', $result);
+
         // Check if there is no parse error
         $parser = new PHPParser_Parser(new PHPParser_Lexer());
         $parser->parse('<?php ' . $result . ';');
