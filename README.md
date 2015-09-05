@@ -1,13 +1,13 @@
 # Psychological tests & quizzes #
 
-**Contributors:** ustimenko, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu  
-**Donate link:** https://goo.gl/igulor  
-**Tags:** psychological, testing, test, quiz  
-**Requires at least:** 3.2  
-**Tested up to:** 4.3  
-**Stable tag:** 0.16.2  
-**License:** GPLv3  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
+**Contributors:** ustimenko, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
+**Donate link:** https://goo.gl/igulor
+**Tags:** psychological, testing, test, quiz
+**Requires at least:** 3.2
+**Tested up to:** 4.3
+**Stable tag:** 0.16.3
+**License:** GPLv3
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
 Create psychological tests/quizzes with scales connected with results through simple formulas like "extraversion > 50%"
 
@@ -17,7 +17,7 @@ With the help of this plugin now you can create typical and advanced psychologic
 
 Typical psychological test consists of **questions** and **answers**. A respondent answers all of the questions and gets **results**. This is how the box outside looks like.
 
-Inside the box we also have **scales** each connected with the particular answer with **scores** and **results**, that are calculated with the help of **simple formulas** like: `extraversion > 50%`. Where "extraversion" is a sum of respondent's scores from extraversion scale. Concrete respondent's question's answer in formulas also possible: `question_5_1 OR question_9_7`. 
+Inside the box we also have **scales** each connected with the particular answer with **scores** and **results**, that are calculated with the help of **simple formulas** like: `extraversion > 50%`. Where "extraversion" is a sum of respondent's scores from extraversion scale. Concrete respondent's question's answer in formulas also possible: `question_5_1 OR question_9_7`.
 
 We didn't invent anything new — all this has been already invented in 19th century.
 
