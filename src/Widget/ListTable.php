@@ -88,7 +88,8 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
     public function get_columns()
     {
         $columns = $this->get_static_columns();
-        foreach ($this->dynamic_columns as $key => $column) { /* @var $column WpTesting_Widget_ListTableColumn */
+        $dynamicColumns = array_reverse($this->dynamic_columns, true);
+        foreach ($dynamicColumns as $key => $column) { /* @var $column WpTesting_Widget_ListTableColumn */
             $index   = array_search($column->placeAfter(), array_keys($columns)) + 1;
             $columns =
                 array_slice($columns, 0, $index, true) +
@@ -107,6 +108,10 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
 
     public function prepare_items()
     {
+        if ($this->items instanceof fRecordSet) {
+            return $this;
+        }
+
         $this->items = $this->find_items();
 
         $total = $this->items->count(true);
@@ -167,6 +172,15 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
             }
             $params[$key] = $value;
         }
+
+        foreach ($allowedKeys as $key) {
+            if (!fRequest::check($key) || isset($params[$key])) {
+                continue;
+            }
+            $params[$key] = fRequest::get($key);
+
+        }
+
         return $params;
     }
 
@@ -192,6 +206,16 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
         }
 
         return ($value === '' || is_null($value)) ? $this->empty_value : $value;
+    }
+
+    /**
+     * @param WpTesting_Model_AbstractModel $item
+     * @param string $column_name
+     * @return string
+     */
+    protected function render_static_column(WpTesting_Model_AbstractModel $item, $column_name)
+    {
+        return '';
     }
 
     public function display_tablenav($which)

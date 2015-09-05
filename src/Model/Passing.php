@@ -3,8 +3,8 @@
 /**
  * @method integer getId() getId() Gets the current value of id
  * @method WpTesting_Model_Passing setId() setId(integer $id) Sets the value for id
- * @method integer getTestId() getId() Gets the current value of test_id
- * @method WpTesting_Model_Passing setTestId() setId(integer $id) Sets the value for test_id
+ * @method integer getTestId() getTestId() Gets the current value of test_id
+ * @method WpTesting_Model_Passing setTestId() setTestId(integer $id) Sets the value for test_id
  * @method fTimestamp getCreated() getCreated() Gets the current value of created
  * @method WpTesting_Model_Passing setCreated() setCreated(fTimestamp|string $created) Sets the value for created
  * @method fTimestamp getModified() getModified() Gets the current value of modified

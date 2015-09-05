@@ -62,4 +62,15 @@ interface WpTesting_Addon_IWordPressFacade
      */
     public function addFilter($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1);
 
+    /**
+     * Whether the current request is for a network or blog admin page
+     *
+     * Does not inform on whether the user is an admin! Use capability checks to
+     * tell if the user should be accessing a section or not.
+     *
+     * @since 1.5.1
+     *
+     * @return bool True if inside WordPress administration pages.
+     */
+    public function isAdministrationPage();
 }

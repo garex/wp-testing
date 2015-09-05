@@ -5,36 +5,63 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
 
     protected $passingTableClass = 'WpTesting_Widget_PassingTable_Admin';
 
+    public function registerPages()
+    {
+        parent::registerPages();
+
+        $this->wp
+            ->addAction('wp_testing_passing_browser_admin_process_trash',   array($this, 'processActionTrash'),   WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_untrash', array($this, 'processActionUntrash'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_delete',  array($this, 'processActionDelete'),  WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
+        ;
+
+        return $this;
+    }
+
+    /**
+     * @param WpTesting_Model_Passing[] $passings
+     * @param self $me
+     * @return self
+     */
+    public function processActionTrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    {
+        foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
+            $passing->trash();
+        }
+        return $this;
+    }
+
+    /**
+     * @param WpTesting_Model_Passing[] $passings
+     * @param self $me
+     * @return self
+     */
+    public function processActionUntrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    {
+        foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
+            $passing->publish();
+        }
+        return $this;
+    }
+
+    /**
+     * @param WpTesting_Model_Passing[] $passings
+     * @param self $me
+     * @return self
+     */
+    public function processActionDelete(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    {
+        foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
+            $passing->delete(true);
+        }
+        return $this;
+    }
+
     protected function processAction($action, $ids)
     {
-        if (!in_array($action, array('trash', 'untrash', 'delete'))) {
-            return parent::processAction($action, $ids);
-        }
+        $passings = WpTesting_Query_Passing::create()->findAllByIdsSorted($ids);
 
-        $passings = WpTesting_Query_Passing::create()->findAllByIds($ids);
-        if (count($passings) == 0) {
-            return parent::processAction($action, $ids);
-        }
-
-        switch ($action) {
-            case 'trash':
-                foreach ($passings as $passing) {
-                    $passing->trash();
-                }
-                break;
-
-            case 'untrash':
-                foreach ($passings as $passing) {
-                    $passing->publish();
-                }
-                break;
-
-            case 'delete':
-                foreach ($passings as $passing) {
-                    $passing->delete(true);
-                }
-                break;
-        }
+        $this->wp->doAction('wp_testing_passing_browser_admin_process_' . $action, $passings, $this);
 
         $referer = $this->wp->getReferer();
         if ($referer) {
