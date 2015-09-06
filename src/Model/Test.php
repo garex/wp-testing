@@ -82,6 +82,12 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     public function buildQuestionsWithAnswersAndScores()
     {
         $questions   = $this->me()->buildQuestions();
+        if (!count($questions)) {
+            return $questions;
+        }
+        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+            return $questions;
+        }
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
         return $questions;
@@ -93,6 +99,12 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     public function buildQuestionsWithAnswers()
     {
         $questions   = $this->me()->buildQuestions();
+        if (!count($questions)) {
+            return $questions;
+        }
+        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+            return $questions;
+        }
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         return $questions;
     }
