@@ -3,7 +3,7 @@
 class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
 {
 
-    public function add_dynamic_column(WpTesting_Widget_PassingTableColumn $column)
+    public function add_dynamic_column(WpTesting_Widget_ListTableColumn $column)
     {
         // Does not allow to add dynamic columns yet
         return $this;
