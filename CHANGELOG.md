@@ -2,6 +2,11 @@
 ## Changelog ##
 
 
+### 0.16.4 ###
+
+Fix issue with individual answers was not added if results was attached
+
+
 ### 0.16.3 ###
 
 Fix negative substracting in formulas and improve passing results table
