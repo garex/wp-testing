@@ -2,6 +2,11 @@
 ## Changelog ##
 
 
+### 0.16.5 ###
+
+Add Thai lang and fix tests' results under respondent account
+
+
 ### 0.16.4 ###
 
 Fix issue with individual answers was not added if results was attached
