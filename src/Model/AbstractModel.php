@@ -276,6 +276,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->wp;
     }
 
+    public function hasRelated($records, $class)
+    {
+        foreach ($records as $record) {
+            if (isset($record->related_records[fORM::tablize($class)])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Associate many records with it's related records by foreign key in one query
      * @param fRecordset|array $records

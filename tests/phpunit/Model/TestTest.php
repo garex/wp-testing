@@ -65,6 +65,39 @@ class TestTest extends PHPUnit_Framework_TestCase
         $scaleWithRange->setValue(-2);
     }
 
+
+    public function testQuestionsWithAnswersNotOverwritesExistingValues()
+    {
+        /* @var $test WpTesting_Model_Test */
+        $test = $this->createTest()->store();
+        $test
+            ->addQuestion('Question 1')
+            ->addQuestion('Question 2')
+        ;
+        $test->store(true);
+        foreach ($test->buildQuestions() as $question) { /* @var $question WpTesting_Model_Question */
+            foreach (array(1,2) as $i) {
+                $answer = new WpTesting_Model_Answer();
+                $answer->setQuestionId($question->getId());
+                $question->associateAnswers($question->buildAnswers()->merge($answer));
+            }
+            $question->store();
+        }
+
+        $test2 = new WpTesting_Model_Test($test->getId());
+        $questions2 = $test2->buildQuestionsWithAnswers();
+        $this->assertCount(2, $questions2);
+        $this->assertCount(2, $questions2[0]->buildAnswers());
+
+        $answer3 = new WpTesting_Model_Answer();
+        $answer3->setQuestionId($questions2[0]->getId());
+        $questions2[0]->associateAnswers($questions2[0]->buildAnswers()->merge($answer3));
+        $this->assertCount(3, $questions2[0]->buildAnswers());
+
+        $questions3 = $test2->buildQuestionsWithAnswers();
+        $this->assertCount(3, $questions3[0]->buildAnswers());
+    }
+
     private function createTest()
     {
         $test = new WpTesting_Model_Test();
