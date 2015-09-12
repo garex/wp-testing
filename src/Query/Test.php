@@ -11,6 +11,18 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
     }
 
     /**
+     * @param integer $id
+     * @param string $name
+     * @return WpTesting_Model_Test
+     */
+    public function findByIdOrName($id, $name)
+    {
+        return $this->findFirstByParams(array(
+            'ID=|post_name=' => array($id, $name),
+        ));
+    }
+
+    /**
      * @param array $orderBy
      * @return WpTesting_Model_Test[]
      */
@@ -23,11 +35,24 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
      * @param array $orderBy
      * @return WpTesting_Model_Test[]
      */
-    public function findAllPublished(array $orderBy = array())
+    public function findAllPublished(array $orderBy = array(), $limit = null)
     {
         return $this->findAllByParams(array(
             'post_status='  => 'publish',
-        ), $orderBy);
+        ), $orderBy, $limit);
+    }
+
+    public function findAllByIds(array $ids = array())
+    {
+        if (empty($ids)) {
+            $ids = array(-1);
+        }
+
+        return $this->findAllByParams(array(
+            'ID='  => $ids,
+        ), array(
+            'FIELD(ID, ' . implode(', ', $ids) . ')' => 'ASC',
+        ));
     }
 
     /**
@@ -59,10 +84,24 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
      * @param array $orderBy
      * @return WpTesting_Model_Test[]
      */
-    protected function findAllByParams(array $where = array(), array $orderBy = array())
+    protected function findAllByParams(array $where = array(), array $orderBy = array(), $limit = null)
     {
         return fRecordSet::build($this->modelName, array(
             'post_type='    => 'wpt_test',
-        ) + $where, $orderBy);
+        ) + $where, $orderBy, $limit);
+    }
+
+    /**
+     * @param array $where
+     * @param array $orderBy
+     * @return WpTesting_Model_Test[]
+     * @throws  fNoRemainingException When test is not found
+     */
+    protected function findFirstByParams(array $where = array(), array $orderBy = array())
+    {
+        $result = fRecordSet::build($this->modelName, array(
+            'post_type='    => 'wpt_test',
+        ) + $where, $orderBy, $limit = 1);
+        return $result->getRecord(0);
     }
 }
