@@ -925,6 +925,60 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Search content for shortcodes and filter shortcodes through their hooks.
+     *
+     * If there are no shortcode tags defined, then the content will be returned
+     * without any filtering. This might cause issues when plugins are disabled but
+     * the shortcode will still show up in the post or content.
+     *
+     * @since 2.5.0
+     *
+     * @param string $content Content to search for shortcodes.
+     * @param bool $ignoreHtml When true, shortcodes inside HTML elements will be skipped.
+     * @return string Content with shortcodes filtered out.
+     */
+    public function doShortcode($content, $ignoreHtml = false )
+    {
+        return do_shortcode($content, $ignoreHtml);
+    }
+
+    /**
+     * Removes hook for shortcode.
+     *
+     * @since 2.5.0
+     *
+     * @param string $tag Shortcode tag to remove hook for.
+     * @return WpTesting_WordPressFacade
+     */
+    public function removeShortcode($tag)
+    {
+        remove_shortcode($tag);
+        return $this;
+    }
+
+    /**
+     * Combine user attributes with known attributes and fill in defaults when needed.
+     *
+     * The pairs should be considered to be all of the attributes which are
+     * supported by the caller and given as a list. The returned attributes will
+     * only contain the attributes in the $defaults list.
+     *
+     * If the $attributes list has unsupported attributes, then they will be ignored and
+     * removed from the final returned list.
+     *
+     * @since 2.5.0
+     *
+     * @param array  $defaults     Entire list of supported attributes and their defaults.
+     * @param array  $attributes   User defined attributes in shortcode tag.
+     * @param string $shortcode    Optional. The name of the shortcode, provided for context to enable filtering
+     * @return array Combined and filtered attribute list.
+     */
+    function sanitazeShortcodeAttributes($defaults, $attributes, $shortcode = '')
+    {
+        return shortcode_atts($defaults, $attributes, $shortcode);
+    }
+
+    /**
      * Add a meta box to an edit form.
      *
      * @since 2.5.0

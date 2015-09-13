@@ -126,4 +126,43 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
     {
         return null;
     }
+
+    public function sanitazeShortcodeAttributes($pairs, $atts, $tag = '')
+    {
+        // version from 2.9
+        $atts = (array)$atts;
+        $out = array();
+        foreach($pairs as $name => $default) {
+            if ( array_key_exists($name, $atts) )
+                $out[$name] = $atts[$name];
+            else
+                $out[$name] = $default;
+        }
+
+        // .. without filter here from 3.6
+
+        return $out;
+    }
+
+    public function getExtended($post)
+    {
+        // Version from 4.3
+
+        // Match the new style more links.
+        if (preg_match('/<!--more(.*?)?-->/', $post, $matches)) {
+            list($main, $extended) = explode($matches[0], $post, 2);
+            $more_text = $matches[1];
+        } else {
+            $main = $post;
+            $extended = '';
+            $more_text = '';
+        }
+
+        // leading and trailing whitespace.
+        $main = preg_replace('/^[\s]*(.*)[\s]*$/', '\\1', $main);
+        $extended = preg_replace('/^[\s]*(.*)[\s]*$/', '\\1', $extended);
+        $more_text = preg_replace('/^[\s]*(.*)[\s]*$/', '\\1', $more_text);
+
+        return array('main' => $main, 'extended' => $extended, 'more_text' => $more_text);
+    }
 }

@@ -1,13 +1,9 @@
 <?php
 require_once dirname(__FILE__) . '/Addon/IFacade.php';
+require_once dirname(__FILE__) . '/Facade/IORM.php';
 
-class WpTesting_Facade implements WpTesting_Addon_IFacade
+class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 {
-
-    /**
-     * @var WpTesting_Doer_ShortcodeProcessor
-     */
-    private $shortcodeProcessor = null;
 
     /**
      * @var WpTesting_Doer_TestEditor
@@ -121,9 +117,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         return $this;
     }
 
-    public function shortcodeList()
+    public function registerShortCodes()
     {
-        return $this->getShortcodeProcessor()->getList();
+        new WpTesting_Doer_ShortcodesRegistrator($this->wp, $this);
     }
 
     protected function registerWordPressHooks()
@@ -131,8 +127,8 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         $class = get_class($this);
         $this->wp
             ->addAction('init',              array($this,  'registerWordPressEntities'))
+            ->addAction('init',              array($this,  'registerShortCodes'))
             ->addAction('plugins_loaded',    array($this,  'loadLocale'))
-            ->addShortcode('wptlist',        array($this,  'shortcodeList'))
         ;
 
         if ($this->isPublicPage) {
@@ -213,18 +209,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         return $template;
     }
 
-    protected function getShortcodeProcessor()
-    {
-        if (!is_null($this->shortcodeProcessor)) {
-            return $this->shortcodeProcessor;
-        }
-
-        $this->setupORM();
-        $this->shortcodeProcessor = new WpTesting_Doer_ShortcodeProcessor($this->wp);
-
-        return $this->shortcodeProcessor;
-    }
-
     protected function getTestEditor()
     {
         if (!is_null($this->testEditor)) {
@@ -286,7 +270,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade
         return $this->addonUpdater;
     }
 
-    protected function setupORM()
+    public function setupORM()
     {
         if ($this->isOrmSettedUp) {
             return;

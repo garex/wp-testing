@@ -82,8 +82,8 @@ describe('Test', function() {
 
     it('should be in [wptlist] shortcode after publish', function() {
         casper.thenOpen(server + '/?p=1', function() {
-            '.wp-testing.shortcode.list'.should.be.inDOM
-            '.wp-testing.shortcode.list li'.should.not.contain.text('Hot or Not?!')
+            '.wp-testing.shortcode.tests'.should.be.inDOM
+            '.wp-testing.shortcode.tests li'.should.not.contain.text('Hot or Not?!')
         })
 
         casper.thenOpen(server + '/wp-admin/', function() {
@@ -105,8 +105,8 @@ describe('Test', function() {
         })
 
         casper.thenOpen(server + '/?p=1', function() {
-            '.wp-testing.shortcode.list'.should.be.inDOM
-            '.wp-testing.shortcode.list li'.should.contain.text('Hot or Not?!')
+            '.wp-testing.shortcode.tests'.should.be.inDOM
+            '.wp-testing.shortcode.tests li'.should.contain.text('Hot or Not?!')
         })
     })
 

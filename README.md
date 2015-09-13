@@ -95,6 +95,13 @@ Try to find there phrases like "Class ... not found" or "Call to undefined funct
 
 Sorry we dont' have it yet. Start from screenshots section and try to understand what where should be. Also we have an example test under the hood — it should helps.
 
+### Shortcodes? ###
+
+**wpt_tests** — the list of tests. Attributes (allowed values): sort/reverse (id, title, created, modified, status, name, comments), max (number), id (numbers separated by commas), list (values for CSS `list-style-type`), class (any CSS class name).
+
+**wpt_test_read_more** — the title of test, text before "more" and "Start Test" button. Attributes (allowed values): id/name (id or name or your test), start_title (any text), class (any CSS class name).
+
+
 ### Wonderful, but I want to have this, that and those feature in plugin ###
 
 Create new support topic if same feature topic not yet created and describe there what do you want. You can check already created topics from tags list.
