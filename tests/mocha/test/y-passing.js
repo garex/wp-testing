@@ -66,8 +66,8 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             : server + '/?p=1'
 
         casper.thenOpen(url).waitForText('Hello World!', function() {
-            '.wp-testing.shortcode.list'.should.be.inDOM
-            '.wp-testing.shortcode.list li'.should.contain.text('Test Containing Results')
+            '.wp-testing.shortcode.tests'.should.be.inDOM
+            '.wp-testing.shortcode.tests li'.should.contain.text('Test Containing Results')
             this.clickLabel('Test Containing Results')
         })
 
