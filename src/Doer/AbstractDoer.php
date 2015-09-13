@@ -131,7 +131,8 @@ abstract class WpTesting_Doer_AbstractDoer
 
     private function getResourcePrefix($mainClassStart, $abbr)
     {
-        $prefix = reset(explode('_', get_class($this)));
+        $parts  = explode('_', get_class($this));
+        $prefix = reset($parts);
         if ($prefix == $mainClassStart) {
             return $abbr;
         }

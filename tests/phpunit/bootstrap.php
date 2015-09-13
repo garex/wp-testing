@@ -16,4 +16,4 @@ $GLOBALS['wp_facade_mock'] = new WpTesting_Mock_WordPressFacade(
     $pluginFile,
     $migration['db']['development']
 );
-new WpTesting_Mock_Facade($GLOBALS['wp_facade_mock']);
+$GLOBALS['facade_mock'] = new WpTesting_Mock_Facade($GLOBALS['wp_facade_mock']);
