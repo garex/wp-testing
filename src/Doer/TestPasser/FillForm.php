@@ -49,12 +49,8 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
     public function renderContent($content, $template)
     {
         $this->addJsDataValues(array(
-            'isResetAnswersOnBack' => $this->test->isResetAnswersOnBack(),
-            'isShowProgressMeter'  => $this->test->isShowProgressMeter(),
             'titleSeparator'       => $this->titleSeparator,
             'percentsAnswered'     => __('{percentage}% answered', 'wp-testing'),
-            'questionsAnswered'    => $this->passing->getAnsweredQuestionsCount(),
-            'questionsTotal'       => $this->passing->getQuestionsCount(),
         ));
 
         $step = $this->passing->getCurrentStep();
@@ -70,6 +66,20 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         if (isset($_POST[$answerIdName]) && is_array($_POST[$answerIdName])) {
             $answerIndex = max(array_keys($_POST[$answerIdName])) + 1;
         }
+        $formAttributes = $this->wp->applyFilters('wp_testing_passer_fill_form_form_attributes', array(
+            'method'  => 'post',
+            'id'      => 'wpt-test-form-' . $this->test->getId(),
+            'class'   => $this->getFormClasses(),
+            'action'  => $this->wp->getPermalink($this->test->toWpPost()),
+            'data-settings' => array(
+                'isResetAnswersOnBack' => $this->test->isResetAnswersOnBack(),
+                'isShowProgressMeter'  => $this->test->isShowProgressMeter(),
+            ),
+            'data-questions' => array(
+                'answered'  => $this->passing->getAnsweredQuestionsCount(),
+                'total'     => $this->passing->getQuestionsCount(),
+            ),
+        ));
         $params = array(
             'wp'           => $this->wp,
             'hiddens'      => $this->generateHiddens($step),
@@ -78,15 +88,14 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'content'      => $content,
             'test'         => $this->test,
             'questions'    => $step->getQuestions(),
-            'isShowContent'=> $step->isFirst(),
-            'formClasses'  => $this->getFormClasses(),
-            'formAction'   => $this->wp->getPermalink($this->test->toWpPost()),
-            'subTitle'     => $step->getTitle(),
-            'shortDescription'     => $step->getDescription(),
-            'isFinal'              => $this->test->isFinal(),
-            'isMultipleAnswers'    => $this->test->isMultipleAnswers(),
+            'isShowContent'     => $step->isFirst(),
+            'formAttributes'    => $formAttributes,
+            'subTitle'          => $step->getTitle(),
+            'shortDescription'  => $step->getDescription(),
+            'isFinal'           => $this->test->isFinal(),
+            'isMultipleAnswers' => $this->test->isMultipleAnswers(),
+            'stepsCounter'      => $this->passing->getStepsCounter(),
             'submitButtonCaption'  => $submitButtonCaption,
-            'stepsCounter' => $this->passing->getStepsCounter(),
         );
 
         $this->wp->doAction('wp_testing_passer_fill_form_render_content', $this->passing, $this->test);
@@ -155,6 +164,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
     private function getFormClasses()
     {
         $formClasses = array(
+            'wpt_test_form',
         );
         return implode(' ', $this->wp->applyFilters('wp_testing_passer_fill_form_form_classes', $formClasses));
     }
