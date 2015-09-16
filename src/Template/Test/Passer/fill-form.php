@@ -5,6 +5,7 @@
 /* @var $answerIndex integer */
 /* @var $isShowContent boolean */
 /* @var $formClasses string */
+/* @var $formAction string */
 /* @var $content string */
 /* @var $subTitle string */
 /* @var $shortDescription string */
@@ -25,7 +26,7 @@
 </div>
 <?php endif ?>
 
-<div class="content"><form method="post" id="wpt-test-form" class="<?php echo $formClasses ?>">
+<div class="content"><form method="post" id="wpt-test-form" class="<?php echo $formClasses ?>" action="<?php echo $formAction ?>">
 <?php if ($subTitle): ?><h2 class="subtitle"><?php echo $subTitle ?></h2><?php endif ?>
 <?php if ($shortDescription): ?><div class="short-description"><?php echo $wp->autoParagraphise($shortDescription) ?></div><?php endif ?>
 <?php $wp->doAction('wp_testing_template_fill_form_questions_before') ?>

@@ -847,6 +847,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Check if any filter has been registered for a hook.
+     *
+     * @since 2.5.0
+     *
+     * @param string        $tag               The name of the filter hook.
+     * @param callback|bool $function Optional. The callback to check for. Default false.
+     * @return false|int If $function is omitted, returns boolean for whether the hook has
+     *                   anything registered. When checking a specific function, the priority of that
+     *                   hook is returned, or false if the function is not attached. When using the
+     *                   $function_to_check argument, this function may return a non-boolean value
+     *                   that evaluates to false (e.g.) 0, so use the === operator for testing the
+     *                   return value.
+     */
+    public function hasFilter($tag, $function)
+    {
+        return has_filter($tag, $function);
+    }
+
+    /**
      * Adds filter once
      *
      * @see WpTesting_WordPressFacade::addFilter
@@ -854,7 +873,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function addFilterOnce($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
-        if (has_filter($tag, $function)) {
+        if ($this->hasFilter($tag, $function)) {
             return $this;
         }
         return $this->addFilter($tag, $function, $priority, $functionArgsCount);

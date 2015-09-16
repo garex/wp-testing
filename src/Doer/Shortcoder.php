@@ -20,7 +20,7 @@ abstract class WpTesting_Doer_Shortcoder extends WpTesting_Doer_AbstractDoer
             $shortcode = $this->createShortcode($attributes);
             return $this->render(
                 $this->chooseTemplate($shortcode),
-                $shortcode->getDataForTemplate($this->orm)
+                $this->getData($shortcode)
             );
         } catch (PHPUnit_Framework_Error $e) {
             throw $e;
@@ -39,6 +39,11 @@ abstract class WpTesting_Doer_Shortcoder extends WpTesting_Doer_AbstractDoer
                 'class'   => get_class($e),
             )
         );
+    }
+
+    protected function getData(WpTesting_Model_Shortcode $shortcode)
+    {
+        return $shortcode->getDataForTemplate($this->orm);
     }
 
     /**

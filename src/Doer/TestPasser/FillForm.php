@@ -80,6 +80,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'questions'    => $step->getQuestions(),
             'isShowContent'=> $step->isFirst(),
             'formClasses'  => $this->getFormClasses(),
+            'formAction'   => $this->wp->getPermalink($this->test->toWpPost()),
             'subTitle'     => $step->getTitle(),
             'shortDescription'     => $step->getDescription(),
             'isFinal'              => $this->test->isFinal(),
