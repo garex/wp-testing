@@ -99,11 +99,13 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         );
 
         $this->wp->doAction('wp_testing_passer_fill_form_render_content', $this->passing, $this->test);
-        return preg_replace_callback(
+        $content = preg_replace_callback(
             '|<form.+</form>|s',
             array($this, 'stripNewLines'),
             $this->render($template, $params)
         );
+        $this->wp->doAction('wp_testing_passer_fill_form_after_render', $this->passing, $this->test);
+        return $content;
     }
 
     /**
