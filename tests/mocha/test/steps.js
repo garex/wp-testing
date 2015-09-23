@@ -104,24 +104,24 @@ describe('Steps', function() {
 
     it('should have Next button and not Get Results', function() {
         casper.then(function() {
-            '#wpt-test-form input[type=submit][value="Next"]'.should.be.inDOM
-            '#wpt-test-form input[type=submit][value="Get Test Results"]'.should.not.be.inDOM
+            'form.wpt_test_form input[type=submit][value="Next"]'.should.be.inDOM
+            'form.wpt_test_form input[type=submit][value="Get Test Results"]'.should.not.be.inDOM
         })
     })
 
     it('should have 33% answered and next non-disabled after answer', function() {
         casper.then(function() {
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
             this.getTitle().should.match(/^33% ans/)
-            '#wpt-test-form input[type=submit]'.should.not.have.attr('disabled')
+            'form.wpt_test_form input[type=submit]'.should.not.have.attr('disabled')
         })
     })
 
     it('should open 2nd step', function() {
         isOpened = false
         casper.then(function() {
-            this.fill('form#wpt-test-form', {}, true)
+            this.fill('form.wpt_test_form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
             '2 out of 3'.should.be.textInDOM
@@ -150,9 +150,9 @@ describe('Steps', function() {
     it('should open last step', function() {
         isOpened = false
         casper.then(function() {
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
             '3.'.should.be.textInDOM
@@ -162,8 +162,8 @@ describe('Steps', function() {
 
     it('should have Get Results button and not Next', function() {
         casper.then(function() {
-            '#wpt-test-form input[type=submit][value="Get Test Results"]'.should.be.inDOM
-            '#wpt-test-form input[type=submit][value="Next"]'.should.not.be.inDOM
+            'form.wpt_test_form input[type=submit][value="Get Test Results"]'.should.be.inDOM
+            'form.wpt_test_form input[type=submit][value="Next"]'.should.not.be.inDOM
         })
     })
 
@@ -176,9 +176,9 @@ describe('Steps', function() {
     it('should show results page after click', function() {
         isOpened = false
         casper.then(function() {
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.wait(300).fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.wait(300).fill('form.wpt_test_form', {}, true)
         }).waitForUrl(/three-steps/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM

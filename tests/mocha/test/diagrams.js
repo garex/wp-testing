@@ -94,9 +94,9 @@ describe('Diagrams', function() {
         resultUrl = ''
 
         casper.thenOpen(testViewUrl).waitForUrl(/test/, function() {
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {

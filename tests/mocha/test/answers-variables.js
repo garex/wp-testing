@@ -22,7 +22,7 @@ describe('Answers variables', function() {
 
         casper.waitForUrl(/answers/, function() {
             'Test is under construction'.should.be.textInDOM
-            '#wpt-test-form input[type=submit]'.should.not.be.inDOM
+            'form.wpt_test_form input[type=submit]'.should.not.be.inDOM
             testViewUrl = this.getCurrentUrl()
         })
     })
@@ -49,14 +49,14 @@ describe('Answers variables', function() {
     it('should show test as final then', function() {
         casper.open(testViewUrl, function() {
             'Test is under construction'.should.not.be.textInDOM
-            '#wpt-test-form input[type=submit]'.should.be.inDOM
+            'form.wpt_test_form input[type=submit]'.should.be.inDOM
         })
     })
 
     it('should show first result after choosing first question and answer', function() {
         casper.then(function() {
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM
