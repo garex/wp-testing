@@ -70,7 +70,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             'method'  => 'post',
             'id'      => 'wpt-test-form-' . $this->test->getId(),
             'class'   => $this->getFormClasses(),
-            'action'  => $this->wp->getPermalink($this->test->toWpPost()),
+            'action'  => $this->test->getPublishedUrl(),
             'data-settings' => array(
                 'isResetAnswersOnBack' => $this->test->isResetAnswersOnBack(),
                 'isShowProgressMeter'  => $this->test->isShowProgressMeter(),
