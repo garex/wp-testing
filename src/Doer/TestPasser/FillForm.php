@@ -31,6 +31,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             ->upgradeJqueryForOldWordPress()
             ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
             ->enqueueScript('test-pass-fill-form', array('jquery', 'pnegri_uuid', 'samyk_evercookie', 'webshim'))
+            ->fixFooterScriptsForOldWordPress()
         ;
         $this->wp
             ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
@@ -126,6 +127,31 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         ;
 
         return $this;
+    }
+
+    /**
+     * Correctly preprocess scripts for footer group in old WordPress
+     *
+     * @return WpTesting_Doer_TestPasser_FillForm
+     */
+    private function fixFooterScriptsForOldWordPress()
+    {
+        if ($this->isWordPressAlready('3.3')) {
+            return $this;
+        }
+        $this->wp->addFilterOnce('print_footer_scripts', array($this, 'kickoffFooterScripts'));
+        return $this;
+    }
+
+    /**
+     * Prepare footer scripts
+     * @category filter
+     * @return boolean
+     */
+    public function kickoffFooterScripts()
+    {
+        $this->wp->getScripts()->do_items(false, 1);
+        return true;
     }
 
     private function generateHiddens(WpTesting_Model_Step $step)

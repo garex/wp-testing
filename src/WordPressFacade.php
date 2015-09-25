@@ -489,7 +489,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $pluginRelatedPath
      * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
      * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
-     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @param boolean $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
      * @return WpTesting_WordPressFacade
      */
     public function enqueuePluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
@@ -510,7 +510,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $pluginRelatedPath
      * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
      * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
-     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @param boolean $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
      * @return WpTesting_WordPressFacade
      */
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
@@ -535,6 +535,20 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     {
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
+    }
+
+    /**
+     * Get WP_Scripts instance or create it if needed
+     *
+     * @return WP_Scripts
+     */
+    public function getScripts()
+    {
+        if (!isset($GLOBALS['wp_scripts']) || !is_a($GLOBALS['wp_scripts'], 'WP_Scripts')) {
+            $GLOBALS['wp_scripts'] = new WP_Scripts();
+        }
+
+        return $GLOBALS['wp_scripts'];
     }
 
     /**
