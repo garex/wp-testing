@@ -33,7 +33,7 @@ class WpTesting_Addon_Updater
          * @since 2015-07-31
          * @author Ustimenko Alexander
          */
-        $checker = PucFactory::buildUpdateChecker(
+        PucFactory::buildUpdateChecker(
             $metadataUrl,
             $pluginFile,
             '',

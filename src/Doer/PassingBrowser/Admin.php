@@ -20,10 +20,9 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
 
     /**
      * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
      * @return self
      */
-    public function processActionTrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionTrash(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->trash();
@@ -33,10 +32,9 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
 
     /**
      * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
      * @return self
      */
-    public function processActionUntrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionUntrash(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->publish();
@@ -46,10 +44,9 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
 
     /**
      * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
      * @return self
      */
-    public function processActionDelete(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionDelete(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->delete(true);
