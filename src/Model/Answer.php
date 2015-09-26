@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method string getTitleOnce() getTitleOnce() Gets cached value of title
- * @method integer getGlobalAnswerId() getGlobalAnswerId() Gets the current value of global answer id
- * @method integer getSort() getSort() Gets the current value of sort
- * @method integer getQuestionId() getQuestionId() Gets the current value of question id
- * @method WpTesting_Model_Answer setSort() setSort(integer $sort) Sets the value for sort
+ * @method integer getId() Gets the current value of id
+ * @method string getTitleOnce() Gets cached value of title
+ * @method integer getGlobalAnswerId() Gets the current value of global answer id
+ * @method integer getSort() Gets the current value of sort
+ * @method integer getQuestionId() Gets the current value of question id
+ * @method WpTesting_Model_Answer setSort(integer $sort) Sets the value for sort
  */
 class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 {

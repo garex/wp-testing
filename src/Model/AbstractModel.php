@@ -1,6 +1,6 @@
 <?php
 /**
- * @method array getColumnsAsMethodsOnce() getColumnsAsMethodsOnce()
+ * @method array getColumnsAsMethodsOnce()
  */
 abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 {
@@ -215,7 +215,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         }
         $paramsDoc  = implode(', ', $paramsDoc);
         $commentDoc = preg_replace('/\s+/', ' ', $comment);
-        return " * @method $returnType $methodName() $methodName($paramsDoc) $commentDoc";
+        return " * @method $returnType $methodName($paramsDoc) $commentDoc";
     }
 
     protected function loadFromResult($result, $ignore_identity_map=FALSE)

@@ -1,24 +1,24 @@
 <?php
 
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method WpTesting_Model_Passing setId() setId(integer $id) Sets the value for id
- * @method integer getTestId() getTestId() Gets the current value of test_id
- * @method WpTesting_Model_Passing setTestId() setTestId(integer $id) Sets the value for test_id
- * @method fTimestamp getCreated() getCreated() Gets the current value of created
- * @method WpTesting_Model_Passing setCreated() setCreated(fTimestamp|string $created) Sets the value for created
- * @method fTimestamp getModified() getModified() Gets the current value of modified
- * @method WpTesting_Model_Passing setModified() setModified(fTimestamp|string $modified) Sets the value for modified
- * @method integer getIp() getIp() Gets the current value of ip
- * @method WpTesting_Model_Passing setIp() setIp(string $ip) Sets the value for ip
- * @method integer getDeviceUuid() getDeviceUuid() Gets the current value of device's uuid
- * @method WpTesting_Model_Passing setDeviceUuid() setDeviceUuid(string $uuid) Sets the value for device's uuid
- * @method integer getUserAgent() getUserAgent() Gets the current value of user agent
- * @method WpTesting_Model_Passing setUserAgent() setUserAgent(string $userAgent) Sets the value for user agent
- * @method integer getRespondentId() getRespondentId() Gets the current value of respondent id
- * @method string getStatus() getStatus() Gets the current value of status
- * @method WpTesting_Model_Passing setStatus() setStatus(string $status) Sets the value for status
- * @method WpTesting_Model_Answer[] buildAnswersOnce() buildAnswersOnce() Gets passing's answers with cache
+ * @method integer getId() Gets the current value of id
+ * @method WpTesting_Model_Passing setId(integer $id) Sets the value for id
+ * @method integer getTestId() Gets the current value of test_id
+ * @method WpTesting_Model_Passing setTestId(integer $id) Sets the value for test_id
+ * @method fTimestamp getCreated() Gets the current value of created
+ * @method WpTesting_Model_Passing setCreated(fTimestamp|string $created) Sets the value for created
+ * @method fTimestamp getModified() Gets the current value of modified
+ * @method WpTesting_Model_Passing setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method integer getIp() Gets the current value of ip
+ * @method WpTesting_Model_Passing setIp(string $ip) Sets the value for ip
+ * @method integer getDeviceUuid() Gets the current value of device's uuid
+ * @method WpTesting_Model_Passing setDeviceUuid(string $uuid) Sets the value for device's uuid
+ * @method integer getUserAgent() Gets the current value of user agent
+ * @method WpTesting_Model_Passing setUserAgent(string $userAgent) Sets the value for user agent
+ * @method integer getRespondentId() Gets the current value of respondent id
+ * @method string getStatus() Gets the current value of status
+ * @method WpTesting_Model_Passing setStatus(string $status) Sets the value for status
+ * @method WpTesting_Model_Answer[] buildAnswersOnce() Gets passing's answers with cache
  */
 class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 {

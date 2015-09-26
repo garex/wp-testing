@@ -1,30 +1,30 @@
 <?php
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method WpTesting_Model_Test setId() setId(integer $id) Sets the value for id
- * @method string getTitle() getTitle() Gets the current value of title
- * @method WpTesting_Model_Test setTitle() setTitle(string $title) Sets the value for title
- * @method fTimestamp getCreated() getCreated() Gets the current value of created
- * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
- * @method fTimestamp getModified() getModified() Gets the current value of modified
- * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
- * @method WpTesting_Model_Test setContent() setContent(string $content) Sets the value for content
- * @method string getContent() getContent() Gets the current value of content
- * @method string getStatus() getStatus() Gets the current value of status
- * @method WpTesting_Model_Test setExcerpt() setExcerpt(string $excerpt) Sets the value for excerpt
- * @method string getExcerpt() getExcerpt() Gets the current value of excerpt
- * @method WpTesting_Model_Test setContentFiltered() setContentFiltered(string $contentFiltered) Sets the value for content filtered
- * @method string getContentFiltered() getContentFiltered() Gets the current value of content filtered
- * @method WpTesting_Model_Test setToPing() setToPing(string $toPing) Sets the value for URLs that should be pinged
- * @method string getToPing() getToPing() Gets the current value for URLs that should be pinged
- * @method WpTesting_Model_Test setPinged() setPinged(string $pinged) Sets the value for URLs that already pinged
- * @method string getPinged() getPinged() Gets the current value for URLs that already pinged
- * @method WpTesting_Model_Test setType() setType(string $type) Sets the value for type that should be wpt_test
- * @method string getType() getType() Gets the current value for type
- * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
- * @method string getName() getName() Gets the current value for name (url unique part)
- * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
- * @method WpTesting_Model_Formula[] buildFormulasOnce() buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
+ * @method integer getId() Gets the current value of id
+ * @method WpTesting_Model_Test setId(integer $id) Sets the value for id
+ * @method string getTitle() Gets the current value of title
+ * @method WpTesting_Model_Test setTitle(string $title) Sets the value for title
+ * @method fTimestamp getCreated() Gets the current value of created
+ * @method WpTesting_Model_Test setCreated(fTimestamp|string $created) Sets the value for created
+ * @method fTimestamp getModified() Gets the current value of modified
+ * @method WpTesting_Model_Test setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method WpTesting_Model_Test setContent(string $content) Sets the value for content
+ * @method string getContent() Gets the current value of content
+ * @method string getStatus() Gets the current value of status
+ * @method WpTesting_Model_Test setExcerpt(string $excerpt) Sets the value for excerpt
+ * @method string getExcerpt() Gets the current value of excerpt
+ * @method WpTesting_Model_Test setContentFiltered(string $contentFiltered) Sets the value for content filtered
+ * @method string getContentFiltered() Gets the current value of content filtered
+ * @method WpTesting_Model_Test setToPing(string $toPing) Sets the value for URLs that should be pinged
+ * @method string getToPing() Gets the current value for URLs that should be pinged
+ * @method WpTesting_Model_Test setPinged(string $pinged) Sets the value for URLs that already pinged
+ * @method string getPinged() Gets the current value for URLs that already pinged
+ * @method WpTesting_Model_Test setType(string $type) Sets the value for type that should be wpt_test
+ * @method string getType() Gets the current value for type
+ * @method WpTesting_Model_Test setName(string $name) Sets the value for name (url unique part)
+ * @method string getName() Gets the current value for name (url unique part)
+ * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
+ * @method WpTesting_Model_Formula[] buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {

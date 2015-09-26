@@ -5,13 +5,13 @@
  *
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
- * @method integer getId() getId() Gets the current value of id
- * @method integer getTestId() getTestId() Gets the current value of test id
- * @method WpTesting_Model_Formula setTestId() setTestId(integer $id) Sets the value for test id
- * @method integer getResultId() getResultId() Gets the current value of result id
- * @method WpTesting_Model_Formula setResultId() setResultId(integer $id) Sets the value for result id
- * @method string getSource() getSource() Gets the current value of source
- * @method WpTesting_Model_Formula setSource() setSource(string $source) Sets the value for source
+ * @method integer getId() Gets the current value of id
+ * @method integer getTestId() Gets the current value of test id
+ * @method WpTesting_Model_Formula setTestId(integer $id) Sets the value for test id
+ * @method integer getResultId() Gets the current value of result id
+ * @method WpTesting_Model_Formula setResultId(integer $id) Sets the value for result id
+ * @method string getSource() Gets the current value of source
+ * @method WpTesting_Model_Formula setSource(string $source) Sets the value for source
  */
 class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 {
