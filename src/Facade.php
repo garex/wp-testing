@@ -184,7 +184,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
     public function setupTestEditor($screen)
     {
         $this->wp->doAction('wp_testing_editor_setup_before');
-        $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies($screen);
+        $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies();
         $this->wp->doAction('wp_testing_editor_setup_after');
         return $screen;
     }
