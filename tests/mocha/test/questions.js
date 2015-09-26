@@ -104,7 +104,7 @@ describe('Questions', function() {
     it('should be in non-final test', function() {
         casper.then(function() {
             'Test is under construction'.should.be.textInDOM
-            '#wpt-test-form input[type=submit]'.should.not.be.inDOM
+            'form.wpt_test_form input[type=submit]'.should.not.be.inDOM
         })
     })
 })

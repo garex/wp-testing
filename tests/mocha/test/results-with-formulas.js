@@ -66,10 +66,10 @@ describe('Results with formulas', function() {
         })
 
         casper.waitForUrl(/wpt_test/, function() {
-            this.clickLabel('Yezzzzzzz!',                '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
-            this.clickLabel('Yes',                       '*[@id="wpt-test-form"]/*[3]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yezzzzzzz!',                '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('I said yes. I confirm it.', '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
+            this.clickLabel('Yes',                       '*[starts-with(@id, "wpt-test-form")]/*[3]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/[a-z0-9]+[a-f0-9]{32}/, function() {

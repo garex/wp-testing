@@ -74,7 +74,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         casper.waitForUrl(/test.+results/, function() {
             'Fatal'.should.not.be.textInDOM
             'Test Containing Results'.should.be.inTitle
-            '#wpt-test-form input[type=submit]'.should.be.inDOM
+            'form.wpt_test_form input[type=submit]'.should.be.inDOM
         })
     })
 
@@ -91,21 +91,21 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             })
 
             this.evaluate(function(){
-                return document.getElementById('wpt-test-form').checkValidity()
+                return document.getElementsByClassName('wpt_test_form')[0].checkValidity()
             }).should.be.false
 
-            this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
+            this.clickLabel('Yezzzzzzz!', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('I said yes. I confirm it.', '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
 
             this.evaluate(function(){
-                return document.getElementById('wpt-test-form').checkValidity()
+                return document.getElementsByClassName('wpt_test_form')[0].checkValidity()
             }).should.be.false
 
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[3]/*//label')
             'Yezzzzzzz!'.should.be.textInDOM
 
             this.evaluate(function(){
-                return document.getElementById('wpt-test-form').checkValidity()
+                return document.getElementsByClassName('wpt_test_form')[0].checkValidity()
             }).should.be.true
         })
     })
@@ -114,7 +114,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
     it('should show results with scales on submit', function() {
         casper.then(function() {
             'London is the capital of great britan'.should.be.textInDOM
-            this.fill('form#wpt-test-form', {}, true)
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/test.+results.+[a-z0-9]+[a-f0-9]{32}/, function() {
@@ -150,7 +150,7 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
     it('should reset answers on back if this option enabled', function() {
         casper.back().then(function() {
             this.evaluate(function(){
-                return document.getElementById('wpt-test-form').checkValidity()
+                return document.getElementsByClassName('wpt_test_form')[0].checkValidity()
             }).should.be.false
         })
 
@@ -161,10 +161,10 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
 
     it('should give same results on back-n-submit with new passing url', function() {
         casper.then(function() {
-            this.clickLabel('Yezzzzzzz!', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.clickLabel('I said yes. I confirm it.', '*[@id="wpt-test-form"]/*[2]/*//label')
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[3]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yezzzzzzz!', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.clickLabel('I said yes. I confirm it.', '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[3]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/test.+results.+[a-z0-9]+[a-f0-9]{32}/, function() {
@@ -219,15 +219,15 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         })
 
         casper.waitForUrl(/test/, function() {
-            '#wpt-test-form input[type=submit]'.should.have.attr('value', 'Gimme Gimme')
+            'form.wpt_test_form input[type=submit]'.should.have.attr('value', 'Gimme Gimme')
         })
     })
 
     it('should not show scales and test description when they are disabled', function() {
         casper.then(function() {
             'Allow others to rate the vacuum on the Earth'.should.be.textInDOM
-            this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-            this.fill('form#wpt-test-form', {}, true)
+            this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
@@ -247,9 +247,9 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
             'Eysenck'.should.be.inTitle
 
             for (var i = 1, iMax = 57; i <= iMax; i++) {
-                this.clickLabel('No',  '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
+                this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[' + i + ']/*//label')
             }
-            this.fill('form#wpt-test-form', {}, true)
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.waitForUrl(/test.+eysencks/, function() {
@@ -276,11 +276,11 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         casper.waitForUrl(/not/, function() {
             'Fatal'.should.not.be.textInDOM
             'To Be'.should.be.inTitle
-            this.fill('form#wpt-test-form', {}, true)
+            this.fill('form.wpt_test_form', {}, true)
         })
 
         casper.then(function() {
-            '#wpt-test-form'.should.not.be.inDOM
+            'form.wpt_test_form'.should.not.be.inDOM
             'Test is under construction'.should.be.textInDOM
         })
     })
@@ -314,8 +314,8 @@ describe('Passings', function() {
             })
 
             casper.waitForUrl(/test/, function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-                this.fill('form#wpt-test-form', {}, true)
+                this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+                this.fill('form.wpt_test_form', {}, true)
             })
         })
 
