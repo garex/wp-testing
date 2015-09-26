@@ -688,6 +688,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
+     * Gets test' public URL when it visible to public
+     *
+     * @return string
+     */
+    public function getPublishedUrl()
+    {
+        return $this->isPublished() ? $this->wp->getPermalink($this->toWpPost()) : null;
+    }
+
+    /**
      * Export as WP native content entity object
      *
      * @return WP_Post

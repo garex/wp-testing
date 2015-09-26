@@ -101,6 +101,7 @@ Sorry we dont' have it yet. Start from screenshots section and try to understand
 
 **wpt_test_read_more** — the title of test, text before "more" and "Start Test" button. Attributes (allowed values): id/name (id or name or your test), start_title (any text), class (any CSS class name).
 
+**wpt_test_first_page** — the first page of the test with title. Attributes (allowed values): id/name (id or name or your test), class (any CSS class name).
 
 ### Wonderful, but I want to have this, that and those feature in plugin ###
 

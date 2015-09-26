@@ -20,6 +20,30 @@ abstract class WpTesting_Model_Shortcode
         $this->setProperties($attributes);
     }
 
+    /**
+     * Unique name for shortcode
+     *
+     * When shortcode has id/names, they could be added to it's unique name.
+     * In other cases it will be same as name.
+     *
+     * @return string
+     */
+    public function getUniqueName()
+    {
+        $result = $this->getName();
+        $id     = $this->getUniqueIdentifier();
+        return ($id) ? $result . '#' . $id : $result;
+    }
+
+    /**
+     * Should be overrided by shortcodes, which could be identified by ids/names/other params
+     * @return mixed
+     */
+    protected function getUniqueIdentifier()
+    {
+        return null;
+    }
+
     public function getDataForTemplate(WpTesting_Facade_IORM $ormAware)
     {
         return array();

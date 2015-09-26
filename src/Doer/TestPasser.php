@@ -45,18 +45,58 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return $this;
         }
 
-        $this->test = $this->createTest($this->wp->getQuery()->get_queried_object());
+        try {
+            $this->beforeRender($this->createTest($this->wp->getQuery()->get_queried_object()));
+        } catch (UnexpectedValueException $e) {
+            return $this->dieUnderConctruction();
+        }
+
+        $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+        return $this;
+    }
+
+    /**
+     * @param WpTesting_Model_Test $test
+     * @throws UnexpectedValueException
+     * @return self
+     */
+    private function beforeRender(WpTesting_Model_Test $test)
+    {
+        $this->test = $test;
         $action     = $this->getTestPassingAction();
         $isLive     = (self::ACTION_FILL_FORM == $action || $this->test->isFinal());
         if (!$isLive) {
-            return $this->dieUnderConctruction();
+            throw new UnexpectedValueException(sprintf('Test %d is under construction', $test->getId()));
+            return __('Test is under construction', 'wp-testing');
         }
 
         $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
         $this->createActionProcessor($action)->beforeRender($this->test, $this->passing);
         $this->enqueueStyle('public');
-        $this->wp->addFilter('the_content', array($this, 'renderTestContent'));
         return $this;
+    }
+
+    public function renderOutside(WpTesting_Model_Test $test)
+    {
+        try {
+            $this->beforeRender($test);
+        } catch (UnexpectedValueException $e) {
+            return __('Test is under construction', 'wp-testing');
+        }
+
+        $hasFilter = $this->wp->hasFilter('the_content', array($this, 'renderTestContent'));
+        if ($hasFilter) {
+            $this->wp->removeFilter('the_content', array($this, 'renderTestContent'), 20);
+        }
+
+        $content = $this->wp->applyFilters('the_content', $test->getContent());
+        $content = $this->renderTestContent($content);
+
+        if ($hasFilter) {
+            $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+        }
+
+        return $content;
     }
 
     public function addPassingActionCssClass($classes)
@@ -81,6 +121,11 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return $this->filteredTestContent;
         }
 
+        $hasFilter = $this->wp->hasFilter('the_content', array($this, 'renderTestContent'));
+        if ($hasFilter) {
+            $this->wp->removeFilter('the_content', array($this, 'renderTestContent'), 20);
+        }
+
         $action   = $this->getTestPassingAction();
         $template = $this->wp->locateTemplate('entry-content-wpt-test-' . $action . '.php');
         $template = ($template) ? $template : 'Test/Passer/' . $action;
@@ -89,6 +134,10 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $this->wp->doAction('wp_testing_passer_render_content_' . $action,  $this->test);
 
         $this->filteredTestContent = $this->createActionProcessor($action)->renderContent($content, $template);
+
+        if ($hasFilter) {
+            $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+        }
         return $this->filteredTestContent;
     }
 

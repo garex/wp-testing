@@ -489,7 +489,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $pluginRelatedPath
      * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
      * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
-     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @param boolean $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
      * @return WpTesting_WordPressFacade
      */
     public function enqueuePluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
@@ -510,7 +510,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $pluginRelatedPath
      * @param array $dependencies Optional. An array of registered handles this script depends on. Default empty array.
      * @param string $version Optional. String specifying the script version number, if it has one. This parameter is used to ensure that the correct version is sent to the client regardless of caching, and so should be included if a version number is available and makes sense for the script.
-     * @param string $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
+     * @param boolean $isInFooter Optional. Whether to enqueue the script before or before . Default 'false'. Accepts 'false' or 'true'.
      * @return WpTesting_WordPressFacade
      */
     public function registerPluginScript($name, $pluginRelatedPath, array $dependencies = array(), $version = false, $isInFooter = false)
@@ -535,6 +535,20 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     {
         wp_register_script($name, $path, $dependencies, $version, $isInFooter);
         return $this;
+    }
+
+    /**
+     * Get WP_Scripts instance or create it if needed
+     *
+     * @return WP_Scripts
+     */
+    public function getScripts()
+    {
+        if (!isset($GLOBALS['wp_scripts']) || !is_a($GLOBALS['wp_scripts'], 'WP_Scripts')) {
+            $GLOBALS['wp_scripts'] = new WP_Scripts();
+        }
+
+        return $GLOBALS['wp_scripts'];
     }
 
     /**
@@ -830,6 +844,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Removes a function from a specified action hook.
+     *
+     * This function removes a function attached to a specified action hook. This
+     * method can be used to remove default functions attached to a specific filter
+     * hook and possibly replace them with a substitute.
+     *
+     * @since 1.2.0
+     *
+     * @param string   $tag      The action hook to which the function to be removed is hooked.
+     * @param callback $function The name of the function which should be removed.
+     * @param int      $priority Optional. The priority of the function. Default 10.
+     * @return WpTesting_WordPressFacade
+     */
+    public function removeAction($tag, $function, $priority = 10) {
+        remove_action($tag, $function);
+        return $this;
+    }
+
+    /**
      * Hooks a function or method to a specific filter action.
      *
      * @since 0.71
@@ -847,6 +880,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Check if any filter has been registered for a hook.
+     *
+     * @since 2.5.0
+     *
+     * @param string        $tag               The name of the filter hook.
+     * @param callback|bool $function Optional. The callback to check for. Default false.
+     * @return false|int If $function is omitted, returns boolean for whether the hook has
+     *                   anything registered. When checking a specific function, the priority of that
+     *                   hook is returned, or false if the function is not attached. When using the
+     *                   $function_to_check argument, this function may return a non-boolean value
+     *                   that evaluates to false (e.g.) 0, so use the === operator for testing the
+     *                   return value.
+     */
+    public function hasFilter($tag, $function)
+    {
+        return has_filter($tag, $function);
+    }
+
+    /**
      * Adds filter once
      *
      * @see WpTesting_WordPressFacade::addFilter
@@ -854,7 +906,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function addFilterOnce($tag, $function, $priority = 10, $functionArgsCount = 1)
     {
-        if (has_filter($tag, $function)) {
+        if ($this->hasFilter($tag, $function)) {
             return $this;
         }
         return $this->addFilter($tag, $function, $priority, $functionArgsCount);
