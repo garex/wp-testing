@@ -1,6 +1,4 @@
 <?php
-require_once dirname(__FILE__) . '/Addon/IFacade.php';
-require_once dirname(__FILE__) . '/Facade/IORM.php';
 
 class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 {
