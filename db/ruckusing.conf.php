@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR .  'wp_testing' . DIRECTORY_SEPARATOR . '_BaseMigration.php';
+
 $local = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ruckusing.conf.local.php';
 if (file_exists($local)) {
     return require_once $local;

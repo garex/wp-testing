@@ -18,7 +18,6 @@ abstract class BaseMigration extends Ruckusing_Migration_Base
         return '';
     }
 
-
     /**
      * Get default wordpress tables engine
      *

@@ -1,7 +1,5 @@
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
-
 class AddQuestionsTable extends BaseMigration
 {
     public function up()
