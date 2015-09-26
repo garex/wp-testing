@@ -283,7 +283,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             $port = $m[2];
         }
         $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
-        // $database->enableDebugging(true);
         fORMDatabase::attach($database);
 
         fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
