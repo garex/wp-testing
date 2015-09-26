@@ -100,8 +100,8 @@ describe('Answers1 and Scales1', function() {
             'Fatal'.should.not.be.textInDOM
             '`5 + 5 is "10?'.should.be.textInDOM
             '6 + 6 is \'10?'.should.be.textInDOM
-            '#wpt-test-form .answer label'.should.be.inDOM
-            '#wpt-test-form .answer label'.should.contain.text('Yes')
+            'form.wpt_test_form .answer label'.should.be.inDOM
+            'form.wpt_test_form .answer label'.should.contain.text('Yes')
         })
     })
 
@@ -129,7 +129,7 @@ describe('Answers1 and Scales1', function() {
 
         casper.waitForUrl(/questions/, function() {
             'Fatal'.should.not.be.textInDOM
-            '#wpt-test-form .answer label'.should.not.be.inDOM
+            'form.wpt_test_form .answer label'.should.not.be.inDOM
         })
     })
 })

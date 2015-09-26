@@ -166,6 +166,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
+        $isPublishOnHomePossible = ($this->wp->getOption('show_on_front') != 'page');
+        if (!$isPublishOnHomePossible) {
+            unset($options['wpt_publish_on_home']);
+        }
+
         return $this->wp->applyFilters('wpt_test_editor_submit_misc_options', $options);
     }
 

@@ -143,7 +143,7 @@
             "type": "package",
             "package": {
                 "name": "xrstf/composer-php52",
-                "version": "v1.99",
+                "version": "v1.100",
                 "autoload": {
                     "psr-0": {
                         "xrstf\\Composer52": "lib/"
@@ -158,7 +158,7 @@
                     ]
                 },
                 "dist": {
-                    "url": "https://bitbucket.org/garex/composer-php52/get/respect-autoloader-suffix.zip",
+                    "url": "https://bitbucket.org/garex/composer-php52/get/upgrade-getAutoloadRealFile-signature.zip",
                     "type": "zip"
                 }
             }

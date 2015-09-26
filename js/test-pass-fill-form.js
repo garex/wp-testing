@@ -13,11 +13,23 @@ webshim.setOptions({
 });
 webshims.polyfill('forms forms-ext');
 
+var Wpt = Wpt || {};
+Wpt.form = Wpt.form || {};
+
 jQuery(document).ready(function($) {
-    var form = $('#wpt-test-form');
+    Wpt.initEvercookie();
 
-    var button = form.find('.button');
+    $('.wpt_test_form').each(function(i, formEl) {
+        var form = $(formEl);
 
+        Wpt.form.initQuestionAnswered(form);
+        Wpt.form.setupResetAnswers(form);
+        Wpt.form.setupProgressMeter($, form);
+        Wpt.form.setupQuestionsAnswered($, form);
+    });
+});
+
+Wpt.form.initQuestionAnswered = function(form) {
     form.bind('question_answered_initially.wpt', function(event, question) {
         question.addClass('answered');
         question.find('.answer input:first').removeAttr('required').removeAttr('aria-required');
@@ -25,7 +37,9 @@ jQuery(document).ready(function($) {
         question.removeClass('answered');
         question.find('.answer input:first').attr('required', 'required').attr('aria-required', 'true');
     });
+};
 
+Wpt.initEvercookie = function() {
     var ec = new evercookie({
         tests           : 3,
         baseurl         : Wpt.evercookieBaseurl,
@@ -40,21 +54,19 @@ jQuery(document).ready(function($) {
         var uuid = UUIDjs.fromURN(best) || UUIDjs.create(4);
         ec.set('device_uuid', uuid.toString());
     }, 1);
-});
+};
 
-jQuery(document).ready(function($) {
-    var form = $('#wpt-test-form');
-    if (!Wpt.isResetAnswersOnBack) {
+Wpt.form.setupResetAnswers = function(form) {
+    if (!form.data('settings').isResetAnswersOnBack) {
         return;
     }
     form.bind('init_answers.wpt', function(event, answersInputs) {
         answersInputs.attr('checked', false);
     });
-});
+};
 
-jQuery(document).ready(function($) {
-    var form = $('#wpt-test-form');
-    if (!Wpt.isShowProgressMeter) {
+Wpt.form.setupProgressMeter = function($, form) {
+    if (!form.data('settings').isShowProgressMeter) {
         return;
     }
 
@@ -65,14 +77,13 @@ jQuery(document).ready(function($) {
     $(document).bind('percentage_change.wpt', function(event, percent) {
         document.title = template.replace('{percentage}', percent) +  ' ' + separator + ' ' + initialTitle;
     });
-});
+};
 
-jQuery(document).ready(function ($) {
-    var form               = $('#wpt-test-form'),
-        questionsAnswered  = Wpt.questionsAnswered,
+Wpt.form.setupQuestionsAnswered = function($, form) {
+    var questionsAnswered  = form.data('questions').answered,
         questions          = form.find('.question'),
         questionsMinFilled = questionsAnswered + questions.length,
-        questionsTotal     = Wpt.questionsTotal;
+        questionsTotal     = form.data('questions').total;
 
     var answersInputs = form.find('input:radio,input:checkbox');
     form.trigger('init_answers.wpt', [answersInputs])
@@ -126,4 +137,4 @@ jQuery(document).ready(function ($) {
         calculateAnswersPercentage({}, form.find('.question:first'), questionsAnswered, questionsTotal, questionsMinFilled);
     }
     answersInputs.filter(':checked').change();
-});
+};

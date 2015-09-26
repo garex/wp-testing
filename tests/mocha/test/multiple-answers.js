@@ -101,10 +101,10 @@ describe('Multiple answers test', function() {
     })
 
     function clickAllAnswers() {
-        this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-        this.clickLabel('No',  '*[@id="wpt-test-form"]/*[1]/*//label')
-        this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[2]/*//label')
-        this.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
+        this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+        this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+        this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
+        this.clickLabel('No',  '*[starts-with(@id, "wpt-test-form")]/*[2]/*//label')
     }
     it('should have all percentage after all answers clicks', function() {
         casper.then(function() {
@@ -124,7 +124,7 @@ describe('Multiple answers test', function() {
         isOpened = false
         casper.then(function() {
             clickAllAnswers.call(this)
-            this.fill('form#wpt-test-form', {}, true)
+            this.fill('form.wpt_test_form', {}, true)
         }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Fatal'.should.not.be.textInDOM
             'Results'.should.be.textInDOM

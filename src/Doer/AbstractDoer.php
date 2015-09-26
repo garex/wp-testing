@@ -102,7 +102,7 @@ abstract class WpTesting_Doer_AbstractDoer
      *
      * @param string $pluginRelatedPath Can be in full form like "js/do-something.js" or in short like "do-something"
      * @param array $dependencies
-     * @param string $isInFooter
+     * @param boolean $isInFooter
      * @param string $version
      * @return self
      */
@@ -131,7 +131,8 @@ abstract class WpTesting_Doer_AbstractDoer
 
     private function getResourcePrefix($mainClassStart, $abbr)
     {
-        $prefix = reset(explode('_', get_class($this)));
+        $parts  = explode('_', get_class($this));
+        $prefix = reset($parts);
         if ($prefix == $mainClassStart) {
             return $abbr;
         }

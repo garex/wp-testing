@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d860390c55e1ed1bcdf6e84ca684329",
+    "hash": "5d05c79edb23c17f2f6ae4807c620508",
+    "content-hash": "f46079bb4d6540b716c148eefe4a3a03",
     "packages": [
         {
             "name": "composer/installers",
@@ -232,10 +233,10 @@
         },
         {
             "name": "xrstf/composer-php52",
-            "version": "v1.99",
+            "version": "v1.100",
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/garex/composer-php52/get/respect-autoloader-suffix.zip",
+                "url": "https://bitbucket.org/garex/composer-php52/get/upgrade-getAutoloadRealFile-signature.zip",
                 "reference": null,
                 "shasum": null
             },
