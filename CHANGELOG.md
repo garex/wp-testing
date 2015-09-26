@@ -2,6 +2,17 @@
 ## Changelog ##
 
 
+### 0.17 ###
+
+Shortcodes for tests embedding
+
+* Add `wpt_test_read_more` and `wpt_test_first_page` shortcodes that allows to embed test in short or full modes.
+* Enrich parameters of `wpt_tests` shortcode (ex-`wptlist`).
+* Hide "Publish on homepage" checkbox when it's impossible to publish on homepage (custom page on home instead of latests posts).
+
+For details about shortcodes params please see our good old FAQ.
+
+
 ### 0.16.5 ###
 
 Add Thai lang and fix tests' results under respondent account

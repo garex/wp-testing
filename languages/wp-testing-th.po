@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-10 01:26+0700\n"
-"PO-Revision-Date: 2015-09-06 16:30+0000\n"
+"PO-Revision-Date: 2015-09-07 16:36+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/wp-translations/wp-testing/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -558,7 +558,7 @@ msgstr "เติมคะแนนด่วน"
 
 #: Template/Test/Editor/edit-questions.php:37
 msgid "Scale"
-msgstr "อัตราส่วน"
+msgstr "สเกล"
 
 #: Template/Test/Editor/edit-questions.php:38
 msgid "Score"

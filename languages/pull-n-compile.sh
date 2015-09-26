@@ -3,7 +3,7 @@
 # tnx to https://gist.github.com/fxbenard/9367794
 
 # Pull all files from Transifex;
-tx pull --all
+tx pull --all --force
 
 # Create .mo files from .po files.
 # Twisted by WP-Translations.org, created by grappler.
