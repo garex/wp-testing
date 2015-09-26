@@ -61,12 +61,12 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->isPublicPage         = !$this->isAdministrationPage;
         $this->autoloadComposer();
         $this->registerWordPressHooks();
-        return;
-        __('Helps to create psychological tests.', 'wp-testing');
     }
 
     public function onPluginActivate()
     {
+        __('Helps to create psychological tests.', 'wp-testing');
+
         $this->upgradePlugin();
     }
 
