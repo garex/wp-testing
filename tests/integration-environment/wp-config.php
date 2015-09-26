@@ -2,7 +2,7 @@
 define('DB_NAME',          'wpti');
 define('DB_USER',          'wpti');
 define('DB_PASSWORD',      'wpti');
-define('DB_HOST',          'localhost');
+define('DB_HOST',          '127.0.0.1');
 define('DB_CHARSET',       'utf8');
 define('DB_COLLATE',       '');
 define('WPLANG',           '');
