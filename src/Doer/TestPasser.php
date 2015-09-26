@@ -67,7 +67,6 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $isLive     = (self::ACTION_FILL_FORM == $action || $this->test->isFinal());
         if (!$isLive) {
             throw new UnexpectedValueException(sprintf('Test %d is under construction', $test->getId()));
-            return __('Test is under construction', 'wp-testing');
         }
 
         $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
