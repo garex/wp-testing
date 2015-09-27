@@ -262,7 +262,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      * Build scales and setup their ranges from test's questions.
      * Cached version.
      *
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScalesWithRangeOnce()
     {
@@ -275,7 +275,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     /**
      * Prepare results through test, that has true formulas, using current test variables
      *
-     * @return WpTesting_Model_Result[]
+     * @return fRecordSet|WpTesting_Model_Result[]
      */
     public function buildResults()
     {
