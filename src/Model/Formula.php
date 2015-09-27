@@ -40,7 +40,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      * Adds value to values list without rewriting. Converts value type to integer if it's not double.
      *
      * @param string $name
-     * @param numeric $value
+     * @param integer|float $value
      * @param float $percentageValue Required only when we have "%" in source
      * @throws InvalidArgumentException
      * @return WpTesting_Model_Formula
