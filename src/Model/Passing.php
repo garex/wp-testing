@@ -69,7 +69,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     public function populateFromTest(WpTesting_Model_Test $test)
     {
         $this->setCreated(time())->setModified(time())->setTestId($test->getId());
-        parent::populate(true);
+        $this->populate(true);
         $this->linkWpTesting_Model_Answers();
         return $this;
     }
@@ -103,7 +103,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         $this->wp->doAction('wp_testing_passing_populate_all_before', $this);
 
         $_POST = $this->wp->applyFilters('wp_testing_passing_adapt_for_populate', $_POST, $this);
-        parent::populate(true);
+        $this->populate(true);
 
         $this->wp->doAction('wp_testing_passing_populate_all_after', $this);
         return $this;
@@ -162,7 +162,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         if (empty($respondentId)) {
             $respondentId = null;
         }
-        return parent::set('respondent_id', $respondentId);
+        return $this->set('respondent_id', $respondentId);
     }
 
     public function setStepStrategy(WpTesting_Component_StepStrategy $stepStrategy)
