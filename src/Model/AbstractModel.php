@@ -93,7 +93,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 
     public function exists()
     {
-        if (isset($this->columnAliases['id']) && !is_null(parent::get($this->columnAliases['id']))) {
+        if (isset($this->columnAliases['id']) && !is_null($this->get('id'))) {
             return true;
         }
         return parent::exists();
