@@ -457,7 +457,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     {
         return true
             && $this->hasScales()
-            && $this->hasWpTesting_Model_Questions()
+            && $this->hasRelated('WpTesting_Model_Questions')
             && $this->hasAnswers()
         ;
     }
