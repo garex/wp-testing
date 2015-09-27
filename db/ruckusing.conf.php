@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__FILE__) . '/../vendor/ruckusing/ruckusing-migrations/lib/Ruckusing/Migration/Base.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR .  'wp_testing' . DIRECTORY_SEPARATOR . '_BaseMigration.php';
 
 $local = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ruckusing.conf.local.php';
