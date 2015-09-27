@@ -309,7 +309,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     {
         $question = new WpTesting_Model_Question();
         $question->setTitle($title);
-        $this->associateWpTesting_Model_Questions($this->buildQuestions()->merge($question));
+        $this->associateRelated('WpTesting_Model_Questions', $this->buildQuestions()->merge($question));
         return $this;
     }
 
@@ -325,7 +325,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
     {
-        $this->associateWpTesting_Model_Taxonomies(
+        $this->associateRelated('WpTesting_Model_Taxonomies', 
             $this->buildRelated('WpTesting_Model_Taxonomies')
                 ->merge($term->createTaxonomy())
         );

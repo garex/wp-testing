@@ -141,7 +141,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
         if (!isset($this->scoresByScaleId[$scale->getId()])) {
             $this->scoresByScaleId[$scale->getId()] = new WpTesting_Model_Score();
             $this->scoresByScaleId[$scale->getId()]->setScaleId($scale->getId());
-            $this->associateWpTesting_Model_Scores($scores->merge($this->scoresByScaleId[$scale->getId()]));
+            $this->associateRelated('WpTesting_Model_Scores', $scores->merge($this->scoresByScaleId[$scale->getId()]));
         }
         return $this->scoresByScaleId[$scale->getId()];
     }
