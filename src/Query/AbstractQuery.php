@@ -21,11 +21,10 @@ abstract class WpTesting_Query_AbstractQuery
     }
 
     /**
-     * @return WpTesting_Model_AbstractModel[]
+     * @return fRecordSet|WpTesting_Model_AbstractModel[]
      */
     public function findAll()
     {
         return fRecordSet::build($this->modelName);
     }
-
 }

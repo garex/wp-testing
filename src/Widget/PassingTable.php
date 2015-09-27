@@ -53,7 +53,7 @@ abstract class WpTesting_Widget_PassingTable extends WpTesting_Widget_ListTable
     }
 
     /**
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     abstract protected function find_tests();
 

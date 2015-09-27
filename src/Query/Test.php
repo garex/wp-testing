@@ -24,7 +24,7 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
 
     /**
      * @param array $orderBy
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     public function findAll(array $orderBy = array())
     {
@@ -33,7 +33,7 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
 
     /**
      * @param array $orderBy
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     public function findAllPublished(array $orderBy = array(), $limit = null)
     {
@@ -58,7 +58,7 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
     /**
      * @param integer $respondentId
      * @param array $orderBy
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     public function findAllByPassingRespondent($respondentId, array $orderBy = array('Test.ID'))
     {
@@ -82,7 +82,7 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
     /**
      * @param array $where
      * @param array $orderBy
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     protected function findAllByParams(array $where = array(), array $orderBy = array(), $limit = null)
     {
@@ -94,8 +94,8 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
     /**
      * @param array $where
      * @param array $orderBy
-     * @return WpTesting_Model_Test[]
-     * @throws  fNoRemainingException When test is not found
+     * @return WpTesting_Model_Test
+     * @throws fNoRemainingException When test is not found
      */
     protected function findFirstByParams(array $where = array(), array $orderBy = array())
     {
