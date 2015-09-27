@@ -121,9 +121,9 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
             'total_pages' => ceil($total / $this->records_per_page)
         ));
 
-        $this->row_number = ($this->get_pagenum()-1) * $this->records_per_page;
+        $this->row_number = intval(($this->get_pagenum()-1) * $this->records_per_page);
         if ($this->is_order_desc()) {
-            $this->row_number = ($total + 1) - $this->row_number;
+            $this->row_number = intval(($total + 1) - $this->row_number);
         }
 
         return $this;
