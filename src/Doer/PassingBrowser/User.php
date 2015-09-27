@@ -15,7 +15,7 @@ class WpTesting_Doer_PassingBrowser_User extends WpTesting_Doer_PassingBrowser
         $menuIcon       = $this->isWordPressAlready('3.8') ? 'dashicons-editor-paste-text' : null;
 
         $this->wp->addMenuPage($mainTitle, $mainTitle, $capability, $mainSlug, $callback, $menuIcon, 5);
-        $this->screenHook = $this->wp->addSubmenuPage($mainSlug, $resultsTitle, $resultsTitle, $capability, $mainSlug, $callback);
+        $this->setScreenHook($this->wp->addSubmenuPage($mainSlug, $resultsTitle, $resultsTitle, $capability, $mainSlug, $callback));
         $this->passingsPageTitle = __('Results', 'wp-testing');
 
         return $this;
