@@ -44,6 +44,10 @@ abstract class WpTesting_Model_Shortcode
         return null;
     }
 
+    /**
+     * @param WpTesting_Facade_IORM $ormAware
+     * @return array
+     */
     public function getDataForTemplate(WpTesting_Facade_IORM $ormAware)
     {
         return array();
