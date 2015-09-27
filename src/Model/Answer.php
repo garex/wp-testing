@@ -49,11 +49,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 
     public function populate($recursive = false)
     {
-        $this->populateSelf()->populateRelated($recursive);
-    }
-
-    protected function populateRelated($recursive = false)
-    {
+        $this->populateSelf();
         if ($recursive) {
             $this->populateWpTesting_Model_Score(true, 'answer_id');
         }

@@ -53,27 +53,6 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->stripValuesSlashes();
     }
 
-    protected function populateRelated($recursive = false)
-    {
-        if ($recursive) {
-            $one_to_many_relationships = $schema->getRelationships($table, 'one-to-many');
-            foreach ($one_to_many_relationships as $relationship) {
-                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-many', $relationship);
-                $related_class = fORM::classize($relationship['related_table']);
-                $method = 'populate' . fGrammar::pluralize($related_class);
-                $this->$method(TRUE, $route_name);
-            }
-
-            $one_to_one_relationships = $schema->getRelationships($table, 'one-to-one');
-            foreach ($one_to_one_relationships as $relationship) {
-                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-one', $relationship);
-                $related_class = fORM::classize($relationship['related_table']);
-                $this->__call('populate' . $related_class, array(TRUE, $route_name));
-            }
-        }
-        return $this;
-    }
-
     /**
      * @return array
      */
