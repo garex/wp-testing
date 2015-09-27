@@ -69,7 +69,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestions()
     {
@@ -77,7 +77,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestionsWithAnswersAndScores()
     {
@@ -94,7 +94,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestionsWithAnswers()
     {
@@ -110,7 +110,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScales()
     {
@@ -125,7 +125,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Build scales and setup their ranges from test's questions
      *
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScalesWithRange()
     {
@@ -178,7 +178,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Result[]
+     * @return fRecordSet|WpTesting_Model_Result[]
      */
     public function buildResults()
     {
@@ -224,7 +224,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Formula[]
+     * @return fRecordSet|WpTesting_Model_Formula[]
      */
     public function buildFormulas()
     {
@@ -232,7 +232,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_GlobalAnswer[]
+     * @return fRecordSet|WpTesting_Model_GlobalAnswer[]
      */
     public function buildGlobalAnswers()
     {
@@ -303,7 +303,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Adds new question associated to this test
      * @param string $title
-     * @return WpTesting_Model_Test
+     * @return self
      */
     public function addQuestion($title)
     {

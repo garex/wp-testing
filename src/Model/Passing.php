@@ -228,7 +228,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
     /**
      * Build scales and setup their ranges from test's questions
      *
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScalesWithRange()
     {
