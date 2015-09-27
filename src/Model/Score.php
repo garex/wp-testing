@@ -44,6 +44,6 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
      */
     public function createScale()
     {
-        return $this->createWpTesting_Model_Scale('scale_id');
+        return $this->createRelated('WpTesting_Model_Scale', 'scale_id');
     }
 }

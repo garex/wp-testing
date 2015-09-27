@@ -296,7 +296,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      */
     public function createTest()
     {
-        return $this->createWpTesting_Model_Test()->setWp($this->getWp());
+        return $this->createRelated('WpTesting_Model_Test')->setWp($this->getWp());
     }
 
     public function trash()

@@ -45,7 +45,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
      */
     public function createTest()
     {
-        return $this->createWpTesting_Model_Test()->setWp($this->getWp());
+        return $this->createRelated('WpTesting_Model_Test')->setWp($this->getWp());
     }
 
     public function jsonSerialize() {

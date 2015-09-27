@@ -229,7 +229,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function createResult()
     {
-        return $this->createWpTesting_Model_Result();
+        return $this->createRelated('WpTesting_Model_Result');
     }
 
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
@@ -250,7 +250,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 
         // Check for formula correctness
         /* @var $test WpTesting_Model_Test */
-        $test = $me->createWpTesting_Model_Test()->setWp($this->getWp());
+        $test = $me->createRelated('WpTesting_Model_Test')->setWp($this->getWp());
         $varNames = array();
         foreach ($test->buildFormulaVariables() as $var) {
             $varNames[] = $var->getSource();

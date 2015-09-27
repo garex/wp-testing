@@ -108,7 +108,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function createGlobalAnswer()
     {
-        return $this->createWpTesting_Model_GlobalAnswer();
+        return $this->createRelated('WpTesting_Model_GlobalAnswer');
     }
 
     /**
@@ -116,7 +116,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function createQuestion()
     {
-        return $this->createWpTesting_Model_Question();
+        return $this->createRelated('WpTesting_Model_Question');
     }
 
     /**
