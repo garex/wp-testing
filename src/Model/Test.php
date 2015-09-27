@@ -700,7 +700,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Export as WP native content entity object
      *
-     * @return WP_Post
+     * @return WP_Post|stdClass
      */
     public function toWpPost()
     {
