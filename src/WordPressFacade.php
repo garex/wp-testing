@@ -527,7 +527,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $path
      * @param array $dependencies
      * @param string $version
-     * @param string $isInFooter
+     * @param boolean $isInFooter
      * @return WpTesting_WordPressFacade
      */
     public function registerScript($name, $path, array $dependencies = array(), $version = false, $isInFooter = false)
