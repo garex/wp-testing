@@ -36,7 +36,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
      */
     public function buildAnswers()
     {
-        return $this->buildWpTesting_Model_Answer();
+        return $this->buildRelated('WpTesting_Model_Answer');
     }
 
     public function associateAnswers($answers)

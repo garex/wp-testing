@@ -208,7 +208,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      */
     public function buildAnswers()
     {
-        return $this->buildWpTesting_Model_Answers();
+        return $this->buildRelated('WpTesting_Model_Answers');
     }
 
     /**

@@ -207,6 +207,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return parent::__call($methodName, $params);
     }
 
+    /**
+     * @param string $relatedModelClassName
+     * @param array $params
+     * @return fRecordSet
+     */
+    protected function buildRelated($relatedModelClassName, $params = array())
+    {
+        return $this->__call('build' . $relatedModelClassName, $params);
+    }
+
     protected function generateMagicMethodPhpDoc($methodName, $params, $returnType, $comment)
     {
         $paramsDoc = array();

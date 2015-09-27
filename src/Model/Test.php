@@ -73,7 +73,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function buildQuestions()
     {
-        return $this->me()->buildWpTesting_Model_Questions();
+        return $this->me()->buildRelated('WpTesting_Model_Questions');
     }
 
     /**
@@ -228,7 +228,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function buildFormulas()
     {
-        return $this->buildWpTesting_Model_Formulas();
+        return $this->buildRelated('WpTesting_Model_Formulas');
     }
 
     /**
@@ -249,7 +249,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     protected function buildTaxonomies()
     {
-        return $this->buildWpTesting_Model_Taxonomy();
+        return $this->buildRelated('WpTesting_Model_Taxonomy');
     }
 
     /**
@@ -326,7 +326,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
     {
         $this->associateWpTesting_Model_Taxonomies(
-            $this->buildWpTesting_Model_Taxonomies()
+            $this->buildRelated('WpTesting_Model_Taxonomies')
                 ->merge($term->createTaxonomy())
         );
         return $this;

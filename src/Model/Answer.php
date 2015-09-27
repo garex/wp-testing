@@ -103,7 +103,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     protected function buildScoresOnce()
     {
         if (is_null($this->scores)) {
-            $this->scores = $this->buildWpTesting_Model_Scores();
+            $this->scores = $this->buildRelated('WpTesting_Model_Scores');
             $this->scoresByScaleId = array();
             foreach ($this->scores as $score) {
                 $this->scoresByScaleId[$score->get('scale_id')] = $score;

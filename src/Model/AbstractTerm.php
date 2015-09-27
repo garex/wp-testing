@@ -20,7 +20,7 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
      */
     public function createTaxonomy()
     {
-        return $this->buildWpTesting_Model_Taxonomy()->getRecord(0);
+        return $this->buildRelated('WpTesting_Model_Taxonomy')->getRecord(0);
     }
 
     /**
@@ -35,8 +35,7 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
 
     public function getDescription()
     {
-        /* @var $result fRecordset */
-        $result = $this->buildWpTesting_Model_Taxonomy();
+        $result = $this->buildRelated('WpTesting_Model_Taxonomy');
         if (!$result->count()) {
             return null;
         }
