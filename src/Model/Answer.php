@@ -4,9 +4,11 @@
  * @method integer getId() Gets the current value of id
  * @method string getTitleOnce() Gets cached value of title
  * @method integer getGlobalAnswerId() Gets the current value of global answer id
+ * @method WpTesting_Model_Answer setGlobalAnswerId(integer $globalAnswerId) Sets the current value of global answer id
  * @method integer getSort() Gets the current value of sort
- * @method integer getQuestionId() Gets the current value of question id
  * @method WpTesting_Model_Answer setSort(integer $sort) Sets the value for sort
+ * @method integer getQuestionId() Gets the current value of question id
+ * @method WpTesting_Model_Answer setQuestionId(integer $questionId) Sets the current value of question id
  */
 class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 {
