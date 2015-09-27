@@ -32,7 +32,7 @@ abstract class WpTesting_Query_AbstractQuery
      * Translates one SQL statement using fSQLTranslation and executes it
      *
      * @param string $sql
-     * @return fRecordSet
+     * @return fResult
      * @throws BadMethodCallException
      */
     protected function singleTranslatedQuery($sql)
@@ -40,10 +40,10 @@ abstract class WpTesting_Query_AbstractQuery
         $arguments    = func_get_args();
         $arguments[0] = $sql;
         $result       = call_user_func_array(array($this->db, 'translatedQuery'), $arguments);
-        if ($result instanceof fRecordSet) {
+        if ($result instanceof fResult) {
             return $result;
         }
-        if (is_array($result) && isset($result[0]) && $result[0] instanceof fRecordSet) {
+        if (is_array($result) && isset($result[0]) && $result[0] instanceof fResult) {
             return $result[0];
         }
         throw new BadMethodCallException('Result of translatedQuery is not fRecordSet: ' . var_export($result, true));
