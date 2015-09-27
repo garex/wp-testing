@@ -13,15 +13,13 @@ class WpTesting_Model_Step
      * @param string $title
      * @param WpTesting_Model_Question[] $questions
      * @param string $description
+     * @throws InvalidArgumentException
      */
     public function __construct($title, $questions, $description = null)
     {
-        $this->title        = $title;
-        if (!empty($questions) && !(is_a($questions[0], 'WpTesting_Model_Question'))) {
-            throw new InvalidArgumentException('Step require questions, but provided ' . var_export($questions[0], true));
-        }
-        $this->questions    = $questions;
-        $this->description  = $description;
+        $this->title = $title;
+        $this->setQuestions($questions);
+        $this->description = $description;
     }
 
     public function setTotalAndNumber($total, $number)
@@ -88,5 +86,30 @@ class WpTesting_Model_Step
     public function isLast()
     {
         return ($this->number == $this->total);
+    }
+
+    /**
+     * @param WpTesting_Model_Question[] $questions
+     * @throws InvalidArgumentException
+     * @return self
+     */
+    private function setQuestions($questions)
+    {
+        if (empty($questions) || count($questions) == 0) {
+            $this->questions = array();
+            return $this;
+        }
+
+        if (!is_a($questions, 'fRecordSet')) {
+            $questions = fRecordSet::buildFromArray('WpTesting_Model_Question', (array)$questions);
+        }
+
+        if ($questions->getClass() != 'WpTesting_Model_Question') {
+            throw new InvalidArgumentException('Step require questions, but provided ' . $questions->getClass());
+        }
+
+        $this->questions = $questions;
+
+        return $this;
     }
 }
