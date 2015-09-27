@@ -419,10 +419,10 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->defineConstants();
 
         $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('RUCKUSING_SCHEMA_TBL_NAME')    or define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
-        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') or define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
-        defined('RUCKUSING_WORKING_BASE')       or define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
-        defined('RUCKUSING_BASE')               or define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
+        defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
+        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
+        defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
+        defined('RUCKUSING_BASE')               || define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
 
         $databaseDirectory = RUCKUSING_WORKING_BASE . DIRECTORY_SEPARATOR . 'db';
         $config = array(
@@ -494,9 +494,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 
     protected function defineConstants()
     {
-        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
-        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
-        defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
+        defined('WP_DB_PREFIX')                 || define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
+        defined('WPT_DB_PREFIX')                || define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
+        defined('DB_TYPE')                      || define('DB_TYPE',                        'mysql');
     }
 
 }
