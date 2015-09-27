@@ -48,7 +48,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     );
 
     /**
-     * @var WpTesting_Model_Taxonomy[]
+     * @var fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected $taxonomies = null;
 
