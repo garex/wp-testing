@@ -98,7 +98,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
      */
     public function queryAllMonthsByRespondent($respondentId)
     {
-        return $this->db->translatedQuery('
+        return $this->singleTranslatedQuery('
             SELECT DISTINCT YEAR(passing_created) AS created_year, MONTH(passing_created) AS created_month
             FROM %r
             WHERE (respondent_id = %i OR %i = 0)
@@ -111,7 +111,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
      */
     public function countAllStatuses()
     {
-        return $this->db->translatedQuery('
+        return $this->singleTranslatedQuery('
             SELECT passing_status, COUNT(*) AS passing_count
             FROM %r
             GROUP BY passing_status
