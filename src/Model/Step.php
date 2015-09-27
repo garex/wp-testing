@@ -9,9 +9,17 @@ class WpTesting_Model_Step
     private $total = 1;
     private $number = 1;
 
-    public function __construct($title, fRecordSet $questions, $description = null)
+    /**
+     * @param string $title
+     * @param WpTesting_Model_Question[] $questions
+     * @param string $description
+     */
+    public function __construct($title, $questions, $description = null)
     {
         $this->title        = $title;
+        if (!empty($questions) && !(is_a($questions[0], 'WpTesting_Model_Question'))) {
+            throw new InvalidArgumentException('Step require questions, but provided ' . var_export($questions[0], true));
+        }
         $this->questions    = $questions;
         $this->description  = $description;
     }
