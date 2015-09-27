@@ -22,7 +22,7 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
     {
         $this->populateSelf();
         if ($recursive) {
-            $this->populateWpTesting_Model_Answer(true, 'question_id');
+            $this->populateRelated('WpTesting_Model_Answer', true, 'question_id');
         }
         return $this;
     }

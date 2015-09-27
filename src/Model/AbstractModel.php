@@ -196,6 +196,18 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->__call('build' . $relatedModelClassName, $params);
     }
 
+    /**
+     * @param string $relatedModelClassName
+     * @param string $isRecursive
+     * @param string $route
+     * @return self
+     */
+    protected function populateRelated($relatedModelClassName, $isRecursive = false, $route = null)
+    {
+        $this->__call('populate' . $relatedModelClassName, array($isRecursive, $route));
+        return $this;
+    }
+
     protected function generateMagicMethodPhpDoc($methodName, $params, $returnType, $comment)
     {
         $paramsDoc = array();

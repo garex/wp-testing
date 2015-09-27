@@ -51,7 +51,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     {
         $this->populateSelf();
         if ($recursive) {
-            $this->populateWpTesting_Model_Score(true, 'answer_id');
+            $this->populateRelated('WpTesting_Model_Score', true, 'answer_id');
         }
         return $this;
     }

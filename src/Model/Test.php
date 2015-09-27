@@ -630,7 +630,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function populateQuestions($isRecursive = false)
     {
-        $this->populateWpTesting_Model_Questions($isRecursive);
+        $this->populateRelated('WpTesting_Model_Questions', $isRecursive);
         $table   = fORM::tablize('WpTesting_Model_Question');
         $records =& $this->related_records[$table]['test_id']['record_set'];
         $records = $records->filter(array('getTitle!=' => ''));
@@ -643,7 +643,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function populateFormulas($isRecursive = false)
     {
-        return $this->populateWpTesting_Model_Formulas($isRecursive);
+        return $this->populateRelated('WpTesting_Model_Formulas', $isRecursive);
     }
 
     /**
