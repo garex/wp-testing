@@ -62,10 +62,12 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
 
         $referer = $this->wp->getReferer();
         if ($referer) {
-            return $this->wp->safeRedirect($referer);
+            $this->wp->safeRedirect($referer);
+        } else {
+            $this->wp->redirect('?post_type=wpt_test&page=wpt_test_respondents_results');
         }
 
-        return $this->wp->redirect('?post_type=wpt_test&page=wpt_test_respondents_results');
+        return $this;
     }
 
     protected function addMenuPages()
