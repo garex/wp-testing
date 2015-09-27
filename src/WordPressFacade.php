@@ -334,7 +334,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $alt Alternative text to use in image tag. Defaults to blank
      * @return false|string `<img>` tag for the user's avatar.
      */
-    function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
+    public function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
     {
         return get_avatar($idOrEmail, $size, $default, $alt);
     }
@@ -1024,7 +1024,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $shortcode    Optional. The name of the shortcode, provided for context to enable filtering
      * @return array Combined and filtered attribute list.
      */
-    function sanitazeShortcodeAttributes($defaults, $attributes, $shortcode = '')
+    public function sanitazeShortcodeAttributes($defaults, $attributes, $shortcode = '')
     {
         return shortcode_atts($defaults, $attributes, $shortcode);
     }
