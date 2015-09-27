@@ -146,7 +146,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
