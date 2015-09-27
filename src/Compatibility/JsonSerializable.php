@@ -1,6 +1,7 @@
 <?php
 if (!interface_exists('JsonSerializable')) {
-    interface JsonSerializable {
+    interface JsonSerializable
+    {
         function jsonSerialize();
     }
 }

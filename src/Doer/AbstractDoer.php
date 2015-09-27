@@ -239,7 +239,7 @@ abstract class WpTesting_Doer_AbstractDoer
             'REMOTE_ADDR',
         );
 
-        foreach ($candidateKeys as $key){
+        foreach ($candidateKeys as $key) {
             $value = $this->getEnv($key);
             if ($key == 'REMOTE_ADDR' && $value == $this->getEnv('SERVER_ADDR')) {
                 $value = $this->getEnv('HTTP_PC_REMOTE_ADDR');

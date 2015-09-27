@@ -201,9 +201,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @uses $wpdb
      * @link http://codex.wordpress.org/Function_Reference/get_post_meta
      *
-     * @param int $post_id Post ID.
      * @param string $key The meta key to retrieve.
-     * @param bool $single Whether to return a single value.
      * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
      *  is true.
      */
@@ -856,7 +854,8 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int      $priority Optional. The priority of the function. Default 10.
      * @return WpTesting_WordPressFacade
      */
-    public function removeAction($tag, $function, $priority = 10) {
+    public function removeAction($tag, $function, $priority = 10)
+    {
         remove_action($tag, $function, $priority);
         return $this;
     }
@@ -950,7 +949,6 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @param string $tag   The name of the filter hook.
      * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
-     * @param mixed  $var   Additional variables passed to the functions hooked to `$tag`.
      * @return mixed The filtered value after all hooked functions are applied to it.
      */
     public function applyFilters($tag, $value)

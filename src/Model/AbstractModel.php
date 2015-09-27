@@ -54,6 +54,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     }
 
     /**
+     * @param WpTesting_Model_AbstractModel $me
      * @return array
      */
     public static function getColumnsAsMethodsOnce($me)
@@ -64,7 +65,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             $table  = fORM::tablize($class);
             self::$columnsAsMethodsCache[$class] = array();
             foreach ($schema->getColumnInfo($table) as $column => $info) {
-                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, TRUE);
+                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, true);
             }
         }
         return self::$columnsAsMethodsCache[$class];
@@ -137,7 +138,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         $table        = fORM::tablize($class);
         $schema       = fORMSchema::retrieve($class);
         foreach ($schema->getColumnInfo($table) as $column => $columnInfo) {
-            $camelizedColumn = fGrammar::camelize($column, TRUE);
+            $camelizedColumn = fGrammar::camelize($column, true);
 
             // Get and set methods
             $fixedType = $columnInfo['type'];
@@ -272,7 +273,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return " * @method $returnType $methodName($paramsDoc) $commentDoc";
     }
 
-    protected function loadFromResult($result, $ignore_identity_map=FALSE)
+    protected function loadFromResult($result, $ignore_identity_map=false)
     {
         $row = $result->current();
         foreach ($row as $key => $value) {

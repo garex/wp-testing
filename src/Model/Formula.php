@@ -271,7 +271,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      *
      * @param string $name1
      * @param string $name2
-     * @return number
+     * @return integer
      */
     protected function compareValueNames($name1, $name2)
     {
@@ -293,7 +293,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      *
      * @param string $name1
      * @param string $name2
-     * @return number
+     * @return integer
      */
     protected function compareValueNamesInverted($name1, $name2)
     {
