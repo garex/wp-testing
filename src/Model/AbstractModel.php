@@ -220,7 +220,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 
     /**
      * @param string $relatedModelClassName
-     * @param string $isRecursive
+     * @param boolean $isRecursive
      * @param string $route
      * @return self
      */
