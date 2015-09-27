@@ -857,7 +857,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @return WpTesting_WordPressFacade
      */
     public function removeAction($tag, $function, $priority = 10) {
-        remove_action($tag, $function);
+        remove_action($tag, $function, $priority);
         return $this;
     }
 
