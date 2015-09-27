@@ -38,7 +38,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     );
 
     /**
-     * @var WpTesting_Model_Score[]
+     * @var fRecordSet|WpTesting_Model_Score[]
      */
     protected $scores = null;
 
