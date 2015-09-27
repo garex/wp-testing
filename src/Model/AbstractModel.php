@@ -320,7 +320,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->wp;
     }
 
-    public function hasRelated($records, $class)
+    public function hasRelatedIn($records, $class)
     {
         foreach ($records as $record) {
             if (isset($record->related_records[fORM::tablize($class)])) {

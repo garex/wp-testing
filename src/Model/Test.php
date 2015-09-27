@@ -85,7 +85,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!count($questions)) {
             return $questions;
         }
-        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+        if ($this->me()->hasRelatedIn($questions, 'WpTesting_Model_Answer')) {
             return $questions;
         }
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
@@ -102,7 +102,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!count($questions)) {
             return $questions;
         }
-        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+        if ($this->me()->hasRelatedIn($questions, 'WpTesting_Model_Answer')) {
             return $questions;
         }
         $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
