@@ -245,7 +245,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Taxonomy[]
+     * @return fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected function buildTaxonomies()
     {
@@ -253,7 +253,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return fRecordSet of WpTesting_Model_Taxonomy
+     * @return fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected function buildTaxonomiesOnce()
     {
@@ -325,7 +325,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
     {
-        $this->associateRelated('WpTesting_Model_Taxonomies', 
+        $this->associateRelated('WpTesting_Model_Taxonomies',
             $this->buildRelated('WpTesting_Model_Taxonomies')
                 ->merge($term->createTaxonomy())
         );

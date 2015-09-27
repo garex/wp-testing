@@ -81,7 +81,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return WpTesting_Model_Score[]
+     * @return fRecordSet|WpTesting_Model_Score[]
      */
     public function buildScores()
     {
@@ -89,7 +89,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return fRecordSet of WpTesting_Model_Score
+     * @return fRecordSet|WpTesting_Model_Score[]
      */
     protected function buildScoresOnce()
     {
