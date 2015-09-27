@@ -133,7 +133,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!$scales->count()) {
             return $scales;
         }
-        $questionIds = array_filter($this->listWpTesting_Model_Questions());
+        $questionIds = array_filter($this->listRelated('WpTesting_Model_Questions'));
         if (empty($questionIds)) {
             return $scales;
         }
