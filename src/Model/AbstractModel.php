@@ -220,6 +220,17 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 
     /**
      * @param string $relatedModelClassName
+     * @param string $route
+     * @return self
+     */
+    protected function linkRelated($relatedModelClassName, $route = null)
+    {
+        $this->__call('link' . $relatedModelClassName, array($route));
+        return $this;
+    }
+
+    /**
+     * @param string $relatedModelClassName
      * @param boolean $isRecursive
      * @param string $route
      * @return self

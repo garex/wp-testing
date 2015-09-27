@@ -68,10 +68,14 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
      */
     public function populateFromTest(WpTesting_Model_Test $test)
     {
-        $this->setCreated(time())->setModified(time())->setTestId($test->getId());
-        $this->populate(true);
-        $this->linkWpTesting_Model_Answers();
-        return $this;
+        $now = time();
+        return $this
+            ->setCreated($now)
+            ->setModified($now)
+            ->setTestId($test->getId())
+            ->populate(true)
+            ->linkRelated('WpTesting_Model_Answers')
+        ;
     }
 
     /**
