@@ -86,7 +86,7 @@ class WpTesting_Model_Shortcode_Attribute
         return $this->propertyName;
     }
 
-    private function formExceptionMessage($template)
+    private function formExceptionMessage()
     {
         $argsPhp52Workaround = func_get_args();
         $message = call_user_func_array('sprintf', $argsPhp52Workaround);

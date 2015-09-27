@@ -89,7 +89,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             return $questions;
         }
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
-        $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
+        $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
         return $questions;
     }
 
@@ -105,7 +105,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
             return $questions;
         }
-        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
+        $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         return $questions;
     }
 
