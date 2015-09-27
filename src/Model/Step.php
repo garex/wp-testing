@@ -11,7 +11,7 @@ class WpTesting_Model_Step
 
     /**
      * @param string $title
-     * @param WpTesting_Model_Question[] $questions
+     * @param fRecordSet|WpTesting_Model_Question[] $questions
      * @param string $description
      * @throws InvalidArgumentException
      */
@@ -89,7 +89,7 @@ class WpTesting_Model_Step
     }
 
     /**
-     * @param WpTesting_Model_Question[] $questions
+     * @param fRecordSet|WpTesting_Model_Question[] $questions
      * @throws InvalidArgumentException
      * @return self
      */
