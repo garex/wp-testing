@@ -3,7 +3,12 @@ class WpTesting_Model_Step
 {
 
     private $title = '';
+
+    /**
+     * @var fRecordSet|WpTesting_Model_Question[]
+     */
     private $questions = array();
+
     private $description = null;
 
     private $total = 1;
