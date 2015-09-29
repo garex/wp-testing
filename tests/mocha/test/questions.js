@@ -95,7 +95,7 @@ describe('Questions', function() {
 
         casper.waitForUrl(/not/, function() {
             'Fatal'.should.not.be.textInDOM
-            '"Quick"'.should.be.textInDOM
+            '“Quick”'.should.be.textInDOM
             '.wpt_test.fill_form'.should.be.inDOM
             'document.querySelectorAll(".wpt_test.fill_form .question").length'.should.evaluate.to.equal(5)
         })
