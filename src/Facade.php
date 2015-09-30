@@ -1,8 +1,9 @@
 <?php
 require_once dirname(__FILE__) . '/Addon/IFacade.php';
 require_once dirname(__FILE__) . '/Facade/IORM.php';
+require_once dirname(__FILE__) . '/Facade/ITestPasser.php';
 
-class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
+class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM, WpTesting_Facade_ITestPasser
 {
 
     /**
@@ -119,7 +120,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 
     public function registerShortCodes()
     {
-        new WpTesting_Doer_ShortcodesRegistrator($this->wp, $this);
+        new WpTesting_Doer_ShortcodesRegistrator($this->wp, $this, $this);
     }
 
     protected function registerWordPressHooks()
@@ -247,7 +248,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         return $this->postBrowser;
     }
 
-    protected function getTestPasser()
+    public function getTestPasser()
     {
         if (!is_null($this->testPasser)) {
             return $this->testPasser;
