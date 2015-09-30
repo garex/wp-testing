@@ -149,7 +149,7 @@ describe('Answers2 and Scales2', function() {
 
         casper.waitForUrl(/answers-sorted/, function() {
             'Fatal'.should.not.be.textInDOM
-            'jQuery(".question .answer:first").text()'.should.evaluate.to.be.equal('No')
+            'jQuery(".question .answer:first").text().trim()'.should.evaluate.to.be.equal('No')
             this.clickLabel('Edit Test')
         })
 

@@ -2,6 +2,25 @@
 ## Changelog ##
 
 
+### 0.17.1 ###
+
+Fix incorrect content processing
+
+Symptoms:
+
+* The questions on the first page of the test dissapear
+* Shortcodes don't work on result page
+
+Upgrade notice:
+
+* If you use version 0.17 upgrade to this version!
+* Please check first pages of all tests, that use shortcodes in them
+* Also please check  result pages, which could have shortcodes inside.
+It's ok just  to open at least one existing page. Shortcodes could be in results or scales descriptions.
+
+I apologize for the inconvenience.
+
+
 ### 0.17 ###
 
 Shortcodes for tests embedding
@@ -581,6 +600,9 @@ Initial release
 
 
 == Upgrade Notice ==
+
+### 0.17.1 ###
+Fix incorrect content processing. You must upgrade if you are using 0.17 currently
 
 ### 0.13.2 ###
 Now you don't have to deactivate and activate plugin after every update

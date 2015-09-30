@@ -7,8 +7,7 @@ class WpTesting_Doer_Shortcoder_TestFirstPage extends WpTesting_Doer_Shortcoder
     {
         $data = parent::getData($shortcode);
 
-        $passer = new WpTesting_Doer_TestPasser($this->wp);
-        $data['content'] = $passer->renderOutside($data['test']);
+        $data['content'] = $this->getTestPasser()->renderOutside($data['test']);
 
         return $data;
     }

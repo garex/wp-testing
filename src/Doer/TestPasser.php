@@ -39,6 +39,11 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
      */
     private $filteredTestContent = null;
 
+    /**
+     * @var boolean
+     */
+    private $canRenderOnFilter = null;
+
     public function addContentFilter()
     {
         if (!$this->isPostType('wpt_test')) {
@@ -51,7 +56,8 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return $this->dieUnderConctruction();
         }
 
-        $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+        $this->wp->addFilter('the_content', array($this, 'renderOnFilter'), 5);
+        $this->canRenderOnFilter = true;
         return $this;
     }
 
@@ -84,17 +90,16 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return __('Test is under construction', 'wp-testing');
         }
 
-        $hasFilter = $this->wp->hasFilter('the_content', array($this, 'renderTestContent'));
+        $hasFilter = ($this->canRenderOnFilter === true);
         if ($hasFilter) {
-            $this->wp->removeFilter('the_content', array($this, 'renderTestContent'), 20);
+            $this->canRenderOnFilter = false;
         }
 
         $content = $this->wp->applyFilters('the_content', $test->getContent());
-        $content = $this->renderTestContent($content);
-
         if ($hasFilter) {
-            $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+            $this->canRenderOnFilter = true;
         }
+        $content = $this->renderTestContent($content);
 
         return $content;
     }
@@ -105,11 +110,16 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         return $classes;
     }
 
-    public function renderTestContent($content)
+    public function renderOnFilter($content)
     {
+        if ($this->canRenderOnFilter !== true) {
+            return $content;
+        }
+
         // Protection for calling the_content filter not on current test content
-        $isSimilar = 50 > levenshtein(
-            $this->prepareToLevenshein($this->test->getContent()),
+        $testContent = $this->test->getContent();
+        $isSimilar = empty($testContent) || 50 > levenshtein(
+            $this->prepareToLevenshein($testContent),
             $this->prepareToLevenshein($content)
         );
         if (!$isSimilar) {
@@ -121,9 +131,21 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
             return $this->filteredTestContent;
         }
 
-        $hasFilter = $this->wp->hasFilter('the_content', array($this, 'renderTestContent'));
+        $this->filteredTestContent = $renderedContent = $this->renderTestContent($content);
+
+        // Not cache for content, that is cleared of shortcodes
+        $isShortcodesCleared = ($this->hasShortcodes($testContent) && !$this->hasShortcodes($content));
+        if ($isShortcodesCleared) {
+            $this->filteredTestContent = null;
+        }
+
+        return $renderedContent;
+    }
+
+    public function renderTestContent($content) {
+        $hasFilter = ($this->canRenderOnFilter === true);
         if ($hasFilter) {
-            $this->wp->removeFilter('the_content', array($this, 'renderTestContent'), 20);
+            $this->canRenderOnFilter = false;
         }
 
         $action   = $this->getTestPassingAction();
@@ -133,12 +155,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $this->wp->doAction('wp_testing_passer_render_content',             $this->test);
         $this->wp->doAction('wp_testing_passer_render_content_' . $action,  $this->test);
 
-        $this->filteredTestContent = $this->createActionProcessor($action)->renderContent($content, $template);
+        $content = $this->createActionProcessor($action)->renderContent($content, $template);
 
         if ($hasFilter) {
-            $this->wp->addFilter('the_content', array($this, 'renderTestContent'), 20);
+            $this->canRenderOnFilter = true;
         }
-        return $this->filteredTestContent;
+        return $content;
     }
 
     private function dieUnderConctruction()
@@ -159,8 +181,18 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     private function prepareToLevenshein($input)
     {
+        $levensteinMax = 255;
         $input = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $input);
-        return substr(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($input))), 0, 255);
+        return substr(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($input))), 0, $levensteinMax);
+    }
+
+    /**
+     * @param string $text
+     * @return boolean
+     */
+    private function hasShortcodes($text)
+    {
+        return (strstr($text, '[') !== false);
     }
 
     private function getTestPassingAction()
