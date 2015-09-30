@@ -10,10 +10,16 @@ abstract class WpTesting_Doer_Shortcoder extends WpTesting_Doer_AbstractDoer
      */
     private $orm;
 
-    public function __construct(WpTesting_WordPressFacade $wp, WpTesting_Facade_IORM $ormAware)
+    /**
+     * @var WpTesting_Facade_ITestPasser
+     */
+    private $testPasserAware;
+
+    public function __construct(WpTesting_WordPressFacade $wp, WpTesting_Facade_IORM $ormAware, WpTesting_Facade_ITestPasser $testPasserAware)
     {
         parent::__construct($wp);
         $this->orm = $ormAware;
+        $this->testPasserAware = $testPasserAware;
     }
 
     public function renderShortcode(array $attributes, $content, $tag)
@@ -67,6 +73,11 @@ abstract class WpTesting_Doer_Shortcoder extends WpTesting_Doer_AbstractDoer
     protected function getData(WpTesting_Model_Shortcode $shortcode)
     {
         return $shortcode->getDataForTemplate($this->orm);
+    }
+
+    protected function getTestPasser()
+    {
+        return $this->testPasserAware->getTestPasser();
     }
 
     /**
