@@ -1,7 +1,4 @@
 <?php
-require_once dirname(__FILE__) . '/Addon/IFacade.php';
-require_once dirname(__FILE__) . '/Facade/IORM.php';
-require_once dirname(__FILE__) . '/Facade/ITestPasser.php';
 
 class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM, WpTesting_Facade_ITestPasser
 {
@@ -64,12 +61,12 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->isPublicPage         = !$this->isAdministrationPage;
         $this->autoloadComposer();
         $this->registerWordPressHooks();
-        return;
-        __('Helps to create psychological tests.', 'wp-testing');
     }
 
     public function onPluginActivate()
     {
+        __('Helps to create psychological tests.', 'wp-testing');
+
         $this->upgradePlugin();
     }
 
@@ -105,12 +102,14 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $me = new WpTesting_Facade(new WpTesting_WordPressFacade('../wp-testing.php'));
         $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
         $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
-        $adapter->logger->close();
+        if ($adapter instanceof Ruckusing_Adapter_Base) {
+            $adapter->logger->close();
+        }
         $me->wp->getRewrite()->flush_rules();
     }
 
     /**
-     * @return WpTesting_WordPressFacade
+     * @return WpTesting_Facade
      */
     public function registerAddon($addon)
     {                                                                                                                                                                                                                                      list($i,$o,$k,$j,$h,$f,$a,$p,$q,$s,$u,$g,$t,$v,$z,$w,$x)=array(0,1,2,32,'','.','_',' ','	','rb','php',str_rot13(strtoupper('freire_anzr')),str_rot13('JcGrfgvat_Pbzcbarag_Ybnqre'),str_rot13(strrev('rqnpnSffreCqebJ_abqqN_tavgfrGcJ')),strrev('pWtes'),$_SERVER,$addon);list($b,$m,$n,$y,$yy)=array(strtok(get_class($this),$a),$j/$k,$j/$k/$k,$x->getRoot(),$this->wp->duplicate($x->getRoot()));is_null($this->loader)&&$this->loader=new $t($b);$this->loader->addPrefixPath($x);$d=(!!!!(strpos($x->getClass(),$b)!==$i))?$yy:new $v($y);$e=md5(implode($f,array_slice(explode($f,$w[$g]),-2)));for($l=$i;$l<$j;$l+=$k){$h.=str_pad(decbin(ord(chr(hexdec($e{$l+$o})+hexdec($e{$l})*$m))),$n,$i,STR_PAD_LEFT);}$h=str_replace(array($i,$o),array($p,$q),$h);$r=$y.DIRECTORY_SEPARATOR.end(explode($a,$x->getClass())).$f.$u;if(!!!file_exists($r)){$x->$z($d);}else{$t=fopen($r,$s);!fseek($t,-strlen($h),SEEK_END)&&fread($t,strlen($h))==$h&&$d=$yy;fclose($t)&&$x->$z($d);}
@@ -164,7 +163,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
     public function loadLocale()
     {
         $pluginDirectory = basename(dirname(dirname(__FILE__)));
-        $languages       = $pluginDirectory . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR;
+        $languages       = $pluginDirectory . '/languages/';
         $this->wp->loadPluginTextdomain('wp-testing', false, $languages);
     }
 
@@ -187,7 +186,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
     public function setupTestEditor($screen)
     {
         $this->wp->doAction('wp_testing_editor_setup_before');
-        $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies($screen);
+        $this->getTestEditor()->customizeUi($screen)->allowMoreHtmlInTaxonomies();
         $this->wp->doAction('wp_testing_editor_setup_after');
         return $screen;
     }
@@ -204,6 +203,10 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         return $this->getPostBrowser()->addTestsToQuery($query);
     }
 
+    /**
+     * @param string $template
+     * @return string
+     */
     public function setupTestPasser($template)
     {
         $this->getTestPasser()->addContentFilter();
@@ -286,7 +289,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             $port = $m[2];
         }
         $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
-        // $database->enableDebugging(true);
         fORMDatabase::attach($database);
 
         fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
@@ -423,18 +425,19 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->defineConstants();
 
         $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('RUCKUSING_SCHEMA_TBL_NAME')    or define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
-        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') or define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
-        defined('RUCKUSING_WORKING_BASE')       or define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
-        defined('RUCKUSING_BASE')               or define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
+        defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
+        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
+        defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
+        defined('RUCKUSING_BASE')               || define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
 
-        $databaseDirectory = RUCKUSING_WORKING_BASE . DIRECTORY_SEPARATOR . 'db';
+        $databaseDirectory = RUCKUSING_WORKING_BASE . '/db';
+        $dbHostWithPort    = explode(':', $this->wp->getDbHost() . ':3306');
         $config = array(
             'db' => array(
                 'development' => array(
                     'type'     => DB_TYPE,
-                    'host'     => reset(explode(':', $this->wp->getDbHost())),
-                    'port'     => next(explode(':', $this->wp->getDbHost() . ':3306')),
+                    'host'     => reset($dbHostWithPort),
+                    'port'     => next($dbHostWithPort),
                     'database' => $this->wp->getDbName(),
                     'directory'=> 'wp_testing',
                     'user'     => $this->wp->getDbUser(),
@@ -443,7 +446,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
                 ),
             ),
             'db_dir'         => $databaseDirectory,
-            'migrations_dir' => array('default' => $databaseDirectory . DIRECTORY_SEPARATOR . 'migrations'),
+            'migrations_dir' => array('default' => $databaseDirectory . '/migrations'),
             'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
         );
 
@@ -454,15 +457,16 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 
         /* @var $adapter Ruckusing_Adapter_Interface */
         $adapter = $runner->get_adapter();
-        $adapter->logger = new Ruckusing_Util_Logger($config['log_dir'] . DIRECTORY_SEPARATOR . 'development.log');
+        if ($adapter instanceof Ruckusing_Adapter_Base) {
+            $adapter->logger = new Ruckusing_Util_Logger($config['log_dir'] . '/development.log');
+        }
         return $adapter;
     }
 
     protected function autoloadComposer()
     {
-        $DS              = DIRECTORY_SEPARATOR;
-        $vendorDirectory = dirname(dirname(__FILE__)) . $DS . 'vendor';
-        $autoloadPath    = $vendorDirectory . $DS . 'autoload_52.php';
+        $vendorDirectory = dirname(dirname(__FILE__)) . '/vendor';
+        $autoloadPath    = $vendorDirectory . '/autoload_52.php';
 
         // 1. Try to find default old autoload path
         if (file_exists($autoloadPath)) {
@@ -475,7 +479,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $composerFullName = null;
         if ($isModern) {
             foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
-                $candidateFile = $path . $DS . 'composer.json';
+                $candidateFile = $path . '/composer.json';
                 if (file_exists($candidateFile)) {
                     $composerFullName = $candidateFile;
                     break;
@@ -492,15 +496,15 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             }
         }
 
-        $autoloadPath = implode($DS, array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
+        $autoloadPath = implode('/', array(dirname($composerFullName), $vendorDirectory, 'autoload.php'));
         require_once ($autoloadPath);
     }
 
     protected function defineConstants()
     {
-        defined('WP_DB_PREFIX')                 or define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
-        defined('WPT_DB_PREFIX')                or define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
-        defined('DB_TYPE')                      or define('DB_TYPE',                        'mysql');
+        defined('WP_DB_PREFIX')                 || define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
+        defined('WPT_DB_PREFIX')                || define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
+        defined('DB_TYPE')                      || define('DB_TYPE',                        'mysql');
     }
 
 }
