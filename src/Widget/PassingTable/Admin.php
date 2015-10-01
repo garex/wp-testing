@@ -125,7 +125,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
         return WpTesting_Query_Passing::create()->queryAllMonths();
     }
 
-    public function column_cb(WpTesting_Model_Passing $item) {
+    public function column_cb(WpTesting_Model_Passing $item)
+    {
         $label = $this->render_tag('label', array(
             'class' => 'screen-reader-text',
             'for'   => 'cb-select-' . $item->getId(),
@@ -146,7 +147,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
@@ -224,7 +225,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
         return parent::render_static_column($item, $column_name);
     }
 
-    public function get_views() {
+    public function get_views()
+    {
         $results = WpTesting_Query_Passing::create()->countAllStatuses();
         $views   = array(
             'all' => '',

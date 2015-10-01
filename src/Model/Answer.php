@@ -1,12 +1,14 @@
 <?php
 
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method string getTitleOnce() getTitleOnce() Gets cached value of title
- * @method integer getGlobalAnswerId() getGlobalAnswerId() Gets the current value of global answer id
- * @method integer getSort() getSort() Gets the current value of sort
- * @method integer getQuestionId() getQuestionId() Gets the current value of question id
- * @method WpTesting_Model_Answer setSort() setSort(integer $sort) Sets the value for sort
+ * @method integer getId() Gets the current value of id
+ * @method string getTitleOnce() Gets cached value of title
+ * @method integer getGlobalAnswerId() Gets the current value of global answer id
+ * @method WpTesting_Model_Answer setGlobalAnswerId(integer $globalAnswerId) Sets the current value of global answer id
+ * @method integer getSort() Gets the current value of sort
+ * @method WpTesting_Model_Answer setSort(integer $sort) Sets the value for sort
+ * @method integer getQuestionId() Gets the current value of question id
+ * @method WpTesting_Model_Answer setQuestionId(integer $questionId) Sets the current value of question id
  */
 class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 {
@@ -38,7 +40,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     );
 
     /**
-     * @var WpTesting_Model_Score[]
+     * @var fRecordSet|WpTesting_Model_Score[]
      */
     protected $scores = null;
 
@@ -49,13 +51,9 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
 
     public function populate($recursive = false)
     {
-        $this->populateSelf()->populateRelated($recursive);
-    }
-
-    protected function populateRelated($recursive = false)
-    {
+        $this->populateSelf();
         if ($recursive) {
-            $this->populateWpTesting_Model_Score(true, 'answer_id');
+            $this->populateRelated('WpTesting_Model_Score', true, 'answer_id');
         }
         return $this;
     }
@@ -85,25 +83,20 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
     }
 
     /**
-     * @return WpTesting_Model_Score[]
+     * @return fRecordSet|WpTesting_Model_Score[]
      */
     public function buildScores()
     {
         return $this->buildScoresOnce();
     }
 
-    public function associateScores($scores)
-    {
-        $this->associateWpTesting_Model_Score($scores);
-    }
-
     /**
-     * @return fRecordSet of WpTesting_Model_Score
+     * @return fRecordSet|WpTesting_Model_Score[]
      */
     protected function buildScoresOnce()
     {
         if (is_null($this->scores)) {
-            $this->scores = $this->buildWpTesting_Model_Scores();
+            $this->scores = $this->buildRelated('WpTesting_Model_Scores');
             $this->scoresByScaleId = array();
             foreach ($this->scores as $score) {
                 $this->scoresByScaleId[$score->get('scale_id')] = $score;
@@ -117,7 +110,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function createGlobalAnswer()
     {
-        return $this->createWpTesting_Model_GlobalAnswer();
+        return $this->createRelated('WpTesting_Model_GlobalAnswer');
     }
 
     /**
@@ -125,7 +118,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
      */
     public function createQuestion()
     {
-        return $this->createWpTesting_Model_Question();
+        return $this->createRelated('WpTesting_Model_Question');
     }
 
     /**
@@ -150,7 +143,7 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
         if (!isset($this->scoresByScaleId[$scale->getId()])) {
             $this->scoresByScaleId[$scale->getId()] = new WpTesting_Model_Score();
             $this->scoresByScaleId[$scale->getId()]->setScaleId($scale->getId());
-            $this->associateWpTesting_Model_Scores($scores->merge($this->scoresByScaleId[$scale->getId()]));
+            $this->associateRelated('WpTesting_Model_Scores', $scores->merge($this->scoresByScaleId[$scale->getId()]));
         }
         return $this->scoresByScaleId[$scale->getId()];
     }

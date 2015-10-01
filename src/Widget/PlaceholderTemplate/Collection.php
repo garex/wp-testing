@@ -3,9 +3,9 @@
 class WpTesting_Widget_PlaceholderTemplate_Collection
 {
     /**
-     * @var WpTesting_Widget_PlaceholderTemplate[]
+     * @var array|WpTesting_Widget_PlaceholderTemplate[]
      */
-    private $templates;
+    private $templates = array();
 
     /**
      * Set template by key

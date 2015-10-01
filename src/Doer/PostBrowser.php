@@ -3,6 +3,9 @@
 class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
 {
 
+    /**
+     * @var array
+     */
     private $hiddenIds = null;
 
     /**
@@ -39,6 +42,10 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
         }
     }
 
+    /**
+     * @param array $classes
+     * @return array
+     */
     public function inheritPostClassesToTest($classes)
     {
         if (in_array('wpt_test', $classes)) {
@@ -69,6 +76,9 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
         return $postTypes;
     }
 
+    /**
+     * @return array
+     */
     private function queryHomepageHiddenTestsOnce()
     {
         if (!is_null($this->hiddenIds)) {

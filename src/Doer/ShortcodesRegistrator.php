@@ -25,7 +25,7 @@ class WpTesting_Doer_ShortcodesRegistrator extends WpTesting_Doer_AbstractDoer
         $this->ormAware = $ormAware;
         $this->testPasserAware = $testPasserAware;
 
-        $this->shortcodes = $this->wp->applyFilters('wp_testing_shortcoder_shortcodes', array(
+        $this->shortcodes = (array)$this->wp->applyFilters('wp_testing_shortcoder_shortcodes', array(
             'wpt_tests'             => 'WpTesting_Doer_Shortcoder_Tests',
             'wpt_test_read_more'    => 'WpTesting_Doer_Shortcoder_TestReadMore',
             'wpt_test_first_page'   => 'WpTesting_Doer_Shortcoder_TestFirstPage',

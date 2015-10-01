@@ -11,7 +11,6 @@
  * Domain Path: /languages
  */
 
-require_once dirname(__FILE__) . '/src/WordPressFacade.php';
-require_once dirname(__FILE__) . '/src/Facade.php';
+require_once dirname(__FILE__) . '/src/bootstrap.php';
 
 $WpTesting_Facade = new WpTesting_Facade(new WpTesting_WordPressFacade(__FILE__));

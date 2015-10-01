@@ -11,6 +11,10 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
 
     public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
     {
+        if (is_null($passing)) {
+            throw new InvalidArgumentException('Passing must exists on fill form step!');
+        }
+
         $this->test    = $test;
         $this->passing = $passing;
 
@@ -39,6 +43,11 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         ;
     }
 
+    /**
+     * @param string $title
+     * @param string $separator
+     * @return string
+     */
     public function extractTitleSeparator($title, $separator)
     {
         if (!empty($separator)) {
@@ -176,6 +185,10 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
         return $hiddens;
     }
 
+    /**
+     * @param array $matches
+     * @return string
+     */
     private function stripNewLines($matches)
     {
         $result = $matches[0];

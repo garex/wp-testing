@@ -1,6 +1,4 @@
 <?php
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '_BaseMigration.php';
-
 class SwitchToIndividualAnswers extends BaseMigration
 {
     public function up()

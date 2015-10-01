@@ -84,7 +84,7 @@ class WpTesting_Doer_TestPasser_GetResults extends WpTesting_Doer_TestPasser_Act
 
     private function setupScalesDiagram(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing)
     {
-        if (!$test->isShowScalesDiagram()) {
+        if ($test->isShowScalesDiagram() !== true) {
             return $this;
         }
         $sorryBrowser  = sprintf(__('Sorry but your browser %s is not compatible to display the chart', 'wp-testing'), $this->getUserAgent());

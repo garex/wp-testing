@@ -5,13 +5,13 @@
  *
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
- * @method integer getId() getId() Gets the current value of id
- * @method integer getTestId() getTestId() Gets the current value of test id
- * @method WpTesting_Model_Formula setTestId() setTestId(integer $id) Sets the value for test id
- * @method integer getResultId() getResultId() Gets the current value of result id
- * @method WpTesting_Model_Formula setResultId() setResultId(integer $id) Sets the value for result id
- * @method string getSource() getSource() Gets the current value of source
- * @method WpTesting_Model_Formula setSource() setSource(string $source) Sets the value for source
+ * @method integer getId() Gets the current value of id
+ * @method integer getTestId() Gets the current value of test id
+ * @method WpTesting_Model_Formula setTestId(integer $id) Sets the value for test id
+ * @method integer getResultId() Gets the current value of result id
+ * @method WpTesting_Model_Formula setResultId(integer $id) Sets the value for result id
+ * @method string getSource() Gets the current value of source
+ * @method WpTesting_Model_Formula setSource(string $source) Sets the value for source
  */
 class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 {
@@ -40,7 +40,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      * Adds value to values list without rewriting. Converts value type to integer if it's not double.
      *
      * @param string $name
-     * @param numeric $value
+     * @param integer|float $value
      * @param float $percentageValue Required only when we have "%" in source
      * @throws InvalidArgumentException
      * @return WpTesting_Model_Formula
@@ -229,7 +229,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function createResult()
     {
-        return $this->createWpTesting_Model_Result();
+        return $this->createRelated('WpTesting_Model_Result');
     }
 
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
@@ -250,7 +250,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
 
         // Check for formula correctness
         /* @var $test WpTesting_Model_Test */
-        $test = $me->createWpTesting_Model_Test()->setWp($this->getWp());
+        $test = $me->createRelated('WpTesting_Model_Test')->setWp($this->getWp());
         $varNames = array();
         foreach ($test->buildFormulaVariables() as $var) {
             $varNames[] = $var->getSource();
@@ -271,7 +271,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      *
      * @param string $name1
      * @param string $name2
-     * @return number
+     * @return integer
      */
     protected function compareValueNames($name1, $name2)
     {
@@ -293,7 +293,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      *
      * @param string $name1
      * @param string $name2
-     * @return number
+     * @return integer
      */
     protected function compareValueNamesInverted($name1, $name2)
     {

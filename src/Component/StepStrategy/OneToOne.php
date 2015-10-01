@@ -9,7 +9,6 @@ class WpTesting_Component_StepStrategy_OneToOne extends WpTesting_Component_Step
     protected function fillSteps()
     {
         $questions = $this->test->buildQuestions();
-        $total     = $questions->count();
         $answered  = $this->answeredQuestions->count();
         foreach ($questions as $q => $question) {
             $records   = fRecordSet::buildFromArray('WpTesting_Model_Question', array($q => $question));

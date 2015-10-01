@@ -6,5 +6,8 @@
 interface WpTesting_Facade_IORM
 {
 
+    /**
+     * @return void
+     */
     public function setupORM();
 }

@@ -26,7 +26,7 @@ class WpTesting_Component_Loader
         if (!isset($this->prefixToPath[$prefix])) {
             return;
         }
-        $path = str_replace('_', DIRECTORY_SEPARATOR, $class) . '.php';
+        $path = str_replace('_', '/', $class) . '.php';
         $path = str_replace($prefix, $this->prefixToPath[$prefix], $path);
         require_once $path;
     }

@@ -1,4 +1,5 @@
-<?php $lastKey = end(array_keys($options)) ?>
+<?php $optionsKeys = array_keys($options) ?>
+<?php $lastKey     = end($optionsKeys) ?>
 <?php foreach ($options as $key => $option): ?>
 <?php $cssClass = str_replace('_', '-', $key) ?>
 <?php $cssLast  = ($lastKey == $key) ? ' misc-pub-section-last' : '' ?>
