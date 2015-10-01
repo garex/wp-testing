@@ -3,14 +3,30 @@
 class WpTesting_Model_Shortcode_Attribute
 {
 
+    /**
+     * @var string
+     */
     private $externalName;
+
+    /**
+     * @var string
+     */
     private $propertyName;
+
+    /**
+     * @var mixed
+     */
     private $defaultValue;
 
     private $allowMask;
     private $allowList;
     private $errorGuide;
 
+    /**
+     * @param string $externalName
+     * @param string $propertyName
+     * @param mixed $defaultValue
+     */
     public function __construct($externalName, $propertyName = null, $defaultValue = null)
     {
         $this->externalName = $externalName;
@@ -81,12 +97,15 @@ class WpTesting_Model_Shortcode_Attribute
         return $dirtyValue;
     }
 
+    /**
+     * @return string
+     */
     public function getPropertyName()
     {
         return $this->propertyName;
     }
 
-    private function formExceptionMessage($template)
+    private function formExceptionMessage()
     {
         $argsPhp52Workaround = func_get_args();
         $message = call_user_func_array('sprintf', $argsPhp52Workaround);

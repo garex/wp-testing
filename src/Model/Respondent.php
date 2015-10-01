@@ -1,10 +1,10 @@
 <?php
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method string getLogin() getLogin() Gets the current value of login
- * @method string getEmail() getEmail() Gets the current value of email
- * @method string getNiceName() getNiceName() Gets the current value of nice name
- * @method string getDisplayName() getDisplayName() Gets the current value of display name
+ * @method integer getId() Gets the current value of id
+ * @method string getLogin() Gets the current value of login
+ * @method string getEmail() Gets the current value of email
+ * @method string getNiceName() Gets the current value of nice name
+ * @method string getDisplayName() Gets the current value of display name
  */
 class WpTesting_Model_Respondent extends WpTesting_Model_AbstractModel
 {

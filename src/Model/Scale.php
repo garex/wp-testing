@@ -93,7 +93,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
             return null;
         }
         return $this->maximum - min(array($this->minimum, 0));
-     }
+    }
 
     /**
      * @return number
