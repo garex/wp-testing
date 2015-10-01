@@ -40,20 +40,20 @@ abstract class WpTesting_Widget_PassingTable extends WpTesting_Widget_ListTable
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
         switch($column_name) {
             case 'passing_created':
-                return $item->getCreated();
+                return $item->getCreated()->__toString();
         }
 
         return '';
     }
 
     /**
-     * @return WpTesting_Model_Test[]
+     * @return fRecordSet|WpTesting_Model_Test[]
      */
     abstract protected function find_tests();
 

@@ -121,14 +121,17 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
             'total_pages' => ceil($total / $this->records_per_page)
         ));
 
-        $this->row_number = ($this->get_pagenum()-1) * $this->records_per_page;
+        $this->row_number = intval(($this->get_pagenum()-1) * $this->records_per_page);
         if ($this->is_order_desc()) {
-            $this->row_number = ($total + 1) - $this->row_number;
+            $this->row_number = intval(($total + 1) - $this->row_number);
         }
 
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
     public function has_items()
     {
         if ($this->items instanceof fRecordSet) {
@@ -211,7 +214,7 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
     /**
      * @param WpTesting_Model_AbstractModel $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_AbstractModel $item, $column_name)
     {
