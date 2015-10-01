@@ -12,6 +12,8 @@
 /tests/integration-environment/*.zip
 /tests/integration-environment/*.log
 /tests/integration-environment/*.pid
+/tools/refactoring/*.sql
+/tools/refactoring/*.svg
 /tools/screenshots/node_modules/
 /tools/screenshots/raw/*.png
 /tools/screenshots/decorated/*.png

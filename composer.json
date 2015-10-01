@@ -39,11 +39,9 @@
     },
     "autoload": {
         "classmap": [
+            "db/migrations/wp_testing/",
             "src/",
             "vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php"
-        ],
-        "files": [
-            "db/migrations/wp_testing/_BaseMigration.php"
         ]
     },
     "require-dev": {
