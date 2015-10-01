@@ -20,7 +20,7 @@ class WpTesting_Addon_Updater
         $root           = dirname($addon->getRoot());
         $slug           = basename($root);
         $metadataUrl    = sprintf($this->metadataUrlFormat, $slug);
-        $pluginFile     = $root . DIRECTORY_SEPARATOR . $slug . '.php';
+        $pluginFile     = $root . '/' . $slug . '.php';
         $checkEachHours = 1;
 
         /**
@@ -33,7 +33,7 @@ class WpTesting_Addon_Updater
          * @since 2015-07-31
          * @author Ustimenko Alexander
          */
-        $checker = PucFactory::buildUpdateChecker(
+        PucFactory::buildUpdateChecker(
             $metadataUrl,
             $pluginFile,
             '',
