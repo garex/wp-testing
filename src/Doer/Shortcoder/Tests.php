@@ -8,7 +8,7 @@ class WpTesting_Doer_Shortcoder_Tests extends WpTesting_Doer_Shortcoder
         return new WpTesting_Model_Shortcode_Tests($this->wp, $attributes);
     }
 
-    function chooseTemplate(WpTesting_Model_Shortcode $shortcode)
+    protected function chooseTemplate(WpTesting_Model_Shortcode $shortcode)
     {
         return 'Shortcode/tests';
     }

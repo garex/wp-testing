@@ -63,7 +63,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
 
         if ($this->isWordPressAlready('3.5')) {
-            $this->wp->addFilter('wp_kses_allowed_html', array($this, 'filterAllowedHtmlInTaxonomies'), 10, 2);
+            $this->wp->addFilter('wp_kses_allowed_html', array($this, 'filterAllowedHtmlInTaxonomies'));
         } else {
             $this->wp->removeFilter('pre_term_description', 'wp_filter_kses');
         }
@@ -71,10 +71,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $this;
     }
 
-    /**
-     * @param WP_Post $post
-     */
-    public function setDefaultMetaboxesOrder($post)
+    public function setDefaultMetaboxesOrder()
     {
         $boxes = $this->wp->getMetaBoxes('wpt_test', 'side', 'core');
         $boxes = $this->arrayMoveItemAfter($boxes, 'wpt_result_page_options', 'submitdiv');
@@ -82,6 +79,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->wp->setMetaBoxes($boxes, 'wpt_test', 'side', 'core');
     }
 
+    /**
+     * @param array $args
+     * @param string $postId
+     * @return array
+     */
     public function filterTermsChecklistArgs($args, $postId = null)
     {
         $taxonomy = $args['taxonomy'];
@@ -101,6 +103,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $args;
     }
 
+    /**
+     * @param array $terms
+     * @param integer $objectIds
+     * @param array $taxonomies
+     * @param array $args
+     * @return array
+     */
     public function filterForceSortObjectTerms($terms, $objectIds, $taxonomies, $args)
     {
         if (!isset($args['taxonomy']) || !in_array($args['taxonomy'], array('wpt_answer', 'wpt_scale', 'wpt_result'))) {
@@ -113,6 +122,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $terms;
     }
 
+    /**
+     * @param string $orderBy
+     * @param array $args
+     * @param string $taxonomies
+     * @return string
+     */
     public function filterTermsOrderBy($orderBy, $args, $taxonomies = null)
     {
         if (is_null($taxonomies)) { // Old WP versions workaround
@@ -135,7 +150,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return "FIELD(t.term_id, $ids) $order, name";
     }
 
-    public function filterAllowedHtmlInTaxonomies($allowedTags, $context)
+    /**
+     * @param array $allowedTags
+     * @return array
+     */
+    public function filterAllowedHtmlInTaxonomies($allowedTags)
     {
         $newTags = array(
             'h1', 'h2', 'h3', 'h4', 'h5',
@@ -209,10 +228,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $this->wp->applyFilters('wpt_test_editor_test_page_options', $options);
     }
 
-    /**
-     * @param WP_Post $item
-     */
-    public function renderTestPageOptions($item)
+    public function renderTestPageOptions()
     {
         $this->renderMetaboxOptions($this->getTestPageOptions());
     }
@@ -241,10 +257,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         return $this->wp->applyFilters('wpt_test_editor_result_page_options', $options);
     }
 
-    /**
-     * @param WP_Post $item
-     */
-    public function renderResultPageOptions($item)
+    public function renderResultPageOptions()
     {
         $this->renderMetaboxOptions($this->getResultPageOptions());
     }

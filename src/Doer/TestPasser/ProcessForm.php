@@ -5,6 +5,10 @@ class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Ac
 
     public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
     {
+        if (is_null($passing)) {
+            throw new InvalidArgumentException('Passing must exists on fill form step!');
+        }
+
         $this->test    = $test;
         $this->passing = $passing;
         $passing
@@ -26,6 +30,7 @@ class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Ac
     public function renderContent($content, $template)
     {
         // nothing here
+        return '';
     }
 
     private function extractUuid($key, $data)

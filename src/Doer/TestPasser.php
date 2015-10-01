@@ -73,7 +73,6 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         $isLive     = (self::ACTION_FILL_FORM == $action || $this->test->isFinal());
         if (!$isLive) {
             throw new UnexpectedValueException(sprintf('Test %d is under construction', $test->getId()));
-            return __('Test is under construction', 'wp-testing');
         }
 
         $this->registerScripts()->wp->addFilter('body_class', array($this, 'addPassingActionCssClass'));
@@ -82,6 +81,10 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         return $this;
     }
 
+    /**
+     * @param WpTesting_Model_Test $test
+     * @return string
+     */
     public function renderOutside(WpTesting_Model_Test $test)
     {
         try {
@@ -110,6 +113,10 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         return $classes;
     }
 
+    /**
+     * @param string $content
+     * @return string
+     */
     public function renderOnFilter($content)
     {
         if ($this->canRenderOnFilter !== true) {
@@ -142,7 +149,12 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
         return $renderedContent;
     }
 
-    public function renderTestContent($content) {
+    /**
+     * @param string $content
+     * @return string
+     */
+    public function renderTestContent($content)
+    {
         $hasFilter = ($this->canRenderOnFilter === true);
         if ($hasFilter) {
             $this->canRenderOnFilter = false;

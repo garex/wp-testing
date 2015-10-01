@@ -13,8 +13,17 @@ abstract class WpTesting_Doer_TestPasser_Action extends WpTesting_Doer_AbstractD
      */
     protected $passing;
 
+    /**
+     * @param WpTesting_Model_Test $test
+     * @param WpTesting_Model_Passing $passing
+     * @return void
+     */
     abstract public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null);
 
+    /**
+     * @param string $content
+     * @param string $template
+     * @return string
+     */
     abstract public function renderContent($content, $template);
-
 }
