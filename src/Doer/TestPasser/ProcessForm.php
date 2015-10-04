@@ -70,18 +70,10 @@ class WpTesting_Doer_TestPasser_ProcessForm extends WpTesting_Doer_TestPasser_Ac
 
     private function dieNotValid($details)
     {
-        $this->wp->dieMessage(
-            $this->render('Test/Passer/respondent-message', array(
-                'title'   => __('Test data not valid', 'wp-testing'),
-                'content' => __('You passed not valid data to test.', 'wp-testing'),
-                'details' => $details,
-            )),
-            __('Test data not valid', 'wp-testing'),
-            array(
-                'back_link' => true,
-                'response'  => 400,
-            )
-        );
-        return $this;
+        return $this->dieMessage('Test/Passer/respondent-message', 400, array(
+            'title'   => __('Test data not valid', 'wp-testing'),
+            'content' => __('You passed not valid data to test.', 'wp-testing'),
+            'details' => $details,
+        ));
     }
 }
