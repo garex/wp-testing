@@ -3,25 +3,7 @@
 class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM, WpTesting_Facade_ITestPasser
 {
 
-    /**
-     * @var WpTesting_Doer_TestEditor
-     */
-    private $testEditor = null;
-
-    /**
-     * @var WpTesting_Doer_PassingBrowser
-     */
-    private $passingBrowser = null;
-
-    /**
-     * @var WpTesting_Doer_PostBrowser
-     */
-    private $postBrowser = null;
-
-    /**
-     * @var WpTesting_Doer_TestPasser
-     */
-    private $testPasser = null;
+    private $doers = array();
 
     /**
      * @var WpTesting_Addon_Updater
@@ -213,54 +195,54 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         return $template;
     }
 
+    /**
+     * @return WpTesting_Doer_TestEditor
+     */
     protected function getTestEditor()
     {
-        if (!is_null($this->testEditor)) {
-            return $this->testEditor;
-        }
-
-        $this->setupORM();
-        $this->testEditor = new WpTesting_Doer_TestEditor($this->wp);
-
-        return $this->testEditor;
+        return $this->getDoer('TestEditor');
     }
 
+    /**
+     * @return WpTesting_Doer_PassingBrowser
+     */
     protected function getPassingBrowser()
     {
-        if (!is_null($this->passingBrowser)) {
-            return $this->passingBrowser;
-        }
-
-        $this->setupORM();
-        $this->passingBrowser = ($this->wp->isCurrentUserCan('activate_plugins'))
-            ? new WpTesting_Doer_PassingBrowser_Admin($this->wp)
-            : new WpTesting_Doer_PassingBrowser_User($this->wp);
-
-        return $this->passingBrowser;
+        $name = ($this->wp->isCurrentUserCan('activate_plugins')) ? 'Admin' : 'User';
+        return $this->getDoer('PassingBrowser_' . $name);
     }
 
+    /**
+     * @return WpTesting_Doer_PostBrowser
+     */
     protected function getPostBrowser()
     {
-        if (!is_null($this->postBrowser)) {
-            return $this->postBrowser;
-        }
-
-        $this->setupORM();
-        $this->postBrowser = new WpTesting_Doer_PostBrowser($this->wp);
-
-        return $this->postBrowser;
+        return $this->getDoer('PostBrowser');
     }
 
+    /**
+     * @return WpTesting_Doer_TestPasser
+     */
     public function getTestPasser()
     {
-        if (!is_null($this->testPasser)) {
-            return $this->testPasser;
+        return $this->getDoer('TestPasser');
+    }
+
+    /**
+     * @param string $name
+     * @return WpTesting_Doer_AbstractDoer
+     */
+    private function getDoer($name)
+    {
+        if (isset($this->doers[$name])) {
+            return $this->doers[$name];
         }
 
         $this->setupORM();
-        $this->testPasser = new WpTesting_Doer_TestPasser($this->wp);
+        $doerClassName = 'WpTesting_Doer_' . $name;
+        $this->doers[$name] = new $doerClassName($this->wp);
 
-        return $this->testPasser;
+        return $this->doers[$name];
     }
 
     protected function getAddonUpdater()

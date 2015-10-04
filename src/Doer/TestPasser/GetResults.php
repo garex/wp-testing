@@ -68,18 +68,10 @@ class WpTesting_Doer_TestPasser_GetResults extends WpTesting_Doer_TestPasser_Act
 
     private function dieNotFound()
     {
-        $this->wp->dieMessage(
-            $this->render('Test/Passer/respondent-message', array(
-                'title'   => __('Test result not found', 'wp-testing'),
-                'content' => __('You can not get anything from nothing.', 'wp-testing'),
-            )),
-            __('Test result not found', 'wp-testing'),
-            array(
-                'back_link' => true,
-                'response' => 404,
-            )
-        );
-        return $this;
+        return $this->dieMessage('Test/Passer/respondent-message', 404, array(
+            'title'   => __('Test result not found', 'wp-testing'),
+            'content' => __('You can not get anything from nothing.', 'wp-testing'),
+        ));
     }
 
     private function setupScalesDiagram(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing)

@@ -177,18 +177,10 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     private function dieUnderConctruction()
     {
-        $this->wp->dieMessage(
-            $this->render('Test/Passer/respondent-message', array(
-                'title'   => __('Test is under construction', 'wp-testing'),
-                'content' => __('You can not get any results from it yet.', 'wp-testing'),
-            )),
-            __('Test is under construction', 'wp-testing'),
-            array(
-                'back_link' => true,
-                'response' => 403,
-            )
-        );
-        return $this;
+        return $this->dieMessage('Test/Passer/respondent-message', 403, array(
+            'title'   => __('Test is under construction', 'wp-testing'),
+            'content' => __('You can not get any results from it yet.', 'wp-testing'),
+        ));
     }
 
     private function prepareToLevenshein($input)

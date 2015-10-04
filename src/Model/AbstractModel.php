@@ -295,10 +295,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected function get($column)
     {
-        if (isset($this->columnAliases[$column])) {
-            $column = $this->columnAliases[$column];
-        }
-        return parent::get($column);
+        return parent::get($this->deAliasColumn($column));
     }
 
     /**
@@ -306,10 +303,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected function set($column, $value)
     {
-        if (isset($this->columnAliases[$column])) {
-            $column = $this->columnAliases[$column];
-        }
-        return parent::set($column, $value);
+        return parent::set($this->deAliasColumn($column), $value);
+    }
+
+    /**
+     * @param string $column
+     * @return string
+     */
+    private function deAliasColumn($column)
+    {
+        return (isset($this->columnAliases[$column])) ? $this->columnAliases[$column] : $column;
     }
 
     /**

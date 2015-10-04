@@ -199,6 +199,22 @@ abstract class WpTesting_Doer_AbstractDoer
         return ob_get_clean();
     }
 
+    protected function dieMessage($template, $responseCode, $parameters)
+    {
+        if (!isset($parameters['title'])) {
+            $parameters['title'] = $this->wp->translate('WordPress &rsaquo; Error');
+        }
+        $this->wp->dieMessage(
+            $this->render($template, $parameters),
+            $parameters['title'],
+            array(
+                'back_link' => true,
+                'response'  => $responseCode,
+            )
+        );
+        return $this;
+    }
+
     protected function isPost()
     {
         return fRequest::isPost();

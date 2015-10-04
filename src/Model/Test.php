@@ -114,12 +114,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function buildScales()
     {
-        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_scale');
-        return fRecordSet::build('WpTesting_Model_Scale', array(
-            'term_id=' => $ids,
-        ), array(
-            'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
-        ));
+        return $this->buildRelatedTaxonomies('wpt_scale', 'WpTesting_Model_Scale');
     }
 
     /**
@@ -236,8 +231,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function buildGlobalAnswers()
     {
-        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_answer');
-        return fRecordSet::build('WpTesting_Model_GlobalAnswer', array(
+        return $this->buildRelatedTaxonomies('wpt_answer', 'WpTesting_Model_GlobalAnswer');
+    }
+
+    protected function buildRelatedTaxonomies($taxomony, $model)
+    {
+        $ids = $this->getTermIdFromFilteredTaxonomies($taxomony);
+        return fRecordSet::build($model, array(
             'term_id=' => $ids,
         ), array(
             'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',

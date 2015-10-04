@@ -1,7 +1,8 @@
 <?php
-require_once dirname(__FILE__) . '/../vendor/ruckusing/ruckusing-migrations/lib/Ruckusing/Migration/Base.php';
-require_once dirname(__FILE__) . '/migrations/wp_testing/_BaseMigration.php';
-
+$php53 = version_compare(PHP_VERSION, '5.3.2', '>=');
+if (!$php53) {
+    require_once dirname(__FILE__) . '/../vendor/autoload_52.php';
+}
 $local = dirname(__FILE__) . '/ruckusing.conf.local.php';
 if (file_exists($local)) {
     return require_once $local;
