@@ -281,13 +281,13 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return " * @method $returnType $methodName($paramsDoc) $commentDoc";
     }
 
-    protected function loadFromResult($result, $ignore_identity_map=false)
+    protected function loadFromResult($result, $ignoreIdentityMap=false)
     {
         $row = $result->current();
         foreach ($row as $key => $value) {
             $row[$key] = $value;
         }
-        return parent::loadFromResult(new ArrayIterator(array($row)), $ignore_identity_map);
+        return parent::loadFromResult(new ArrayIterator(array($row)), $ignoreIdentityMap);
     }
 
     /**
