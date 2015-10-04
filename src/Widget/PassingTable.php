@@ -47,10 +47,32 @@ abstract class WpTesting_Widget_PassingTable extends WpTesting_Widget_ListTable
         switch($column_name) {
             case 'passing_created':
                 return $item->getCreated()->__toString();
+            case 'test_title':
+                $test = $item->createTest();
+                return $this->render_link(
+                    $this->get_test_title_link($test),
+                    $test->getTitle()
+                );
         }
 
         return '';
     }
+
+    protected function get_test_title_link(WpTesting_Model_Test $test)
+    {
+        return $this->wp->getPostPermalink($test->getId());
+    }
+
+    protected function find_items()
+    {
+        return WpTesting_Query_Passing::create()
+            ->findAllPagedSortedByParams($this->get_find_items_params(), $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+    }
+
+    /**
+     * @return array
+     */
+    abstract protected function get_find_items_params();
 
     /**
      * @return fRecordSet|WpTesting_Model_Test[]
