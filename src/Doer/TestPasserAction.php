@@ -1,6 +1,6 @@
 <?php
 
-abstract class WpTesting_Doer_TestPasser_Action extends WpTesting_Doer_AbstractDoer
+abstract class WpTesting_Doer_TestPasserAction extends WpTesting_Doer_AbstractDoer
 {
 
     /**

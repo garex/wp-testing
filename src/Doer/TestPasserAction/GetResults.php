@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasser_GetResults extends WpTesting_Doer_TestPasser_Action implements WpTesting_Doer_IRenderer
+class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPasserAction implements WpTesting_Doer_IRenderer
 {
 
     public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)

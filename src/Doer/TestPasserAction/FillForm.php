@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Action
+class WpTesting_Doer_TestPasserAction_FillForm extends WpTesting_Doer_TestPasserAction
 {
 
     /**

@@ -29,7 +29,7 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     private $passing = null;
 
     /**
-     * @var WpTesting_Doer_TestPasser_Action
+     * @var WpTesting_Doer_TestPasserAction
      */
     private $actionProcessor = null;
 
@@ -217,20 +217,20 @@ class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
 
     /**
      * @param string $action
-     * @return WpTesting_Doer_TestPasser_Action
+     * @return WpTesting_Doer_TestPasserAction
      */
     private function createActionProcessor($action)
     {
         if (is_null($this->actionProcessor)) {
             switch ($action) {
                 case self::ACTION_FILL_FORM:
-                    $this->actionProcessor = new WpTesting_Doer_TestPasser_FillForm($this->wp);
+                    $this->actionProcessor = new WpTesting_Doer_TestPasserAction_FillForm($this->wp);
                     break;
                 case self::ACTION_PROCESS_FORM:
-                    $this->actionProcessor = new WpTesting_Doer_TestPasser_ProcessForm($this->wp);
+                    $this->actionProcessor = new WpTesting_Doer_TestPasserAction_ProcessForm($this->wp);
                     break;
                 case self::ACTION_GET_RESULTS:
-                    $this->actionProcessor = new WpTesting_Doer_TestPasser_GetResults($this->wp);
+                    $this->actionProcessor = new WpTesting_Doer_TestPasserAction_GetResults($this->wp);
                     break;
             }
         }
