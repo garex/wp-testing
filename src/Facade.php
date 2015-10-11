@@ -221,11 +221,11 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
     }
 
     /**
-     * @return WpTesting_Doer_TestPasser
+     * @return WpTesting_Doer_TestPasser_FilterRenderer
      */
     public function getTestPasser()
     {
-        return $this->getDoer('TestPasser');
+        return $this->getDoer('TestPasser_FilterRenderer');
     }
 
     /**
