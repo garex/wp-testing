@@ -40,13 +40,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
             ->addMetaBox('wpt_add_questions',  __('Add New Questions', 'wp-testing'), array($this, 'renderAddQuestions'),  'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
-            ->addAction('save_post',     array($this, 'saveTest'), 10, 2)
+            ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
         // Respect metabox sort order
         if ($this->isWordPressAlready('3.4')) {
-            $this->wp->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), 10, 2);
+            $this->wp->addFilter('wp_terms_checklist_args', array($this, 'filterTermsChecklistArgs'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2);
         } else {
-            $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), 10, 4);
+            $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 4);
         }
         $this->wp->doAction('wp_testing_editor_customize_ui_after');
         return $this;
@@ -99,7 +99,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             'orderby'  => 'term_order',
         ));
         $this->selectedTermsIds[$taxonomy] = $args['selected_cats'];
-        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 3);
         return $args;
     }
 
@@ -118,7 +118,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $model = new WpTesting_Model_Taxonomy();
         $terms = $model->sortTermIdsByTermOrder($objectIds, $terms);
         $this->selectedTermsIds[$args['taxonomy']] = $terms;
-        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+        $this->wp->addFilterOnce('get_terms_orderby', array($this, 'filterTermsOrderBy'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 3);
         return $terms;
     }
 
@@ -131,7 +131,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function filterTermsOrderBy($orderBy, $args, $taxonomies = null)
     {
         if (is_null($taxonomies)) { // Old WP versions workaround
-            $this->wp->removeFilter('get_terms_orderby', array($this, 'filterTermsOrderBy'), 10, 3);
+            $this->wp->removeFilter('get_terms_orderby', array($this, 'filterTermsOrderBy'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 3);
             end($this->selectedTermsIds);
             $taxonomies = array(key($this->selectedTermsIds));
         }

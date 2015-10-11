@@ -1,13 +1,7 @@
 <?php
 
-interface WpTesting_Addon_IWordPressFacade
+interface WpTesting_Addon_IWordPressFacade extends WpTesting_WordPress_IPriority
 {
-
-    /**
-     * Used to specify the order in which the functions associated with a particular action are executed (default: 10). Lower numbers correspond with earlier execution, and functions with the same priority are executed in the order in which they were added to the action.
-     * @var integer
-     */
-    const PRIORITY_DEFAULT = 10;
 
     /**
      * Hooks a function on to a specific action.

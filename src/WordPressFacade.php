@@ -822,7 +822,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addAction($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addAction($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
         add_action($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -895,7 +895,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addFilter($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addFilter($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
         add_filter($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -926,7 +926,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @see WpTesting_WordPressFacade::addFilter
      * @return WpTesting_WordPressFacade
      */
-    public function addFilterOnce($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addFilterOnce($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
         if ($this->hasFilter($tag, $function) !== false) {
             return $this;

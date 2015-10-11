@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Action
+class WpTesting_Doer_TestPasserAction_FillForm extends WpTesting_Doer_TestPasserAction
 {
 
     /**
@@ -38,7 +38,7 @@ class WpTesting_Doer_TestPasser_FillForm extends WpTesting_Doer_TestPasser_Actio
             ->fixFooterScriptsForOldWordPress()
         ;
         $this->wp
-            ->addFilter('wp_title', array($this, 'extractTitleSeparator'), 10, 2)
+            ->addFilter('wp_title', array($this, 'extractTitleSeparator'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
             ->doAction('wp_testing_passer_fill_form_before_render', $this->passing, $this->test)
         ;
     }
