@@ -10,9 +10,9 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
         parent::registerPages();
 
         $this->wp
-            ->addAction('wp_testing_passing_browser_admin_process_trash',   array($this, 'processActionTrash'),   WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
-            ->addAction('wp_testing_passing_browser_admin_process_untrash', array($this, 'processActionUntrash'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
-            ->addAction('wp_testing_passing_browser_admin_process_delete',  array($this, 'processActionDelete'),  WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_trash',   array($this, 'processActionTrash'),   WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_untrash', array($this, 'processActionUntrash'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_delete',  array($this, 'processActionDelete'),  WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
 
         return $this;

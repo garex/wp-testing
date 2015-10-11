@@ -75,7 +75,7 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
                 'default'   => 10,
                 'option'    => 'passing_browser_per_page',
             ))
-            ->addFilter('set-screen-option', array($this, 'validatePerPageOption'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 3)
+            ->addFilter('set-screen-option', array($this, 'validatePerPageOption'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 3)
             ->setScreenOptions()
         ;
 

@@ -29,7 +29,7 @@ class WpTesting_Doer_TestPasser_FilterRenderer extends WpTesting_Doer_TestPasser
             return $this->dieUnderConctruction();
         }
 
-        $this->wp->addFilter('the_content', array($this, 'renderOnFilter'), 5);
+        $this->wp->addFilter('the_content', array($this, 'renderOnFilter'), WpTesting_WordPress_IPriority::PRIORITY_HIGH);
         return $this;
     }
 

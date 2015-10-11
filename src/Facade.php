@@ -122,7 +122,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         }
         $this->wp
             ->registerActivationHook(        array($this,  'onPluginActivate'))
-            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), 10, 2)
+            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
             ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
             ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('admin_menu',        array($this,  'registerAdminPages'))
