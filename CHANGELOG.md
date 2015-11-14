@@ -2,6 +2,18 @@
 ## Changelog ##
 
 
+### 0.17.2 ###
+
+Internal improvements and intro-video
+
+Add intro-video with plugin description, howto concepts and explanations: http://www.youtube.com/watch?v=tT3d8Jdm7kY
+
+Internal improvements:
+
+* Improve code quality and avoid duplicates
+* Improve test rendering
+
+
 ### 0.17.1 ###
 
 Fix incorrect content processing
