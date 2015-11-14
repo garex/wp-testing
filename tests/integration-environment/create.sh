@@ -40,8 +40,8 @@ function setup_link {
 
 function start_nginx {
     log 'Configuring and reloading nginx'
-    ps ax | grep "[n]ginx -g" && nginx -g "error_log /tmp/wpti/error.log;" -c /tmp/wpti/nginx.conf -s stop
-    nginx -g "error_log /tmp/wpti/error.log;" -c /tmp/wpti/nginx.conf
+    ps ax | grep "[n]ginx -c" && nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;" -s stop
+    nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;"
 }
 
 function php_cgi {
