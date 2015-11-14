@@ -106,13 +106,11 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
         return parent::prepare_items();
     }
 
-    protected function find_items()
+    protected function get_find_items_params()
     {
         $params = $this->get_filter_params($this->find_items_filter_params);
         $params['passing_status'] = fRequest::get('passing_status', 'array', array('publish'));
-
-        return WpTesting_Query_Passing::create()
-            ->findAllPagedSortedByParams($params, $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+        return $params;
     }
 
     protected function find_tests()
@@ -125,7 +123,8 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
         return WpTesting_Query_Passing::create()->queryAllMonths();
     }
 
-    public function column_cb(WpTesting_Model_Passing $item) {
+    public function column_cb(WpTesting_Model_Passing $item)
+    {
         $label = $this->render_tag('label', array(
             'class' => 'screen-reader-text',
             'for'   => 'cb-select-' . $item->getId(),
@@ -146,7 +145,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
@@ -162,13 +161,6 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
             case 'passing_user_agent':
                 return $item->getUserAgent();
-
-            case 'test_title':
-                $test = $item->createTest();
-                return $this->render_link(
-                    $this->wp->getEditPostLink($test->getId()),
-                    $test->getTitle()
-                );
 
             case 'results':
                 $links = array();
@@ -224,7 +216,13 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
         return parent::render_static_column($item, $column_name);
     }
 
-    public function get_views() {
+    protected function get_test_title_link(WpTesting_Model_Test $test)
+    {
+        return $this->wp->getEditPostLink($test->getId());
+    }
+
+    public function get_views()
+    {
         $results = WpTesting_Query_Passing::create()->countAllStatuses();
         $views   = array(
             'all' => '',

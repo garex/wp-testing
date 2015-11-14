@@ -10,20 +10,19 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
         parent::registerPages();
 
         $this->wp
-            ->addAction('wp_testing_passing_browser_admin_process_trash',   array($this, 'processActionTrash'),   WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
-            ->addAction('wp_testing_passing_browser_admin_process_untrash', array($this, 'processActionUntrash'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
-            ->addAction('wp_testing_passing_browser_admin_process_delete',  array($this, 'processActionDelete'),  WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_trash',   array($this, 'processActionTrash'),   WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_untrash', array($this, 'processActionUntrash'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_testing_passing_browser_admin_process_delete',  array($this, 'processActionDelete'),  WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
 
         return $this;
     }
 
     /**
-     * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
+     * @param fRecordSet|WpTesting_Model_Passing[] $passings
      * @return self
      */
-    public function processActionTrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionTrash(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->trash();
@@ -32,11 +31,10 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
     }
 
     /**
-     * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
+     * @param fRecordSet|WpTesting_Model_Passing[] $passings
      * @return self
      */
-    public function processActionUntrash(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionUntrash(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->publish();
@@ -45,11 +43,10 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
     }
 
     /**
-     * @param WpTesting_Model_Passing[] $passings
-     * @param self $me
+     * @param fRecordSet|WpTesting_Model_Passing[] $passings
      * @return self
      */
-    public function processActionDelete(fRecordSet $passings, WpTesting_Doer_PassingBrowser_Admin $me)
+    public function processActionDelete(fRecordSet $passings)
     {
         foreach ($passings as $passing) { /* @var $passing WpTesting_Model_Passing */
             $passing->delete(true);
@@ -64,23 +61,25 @@ class WpTesting_Doer_PassingBrowser_Admin extends WpTesting_Doer_PassingBrowser
         $this->wp->doAction('wp_testing_passing_browser_admin_process_' . $action, $passings, $this);
 
         $referer = $this->wp->getReferer();
-        if ($referer) {
-            return $this->wp->safeRedirect($referer);
+        if (empty($referer)) {
+            $this->wp->redirect('?post_type=wpt_test&page=wpt_test_respondents_results');
+        } else {
+            $this->wp->safeRedirect($referer);
         }
 
-        return $this->wp->redirect('?post_type=wpt_test&page=wpt_test_respondents_results');
+        return $this;
     }
 
     protected function addMenuPages()
     {
-        $this->screenHook = $this->wp->addSubmenuPage(
+        $this->setScreenHook($this->wp->addSubmenuPage(
             'edit.php?post_type=wpt_test',
             __('Respondents’ test results', 'wp-testing'),
             __('Respondents’ results', 'wp-testing'),
             'activate_plugins',
             'wpt_test_respondents_results',
             array($this, 'renderPassingsPage')
-        );
+        ));
 
         $this->passingsPageTitle = __('Respondents’ test results', 'wp-testing');
 

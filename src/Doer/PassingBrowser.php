@@ -3,7 +3,7 @@
 abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
 {
 
-    protected $screenHook = '';
+    private $screenHook = '';
 
     protected $passingTableClass = '';
 
@@ -14,6 +14,10 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
      */
     private $passingTable = null;
 
+    /**
+     * @throws LogicException
+     * @return self
+     */
     public function registerPages()
     {
         $this->addMenuPages();
@@ -26,9 +30,26 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
     }
 
     /**
-     * @return WpTesting_Doer_PassingBrowser
+     * @throws LogicException
+     * @return self
      */
     abstract protected function addMenuPages();
+
+    /**
+     * @param string|mixed $screenHook
+     * @throws LogicException
+     * @return self
+     */
+    protected function setScreenHook($screenHook)
+    {
+        if (!is_string($screenHook)) {
+            throw new LogicException('You do not have rights to access this page');
+        }
+
+        $this->screenHook = $screenHook;
+
+        return $this;
+    }
 
     /**
      * Process action on page load
@@ -42,6 +63,10 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
         $this->processAction($table->current_action(), fRequest::get('passing_id', 'array'));
     }
 
+    /**
+     * @param array $columns
+     * @return array
+     */
     public function managePassingsPageColumns($columns)
     {
         $this->wp
@@ -50,7 +75,7 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
                 'default'   => 10,
                 'option'    => 'passing_browser_per_page',
             ))
-            ->addFilter('set-screen-option', array($this, 'validatePerPageOption'), WpTesting_Addon_IWordPressFacade::PRIORITY_DEFAULT, 3)
+            ->addFilter('set-screen-option', array($this, 'validatePerPageOption'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 3)
             ->setScreenOptions()
         ;
 

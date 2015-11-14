@@ -37,13 +37,17 @@ abstract class WpTesting_Model_Shortcode
 
     /**
      * Should be overrided by shortcodes, which could be identified by ids/names/other params
-     * @return mixed
+     * @return string
      */
     protected function getUniqueIdentifier()
     {
         return null;
     }
 
+    /**
+     * @param WpTesting_Facade_IORM $ormAware
+     * @return array
+     */
     public function getDataForTemplate(WpTesting_Facade_IORM $ormAware)
     {
         return array();

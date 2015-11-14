@@ -30,14 +30,13 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
         );
     }
 
-    protected function find_items()
+    protected function get_find_items_params()
     {
         $params = $this->get_filter_params(array(
             'test_id',
         ));
         $params['respondent_id'] = $this->wp->getCurrentUserId();
-        return WpTesting_Query_Passing::create()
-            ->findAllPagedSortedByParams($params, $this->get_pagenum(), $this->records_per_page, $this->get_order_by());
+        return $params;
     }
 
     protected function find_tests()
@@ -55,20 +54,13 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
     /**
      * @param WpTesting_Model_Passing $item
      * @param string $column_name
-     * @return string
+     * @return string|integer
      */
     protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
     {
         switch($column_name) {
             case 'row_number':
                 return $this->get_row_number();
-
-            case 'test_title':
-                $test = $item->createTest();
-                return $this->render_link(
-                    $this->wp->getPostPermalink($test->getId()),
-                    $test->getTitle()
-                );
 
             case 'results':
                 $links = array();

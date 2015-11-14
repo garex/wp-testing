@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method string getTitle() getTitle() Gets the current value of title
- * @method string getSlug() getSlug() Gets the current value of slug
- * @method string getAbbrOnce() getAbbrOnce() Gets cached value of abbreviration
- * @method string getTitleOnce() getTitleOnce() Gets cached value of title
+ * @method integer getId() Gets the current value of id
+ * @method string getTitle() Gets the current value of title
+ * @method string getSlug() Gets the current value of slug
+ * @method string getAbbrOnce() Gets cached value of abbreviration
+ * @method string getTitleOnce() Gets cached value of title
  */
 abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel
 {
@@ -20,7 +20,7 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
      */
     public function createTaxonomy()
     {
-        return $this->buildWpTesting_Model_Taxonomy()->getRecord(0);
+        return $this->buildRelated('WpTesting_Model_Taxonomy')->getRecord(0);
     }
 
     /**
@@ -33,19 +33,26 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return mb_substr($this->getTitleOnce(), 0, 1, 'UTF-8');
     }
 
+    /**
+     * @return string
+     */
     public function getDescription()
     {
-        /* @var $result fRecordset */
-        $result = $this->buildWpTesting_Model_Taxonomy();
+        $result = $this->buildRelated('WpTesting_Model_Taxonomy');
         if (!$result->count()) {
             return null;
         }
         return $result->getRecord(0)->getDescription();
     }
 
+    /**
+     * @param integer $index
+     * @return string
+     */
     public function getCssClass($index = null)
     {
-        $name = strtolower(end(explode('_', get_class($this))));
+        $classParts = explode('_', get_class($this));
+        $name = strtolower(end($classParts));
         $id   = $this->getId();
         $slug = $this->getSlug();
         $css  = "$name $name-id-$id $name-slug-$slug";

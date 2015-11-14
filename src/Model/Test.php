@@ -1,30 +1,30 @@
 <?php
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method WpTesting_Model_Test setId() setId(integer $id) Sets the value for id
- * @method string getTitle() getTitle() Gets the current value of title
- * @method WpTesting_Model_Test setTitle() setTitle(string $title) Sets the value for title
- * @method fTimestamp getCreated() getCreated() Gets the current value of created
- * @method WpTesting_Model_Test setCreated() setCreated(fTimestamp|string $created) Sets the value for created
- * @method fTimestamp getModified() getModified() Gets the current value of modified
- * @method WpTesting_Model_Test setModified() setModified(fTimestamp|string $modified) Sets the value for modified
- * @method WpTesting_Model_Test setContent() setContent(string $content) Sets the value for content
- * @method string getContent() getContent() Gets the current value of content
- * @method string getStatus() getStatus() Gets the current value of status
- * @method WpTesting_Model_Test setExcerpt() setExcerpt(string $excerpt) Sets the value for excerpt
- * @method string getExcerpt() getExcerpt() Gets the current value of excerpt
- * @method WpTesting_Model_Test setContentFiltered() setContentFiltered(string $contentFiltered) Sets the value for content filtered
- * @method string getContentFiltered() getContentFiltered() Gets the current value of content filtered
- * @method WpTesting_Model_Test setToPing() setToPing(string $toPing) Sets the value for URLs that should be pinged
- * @method string getToPing() getToPing() Gets the current value for URLs that should be pinged
- * @method WpTesting_Model_Test setPinged() setPinged(string $pinged) Sets the value for URLs that already pinged
- * @method string getPinged() getPinged() Gets the current value for URLs that already pinged
- * @method WpTesting_Model_Test setType() setType(string $type) Sets the value for type that should be wpt_test
- * @method string getType() getType() Gets the current value for type
- * @method WpTesting_Model_Test setName() setName(string $name) Sets the value for name (url unique part)
- * @method string getName() getName() Gets the current value for name (url unique part)
- * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
- * @method WpTesting_Model_Formula[] buildFormulasOnce() buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
+ * @method integer getId() Gets the current value of id
+ * @method WpTesting_Model_Test setId(integer $id) Sets the value for id
+ * @method string getTitle() Gets the current value of title
+ * @method WpTesting_Model_Test setTitle(string $title) Sets the value for title
+ * @method fTimestamp getCreated() Gets the current value of created
+ * @method WpTesting_Model_Test setCreated(fTimestamp|string $created) Sets the value for created
+ * @method fTimestamp getModified() Gets the current value of modified
+ * @method WpTesting_Model_Test setModified(fTimestamp|string $modified) Sets the value for modified
+ * @method WpTesting_Model_Test setContent(string $content) Sets the value for content
+ * @method string getContent() Gets the current value of content
+ * @method string getStatus() Gets the current value of status
+ * @method WpTesting_Model_Test setExcerpt(string $excerpt) Sets the value for excerpt
+ * @method string getExcerpt() Gets the current value of excerpt
+ * @method WpTesting_Model_Test setContentFiltered(string $contentFiltered) Sets the value for content filtered
+ * @method string getContentFiltered() Gets the current value of content filtered
+ * @method WpTesting_Model_Test setToPing(string $toPing) Sets the value for URLs that should be pinged
+ * @method string getToPing() Gets the current value for URLs that should be pinged
+ * @method WpTesting_Model_Test setPinged(string $pinged) Sets the value for URLs that already pinged
+ * @method string getPinged() Gets the current value for URLs that already pinged
+ * @method WpTesting_Model_Test setType(string $type) Sets the value for type that should be wpt_test
+ * @method string getType() Gets the current value for type
+ * @method WpTesting_Model_Test setName(string $name) Sets the value for name (url unique part)
+ * @method string getName() Gets the current value for name (url unique part)
+ * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
+ * @method WpTesting_Model_Formula[] buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
  */
 class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 {
@@ -48,7 +48,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     );
 
     /**
-     * @var WpTesting_Model_Taxonomy[]
+     * @var fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected $taxonomies = null;
 
@@ -69,15 +69,15 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestions()
     {
-        return $this->me()->buildWpTesting_Model_Questions();
+        return $this->me()->buildRelated('WpTesting_Model_Questions');
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestionsWithAnswersAndScores()
     {
@@ -85,16 +85,16 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!count($questions)) {
             return $questions;
         }
-        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+        if ($this->me()->hasRelatedIn($questions, 'WpTesting_Model_Answer')) {
             return $questions;
         }
         $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
-        $scoresById  = $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
+        $this->associateManyRelated($answersById, 'WpTesting_Model_Score',  'answer_id');
         return $questions;
     }
 
     /**
-     * @return WpTesting_Model_Question[]
+     * @return fRecordSet|WpTesting_Model_Question[]
      */
     public function buildQuestionsWithAnswers()
     {
@@ -102,30 +102,25 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!count($questions)) {
             return $questions;
         }
-        if ($this->me()->hasRelated($questions, 'WpTesting_Model_Answer')) {
+        if ($this->me()->hasRelatedIn($questions, 'WpTesting_Model_Answer')) {
             return $questions;
         }
-        $answersById = $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
+        $this->associateManyRelated($questions,   'WpTesting_Model_Answer', 'question_id');
         return $questions;
     }
 
     /**
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScales()
     {
-        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_scale');
-        return fRecordSet::build('WpTesting_Model_Scale', array(
-            'term_id=' => $ids,
-        ), array(
-            'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
-        ));
+        return $this->buildRelatedTaxonomies('wpt_scale', 'WpTesting_Model_Scale');
     }
 
     /**
      * Build scales and setup their ranges from test's questions
      *
-     * @return WpTesting_Model_Scale[]
+     * @return fRecordSet|WpTesting_Model_Scale[]
      */
     public function buildScalesWithRange()
     {
@@ -133,7 +128,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         if (!$scales->count()) {
             return $scales;
         }
-        $questionIds = array_filter($this->listWpTesting_Model_Questions());
+        $questionIds = array_filter($this->listRelated('WpTesting_Model_Questions'));
         if (empty($questionIds)) {
             return $scales;
         }
@@ -178,7 +173,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Result[]
+     * @return fRecordSet|WpTesting_Model_Result[]
      */
     public function buildResults()
     {
@@ -224,20 +219,25 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Formula[]
+     * @return fRecordSet|WpTesting_Model_Formula[]
      */
     public function buildFormulas()
     {
-        return $this->buildWpTesting_Model_Formulas();
+        return $this->buildRelated('WpTesting_Model_Formulas');
     }
 
     /**
-     * @return WpTesting_Model_GlobalAnswer[]
+     * @return fRecordSet|WpTesting_Model_GlobalAnswer[]
      */
     public function buildGlobalAnswers()
     {
-        $ids = $this->getTermIdFromFilteredTaxonomies('wpt_answer');
-        return fRecordSet::build('WpTesting_Model_GlobalAnswer', array(
+        return $this->buildRelatedTaxonomies('wpt_answer', 'WpTesting_Model_GlobalAnswer');
+    }
+
+    protected function buildRelatedTaxonomies($taxomony, $model)
+    {
+        $ids = $this->getTermIdFromFilteredTaxonomies($taxomony);
+        return fRecordSet::build($model, array(
             'term_id=' => $ids,
         ), array(
             'FIELD(term_id, ' . implode(', ', $ids) . ')' => 'asc',
@@ -245,15 +245,15 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * @return WpTesting_Model_Taxonomy[]
+     * @return fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected function buildTaxonomies()
     {
-        return $this->buildWpTesting_Model_Taxonomy();
+        return $this->buildRelated('WpTesting_Model_Taxonomy');
     }
 
     /**
-     * @return fRecordSet of WpTesting_Model_Taxonomy
+     * @return fRecordSet|WpTesting_Model_Taxonomy[]
      */
     protected function buildTaxonomiesOnce()
     {
@@ -303,13 +303,13 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Adds new question associated to this test
      * @param string $title
-     * @return WpTesting_Model_Test
+     * @return self
      */
     public function addQuestion($title)
     {
         $question = new WpTesting_Model_Question();
         $question->setTitle($title);
-        $this->associateWpTesting_Model_Questions($this->buildQuestions()->merge($question));
+        $this->associateRelated('WpTesting_Model_Questions', $this->buildQuestions()->merge($question));
         return $this;
     }
 
@@ -325,8 +325,8 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     private function associateAbstractTerm(WpTesting_Model_AbstractTerm $term)
     {
-        $this->associateWpTesting_Model_Taxonomies(
-            $this->buildWpTesting_Model_Taxonomies()
+        $this->associateRelated('WpTesting_Model_Taxonomies',
+            $this->buildRelated('WpTesting_Model_Taxonomies')
                 ->merge($term->createTaxonomy())
         );
         return $this;
@@ -457,7 +457,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     {
         return true
             && $this->hasScales()
-            && $this->hasWpTesting_Model_Questions()
+            && $this->hasRelated('WpTesting_Model_Questions')
             && $this->hasAnswers()
         ;
     }
@@ -630,7 +630,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function populateQuestions($isRecursive = false)
     {
-        $this->populateWpTesting_Model_Questions($isRecursive);
+        $this->populateRelated('WpTesting_Model_Questions', $isRecursive);
         $table   = fORM::tablize('WpTesting_Model_Question');
         $records =& $this->related_records[$table]['test_id']['record_set'];
         $records = $records->filter(array('getTitle!=' => ''));
@@ -643,7 +643,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
      */
     public function populateFormulas($isRecursive = false)
     {
-        return $this->populateWpTesting_Model_Formulas($isRecursive);
+        return $this->populateRelated('WpTesting_Model_Formulas', $isRecursive);
     }
 
     /**
@@ -700,7 +700,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     /**
      * Export as WP native content entity object
      *
-     * @return WP_Post
+     * @return WP_Post|stdClass
      */
     public function toWpPost()
     {

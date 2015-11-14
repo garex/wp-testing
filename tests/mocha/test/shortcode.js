@@ -222,4 +222,96 @@ describe('Shortcode', function() {
             })
         })
     })
+
+    describe('not fails other rendering', function() {
+        var content = '[caption align="aligncenter" width="300" caption="Caption1"]'
+
+        it('should create new scale with caption shortcode inside', function() {
+            casper.thenOpen(server + '/wp-admin/', function() {
+                this.clickLabel('Scales', '*[@id="menu-posts-wpt_test"]/*//a')
+            })
+
+            casper.then(function() {
+                'Scales'.should.be.inTitle
+
+                this.fill('form#addtag', {
+                    'tag-name'    : 'Scale Caption',
+                    'description' : content
+                }, true)
+
+                this.waitForText('Scale Caption')
+            })
+        })
+
+        it('should create new test with one question, answer, created scale and caption shortcode in description', function() {
+            casper.then(function() {
+                this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
+            })
+
+            casper.then(function() {
+                'Fatal'.should.not.be.textInDOM
+                'Add New Test'.should.be.inTitle
+
+                this.evaluate(function() {
+                    jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
+                })
+                this.click('.__text_tab_here')
+
+                this.clickLabel(' Scale Caption', 'label')
+                this.clickLabel(' Yes', 'label')
+                this.fillSelectors('form#post', {
+                    '#title': 'Test With Caption Shortcodes',
+                    '#content': content,
+                    '#wpt_question_title_0': 'First or last?'
+                }, true)
+            })
+
+            casper.waitForUrl(/message/, function() {
+                'Fatal'.should.not.be.textInDOM
+                '#message'.should.be.inDOM
+                this.fillSelectors('form#post', {
+                    '#wpt_score_value_0_0': '1',
+                }, true)
+            })
+        })
+
+        it('should open created test', function() {
+            casper.evaluate(function() {
+                document.location = jQuery('#post-preview').attr('href')
+            })
+            casper.waitForUrl(/wpt_test/)
+        })
+
+        it('should show that question and answer are rendered', function() {
+            casper.then(function() {
+                'First or last?'.should.be.textInDOM
+                'Yes'.should.be.textInDOM
+            })
+        })
+
+        it('should show that shortcode also rendered', function() {
+            casper.then(function() {
+                '[caption'.should.not.be.textInDOM
+                'Caption1'.should.be.textInDOM
+            })
+        })
+
+        it('should open result page', function() {
+            casper.then(function() {
+                this.clickLabel('Yes', '*[starts-with(@id, "wpt-test-form")]/*[1]/*//label')
+                this.fill('form.wpt_test_form', {}, true)
+            }).waitForUrl(/wpt_passing_slug.+[a-z0-9]+[a-f0-9]{32}/, function() {
+                'Fatal'.should.not.be.textInDOM
+                'Results'.should.be.textInDOM
+            })
+        })
+
+        it('should show that shortcode in scale rendered', function() {
+            casper.then(function() {
+                'Scale Caption'.should.be.textInDOM
+                '[caption'.should.not.be.textInDOM
+                'Caption1'.should.be.textInDOM
+            })
+        })
+    })
 })

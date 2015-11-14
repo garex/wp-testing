@@ -14,6 +14,9 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
         return $this->findAllPagedSortedByParams(array(), $page, $recordsPerPage, $orderBy);
     }
 
+    /**
+     * @return fRecordSet|WpTesting_Model_Passing[]
+     */
     public function findAllPagedSortedByParams($params, $page, $recordsPerPage = 10, $orderBy = array())
     {
         $conditions = array();
@@ -61,7 +64,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
     /**
      * @param array $ids
      * @param array $orderBy
-     * @return fRecordSet
+     * @return fRecordSet|WpTesting_Model_Passing[]
      */
     public function findAllByIds($ids, $orderBy = array())
     {
@@ -73,7 +76,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
     /**
      * Passings sorted by the order of provided $ids
      * @param array $ids
-     * @return fRecordSet
+     * @return fRecordSet|WpTesting_Model_Passing[]
      */
     public function findAllByIdsSorted($ids)
     {
@@ -95,7 +98,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
      */
     public function queryAllMonthsByRespondent($respondentId)
     {
-        return $this->db->translatedQuery('
+        return $this->singleTranslatedQuery('
             SELECT DISTINCT YEAR(passing_created) AS created_year, MONTH(passing_created) AS created_month
             FROM %r
             WHERE (respondent_id = %i OR %i = 0)
@@ -108,7 +111,7 @@ class WpTesting_Query_Passing extends WpTesting_Query_AbstractQuery
      */
     public function countAllStatuses()
     {
-        return $this->db->translatedQuery('
+        return $this->singleTranslatedQuery('
             SELECT passing_status, COUNT(*) AS passing_count
             FROM %r
             GROUP BY passing_status

@@ -30,10 +30,13 @@ abstract class WpTesting_Model_Shortcode_Test extends WpTesting_Model_Shortcode
         );
     }
 
+    /**
+     * @return string
+     */
     protected function getUniqueIdentifier()
     {
         $ids = array_filter(array($this->testId, $this->testName));
-        return reset($ids);
+        return (string)reset($ids);
     }
 
     /**

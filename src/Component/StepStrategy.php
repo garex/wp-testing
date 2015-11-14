@@ -20,7 +20,7 @@ abstract class WpTesting_Component_StepStrategy
     protected $test;
 
     /**
-     * @var WpTesting_Model_Question[]
+     * @var fRecordSet|WpTesting_Model_Question[]
      */
     protected $answeredQuestions;
 
@@ -126,7 +126,7 @@ abstract class WpTesting_Component_StepStrategy
 
     public function getAnsweredQuestionsCount()
     {
-        return $this->answeredQuestions->count();
+        return count($this->answeredQuestions);
     }
 
     /**
@@ -147,6 +147,10 @@ abstract class WpTesting_Component_StepStrategy
      */
     protected function addStep(WpTesting_Model_Step $step, $isCurrent = true)
     {
+        // First step always current
+        if (empty($this->steps)) {
+            $isCurrent = true;
+        }
         $this->steps[] = $step;
         if ($isCurrent) {
             $this->currentStep = $step;
@@ -170,14 +174,11 @@ abstract class WpTesting_Component_StepStrategy
      */
     protected function getSteps()
     {
-        if (is_null($this->currentStep)) {
+        if (empty($this->steps)) {
             $this->fillSteps();
             if (!count($this->steps)) {
                 $emptyQuestions = fRecordSet::buildFromArray('WpTesting_Model_Question', array());
                 $this->addStep(new WpTesting_Model_Step('', $emptyQuestions));
-            }
-            if (is_null($this->currentStep)) {
-                $this->currentStep = reset($this->steps);
             }
             $this->setupTotalsAndNumbers();
         }

@@ -12,7 +12,6 @@ interface WpTesting_Doer_IRenderer
     /**
      * Break content by more tag into excerpt and "more" part that hides under "more" link
      * @param string $content
-     * @param string $moreLabel
      * @return string
      */
     public function renderWithMoreSplitted($content);

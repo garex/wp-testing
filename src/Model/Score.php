@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @method int getScaleId() getScaleId() Gets the current value for scale id
- * @method WpTesting_Model_Score setScaleId() setScaleId(int $scaleId) Sets the scale id for score
+ * @method int getScaleId() Gets the current value for scale id
+ * @method WpTesting_Model_Score setScaleId(int $scaleId) Sets the scale id for score
  */
 class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
 {
@@ -44,6 +44,6 @@ class WpTesting_Model_Score extends WpTesting_Model_AbstractModel
      */
     public function createScale()
     {
-        return $this->createWpTesting_Model_Scale('scale_id');
+        return $this->createRelated('WpTesting_Model_Scale', 'scale_id');
     }
 }

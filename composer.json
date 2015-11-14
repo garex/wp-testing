@@ -39,6 +39,7 @@
     },
     "autoload": {
         "classmap": [
+            "db/migrations/wp_testing/",
             "src/",
             "vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php"
         ]
@@ -131,10 +132,10 @@
                 "source": {
                     "url": "https://github.com/garex/flourish-classes",
                     "type": "git",
-                    "reference": "85ef4360f05787f3455ec2d3293194b58f10d132"
+                    "reference": "0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf"
                 },
                 "dist": {
-                    "url": "https://github.com/garex/flourish-classes/archive/85ef4360f05787f3455ec2d3293194b58f10d132.zip",
+                    "url": "https://github.com/garex/flourish-classes/archive/0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf.zip",
                     "type": "zip"
                 }
             }

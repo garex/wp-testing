@@ -1,6 +1,6 @@
 <?php
 /**
- * @method array getColumnsAsMethodsOnce() getColumnsAsMethodsOnce()
+ * @method array getColumnsAsMethodsOnce()
  */
 abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 {
@@ -53,28 +53,8 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->stripValuesSlashes();
     }
 
-    protected function populateRelated($recursive = false)
-    {
-        if ($recursive) {
-            $one_to_many_relationships = $schema->getRelationships($table, 'one-to-many');
-            foreach ($one_to_many_relationships as $relationship) {
-                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-many', $relationship);
-                $related_class = fORM::classize($relationship['related_table']);
-                $method = 'populate' . fGrammar::pluralize($related_class);
-                $this->$method(TRUE, $route_name);
-            }
-
-            $one_to_one_relationships = $schema->getRelationships($table, 'one-to-one');
-            foreach ($one_to_one_relationships as $relationship) {
-                $route_name = fORMSchema::getRouteNameFromRelationship('one-to-one', $relationship);
-                $related_class = fORM::classize($relationship['related_table']);
-                $this->__call('populate' . $related_class, array(TRUE, $route_name));
-            }
-        }
-        return $this;
-    }
-
     /**
+     * @param WpTesting_Model_AbstractModel $me
      * @return array
      */
     public static function getColumnsAsMethodsOnce($me)
@@ -85,7 +65,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             $table  = fORM::tablize($class);
             self::$columnsAsMethodsCache[$class] = array();
             foreach ($schema->getColumnInfo($table) as $column => $info) {
-                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, TRUE);
+                self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, true);
             }
         }
         return self::$columnsAsMethodsCache[$class];
@@ -93,7 +73,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
 
     public function exists()
     {
-        if (isset($this->columnAliases['id']) && !is_null(parent::get($this->columnAliases['id']))) {
+        if (isset($this->columnAliases['id']) && !is_null($this->get('id'))) {
             return true;
         }
         return parent::exists();
@@ -158,7 +138,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         $table        = fORM::tablize($class);
         $schema       = fORMSchema::retrieve($class);
         foreach ($schema->getColumnInfo($table) as $column => $columnInfo) {
-            $camelizedColumn = fGrammar::camelize($column, TRUE);
+            $camelizedColumn = fGrammar::camelize($column, true);
 
             // Get and set methods
             $fixedType = $columnInfo['type'];
@@ -177,7 +157,8 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             if ($fixedType == 'time') {
                 $fixedType = 'fTime|string';
             }
-            $firstFixedType = reset(explode('|', $fixedType));
+            $fixedTypes     = explode('|', $fixedType);
+            $firstFixedType = reset($fixedTypes);
 
             $signatures[] = $this->generateMagicMethodPhpDoc(
                 'get' . $camelizedColumn, array(), $firstFixedType, "Gets the current value of $column");
@@ -207,6 +188,88 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return parent::__call($methodName, $params);
     }
 
+    /**
+     * @param string $relatedModelClassName
+     * @param fRecordSet|array $records
+     * @param string $route
+     * @return self
+     */
+    protected function associateRelated($relatedModelClassName, $records, $route = null)
+    {
+        $this->__call('associate' . $relatedModelClassName, array($records, $route));
+        return $this;
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param array $params
+     * @return fRecordSet
+     */
+    protected function buildRelated($relatedModelClassName, $params = array())
+    {
+        return $this->__call('build' . $relatedModelClassName, $params);
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param string $route
+     * @return WpTesting_Model_AbstractModel
+     */
+    protected function createRelated($relatedModelClassName, $route = null)
+    {
+        return $this->__call('create' . $relatedModelClassName, $route);
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param string $route
+     * @return boolean
+     */
+    protected function hasRelated($relatedModelClassName, $route = null)
+    {
+        return (boolean)$this->__call('has' . $relatedModelClassName, $route);
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param string $route
+     * @return self
+     */
+    protected function linkRelated($relatedModelClassName, $route = null)
+    {
+        $this->__call('link' . $relatedModelClassName, array($route));
+        return $this;
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param string $route
+     * @return array
+     */
+    protected function listRelated($relatedModelClassName, $route = null)
+    {
+        return $this->__call('list' . $relatedModelClassName, array($route));
+    }
+
+    /**
+     * @param string $relatedModelClassName
+     * @param boolean $isRecursive
+     * @param string $route
+     * @return self
+     */
+    protected function populateRelated($relatedModelClassName, $isRecursive = false, $route = null)
+    {
+        $this->__call('populate' . $relatedModelClassName, array($isRecursive, $route));
+        return $this;
+    }
+
+    /**
+     * @param string $methodName
+     * @param array $params
+     * @param string $returnType
+     * @param string $comment
+     * @return string
+     */
     protected function generateMagicMethodPhpDoc($methodName, $params, $returnType, $comment)
     {
         $paramsDoc = array();
@@ -215,16 +278,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         }
         $paramsDoc  = implode(', ', $paramsDoc);
         $commentDoc = preg_replace('/\s+/', ' ', $comment);
-        return " * @method $returnType $methodName() $methodName($paramsDoc) $commentDoc";
+        return " * @method $returnType $methodName($paramsDoc) $commentDoc";
     }
 
-    protected function loadFromResult($result, $ignore_identity_map=FALSE)
+    protected function loadFromResult($result, $ignoreIdentityMap=false)
     {
         $row = $result->current();
         foreach ($row as $key => $value) {
             $row[$key] = $value;
         }
-        return parent::loadFromResult(new ArrayIterator(array($row)), $ignore_identity_map);
+        return parent::loadFromResult(new ArrayIterator(array($row)), $ignoreIdentityMap);
     }
 
     /**
@@ -232,10 +295,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected function get($column)
     {
-        if (isset($this->columnAliases[$column])) {
-            $column = $this->columnAliases[$column];
-        }
-        return parent::get($column);
+        return parent::get($this->deAliasColumn($column));
     }
 
     /**
@@ -243,10 +303,16 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
      */
     protected function set($column, $value)
     {
-        if (isset($this->columnAliases[$column])) {
-            $column = $this->columnAliases[$column];
-        }
-        return parent::set($column, $value);
+        return parent::set($this->deAliasColumn($column), $value);
+    }
+
+    /**
+     * @param string $column
+     * @return string
+     */
+    private function deAliasColumn($column)
+    {
+        return (isset($this->columnAliases[$column])) ? $this->columnAliases[$column] : $column;
     }
 
     /**
@@ -276,7 +342,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return $this->wp;
     }
 
-    public function hasRelated($records, $class)
+    public function hasRelatedIn($records, $class)
     {
         foreach ($records as $record) {
             if (isset($record->related_records[fORM::tablize($class)])) {

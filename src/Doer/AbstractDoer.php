@@ -14,12 +14,13 @@ abstract class WpTesting_Doer_AbstractDoer
      */
     private $jsData = array();
 
+    private $templateRoot = null;
     private $resourceIdPrefix = null;
 
     public function __construct(WpTesting_WordPressFacade $wp)
     {
         $this->wp           = $wp;
-        $this->templateRoot = dirname(dirname($this->getClassFile())) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+        $this->templateRoot = dirname(dirname($this->getClassFile())) . '/Template/';
         $this->resourceIdPrefix = $this->getResourcePrefix('WpTesting', 'wpt_');
     }
 
@@ -30,7 +31,7 @@ abstract class WpTesting_Doer_AbstractDoer
 
     public function renderJsData()
     {
-        $root = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+        $root = dirname(dirname(__FILE__)) . '/Template/';
         $this->output($root . 'Abstract/js-data.php', array(
             'Wpt' => $this->jsData,
         ));
@@ -129,6 +130,11 @@ abstract class WpTesting_Doer_AbstractDoer
         return $name;
     }
 
+    /**
+     * @param string $mainClassStart
+     * @param string $abbr
+     * @return string
+     */
     private function getResourcePrefix($mainClassStart, $abbr)
     {
         $parts  = explode('_', get_class($this));
@@ -193,6 +199,22 @@ abstract class WpTesting_Doer_AbstractDoer
         return ob_get_clean();
     }
 
+    protected function dieMessage($template, $responseCode, $parameters)
+    {
+        if (!isset($parameters['title'])) {
+            $parameters['title'] = $this->wp->translate('WordPress &rsaquo; Error');
+        }
+        $this->wp->dieMessage(
+            $this->render($template, $parameters),
+            $parameters['title'],
+            array(
+                'back_link' => true,
+                'response'  => $responseCode,
+            )
+        );
+        return $this;
+    }
+
     protected function isPost()
     {
         return fRequest::isPost();
@@ -239,7 +261,7 @@ abstract class WpTesting_Doer_AbstractDoer
             'REMOTE_ADDR',
         );
 
-        foreach ($candidateKeys as $key){
+        foreach ($candidateKeys as $key) {
             $value = $this->getEnv($key);
             if ($key == 'REMOTE_ADDR' && $value == $this->getEnv('SERVER_ADDR')) {
                 $value = $this->getEnv('HTTP_PC_REMOTE_ADDR');
@@ -297,6 +319,10 @@ abstract class WpTesting_Doer_AbstractDoer
         return $this->arrayMoveItemTo($input, $sourceKey, $destinationKey, 'after');
     }
 
+    /**
+     * @param fRecordSet|array|JsonSerializable $object
+     * @return array|mixed
+     */
     protected function toJson($object)
     {
         if ($object instanceof fRecordSet) {

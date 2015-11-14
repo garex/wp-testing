@@ -1,5 +1,4 @@
 <?php
-require_once dirname(__FILE__) . '/Addon/IWordPressFacade.php';
 
 /**
  * Facade into wordpress
@@ -32,31 +31,49 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         return new $class($pluginFile);
     }
 
+    /**
+     * @return string
+     */
     public function getDbHost()
     {
         return DB_HOST;
     }
 
+    /**
+     * @return string
+     */
     public function getDbName()
     {
         return DB_NAME;
     }
 
+    /**
+     * @return string
+     */
     public function getDbUser()
     {
         return DB_USER;
     }
 
+    /**
+     * @return string
+     */
     public function getDbPassword()
     {
         return DB_PASSWORD;
     }
 
+    /**
+     * @return string
+     */
     public function getTablePrefix()
     {
         return $GLOBALS['table_prefix'];
     }
 
+    /**
+     * @return string
+     */
     public function getDbCharset()
     {
         return DB_CHARSET;
@@ -64,6 +81,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 
     /**
      * Absolute path to the WordPress directory.
+     * @return string
      */
     public function getAbsPath()
     {
@@ -74,6 +92,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * Allows for the plugins directory to be moved from the default location.
      *
      * @since 2.6.0
+     * @return string
      */
     public function getPluginDir()
     {
@@ -111,7 +130,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function getWP()
     {
-       return $GLOBALS['wp'];
+        return $GLOBALS['wp'];
     }
 
     /**
@@ -177,7 +196,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @since 2.0.4
      *
-     * @return false|string False on failure. Referer URL on success.
+     * @return boolean|string False on failure. Referer URL on success.
      */
     public function getReferer()
     {
@@ -202,9 +221,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @uses $wpdb
      * @link http://codex.wordpress.org/Function_Reference/get_post_meta
      *
-     * @param int $post_id Post ID.
      * @param string $key The meta key to retrieve.
-     * @param bool $single Whether to return a single value.
      * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
      *  is true.
      */
@@ -335,7 +352,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $alt Alternative text to use in image tag. Defaults to blank
      * @return false|string `<img>` tag for the user's avatar.
      */
-    function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
+    public function getAvatar($idOrEmail, $size = 96, $default = '', $alt = false)
     {
         return get_avatar($idOrEmail, $size, $default, $alt);
     }
@@ -345,7 +362,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @since 3.5.0
      *
-     * @param int $userId Optional. User ID. Defaults to the current user.
+     * @param integer|null $userId Optional. User ID. Defaults to the current user.
      * @return string URL to edit user page or empty string.
      */
     public function getEditUserLink($userId = null)
@@ -355,7 +372,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         }
 
         $currentUserId = $this->getCurrentUserId();
-        if (!$userId) {
+        if (is_null($userId)) {
             $userId = $currentUserId;
         }
 
@@ -444,6 +461,10 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         return $this;
     }
 
+    /**
+     * @param string $pluginFile
+     * @return string
+     */
     private function guessPluginFilePath($pluginFile)
     {
         if (!defined('WP_PLUGIN_DIR')) {
@@ -528,7 +549,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $path
      * @param array $dependencies
      * @param string $version
-     * @param string $isInFooter
+     * @param boolean $isInFooter
      * @return WpTesting_WordPressFacade
      */
     public function registerScript($name, $path, array $dependencies = array(), $version = false, $isInFooter = false)
@@ -641,7 +662,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @since 1.0.0
      *
-     * @param number|WP_Post $id
+     * @param integer|WP_Post|stdClass $id
      * @param string $isLeaveName
      * @return string|bool
      */
@@ -801,7 +822,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addAction($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addAction($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
         add_action($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -857,8 +878,9 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int      $priority Optional. The priority of the function. Default 10.
      * @return WpTesting_WordPressFacade
      */
-    public function removeAction($tag, $function, $priority = 10) {
-        remove_action($tag, $function);
+    public function removeAction($tag, $function, $priority = 10)
+    {
+        remove_action($tag, $function, $priority);
         return $this;
     }
 
@@ -873,7 +895,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param int $functionArgsCount optional. The number of arguments the function accept (default 1).
      * @return WpTesting_WordPressFacade
      */
-    public function addFilter($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addFilter($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
         add_filter($tag, $function, $priority, $functionArgsCount);
         return $this;
@@ -885,15 +907,15 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @since 2.5.0
      *
      * @param string        $tag               The name of the filter hook.
-     * @param callback|bool $function Optional. The callback to check for. Default false.
-     * @return false|int If $function is omitted, returns boolean for whether the hook has
+     * @param callback|boolean $function Optional. The callback to check for. Default false.
+     * @return boolean|integer If $function is omitted, returns boolean for whether the hook has
      *                   anything registered. When checking a specific function, the priority of that
      *                   hook is returned, or false if the function is not attached. When using the
      *                   $function_to_check argument, this function may return a non-boolean value
      *                   that evaluates to false (e.g.) 0, so use the === operator for testing the
      *                   return value.
      */
-    public function hasFilter($tag, $function)
+    public function hasFilter($tag, $function = false)
     {
         return has_filter($tag, $function);
     }
@@ -904,9 +926,9 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @see WpTesting_WordPressFacade::addFilter
      * @return WpTesting_WordPressFacade
      */
-    public function addFilterOnce($tag, $function, $priority = 10, $functionArgsCount = 1)
+    public function addFilterOnce($tag, $function, $priority = self::PRIORITY_DEFAULT, $functionArgsCount = 1)
     {
-        if ($this->hasFilter($tag, $function)) {
+        if ($this->hasFilter($tag, $function) !== false) {
             return $this;
         }
         return $this->addFilter($tag, $function, $priority, $functionArgsCount);
@@ -951,7 +973,6 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *
      * @param string $tag   The name of the filter hook.
      * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
-     * @param mixed  $var   Additional variables passed to the functions hooked to `$tag`.
      * @return mixed The filtered value after all hooked functions are applied to it.
      */
     public function applyFilters($tag, $value)
@@ -1025,7 +1046,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $shortcode    Optional. The name of the shortcode, provided for context to enable filtering
      * @return array Combined and filtered attribute list.
      */
-    function sanitazeShortcodeAttributes($defaults, $attributes, $shortcode = '')
+    public function sanitazeShortcodeAttributes($defaults, $attributes, $shortcode = '')
     {
         return shortcode_atts($defaults, $attributes, $shortcode);
     }
@@ -1086,9 +1107,13 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      */
     public function setMetaBoxes($values, $screen = null, $context = 'advanced', $priority = 'default')
     {
-        return $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, $values);
+        $this->processMetaBoxes($screen, $context, $priority, __FUNCTION__, $values);
+        return $this;
     }
 
+    /**
+     * @return array
+     */
     protected function processMetaBoxes($screen, $context, $priority, $action, $values)
     {
         global $wp_meta_boxes;
@@ -1107,10 +1132,9 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 
         if ('getMetaBoxes' == $action) {
             return $wp_meta_boxes[$page][$context][$priority];
-        }
-        if ('setMetaBoxes' == $action) {
+        } elseif ('setMetaBoxes' == $action) {
             $wp_meta_boxes[$page][$context][$priority] = $values;
-            return $this;
+            return array();
         }
     }
 
@@ -1227,7 +1251,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      * @param string $capability The capability required for this menu to be displayed to the user.
      * @param string $menuSlug The slug name to refer to this menu by (should be unique for this menu)
      * @param callback $function The function to be called to output the content for this page.
-     * @return false|string The resulting page's hook_suffix, or false if the user does not have the capability required.
+     * @return string|boolean The resulting page's hook_suffix, or false if the user does not have the capability required.
      */
     public function addSubmenuPage($parentSlug, $pageTitle, $menuTitle, $capability, $menuSlug, $function = '')
     {

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @method integer getId() getId() Gets the current value of id
- * @method string getTitle() getTitle() Gets the current value of title
- * @method WpTesting_Model_Question setTitle() setTitle(string $title) Sets the value for title
+ * @method integer getId() Gets the current value of id
+ * @method string getTitle() Gets the current value of title
+ * @method WpTesting_Model_Question setTitle(string $title) Sets the value for title
  */
 class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
@@ -20,28 +20,24 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
 
     public function populate($recursive = false)
     {
-        $this->populateSelf()->populateRelated($recursive);
-    }
-
-    protected function populateRelated($recursive = false)
-    {
+        $this->populateSelf();
         if ($recursive) {
-            $this->populateWpTesting_Model_Answer(true, 'question_id');
+            $this->populateRelated('WpTesting_Model_Answer', true, 'question_id');
         }
         return $this;
     }
 
     /**
-     * @return WpTesting_Model_Answer[]
+     * @return fRecordSet|WpTesting_Model_Answer[]
      */
     public function buildAnswers()
     {
-        return $this->buildWpTesting_Model_Answer();
+        return $this->buildRelated('WpTesting_Model_Answer');
     }
 
     public function associateAnswers($answers)
     {
-        $this->associateWpTesting_Model_Answer($answers);
+        $this->associateRelated('WpTesting_Model_Answer', $answers);
     }
 
     /**
@@ -49,10 +45,11 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
      */
     public function createTest()
     {
-        return $this->createWpTesting_Model_Test()->setWp($this->getWp());
+        return $this->createRelated('WpTesting_Model_Test')->setWp($this->getWp());
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return array(
             'id'    => $this->getId(),
             'title' => $this->getTitle(),
