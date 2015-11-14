@@ -23,6 +23,8 @@ We didn't invent anything new — all this has been already invented in 19th cen
 
 > If you like the plugin, feel free to [donate via PayPal](https://goo.gl/igulor) or rate it (on the right side of this page). Thanks a lot! :)
 
+http://www.youtube.com/watch?v=tT3d8Jdm7kY
+
 Test answers, scales, results and categories are edited through **wordpress standard editors**, similar to categories editor. You can associate them in sidebar. Whether test questions, answers and formulas are edited with standard wordpress metaboxes, behind content. You can even reorder them if you like by drag-n-drop. At the top of content editor you have **button for quick access** to those metaboxes: Add New Questions, Edit Questions and Scores, Edit Formulas. If you want more control then you are allowed to add to them not allowed out-of-the box HTML tags like: headers, lists, images, hr and "read more" tag taken from post editor.
 
 **Answers**  can be global to test — when all questions have the same answers. For example: "Yes", "No", "I'm not sure". Or you can use **individual answers** to add individual answer to each question. And the third option is to use global answers, but individualize their titles: not just "Yes", but "Yes, I do so and so", when you use it for the particular question. Some tests have this pattern.
