@@ -22,13 +22,15 @@ class WpTesting_Model_Taxonomy extends WpTesting_Model_AbstractModel
 
         /* @var $db fDatabase */
         $db = fORMDatabase::retrieve(__CLASS__, 'read');
+        $relationshipsTable = fORM::tablize('WpTesting_Model_Relationship');
+        $taxonomyTable      = fORM::tablize('WpTesting_Model_Taxonomy');
         $records = $db->translatedQuery('
             SELECT
                 tt.term_id
             FROM
-                ' . WP_DB_PREFIX . 'term_relationships tr
+                ' . $relationshipsTable . ' tr
             JOIN
-                ' . WP_DB_PREFIX . 'term_taxonomy tt
+                ' . $taxonomyTable . ' tt
                 ON tt.term_taxonomy_id = tr.term_taxonomy_id
             WHERE tt.term_id IN (' . implode(', ', array_map('intval', $termIds)) . ')
             AND tr.object_id = ' . intval($testId) . '

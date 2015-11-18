@@ -734,10 +734,11 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
 
     protected function configure()
     {
+        $relationshipsTable = fORM::tablize('WpTesting_Model_Relationship');
         fORMRelated::setOrderBys(
             $this,
             'WpTesting_Model_Taxonomy',
-            array(WP_DB_PREFIX . 'term_relationships.`term_order`' => 'asc')
+            array($relationshipsTable . '.`term_order`' => 'asc')
         );
     }
 }
