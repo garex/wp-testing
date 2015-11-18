@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5d05c79edb23c17f2f6ae4807c620508",
-    "content-hash": "f46079bb4d6540b716c148eefe4a3a03",
+    "hash": "3156880d5f363d6973207cd6159bd152",
+    "content-hash": "562cc3cc1fc0310bd54859dbd7d0aa15",
     "packages": [
         {
             "name": "composer/installers",
@@ -108,11 +108,11 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/garex/flourish-classes",
-                "reference": "85ef4360f05787f3455ec2d3293194b58f10d132"
+                "reference": "0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/garex/flourish-classes/archive/85ef4360f05787f3455ec2d3293194b58f10d132.zip",
+                "url": "https://github.com/garex/flourish-classes/archive/0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -122,7 +122,7 @@
                     "."
                 ]
             },
-            "time": "2015-04-22 15:48:02"
+            "time": "2015-09-27 06:52:10"
         },
         {
             "name": "nikic/php-parser",
@@ -188,15 +188,15 @@
         },
         {
             "name": "ruckusing/ruckusing-migrations",
-            "version": "1.0.3",
+            "version": "1.1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/garex/ruckusing-migrations",
-                "reference": "issue/work-in-non-writable-environment"
+                "reference": "issue/avoid-schema-constant"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/garex/ruckusing-migrations/archive/issue/work-in-non-writable-environment.zip",
+                "url": "https://github.com/garex/ruckusing-migrations/archive/issue/avoid-schema-constant.zip",
                 "reference": null,
                 "shasum": null
             },

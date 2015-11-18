@@ -12,7 +12,7 @@
     "require": {
         "composer/installers": "~1.0.0"
         , "xrstf/composer-php52": "1.*"
-        , "ruckusing/ruckusing-migrations": "1.0.3"
+        , "ruckusing/ruckusing-migrations": "1.1.0.1"
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
         , "samyk/evercookie": "dev-2014-10-21"
@@ -70,13 +70,13 @@
                 "source": {
                     "url": "https://github.com/garex/ruckusing-migrations",
                     "type": "git",
-                    "reference": "issue/work-in-non-writable-environment"
+                    "reference": "issue/avoid-schema-constant"
                 },
                 "dist": {
-                    "url": "https://github.com/garex/ruckusing-migrations/archive/issue/work-in-non-writable-environment.zip",
+                    "url": "https://github.com/garex/ruckusing-migrations/archive/issue/avoid-schema-constant.zip",
                     "type": "zip"
                 },
-                "version": "1.0.3"
+                "version": "1.1.0.1"
             }
         },
         {

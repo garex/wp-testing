@@ -64,6 +64,7 @@ dependencies:
   override:
     - ln --symbolic composer.lock.dist composer.lock
     - composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist
+    - rm --force /home/ubuntu/wp-testing/.git/shallow
     - git clone /home/ubuntu/wp-testing:
         pwd:
           tests/integration-environment/wordpress/wp-content/plugins
