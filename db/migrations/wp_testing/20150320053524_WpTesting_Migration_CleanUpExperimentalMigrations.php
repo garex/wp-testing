@@ -5,7 +5,7 @@ class WpTesting_Migration_CleanUpExperimentalMigrations extends WpTesting_Migrat
     public function up()
     {
         $this->execute('
-            DELETE FROM ' . RUCKUSING_TS_SCHEMA_TBL_NAME . '
+            DELETE FROM ' . $this->adaptee->get_adapter()->get_schema_version_table_name() . '
             WHERE version IN (
                 20140831002425,
                 20140831142817,

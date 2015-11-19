@@ -10,8 +10,6 @@ if (file_exists($local)) {
 $wpPrefix  = 'wp_';
 $wptPrefix = 'wp_t_';
 defined('WP_PLUGIN_URL')                || define('WP_PLUGIN_URL',                  '/wp-content/plugins');
-defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      $wptPrefix . 'schema_info');
-defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   $wptPrefix . 'schema_migrations');
 defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(__FILE__));
 $databaseDirectory = RUCKUSING_WORKING_BASE;
 return array(
@@ -27,6 +25,7 @@ return array(
             'charset'  => 'utf8',
             'globalPrefix' => $wpPrefix,
             'pluginPrefix' => $wptPrefix,
+            'schema_version_table_name' => $wptPrefix . 'schema_migrations',
         ),
     ),
     'db_dir'          => $databaseDirectory,

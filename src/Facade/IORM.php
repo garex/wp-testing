@@ -10,4 +10,9 @@ interface WpTesting_Facade_IORM
      * @return void
      */
     public function setupORM();
+
+    /**
+     * @return string
+     */
+    public function getTablePrefix();
 }

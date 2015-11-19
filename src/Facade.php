@@ -45,51 +45,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->registerWordPressHooks();
     }
 
-    public function onPluginActivate()
-    {
-        __('Helps to create psychological tests.', 'wp-testing');
-
-        $this->upgradePlugin();
-    }
-
-    protected function upgradePlugin()
-    {
-        $this->migrateDatabase(array(__FILE__, 'db:migrate'));
-        $this->registerWordPressEntities();
-        $this->wp->getRewrite()->flush_rules();
-    }
-
-    /**
-     * @param boolean $return
-     * @param array $extra
-     * @return boolean
-     */
-    public function onPluginUpgrade($return, $extra)
-    {
-        $isCurrentPluginUpgrade = (isset($extra['plugin']) && $extra['plugin'] == $this->wp->getPluginBaseName());
-        if (!$isCurrentPluginUpgrade) {
-            return $return;
-        }
-        $this->upgradePlugin();
-        return $return;
-    }
-
-    public function onPluginDeactivate()
-    {
-        $this->wp->getRewrite()->flush_rules();
-    }
-
-    public static function onPluginUninstall()
-    {
-        $me = new WpTesting_Facade(new WpTesting_WordPressFacade('../wp-testing.php'));
-        $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
-        $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
-        if ($adapter instanceof Ruckusing_Adapter_Base) {
-            $adapter->logger->close();
-        }
-        $me->wp->getRewrite()->flush_rules();
-    }
-
     /**
      * @return WpTesting_Facade
      */
@@ -106,7 +61,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 
     protected function registerWordPressHooks()
     {
-        $class = get_class($this);
         $this->wp
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addAction('init',              array($this,  'registerShortCodes'))
@@ -120,11 +74,10 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             ;
             return;
         }
+
+        new WpTesting_Doer_Installer($this->wp, $this);
+
         $this->wp
-            ->registerActivationHook(        array($this,  'onPluginActivate'))
-            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
-            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
-            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('admin_menu',        array($this,  'registerAdminPages'))
             ->addAction('admin_init',        array($this,  'setupTestEditorInBackground'))
             ->addFilter('current_screen',    array($this,  'setupTestEditor'))
@@ -402,54 +355,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->isOrmSettedUp = true;
     }
 
-    /**
-     * @param array $argv
-     * @return Ruckusing_Adapter_Interface
-     */
-    protected function migrateDatabase($argv)
+    public function getTablePrefix()
     {
-        $wpPrefix  = $this->wp->getTablePrefix();
-        $wptPrefix = $this->getTablePrefix();
-
-        $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      $wptPrefix . 'schema_info');
-        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   $wptPrefix . 'schema_migrations');
-        defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
-        defined('RUCKUSING_BASE')               || define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
-
-        $databaseDirectory = RUCKUSING_WORKING_BASE . '/db';
-        $dbHostWithPort    = explode(':', $this->wp->getDbHost() . ':3306');
-        $config = array(
-            'db' => array(
-                'development' => array(
-                    'type'     => 'mysql',
-                    'host'     => reset($dbHostWithPort),
-                    'port'     => next($dbHostWithPort),
-                    'database' => $this->wp->getDbName(),
-                    'directory'=> 'wp_testing',
-                    'user'     => $this->wp->getDbUser(),
-                    'password' => $this->wp->getDbPassword(),
-                    'charset'  => $this->wp->getDbCharset(),
-                    'globalPrefix' => $wpPrefix,
-                    'pluginPrefix' => $wptPrefix,
-                ),
-            ),
-            'db_dir'         => $databaseDirectory,
-            'migrations_dir' => array('default' => $databaseDirectory . '/migrations'),
-            'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
-        );
-
-        $runner = new Ruckusing_FrameworkRunner($config, $argv);
-        restore_error_handler();
-        restore_exception_handler();
-        $runner->execute();
-
-        /* @var $adapter Ruckusing_Adapter_Interface */
-        $adapter = $runner->get_adapter();
-        if ($adapter instanceof Ruckusing_Adapter_Base) {
-            $adapter->logger = new Ruckusing_Util_Logger($config['log_dir'] . '/development.log');
-        }
-        return $adapter;
+        return $this->wp->getTablePrefix() . 't_';
     }
 
     protected function autoloadComposer()
@@ -496,10 +404,5 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
     {
         defined('WP_DB_PREFIX')     ||      define('WP_DB_PREFIX',   $this->wp->getTablePrefix());
         defined('WPT_DB_PREFIX')    ||      define('WPT_DB_PREFIX',  $this->getTablePrefix());
-    }
-
-    private function getTablePrefix()
-    {
-        return $this->wp->getTablePrefix() . 't_';
     }
 }
