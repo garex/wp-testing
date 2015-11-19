@@ -1403,6 +1403,67 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * If Multisite is enabled.
+     *
+     * @since 3.0.0
+     *
+     * @return bool True if Multisite is enabled, false otherwise.
+     */
+    public function isMultisite()
+    {
+        return is_multisite();
+    }
+
+    /**
+     * Switch the current blog.
+     *
+     * This function is useful if you need to pull posts, or other information,
+     * from other blogs. You can switch back afterwards using restore_current_blog().
+     *
+     * Things that aren't switched:
+     *  - autoloaded options. See #14992
+     *  - plugins. See #14941
+     *
+     * @see restore_current_blog()
+     * @since MU
+     *
+     * @param int  $blogId   The id of the blog you want to switch to. Default: current blog
+     * @return true Always returns True.
+     */
+    public function switchToBlog($blogId)
+    {
+        return switch_to_blog($blogId);
+    }
+
+    /**
+     * Restore the current blog, after calling switch_to_blog()
+     *
+     * @since MU
+     *
+     * @return bool True on success, false if we're already on the current blog
+     */
+    public function restoreCurrentBlog()
+    {
+        return restore_current_blog();
+    }
+
+    /**
+     * Check whether the plugin is active for the entire network.
+     *
+     * @since 3.0.0
+     *
+     * @param string $plugin Base plugin path from plugins directory.
+     * @return bool True, if active for the network, otherwise false.
+     */
+    public function isPluginActiveForNetwork($plugin = null)
+    {
+        if (is_null($plugin)) {
+            $plugin = $this->pluginFile;
+        }
+        return is_plugin_active_for_network($plugin);
+    }
+
+    /**
      * Kill WordPress execution and display HTML message with error message.
      *
      *
