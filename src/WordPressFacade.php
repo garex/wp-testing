@@ -64,6 +64,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * @return wpdb
+     */
+    private function getDb()
+    {
+        require_wp_db();
+        return $GLOBALS['wpdb'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getGlobalTablePrefix()
+    {
+        return $this->isMultisite()
+            ? $this->getDb()->base_prefix
+            : $this->getTablePrefix();
+    }
+
+    /**
      * @return string
      */
     public function getTablePrefix()

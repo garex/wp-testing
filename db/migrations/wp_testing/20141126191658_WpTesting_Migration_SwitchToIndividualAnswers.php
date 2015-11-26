@@ -14,7 +14,7 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
             ))
             ->addNullableForeignKey('global_answer_id', array(
                 'keyName'         => 'fk_answer_global_answer',
-                'referencedTable' => "{$this->globalPrefix}terms",
+                'referencedTable' => "{$this->blogPrefix}terms",
                 'referencedKey'   => 'term_id',
             ))
             ->addColumnText('answer_title', array('null' => true))
@@ -28,10 +28,10 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
                 q.question_id  AS question_id,
                 tt.term_id     AS global_answer_id,
                 ''             AS answer_title
-            FROM {$this->globalPrefix}term_taxonomy      AS tt
-            JOIN {$this->globalPrefix}term_relationships AS tr ON tt.term_taxonomy_id = tr.term_taxonomy_id
+            FROM {$this->blogPrefix}term_taxonomy      AS tt
+            JOIN {$this->blogPrefix}term_relationships AS tr ON tt.term_taxonomy_id = tr.term_taxonomy_id
                                                    AND tt.taxonomy = 'wpt_answer'
-            JOIN {$this->globalPrefix}posts              AS t ON tr.object_id = t.id
+            JOIN {$this->blogPrefix}posts              AS t ON tr.object_id = t.id
             JOIN {$this->pluginPrefix}questions          AS q ON q.test_id = t.id
             ORDER BY q.question_id, tt.term_id
         ");
@@ -161,7 +161,7 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
 
             ADD CONSTRAINT {$this->pluginPrefix}fk_score_answer
                 FOREIGN KEY (answer_id)
-                REFERENCES {$this->globalPrefix}terms (term_id)
+                REFERENCES {$this->blogPrefix}terms (term_id)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE,
             ADD INDEX fk_score_answer (answer_id),
@@ -185,7 +185,7 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
 
             ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_answer
                 FOREIGN KEY (answer_id)
-                REFERENCES {$this->globalPrefix}terms (term_id)
+                REFERENCES {$this->blogPrefix}terms (term_id)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE,
             ADD INDEX fk_passing_answer_answer (answer_id),

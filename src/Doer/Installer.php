@@ -157,6 +157,7 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
      */
     private function migrateDatabase($argv)
     {
+        $wp0Prefix = $this->wp->getGlobalTablePrefix();
         $wpPrefix  = $this->wp->getTablePrefix();
         $wptPrefix = $this->ormAware->getTablePrefix();
 
@@ -177,7 +178,8 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
                     'user'     => $this->wp->getDbUser(),
                     'password' => $this->wp->getDbPassword(),
                     'charset'  => $this->wp->getDbCharset(),
-                    'globalPrefix' => $wpPrefix,
+                    'globalPrefix' => $wp0Prefix,
+                    'blogPrefix'   => $wpPrefix,
                     'pluginPrefix' => $wptPrefix,
                     'schema_version_table_name' => $wptPrefix . 'schema_migrations',
                 ),

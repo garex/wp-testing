@@ -12,7 +12,7 @@ class WpTesting_Migration_AddFieldsTables extends WpTesting_Migration_MigrateTab
             ->addPrimaryKey('field_id')
             ->addForeignKey('test_id', array(
                 'keyName'         => 'fk_field_test',
-                'referencedTable' => "{$this->globalPrefix}posts",
+                'referencedTable' => "{$this->blogPrefix}posts",
                 'referencedKey'   => 'ID',
             ))
             ->addColumnText('field_title')

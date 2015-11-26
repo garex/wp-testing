@@ -7,6 +7,7 @@ $local = dirname(__FILE__) . '/ruckusing.conf.local.php';
 if (file_exists($local)) {
     return require_once $local;
 }
+$wp0Prefix = 'wp_';
 $wpPrefix  = 'wp_';
 $wptPrefix = 'wp_t_';
 defined('WP_PLUGIN_URL')                || define('WP_PLUGIN_URL',                  '/wp-content/plugins');
@@ -23,7 +24,8 @@ return array(
             'user'     => 'root',
             'password' => '',
             'charset'  => 'utf8',
-            'globalPrefix' => $wpPrefix,
+            'globalPrefix' => $wp0Prefix,
+            'blogPrefix'   => $wpPrefix,
             'pluginPrefix' => $wptPrefix,
             'schema_version_table_name' => $wptPrefix . 'schema_migrations',
         ),

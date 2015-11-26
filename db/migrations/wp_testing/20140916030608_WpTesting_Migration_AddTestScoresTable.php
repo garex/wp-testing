@@ -8,7 +8,7 @@ class WpTesting_Migration_AddTestScoresTable extends WpTesting_Migration_Migrate
             ->addForeignKey('answer_id', array(
                 'primary_key'     => true,
                 'keyName'         => 'fk_score_answer',
-                'referencedTable' => "{$this->globalPrefix}terms",
+                'referencedTable' => "{$this->blogPrefix}terms",
                 'referencedKey'   => 'term_id',
             ))
             ->addForeignKey('question_id', array(
@@ -19,7 +19,7 @@ class WpTesting_Migration_AddTestScoresTable extends WpTesting_Migration_Migrate
             ->addForeignKey('scale_id', array(
                 'primary_key'     => true,
                 'keyName'         => 'fk_score_scale',
-                'referencedTable' => "{$this->globalPrefix}terms",
+                'referencedTable' => "{$this->blogPrefix}terms",
                 'referencedKey'   => 'term_id',
             ))
             ->addColumnIntegerTiny('score_value', array('default' => 0))

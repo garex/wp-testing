@@ -5,6 +5,8 @@ abstract class WpTesting_Migration_Base
 
     protected $globalPrefix = '';
 
+    protected $blogPrefix = '';
+
     protected $pluginPrefix = '';
 
     /**
@@ -28,6 +30,7 @@ abstract class WpTesting_Migration_Base
     protected function setUp($dsn)
     {
         $this->globalPrefix = $dsn['globalPrefix'];
+        $this->blogPrefix   = $dsn['blogPrefix'];
         $this->pluginPrefix = $dsn['pluginPrefix'];
     }
 

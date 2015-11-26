@@ -11,7 +11,7 @@ class WpTesting_Migration_AddFormulasTable extends WpTesting_Migration_AddSingle
         $table
             ->addForeignKey('result_id', array(
                 'keyName'         => 'fk_formula_result',
-                'referencedTable' => "{$this->globalPrefix}terms",
+                'referencedTable' => "{$this->blogPrefix}terms",
                 'referencedKey'   => 'term_id',
             ))
             ->addColumnText('formula_source')

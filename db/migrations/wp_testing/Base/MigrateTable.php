@@ -60,7 +60,7 @@ abstract class WpTesting_Migration_MigrateTable extends WpTesting_Migration_Migr
      */
     private function getWpTableEngine()
     {
-        $status = $this->adaptee->select_one("SHOW TABLE STATUS LIKE '{$this->globalPrefix}posts'");
+        $status = $this->adaptee->select_one("SHOW TABLE STATUS LIKE '{$this->blogPrefix}posts'");
 
         if (empty($status['Engine'])) {
             throw new Ruckusing_Exception(

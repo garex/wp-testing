@@ -215,6 +215,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             return;
         }
         $this->defineConstants();
+        $wp0Prefix = $this->wp->getGlobalTablePrefix();
         $wpPrefix  = $this->wp->getTablePrefix();
         $wptPrefix = $this->getTablePrefix();
 
@@ -239,7 +240,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         fORM::mapClassToTable('WpTesting_Model_Passing',       $wptPrefix  . 'passings');
         fORM::mapClassToTable('WpTesting_Model_Result',        $wpPrefix   . 'terms');
         fORM::mapClassToTable('WpTesting_Model_Formula',       $wptPrefix  . 'formulas');
-        fORM::mapClassToTable('WpTesting_Model_Respondent',    $wpPrefix   . 'users');
+        fORM::mapClassToTable('WpTesting_Model_Respondent',    $wp0Prefix  . 'users');
         fORM::mapClassToTable('WpTesting_Model_Blog',          $wpPrefix   . 'blogs');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
@@ -280,7 +281,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             ) + $fkOptions,
             array(
                 'column'         => 'respondent_id',
-                'foreign_table'  => $wpPrefix . 'users',
+                'foreign_table'  => $wp0Prefix . 'users',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
         ), $wptPrefix . 'passings', 'foreign');
