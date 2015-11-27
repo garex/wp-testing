@@ -1,3 +1,7 @@
+if (require('../env').multisite()) {
+    return
+}
+
 require('../after-fail').screenshots()
 
 describe('Plugin activation', function() {

@@ -28,15 +28,19 @@ function logOut(user) {
     })
 };
 
-function loginAs(mocha, user, password, isForce) {
+function loginAs(mocha, user, password, isForce, toServer) {
     var cookies = '/tmp/cookies.' + user + '.txt',
         exists  = fs.exists(cookies)
+
+    if (!toServer) {
+        toServer = server
+    }
 
     mocha.timeout(3600000)
 
     exists && !isForce && cookiesRestore(cookies)
 
-    var startUrl = isForce ? server + '/wp-login.php' : server + '/wp-admin/'
+    var startUrl = isForce ? toServer + '/wp-login.php' : toServer + '/wp-admin/'
     casper.start(startUrl, function() {
         var isLoginForm = this.evaluate(function() {
             return typeof window.loginform !== 'undefined'
@@ -59,8 +63,8 @@ function loginAs(mocha, user, password, isForce) {
     })
 };
 
-module.exports.admin = function (mocha, isForce) {
-    loginAs(mocha, 'wpti', 'wpti', isForce)
+module.exports.admin = function (mocha, isForce, toServer) {
+    loginAs(mocha, 'wpti', 'wpti', isForce, toServer)
 };
 
 module.exports.adminLogout = function () {
