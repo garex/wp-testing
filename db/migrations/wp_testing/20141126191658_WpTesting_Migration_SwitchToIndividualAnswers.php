@@ -59,9 +59,9 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
         // switch both scores and passing answers to wp_t_answers
         $this->execute("
             ALTER TABLE {$this->pluginPrefix}passing_answers
-                DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_question,
-                DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_answer
-            ;
+                DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_question;
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_answer;
             ALTER TABLE {$this->pluginPrefix}passing_answers
                 DROP COLUMN question_id,
                 DROP PRIMARY KEY,
@@ -70,18 +70,19 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
                 DROP INDEX fk_passing_answer_answer
             ;
             ALTER TABLE {$this->pluginPrefix}passing_answers
-            ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_answer
-            FOREIGN KEY (answer_id)
-            REFERENCES {$this->pluginPrefix}answers (answer_id)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-            ADD INDEX fk_passing_answer_answer (answer_id)
+                ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_answer
+                FOREIGN KEY (answer_id)
+                REFERENCES {$this->pluginPrefix}answers (answer_id)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                ADD INDEX fk_passing_answer_answer (answer_id)
         ");
         $this->execute("
             ALTER TABLE {$this->pluginPrefix}scores
-                DROP FOREIGN KEY {$this->pluginPrefix}fk_score_question,
-                DROP FOREIGN KEY {$this->pluginPrefix}fk_score_answer
-            ;
+                DROP FOREIGN KEY {$this->pluginPrefix}fk_score_question;
+            ALTER TABLE {$this->pluginPrefix}scores
+                DROP FOREIGN KEY {$this->pluginPrefix}fk_score_answer;
             ALTER TABLE {$this->pluginPrefix}scores
                 DROP COLUMN question_id,
                 DROP PRIMARY KEY,
@@ -94,7 +95,8 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
                 FOREIGN KEY (answer_id)
                 REFERENCES {$this->pluginPrefix}answers (answer_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE,
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}scores
                 ADD INDEX fk_score_answer (answer_id)
         ");
 
@@ -155,23 +157,26 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
         $this->addColumn("{$this->pluginPrefix}scores", 'question_id', 'biginteger', $questionOptions);
         $this->execute("
             ALTER TABLE {$this->pluginPrefix}scores
+                DROP PRIMARY KEY,
+                ADD PRIMARY KEY(answer_id, question_id, scale_id);
 
-            DROP PRIMARY KEY,
-            ADD PRIMARY KEY(answer_id, question_id, scale_id),
-
-            ADD CONSTRAINT {$this->pluginPrefix}fk_score_answer
+            ALTER TABLE {$this->pluginPrefix}scores
+                ADD CONSTRAINT {$this->pluginPrefix}fk_score_answer
                 FOREIGN KEY (answer_id)
                 REFERENCES {$this->blogPrefix}terms (term_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE,
-            ADD INDEX fk_score_answer (answer_id),
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}scores
+                ADD INDEX fk_score_answer (answer_id);
 
-            ADD CONSTRAINT {$this->pluginPrefix}fk_score_question
+            ALTER TABLE {$this->pluginPrefix}scores
+                ADD CONSTRAINT {$this->pluginPrefix}fk_score_question
                 FOREIGN KEY (question_id)
                 REFERENCES {$this->pluginPrefix}questions (question_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE,
-            ADD INDEX fk_score_question (question_id)
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}scores
+                ADD INDEX fk_score_question (question_id)
         ");
 
         $this->execute("ALTER TABLE {$this->pluginPrefix}passing_answers DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_answer");
@@ -179,23 +184,26 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
         $this->addColumn("{$this->pluginPrefix}passing_answers", 'question_id', 'biginteger', $questionOptions);
         $this->execute("
             ALTER TABLE {$this->pluginPrefix}passing_answers
+                DROP PRIMARY KEY,
+                ADD PRIMARY KEY(answer_id, question_id, passing_id);
 
-            DROP PRIMARY KEY,
-            ADD PRIMARY KEY(answer_id, question_id, passing_id),
-
-            ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_answer
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_answer
                 FOREIGN KEY (answer_id)
                 REFERENCES {$this->blogPrefix}terms (term_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE,
-            ADD INDEX fk_passing_answer_answer (answer_id),
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                ADD INDEX fk_passing_answer_answer (answer_id);
 
-            ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_question
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                ADD CONSTRAINT {$this->pluginPrefix}fk_passing_answer_question
                 FOREIGN KEY (question_id)
                 REFERENCES {$this->pluginPrefix}questions (question_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE,
-            ADD INDEX fk_passing_answer_question (question_id)
+                ON UPDATE CASCADE;
+            ALTER TABLE {$this->pluginPrefix}passing_answers
+                ADD INDEX fk_passing_answer_question (question_id)
         ");
 
         // drop wp_t_answers
@@ -212,5 +220,29 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
             SELECT * FROM {$this->pluginPrefix}passing_answers_backup;
             DROP TABLE {$this->pluginPrefix}passing_answers_backup;
         ");
+    }
+
+    /**
+     * Safely execute query ignoring fails
+     *
+     * @param string $query
+     *
+     * @return boolean
+     */
+    public function execute($query)
+    {
+        $result = true;
+        foreach (explode(';', $query) as $singleQuery) {
+            if (!trim($singleQuery)) {
+                continue;
+            }
+            try {
+                $result = parent::execute($singleQuery);
+            } catch (Ruckusing_Exception $e) {
+                $this->adaptee->get_adapter()->logger->log(__METHOD__ . ': ' . $e->getMessage());
+                $result = false;
+            }
+        }
+        return $result;
     }
 }
