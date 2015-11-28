@@ -1228,7 +1228,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Add a top level menu page
+     * Add a top level menu page in the 'objects' section
      *
      * This function takes a capability which will be used to determine whether
      * or not a page is included in the menu.
@@ -1246,13 +1246,12 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *       This should begin with 'data:image/svg+xml;base64,'.
      *     * [WP >= 3.8] Pass the name of a Dashicons helper class to use a font icon, e.g. 'dashicons-chart-pie'.
      *     * Pass 'none' to leave div.wp-menu-image empty so an icon can be added via CSS.
-     * @param int $position The position in the menu order this one should appear
      *
      * @return string The resulting page's hook_suffix
      */
-    public function addMenuPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '', $position = null)
+    public function addObjectPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '')
     {
-        return add_menu_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl, $position);
+        return add_object_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl);
     }
 
     /**
