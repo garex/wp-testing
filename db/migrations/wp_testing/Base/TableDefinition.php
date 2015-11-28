@@ -10,13 +10,16 @@ class WpTesting_Migration_TableDefinition extends Ruckusing_Adapter_MySQL_TableD
     private $tableName = '';
     private $alterTableDefinitions = array();
     private $pluginPrefix = '';
+    private $tableStatus = array();
 
     public function __construct($adapter, $name, $options = array())
     {
+        $options += array('force' => true);
         parent::__construct($adapter, $name, $options);
         $this->dbAdapter    = $adapter;
         $this->tableName    = $name;
         $this->pluginPrefix = $options['pluginPrefix'];
+        $this->tableStatus  = $options['tableStatus'];
     }
 
     public function addPrimaryKey($columnName, $options = array())
@@ -95,6 +98,11 @@ class WpTesting_Migration_TableDefinition extends Ruckusing_Adapter_MySQL_TableD
 
     private function addConstraintForeignKey($name, $key, $referencedTable, $referencedKey, $onDelete = 'CASCADE', $onUpdate = 'CASCADE')
     {
+        $isEnginesConsistent = ($this->getEngine() == $this->getEngine($referencedTable));
+        if (!$isEnginesConsistent) {
+            return $this;
+        }
+
         $name = $this->pluginPrefix . $name;
         $this->alterTableDefinitions[] = "
             ADD CONSTRAINT $name
@@ -169,5 +177,14 @@ class WpTesting_Migration_TableDefinition extends Ruckusing_Adapter_MySQL_TableD
         }
 
         return $this;
+    }
+
+    /**
+     * @param string $table
+     * @return string
+     */
+    private function getEngine($table = 'default')
+    {
+        return isset($this->tableStatus[$table]['engine']) ? $this->tableStatus[$table]['engine'] : '';
     }
 }
