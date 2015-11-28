@@ -16,10 +16,21 @@ abstract class WpTesting_Migration_MigrateTable extends WpTesting_Migration_Migr
         if (!($adapter instanceof Ruckusing_Adapter_MySQL_Base)) {
             throw new Ruckusing_Exception('Only MySQL adapter allowed');
         }
-        $tableName = $this->pluginPrefix . $tableName;
-        $options  += array(
+
+        $tableStatus  = array();
+        $tableOptions = '';
+        try {
+            $tableStatus  = $this->showTableStatus();
+            $tableOptions = 'ENGINE=' . $tableStatus['default']['engine'];
+        } catch (Exception $e) {
+            $this->adaptee->get_adapter()->logger->log(__METHOD__ . ': ' . $e->getMessage());
+        }
+
+        $tableName   = $this->pluginPrefix . $tableName;
+        $options    += array(
             'id'           => false,
-            'options'      => $this->getTableEngineOption(),
+            'tableStatus'  => $tableStatus,
+            'options'      => $tableOptions,
             'pluginPrefix' => $this->pluginPrefix,
         );
 
@@ -39,36 +50,40 @@ abstract class WpTesting_Migration_MigrateTable extends WpTesting_Migration_Migr
     }
 
     /**
-     * Get default wordpress tables engine
-     * @return string
-     */
-    private function getTableEngineOption()
-    {
-        try {
-            return 'ENGINE=' . $this->getWpTableEngine();
-        } catch (Exception $e) {
-            $this->adaptee->get_adapter()->logger->log('Engine option is unknown: ' . $e->getMessage());
-        }
-        return '';
-    }
-
-    /**
-     * Get default wordpress tables engine
+     * Show all tables status as array by table name and columns as subarray
      *
      * @throws Ruckusing_Exception
-     * @return string
+     * @return array
      */
-    private function getWpTableEngine()
+    private function showTableStatus()
     {
-        $status = $this->adaptee->select_one("SHOW TABLE STATUS LIKE '{$this->blogPrefix}posts'");
+        $table = $this->adaptee->select_all("SHOW TABLE STATUS LIKE '{$this->blogPrefix}%'");
 
-        if (empty($status['Engine'])) {
+        if (empty($table)) {
             throw new Ruckusing_Exception(
-                'Default WP table is missing or it has unknown engine',
-                Ruckusing_Exception::INVALID_TABLE_DEFINITION
+                'WordPress tables status is unavailable',
+                Ruckusing_Exception::MIGRATION_FAILED
             );
         }
 
-        return $status['Engine'];
+        $result = array();
+        foreach ($table as $upperCasedRow) {
+            $row = array();
+            foreach ($upperCasedRow as $upperCasedParam => $value) {
+                $row[strtolower($upperCasedParam)] = $value;
+            }
+            $result[$row['name']] = $row;
+        }
+
+        $defaultTable = $this->blogPrefix . 'posts';
+        if (empty($result[$defaultTable]['engine'])) {
+            throw new Ruckusing_Exception(
+                'Default WordPress table is missing or it has unknown engine',
+                Ruckusing_Exception::MIGRATION_FAILED
+            );
+        }
+        $result['default'] = $result[$defaultTable];
+
+        return $result;
     }
 }
