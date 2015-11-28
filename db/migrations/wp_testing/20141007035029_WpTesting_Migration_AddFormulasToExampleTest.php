@@ -4,11 +4,11 @@ class WpTesting_Migration_AddFormulasToExampleTest extends WpTesting_Migration_U
 {
     public function up()
     {
-        $posts    = $this->globalPrefix . 'posts';
-        $terms    = $this->globalPrefix . 'terms';
+        $posts    = $this->blogPrefix . 'posts';
+        $terms    = $this->blogPrefix . 'terms';
         $formulas = $this->pluginPrefix . 'formulas';
-        $termTaxonomy       = $this->globalPrefix . 'term_taxonomy';
-        $termRelashionships = $this->globalPrefix . 'term_relationships';
+        $termTaxonomy       = $this->blogPrefix . 'term_taxonomy';
+        $termRelashionships = $this->blogPrefix . 'term_relationships';
 
         $testSlug = 'eysencks-personality-inventory-epi-extroversionintroversion';
         $testId   = $this->field("SELECT ID FROM $posts WHERE post_type = 'wpt_test' AND post_name = '$testSlug' ORDER BY ID LIMIT 1");
@@ -55,10 +55,10 @@ class WpTesting_Migration_AddFormulasToExampleTest extends WpTesting_Migration_U
 
     public function down()
     {
-        $terms    = $this->globalPrefix . 'terms';
+        $terms    = $this->blogPrefix . 'terms';
         $formulas = $this->pluginPrefix . 'formulas';
-        $termTaxonomy       = $this->globalPrefix . 'term_taxonomy';
-        $termRelashionships = $this->globalPrefix . 'term_relationships';
+        $termTaxonomy       = $this->blogPrefix . 'term_taxonomy';
+        $termRelashionships = $this->blogPrefix . 'term_relationships';
 
         $this->execute("
             SET FOREIGN_KEY_CHECKS = 0;

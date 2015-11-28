@@ -6,10 +6,10 @@ class WpTesting_Migration_AddExampleTest extends WpTesting_Migration_UpdateData
     {
         $pluginUrl          = WP_PLUGIN_URL;
 
-        $posts              = $this->globalPrefix . 'posts';
-        $terms              = $this->globalPrefix . 'terms';
-        $termTaxonomy       = $this->globalPrefix . 'term_taxonomy';
-        $termRelashionships = $this->globalPrefix . 'term_relationships';
+        $posts              = $this->blogPrefix . 'posts';
+        $terms              = $this->blogPrefix . 'terms';
+        $termTaxonomy       = $this->blogPrefix . 'term_taxonomy';
+        $termRelashionships = $this->blogPrefix . 'term_relationships';
         $questions          = $this->pluginPrefix . 'questions';
         $scores             = $this->pluginPrefix . 'scores';
 
@@ -175,10 +175,10 @@ class WpTesting_Migration_AddExampleTest extends WpTesting_Migration_UpdateData
 
     public function down()
     {
-        $posts              = $this->globalPrefix . 'posts';
-        $terms              = $this->globalPrefix . 'terms';
-        $termTaxonomy       = $this->globalPrefix . 'term_taxonomy';
-        $termRelashionships = $this->globalPrefix . 'term_relationships';
+        $posts              = $this->blogPrefix . 'posts';
+        $terms              = $this->blogPrefix . 'terms';
+        $termTaxonomy       = $this->blogPrefix . 'term_taxonomy';
+        $termRelashionships = $this->blogPrefix . 'term_relationships';
         $questions          = $this->pluginPrefix . 'questions';
         $scores             = $this->pluginPrefix . 'scores';
 

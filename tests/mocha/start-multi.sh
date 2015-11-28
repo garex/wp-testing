@@ -10,6 +10,7 @@ REPO_ROOT=$(realpath $HERE/../..)
 # Prepare environment
 cd $REPO_ROOT
 sudo WP_T_SERVER=http://wpti.dev tests/integration-environment/create.sh
+sudo chown --recursive $USER:$USER /tmp/wpti/wordpress
 cd $HERE
 export PATH=$PATH:./node_modules/.bin/
 export TZ="UTC"
@@ -19,5 +20,6 @@ export WP_T_MULTISITE=1
 rm -f /tmp/cookies.*.txt
 
 # Activate plugin and setup admin
-export WP_T_SERVER=http://wpti.dev
+export WP_T_MULTI_SERVER=http://wpti.dev
+export WP_T_SERVER=http://after.wpti.dev
 mocha-casperjs --timeout=360000

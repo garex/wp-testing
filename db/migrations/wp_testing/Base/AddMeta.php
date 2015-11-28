@@ -26,16 +26,16 @@ abstract class WpTesting_Migration_AddMeta extends WpTesting_Migration_Base
     protected function addMeta($key, $value)
     {
         $this->execute("
-            INSERT INTO {$this->globalPrefix}postmeta(post_id, meta_key, meta_value)
+            INSERT INTO {$this->blogPrefix}postmeta(post_id, meta_key, meta_value)
             SELECT ID, '$key', '$value'
-            FROM {$this->globalPrefix}posts WHERE post_type = 'wpt_test'
+            FROM {$this->blogPrefix}posts WHERE post_type = 'wpt_test'
         ");
     }
 
     protected function removeMeta($key)
     {
         $this->execute("
-            DELETE FROM {$this->globalPrefix}postmeta
+            DELETE FROM {$this->blogPrefix}postmeta
             WHERE meta_key = '$key'
         ");
     }

@@ -1,10 +1,11 @@
 describe('Plugin deactivation', function() {
 
-    var server      = require('../env').server(),
-        multisite   = require('../env').multisite()
+    var env         = require('../env'),
+        multisite   = env.multisite(),
+        server      = multisite ? env.multiServer() : env.server()
 
     before(function () {
-        require('../login-as').admin(this)
+        require('../login-as').admin(this, false, server)
     })
 
     it('should be deactivated', function() {
@@ -28,16 +29,11 @@ describe('Plugin deactivation', function() {
     })
 
     it('should be deleted', function() {
-       if (multisite) {
-           this.skip()
-           return
-       }
-
        casper.then(function() {
            this.click('#wp-testing .delete a')
        })
 
-       casper.then(function() {
+       casper.waitForUrl(/delete/, function() {
            this.click('#submit')
        })
 

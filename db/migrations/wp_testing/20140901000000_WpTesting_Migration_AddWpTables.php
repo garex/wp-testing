@@ -8,7 +8,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
     public function up()
     {
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'posts (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'posts (
               ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
               post_author bigint(20) unsigned NOT NULL DEFAULT "0",
               post_date datetime NOT NULL DEFAULT "0000-00-00 00:00:00",
@@ -40,7 +40,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
             ) DEFAULT CHARSET=utf8
         ');
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'terms (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'terms (
               term_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
               name varchar(200) NOT NULL DEFAULT "",
               slug varchar(200) NOT NULL DEFAULT "",
@@ -69,7 +69,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
         ');
 
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'term_taxonomy (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'term_taxonomy (
               term_taxonomy_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
               term_id bigint(20) unsigned NOT NULL DEFAULT "0",
               taxonomy varchar(32) NOT NULL DEFAULT "",
@@ -82,7 +82,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
             ) DEFAULT CHARSET=utf8
         ');
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'term_relationships (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'term_relationships (
               object_id bigint(20) unsigned NOT NULL DEFAULT "0",
               term_taxonomy_id bigint(20) unsigned NOT NULL DEFAULT "0",
               term_order int(11) NOT NULL DEFAULT "0",
@@ -91,7 +91,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
             ) DEFAULT CHARSET=utf8
         ');
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'postmeta (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'postmeta (
                 meta_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                 post_id bigint(20) unsigned NOT NULL DEFAULT "0",
                 meta_key varchar(255) DEFAULT NULL,

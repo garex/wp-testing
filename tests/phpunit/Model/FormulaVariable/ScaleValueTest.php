@@ -69,13 +69,13 @@ class ScaleValueTest extends PHPUnit_Framework_TestCase
         $scale2 = new WpTesting_Model_Scale();
         $scale2->setRange(0, 100)->setId(2)->setValue(20)->setSlug('slug2')->setTitle('title2');
 
-        fORM::mapClassToTable('WpTesting_Model_Test_' . md5(__METHOD__), WP_DB_PREFIX . 'posts');
+        fORM::mapClassToTable('WpTesting_Model_Test_' . md5(__METHOD__), fORM::tablize('WpTesting_Model_Test'));
         $testStub = $this->getMockBuilder('WpTesting_Model_Test')
             ->setMethods(array('buildScalesWithRange', '__wakeup'))
             ->setMockClassName('WpTesting_Model_Test_' . md5(__METHOD__))
             ->getMock();
 
-        fORM::mapClassToTable('WpTesting_Model_Passing_' . md5(__METHOD__), WPT_DB_PREFIX . 'passings');
+        fORM::mapClassToTable('WpTesting_Model_Passing_' . md5(__METHOD__), fORM::tablize('WpTesting_Model_Passing'));
         $passingStub = $this->getMockBuilder('WpTesting_Model_Passing')
             ->setMethods(array('createTest', 'buildAnswersScores', '__wakeup'))
             ->setMockClassName('WpTesting_Model_Passing_' . md5(__METHOD__))

@@ -25,7 +25,7 @@ abstract class WpTesting_Migration_AddSingleTable extends WpTesting_Migration_Mi
     {
         $table->addForeignKey('test_id', array(
             'keyName'         => "fk_{$this->entity}_test",
-            'referencedTable' => "{$this->globalPrefix}posts",
+            'referencedTable' => "{$this->blogPrefix}posts",
             'referencedKey'   => 'ID',
         ));
     }

@@ -5,6 +5,8 @@ abstract class WpTesting_Migration_Base
 
     protected $globalPrefix = '';
 
+    protected $blogPrefix = '';
+
     protected $pluginPrefix = '';
 
     /**
@@ -15,19 +17,21 @@ abstract class WpTesting_Migration_Base
     /**
      * @param Ruckusing_Adapter_Base $dbAdapter
      */
-    public function __construct($dbAdapter)
+    public function __construct(Ruckusing_Adapter_Base $dbAdapter)
     {
         $this->adaptee = new Ruckusing_Migration_Base($dbAdapter);
-        $this->setUp();
+        $this->setUp($dbAdapter->get_dsn());
     }
 
     /**
+     * @param array $dsn
      * @return void
      */
-    protected function setUp()
+    protected function setUp($dsn)
     {
-        $this->globalPrefix = WP_DB_PREFIX;
-        $this->pluginPrefix = WPT_DB_PREFIX;
+        $this->globalPrefix = $dsn['globalPrefix'];
+        $this->blogPrefix   = $dsn['blogPrefix'];
+        $this->pluginPrefix = $dsn['pluginPrefix'];
     }
 
     /**

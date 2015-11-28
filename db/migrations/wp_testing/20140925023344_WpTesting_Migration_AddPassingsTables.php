@@ -8,7 +8,7 @@ class WpTesting_Migration_AddPassingsTables extends WpTesting_Migration_MigrateT
             ->addPrimaryKey('passing_id')
             ->addForeignKey('test_id', array(
                 'keyName'         => 'fk_passing_test',
-                'referencedTable' => "{$this->globalPrefix}posts",
+                'referencedTable' => "{$this->blogPrefix}posts",
                 'referencedKey'   => 'ID',
             ))
             ->addNullableForeignKey('respondent_id', array(
@@ -24,7 +24,7 @@ class WpTesting_Migration_AddPassingsTables extends WpTesting_Migration_MigrateT
             ->addForeignKey('answer_id', array(
                 'primary_key'     => true,
                 'keyName'         => 'fk_passing_answer_answer',
-                'referencedTable' => "{$this->globalPrefix}terms",
+                'referencedTable' => "{$this->blogPrefix}terms",
                 'referencedKey'   => 'term_id',
             ))
             ->addForeignKey('question_id', array(
