@@ -48,7 +48,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
               PRIMARY KEY (term_id),
               UNIQUE KEY slug (slug),
               KEY name (name)
-            ) DEFAULT CHARSET=utf8
+            ) DEFAULT CHARSET=utf8 ENGINE=MyISAM
         ');
         $this->execute('
             CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'users (
