@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-10 01:26+0700\n"
-"PO-Revision-Date: 2015-09-07 16:36+0000\n"
+"POT-Creation-Date: 2015-11-29 05:50+0600\n"
+"PO-Revision-Date: 2015-11-28 23:58+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/wp-translations/wp-testing/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -16,65 +16,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-Basepath: ../src/\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:71
-msgid "Helps to create psychological tests."
-msgstr "ช่วยสร้างแบบวัดทางจิตวิทยา"
-
-#: Widget/PassingTable.php:62 Doer/WordPressEntitiesRegistrator.php:23
-msgid "All Tests"
-msgstr "แบบวัดทั้งหมด"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"
-
-#: Widget/PassingTable/User.php:26 Widget/PassingTable/Admin.php:45
-#: Doer/WordPressEntitiesRegistrator.php:14
-msgid "Test"
-msgstr "แบบวัด"
-
-#: Widget/PassingTable/User.php:27 Widget/PassingTable/Admin.php:46
-#: Doer/WordPressEntitiesRegistrator.php:91
-msgid "Scales"
-msgstr "สเกล"
-
-#: Widget/PassingTable/User.php:28 Widget/PassingTable/Admin.php:47
-#: Doer/WordPressEntitiesRegistrator.php:112 Doer/PassingBrowser/User.php:11
-#: Doer/PassingBrowser/User.php:19 Template/Test/Passer/get-results.php:17
-msgid "Results"
-msgstr "ผลลัพธ์"
-
-#: Widget/PassingTable/Admin.php:49
-msgid "Device"
-msgstr "เครื่องมือ"
-
-#: Widget/PassingTable/Admin.php:50
-msgid "IP address"
-msgstr "IP address"
-
-#: Widget/PassingTable/Admin.php:51
-msgid "Browser"
-msgstr "Browser"
-
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$s จาก %2$s"
 
-#: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:76
-msgid "Test is under construction"
-msgstr "แบบวัดยังไม่สมบูรณ์"
+#: Doer/Installer.php:38
+msgid "Helps to create psychological tests."
+msgstr "ช่วยสร้างแบบวัดทางจิตวิทยา"
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
-msgid "You can not get any results from it yet."
-msgstr "คุณยังไม่สามารถทราบผลลัพธ์ได้ตอนนี้"
+#: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
+msgid "Respondents’ test results"
+msgstr "ผลลัพธ์ของผู้ร่วมตอบแบบวัด"
+
+#: Doer/PassingBrowser/Admin.php:78
+msgid "Respondents’ results"
+msgstr "ผลลัพธ์ของผู้ร่วมตอบแบบวัด"
+
+#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "Tests"
+msgstr "แบบวัด"
+
+#: Doer/PassingBrowser/User.php:11
+msgid "My Results"
+msgstr "ผลของฉัน"
+
+#: Doer/PassingBrowser/User.php:18
+msgid "My Test Results"
+msgstr "ผลการทดสอบของฉัน"
 
 #: Doer/TestEditor.php:36
 msgid "Test Page Options"
@@ -96,57 +72,97 @@ msgstr "เพิ่มคำถาม"
 msgid "Edit Formulas"
 msgstr "แก้ไขสูตร"
 
-#: Doer/TestEditor.php:165
+#: Doer/TestEditor.php:184
 msgid "Publish on the home page"
 msgstr "แสดงผลในหน้า home page"
 
-#: Doer/TestEditor.php:182
+#: Doer/TestEditor.php:206
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "แสดงเปอร์เซ็นต์ของข้อที่ตอบแล้ว"
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:210
 msgid "Show one question per page"
 msgstr "แสดงคำถามเดียวต่อหน้า"
 
-#: Doer/TestEditor.php:190
+#: Doer/TestEditor.php:214
 msgid "Allow multiple answers per question"
 msgstr "เลือกตอบหลายตัวเลือกได้"
 
-#: Doer/TestEditor.php:194
+#: Doer/TestEditor.php:218
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "ล้างคำตอบเมื่อกดปุ่ม \"Back\""
 
-#: Doer/TestEditor.php:198
+#: Doer/TestEditor.php:222
 msgid "Button caption"
 msgstr "ข้อความปุ่มกด"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
+#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "ไปสู่ผลลัพธ์"
 
-#: Doer/TestEditor.php:220
+#: Doer/TestEditor.php:241
 msgid "Show scales chart"
 msgstr "แสดงตารางคะแนน"
 
-#: Doer/TestEditor.php:224
+#: Doer/TestEditor.php:245
 msgid "Show scales"
 msgstr "แสดงคะแนนของสเกล"
 
-#: Doer/TestEditor.php:228
+#: Doer/TestEditor.php:249
 msgid "Sort scales by score"
 msgstr "เรียงลำดับสเกลด้วยคะแนน"
 
-#: Doer/TestEditor.php:232
+#: Doer/TestEditor.php:253
 msgid "Show test description"
 msgstr "แสดงคำอธิบายแบบวัด"
 
-#: Doer/TestEditor.php:330
+#: Doer/TestEditor.php:348
 msgid "Test data not saved"
 msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
 
-#: Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22 Doer/PassingBrowser/User.php:10
-msgid "Tests"
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
+#: Template/Test/Passer/fill-form.php:79
+msgid "Test is under construction"
+msgstr "แบบวัดยังไม่สมบูรณ์"
+
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:80
+msgid "You can not get any results from it yet."
+msgstr "คุณยังไม่สามารถทราบผลลัพธ์ได้ตอนนี้"
+
+#: Doer/TestPasserAction/FillForm.php:63
+msgid "{percentage}% answered"
+msgstr "ตอบไปแล้ว {percentage}%"
+
+#: Doer/TestPasserAction/FillForm.php:72
+msgid "Next"
+msgstr "ถัดไป"
+
+#: Doer/TestPasserAction/GetResults.php:72
+msgid "Test result not found"
+msgstr "ไม่พบผลลัพธ์"
+
+#: Doer/TestPasserAction/GetResults.php:73
+msgid "You can not get anything from nothing."
+msgstr "คุณไม่สามารถพบผลลัพธ์ได้ เนื่องจากไม่มีข้อมูลอยู่"
+
+#: Doer/TestPasserAction/GetResults.php:82
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "ขอโทษด้วย! แต่บราวเซอร์ %s ของคุณไม่เหมาะกับการแสดงผลของชาร์ต"
+
+#: Doer/TestPasserAction/ProcessForm.php:74
+msgid "Test data not valid"
+msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
+
+#: Doer/TestPasserAction/ProcessForm.php:75
+msgid "You passed not valid data to test."
+msgstr "คุณกรอกข้อมูลแบบวัดไม่ถูกต้อง"
+
+#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
+#: Widget/PassingTable/User.php:26
+msgid "Test"
 msgstr "แบบวัด"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
@@ -173,6 +189,10 @@ msgstr "ค้นหาแบบวัด"
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "แบบวัดหลัก"
+
+#: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
+msgid "All Tests"
+msgstr "แบบวัดทั้งหมด"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
@@ -204,283 +224,261 @@ msgid ""
 " is a series of tasks or problems that the respondent has to solve."
 msgstr "เครื่องมือสำหรับวัดคุณลักษณะที่มองไม่เห็น (ตัวแปรแฝง) โดยทั่วไป นี่คือชุดของภาระงานหรือปัญหาที่ผู้ตอบแบบวัดต้องแก้"
 
-#: Doer/WordPressEntitiesRegistrator.php:62
+#: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions.php:156
 msgid "Test Answers"
 msgstr "คำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:63
+#: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
 msgstr "คำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:64
+#: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
 msgstr "เพิ่มคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:65
+#: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
 msgstr "แก้ไขคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:66
+#: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
 msgstr "ดูคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:67
+#: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
 msgstr "ค้นหาคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:68
+#: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
 msgstr "คำตอบหลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:70
+#: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
 msgstr "คำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:71
+#: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
 msgstr "คำตอบทั้งหมด"
 
-#: Doer/WordPressEntitiesRegistrator.php:72
+#: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
 msgstr "ปรับปรุงคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:73
+#: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
 msgstr "ชื่อคำตอบใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:74
+#: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
 msgstr "คำตอบหลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:76
+#: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
 msgstr "คำตอบใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:77
+#: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
 msgstr "ไม่พบคำตอบ"
 
-#: Doer/WordPressEntitiesRegistrator.php:78
+#: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
 msgstr "ไม่พบคำตอบในถังขยะ"
 
-#: Doer/WordPressEntitiesRegistrator.php:83
+#: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
 msgstr "สเกลแบบวัด"
 
-#: Doer/WordPressEntitiesRegistrator.php:84
+#: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Test Scale"
 msgstr "สเกลแบบวัด"
 
-#: Doer/WordPressEntitiesRegistrator.php:85
+#: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
 msgstr "เพิ่มสเกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:86
+#: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
 msgstr "แก้ไขสเกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:87
+#: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
 msgstr "ดูสเกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:88
+#: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
 msgstr "ค้นหาสเกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:89
+#: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
 msgstr "สเกลหลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:92
+#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
+#: Widget/PassingTable/User.php:27
+msgid "Scales"
+msgstr "สเกล"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
 msgid "All Scales"
 msgstr "สเกลทั้งหมด"
 
-#: Doer/WordPressEntitiesRegistrator.php:93
+#: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
 msgstr "ปรับปรุงสเกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:94
+#: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
 msgstr "ชื่อสเกลใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:95
+#: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
 msgstr "สเกลหลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:97
+#: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
 msgstr "สเกลใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:98
+#: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
 msgstr "ไม่พบเสกล"
 
-#: Doer/WordPressEntitiesRegistrator.php:99
+#: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
 msgstr "ไม่พบสเกลในถังขยะ"
 
-#: Doer/WordPressEntitiesRegistrator.php:104
+#: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
 msgstr "ผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:105
+#: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
 msgstr "ผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:106
+#: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
 msgstr "เพิ่มผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:107
+#: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
 msgstr "แก้ไขผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:108
+#: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
 msgstr "ดูผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:109
+#: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
 msgstr "ค้นหาผลลัพท์"
 
-#: Doer/WordPressEntitiesRegistrator.php:110
+#: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
 msgstr "ผลลัพธ์หลัก"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
+#: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
+#: Widget/PassingTable/User.php:28
+msgid "Results"
+msgstr "ผลลัพธ์"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
 msgstr "ผลลัพธ์ทั้งหมด"
 
-#: Doer/WordPressEntitiesRegistrator.php:114
+#: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
 msgstr "ปรับปรุงผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:115
+#: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
 msgstr "ชื่อผลลัพธ์ใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:116
+#: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
 msgstr "ผลลัพธ์หลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:118
+#: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
 msgstr "เพิ่มผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:119
+#: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
 msgstr "ไม่พบผลลัพธ์"
 
-#: Doer/WordPressEntitiesRegistrator.php:120
+#: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
 msgstr "ไม่พบผลลัพธ์ในถังขยะ"
 
-#: Doer/WordPressEntitiesRegistrator.php:125
-#: Doer/WordPressEntitiesRegistrator.php:133
+#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
 msgstr "หมวดหมู่แบบวัด"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
 msgstr "หมวดหมู่แบบวัด"
 
-#: Doer/WordPressEntitiesRegistrator.php:127
+#: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
 msgstr "สร้างหมวดหมู่ใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:128
+#: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
 msgstr "แก้ไขหมวดหมู่"
 
-#: Doer/WordPressEntitiesRegistrator.php:129
+#: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
 msgstr "ดูหมวดหมู่"
 
-#: Doer/WordPressEntitiesRegistrator.php:130
+#: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
 msgstr "ค้นหาหมวดหมู่"
 
-#: Doer/WordPressEntitiesRegistrator.php:131
+#: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
 msgstr "หมวดหมู่หลัก:"
 
-#: Doer/WordPressEntitiesRegistrator.php:134
+#: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
 msgstr "หมวดหมู่ทั้งหมด"
 
-#: Doer/WordPressEntitiesRegistrator.php:135
+#: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
 msgstr "อัปเดตหมวดหมู่"
 
-#: Doer/WordPressEntitiesRegistrator.php:136
+#: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
 msgstr "ชื่อหมวดหมู่ใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:137
+#: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
 msgstr "หมวดหมู่หลัก"
 
-#: Doer/WordPressEntitiesRegistrator.php:139
+#: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
 msgstr "สร้างหมวดหมู่ใหม่"
 
-#: Doer/WordPressEntitiesRegistrator.php:140
+#: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
 msgstr "ไม่พบหมวดหมู่"
 
-#: Doer/WordPressEntitiesRegistrator.php:141
+#: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
 msgstr "ไม่พบหมวดหมู่ในถังขยะ"
 
-#: Doer/TestPasser/FillForm.php:55
-msgid "{percentage}% answered"
-msgstr "ตอบไปแล้ว {percentage}%"
-
-#: Doer/TestPasser/FillForm.php:66
-msgid "Next"
-msgstr "ถัดไป"
-
-#: Doer/TestPasser/ProcessForm.php:70 Doer/TestPasser/ProcessForm.php:74
-msgid "Test data not valid"
-msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
-
-#: Doer/TestPasser/ProcessForm.php:71
-msgid "You passed not valid data to test."
-msgstr "คุณกรอกข้อมูลแบบวัดไม่ถูกต้อง"
-
-#: Doer/TestPasser/GetResults.php:73 Doer/TestPasser/GetResults.php:76
-msgid "Test result not found"
-msgstr "ไม่พบผลลัพธ์"
-
-#: Doer/TestPasser/GetResults.php:74
-msgid "You can not get anything from nothing."
-msgstr "คุณไม่สามารถพบผลลัพธ์ได้ เนื่องจากไม่มีข้อมูลอยู่"
-
-#: Doer/TestPasser/GetResults.php:90
-#, php-format
-msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "ขอโทษด้วย! แต่บราวเซอร์ %s ของคุณไม่เหมาะกับการแสดงผลของชาร์ต"
-
-#: Doer/PassingBrowser/Admin.php:51 Doer/PassingBrowser/Admin.php:58
-msgid "Respondents’ test results"
-msgstr "ผลลัพธ์ของผู้ร่วมตอบแบบวัด"
-
-#: Doer/PassingBrowser/Admin.php:52
-msgid "Respondents’ results"
-msgstr "ผลลัพธ์ของผู้ร่วมตอบแบบวัด"
-
-#: Model/Formula.php:243
+#: Model/Formula.php:246
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "สูตรสำหรับ %s ไม่สามารถคำนวณได้ เนื่องจากมีทั้งตัวเลขและเปอร์เซ็นต์"
 
-#: Model/Formula.php:256
+#: Model/Formula.php:259
 #, php-format
 msgid "Formula for %s has error"
 msgstr "สูตรสำหรับ %s ผิดพลาด"
+
+#: Model/FormulaVariable/ScaleValue.php:18
+msgid "Scale Variable"
+msgstr "ตัวแปรในเสกล"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
 #: Template/Test/Editor/edit-formulas.php:45
@@ -492,9 +490,25 @@ msgstr "คำถาม %1$s คำตอบ %2$s"
 msgid "Answer Variable"
 msgstr "ตัวแปรคำตอบ"
 
-#: Model/FormulaVariable/ScaleValue.php:18
-msgid "Scale Variable"
-msgstr "ตัวแปรในเสกล"
+#: Model/Shortcode/Test.php:19
+#, php-format
+msgid "Test \"%s\" is not published. You can not include it anywhere."
+msgstr "ทดสอบ \"%s\" ไม่ได้รับการตีพิมพ์ คุณไม่สามารถรวมไว้ที่ใดก็ได้"
+
+#: Model/Shortcode/TestReadMore.php:30
+msgid "Start Test"
+msgstr "เริ่มทดสอบ"
+
+#: Template/Test/Editor/add-questions.php:5
+#: Template/Test/Editor/add-questions.php:10
+msgid "Quick Fill From Text"
+msgstr "เติมคำถามด่วน"
+
+#: Template/Test/Editor/add-questions.php:9
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "วางคำถามที่นี่ เพื่อจะถูกเติมในช่องด้านล่าง ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
@@ -539,17 +553,6 @@ msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "ใช้ได้ทั้งตัวเลขและเปอร์เซ็นต์ เช่น \"สเกลความสุข\" มีทั้งหมด 30 คะแนน ดังนั้น \"สเกลความสุข > 15\" และ \"สเกลความสุข > 50%\" มีค่าเหมือนกัน"
-
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "เติมคำถามด่วน"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "วางคำถามที่นี่ เพื่อจะถูกเติมในช่องด้านล่าง ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
@@ -601,10 +604,26 @@ msgid ""
 "automatically."
 msgstr "เพิ่มคำตอบเฉพาะในรูปแบบข้อความที่นี่ เมื่อบันทึกแบบวัดแล้ว คำตอบจะถูกสร้างขึ้น ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
 
-#: Template/Test/Passer/fill-form.php:52
+#: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
 msgstr "โปรดเลือกคำตอบอย่างน้อยหนึ่งข้อ"
 
-#: Template/Test/Passer/fill-form.php:53
+#: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
 msgstr "โปรดเลือกข้อใดข้อหนึ่ง"
+
+#: Widget/PassingTable/Admin.php:91
+msgid "Device"
+msgstr "เครื่องมือ"
+
+#: Widget/PassingTable/Admin.php:92
+msgid "IP address"
+msgstr "IP address"
+
+#: Widget/PassingTable/Admin.php:93
+msgid "Browser"
+msgstr "Browser"
+
+#: Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
