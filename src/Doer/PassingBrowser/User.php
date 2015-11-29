@@ -8,15 +8,21 @@ class WpTesting_Doer_PassingBrowser_User extends WpTesting_Doer_PassingBrowser
     protected function addMenuPages()
     {
         $mainTitle      = __('Tests', 'wp-testing');
-        $resultsTitle   = __('Results', 'wp-testing');
+        $resultsTitle   = __('My Results', 'wp-testing');
         $capability     = 'read';
-        $mainSlug       = 'wpt_test_user_results';
+        $submenuSlug    = 'wpt_test_user_results';
         $callback       = array($this, 'renderPassingsPage');
         $menuIcon       = $this->isWordPressAlready('3.8') ? 'dashicons-editor-paste-text' : null;
+        $isSubscriber   = !$this->wp->isCurrentUserCan('edit_posts');
 
-        $this->wp->addMenuPage($mainTitle, $mainTitle, $capability, $mainSlug, $callback, $menuIcon, 5);
-        $this->setScreenHook($this->wp->addSubmenuPage($mainSlug, $resultsTitle, $resultsTitle, $capability, $mainSlug, $callback));
-        $this->passingsPageTitle = __('Results', 'wp-testing');
+        $this->passingsPageTitle = __('My Test Results', 'wp-testing');
+        if ($isSubscriber) {
+            $this->wp->addObjectPage($mainTitle, $mainTitle, $capability, $submenuSlug, $callback, $menuIcon);
+            $mainSlug = $submenuSlug;
+        } else {
+            $mainSlug = 'edit.php?post_type=wpt_test';
+        }
+        $this->setScreenHook($this->wp->addSubmenuPage($mainSlug, $resultsTitle, $resultsTitle, $capability, $submenuSlug, $callback));
 
         return $this;
     }

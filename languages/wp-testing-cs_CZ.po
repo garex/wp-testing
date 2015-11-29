@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-10 01:26+0700\n"
-"PO-Revision-Date: 2015-09-05 20:33+0000\n"
+"POT-Creation-Date: 2015-11-29 05:50+0600\n"
+"PO-Revision-Date: 2015-11-28 23:51+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/wp-translations/wp-testing/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -16,65 +16,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-Basepath: ../src/\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 
-#: Facade.php:71
-msgid "Helps to create psychological tests."
-msgstr "Pomáhá vytvářet psychologické testy."
-
-#: Widget/PassingTable.php:62 Doer/WordPressEntitiesRegistrator.php:23
-msgid "All Tests"
-msgstr "Všechny testy"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "č. "
-
-#: Widget/PassingTable/User.php:26 Widget/PassingTable/Admin.php:45
-#: Doer/WordPressEntitiesRegistrator.php:14
-msgid "Test"
-msgstr "Dotazník"
-
-#: Widget/PassingTable/User.php:27 Widget/PassingTable/Admin.php:46
-#: Doer/WordPressEntitiesRegistrator.php:91
-msgid "Scales"
-msgstr "Škály"
-
-#: Widget/PassingTable/User.php:28 Widget/PassingTable/Admin.php:47
-#: Doer/WordPressEntitiesRegistrator.php:112 Doer/PassingBrowser/User.php:11
-#: Doer/PassingBrowser/User.php:19 Template/Test/Passer/get-results.php:17
-msgid "Results"
-msgstr "Výsledky"
-
-#: Widget/PassingTable/Admin.php:49
-msgid "Device"
-msgstr "Zařízení"
-
-#: Widget/PassingTable/Admin.php:50
-msgid "IP address"
-msgstr "IP adresa"
-
-#: Widget/PassingTable/Admin.php:51
-msgid "Browser"
-msgstr "Prohlížeč"
-
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$g z %2$g"
 
-#: Doer/TestPasser.php:99 Doer/TestPasser.php:102
-#: Template/Test/Passer/fill-form.php:76
-msgid "Test is under construction"
-msgstr "Dotazník je ve výstavbě"
+#: Doer/Installer.php:38
+msgid "Helps to create psychological tests."
+msgstr "Pomáhá vytvářet psychologické testy."
 
-#: Doer/TestPasser.php:100 Template/Test/Passer/fill-form.php:77
-msgid "You can not get any results from it yet."
-msgstr "Zatím nemůžete získat žádné výsledky"
+#: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
+msgid "Respondents’ test results"
+msgstr "Výsledky testu pro respondenty"
+
+#: Doer/PassingBrowser/Admin.php:78
+msgid "Respondents’ results"
+msgstr "Výsledky respondentů"
+
+#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "Tests"
+msgstr "Dotazníky"
+
+#: Doer/PassingBrowser/User.php:11
+msgid "My Results"
+msgstr "Moje výsledky"
+
+#: Doer/PassingBrowser/User.php:18
+msgid "My Test Results"
+msgstr "Výsledky testů"
 
 #: Doer/TestEditor.php:36
 msgid "Test Page Options"
@@ -96,58 +72,98 @@ msgstr "Přidat nové otázky"
 msgid "Edit Formulas"
 msgstr "Změnit vzorce"
 
-#: Doer/TestEditor.php:165
+#: Doer/TestEditor.php:184
 msgid "Publish on the home page"
 msgstr "Publikovat na hlavní straně"
 
-#: Doer/TestEditor.php:182
+#: Doer/TestEditor.php:206
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Zobrazit v nadpisu procenta otázek, které respondent již odpověděl"
 
-#: Doer/TestEditor.php:186
+#: Doer/TestEditor.php:210
 msgid "Show one question per page"
 msgstr "Zobraziit jednu otázku na každé stránce"
 
-#: Doer/TestEditor.php:190
+#: Doer/TestEditor.php:214
 msgid "Allow multiple answers per question"
 msgstr "Povolit vícenásobné odpovědi pro otázku"
 
-#: Doer/TestEditor.php:194
+#: Doer/TestEditor.php:218
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Vynulovat  odpovědi respondent po stisku tlačítka \"Zpět\""
 
-#: Doer/TestEditor.php:198
+#: Doer/TestEditor.php:222
 msgid "Button caption"
 msgstr "Bublinová nápověda nad tlačítkem"
 
-#: Doer/TestEditor.php:200 Doer/TestPasser/FillForm.php:63
+#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Získat výsledky testu"
 
-#: Doer/TestEditor.php:220
+#: Doer/TestEditor.php:241
 msgid "Show scales chart"
 msgstr "Zobrazit graf pro škály"
 
-#: Doer/TestEditor.php:224
+#: Doer/TestEditor.php:245
 msgid "Show scales"
 msgstr "Ukázat škály"
 
-#: Doer/TestEditor.php:228
+#: Doer/TestEditor.php:249
 msgid "Sort scales by score"
 msgstr "Setřídit škály podle skóre"
 
-#: Doer/TestEditor.php:232
+#: Doer/TestEditor.php:253
 msgid "Show test description"
 msgstr "Zobrazit popis testu"
 
-#: Doer/TestEditor.php:330
+#: Doer/TestEditor.php:348
 msgid "Test data not saved"
 msgstr "Data testu nebyla uložena"
 
-#: Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22 Doer/PassingBrowser/User.php:10
-msgid "Tests"
-msgstr "Dotazníky"
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
+#: Template/Test/Passer/fill-form.php:79
+msgid "Test is under construction"
+msgstr "Dotazník je ve výstavbě"
+
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:80
+msgid "You can not get any results from it yet."
+msgstr "Zatím nemůžete získat žádné výsledky"
+
+#: Doer/TestPasserAction/FillForm.php:63
+msgid "{percentage}% answered"
+msgstr "{percentage}% odpovězeno"
+
+#: Doer/TestPasserAction/FillForm.php:72
+msgid "Next"
+msgstr "Další"
+
+#: Doer/TestPasserAction/GetResults.php:72
+msgid "Test result not found"
+msgstr "Výsledek testu nenalezen"
+
+#: Doer/TestPasserAction/GetResults.php:73
+msgid "You can not get anything from nothing."
+msgstr "Chybí vám něco, abyste dostali výstup"
+
+#: Doer/TestPasserAction/GetResults.php:82
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "Promiňte, váš zastaralý prohlížeč %s nedokáže graf správně zobrazit"
+
+#: Doer/TestPasserAction/ProcessForm.php:74
+msgid "Test data not valid"
+msgstr "Neplatná data testu"
+
+#: Doer/TestPasserAction/ProcessForm.php:75
+msgid "You passed not valid data to test."
+msgstr "Vložili jste do testu nevalidní data"
+
+#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
+#: Widget/PassingTable/User.php:26
+msgid "Test"
+msgstr "Dotazník"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
@@ -173,6 +189,10 @@ msgstr "Hledat testy"
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
 msgstr "Nadřazený test:"
+
+#: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
+msgid "All Tests"
+msgstr "Všechny testy"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
@@ -204,283 +224,261 @@ msgid ""
 " is a series of tasks or problems that the respondent has to solve."
 msgstr "Nástroj na měření nepozorovaných konstrukcí (s latentními proměnnými). Typicky to je řada úkolů nebo problémů, které respondent má vyřešit."
 
-#: Doer/WordPressEntitiesRegistrator.php:62
+#: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions.php:156
 msgid "Test Answers"
 msgstr "Odpovědi v testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:63
+#: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
 msgstr "Odpověď v testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:64
+#: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
 msgstr "Přidat novou odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:65
+#: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
 msgstr "Upravit odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:66
+#: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
 msgstr "Zobrazit odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:67
+#: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
 msgstr "Hledat odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:68
+#: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
 msgstr "Nadřazená odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:70
+#: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
 msgstr "Odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:71
+#: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
 msgstr "Všechny odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:72
+#: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
 msgstr "Aktualizovat odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:73
+#: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
 msgstr "Znění nové odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:74
+#: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
 msgstr "Nadřazené odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:76
+#: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
 msgstr "Novou odpověď"
 
-#: Doer/WordPressEntitiesRegistrator.php:77
+#: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
 msgstr "Odpovědi nenalezeny"
 
-#: Doer/WordPressEntitiesRegistrator.php:78
+#: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
 msgstr "Žádné vyhozené odpovědi"
 
-#: Doer/WordPressEntitiesRegistrator.php:83
+#: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
 msgstr "Škály testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:84
+#: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Test Scale"
 msgstr "Škála testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:85
+#: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
 msgstr "Přidat novou škálu"
 
-#: Doer/WordPressEntitiesRegistrator.php:86
+#: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
 msgstr "Upravit škálu"
 
-#: Doer/WordPressEntitiesRegistrator.php:87
+#: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
 msgstr "Ukázat škálu"
 
-#: Doer/WordPressEntitiesRegistrator.php:88
+#: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
 msgstr "Hledat ve škálách"
 
-#: Doer/WordPressEntitiesRegistrator.php:89
+#: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
 msgstr "Nadřazená škála:"
 
-#: Doer/WordPressEntitiesRegistrator.php:92
+#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
+#: Widget/PassingTable/User.php:27
+msgid "Scales"
+msgstr "Škály"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
 msgid "All Scales"
 msgstr "Všechny škály"
 
-#: Doer/WordPressEntitiesRegistrator.php:93
+#: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
 msgstr "Aktualizovat škálu"
 
-#: Doer/WordPressEntitiesRegistrator.php:94
+#: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
 msgstr "Nové jméno pro škálu"
 
-#: Doer/WordPressEntitiesRegistrator.php:95
+#: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
 msgstr "Nadřazená škála"
 
-#: Doer/WordPressEntitiesRegistrator.php:97
+#: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
 msgstr "Nová škála"
 
-#: Doer/WordPressEntitiesRegistrator.php:98
+#: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
 msgstr "Škály nenalezeny"
 
-#: Doer/WordPressEntitiesRegistrator.php:99
+#: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
 msgstr "Žádné škály v koši"
 
-#: Doer/WordPressEntitiesRegistrator.php:104
+#: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
 msgstr "Výsledky testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:105
+#: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
 msgstr "Výsledek testu"
 
-#: Doer/WordPressEntitiesRegistrator.php:106
+#: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
 msgstr "Přidat nový výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:107
+#: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
 msgstr "Upravit výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:108
+#: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
 msgstr "Zobrazit výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:109
+#: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
 msgstr "Výsledky vyhledávání"
 
-#: Doer/WordPressEntitiesRegistrator.php:110
+#: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
 msgstr "Nadřazený výsledek:"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
+#: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
+#: Widget/PassingTable/User.php:28
+msgid "Results"
+msgstr "Výsledky"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
 msgstr "Všechny výsledky"
 
-#: Doer/WordPressEntitiesRegistrator.php:114
+#: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
 msgstr "Aktualizovat výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:115
+#: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
 msgstr "Název nového výsleku"
 
-#: Doer/WordPressEntitiesRegistrator.php:116
+#: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
 msgstr "Nadřazený výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:118
+#: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
 msgstr "Nový výsledek"
 
-#: Doer/WordPressEntitiesRegistrator.php:119
+#: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
 msgstr "Výsledky nenalezeny"
 
-#: Doer/WordPressEntitiesRegistrator.php:120
+#: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
 msgstr "Žádné výsledky vyhozené"
 
-#: Doer/WordPressEntitiesRegistrator.php:125
-#: Doer/WordPressEntitiesRegistrator.php:133
+#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
 msgstr "Kategorie dotazníků"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
 msgstr "Kategorie dotazníku"
 
-#: Doer/WordPressEntitiesRegistrator.php:127
+#: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
 msgstr "Přidat novou kategorii"
 
-#: Doer/WordPressEntitiesRegistrator.php:128
+#: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
 msgstr "Editovat kategorii"
 
-#: Doer/WordPressEntitiesRegistrator.php:129
+#: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
 msgstr "Zobrazit rubriku"
 
-#: Doer/WordPressEntitiesRegistrator.php:130
+#: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
 msgstr "Prohledat kategorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:131
+#: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
 msgstr "Nadřazená kategorie:"
 
-#: Doer/WordPressEntitiesRegistrator.php:134
+#: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
 msgstr "Všechny kategorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:135
+#: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
 msgstr "Upravit kategorii"
 
-#: Doer/WordPressEntitiesRegistrator.php:136
+#: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
 msgstr "Nový název kategorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:137
+#: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
 msgstr "Nadřazená kategorie"
 
-#: Doer/WordPressEntitiesRegistrator.php:139
+#: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
 msgstr "Novou kategorii"
 
-#: Doer/WordPressEntitiesRegistrator.php:140
+#: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
 msgstr "Kategorie nenalezeny"
 
-#: Doer/WordPressEntitiesRegistrator.php:141
+#: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
 msgstr "Žádné kategorie vyhozené"
 
-#: Doer/TestPasser/FillForm.php:55
-msgid "{percentage}% answered"
-msgstr "{percentage}% odpovězeno"
-
-#: Doer/TestPasser/FillForm.php:66
-msgid "Next"
-msgstr "Další"
-
-#: Doer/TestPasser/ProcessForm.php:70 Doer/TestPasser/ProcessForm.php:74
-msgid "Test data not valid"
-msgstr "Neplatná data testu"
-
-#: Doer/TestPasser/ProcessForm.php:71
-msgid "You passed not valid data to test."
-msgstr "Vložili jste do testu nevalidní data"
-
-#: Doer/TestPasser/GetResults.php:73 Doer/TestPasser/GetResults.php:76
-msgid "Test result not found"
-msgstr "Výsledek testu nenalezen"
-
-#: Doer/TestPasser/GetResults.php:74
-msgid "You can not get anything from nothing."
-msgstr "Chybí vám něco, abyste dostali výstup"
-
-#: Doer/TestPasser/GetResults.php:90
-#, php-format
-msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Promiňte, váš zastaralý prohlížeč %s nedokáže graf správně zobrazit"
-
-#: Doer/PassingBrowser/Admin.php:51 Doer/PassingBrowser/Admin.php:58
-msgid "Respondents’ test results"
-msgstr "Výsledky testu pro respondenty"
-
-#: Doer/PassingBrowser/Admin.php:52
-msgid "Respondents’ results"
-msgstr "Výsledky respondentů"
-
-#: Model/Formula.php:243
+#: Model/Formula.php:246
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "Vzorec pro %s není kompatibilní, neboť obsahuje čísla a procenta"
 
-#: Model/Formula.php:256
+#: Model/Formula.php:259
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Vzorec pro %s má chybu"
+
+#: Model/FormulaVariable/ScaleValue.php:18
+msgid "Scale Variable"
+msgstr "Proměnná ve škále"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
 #: Template/Test/Editor/edit-formulas.php:45
@@ -492,9 +490,25 @@ msgstr "Otázka %1$s odpověď %2$s"
 msgid "Answer Variable"
 msgstr "Proměnná k odpovědi"
 
-#: Model/FormulaVariable/ScaleValue.php:18
-msgid "Scale Variable"
-msgstr "Proměnná ve škále"
+#: Model/Shortcode/Test.php:19
+#, php-format
+msgid "Test \"%s\" is not published. You can not include it anywhere."
+msgstr "Test \"%s\" není publikován. Nelze zahrnout kdekoli."
+
+#: Model/Shortcode/TestReadMore.php:30
+msgid "Start Test"
+msgstr "Spustit Test"
+
+#: Template/Test/Editor/add-questions.php:5
+#: Template/Test/Editor/add-questions.php:10
+msgid "Quick Fill From Text"
+msgstr "Rychlé vyplnění z textového okénka"
+
+#: Template/Test/Editor/add-questions.php:9
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Vložte sem Vaše otázky a ony naplní pole níže. Čísla a další indexy budou odstraněny automaticky."
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
@@ -539,17 +553,6 @@ msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Dovolena jsou čísla i procenta. Například když \"scale-abc\" má celkem 30 bodů, pak zápisy \"scale-abc > 15\" a \"scale-abc > 50%\" jsou rovnocenné."
-
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Rychlé vyplnění z textového okénka"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Vložte sem Vaše otázky a ony naplní pole níže. Čísla a další indexy budou odstraněny automaticky."
 
 #: Template/Test/Editor/edit-questions.php:29
 #: Template/Test/Editor/edit-questions.php:67
@@ -601,10 +604,26 @@ msgid ""
 "automatically."
 msgstr "Přidejte sem Vaše jednotlivé odpovědi jako text; až test uložíte, otázky se extrahují, vytvoří a zařadí. Čísla a další znaky budou odstraněny automaticky."
 
-#: Template/Test/Passer/fill-form.php:52
+#: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
 msgstr "Prosím vyberte alespoň jednu odpověď."
 
-#: Template/Test/Passer/fill-form.php:53
+#: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
 msgstr "Prosím zvolte jen jednu odpověď."
+
+#: Widget/PassingTable/Admin.php:91
+msgid "Device"
+msgstr "Zařízení"
+
+#: Widget/PassingTable/Admin.php:92
+msgid "IP address"
+msgstr "IP adresa"
+
+#: Widget/PassingTable/Admin.php:93
+msgid "Browser"
+msgstr "Prohlížeč"
+
+#: Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "č. "
