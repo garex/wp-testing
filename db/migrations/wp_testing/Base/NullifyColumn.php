@@ -15,7 +15,9 @@ abstract class WpTesting_Migration_NullifyColumn extends WpTesting_Migration_Mig
 
     public function down()
     {
+        $this->execute('SET FOREIGN_KEY_CHECKS = 0');
         $this->nullifyColumn(false);
+        $this->execute('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     private function nullifyColumn($to)

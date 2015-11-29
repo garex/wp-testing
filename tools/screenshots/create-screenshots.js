@@ -42,7 +42,7 @@ var screenshots = [
 
            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
-                   var ids = '#categories-hide,#tags-hide,#taxonomy-wpt_category-hide,#comments-hide';
+                   var ids = '#categorydiv-hide,#tagsdiv-post_tag-hide,#wpt_categorydiv-hide,#commentsdiv-hide,#authordiv-hide';
                    jQuery(ids).attr('checked', false).click().click()
                })
 
@@ -211,7 +211,7 @@ var screenshots = [
                     if (54 == i) {
                         continue;
                     }
-                    this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
+                    this.clickLabel('Yes', '*[@class="wpt_test_form"]/*[' + i + ']/*//label')
                 }
                 this.evaluate(function(){
                     jQuery('#wpt-test-form :submit').click()
@@ -224,7 +224,7 @@ var screenshots = [
         actions : function () {
             casper.then(function() {
                 i = 54
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[' + i + ']/*//label')
+                this.clickLabel('Yes', '*[@class="wpt_test_form"]/*[' + i + ']/*//label')
             }).wait(200)
         }
     }, {
@@ -232,7 +232,7 @@ var screenshots = [
         offset  : 400,
         actions : function () {
             casper.then(function() {
-                this.fill('form#wpt-test-form', {}, true)
+                this.fill('form.wpt_test_form', {}, true)
             }).waitForUrl(/test.+eysencks/, function() {
                 this.evaluate(function() {
                     var r = jQuery('div.result-slug-result-choleric')
@@ -269,7 +269,7 @@ var screenshots = [
             casper.thenOpen('http://wpti.dev:8000/test/diagram-with-same-length-scales/').waitForUrl(/diagram-with-same/, function() {
                 this.clickLabel('Yes')
                 this.evaluate(function(){
-                    jQuery('#wpt-test-form').submit()
+                    jQuery('form.wpt_test_form').submit()
                 })
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
                 this.mouse.move('.scales.diagram')
@@ -281,7 +281,7 @@ var screenshots = [
             casper.thenOpen('http://wpti.dev:8000/test/diagram-with-different-length-scales-uses-percents/').waitForUrl(/diagram-with-different/, function() {
                 this.clickLabel('Yes')
                 this.evaluate(function(){
-                    jQuery('#wpt-test-form').submit()
+                    jQuery('form.wpt_test_form').submit()
                 })
             }).waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function () {
                 this.mouse.move('.scales.diagram')
@@ -293,33 +293,33 @@ var screenshots = [
             casper.thenOpen('http://wpti.dev:8000/?wpt_test=multiple-answers').waitForUrl(/multiple-answers/)
 
             casper.then(function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*[1]/*//label')
-                this.clickLabel('No',  '*[@id="wpt-test-form"]/*[2]/*//label')
+                this.clickLabel('Yes', '*[@class="wpt_test_form"]/*[1]/*//label')
+                this.clickLabel('No',  '*[@class="wpt_test_form"]/*[2]/*//label')
             })
         }
     }, {
         title   : 'One question per page also allowed. On first page we see test description, "Next" button and pages counter',
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/test/three-steps/').waitForUrl(/three/, function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+                this.clickLabel('Yes', '*[@class="wpt_test_form"]/*//label')
             })
         }
     }, {
         title   : 'On second page description not shown',
         actions : function () {
             casper.then(function() {
-                this.fill('form#wpt-test-form', {}, true)
+                this.fill('form.wpt_test_form', {}, true)
             }).waitForUrl(/three-steps/, function() {
-                this.clickLabel('No', '*[@id="wpt-test-form"]/*//label')
+                this.clickLabel('No', '*[@class="wpt_test_form"]/*//label')
             })
         }
     }, {
         title   : 'On last page counter not shown and button changes back to "Get Test Results"',
         actions : function () {
             casper.then(function() {
-                this.fill('form#wpt-test-form', {}, true)
+                this.fill('form.wpt_test_form', {}, true)
             }).waitForUrl(/three-steps/, function() {
-                this.clickLabel('Yes', '*[@id="wpt-test-form"]/*//label')
+                this.clickLabel('Yes', '*[@class="wpt_test_form"]/*//label')
             })
         }
     }

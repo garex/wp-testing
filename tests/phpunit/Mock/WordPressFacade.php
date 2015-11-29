@@ -41,6 +41,11 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         return 'utf-8';
     }
 
+    public function isMultisite()
+    {
+        return false;
+    }
+
     /**
      * Absolute path to the WordPress directory.
      */

@@ -64,6 +64,25 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * @return wpdb
+     */
+    private function getDb()
+    {
+        require_wp_db();
+        return $GLOBALS['wpdb'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getGlobalTablePrefix()
+    {
+        return $this->isMultisite()
+            ? $this->getDb()->base_prefix
+            : $this->getTablePrefix();
+    }
+
+    /**
      * @return string
      */
     public function getTablePrefix()
@@ -1209,7 +1228,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Add a top level menu page
+     * Add a top level menu page in the 'objects' section
      *
      * This function takes a capability which will be used to determine whether
      * or not a page is included in the menu.
@@ -1227,13 +1246,12 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *       This should begin with 'data:image/svg+xml;base64,'.
      *     * [WP >= 3.8] Pass the name of a Dashicons helper class to use a font icon, e.g. 'dashicons-chart-pie'.
      *     * Pass 'none' to leave div.wp-menu-image empty so an icon can be added via CSS.
-     * @param int $position The position in the menu order this one should appear
      *
      * @return string The resulting page's hook_suffix
      */
-    public function addMenuPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '', $position = null)
+    public function addObjectPage($pageTitle, $menuTitle, $capability, $menuSlug, $function = '', $iconUrl = '')
     {
-        return add_menu_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl, $position);
+        return add_object_page($pageTitle, $menuTitle, $capability, $menuSlug, $function, $iconUrl);
     }
 
     /**
@@ -1400,6 +1418,67 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     {
         register_uninstall_hook($this->pluginFile, $function);
         return $this;
+    }
+
+    /**
+     * If Multisite is enabled.
+     *
+     * @since 3.0.0
+     *
+     * @return bool True if Multisite is enabled, false otherwise.
+     */
+    public function isMultisite()
+    {
+        return is_multisite();
+    }
+
+    /**
+     * Switch the current blog.
+     *
+     * This function is useful if you need to pull posts, or other information,
+     * from other blogs. You can switch back afterwards using restore_current_blog().
+     *
+     * Things that aren't switched:
+     *  - autoloaded options. See #14992
+     *  - plugins. See #14941
+     *
+     * @see restore_current_blog()
+     * @since MU
+     *
+     * @param int  $blogId   The id of the blog you want to switch to. Default: current blog
+     * @return true Always returns True.
+     */
+    public function switchToBlog($blogId)
+    {
+        return switch_to_blog($blogId);
+    }
+
+    /**
+     * Restore the current blog, after calling switch_to_blog()
+     *
+     * @since MU
+     *
+     * @return bool True on success, false if we're already on the current blog
+     */
+    public function restoreCurrentBlog()
+    {
+        return restore_current_blog();
+    }
+
+    /**
+     * Check whether the plugin is active for the entire network.
+     *
+     * @since 3.0.0
+     *
+     * @param string $plugin Base plugin path from plugins directory.
+     * @return bool True, if active for the network, otherwise false.
+     */
+    public function isPluginActiveForNetwork($plugin = null)
+    {
+        if (is_null($plugin)) {
+            $plugin = $this->pluginFile;
+        }
+        return is_plugin_active_for_network($plugin);
     }
 
     /**

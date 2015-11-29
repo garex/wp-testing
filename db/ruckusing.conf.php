@@ -7,11 +7,10 @@ $local = dirname(__FILE__) . '/ruckusing.conf.local.php';
 if (file_exists($local)) {
     return require_once $local;
 }
+$wp0Prefix = 'wp_';
+$wpPrefix  = 'wp_';
+$wptPrefix = 'wp_t_';
 defined('WP_PLUGIN_URL')                || define('WP_PLUGIN_URL',                  '/wp-content/plugins');
-defined('WP_DB_PREFIX')                 || define('WP_DB_PREFIX',                   'wp_');
-defined('WPT_DB_PREFIX')                || define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
-defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
-defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
 defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(__FILE__));
 $databaseDirectory = RUCKUSING_WORKING_BASE;
 return array(
@@ -25,6 +24,10 @@ return array(
             'user'     => 'root',
             'password' => '',
             'charset'  => 'utf8',
+            'globalPrefix' => $wp0Prefix,
+            'blogPrefix'   => $wpPrefix,
+            'pluginPrefix' => $wptPrefix,
+            'schema_version_table_name' => $wptPrefix . 'schema_migrations',
         ),
     ),
     'db_dir'          => $databaseDirectory,

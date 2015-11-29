@@ -58,12 +58,13 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
 
     protected function configure()
     {
+        $answerTable = fORM::tablize('WpTesting_Model_Answer');
         fORMRelated::setOrderBys(
             $this,
             'WpTesting_Model_Answer',
             array(
-                WPT_DB_PREFIX . 'answers.answer_sort' => 'asc',
-                WPT_DB_PREFIX . 'answers.answer_id'   => 'asc',
+                $answerTable . '.answer_sort' => 'asc',
+                $answerTable . '.answer_id'   => 'asc',
             )
         );
     }

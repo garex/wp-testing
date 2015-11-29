@@ -5,7 +5,7 @@ class WpTesting_Migration_AddLinkInDemoTest extends WpTesting_Migration_Base
 
     public function up()
     {
-        $posts = $this->globalPrefix . 'posts';
+        $posts = $this->blogPrefix . 'posts';
         $this->execute("
             UPDATE $posts
             SET post_content = CONCAT(post_content, '\\n\\n<p style=\"color: gray; font-size: 70%; text-align: right;\">This test is a demonstration of <a href=\"http://apsiholog.ru/psychological-tests/\">psychological tests</a> plugin.</p>')
@@ -17,7 +17,7 @@ class WpTesting_Migration_AddLinkInDemoTest extends WpTesting_Migration_Base
 
     public function down()
     {
-        $posts = $this->globalPrefix . 'posts';
+        $posts = $this->blogPrefix . 'posts';
         $this->execute("
             UPDATE $posts
             SET post_content = TRIM(REPLACE(post_content, '<p style=\"color: gray; font-size: 70%; text-align: right;\">This test is a demonstration of <a href=\"http://apsiholog.ru/psychological-tests/\">psychological tests</a> plugin.</p>', ''))

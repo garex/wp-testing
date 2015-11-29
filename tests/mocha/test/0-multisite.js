@@ -4,11 +4,12 @@ if (!require('../env').multisite()) {
 
 describe('Multisite', function() {
 
-    var server          = require('../env').server(),
-        anotherServer   = require('../env').anotherServer()
+    var server          = require('../env').multiServer(),
+        serverBefore    = require('../env').anotherServer('before'),
+        serverAfter     = require('../env').anotherServer('after')
 
     before(function () {
-        require('../login-as').admin(this)
+        require('../login-as').admin(this, false, server)
     })
 
     it('should open network page', function() {
@@ -28,20 +29,20 @@ describe('Multisite', function() {
     })
 
     it('should see My Sites after relogin', function() {
-        require('../login-as').admin(this)
+        require('../login-as').admin(this, false, server)
 
         casper.then(function() {
             'My Sites'.should.be.textInDOM
         })
     })
 
-    it('should add new site in network', function() {
+    it('should add site in network before activation', function() {
         casper.thenOpen(server + '/wp-admin/network/site-new.php', function () {
             'Add New Site'.should.be.textInDOM
 
             this.fill('form', {
-                'blog[domain]'  : 'another',
-                'blog[title]'   : 'another',
+                'blog[domain]'  : 'before',
+                'blog[title]'   : 'before',
                 'blog[email]'   : 'wpti@wpti.dev'
             }, true)
 
@@ -49,14 +50,14 @@ describe('Multisite', function() {
         })
     })
 
-    it('should open another site plugins', function() {
-        casper.thenOpen(anotherServer + '/wp-admin/plugins.php', function () {
+    it('should open network plugins', function() {
+        casper.thenOpen(server + '/wp-admin/network/plugins.php', function () {
             'Plugins'.should.be.textInDOM
             'Wp-testing'.should.be.textInDOM
         })
     })
 
-    it('should activate main plugin on other site', function() {
+    it('should activate plugin on network', function() {
         casper.then(function () {
             this.click('#cb input')
             '#wpbody-content .wrap form'.should.be.inDOM
@@ -69,11 +70,31 @@ describe('Multisite', function() {
         casper.waitForUrl(/activate/, function() {
             'Fatal'.should.not.be.textInDOM
             '#wp-testing .deactivate a'.should.be.inDOM
-        }, null, 60000)
+        }, null, 120000)
     })
 
-    it('should show demo test on other site', function() {
-        casper.thenOpen(anotherServer, function () {
+    it('should add site in network after activation', function() {
+        casper.thenOpen(server + '/wp-admin/network/site-new.php', function () {
+            'Add New Site'.should.be.textInDOM
+
+            this.fill('form', {
+                'blog[domain]'  : 'after',
+                'blog[title]'   : 'after',
+                'blog[email]'   : 'wpti@wpti.dev'
+            }, true)
+
+            this.waitForUrl(/added/, null, null, 60000)
+        })
+    })
+
+    it('should show demo test on before activation site', function() {
+        casper.thenOpen(serverBefore, function () {
+            'The Eysenck Personality Inventory'.should.be.textInDOM
+        })
+    })
+
+    it('should show demo test on after activation site', function() {
+        casper.thenOpen(serverAfter, function () {
             'The Eysenck Personality Inventory'.should.be.textInDOM
         })
     })

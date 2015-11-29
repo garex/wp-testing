@@ -45,51 +45,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $this->registerWordPressHooks();
     }
 
-    public function onPluginActivate()
-    {
-        __('Helps to create psychological tests.', 'wp-testing');
-
-        $this->upgradePlugin();
-    }
-
-    protected function upgradePlugin()
-    {
-        $this->migrateDatabase(array(__FILE__, 'db:migrate'));
-        $this->registerWordPressEntities();
-        $this->wp->getRewrite()->flush_rules();
-    }
-
-    /**
-     * @param boolean $return
-     * @param array $extra
-     * @return boolean
-     */
-    public function onPluginUpgrade($return, $extra)
-    {
-        $isCurrentPluginUpgrade = (isset($extra['plugin']) && $extra['plugin'] == $this->wp->getPluginBaseName());
-        if (!$isCurrentPluginUpgrade) {
-            return $return;
-        }
-        $this->upgradePlugin();
-        return $return;
-    }
-
-    public function onPluginDeactivate()
-    {
-        $this->wp->getRewrite()->flush_rules();
-    }
-
-    public static function onPluginUninstall()
-    {
-        $me = new WpTesting_Facade(new WpTesting_WordPressFacade('../wp-testing.php'));
-        $adapter = $me->migrateDatabase(array(__FILE__, 'db:migrate', 'VERSION=0'));
-        $adapter->drop_table(RUCKUSING_TS_SCHEMA_TBL_NAME);
-        if ($adapter instanceof Ruckusing_Adapter_Base) {
-            $adapter->logger->close();
-        }
-        $me->wp->getRewrite()->flush_rules();
-    }
-
     /**
      * @return WpTesting_Facade
      */
@@ -106,7 +61,6 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
 
     protected function registerWordPressHooks()
     {
-        $class = get_class($this);
         $this->wp
             ->addAction('init',              array($this,  'registerWordPressEntities'))
             ->addAction('init',              array($this,  'registerShortCodes'))
@@ -120,11 +74,10 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             ;
             return;
         }
+
+        new WpTesting_Doer_Installer($this->wp, $this);
+
         $this->wp
-            ->registerActivationHook(        array($this,  'onPluginActivate'))
-            ->addFilter('upgrader_post_install', array($this, 'onPluginUpgrade'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
-            ->registerDeactivationHook(      array($this,  'onPluginDeactivate'))
-            ->registerUninstallHook(         array($class, 'onPluginUninstall'))
             ->addAction('admin_menu',        array($this,  'registerAdminPages'))
             ->addAction('admin_init',        array($this,  'setupTestEditorInBackground'))
             ->addFilter('current_screen',    array($this,  'setupTestEditor'))
@@ -262,6 +215,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
             return;
         }
         $this->defineConstants();
+        $wp0Prefix = $this->wp->getGlobalTablePrefix();
+        $wpPrefix  = $this->wp->getTablePrefix();
+        $wptPrefix = $this->getTablePrefix();
 
         // Extract port from host. See wpdb::db_connect
         $port = null;
@@ -273,17 +229,19 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
         fORMDatabase::attach($database);
 
-        fORM::mapClassToTable('WpTesting_Model_Test',          WP_DB_PREFIX   . 'posts');
-        fORM::mapClassToTable('WpTesting_Model_Question',      WPT_DB_PREFIX  . 'questions');
-        fORM::mapClassToTable('WpTesting_Model_Taxonomy',      WP_DB_PREFIX   . 'term_taxonomy');
-        fORM::mapClassToTable('WpTesting_Model_GlobalAnswer',  WP_DB_PREFIX   . 'terms');
-        fORM::mapClassToTable('WpTesting_Model_Answer',        WPT_DB_PREFIX  . 'answers');
-        fORM::mapClassToTable('WpTesting_Model_Scale',         WP_DB_PREFIX   . 'terms');
-        fORM::mapClassToTable('WpTesting_Model_Score',         WPT_DB_PREFIX  . 'scores');
-        fORM::mapClassToTable('WpTesting_Model_Passing',       WPT_DB_PREFIX  . 'passings');
-        fORM::mapClassToTable('WpTesting_Model_Result',        WP_DB_PREFIX   . 'terms');
-        fORM::mapClassToTable('WpTesting_Model_Formula',       WPT_DB_PREFIX  . 'formulas');
-        fORM::mapClassToTable('WpTesting_Model_Respondent',    WP_DB_PREFIX   . 'users');
+        fORM::mapClassToTable('WpTesting_Model_Test',          $wpPrefix   . 'posts');
+        fORM::mapClassToTable('WpTesting_Model_Question',      $wptPrefix  . 'questions');
+        fORM::mapClassToTable('WpTesting_Model_Taxonomy',      $wpPrefix   . 'term_taxonomy');
+        fORM::mapClassToTable('WpTesting_Model_Relationship',  $wpPrefix   . 'term_relationships');
+        fORM::mapClassToTable('WpTesting_Model_GlobalAnswer',  $wpPrefix   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Answer',        $wptPrefix  . 'answers');
+        fORM::mapClassToTable('WpTesting_Model_Scale',         $wpPrefix   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Score',         $wptPrefix  . 'scores');
+        fORM::mapClassToTable('WpTesting_Model_Passing',       $wptPrefix  . 'passings');
+        fORM::mapClassToTable('WpTesting_Model_Result',        $wpPrefix   . 'terms');
+        fORM::mapClassToTable('WpTesting_Model_Formula',       $wptPrefix  . 'formulas');
+        fORM::mapClassToTable('WpTesting_Model_Respondent',    $wp0Prefix  . 'users');
+        fORM::mapClassToTable('WpTesting_Model_Blog',          $wpPrefix   . 'blogs');
 
         fGrammar::addSingularPluralRule('Taxonomy', 'Taxonomy');
         fGrammar::addSingularPluralRule('Score',    'Score');
@@ -297,152 +255,110 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'test_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'posts',
+                'foreign_table'  => $wpPrefix   . 'posts',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX . 'questions', 'foreign');
+        ), $wptPrefix . 'questions', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'answer_id',
-                'foreign_table'  => WPT_DB_PREFIX   . 'answers',
+                'foreign_table'  => $wptPrefix   . 'answers',
                 'foreign_column' => 'answer_id',
             ) + $fkOptions,
             array(
                 'column'         => 'scale_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_table'  => $wpPrefix   . 'terms',
                 'foreign_column' => 'term_id',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX  . 'scores', 'foreign');
+        ), $wptPrefix  . 'scores', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'test_id',
-                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_table'  => $wpPrefix . 'posts',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'respondent_id',
-                'foreign_table'  => WP_DB_PREFIX . 'users',
+                'foreign_table'  => $wp0Prefix . 'users',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX . 'passings', 'foreign');
+        ), $wptPrefix . 'passings', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'answer_id',
-                'foreign_table'  => WPT_DB_PREFIX   . 'answers',
+                'foreign_table'  => $wptPrefix   . 'answers',
                 'foreign_column' => 'answer_id',
             ) + $fkOptions,
             array(
                 'column'         => 'passing_id',
-                'foreign_table'  => WPT_DB_PREFIX  . 'passings',
+                'foreign_table'  => $wptPrefix  . 'passings',
                 'foreign_column' => 'passing_id',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX  . 'passing_answers', 'foreign');
+        ), $wptPrefix  . 'passing_answers', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'test_id',
-                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_table'  => $wpPrefix . 'posts',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'result_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_table'  => $wpPrefix   . 'terms',
                 'foreign_column' => 'term_id',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX . 'formulas', 'foreign');
+        ), $wptPrefix . 'formulas', 'foreign');
 
-        $schema->setColumnInfoOverride(null, WP_DB_PREFIX . 'term_relationships', 'term_order');
+        $schema->setColumnInfoOverride(null, $wpPrefix . 'term_relationships', 'term_order');
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'object_id',
-                'foreign_table'  => WP_DB_PREFIX . 'posts',
+                'foreign_table'  => $wpPrefix . 'posts',
                 'foreign_column' => 'ID',
             ) + $fkOptions,
             array(
                 'column'         => 'term_taxonomy_id',
-                'foreign_table'  => WP_DB_PREFIX . 'term_taxonomy',
+                'foreign_table'  => $wpPrefix . 'term_taxonomy',
                 'foreign_column' => 'term_taxonomy_id',
             ) + $fkOptions,
-        ), WP_DB_PREFIX . 'term_relationships', 'foreign');
+        ), $wpPrefix . 'term_relationships', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'term_id',
-                'foreign_table'  => WP_DB_PREFIX . 'terms',
+                'foreign_table'  => $wpPrefix . 'terms',
                 'foreign_column' => 'term_id',
             ) + $fkOptions,
-        ), WP_DB_PREFIX . 'term_taxonomy', 'foreign');
+        ), $wpPrefix . 'term_taxonomy', 'foreign');
 
         $schema->setKeysOverride(array(
             array(
                 'column'         => 'question_id',
-                'foreign_table'  => WPT_DB_PREFIX   . 'questions',
+                'foreign_table'  => $wptPrefix   . 'questions',
                 'foreign_column' => 'question_id',
             ) + $fkOptions,
             array(
                 'column'         => 'global_answer_id',
-                'foreign_table'  => WP_DB_PREFIX   . 'terms',
+                'foreign_table'  => $wpPrefix   . 'terms',
                 'foreign_column' => 'term_id',
             ) + $fkOptions,
-        ), WPT_DB_PREFIX  . 'answers', 'foreign');
+        ), $wptPrefix  . 'answers', 'foreign');
 
-        $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'sections', 'foreign');
-        $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'fields',   'foreign');
-        $schema->setKeysOverride(array(), WPT_DB_PREFIX . 'field_values', 'foreign');
+        $schema->setKeysOverride(array(), $wptPrefix . 'sections', 'foreign');
+        $schema->setKeysOverride(array(), $wptPrefix . 'fields',   'foreign');
+        $schema->setKeysOverride(array(), $wptPrefix . 'field_values', 'foreign');
 
         $this->wp->doAction('wp_testing_orm_setup', $schema, $database);
 
         $this->isOrmSettedUp = true;
     }
 
-    /**
-     * @param array $argv
-     * @return Ruckusing_Adapter_Interface
-     */
-    protected function migrateDatabase($argv)
+    public function getTablePrefix()
     {
-        $this->defineConstants();
-
-        $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('RUCKUSING_SCHEMA_TBL_NAME')    || define('RUCKUSING_SCHEMA_TBL_NAME',      WPT_DB_PREFIX . 'schema_info');
-        defined('RUCKUSING_TS_SCHEMA_TBL_NAME') || define('RUCKUSING_TS_SCHEMA_TBL_NAME',   WPT_DB_PREFIX . 'schema_migrations');
-        defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(dirname(__FILE__)));
-        defined('RUCKUSING_BASE')               || define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
-
-        $databaseDirectory = RUCKUSING_WORKING_BASE . '/db';
-        $dbHostWithPort    = explode(':', $this->wp->getDbHost() . ':3306');
-        $config = array(
-            'db' => array(
-                'development' => array(
-                    'type'     => DB_TYPE,
-                    'host'     => reset($dbHostWithPort),
-                    'port'     => next($dbHostWithPort),
-                    'database' => $this->wp->getDbName(),
-                    'directory'=> 'wp_testing',
-                    'user'     => $this->wp->getDbUser(),
-                    'password' => $this->wp->getDbPassword(),
-                    'charset'  => $this->wp->getDbCharset(),
-                ),
-            ),
-            'db_dir'         => $databaseDirectory,
-            'migrations_dir' => array('default' => $databaseDirectory . '/migrations'),
-            'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
-        );
-
-        $runner = new Ruckusing_FrameworkRunner($config, $argv);
-        restore_error_handler();
-        restore_exception_handler();
-        $runner->execute();
-
-        /* @var $adapter Ruckusing_Adapter_Interface */
-        $adapter = $runner->get_adapter();
-        if ($adapter instanceof Ruckusing_Adapter_Base) {
-            $adapter->logger = new Ruckusing_Util_Logger($config['log_dir'] . '/development.log');
-        }
-        return $adapter;
+        return $this->wp->getTablePrefix() . 't_';
     }
 
     protected function autoloadComposer()
@@ -482,11 +398,12 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         require_once ($autoloadPath);
     }
 
+    /**
+     * @deprecated since 0.17.3
+     */
     protected function defineConstants()
     {
-        defined('WP_DB_PREFIX')                 || define('WP_DB_PREFIX',                   $this->wp->getTablePrefix());
-        defined('WPT_DB_PREFIX')                || define('WPT_DB_PREFIX',                  WP_DB_PREFIX . 't_');
-        defined('DB_TYPE')                      || define('DB_TYPE',                        'mysql');
+        defined('WP_DB_PREFIX')     ||      define('WP_DB_PREFIX',   $this->wp->getTablePrefix());
+        defined('WPT_DB_PREFIX')    ||      define('WPT_DB_PREFIX',  $this->getTablePrefix());
     }
-
 }

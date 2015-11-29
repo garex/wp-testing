@@ -20,7 +20,7 @@ class WpTesting_Migration_EnableAdvancedOptionsForDefaultTest extends WpTesting_
     protected function updateMetaInExample($key, $value)
     {
         $this->execute("
-            UPDATE {$this->globalPrefix}posts AS p, {$this->globalPrefix}postmeta AS m
+            UPDATE {$this->blogPrefix}posts AS p, {$this->blogPrefix}postmeta AS m
             SET m.meta_value = '$value'
             WHERE TRUE
             AND m.meta_key   = '$key'

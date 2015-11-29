@@ -134,7 +134,7 @@ class SelectedAnswerTest extends PHPUnit_Framework_TestCase
     private function mockTest(array $methods = array())
     {
         $class = 'WpTesting_Model_Test_' . substr(md5(microtime()), 0, 6);
-        fORM::mapClassToTable($class, WP_DB_PREFIX . 'posts');
+        fORM::mapClassToTable($class, fORM::tablize('WpTesting_Model_Test'));
         return $this->getMockBuilder('WpTesting_Model_Test')
             ->setMethods(array_merge(array('__wakeup'), $methods))
             ->setMockClassName($class)
@@ -196,7 +196,7 @@ class SelectedAnswerTest extends PHPUnit_Framework_TestCase
     private function mockPassing(array $methods = array(), WpTesting_Model_Test $test = null)
     {
         $class = 'WpTesting_Model_Passing_' . substr(md5(microtime()), 0, 6);
-        fORM::mapClassToTable($class, WPT_DB_PREFIX . 'passings');
+        fORM::mapClassToTable($class, fORM::tablize('WpTesting_Model_Passing'));
         $mock  = $this->getMockBuilder('WpTesting_Model_Passing')
             ->setMethods(array_merge(array('__wakeup'), $methods))
             ->setMockClassName($class)
