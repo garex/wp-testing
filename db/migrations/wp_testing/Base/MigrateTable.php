@@ -57,17 +57,8 @@ abstract class WpTesting_Migration_MigrateTable extends WpTesting_Migration_Migr
      */
     private function showTableStatus()
     {
-        $table = $this->adaptee->select_all("SHOW TABLE STATUS LIKE '{$this->blogPrefix}%'");
-
-        if (empty($table)) {
-            throw new Ruckusing_Exception(
-                'WordPress tables status is unavailable',
-                Ruckusing_Exception::MIGRATION_FAILED
-            );
-        }
-
         $result = array();
-        foreach ($table as $upperCasedRow) {
+        foreach ($this->adaptee->select_all("SHOW TABLE STATUS") as $upperCasedRow) {
             $row = array();
             foreach ($upperCasedRow as $upperCasedParam => $value) {
                 $row[strtolower($upperCasedParam)] = $value;
@@ -78,7 +69,7 @@ abstract class WpTesting_Migration_MigrateTable extends WpTesting_Migration_Migr
         $defaultTable = $this->blogPrefix . 'posts';
         if (empty($result[$defaultTable]['engine'])) {
             throw new Ruckusing_Exception(
-                'Default WordPress table is missing or it has unknown engine',
+                'Default WordPress table is missing or has unknown engine',
                 Ruckusing_Exception::MIGRATION_FAILED
             );
         }
