@@ -57,7 +57,7 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
         $this->execute("TRUNCATE TABLE {$this->pluginPrefix}scores");
 
         // switch both scores and passing answers to wp_t_answers
-        $this->execute("
+        $this->executeSafely("
             ALTER TABLE {$this->pluginPrefix}passing_answers
                 DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_question;
             ALTER TABLE {$this->pluginPrefix}passing_answers
@@ -78,7 +78,7 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
             ALTER TABLE {$this->pluginPrefix}passing_answers
                 ADD INDEX fk_passing_answer_answer (answer_id)
         ");
-        $this->execute("
+        $this->executeSafely("
             ALTER TABLE {$this->pluginPrefix}scores
                 DROP FOREIGN KEY {$this->pluginPrefix}fk_score_question;
             ALTER TABLE {$this->pluginPrefix}scores
@@ -152,10 +152,10 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
         $this->execute("TRUNCATE TABLE {$this->pluginPrefix}passing_answers");
 
         // switch both scores and passing answers to global answers
-        $this->execute("ALTER TABLE {$this->pluginPrefix}scores DROP FOREIGN KEY {$this->pluginPrefix}fk_score_answer");
+        $this->executeSafely("ALTER TABLE {$this->pluginPrefix}scores DROP FOREIGN KEY {$this->pluginPrefix}fk_score_answer");
         $this->execute("ALTER TABLE {$this->pluginPrefix}scores DROP INDEX fk_score_answer");
         $this->addColumn("{$this->pluginPrefix}scores", 'question_id', 'biginteger', $questionOptions);
-        $this->execute("
+        $this->executeSafely("
             ALTER TABLE {$this->pluginPrefix}scores
                 DROP PRIMARY KEY,
                 ADD PRIMARY KEY(answer_id, question_id, scale_id);
@@ -179,10 +179,10 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
                 ADD INDEX fk_score_question (question_id)
         ");
 
-        $this->execute("ALTER TABLE {$this->pluginPrefix}passing_answers DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_answer");
+        $this->executeSafely("ALTER TABLE {$this->pluginPrefix}passing_answers DROP FOREIGN KEY {$this->pluginPrefix}fk_passing_answer_answer");
         $this->execute("ALTER TABLE {$this->pluginPrefix}passing_answers DROP INDEX fk_passing_answer_answer");
         $this->addColumn("{$this->pluginPrefix}passing_answers", 'question_id', 'biginteger', $questionOptions);
-        $this->execute("
+        $this->executeSafely("
             ALTER TABLE {$this->pluginPrefix}passing_answers
                 DROP PRIMARY KEY,
                 ADD PRIMARY KEY(answer_id, question_id, passing_id);
@@ -220,29 +220,5 @@ class WpTesting_Migration_SwitchToIndividualAnswers extends WpTesting_Migration_
             SELECT * FROM {$this->pluginPrefix}passing_answers_backup;
             DROP TABLE {$this->pluginPrefix}passing_answers_backup;
         ");
-    }
-
-    /**
-     * Safely execute query ignoring fails
-     *
-     * @param string $query
-     *
-     * @return boolean
-     */
-    public function execute($query)
-    {
-        $result = true;
-        foreach (explode(';', $query) as $singleQuery) {
-            if (!trim($singleQuery)) {
-                continue;
-            }
-            try {
-                $result = parent::execute($singleQuery);
-            } catch (Ruckusing_Exception $e) {
-                $this->adaptee->get_adapter()->logger->log(__METHOD__ . ': ' . $e->getMessage());
-                $result = false;
-            }
-        }
-        return $result;
     }
 }

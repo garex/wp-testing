@@ -51,7 +51,7 @@ class WpTesting_Migration_AddWpTables extends WpTesting_Migration_Base
             ) DEFAULT CHARSET=utf8 ENGINE=MyISAM
         ');
         $this->execute('
-            CREATE TABLE IF NOT EXISTS ' . $this->globalPrefix . 'users (
+            CREATE TABLE IF NOT EXISTS ' . $this->blogPrefix . 'users (
               ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
               user_login varchar(60) NOT NULL DEFAULT "",
               user_pass varchar(64) NOT NULL DEFAULT "",

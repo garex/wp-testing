@@ -48,4 +48,28 @@ abstract class WpTesting_Migration_Base
     {
         return $this->adaptee->execute($query);
     }
+
+    /**
+     * Safely execute query ignoring fails
+     *
+     * @param string $query
+     *
+     * @return boolean
+     */
+    protected function executeSafely($query)
+    {
+        $result = true;
+        foreach (explode(';', $query) as $singleQuery) {
+            if (!trim($singleQuery)) {
+                continue;
+            }
+            try {
+                $result = $this->execute($singleQuery);
+            } catch (Ruckusing_Exception $e) {
+                $this->adaptee->get_adapter()->logger->log(__METHOD__ . ': ' . $e->getMessage());
+                $result = false;
+            }
+        }
+        return $result;
+    }
 }

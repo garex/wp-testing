@@ -13,7 +13,7 @@ class WpTesting_Migration_AddPassingsTables extends WpTesting_Migration_MigrateT
             ))
             ->addNullableForeignKey('respondent_id', array(
                 'keyName'         => 'fk_passing_respondent',
-                'referencedTable' => "{$this->globalPrefix}users",
+                'referencedTable' => "{$this->blogPrefix}users",
                 'referencedKey'   => 'ID',
             ))
             ->addColumnDateTime('created')
