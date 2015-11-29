@@ -2,6 +2,28 @@
 ## Changelog ##
 
 
+### 0.18 ###
+
+Really-multisite, menu for non-admins and migration fault tolerance
+
+Plugin now really multisite-compatible
+
+* When "Network Activate" is used — database updated for all sites
+* When new site created, it's database also updated
+
+Correctly add menu page under non-admin
+
+* Respect user role when adding menu
+* Rename page title to "My Test Results"
+
+Improve migration fault tolerance when WordPress tables has different table types
+
+* Normally you should have only single table type (name if format, engine): MyISAM or InnoDB
+* But there are cases when you have "damaged" or "optimized" database and table types differs
+* Now database migration takes this into account. It's critical only for new users when they can't activate plugin
+* Thanks to paid support — this issue was catched during it
+
+
 ### 0.17.2 ###
 
 Internal improvements and intro-video
