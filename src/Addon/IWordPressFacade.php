@@ -2,6 +2,10 @@
 
 interface WpTesting_Addon_IWordPressFacade extends WpTesting_WordPress_IPriority
 {
+    /**
+     * @return string
+     */
+    public function getTablePrefix();
 
     /**
      * Hooks a function on to a specific action.
