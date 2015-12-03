@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.18.1 ###
+
+Add "equals to" button into formula comparisions
+
+* Improve external addons intergation
+
+
 ### 0.18 ###
 
 Really-multisite, menu for non-admins and migration fault tolerance
