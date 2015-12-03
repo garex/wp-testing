@@ -351,7 +351,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM
         $schema->setKeysOverride(array(), $wptPrefix . 'fields',   'foreign');
         $schema->setKeysOverride(array(), $wptPrefix . 'field_values', 'foreign');
 
-        $this->wp->doAction('wp_testing_orm_setup', $schema, $database);
+        $this->wp->doAction('wp_testing_orm_setup', $schema, $database, $this);
 
         $this->isOrmSettedUp = true;
     }

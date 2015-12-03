@@ -52,7 +52,7 @@
         <?php endforeach ?>
         </td>
         <td class="operators">
-        <?php foreach(explode(', ', '<, >, <=, =>, <>, AND, OR, ( {selection} ), NOT ( {selection} )') as $operator):  ?>
+        <?php foreach(explode(', ', '<, >, <=, =>, <>, =, AND, OR, ( {selection} ), NOT ( {selection} )') as $operator):  ?>
             <input type="button"
                 data-source="<?php echo htmlspecialchars($operator) ?>"
                 title="<?php echo __('Comparision', 'wp-testing') ?>"
