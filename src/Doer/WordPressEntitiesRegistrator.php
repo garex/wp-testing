@@ -157,8 +157,8 @@ class WpTesting_Doer_WordPressEntitiesRegistrator extends WpTesting_Doer_Abstrac
                 $testSlug,
         )));
         $rewrite->add_rule(
-            $prefix . '/([^/]+)/([a-z0-9]+[a-f0-9]{32})/?$',
-            $rewrite->index . '?wpt_test=$matches[1]&wpt_passing_slug=$matches[2]&post_type=wpt_test',
+            $prefix . '/([^/]+)/([a-z0-9]+[a-f0-9]{32})/?(.*)$',
+            $rewrite->index . '?wpt_test=$matches[1]&wpt_passing_slug=$matches[2]&post_type=wpt_test&$matches[3]',
             'top'
         );
     }
