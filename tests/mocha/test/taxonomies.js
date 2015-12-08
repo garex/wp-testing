@@ -54,9 +54,8 @@ describe('Taxonomies', function() {
                 'description' : '<h2>What?</h2> A temperature is a comparative <img class="wow" src="cool" /> objective measure of hot and cold.'
             }, true)
 
-            this.waitForUrl(/message/, function() {
-                this.clickLabel(label, 'a')
-            })
+            var currentUrl = this.getCurrentUrl()
+            this.waitForUrl(/message/).thenOpen(currentUrl)
         })
 
         casper.then(function() {
@@ -80,9 +79,8 @@ describe('Taxonomies', function() {
                 'description' : 'Lie is bad<!--more-->\nIt measures how socially desirable you are trying to be in your answers. Those who score 5 or more on this scale are probably trying to make themselves look good and are not being totally honest in their responses.'
             }, true)
 
-            this.waitForUrl(/message/, function() {
-                this.clickLabel('Lie', 'a')
-            })
+            var currentUrl = this.getCurrentUrl()
+            this.waitForUrl(/message/).thenOpen(currentUrl)
         })
 
         casper.then(function() {

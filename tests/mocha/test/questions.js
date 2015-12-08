@@ -90,7 +90,7 @@ describe('Questions', function() {
 
     it('should be then shown in test', function() {
         casper.evaluate(function() {
-            document.location = jQuery('#view-post-btn a').attr('href')
+            document.location = jQuery('#view-post-btn a,#post-preview').attr('href')
         })
 
         casper.waitForUrl(/not/, function() {

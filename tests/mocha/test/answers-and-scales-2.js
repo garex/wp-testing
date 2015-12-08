@@ -143,7 +143,7 @@ describe('Answers2 and Scales2', function() {
             'wpt_answer_title_0_0.title'.should.evaluate.to.be.equal('No')
             'wpt_answer_title_0_1.title'.should.evaluate.to.be.equal('Yes')
             this.evaluate(function() {
-                document.location = jQuery('#view-post-btn a').attr('href')
+                document.location = jQuery('#view-post-btn a,#post-preview').attr('href')
             })
         })
 
