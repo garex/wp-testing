@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.18.2 ###
+
+Welcome WordPress 4.4
+
+* Upgrade autotests
+* Update screenshots
+
+
 ### 0.18.1 ###
 
 Add "equals to" button into formula comparisions

@@ -63,7 +63,7 @@ describe('Steps', function() {
             '#message'.should.be.inDOM
             '∑ 6'.should.be.textInDom
             this.evaluate(function() {
-                document.location = jQuery('#view-post-btn a').attr('href')
+                document.location = jQuery('#view-post-btn a,#post-preview').attr('href')
             })
         })
     })

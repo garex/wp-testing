@@ -93,7 +93,7 @@ describe('Answers1 and Scales1', function() {
 
     it('should be visible on test page', function() {
         casper.evaluate(function() {
-            document.location = jQuery('#view-post-btn a').attr('href')
+            document.location = jQuery('#view-post-btn a,#post-preview').attr('href')
         })
 
         casper.waitForUrl(/questions/, function() {
@@ -124,7 +124,7 @@ describe('Answers1 and Scales1', function() {
 
     it('should then gone from existing test page', function() {
         casper.evaluate(function() {
-            document.location = jQuery('#view-post-btn a').attr('href')
+            document.location = jQuery('#view-post-btn a,#post-preview').attr('href')
         })
 
         casper.waitForUrl(/questions/, function() {
