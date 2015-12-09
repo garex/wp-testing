@@ -16,7 +16,7 @@ function wptSetupPermalinks(structure) {
                 this.click('#permalink_structure')
                 this.sendKeys('#permalink_structure', structure);
             } else {
-                this.clickLabel(' Default', 'label')
+                this.click('input[name="selection"][value=""]')
             }
             this.click('#submit')
         })

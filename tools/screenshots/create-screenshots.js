@@ -13,6 +13,19 @@ function loginAs(who) {
     })
 };
 
+function hideEditorMetaboxes() {
+    casper.wait(100)
+    casper.evaluate(function() {
+        jQuery(document).ready(function($) {
+            var ids = '#categorydiv-hide,#tagsdiv-post_tag-hide,#wpt_categorydiv-hide,#commentsdiv-hide,#commentsdiv-hide,#commentstatusdiv-hide,#authordiv-hide';
+            jQuery(ids).each(function() {
+                jQuery(this).attr('checked', false).click().click()
+            })
+        });
+    })
+    casper.wait(400)
+}
+
 loginAs('wpti')
 
 var screenshots = [
@@ -40,12 +53,9 @@ var screenshots = [
                this.click('#submit')
            }).waitForUrl(/options/)
 
-           casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
-               this.evaluate(function() {
-                   var ids = '#categorydiv-hide,#tagsdiv-post_tag-hide,#wpt_categorydiv-hide,#commentsdiv-hide,#authordiv-hide';
-                   jQuery(ids).attr('checked', false).click().click()
-               })
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/post-new.php?post_type=wpt_test', hideEditorMetaboxes)
 
+           casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
                    return jQuery('body.folded').length > 0
                }) && this.clickLabel('Collapse menu') && this.wait(400)
@@ -59,7 +69,7 @@ var screenshots = [
                    return jQuery('body.folded').length > 0
                }) || this.clickLabel('Collapse menu') && this.wait(400)
                this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)')
-           }).waitForUrl(/action=edit/)
+           }).waitForUrl(/action=edit/, hideEditorMetaboxes)
 
            casper.then(function() {
                try {
@@ -76,16 +86,7 @@ var screenshots = [
        title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.',
        offset  : 1050 - 175,
        actions : function () {
-           casper.then(function() {
-               this.evaluate(function() {
-                   jQuery('#commentstatusdiv-hide').attr('checked', true).click()
-               })
-               this.wait(400)
-               this.evaluate(function() {
-                   jQuery('#commentsdiv-hide').attr('checked', true).click()
-               })
-               this.wait(400)
-           })
+           casper.then(hideEditorMetaboxes)
        }
    }, {
        title   : 'The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same',
@@ -102,7 +103,7 @@ var screenshots = [
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                 this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)')
-            }).waitForUrl(/action=edit/)
+            }).waitForUrl(/action=edit/, hideEditorMetaboxes)
 
             casper.then(function() {
                 this.evaluate(function() {
@@ -201,7 +202,7 @@ var screenshots = [
         }
     }, {
         title   : 'Unanswered questions are highlighted to respondent',
-        offset  : 7200 + 2400,
+        offset  : 7200 + 1100,
         actions : function () {
             casper
             .thenOpen('http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/')
@@ -214,13 +215,13 @@ var screenshots = [
                     this.clickLabel('Yes', '*[@class="wpt_test_form"]/*[' + i + ']/*//label')
                 }
                 this.evaluate(function(){
-                    jQuery('#wpt-test-form :submit').click()
+                    jQuery('form.wpt_test_form :submit').click()
                 })
-            }).wait(100)
+            }).wait(200)
         }
     }, {
         title   : 'Get test results after all questions are answered',
-        offset  : 7200 + 2400,
+        offset  : 7200 + 1100,
         actions : function () {
             casper.then(function() {
                 i = 54
@@ -243,12 +244,12 @@ var screenshots = [
         }
     }, {
         title   : 'Scale description with "more..." text closed',
-        offset  : 1500 + 800,
+        offset  : 1500 + 600,
         actions : function () {
         }
     }, {
         title   : 'Scale description with "more..." text opened (after clicking on "more" link)',
-        offset  : 1500 + 800 + 200,
+        offset  : 1500 + 600 + 100,
         actions : function () {
             casper.then(function() {
                 this.clickLabel('more…', 'a')

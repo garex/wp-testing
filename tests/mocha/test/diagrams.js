@@ -78,7 +78,7 @@ describe('Diagrams', function() {
             '#message'.should.be.inDOM
 
             testEditUrl = this.getCurrentUrl()
-            testViewUrl = this.getElementAttribute('#view-post-btn a', 'href')
+            testViewUrl = this.getElementAttribute('#view-post-btn a,#post-preview', 'href')
         })
 
     }}
