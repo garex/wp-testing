@@ -23,6 +23,9 @@ class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPass
             ->enqueueScript('test-pass-get-results', array('jquery'))
         ;
         $this->setupScalesDiagram($this->test, $this->passing);
+        $this->wp
+            ->doAction('wp_testing_passer_get_results_before_render', $this->passing, $this->test)
+        ;
     }
 
     public function renderContent($content, $template)
