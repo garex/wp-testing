@@ -51,8 +51,7 @@ Wpt.initEvercookie = function() {
         cacheCookieName : 'wpt_ec_cache_device_uuid'
     });
     ec.get('device_uuid', function(best) {
-        var uuid = UUIDjs.fromURN(best) || UUIDjs.create(4);
-        ec.set('device_uuid', uuid.toString());
+        ec.set('device_uuid', best || uuid.v4());
     }, 1);
 };
 
