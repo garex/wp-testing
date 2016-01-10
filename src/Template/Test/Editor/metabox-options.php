@@ -17,6 +17,15 @@
 <?php elseif ('text' == $option['type']): ?>
     <label><?php echo $option['title'] ?></label>
     <input type="text" name="<?php echo $key ?>" value="<?php echo $option['value'] ?>" placeholder="<?php echo $option['placeholder'] ?>" />
+<?php elseif ('header' == $option['type']): ?>
+    <strong><?php echo $option['title'] ?></strong>
+<?php elseif ('radio' == $option['type']): ?>
+    <label class="title"><?php echo $option['title'] ?></label>
+    <?php foreach ($option['values'] as $valueKey => $valueTitle): ?>
+        <label class="option"><input type="radio" value="<?php echo $valueKey ?>" name="<?php echo $key ?>" <?php
+            echo ($valueKey == $option['value']) ? 'checked="checked"' : '' ?> />&nbsp;<?php
+            echo $valueTitle ?></label>
+    <?php endforeach ?>
 <?php elseif ('select' == $option['type']): ?>
     <label><?php echo $option['title'] ?></label>
     <select name="<?php echo $key ?>">

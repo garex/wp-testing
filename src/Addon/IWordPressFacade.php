@@ -1,6 +1,6 @@
 <?php
 
-interface WpTesting_Addon_IWordPressFacade extends WpTesting_WordPress_IPriority
+interface WpTesting_Addon_IWordPressFacade extends WpTesting_WordPress_IPriority, WpTesting_WordPress_IOption, WpTesting_WordPress_IPostMeta, WpTesting_WordPress_IPath
 {
     /**
      * @return string

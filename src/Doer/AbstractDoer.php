@@ -142,7 +142,7 @@ abstract class WpTesting_Doer_AbstractDoer
         if ($prefix == $mainClassStart) {
             return $abbr;
         }
-        $prefix = str_replace($mainClassStart, $abbr . '_' , $prefix);
+        $prefix = str_replace($mainClassStart, $abbr . '_', $prefix);
         return strtolower($prefix) . '_';
     }
 
@@ -227,11 +227,12 @@ abstract class WpTesting_Doer_AbstractDoer
 
     /**
      * For example: /path?param=value /path/
+     * @param boolean $isFull Full URL with domain
      * @return string
      */
-    protected function getCurrentUrl()
+    protected function getCurrentUrl($isFull = false)
     {
-        return fURL::getWithQueryString();
+        return ($isFull ? fURL::getDomain() : '') . fURL::getWithQueryString();
     }
 
     /**

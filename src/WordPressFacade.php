@@ -99,8 +99,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Absolute path to the WordPress directory.
-     * @return string
+     * {@inheritdoc}
      */
     public function getAbsPath()
     {
@@ -108,10 +107,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Allows for the plugins directory to be moved from the default location.
-     *
-     * @since 2.6.0
-     * @return string
+     * {@inheritdoc}
      */
     public function getPluginDir()
     {
@@ -119,15 +115,27 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Determines a writable directory for temporary files (with trailing slahs added).
-     *
-     * @since 2.5.0
-     *
-     * @return string Writable temporary directory
+     * {@inheritdoc}
      */
     public function getTempDir()
     {
         return get_temp_dir();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContentDir()
+    {
+        return WP_CONTENT_DIR;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function appendSlash($path)
+    {
+        return trailingslashit($path);
     }
 
     /**
@@ -234,15 +242,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Retrieve post meta field for a post.
-     *
-     * @since 1.5.0
-     * @uses $wpdb
-     * @link http://codex.wordpress.org/Function_Reference/get_post_meta
-     *
-     * @param string $key The meta key to retrieve.
-     * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
-     *  is true.
+     * {@inheritdoc}
      */
     public function getCurrentPostMeta($key)
     {
@@ -267,17 +267,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Retrieve post meta field for a post.
-     *
-     * @since 1.5.0
-     * @uses $wpdb
-     * @link http://codex.wordpress.org/Function_Reference/get_post_meta
-     *
-     * @param int $postId Post ID.
-     * @param string $key The meta key to retrieve.
-     * @param bool $isSingle Whether to return a single value.
-     * @return mixed Will be an array if $single is false.
-     *               Will be value of meta data field if $single is true.
+     * {@inheritdoc}
      */
     public function getPostMeta($postId, $key, $isSingle)
     {
@@ -285,22 +275,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Update post meta field based on post ID.
-     *
-     * Use the $prev_value parameter to differentiate between meta fields with the
-     * same key and post ID.
-     *
-     * If the meta field for the post does not exist, it will be added.
-     *
-     * @since 1.5.0
-     * @uses $wpdb
-     * @link http://codex.wordpress.org/Function_Reference/update_post_meta
-     *
-     * @param int $postId Post ID.
-     * @param string $key Metadata key.
-     * @param mixed $value Metadata value.
-     * @param mixed $previousValue Optional. Previous value to check before removing.
-     * @return bool False on failure, true if success.
+     * {@inheritdoc}
      */
     public function updatePostMeta($postId, $key, $value, $previousValue = '')
     {
@@ -493,6 +468,12 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         $pluginFileParts = explode(DIRECTORY_SEPARATOR, $pluginFile);
         if (count($pluginFileParts) <= 2) {
             return $pluginFile;
+        }
+
+        if ('src' == end($pluginFileParts)) {
+            array_pop($pluginFileParts);
+            $pluginFileParts[] = end($pluginFileParts) . '.php';
+            $pluginFile = implode(DIRECTORY_SEPARATOR, $pluginFileParts);
         }
 
         $pluginBaseName = implode(DIRECTORY_SEPARATOR, array_slice($pluginFileParts, -2));
@@ -1138,7 +1119,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         global $wp_meta_boxes;
 
         if (empty($screen)) {
-            $screen = get_current_screen();
+            $screen = $this->getCurrentScreen();
         } elseif (is_string($screen)) {
             $screen = convert_to_screen($screen);
         }
@@ -1158,20 +1139,19 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Retrieve option value based on name of option.
+     * Get the current screen object
      *
-     * If the option does not exist or does not have a value, then the return value
-     * will be false. This is useful to check whether you need to install an option
-     * and is commonly used during installation of plugin options and to test
-     * whether upgrading is required.
+     * @since 3.1.0
      *
-     * If the option was serialized then it will be unserialized when it is returned.
-     *
-     * @since 1.5.0
-     *
-     * @param string $option  Name of option to retrieve. Expected to not be SQL-escaped.
-     * @param mixed  $default Optional. Default value to return if the option does not exist.
-     * @return mixed Value set for the option.
+     * @return WP_Screen Current screen object
+     */
+    public function getCurrentScreen()
+    {
+        return get_current_screen();
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getOption($option, $default = false)
     {
@@ -1179,19 +1159,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
-     * Update the value of an option that was already added.
-     *
-     * You do not need to serialize values. If the value needs to be serialized, then
-     * it will be serialized before it is inserted into the database. Remember,
-     * resources can not be serialized or added as an option.
-     *
-     * If the option does not exist, then the option will be added with the option value
-     *
-     * @since 1.0.0
-     *
-     * @param string      $option   Option name. Expected to not be SQL-escaped.
-     * @param mixed       $value    Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
-     * @return bool False if value was not updated and true if value was updated.
+     * {@inheritdoc}
      */
     public function updateOption($option, $value)
     {
