@@ -4,9 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3156880d5f363d6973207cd6159bd152",
-    "content-hash": "562cc3cc1fc0310bd54859dbd7d0aa15",
+    "hash": "cf4ecf3bd3dbf90671accd98671d131d",
+    "content-hash": "6e1abb53a726c63055603cb8b03fca88",
     "packages": [
+        {
+            "name": "broofa/node-uuid",
+            "version": "v1.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/broofa/node-uuid",
+                "reference": "309512573ec1c60143c257157479a20f7f1f51cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/broofa/node-uuid/archive/v1.4.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
         {
             "name": "composer/installers",
             "version": "v1.0.21",
@@ -168,23 +184,6 @@
                 "php"
             ],
             "time": "2014-07-23 18:24:17"
-        },
-        {
-            "name": "pnegri/uuid-js",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pnegri/uuid-js",
-                "reference": "c0ed26d9e7de6ca8be2d3e1896fb2c920ee965c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/pnegri/uuid-js/archive/c0ed26d9e7de6ca8be2d3e1896fb2c920ee965c0.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library",
-            "time": "2015-06-05 11:22:22"
         },
         {
             "name": "ruckusing/ruckusing-migrations",
@@ -657,7 +656,6 @@
     "stability-flags": {
         "flourish/flourish": 20,
         "samyk/evercookie": 20,
-        "pnegri/uuid-js": 20,
         "phpunit/phpunit-php52": 20,
         "phpunit/phpunit-mock-objects-php52": 20
     },

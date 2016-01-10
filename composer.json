@@ -16,7 +16,7 @@
         , "flourish/flourish": "0.9.*@dev"
         , "nikic/php-parser": "0.9.5"
         , "samyk/evercookie": "dev-2014-10-21"
-        , "pnegri/uuid-js": "dev-master"
+        , "broofa/node-uuid": "^1.4"
         , "yahnis-elsts/plugin-update-checker": "^2.0"
     },
     "scripts": {
@@ -110,6 +110,23 @@
                     "url": "https://github.com/pnegri/uuid-js",
                     "type": "git",
                     "reference": "c0ed26d9e7de6ca8be2d3e1896fb2c920ee965c0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "broofa/node-uuid",
+                "type": "library",
+                "version": "v1.4.7",
+                "dist" : {
+                    "url": "https://github.com/broofa/node-uuid/archive/v1.4.7.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/broofa/node-uuid",
+                    "type": "git",
+                    "reference": "309512573ec1c60143c257157479a20f7f1f51cd"
                 }
             }
         },

@@ -142,7 +142,7 @@ abstract class WpTesting_Doer_AbstractDoer
         if ($prefix == $mainClassStart) {
             return $abbr;
         }
-        $prefix = str_replace($mainClassStart, $abbr . '_' , $prefix);
+        $prefix = str_replace($mainClassStart, $abbr . '_', $prefix);
         return strtolower($prefix) . '_';
     }
 
@@ -157,9 +157,8 @@ abstract class WpTesting_Doer_AbstractDoer
             array('detect-javascript', 'js/detect-javascript.js',                  $e, '1.0'),
             array('lodash-source',     'js/vendor/lodash/lodash.compat.min.js',    $e, '2.4.1'),
             array('lodash',            'js/vendor/lodash/lodash.no-conflict.js',   array('lodash-source')),
-            array('npm-stub',          'js/vendor/npm/stub.js',                    $e, '1.0'),
             array('base64',            'js/vendor/dankogai/base64.min.js',         $e, '2.1.7'),
-            array('pnegri_uuid',       'vendor/pnegri/uuid-js/lib/uuid.js',        array('npm-stub')),
+            array('broofa_node_uuid',  'vendor/broofa/node-uuid/uuid.js'),
             array('samyk_swfobject',   'vendor/samyk/evercookie/js/swfobject-2.2.min.js'),
             array('samyk_evercookie',  'vendor/samyk/evercookie/js/evercookie.js', array('samyk_swfobject')),
             array('field_selection',   'js/vendor/kof/field-selection.js'),
@@ -227,11 +226,12 @@ abstract class WpTesting_Doer_AbstractDoer
 
     /**
      * For example: /path?param=value /path/
+     * @param boolean $isFull Full URL with domain
      * @return string
      */
-    protected function getCurrentUrl()
+    protected function getCurrentUrl($isFull = false)
     {
-        return fURL::getWithQueryString();
+        return ($isFull ? fURL::getDomain() : '') . fURL::getWithQueryString();
     }
 
     /**

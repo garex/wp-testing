@@ -218,7 +218,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 'title'   => __('Reset respondent answers when "Back" button pressed', 'wp-testing'),
             ),
             'wpt_test_page_submit_button_caption' => array(
-                'default' => '',
                 'title'   => __('Button caption', 'wp-testing'),
                 'type'    => 'text',
                 'placeholder' => __('Get Test Results', 'wp-testing'),
@@ -338,6 +337,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
 
         foreach ($metaOptions as $metaOptionKey) {
+            if (isset($metaOptionKey['type']) && $metaOptionKey['type'] == 'header') {
+                continue;
+            }
             $metaOptionValue = $this->getRequestValue($metaOptionKey);
             $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
         }
@@ -403,7 +405,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     private function renderMetaboxOptions($options)
     {
         foreach ($options as $key => $option) {
+            $option += array(
+                'default' => '',
+            );
             $option['value'] = $this->wp->getCurrentPostMeta($key);
+            if (isset($option['defaultOnAdd']) && $this->isAddAction()) {
+                $option['default'] = $option['defaultOnAdd'];
+            }
             if ($option['value'] == '') {
                 $option['value'] = $option['default'];
             }
@@ -422,5 +430,14 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/metabox-options', array(
             'options' => $options,
         ));
+    }
+
+    private function isAddAction()
+    {
+        $screen = $this->wp->getCurrentScreen();
+        if (!$screen instanceof WP_Screen) {
+            return null;
+        }
+        return 'add' == $screen->action;
     }
 }
