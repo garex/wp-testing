@@ -2,6 +2,15 @@
 ## Changelog ##
 
 
+### 0.18.3 ###
+
+Improve modern themes compat, upgrade WP compat and addons extension points
+
+* Switch to more independent unique identifiers generating lib to avoid theme compatibility issues
+* Check WordPress 4.4.1 compatibility
+* Add more extension points for addons in settings and results managing (related to pdf addon)
+
+
 ### 0.18.2 ###
 
 Welcome WordPress 4.4
