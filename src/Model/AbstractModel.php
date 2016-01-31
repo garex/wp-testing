@@ -54,6 +54,27 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     }
 
     /**
+     * Stores record with restart in case of deadlock
+     *
+     * @param boolean $isForceCascade
+     * @return self
+     */
+    protected function storeWithRestart($isForceCascade = false)
+    {
+        try {
+            $this->store($isForceCascade);
+        } catch (fSQLException $e) {
+            if (!preg_match('/deadlock/i', $e->getMessage())) {
+                throw $e;
+            }
+            usleep(1000000 * 0.15);
+            $this->store($isForceCascade);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param WpTesting_Model_AbstractModel $me
      * @return array
      */
