@@ -90,7 +90,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 
         $this
             ->populateAll()
-            ->store(true)
+            ->storeWithRestart(true)
         ;
 
         $this->wp->doAction('wp_testing_passing_store_all_after', $this);

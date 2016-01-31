@@ -2,6 +2,21 @@
 ## Changelog ##
 
 
+### 0.18.4 ###
+
+Improve results saving under high concurrent load
+
+* Avoid MySQL errors like `Deadlock found when trying to get lock; try restarting transaction`
+* Issue solved by catching such errors and restarting save as recommended at [MySQL :: How to Cope with Deadlocks](http://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks.html)
+
+You should upgrade only if your site is popular and you've heard of some strange "white screens of death" when respondents are posting their results on last step before redirecting to result pages.
+
+Just opening result page many times will not result in any errors.
+Especially if you have some cache plugin, that already transformed result page into static page and DB is not touched at all.
+
+For reporting and sponsoring this issue thanks to [Johan](http://www.personalityperfect.com/)
+
+
 ### 0.18.3 ###
 
 Improve modern themes compat, upgrade WP compat and addons extension points
