@@ -1,7 +1,7 @@
 # Psychological tests & quizzes #
 
 **Contributors:** ustimenko, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
-**Donate link:** https://goo.gl/igulor
+**Donate link:** https://www.paypal.me/Ustimenko/19.83eur
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
 **Tested up to:** 4.4.1
@@ -21,7 +21,7 @@ Inside the box we also have **scales** each connected with the particular answer
 
 We didn't invent anything new — all this has been already invented in 19th century.
 
-> If you like the plugin, feel free to [donate via PayPal](https://goo.gl/igulor) or rate it (on the right side of this page). Thanks a lot! :)
+> If you like the plugin, feel free to [donate via PayPal](https://www.paypal.me/Ustimenko/19.83eur) or rate it (on the right side of this page). Thanks a lot! :)
 
 http://www.youtube.com/watch?v=tT3d8Jdm7kY
 
