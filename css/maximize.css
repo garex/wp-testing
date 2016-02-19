@@ -1,0 +1,41 @@
+body.wpt_maximize {
+    overflow: hidden;
+}
+
+body.wpt_maximize #wpadminbar, body.wpt_maximize #postdivrich, body.wpt_maximize #adminmenumain {
+    display: none;
+}
+
+body.wpt_maximize .wpt_maximizable .wpt_scroll {
+    overflow: scroll;
+}
+
+body.wpt_maximize .wpt_maximizable.wpt_maximized .wpt_scroll {
+    overflow: visible;
+    max-height: none;
+}
+
+body.wpt_maximize .wpt_maximized {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    overflow: auto;
+}
+
+.wpt_maximizable .qt-dfw {
+    position: static;
+}
+
+/* Old WP versions */
+.wpt_maximizable .wp_themeSkin {
+    padding: 0px;
+    background: none;
+    border: none;
+    outline: none;
+}
+.wpt_maximizable .wp_themeSkin .mceIcon {
+    margin: auto;
+}
