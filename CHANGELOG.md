@@ -2,6 +2,15 @@
 ## Changelog ##
 
 
+### 0.18.5 ###
+
+Fix donate link and update WP tests to 4.4.2
+
+* Thanks to new PayPal.Me service
+
+There is nothing new in this hotfix.
+
+
 ### 0.18.4 ###
 
 Improve results saving under high concurrent load
