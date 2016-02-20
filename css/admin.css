@@ -227,3 +227,7 @@ pre.exposed {
 #adv-settings > .screen-options {
     padding-top: 10px;
 }
+
+body .wpt_maximizable .wpt_scroll {
+    max-height: 40em;
+}

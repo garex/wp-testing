@@ -165,6 +165,7 @@ abstract class WpTesting_Doer_AbstractDoer
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
             array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
             array('webshim',           'js/vendor/afarkas/webshim/polyfiller.js',  array('jquery'), '1.15.7'),
+            array('maximize',          'js/maximize.js',  array('jquery'), '1.0'),
 
             // Vector graphics for diagramming
             array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),

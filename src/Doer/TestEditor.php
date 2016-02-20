@@ -21,6 +21,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
         $this->registerScripts()
             ->enqueueStyle('admin')
+            ->enqueueStyle('maximize')
+            ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
             ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
             ->enqueueScript('test-quick-scores',    array('jquery', 'lodash'))
@@ -28,6 +30,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('test-edit-answers',    array('jquery'))
             ->enqueueScript('test-add-answers',     array('jquery', 'lodash'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
+            ->addJsData('locale', array(
+                'maximize'  => __('Maximize', 'wp-testing-sections'),
+                'minimize'  => __('Minimize', 'wp-testing-sections'),
+            ))
         ;
         $this->wp
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscOptions'))
