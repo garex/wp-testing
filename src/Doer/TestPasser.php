@@ -42,6 +42,10 @@ abstract class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     {
         $this->test = $test;
         $action     = $this->getTestPassingAction();
+
+        $this->wp->doAction('wp_testing_passer_before_render',             $this->test);
+        $this->wp->doAction('wp_testing_passer_before_render_' . $action,  $this->test);
+
         $isLive     = (self::ACTION_FILL_FORM == $action || $this->test->isFinal());
         if (!$isLive) {
             throw new UnexpectedValueException(sprintf('Test %d is under construction', $test->getId()));
