@@ -7,7 +7,7 @@
  * @method string getAbbrOnce() Gets cached value of abbreviration
  * @method string getTitleOnce() Gets cached value of title
  */
-abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel
+abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
 
     protected $columnAliases = array(
@@ -62,32 +62,12 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
         return $css;
     }
 
-    /**
-     * @return number
-     */
-    public function getSum()
+    public function jsonSerialize()
     {
-        return null;
+        return array(
+            'id'    => $this->getId(),
+            'title' => $this->getTitle(),
+            'slug'  => $this->getSlug(),
+        );
     }
-
-    /**
-     * @return number
-     */
-    public function getMaximum()
-    {
-        return null;
-    }
-
-    public function getAggregatesTitle()
-    {
-        $parts   = array();
-        if (!is_null($this->getSum())) {
-            $parts[] = sprintf('∑ %g', $this->getSum());
-        }
-        if ($this->getSum() != $this->getMaximum()) {
-            $parts[] = sprintf('max %g', $this->getMaximum());
-        }
-        return implode(', ', $parts);
-    }
-
 }

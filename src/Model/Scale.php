@@ -106,6 +106,18 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         return $this->sum;
     }
 
+    public function getAggregatesTitle()
+    {
+        $parts   = array();
+        if (!is_null($this->getSum())) {
+            $parts[] = sprintf('∑ %g', $this->getSum());
+        }
+        if ($this->getSum() != $this->getMaximum()) {
+            $parts[] = sprintf('max %g', $this->getMaximum());
+        }
+        return implode(', ', $parts);
+    }
+
     /**
      * @return float
      */
@@ -128,6 +140,7 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
     public function jsonSerialize()
     {
         return array(
+            'id'      => $this->getId(),
             'title'   => $this->getTitle(),
             'value'   => $this->getValue(),
             'outOf'   => $this->formatValueAsOutOf(),
