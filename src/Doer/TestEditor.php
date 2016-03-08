@@ -36,6 +36,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('app/base/baseOwnerable.model')
             ->enqueueScript('app/base/baseObservable.model', array('asevented'))
             ->enqueueScript('app/base/baseCollection.model')
+            ->enqueueScript('app/scores/scoreCollection.model')
             ->enqueueScript('app/questionsAnswers/answerCollection.model')
             ->enqueueScript('app/questionsAnswers/questionCollection.model')
             ->enqueueScript('app/questionsAnswers/questions.service')
@@ -43,13 +44,17 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('app/directives/set.focus.directive')
             ->enqueueScript('app/questionsAnswers/questionsAnswers.edit.controller')
             ->enqueueScript('app/questionsAnswers/quickFill.edit.controller')
+            ->enqueueScript('app/scores/scaleCollection.model')
+            ->enqueueScript('app/scores/scales.service')
+            ->enqueueScript('app/scores/scores.edit.controller')
 
             ->enqueueScript('app/app.module.run')
             ->addJsData('questions',     $this->toJson($test->buildQuestionsWithAnswers()))
             ->addJsData('globalAnswers', $this->toJson($test->buildGlobalAnswers()))
+            ->addJsData('scales',        $this->toJson($test->buildScales()))
             ->addJsData('locale', array(
-                'maximize'  => __('Maximize', 'wp-testing-sections'),
-                'minimize'  => __('Minimize', 'wp-testing-sections'),
+                'maximize' => __('Maximize', 'wp-testing-sections'),
+                'minimize' => __('Minimize', 'wp-testing-sections'),
             ))
         ;
         $this->wp
@@ -61,6 +66,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
                 array($this, 'renderResultPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_edit_questions_answers', __('Edit Questions and Answers', 'wp-testing'),    array($this, 'renderEditQuestionsAnswers'), 'wpt_test')
+            ->addMetaBox('wpt_edit_scores', __('Edit Scores', 'wp-testing'),    array($this, 'renderEditScores'), 'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
