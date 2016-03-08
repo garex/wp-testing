@@ -21,6 +21,15 @@ table.wpt_questions {
     width: 100%;
 }
 
+table.widefat td.actions {
+  padding-left: 0px;
+}
+
+
+.actions button.notice-dismiss {
+	padding: 4px;
+}
+
 .wpt_questions .wpt_title input {
     width: 100%;
 }
@@ -43,6 +52,32 @@ table.wpt_questions {
     text-align: center;
     width: 100%;
 }
+
+.wpt_questions button {
+    margin-right: 5px;
+}
+
+.wpt_questions .actions {
+    text-align: right;
+    width: 24px;
+}
+
+    .wpt_questions .actions button {
+        position: static;
+    }
+
+.wpt_individual_action .note {
+	visibility: hidden;
+	cursor: default;
+}
+
+    .wpt_individual_action button {
+        float: left;
+    }
+
+    .wpt_individual_action:hover .note {
+        visibility: visible;
+    }
 
 table.wpt_formulas,
 table.wpt_formulas_helper {
@@ -78,7 +113,8 @@ table.wpt_formulas_helper .operators input {
     margin-bottom: 1em;
 }
 
-#wpt_quick_fill_questions textarea {
+#wpt_quick_fill_questions textarea,
+.quick-fill textarea {
     height: 30em;
     width: 100%;
 }
