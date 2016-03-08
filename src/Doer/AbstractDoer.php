@@ -125,7 +125,9 @@ abstract class WpTesting_Doer_AbstractDoer
     private function getResourceNameFromPluginRelatedPath($pluginRelatedPath, $extension)
     {
         $name = basename($pluginRelatedPath, $extension);
-        $name = str_replace('-', '_', $name);
+        $dirname = basename(dirname($pluginRelatedPath));
+        $name    = (('js' == $dirname) ? '' : $dirname . '_') . $name;
+        $name = str_replace(array('-', '.'), '_', $name);
         $name = $this->resourceIdPrefix . $name;
         return $name;
     }
@@ -337,7 +339,7 @@ abstract class WpTesting_Doer_AbstractDoer
             return $result;
         }
         if ($object instanceof JsonSerializable) {
-            return $object->jsonSerialize();
+            return $this->toJson($object->jsonSerialize());
         }
         return $object;
     }

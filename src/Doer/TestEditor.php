@@ -373,6 +373,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     private function isTestScreen($screen)
     {
+        $id = $this->getRequestValue('post');
+        if (is_array($id)) {
+            return false;
+        }
         if (!empty($screen->post_type) && $screen->post_type == 'wpt_test') {
             return true;
         }
@@ -385,7 +389,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return true;
         }
 
-        $id = $this->getRequestValue('post');
         if (!$id) {
             return false;
         }
