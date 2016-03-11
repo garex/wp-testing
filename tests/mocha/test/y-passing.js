@@ -131,7 +131,6 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
     it('should show scales sorted by biggest score', function() {
         casper.then(function() {
             'jQuery(".scale-index-0.title").text()'.should.evaluate.to.equal('Lie')
-            'jQuery(".scale-index-1.title").text()'.should.evaluate.to.equal('Extraversion/Introversion')
         })
     })
 

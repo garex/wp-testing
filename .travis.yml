@@ -1,16 +1,14 @@
 language: php
 
 php:
-  - 5.5
-  - 5.4
-  - 5.3
+  - 5.6
   - 5.2
 
 env:
   global:
     - DB_ENGINE=InnoDB
   matrix:
-    - WP_VERSION=4.4.2
+    - WP_VERSION=
     - WP_VERSION=4.3.1
     - WP_VERSION=4.2.4
     - WP_VERSION=4.1.5
@@ -26,6 +24,14 @@ env:
 
 matrix:
   include:
+    - php: 7.0
+      env: WP_VERSION=
+    - php: 5.3
+      env: WP_VERSION=
+    - php: 5.4
+      env: WP_VERSION=
+    - php: 5.5
+      env: WP_VERSION=
     - php: 5.3
       env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
     - php: 5.4
