@@ -56,7 +56,7 @@ class WpTesting_Widget_PassingTable_User extends WpTesting_Widget_PassingTable
      * @param string $column_name
      * @return string|integer
      */
-    protected function render_static_column(WpTesting_Model_Passing $item, $column_name)
+    protected function render_static_column($item, $column_name)
     {
         switch($column_name) {
             case 'row_number':

@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.18.6 ###
+
+Add result's page extension point and PHP7 support
+
+* Add `wp_testing_passer_before_render` extension point
+* Add PHP 7.0 support and leave only edge cases in tests
+
+
 ### 0.18.5 ###
 
 Fix donate link and update WP tests to 4.4.2
