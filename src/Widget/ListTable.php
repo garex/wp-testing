@@ -216,7 +216,7 @@ abstract class WpTesting_Widget_ListTable extends WP_List_Table
      * @param string $column_name
      * @return string|integer
      */
-    protected function render_static_column(WpTesting_Model_AbstractModel $item, $column_name)
+    protected function render_static_column($item, $column_name)
     {
         return '';
     }
