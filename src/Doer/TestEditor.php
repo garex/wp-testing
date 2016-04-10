@@ -27,9 +27,8 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
             ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
-            ->enqueueScript('test-quick-scores',    array('jquery', 'lodash'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
-            ->enqueueScript('app/app.module',       array('webshim', 'angular'))
+            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map'))
         ;
         // $this->enqueueScript('vendor/pkaminski/digest-hud')->enqueueScript('app/app.module.debug');
         $this
@@ -47,6 +46,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('app/scores/scaleCollection.model')
             ->enqueueScript('app/scores/scales.service')
             ->enqueueScript('app/scores/scores.edit.controller')
+            ->enqueueScript('app/questionsTree/questionTree.model')
+            ->enqueueScript('app/questionsTree/questionTree.service')
+            ->enqueueScript('app/questionsTree/questionTree.edit.controller')
 
             ->enqueueScript('app/app.module.run')
             ->addJsData('questions',     $this->toJson($test->buildQuestionsWithAnswers()))
@@ -67,6 +69,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 array($this, 'renderResultPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_edit_questions_answers', __('Edit Questions and Answers', 'wp-testing'),    array($this, 'renderEditQuestionsAnswers'), 'wpt_test')
             ->addMetaBox('wpt_edit_scores', __('Edit Scores', 'wp-testing'),    array($this, 'renderEditScores'), 'wpt_test')
+            ->addMetaBox('wpt_quick_fill_scores', __('Quick Fill Scores', 'wp-testing'),    array($this, 'renderQuickFillScores'), 'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
@@ -303,6 +306,14 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function renderEditScores($item)
     {
         $this->output('Test/Editor/edit-scores');
+    }
+
+    /**
+     * @param WP_Post $item
+     */
+    public function renderQuickFillScores($item)
+    {
+        $this->output('Test/Editor/quick-fill-scores');
     }
 
     /**

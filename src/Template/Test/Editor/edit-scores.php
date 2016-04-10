@@ -45,7 +45,7 @@
         ng-class="{focused: isFocused(answer)}" ng-init="scoreIndexStart = $index * scales.length">
         <td class="wpt_title number wpt_first">{{$index + 1}}</td>
         <td class="wpt_title" title="{{ answer.getTitle() }}"><div>{{ answer.getTitle() }}</div></td>
-        <td ng-repeat="score in answer.createScores(scales)" class="wpt_score"><input
+        <td ng-repeat="score in answer.scoresData()" class="wpt_score"><input
             ng-if="isQuestionHovered"
             type="number" min="-999.999" max="999.999" step="any"
             ng-focus="focus(score)"

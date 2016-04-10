@@ -5,7 +5,7 @@
 
     EditScoresController.$inject = ['$scope', 'questionsService', 'scalesService'];
     function EditScoresController   ($scope,   questionsService,   scalesService) {
-        $scope.questions        = questionsService.injectScales(scalesService);
+        $scope.questions        = questionsService;
         $scope.scales           = scalesService;
         $scope.questionMaxWidth = calculateQuestionMaxWidth(scalesService);
 
