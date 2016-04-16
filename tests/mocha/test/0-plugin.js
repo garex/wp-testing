@@ -73,7 +73,7 @@ describe('Plugin activation', function() {
 
         casper.waitForUrl(/activate/, function() {
             'Fatal'.should.not.be.textInDOM
-            '#wp-testing .deactivate a'.should.be.inDOM
+            '#wp-testing .deactivate a,[data-slug=wp-testing] .deactivate a'.should.be.inDOM
         }, null, 60000)
     })
 })

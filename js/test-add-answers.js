@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     var superBox                = $('#wpt_edit_questions'),
-        globalAnswerLink        = superBox.find('a[href=#wpt_answerdiv]'),
+        globalAnswerLink        = superBox.find('a[href="#wpt_answerdiv"]'),
         globalAnswer            = $('#wpt_answerdiv'),
         globalAnswerHandler     = globalAnswer.find('.hndle'),
         individualAnswers       = superBox.find('.wpt-add-individual-answers'),
