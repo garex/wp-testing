@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf4ecf3bd3dbf90671accd98671d131d",
-    "content-hash": "6e1abb53a726c63055603cb8b03fca88",
+    "hash": "617c766c15cc0c7a37ad96d17b98cf6c",
+    "content-hash": "a29878b55574f5f4db7e877534d849b9",
     "packages": [
         {
             "name": "broofa/node-uuid",
@@ -232,27 +232,34 @@
         },
         {
             "name": "xrstf/composer-php52",
-            "version": "v1.100",
+            "version": "v1.0.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer-php52/composer-php52.git",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/garex/composer-php52/get/upgrade-getAutoloadRealFile-signature.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/composer-php52/composer-php52/zipball/bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-default": "1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "xrstf\\Composer52": "lib/"
                 }
             },
-            "scripts": {
-                "post-install-cmd": [
-                    "xrstf\\Composer52\\Generator::onPostInstallCmd"
-                ],
-                "post-update-cmd": [
-                    "xrstf\\Composer52\\Generator::onPostInstallCmd"
-                ]
-            }
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-04-16 21:52:24"
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",

@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.18.7 ###
+
+Welcome WordPress 4.5
+
+* Upgrade autotests
+
+
 ### 0.18.6 ###
 
 Add result's page extension point and PHP7 support
