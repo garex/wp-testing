@@ -14,8 +14,12 @@ describe('Scores', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.clickLabel(' Yes', 'label')
             this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
             this.fillSelectors('form#post', {
                 '#title': 'Simple Test With Scores',
                 '#wpt_question_title_0': 'Does tomato red?',
@@ -29,13 +33,16 @@ describe('Scores', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
-            this.clickLabel('Add Individual Answers')
+            '#wpt_edit_formulas input[value="Extraversion/Introversion, ∑ 0"]'.should.be.inDOM
+            this.clickLabel('Add Individual Answer')
             this.fillSelectors('form#post', {
-                '#wpt_score_value_0_0': '-1',
-                '#wpt_score_value_1_0': '5',
-                '#wpt_score_value_2_0': '0',
+                '#wpt_score_value_0_1': '-1',
+                '#wpt_score_value_0_0': '10',
+                '#wpt_score_value_0_1': '-1',
+                '#wpt_score_value_1_1': '5',
+                '#wpt_score_value_2_1': '3',
                 '#wpt_answer_title_1_0': 'Yeah!',
-                '#wpt-add-individual-answers-to-question-0': 'I am color blind!'
+                '#wpt_answer_title_0_1': 'I am color blind!'
             }, true)
         })
 
@@ -43,36 +50,23 @@ describe('Scores', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_answer_title_0_1'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ 4, max 5"]'.should.be.inDOM
-            'jQuery("#wpt_edit_questions .wpt_scale input#wpt_score_value_0_1").attr("title")'.should.evaluate.to.equal('Lie, I am color blind!')
+            '#wpt_edit_formulas input[value="Lie, ∑ 7, max 8"]'.should.be.inDOM
         })
     })
 
-    it('should allow to save only numbers', function() {
+    it('should empty invalid values', function() {
         casper.then(function() {
+            'wpt_score_value_2_1.value'.should.evaluate.to.be.equal('3')
             this.evaluate(function() {
                 wpt_score_value_2_0.type = 'text'
             })
             this.fillSelectors('form#post', {
-                '#wpt_score_value_2_0': 'bad value'
-            }, true)
-        })
-
-        casper.waitForUrl(/post/, function() {
-            'Fatal'.should.not.be.textInDOM
-            'Test data not saved'.should.be.textInDOM
-            'Score Value: Please enter a number'.should.be.textInDOM
-            this.clickLabel('« Back')
-        })
-
-        casper.waitForUrl(/edit/, function() {
-            this.fillSelectors('form#post', {
-                '#wpt_score_value_0_1': '1',
-                '#wpt_score_value_2_0': '0'
+                '#wpt_score_value_2_1': 'bad value'
             }, true)
         })
 
         casper.waitForUrl(/message/, function() {
+            'wpt_score_value_2_1.value'.should.not.evaluate.to.be.equal('3')
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })
@@ -80,17 +74,29 @@ describe('Scores', function() {
 
     it('should be empties in case of zeros', function() {
         casper.then(function() {
-            'wpt_score_value_2_0.value'.should.evaluate.to.be.equal('')
+            'wpt_score_value_2_1.value'.should.evaluate.to.be.equal('')
         })
     })
 
     it('should have total sum by each scale', function() {
         casper.then(function() {
-            '#wpt_edit_formulas input[value="Lie, ∑ 5, max 6"]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 4, max 5"]'.should.be.inDOM
         })
     })
 
-    it('should be cleared in test in case of scale toggle', function() {
+    it('should be saved in test in case of scale toggle', function() {
+        casper.then(function() {
+            this.clickLabel(' Lie', 'label')
+            this.clickLabel(' Extraversion/Introversion', 'label')
+            this.click('#publish')
+        })
+
+        casper.waitForUrl(/message/, function() {
+            'Fatal'.should.not.be.textInDOM
+            '#message'.should.be.inDOM
+            '#wpt_edit_formulas input[value^="Lie"]'.should.not.be.inDOM
+        })
+
         casper.then(function() {
             this.clickLabel(' Lie', 'label')
             this.click('#publish')
@@ -99,18 +105,7 @@ describe('Scores', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ 5"]'.should.not.be.inDOM
-        })
-
-        casper.then(function() {
-            this.clickLabel(' Lie', 'label')
-            this.click('#publish')
-        })
-
-        casper.waitForUrl(/message/, function() {
-            'Fatal'.should.not.be.textInDOM
-            '#message'.should.be.inDOM
-            '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
+            '#wpt_edit_formulas input[value="Lie, ∑ 4, max 5"]'.should.be.inDOM
         })
     })
 
@@ -119,12 +114,21 @@ describe('Scores', function() {
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_1': '5'
             })
-            this.clickLabel('Quick Fill Scores', 'a')
-            this.fillSelectors('form#post', {
-                '#wpt_quick_fill_scores .score input'     : '2',
-                '#wpt_quick_fill_scores .questions input' : ' 1, 2, 3, 4,wow'
+            this.evaluate(function() {
+                jQuery('#wpt_score_value_0_1').trigger('input')
             })
-            this.click('#wpt_quick_fill_scores input[type=button]')
+            this.fillSelectors('form#post', {
+                '.wpt_add_new_combination [ng-model="newScaleIndex"]'   : '0',
+                '.wpt_add_new_combination [ng-model="newScore"]'        : '2',
+                '.wpt_add_new_combination [ng-model="newAnswer"]'       : '1'
+            })
+            this.clickLabel('Add new combination', 'button')
+            this.fillSelectors('form#post', {
+                '#wpt_quick_fill_scores .entry_index_1 .questions input': '1, 2, 3, 4'
+            })
+            this.evaluate(function() {
+                jQuery('#wpt_quick_fill_scores .entry_index_1 .questions input').trigger('input')
+            })
         })
         casper.then(function() {
             'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('2')
@@ -133,9 +137,8 @@ describe('Scores', function() {
             'wpt_score_value_2_0.value'.should.evaluate.to.be.equal('2')
         })
         casper.then(function() {
-            this.clickLabel('Quick Fill Scores', 'a')
-            'wpt_quick_fill_scores_score_0_0.value'.should.evaluate.to.be.equal('2')
-            'wpt_quick_fill_scores_questions_0_0.value'.should.evaluate.to.be.equal('1, 2, 3')
+            'jQuery("#wpt_quick_fill_scores .entry_index_1 .score").text()'.should.evaluate.to.be.equal('2'),
+            'jQuery("#wpt_quick_fill_scores .entry_index_1 .questions input").val()'.should.evaluate.to.be.equal('1, 2, 3')
         })
     })
 })
