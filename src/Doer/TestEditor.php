@@ -20,6 +20,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
         $this->registerScripts()
+            ->upgradeJqueryForOldWordPress()
             ->enqueueStyle('admin')
             ->enqueueStyle('maximize')
             ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))

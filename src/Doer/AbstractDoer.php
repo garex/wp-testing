@@ -185,6 +185,29 @@ abstract class WpTesting_Doer_AbstractDoer
         return $this;
     }
 
+    /**
+     * Webshim HTML5 forms polyfill requires jQuery at least 1.8.3
+     *
+     * @return self
+     */
+    protected function upgradeJqueryForOldWordPress()
+    {
+        if ($this->isWordPressAlready('3.3')) {
+            return $this;
+        }
+
+        $schema = ($this->wp->isSsl()) ? 'https' : 'http';
+        $host   = $schema . '://code.jquery.com/';
+        $this->wp
+            ->deregisterScript('jquery')
+            ->deregisterScript('jquery-ui-core')
+            ->registerScript('jquery',         $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
+            ->registerScript('jquery-ui-core', $host . 'ui/1.9.2/jquery-ui.min.js', array(), '1.9.2')
+        ;
+
+        return $this;
+    }
+
     protected function output($__template, $__params = array())
     {
         if (substr($__template, -4) != '.php') {
