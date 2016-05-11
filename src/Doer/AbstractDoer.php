@@ -124,8 +124,11 @@ abstract class WpTesting_Doer_AbstractDoer
      */
     private function getResourceNameFromPluginRelatedPath($pluginRelatedPath, $extension)
     {
-        $name = basename($pluginRelatedPath, $extension);
-        $name = str_replace('-', '_', $name);
+
+        $name    = basename($pluginRelatedPath, $extension);
+        $dirname = basename(dirname($pluginRelatedPath));
+        $name    = (('js' == $dirname) ? '' : $dirname . '_') . $name;
+        $name = str_replace(array('-', '.'), '_', $name);
         $name = $this->resourceIdPrefix . $name;
         return $name;
     }
@@ -165,6 +168,8 @@ abstract class WpTesting_Doer_AbstractDoer
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
             array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
             array('webshim',           'js/vendor/afarkas/webshim/polyfiller.js',  array('jquery'), '1.15.7'),
+            array('asevented',         'js/vendor/mkuklis/asevented.min.js',       $e, '0.4.6'),
+            array('garex_sorted_map',  'js/vendor/garex/angular-sorted-map.min.js', $e, '2.0.0'),
             array('maximize',          'js/maximize.js',  array('jquery'), '1.0'),
 
             // Vector graphics for diagramming
@@ -179,6 +184,29 @@ abstract class WpTesting_Doer_AbstractDoer
             list($name, $pluginRelatedPath, $dependencies, $version) = $script;
             $this->wp->registerPluginScript($name, $pluginRelatedPath, $dependencies, $version);
         }
+
+        return $this;
+    }
+
+    /**
+     * Webshim HTML5 forms polyfill requires jQuery at least 1.8.3
+     *
+     * @return self
+     */
+    protected function upgradeJqueryForOldWordPress()
+    {
+        if ($this->isWordPressAlready('3.3')) {
+            return $this;
+        }
+
+        $schema = ($this->wp->isSsl()) ? 'https' : 'http';
+        $host   = $schema . '://code.jquery.com/';
+        $this->wp
+            ->deregisterScript('jquery')
+            ->deregisterScript('jquery-ui-core')
+            ->registerScript('jquery',         $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
+            ->registerScript('jquery-ui-core', $host . 'ui/1.9.2/jquery-ui.min.js', array(), '1.9.2')
+        ;
 
         return $this;
     }
@@ -337,7 +365,7 @@ abstract class WpTesting_Doer_AbstractDoer
             return $result;
         }
         if ($object instanceof JsonSerializable) {
-            return $object->jsonSerialize();
+            return $this->toJson($object->jsonSerialize());
         }
         return $object;
     }

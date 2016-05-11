@@ -14,6 +14,12 @@ describe('Questions', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title'                : 'To Be or Not to Be?',
                 '#wpt_question_title_0' : 'To Be?',
@@ -27,7 +33,7 @@ describe('Questions', function() {
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('To Be?')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('Not to Be?')
-            'wpt_question_title_2.value'.should.evaluate.to.be.equal('')
+            'wpt_question_title_2.value'.should.evaluate.to.be.equal(null)
         })
     })
 
@@ -43,6 +49,7 @@ describe('Questions', function() {
         casper.then(function() {
             this.clickLabel(' Lie', 'label')
 
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#wpt_question_title_0' : '',
                 '#wpt_question_title_1' : 'Not to Be???',
@@ -56,7 +63,7 @@ describe('Questions', function() {
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('Not to Be???')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('But Why?')
-            'wpt_question_title_2.value'.should.evaluate.to.be.equal('')
+            'wpt_question_title_2.value'.should.evaluate.to.be.equal(null)
         })
     })
 
@@ -72,9 +79,9 @@ describe('Questions', function() {
         casper.then(function() {
             this.clickLabel('Quick Fill From Text', 'a')
             this.fillSelectors('form#post', {
-                '#wpt_quick_fill_questions textarea': '1. Cool. \n2. "Quick"\n3. Question\n'
+                '[ng-controller="EditQuickFillController"] textarea': '1. Cool. \n2. "Quick"\n3. Question\n'
             })
-            this.click('#wpt_quick_fill_questions .button')
+            this.clickLabel('Quick Fill From Text', 'button')
             this.fill('form#post', {}, true)
         })
 
@@ -84,7 +91,7 @@ describe('Questions', function() {
             'wpt_question_title_2.value'.should.evaluate.to.be.equal('Cool.')
             'wpt_question_title_3.value'.should.evaluate.to.be.equal('"Quick"')
             'wpt_question_title_4.value'.should.evaluate.to.be.equal('Question')
-            'wpt_question_title_5.value'.should.evaluate.to.be.equal('')
+            'wpt_question_title_5.value'.should.evaluate.to.be.equal(null)
         })
     })
 

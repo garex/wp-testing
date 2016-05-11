@@ -27,6 +27,10 @@ describe('Steps', function() {
             })
             this.click('.__text_tab_here')
 
+            this.click('#wpt_question_add')
+            this.click('#wpt_question_add')
+            this.click('#wpt_question_add')
+            this.click('#wpt_question_add')
             this.fillSelectors('form#post', {
                 '#title': 'Three Steps',
                 '#content': 'The step is composed of the tread and riser.',

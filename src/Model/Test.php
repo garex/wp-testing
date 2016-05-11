@@ -449,70 +449,6 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
     }
 
     /**
-     * Can scores be editable?
-     *
-     * @return boolean
-     */
-    public function canEditScores()
-    {
-        return true
-            && $this->hasScales()
-            && $this->hasRelated('WpTesting_Model_Questions')
-            && $this->hasAnswers()
-        ;
-    }
-
-    /**
-     * @return array
-     */
-    public function getMemoryWarnSettings()
-    {
-        $iniKeys = array(
-            'max_input_vars',
-            'suhosin.get.max_vars',
-            'suhosin.post.max_vars',
-            'suhosin.request.max_vars',
-        );
-        $values = array();
-        foreach ($iniKeys as $iniKey) {
-            $value = ini_get($iniKey);
-            if ($value !== false) {
-                $values[$iniKey] = (int)$value;
-            }
-        }
-        return $values;
-    }
-
-    /**
-     * @see http://stackoverflow.com/questions/10303714/php-max-input-vars
-     * @return boolean
-     */
-    public function isWarnOfSettings()
-    {
-        $scalesCount = count($this->buildScales());
-        if (!$scalesCount) {
-            return false;
-        }
-        $questions      = $this->buildQuestions();
-        $questionsCount = count($questions);
-        if (!$questionsCount) {
-            return false;
-        }
-        $answersCount = count($questions[0]->buildAnswers());
-        if (!$answersCount) {
-            return false;
-        }
-
-        $possibleInputsCount = 0
-            + WpTesting_Model_Question::ADD_NEW_COUNT
-            + $questionsCount
-            + $scalesCount * $questionsCount * $answersCount
-        ;
-
-        return $possibleInputsCount > (min($this->getMemoryWarnSettings()) - 150);
-    }
-
-    /**
      * Saves all objects related to test.
      *
      * @throws fValidationException
@@ -571,46 +507,29 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         $scoresPrefix    = $this->getScoresPrefix();
         $formulasPrefix  = $this->getFormulasPrefix();
         $request        += array(
-            'wpt_question_title'              => array(),
-            'wpt_answer_title'                => array(),
-            'wpt_question_individual_answers' => array(),
-            'wpt_score_value'                 => array(),
-            'wpt_formula_source'              => array(),
+            'wpt_score_value'    => array(),
+            'wpt_formula_source' => array(),
         );
 
-        foreach ($request['wpt_question_title'] as $key => $value) {
-            $key = $this->decodeSafeUriValue($key);
-            $request[$questionsPrefix . 'question_id']    [$key['q']] = $key['id'];
-            $request[$questionsPrefix . 'question_title'] [$key['q']] = $value;
-        }
-
-        foreach ($request['wpt_answer_title'] as $key => $value) {
-            $key = $this->decodeSafeUriValue($key);
-            $request[$answersPrefix . 'answer_id']    [$key['q']][$key['a']] = $key['id'];
-            $request[$answersPrefix . 'answer_title'] [$key['q']][$key['a']] = $value;
-        }
-
-        foreach ($request['wpt_question_individual_answers'] as $key => $value) {
-            $key = $this->decodeSafeUriValue($key);
-
-            $value = trim($value);
-            if ($value == '') {
-                continue;
+        $json = json_decode(stripslashes($request['wpt_questions_answers_json']), $assoc = true);
+        foreach ($json as $q => $question) {
+            $request[$questionsPrefix . 'question_id']    [$q] = $question['id'];
+            $request[$questionsPrefix . 'question_title'] [$q] = $question['title'];
+            foreach ($question['answers'] as $a => $answer) {
+                $request[$answersPrefix . 'answer_id']        [$q][$a] = $answer['id'];
+                $request[$answersPrefix . 'answer_title']     [$q][$a] = $answer['title'];
+                $request[$answersPrefix . 'global_answer_id'] [$q][$a] = $answer['global_answer_id'];
+                $s = -1;
+                foreach ($answer['scores'] as $scaleId => $value) {
+                    $s++;
+                    if (!$value) {
+                        continue;
+                    }
+                    $request[$scoresPrefix . 'answer_id']   [$q][$a][$s] = $answer['id'];
+                    $request[$scoresPrefix . 'scale_id']    [$q][$a][$s] = $scaleId;
+                    $request[$scoresPrefix . 'score_value'] [$q][$a][$s] = $value;
+                }
             }
-
-            $titles = preg_split('/[\r\n]+/', $value);
-            foreach ($titles as $title) {
-                $title = trim(preg_replace('/^\w{1,3}[^\w\s]\s+/', '', $title));
-                $request[$answersPrefix . 'answer_id']    [$key['q']][] = null;
-                $request[$answersPrefix . 'answer_title'] [$key['q']][] = $title;
-            }
-        }
-
-        foreach ($request['wpt_score_value'] as $key => $value) {
-            $key = $this->decodeSafeUriValue($key);
-            $request[$scoresPrefix . 'answer_id']   [$key['q']][$key['a']][$key['s']] = $key['answer_id'];
-            $request[$scoresPrefix . 'scale_id']    [$key['q']][$key['a']][$key['s']] = $key['scale_id'];
-            $request[$scoresPrefix . 'score_value'] [$key['q']][$key['a']][$key['s']] = $value;
         }
 
         foreach ($request['wpt_formula_source'] as $key => $value) {

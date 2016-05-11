@@ -8,6 +8,7 @@ DB_ENGINE=${DB_ENGINE:-InnoDB}
 DB_CHARSET=${DB_CHARSET:-utf8}
 WP_VERSION=${WP_VERSION:-latest}
 WP_UPGRADE=${WP_UPGRADE:-0}
+WP_LINK_SELF=${WP_LINK_SELF:-0}
 WP_T_SERVER=${WP_T_SERVER:-http://wpti.dev:8000}
 PLUGINS=${PLUGINS:-}
 
@@ -34,8 +35,8 @@ function db {
 
 function setup_link {
     log 'Setting up symbolic link'
-    rm --force /tmp/wpti
-    ln --symbolic $HERE /tmp/wpti
+    rm --force --recursive /tmp/wpti
+    cp --recursive $HERE /tmp/wpti
 }
 
 function start_nginx {
@@ -99,6 +100,11 @@ function install_plugin {
     log 'Installing plugin'
     PLUGIN=/tmp/wpti/wordpress/wp-content/plugins/wp-testing
     rm --recursive --force $PLUGIN
+    if [[ "$WP_LINK_SELF" == "1" ]];
+    then
+        ln --symbolic $(realpath $HERE/../..) $PLUGIN
+        return 0
+    fi
     mkdir --parents $PLUGIN
     cd $HERE/../..
     git checkout-index --all --force --prefix=$PLUGIN/

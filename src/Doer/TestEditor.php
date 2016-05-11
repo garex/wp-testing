@@ -18,21 +18,45 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         if (!$this->isTestScreen($screen)) {
             return $this;
         }
+        $test = $this->createTest($this->getRequestValue('post'));
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
         $this->registerScripts()
+            ->upgradeJqueryForOldWordPress()
             ->enqueueStyle('admin')
             ->enqueueStyle('maximize')
             ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
             ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
-            ->enqueueScript('test-quick-scores',    array('jquery', 'lodash'))
-            ->enqueueScript('test-quick-questions', array('jquery', 'json3', 'base64'))
-            ->enqueueScript('test-edit-answers',    array('jquery'))
-            ->enqueueScript('test-add-answers',     array('jquery', 'lodash'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
+            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map'))
+        ;
+        // $this->enqueueScript('vendor/pkaminski/digest-hud')->enqueueScript('app/app.module.debug');
+        $this
+            ->enqueueScript('app/base/baseOwnerable.model')
+            ->enqueueScript('app/base/baseObservable.model', array('asevented'))
+            ->enqueueScript('app/base/baseCollection.model')
+            ->enqueueScript('app/scores/scoreCollection.model')
+            ->enqueueScript('app/questionsAnswers/answerCollection.model')
+            ->enqueueScript('app/questionsAnswers/questionCollection.model')
+            ->enqueueScript('app/questionsAnswers/questions.service')
+            ->enqueueScript('app/services/highlight.service')
+            ->enqueueScript('app/directives/set.focus.directive')
+            ->enqueueScript('app/questionsAnswers/questionsAnswers.edit.controller')
+            ->enqueueScript('app/questionsAnswers/quickFill.edit.controller')
+            ->enqueueScript('app/scores/scaleCollection.model')
+            ->enqueueScript('app/scores/scales.service')
+            ->enqueueScript('app/scores/scores.edit.controller')
+            ->enqueueScript('app/questionsTree/questionTree.model')
+            ->enqueueScript('app/questionsTree/questionTree.service')
+            ->enqueueScript('app/questionsTree/questionTree.edit.controller')
+
+            ->enqueueScript('app/app.module.run')
+            ->addJsData('questions',     $this->toJson($test->buildQuestionsWithAnswers()))
+            ->addJsData('globalAnswers', $this->toJson($test->buildGlobalAnswers()))
+            ->addJsData('scales',        $this->toJson($test->buildScales()))
             ->addJsData('locale', array(
-                'maximize'  => __('Maximize', 'wp-testing-sections'),
-                'minimize'  => __('Minimize', 'wp-testing-sections'),
+                'maximize' => __('Maximize', 'wp-testing-sections'),
+                'minimize' => __('Minimize', 'wp-testing-sections'),
             ))
         ;
         $this->wp
@@ -43,8 +67,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 array($this, 'renderTestPageOptions'), 'wpt_test', 'side', 'core')
             ->addMetaBox('wpt_result_page_options', __('Result Page Options', 'wp-testing'),
                 array($this, 'renderResultPageOptions'), 'wpt_test', 'side', 'core')
-            ->addMetaBox('wpt_edit_questions', __('Edit Questions and Scores', 'wp-testing'),    array($this, 'renderEditQuestions'), 'wpt_test')
-            ->addMetaBox('wpt_add_questions',  __('Add New Questions', 'wp-testing'), array($this, 'renderAddQuestions'),  'wpt_test')
+            ->addMetaBox('wpt_edit_questions_answers', __('Edit Questions and Answers', 'wp-testing'),    array($this, 'renderEditQuestionsAnswers'), 'wpt_test')
+            ->addMetaBox('wpt_edit_scores', __('Edit Scores', 'wp-testing'),    array($this, 'renderEditScores'), 'wpt_test')
+            ->addMetaBox('wpt_quick_fill_scores', __('Quick Fill Scores', 'wp-testing'),    array($this, 'renderQuickFillScores'), 'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
         ;
@@ -270,31 +295,25 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     /**
      * @param WP_Post $item
      */
-    public function renderEditQuestions($item)
+    public function renderEditQuestionsAnswers($item)
     {
-        $test = $this->createTest($item);
-        $this->output('Test/Editor/edit-questions', array(
-            'scales'              => $test->buildScalesWithRange(),
-            'answers'             => $test->buildGlobalAnswers(),
-            'questions'           => $test->buildQuestionsWithAnswersAndScores(),
-            'isWarnOfSettings'    => $test->isWarnOfSettings(),
-            'memoryWarnSettings'  => $test->getMemoryWarnSettings(),
-            'isUnderApache'       => $this->isUnderApache(),
-            'canEditScores'       => $test->canEditScores(),
-        ));
+        $this->output('Test/Editor/edit-questions-answers');
     }
 
     /**
      * @param WP_Post $item
      */
-    public function renderAddQuestions($item)
+    public function renderEditScores($item)
     {
-        $test = $this->createTest($item);
-        $this->output('Test/Editor/add-questions', array(
-            'addNewCount' => WpTesting_Model_Question::ADD_NEW_COUNT,
-            'startFrom'   => $test->buildQuestions()->count(),
-            'test'        => $test,
-        ));
+        $this->output('Test/Editor/edit-scores');
+    }
+
+    /**
+     * @param WP_Post $item
+     */
+    public function renderQuickFillScores($item)
+    {
+        $this->output('Test/Editor/quick-fill-scores');
     }
 
     /**
@@ -373,6 +392,10 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     private function isTestScreen($screen)
     {
+        $id = $this->getRequestValue('post');
+        if (is_array($id)) {
+            return false;
+        }
         if (!empty($screen->post_type) && $screen->post_type == 'wpt_test') {
             return true;
         }
@@ -385,7 +408,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             return true;
         }
 
-        $id = $this->getRequestValue('post');
         if (!$id) {
             return false;
         }
@@ -398,14 +420,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     private function isTestTaxonomy()
     {
         return preg_match('/^wpt_/', $this->getRequestValue('taxonomy'));
-    }
-
-    private function isUnderApache()
-    {
-        if (empty($_SERVER['SERVER_SOFTWARE'])) {
-            return false;
-        }
-        return preg_match('/apache|httpd/i', $_SERVER['SERVER_SOFTWARE']);
     }
 
     private function renderMetaboxOptions($options)

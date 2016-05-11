@@ -22,6 +22,8 @@ describe('Multiple answers test', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Multiple Answers',
                 '#wpt_question_title_0': 'Question 1?',

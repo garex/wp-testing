@@ -21,6 +21,15 @@ table.wpt_questions {
     width: 100%;
 }
 
+table.widefat td.actions {
+  padding-left: 0px;
+}
+
+
+.actions button.notice-dismiss {
+	padding: 4px;
+}
+
 .wpt_questions .wpt_title input {
     width: 100%;
 }
@@ -41,6 +50,118 @@ table.wpt_questions {
 
 .wpt_questions .wpt_scale input {
     text-align: center;
+    width: 100%;
+}
+
+.wpt_questions button {
+    margin-right: 5px;
+}
+
+.wpt_questions .actions {
+    text-align: right;
+    width: 24px;
+}
+
+    .wpt_questions .actions button {
+        position: static;
+    }
+
+.wpt_individual_action .note {
+	visibility: hidden;
+	cursor: default;
+}
+
+    .wpt_individual_action button {
+        float: left;
+    }
+
+    .wpt_individual_action:hover .note {
+        visibility: visible;
+    }
+
+table.wpt_scores {
+	width: auto;
+}
+
+table.wpt_scores th,
+table.wpt_scores td {
+    cursor: default;
+}
+
+.wpt_scroll {
+	overflow: auto;
+}
+
+#wpt_edit_scores .wpt_scroll {
+	max-height: 50em;
+}
+
+table.wpt_scores td div,
+table.wpt_scores th div {
+	white-space: nowrap;
+	max-width: 5em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	clear: both;
+}
+table.wpt_scores.widefat td,
+table.wpt_scores.widefat th {
+  padding: 0.62em 0.77em;
+}
+table.wpt_scores .wpt_answer td div {
+    max-width: 10em;
+}
+
+table.wpt_scores .hovered.wpt_title,
+table.wpt_scores tbody tr.hovered .wpt_title {
+    background: #dadada;
+}
+
+table.wpt_scores col.focused,
+table.wpt_scores tbody tr.focused {
+    background: #f3f3f3;
+}
+
+table.wpt_scores .focused.wpt_title,
+table.wpt_scores tbody tr.focused .wpt_title {
+    background: #6d6d6d;
+    color: #ffffff;
+}
+
+table.wpt_scores .wpt_answer .number.wpt_first,
+table.wpt_scores .wpt_question_item .number.wpt_last,
+table.wpt_scores .wpt_scales .number.wpt_last {
+    padding-left: 20px;
+}
+
+table.wpt_scores .wpt_scales th {
+    vertical-align: bottom;
+}
+table.wpt_scores .wpt_scales .wpt_meta {
+    float: right;
+    margin-bottom: 0.25em;
+    font-size: 80%;
+}
+table.wpt_scores .wpt_scales .wpt_max {
+    margin-right: 0.5em;
+}
+.wptApp input.ng-invalid {
+    color: red;
+}
+
+table.wpt_scores .wpt_score {
+    width: 5em;
+}
+table.wpt_scores .wpt_score span {
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    height: 1.4em;
+    padding-top: 5px;
+    padding-left: 7px;
+    outline: 1px solid gainsboro;
+}
+table.wpt_scores .wpt_score input {
     width: 100%;
 }
 
@@ -78,38 +199,36 @@ table.wpt_formulas_helper .operators input {
     margin-bottom: 1em;
 }
 
-#wpt_quick_fill_questions textarea {
+#wpt_quick_fill_questions textarea,
+.quick-fill textarea {
     height: 30em;
     width: 100%;
-}
-
-table.wpt_quick_scores {
-    margin-bottom: 0.5em;
-}
-
-table.wpt_quick_scores th {
-    text-align: center;
 }
 
 table.wpt_quick_scores th.questions {
     width: 90%;
 }
-table.wpt_quick_scores td {
-    white-space: nowrap;
-}
-table.wpt_quick_scores td.answer {
-    text-align: center;
-}
-table.wpt_quick_scores th.score,
-table.wpt_quick_scores td.score {
-    padding-right: 0em;
-}
-table.wpt_quick_scores td.score input {
+table.wpt_quick_scores .score input {
     text-align: center;
     width: 5em;
 }
-table.wpt_quick_scores td.questions input {
+table.wpt_quick_scores .answer input {
+    text-align: center;
+    width: 5em;
+}
+table.wpt_quick_scores .questions input {
     width: 100%;
+}
+table.wpt_quick_scores input {
+    margin: 0px;
+}
+table.wpt_quick_scores select {
+    max-width: 10em;
+}
+
+table.wpt_quick_scores td.scale,
+table.wpt_quick_scores td.answer {
+    max-width: 10em;
 }
 
 .wpt-add-individual-answers span.howto {

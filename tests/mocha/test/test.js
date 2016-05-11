@@ -52,6 +52,7 @@ describe('Test', function() {
 
     it('should be updated', function() {
         casper.then(function() {
+            this.click('#wpt_question_add')
             this.fillSelectors('form#post', {
                 '#title': 'Are You Hot or Not?!',
                 '#content': 'Allow others to rate the vacuum on the Earth!',

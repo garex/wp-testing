@@ -14,6 +14,8 @@ describe('Scale aggregates', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Scale Aggregates',
                 '#wpt_question_title_0': 'Question 1?',
@@ -47,7 +49,8 @@ describe('Scale aggregates', function() {
 
     it('should have different sum and max in single answer mode', function() {
         casper.then(function() {
-            '∑ 10, max 6'.should.be.textInDOM
+            '∑ 10'.should.be.textInDOM
+            'max 6'.should.be.textInDOM
         })
     })
 

@@ -10,7 +10,7 @@
  * @method integer getQuestionId() Gets the current value of question id
  * @method WpTesting_Model_Answer setQuestionId(integer $questionId) Sets the current value of question id
  */
-class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
+class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
 
     /**
@@ -205,4 +205,24 @@ class WpTesting_Model_Answer extends WpTesting_Model_AbstractModel
         ;
     }
 
+    public function jsonSerialize()
+    {
+        return array(
+            'id'                => $this->getId(),
+            'title'             => $this->getIndividualTitle(),
+            'global_answer_id'  => $this->getGlobalAnswerId(),
+            'scores'            => $this->hashScores(),
+        );
+    }
+
+    /**
+     * @return array [scale_id => value]
+     */
+    private function hashScores() {
+        $result = array();
+        foreach ($this->buildScores() as $score) {
+            $result[$score->getScaleId()] = $score->getValue();
+        }
+        return $result;
+    }
 }
