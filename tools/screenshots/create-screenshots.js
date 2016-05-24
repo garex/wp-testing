@@ -62,7 +62,7 @@ var screenshots = [
            })
        }
    }, {
-       title   : 'There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar',
+       title   : 'There are fast access buttons like "Edit Questions and Answers" at the top of the page. Test page and results page can be customized from sidebar',
        actions : function () {
            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
@@ -83,22 +83,21 @@ var screenshots = [
            })
        }
    }, {
-       title   : 'Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.',
+       title   : 'Under "Edit Scores" every scale has a sum of scores. At "Edit Questions and Answers" box we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop',
        offset  : 1050 - 175,
        actions : function () {
            casper.then(hideEditorMetaboxes)
        }
    }, {
-       title   : 'The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same',
-       offset  : 1050 - 175,
+       title   : 'The "Quick Fill Scores" box allows us quickly enter scores from the questions separated by commas',
+       offset  : 2000,
        actions : function () {
            casper.then(function() {
-               this.clickLabel('Quick Fill Scores')
-               this.clickLabel('Add Individual Answers')
+
            })
        }
     }, {
-        title   : 'Fast adding questions from text',
+        title   : 'Fast adding questions from text. Some boxes could be maximized, which helps in case of huge lists or tables',
         offset  : 900,
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
@@ -106,28 +105,36 @@ var screenshots = [
             }).waitForUrl(/action=edit/, hideEditorMetaboxes)
 
             casper.then(function() {
-                this.evaluate(function() {
-                    return jQuery('#wpt_edit_questions.closed').length > 0
-                }) || this.clickLabel('Edit Questions and Scores', 'span')
                 this.clickLabel('Quick Fill From Text', 'a')
-                this.sendKeys('#wpt_quick_fill_questions textarea', [
+                this.evaluate(function() {
+                    jQuery('[ng-controller="EditQuickFillController"] button:last').focus()
+                })
+
+                this.sendKeys('[ng-controller="EditQuickFillController"] textarea', [
                     'Question 1',
                     '2. Question 2',
                     'Next question'
-                ].join('\n'))
+                ].join('\n'), {keepFocus: true})
             })
         }
     }, {
         title   : 'Editing formulas',
-        offset  : 900,
+        offset  : 900 + 350,
         actions : function () {
             casper.then(function() {
-                this.click('#wpt_quick_fill_questions input[type=button]')
+                this.evaluate(function() {
+                    return jQuery('#wpt_edit_scores.closed').length > 0
+                }) || this.clickLabel('Edit Scores', 'span')
+                this.evaluate(function() {
+                    return jQuery('#wpt_quick_fill_scores.closed').length > 0
+                }) || this.clickLabel('Quick Fill Scores', 'span')
+
+                this.clickLabel('Quick Fill From Text', 'button')
             })
         }
     }, {
-        title   : 'The example of the test without scores. Some answers are individual and some are individualized',
-        offset  : 600,
+        title   : 'The example of the test with scores. Some answers are individual and some are individualized',
+        offset  : 640,
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                 this.clickLabel('Simple Test With Scores')
@@ -256,7 +263,16 @@ var screenshots = [
             })
         }
     }, {
-        title   : 'A test without scores is shown like a "Test is under construction". Answers titles are those that was entered',
+        title   : 'A test without scores is shown like a "Test is under construction"',
+        actions : function () {
+            casper.thenOpen('http://wpti.dev:8000/')
+
+            casper.then(function() {
+                this.clickLabel('To Be or Not to Be?!')
+            }).waitForUrl(/to-be/)
+        }
+    }, {
+        title   : 'Answers titles are those that was entered',
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/')
 

@@ -130,12 +130,12 @@ Most giant are **[feature](https://wordpress.org/tags/wp-testing-feature)**, **[
 ## Screenshots ##
 
 01. Test editing section with menu in admin
-02. There are fast access buttons like "Add New Questions" at the top of the page. Test page and results page can be customized from sidebar
-03. Here we can see "Edit Questions and Scores" box where every scale has a sum of scores. Also we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop.
-04. The "Quick Fill Scores" box is opened that allows us quickly enter scores from the questions separated by commas. "Add Individual Answers" box also opened but it tells us to use "Test Answers" in case when answers are same
-05. Fast adding questions from text
+02. There are fast access buttons like "Edit Questions and Answers" at the top of the page. Test page and results page can be customized from sidebar
+03. Under "Edit Scores" every scale has a sum of scores. At "Edit Questions and Answers" box we can add to each question individual answers. The choise of answers and scales is available in the sidebar. They can be reordered by drag-n-drop
+04. The "Quick Fill Scores" box allows us quickly enter scores from the questions separated by commas
+05. Fast adding questions from text. Some boxes could be maximized, which helps in case of huge lists or tables
 06. Editing formulas
-07. The example of the test without scores. Some answers are individual and some are individualized
+07. The example of the test with scores. Some answers are individual and some are individualized
 08. Respondents’ test results in admin area. Test link will open test in edit mode and view link allow to see test result
 09. User see own tests results in admin area
 10. Ready test on the home page
@@ -145,10 +145,11 @@ Most giant are **[feature](https://wordpress.org/tags/wp-testing-feature)**, **[
 14. The result page on it`s own URL contains both the result of the test and the scales that create a result
 15. Scale description with "more..." text closed
 16. Scale description with "more..." text opened (after clicking on "more" link)
-17. A test without scores is shown like a "Test is under construction". Answers titles are those that was entered
-18. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
-19. In case when scales has different length (possible max total) they are shown as percents
-20. Multiple answers per question are also possible
-21. One question per page also allowed. On first page we see test description, "Next" button and pages counter
-22. On second page description not shown
-23. On last page counter not shown and button changes back to "Get Test Results"
+17. A test without scores is shown like a "Test is under construction"
+18. Answers titles are those that was entered
+19. Test results with scales chart. Hovered scale shows it`s value and title in dynamic tag
+20. In case when scales has different length (possible max total) they are shown as percents
+21. Multiple answers per question are also possible
+22. One question per page also allowed. On first page we see test description, "Next" button and pages counter
+23. On second page description not shown
+24. On last page counter not shown and button changes back to "Get Test Results"
