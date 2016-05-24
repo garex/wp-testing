@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
 # Ilaria Rizzo <dott.rizzo.ilaria@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:53+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-06-01 19:50+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-testing/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -52,71 +52,83 @@ msgstr "I miei risultati"
 msgid "My Test Results"
 msgstr "I miei risultati di Test"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "Massimizzare"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "Minimizar"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "Opzioni della pagina del test"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "Opzioni della pagina dei risultati "
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "Modifica domande e punteggi"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Modificare le domande e risposte"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "Aggiungi nuove domande"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Modificare i punteggi"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Riempimento rapido punteggi"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Modica Formule"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "Pubblica sulla Home Page"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Mostra nel titolo la percentuale di domande a cui il soggetto a risposto"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
 msgstr "Mostra una domanda per pagina"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "Consentire risposte multiple per ogni domanda"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Resetta le risposte del soggetto una volta premuto il pulsante \"Indietro\"  "
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "Testo del Pulsante"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Vai ai Risultati"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "Mostra la tabella delle scale"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "Mostra scale"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "Ordina le scale per punteggio"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "Mostra descrizione del test"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Dati del test non salvati"
 
@@ -139,15 +151,15 @@ msgstr "{percentage}% di risposte"
 msgid "Next"
 msgstr "Avanti"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "Risultato del test non trovato"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "Pagina non trovata. L'URL della pagina potrebbe non essere corretto."
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Siamo spiacenti ma il tuo browser non è compatibile per %s per visualizzare il grafico"
@@ -225,7 +237,7 @@ msgid ""
 msgstr "Strumento per misurare costrutti non direttamente osservabili (varianti latenti). Solitamente si tratta di una serie di compiti o problemi che il soggetto deve risolvere."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "Risposte del test"
 
@@ -499,17 +511,6 @@ msgstr "Test \"%s\" non è pubblicato. Non è possibile includerlo in un punto q
 msgid "Start Test"
 msgstr "Avvia Test"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Riempimento rapido dal testo"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Incolla qui le tue domande e appariranno in automatico nei campi sottostanti. Numeri e altri indici  verranno rimossi automaticamente."
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "Formula "
@@ -554,55 +555,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "E' possibile creare formule di calcolo sia con i numeri che con le percentuali. Per esempio nel caso di \"scale-bla\" con punteggio totale di 30,le due formule di calcolo \"scale-bla > 15\" e \"scale-bla > 50%\"hanno lo stesso significato e possono essere usate entrambe."
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "Riempimento rapido punteggi"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "Scala"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "Punteggio"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "Risposta"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "Domande"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Nessuna domanda da modificare. Aggiungi nuove domande e queste compariranno qui."
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "Nessun punteggio da modificare. Per modificare i punteggi è necessario aver selezionato sia le risposte che le scale."
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Rimuovere la domanda"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "Aggiungi risposte individuali"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Rimuovere la risposta"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Aggiungi la risposta individuale"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "— unico per ogni domanda. Se avete le stesse risposte a tutte le domande del test, utilizza le percentuali %s"
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "Aggiungi qui le risposte individuali come testo; dopo il salvataggio del testo le risposte saranno estratte e create. Numeri e altri indici verranno rimossi automaticamente."
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Incolla qui le tue domande e appariranno in automatico nei campi sottostanti. Numeri e altri indici  verranno rimossi automaticamente."
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Aggiungere la domanda"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Riempimento rapido dal testo"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Nessun gol per modificare. Per modificare i punteggi si dovrebbe avere domande, risposte e bilancia selezionata."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "nº"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "Scala"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "Punteggio"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "Risposta"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Domande"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "Aggiungere nuova combinazione"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -623,7 +648,3 @@ msgstr "Indirizzo IP"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Browser"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "nº"
