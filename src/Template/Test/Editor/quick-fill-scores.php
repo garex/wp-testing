@@ -39,7 +39,7 @@
         </tr>
         <tr class="wpt_add_new_combination">
             <th class="scale"><select ng-model="newScaleIndex">
-                <option value=""><?php echo __('&mdash; Select &mdash;') ?></option>
+                <option value=""><?php echo $this->wp->translate('&mdash; Select &mdash;') ?></option>
                 <option ng-repeat="scale in scales" value="{{ $index }}">{{ scale.title }}</option>
             </select></th>
             <td class="score"><input ng-model="newScore" type="number" min="-999.999" max="999.999" step="any" /></td>

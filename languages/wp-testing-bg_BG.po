@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2016
 # Borry Semerdzhieva <borry.semerdzhieva@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:50+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-06-01 19:50+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/wp-translations/wp-testing/language/bg_BG/)\n"
 "MIME-Version: 1.0\n"
@@ -52,71 +52,83 @@ msgstr "Моите резултати"
 msgid "My Test Results"
 msgstr "Моят резултатите от теста"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "Увеличи"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "Намали"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "Опции на тестовата страница"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "Опции на страницата с резултати"
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "Редактирай въпросите и точките"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Редактирай въпросите и отговори"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "Добави нови въпроси"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Редактирай точките"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Бързо попълване на точките"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Редактирай формулите"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "Публикувай на началната страница"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Покажи в проценти въпросите, на които отговарящият е дал вече отговор"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
 msgstr "Покажи един въпрос на страница"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "Позволява множество отговори на въпрос"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Възстановяване на ответните отговори, когато бутонът «Назад» е натиснат."
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "Надпис на бутона"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Виж резултатите"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "Покажи диаграма на скалите"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "Покажи скали"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "Сортирай скалите по точки"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "Покажи описание на теста"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Тестовите данни не са запазени"
 
@@ -139,15 +151,15 @@ msgstr "{percentage}% отговорено"
 msgid "Next"
 msgstr "Напред"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "Не е намерен тестови резултат"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "Не можете да получите нещо от нищо."
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Съжаляваме, но вашият браузър е %s несъвместим за показване на диаграма"
@@ -225,7 +237,7 @@ msgid ""
 msgstr "Инструмент за набиране на информация чрез решаване на последователни задачи, които могат да бъдат графични, за постижения или за време."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "Отговори на теста"
 
@@ -499,17 +511,6 @@ msgstr "Тест \"%s\" не е публикувана. Можете не мож
 msgid "Start Test"
 msgstr "Начало тест"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Попълни бързо от текст"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Поставете тук вашите въпроси и те ще попълнят полетата надолу. Номерата и другите индекси ще бъдат премахнати автоматично."
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "Формула"
@@ -554,55 +555,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Позволени са и цифри, и проценти. Например, ако \"скала-бла\" има тотал 30, то \"скала-бла > 15\" и \"скала-бла > 50%\" е едно и също."
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "Бързо попълване на точките"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "Скала"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "Точки"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "Отговор"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "Въпрос"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Няма въпроси за редактиране. Добави нови въроси и те ще се появят тук."
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "Няма точки за редактиране. За да редактирате точките трябва да сте избрали и отговори, и скали."
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Премахване на въпрос"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "Добавяне на индивидуални отговори"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Премахване на отговор"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Добавяне на индивидуален отговор"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "— уникални за всеки въпрос. Ако имате еднакви отговори на всички въпроси от теста, използвайте %s"
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "Добавете тук вашите индивидуални отговори като текст; след записа на теста, те ще бъдат извлечени и създадени. Номерата и другите индекси ще бъдат премахнати автоматично."
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Поставете тук вашите въпроси и те ще попълнят полетата надолу. Номерата и другите индекси ще бъдат премахнати автоматично."
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Добави въпрос"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Попълни бързо от текст"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Няма точки за редактиране. За да редактирате точки трябва да имате въпроси, отговори и избрали скали."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "Скала"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "Точки"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "Отговор"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Въпрос"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "Добавяне на нова комбинация"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -623,7 +648,3 @@ msgstr "IP адрес"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Браузър"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"

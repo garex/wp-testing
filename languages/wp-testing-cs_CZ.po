@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
 # Dalibor Černý <compu@seznam.cz>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:51+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-06-01 19:50+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/wp-translations/wp-testing/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -52,71 +52,83 @@ msgstr "Moje výsledky"
 msgid "My Test Results"
 msgstr "Výsledky testů"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "Maximalizovat"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "Minimalizovat"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "Volby k úpravě testovací stránky"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "Možnosti úpravy stránky s výsledkem"
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "Upravit otázky a skóre"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Upravovat otázky a odpovědi"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "Přidat nové otázky"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Upravit výsledky"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Rychlé vyplnění skórí"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Změnit vzorce"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "Publikovat na hlavní straně"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Zobrazit v nadpisu procenta otázek, které respondent již odpověděl"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
 msgstr "Zobraziit jednu otázku na každé stránce"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "Povolit vícenásobné odpovědi pro otázku"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Vynulovat  odpovědi respondent po stisku tlačítka \"Zpět\""
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "Bublinová nápověda nad tlačítkem"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Získat výsledky testu"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "Zobrazit graf pro škály"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "Ukázat škály"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "Setřídit škály podle skóre"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "Zobrazit popis testu"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Data testu nebyla uložena"
 
@@ -139,15 +151,15 @@ msgstr "{percentage}% odpovězeno"
 msgid "Next"
 msgstr "Další"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "Výsledek testu nenalezen"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "Chybí vám něco, abyste dostali výstup"
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Promiňte, váš zastaralý prohlížeč %s nedokáže graf správně zobrazit"
@@ -225,7 +237,7 @@ msgid ""
 msgstr "Nástroj na měření nepozorovaných konstrukcí (s latentními proměnnými). Typicky to je řada úkolů nebo problémů, které respondent má vyřešit."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "Odpovědi v testu"
 
@@ -499,17 +511,6 @@ msgstr "Test \"%s\" není publikován. Nelze zahrnout kdekoli."
 msgid "Start Test"
 msgstr "Spustit Test"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Rychlé vyplnění z textového okénka"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Vložte sem Vaše otázky a ony naplní pole níže. Čísla a další indexy budou odstraněny automaticky."
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "Vzorec"
@@ -554,55 +555,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Dovolena jsou čísla i procenta. Například když \"scale-abc\" má celkem 30 bodů, pak zápisy \"scale-abc > 15\" a \"scale-abc > 50%\" jsou rovnocenné."
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "Rychlé vyplnění skórí"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "Škála"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "Skóre"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "Odpověď"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "Otázky"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Nejsou otázky k upravování. Přidejte nové otázky a ty se zde pak objeví."
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "Nejsou skóre k upravování. Chcete-li upravit skóre, musíte mít zvolené odpovědi i škály."
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Odstranit otázku"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "Přidejte jednotlivé odpovědi!"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Odstranit odpověď"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Přidání jednotlivých odpovědí"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "- jedinečné pro každou otázku. Jestliže máte stejné odpovědi na všechny otázky v testu, použijte %s"
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "Přidejte sem Vaše jednotlivé odpovědi jako text; až test uložíte, otázky se extrahují, vytvoří a zařadí. Čísla a další znaky budou odstraněny automaticky."
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Vložte sem Vaše otázky a ony naplní pole níže. Čísla a další indexy budou odstraněny automaticky."
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Přidat otázku"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Rychlé vyplnění z textového okénka"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Žádné výsledky pro úpravu. Chcete-li upravit skóre byste měli mít otázky, odpovědi a vybrané váhy."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "č. "
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "Škála"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "Skóre"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "Odpověď"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Otázky"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "Přidat novou kombinaci"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -623,7 +648,3 @@ msgstr "IP adresa"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Prohlížeč"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "č. "
