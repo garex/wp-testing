@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.18.8 ###
+
+Fix WordPress search behaviour
+
+* Pages was missing in search results
+* Thanks to @berylune for reporting
+
+
 ### 0.18.7 ###
 
 Welcome WordPress 4.5
