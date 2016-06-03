@@ -38,4 +38,12 @@ describe('Page', function() {
             'error404'.should.not.be.textInDOM
         })
     })
+
+    it('should be searchable', function() {
+        casper.thenOpen(server + '/?s=Disappear', function() {
+            'Fatal'.should.not.be.textInDOM
+            'Sorry'.should.not.be.textInDOM
+            'Simple Page That Not Disappear!'.should.be.textInDOM
+        })
+    })
 })
