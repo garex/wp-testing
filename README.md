@@ -5,7 +5,7 @@
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
 **Tested up to:** 4.5
-**Stable tag:** 0.18.7
+**Stable tag:** 0.18.8
 **License:** GPLv3
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
