@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.18.9 ###
+
+Make test form compatible with code minifiers
+
+* Thanks to @khani26 for reporting
+
+
 ### 0.18.8 ###
 
 Fix WordPress search behaviour

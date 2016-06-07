@@ -1,22 +1,34 @@
-webshim.setOptions({
-    waitReady : true,
-    forms     : {
-        replaceValidationUI: true,
-        messagePopover: {
-            position: {
-                at: 'top',
-                my: 'bottom',
-                collision: 'flipfit'
-            }
-        }
-    }
-});
-webshims.polyfill('forms forms-ext');
-
 var Wpt = Wpt || {};
 Wpt.form = Wpt.form || {};
 
+Wpt.initWebshim = function(baseUrl) {
+    if (this.initialized) {
+        return;
+    }
+    this.initialized = true;
+    webshim.setOptions({
+        waitReady : true,
+        basePath  : baseUrl,
+        forms     : {
+            replaceValidationUI: true,
+            messagePopover: {
+                position: {
+                    at: 'top',
+                    my: 'bottom',
+                    collision: 'flipfit'
+                }
+            }
+        }
+    });
+    webshims.polyfill('forms forms-ext');
+};
+
+if (Wpt.webshimBaseurl) {
+    Wpt.initWebshim(Wpt.webshimBaseurl);
+}
+
 jQuery(document).ready(function($) {
+    Wpt.initWebshim(Wpt.webshimBaseurl);
     Wpt.initEvercookie();
 
     $('.wpt_test_form').each(function(i, formEl) {
