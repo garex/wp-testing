@@ -34,6 +34,7 @@ class WpTesting_Doer_TestPasserAction_FillForm extends WpTesting_Doer_TestPasser
         $this
             ->upgradeJqueryForOldWordPress()
             ->addJsData('evercookieBaseurl', $this->wp->getPluginUrl('vendor/samyk/evercookie'))
+            ->addJsData('webshimBaseurl', $this->wp->getPluginUrl('js/vendor/afarkas/webshim/shims/'))
             ->enqueueScript('test-pass-fill-form', array('jquery', 'broofa_node_uuid', 'samyk_evercookie', 'webshim'))
             ->fixFooterScriptsForOldWordPress()
         ;
