@@ -13,7 +13,7 @@ class WpTesting_Doer_PostBrowser extends WpTesting_Doer_AbstractDoer
      */
     public function addTestsToQuery($query)
     {
-        if (!$this->wp->isQueryMain($query) || $query->is_preview() || $query->is_attachment() || $query->is_search()) {
+        if (!$this->wp->isQueryMain($query) || $query->is_preview() || $query->is_attachment() || $query->is_search() || is_single() || is_post_type_archive()) {
             return;
         }
 
