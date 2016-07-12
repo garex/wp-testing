@@ -55,6 +55,7 @@
         };
         ScaleCollection.prototype = angular.extend({}, BaseCollection.prototype);
         ScaleCollection.fromArray = BaseCollection.fromArrayGenerator(ScaleCollection);
+        ScaleCollection.prototype.fromArray = ScaleCollection.fromArray;
         ScaleCollection.prototype.create = function(title) {
             var scale = new Scale(title);
             return scale.owner(this);

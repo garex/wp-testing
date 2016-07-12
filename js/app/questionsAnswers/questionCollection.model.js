@@ -37,6 +37,7 @@
         };
         QuestionCollection.prototype = angular.extend({}, BaseCollection.prototype);
         QuestionCollection.fromArray = BaseCollection.fromArrayGenerator(QuestionCollection);
+        QuestionCollection.prototype.fromArray = QuestionCollection.fromArray;
         QuestionCollection.prototype.addGlobalAnswer = function(id, title) {
             this.defaultAnswers().addNew(null, id);
             this.globalAnswers()[id] = title;
@@ -44,7 +45,7 @@
         };
         QuestionCollection.prototype.create = function(title) {
             var question = new Question(title);
-            return question.owner(this).setAnswers(angular.copy(this.defaultAnswers()));
+            return question.owner(this).setAnswers(this.defaultAnswers().copy());
         };
         QuestionCollection.prototype.createFromObject = function(object) {
             var question = BaseCollection.prototype.createFromObject.apply(this, arguments);
