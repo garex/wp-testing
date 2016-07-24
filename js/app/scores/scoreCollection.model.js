@@ -46,6 +46,7 @@
         };
         ScoreCollection.prototype = angular.extend({}, BaseCollection.prototype);
         ScoreCollection.fromArray = BaseCollection.fromArrayGenerator(ScoreCollection);
+        ScoreCollection.prototype.fromArray = ScoreCollection.fromArray;
         ScoreCollection.prototype.create = function(answer, scale) {
             var score = new Score(answer, scale);
             return score;

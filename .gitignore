@@ -20,7 +20,6 @@
 /tools/intro-video/mkv/
 /tools/intro-video/mp3/
 /tools/intro-video/node_modules/
-/tools/intro-video/ogv/
 /tools/intro-video/thumbnail/
 /tools/intro-video/thumbs/
 /tools/refactoring/*.sql

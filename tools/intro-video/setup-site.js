@@ -46,9 +46,9 @@ casper
                 .change();
         };
 
-        changeColor('background_color',         '#e0e046');
-        changeColor('sidebar_textcolor',        '#1B380F');
-        changeColor('header_background_color',  '#b8f741');
+        changeColor('background_color',         '#519839');
+        changeColor('sidebar_textcolor',        '#c8dbc2');
+        changeColor('header_background_color',  '#478632');
 
     })
 
@@ -62,14 +62,6 @@ casper
     })
     this.click('#doaction')
 }).waitForUrl(/activate/, null, null, 60000)
-
-.then(function() {
-    this.click('#cb input')
-    this.evaluate(function() {
-        jQuery('.wrap form select:first').val('deactivate-selected')
-    })
-    this.click('#doaction')
-}).waitForUrl(/deactivate/)
 
 casper.run(function() {
     this.exit()

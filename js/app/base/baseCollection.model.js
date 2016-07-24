@@ -70,6 +70,13 @@
             }
             return item;
         };
+        BaseCollection.prototype.copy = function() {
+            var copy = this.fromArray([]);
+            this.forEach(function(item) {
+                copy.add(item.copy());
+            });
+            return copy;
+        };
         return BaseCollection;
     };
 })(angular);

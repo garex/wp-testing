@@ -17,6 +17,13 @@
             };
         };
         Answer.prototype = angular.extend({}, BaseOwnerable.prototype);
+        Answer.prototype.copy = function() {
+            var copy    = new Answer();
+            copy.id     = this.id;
+            copy.title  = this.title;
+            copy.global_answer_id = this.global_answer_id;
+            return copy;
+        };
         Answer.prototype.getClassName = function() {
             return 'Answer';
         };
@@ -43,6 +50,7 @@
         };
         AnswerCollection.prototype = angular.extend({}, BaseCollection.prototype, BaseOwnerable.prototype);
         AnswerCollection.fromArray = BaseCollection.fromArrayGenerator(AnswerCollection);
+        AnswerCollection.prototype.fromArray = AnswerCollection.fromArray;
         AnswerCollection.prototype.create = function(title, globalAnswerId) {
             var answer = new Answer(title, globalAnswerId);
             return answer.owner(this);
