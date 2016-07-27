@@ -3,12 +3,13 @@
 # Translators:
 # Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2016
 # jacha <info@orthomanueeldierenarts.nl>, 2015
+# Patrick van de Kerkhof <patrick@metavoor.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-06-01 19:50+0000\n"
+"PO-Revision-Date: 2016-07-01 22:01+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%1$g ud af %2$g"
+msgstr "%1$g van de %2$g"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -94,7 +95,7 @@ msgstr "Toon in titel het percentage reeds beantwoorde vragen"
 
 #: Doer/TestEditor.php:241
 msgid "Show one question per page"
-msgstr "Vis ét spørgsmål pr side"
+msgstr "Toon één vraag per pagina"
 
 #: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
@@ -541,7 +542,7 @@ msgstr "Vergelijking"
 
 #: Template/Test/Editor/edit-formulas.php:64
 msgid "Operator"
-msgstr "Operatør"
+msgstr "Operator"
 
 #: Template/Test/Editor/edit-formulas.php:72
 msgid ""
