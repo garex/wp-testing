@@ -1,14 +1,15 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2016
 # jacha <info@orthomanueeldierenarts.nl>, 2015
+# Patrick van de Kerkhof <patrick@metavoor.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:52+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-07-01 22:01+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/wp-testing/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%1$g ud af %2$g"
+msgstr "%1$g van de %2$g"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -52,71 +53,83 @@ msgstr "Mijn resultaten"
 msgid "My Test Results"
 msgstr "Mijn testresultaten"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "Maximaliseren"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "Minimaliseren"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "Test pagina opties"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "Resultaat Paginaopties"
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "Vragen en scores bewerken"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Bewerken van vragen en antwoorden"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "Nieuwe vragen toevoegen"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Bewerken van Scores"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Snel scores invullen"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Formules bewerken"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "Publiceren op de thuispagina"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Toon in titel het percentage reeds beantwoorde vragen"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
-msgstr "Vis ét spørgsmål pr side"
+msgstr "Toon één vraag per pagina"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "Toestaan dat meerdere antwoorden per vraag"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Antwoorden wissen wanneer de \"terug\" knop wordt gebruikt"
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "Knop bijschrift"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Ga naar test resultaten"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "Toon schalen grafiek"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "Toon schalen"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "Sorteer schalen naar scores"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "Toon test beschrijving"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Testgegevens niet opgeslagen"
 
@@ -139,15 +152,15 @@ msgstr "{percentage}% beantwoord"
 msgid "Next"
 msgstr "Volgende"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "Testresultaat niet gevonden"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "Er kan niet iets uit niets worden verkregen"
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Sorry, uw browser %s is niet compatibel en kan de grafiek niet weergeven"
@@ -225,7 +238,7 @@ msgid ""
 msgstr "Een instrument om verborgen constructies (latente variabelen) te meten. Doorgaans een serie opdrachten of problemen die de beantwoorder moet oplossen."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "Test antwoorden"
 
@@ -499,17 +512,6 @@ msgstr "Test \"%s\" is niet gepubliceerd. U kunt het niet overal opnemen."
 msgid "Start Test"
 msgstr "Test Start"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Snel invullen via tekst"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Plak hier uw antwoorden en de velden hieronder worden ingevuld. Cijfers en andere indexen worden automatisch verwijderd."
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "Formule"
@@ -540,7 +542,7 @@ msgstr "Vergelijking"
 
 #: Template/Test/Editor/edit-formulas.php:64
 msgid "Operator"
-msgstr "Operatør"
+msgstr "Operator"
 
 #: Template/Test/Editor/edit-formulas.php:72
 msgid ""
@@ -554,55 +556,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Cijfers en percentages toegestaan. Bijvoorbeeld: als \"schaal-bla\" totaal 30 is, dan geeft \"schaal-bla\" >15 en \"schaal-bla\" >50% hetzelfde."
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "Snel scores invullen"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "Schaal"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "Score"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "Antwoord"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "Vragen"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Geen vragen om te bewerken. Nieuw toegevoegde vragen zullen hier verschijnen"
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "Geen scores om te bewerken. Om scores te bewerken moet u eerst antwoorden en schalen selecteren."
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Verwijderen van de vraag"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "Individuele antwoorden toevoegen"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Antwoord verwijderen"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Individuele antwoord toevoegen"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "— uniek voor iedere vraag. Als u dezelfde antwoorden heeft voor alle test vragen, gebruik dan %s."
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "Voeg hier uw individuele antwoorden toe als tekst; na het opslaan van de test zullen deze worden gecreeerd. Nummers en andere indexen worden automatisch verwijderd. "
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Plak hier uw antwoorden en de velden hieronder worden ingevuld. Cijfers en andere indexen worden automatisch verwijderd."
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Vraag toevoegen"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Snel invullen via tekst"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Geen scores te bewerken. Als u wilt bewerken van scores moet je vragen, antwoorden en geselecteerde schalen."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "Schaal"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "Score"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "Antwoord"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Vragen"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "Toevoegen van nieuwe combinatie"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -623,7 +649,3 @@ msgstr "IP-adres"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Browser"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"

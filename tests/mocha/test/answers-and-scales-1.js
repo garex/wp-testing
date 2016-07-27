@@ -39,6 +39,8 @@ describe('Answers1 and Scales1', function() {
         })
 
         casper.then(function() {
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Test With Answers, Scales and Questions',
                 '#wpt_question_title_0': '`5 + 5 is "10?',
@@ -53,7 +55,6 @@ describe('Answers1 and Scales1', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            'wpt_score_value_0_0.title'.should.evaluate.to.be.equal('Lie, Yes')
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('`5 + 5 is "10?')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('6 + 6 is \'10?')
 
@@ -86,8 +87,8 @@ describe('Answers1 and Scales1', function() {
 
     it('should sort scales in the order of adding', function() {
         casper.then(function() {
-            'wpt_score_value_0_0.title'.should.evaluate.to.be.equal('Lie, Yes')
-            'wpt_score_value_0_1.title'.should.evaluate.to.be.equal('Extraversion/Introversion, Yes')
+            '.wpt_scores .wpt_scales .wpt_title:nth-of-type(2n - 1)'.should.contain.text('Lie')
+            '.wpt_scores .wpt_scales .wpt_title:nth-of-type(2n + 0)'.should.contain.text('Extraversion')
         })
     })
 

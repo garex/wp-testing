@@ -8,11 +8,6 @@
 class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
 
-    /**
-     * How many items to display in add new box
-     */
-    const ADD_NEW_COUNT = 10;
-
     protected $columnAliases = array(
         'title'  => 'question_title',
         'id'     => 'question_id',
@@ -51,8 +46,9 @@ class WpTesting_Model_Question extends WpTesting_Model_AbstractModel implements 
     public function jsonSerialize()
     {
         return array(
-            'id'    => $this->getId(),
-            'title' => $this->getTitle(),
+            'id'        => $this->getId(),
+            'title'     => $this->getTitle(),
+            'answers'   => $this->buildAnswers()->getRecords(),
         );
     }
 

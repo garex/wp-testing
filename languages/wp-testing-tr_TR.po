@@ -1,13 +1,13 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:57+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-06-01 19:50+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/wp-translations/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -51,71 +51,83 @@ msgstr "Benim-den sonuçlanmak"
 msgid "My Test Results"
 msgstr "Test sonuçlarım"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "En üst düzeye çıkarmak"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "En aza indirmek"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "Test Sayfası Seçenekleri"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "Sonuç sayfası seçenekleri"
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "Soru ve Sonuçları Düzenle"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Sorular ve cevaplar Düzenle"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "Yeni Soru Ekle"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Puanları Düzenle"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Hızlı Doldurma Sonuçları"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Formülleri Düzenle"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "Ana Sayfada Yayınla"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Başlık bu davalı soruların yüzdesini göstermek zaten cevap"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
 msgstr "Sayfa başına bir soru göster"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "Soru başına birden fazla yanıt izin ver"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "\"Geri\" butonuna basıldığında davalı cevapları sıfırlayın"
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "Düğme başlık"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "Test Sonuçlarını Al"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "Ölçekler grafik göster"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "Ölçekler göster"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "Puana göre sıralama ölçekler"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "Test açıklama göster"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Test verisi kaydedilmedi"
 
@@ -138,15 +150,15 @@ msgstr "{percentage}% yanıtladı"
 msgid "Next"
 msgstr "İleri"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "Test sonuç bulunamadı"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "Sana bir şey hiçbir şey elde edemezsiniz."
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Üzgünüm ama senin kaş %s grafiği görüntülemek için uyumlu değil"
@@ -224,7 +236,7 @@ msgid ""
 msgstr "Enstrüman denetlenmediğini yapıları (latent değişkenler) ölçmek için. Genellikle bu görevleri ya da sorunları çözmek için davalı olan bir dizi var."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "Test Cevapları"
 
@@ -498,17 +510,6 @@ msgstr "Test \"%s\" yayımlanmıyor. Bunu her yerde dahil edebilirsiniz değil."
 msgid "Start Test"
 msgstr "Testi Başlat"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "Metinden hızlı doldurma"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "Sorularınızı buraya yapıştırınız. Numaralar ve diğer indeksler otomatik olarak ayrılacaktır"
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "Formül"
@@ -553,55 +554,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Sayı ve yüzdeler girebilir. Örneğin \"olcek-bla\" toplam 30, sonra da vardır \"olcek-bla > 15\" ve \"olcek-bla > %50\" aynı."
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "Hızlı Doldurma Sonuçları"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "Ölçeklendir"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "Sonuç"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "Cevap"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "Sorular"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "Düzenlenecek soru bulunmuyor. Burada gözükmesi için soru ekleyin"
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "Düzenlenecek sonuç bulunmuyor. Sonuçları düzenlemek için hem ölçeklere hem de cevaplara ihtiyacınız bulunmaktadır"
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Soru kaldırma"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "Bireysel Cevaplar Ekle"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Cevap kaldırmak"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Tek tek cevap ekleyin"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "-her soruya özeldir. Eğer tüm sorulara cevabınız aynı ise %s kullanın"
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "Buraya bireysel cevaplarınızı metin olarak ekleyin, testin kaydedilmesinden sonra cevaplarınız buraya açılacaktır. Sayılar ve diğer indeksler otomatik olarak ayıklanacaktır."
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Sorularınızı buraya yapıştırınız. Numaralar ve diğer indeksler otomatik olarak ayrılacaktır"
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Soru Ekle"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Metinden hızlı doldurma"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Düzenlemek için puanları yok. Puanları düzenlemek için sorular, cevaplar ve seçili ölçekler olmalıdır."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "Ölçeklendir"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "Sonuç"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "Cevap"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Sorular"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "Yeni ekle"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -622,7 +647,3 @@ msgstr "IP adresi"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Tarayıcı"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"

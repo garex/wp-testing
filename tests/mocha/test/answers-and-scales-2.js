@@ -11,6 +11,8 @@ describe('Answers2 and Scales2', function() {
         })
 
         casper.then(function() {
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Test With Answers and Scores synced',
                 '#wpt_question_title_0': 'Question 1?',
@@ -26,7 +28,7 @@ describe('Answers2 and Scales2', function() {
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            'jQuery("td.wpt_scale").length'.should.evaluate.to.equal(4)
+            'jQuery("td.wpt_score").length'.should.evaluate.to.equal(4)
         })
 
         casper.then(function() {
@@ -37,13 +39,17 @@ describe('Answers2 and Scales2', function() {
                 '#wpt_score_value_1_0': '2',
                 '#wpt_score_value_0_1': '3',
                 '#wpt_score_value_1_1': '4',
-            }, true)
+            })
+            this.evaluate(function() {
+                jQuery('[ng-model="score.value"]').trigger('input')
+            })
+            this.click('#publish')
         })
 
         casper.waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            'jQuery("td.wpt_scale").length'.should.evaluate.to.equal(2)
+            'jQuery("td.wpt_score").length'.should.evaluate.to.equal(2)
             'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('3')
             'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('4')
             'wpt_score_value_0_1.value'.should.evaluate.to.be.equal(null)
@@ -57,7 +63,9 @@ describe('Answers2 and Scales2', function() {
         })
 
         casper.then(function() {
-            'No scores to edit'.should.not.be.textInDOM
+            'No scores to edit'.should.be.textInDOM
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Test With Individual Answer With Scores',
                 '#wpt_question_title_0': 'Question 1?',
@@ -86,13 +94,15 @@ describe('Answers2 and Scales2', function() {
         })
     })
 
-    it('should add individual answers from text', function() {
+    it('should add individual answers by button', function() {
         casper.then(function() {
             this.clickLabel(' Yes', 'label')
-            this.clickLabel('Add Individual Answers')
+            this.clickLabel('Add Individual Answer')
+            this.clickLabel('Add Individual Answer')
             this.fillSelectors('form#post', {
-                '#wpt-add-individual-answers-to-question-0': '1. Some indanswer\n2. "Anoter" answer!\n\n'
-            }, true)
+                '#wpt_answer_title_0_1': 'Some indanswer',
+                '#wpt_answer_title_0_2': '"Anoter" answer!'
+            })
             this.click('#publish')
         })
 
@@ -106,11 +116,9 @@ describe('Answers2 and Scales2', function() {
         })
     })
 
-    it('should remove individual answers by empty title', function() {
+    it('should remove individual answers by button', function() {
         casper.then(function() {
-            this.fillSelectors('form#post', {
-                '#wpt_answer_title_0_0': ''
-            }, true)
+            this.click('button[title="Remove Answer"]');
             this.click('#publish')
         })
 
@@ -128,6 +136,7 @@ describe('Answers2 and Scales2', function() {
         })
 
         casper.then(function() {
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Test With Answers Sorted',
                 '#wpt_question_title_0': 'Question 1',

@@ -120,26 +120,6 @@ class WpTesting_Doer_TestPasserAction_FillForm extends WpTesting_Doer_TestPasser
     }
 
     /**
-     * Webshim HTML5 forms polyfill requires jQuery at least 1.8.3
-     *
-     * @return WpTesting_Doer_TestPasserAction_FillForm
-     */
-    private function upgradeJqueryForOldWordPress()
-    {
-        if ($this->isWordPressAlready('3.3')) {
-            return $this;
-        }
-
-        $schema = ($this->wp->isSsl()) ? 'https' : 'http';
-        $this->wp
-            ->deregisterScript('jquery')
-            ->registerScript('jquery', $schema . '://code.jquery.com/jquery-1.8.3.min.js', array(), '1.8.3')
-        ;
-
-        return $this;
-    }
-
-    /**
      * Correctly preprocess scripts for footer group in old WordPress
      *
      * @return WpTesting_Doer_TestPasserAction_FillForm

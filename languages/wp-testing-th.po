@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
 # Natcha Wiratwattannakul <natchalike@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 05:50+0600\n"
-"PO-Revision-Date: 2015-11-28 23:58+0000\n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-06-01 19:50+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/wp-translations/wp-testing/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -52,71 +52,83 @@ msgstr "ผลของฉัน"
 msgid "My Test Results"
 msgstr "ผลการทดสอบของฉัน"
 
-#: Doer/TestEditor.php:36
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "ให้มากที่สุด"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "ลด"
+
+#: Doer/TestEditor.php:66
 msgid "Test Page Options"
 msgstr "ปรับแต่งหน้าแบบวัด"
 
-#: Doer/TestEditor.php:38
+#: Doer/TestEditor.php:68
 msgid "Result Page Options"
 msgstr "ปรับแต่งหน้าผลลัพธ์"
 
-#: Doer/TestEditor.php:40 Template/Test/Editor/content-editor-buttons.php:7
-msgid "Edit Questions and Scores"
-msgstr "แก้ไขคำถามและคะแนน"
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "แก้ไขคำถามและคำตอบ"
 
-#: Doer/TestEditor.php:41 Template/Test/Editor/content-editor-buttons.php:3
-msgid "Add New Questions"
-msgstr "เพิ่มคำถาม"
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "แก้ไขคะแนน"
 
-#: Doer/TestEditor.php:42 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "เติมคะแนนด่วน"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "แก้ไขสูตร"
 
-#: Doer/TestEditor.php:184
+#: Doer/TestEditor.php:215
 msgid "Publish on the home page"
 msgstr "แสดงผลในหน้า home page"
 
-#: Doer/TestEditor.php:206
+#: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "แสดงเปอร์เซ็นต์ของข้อที่ตอบแล้ว"
 
-#: Doer/TestEditor.php:210
+#: Doer/TestEditor.php:241
 msgid "Show one question per page"
 msgstr "แสดงคำถามเดียวต่อหน้า"
 
-#: Doer/TestEditor.php:214
+#: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
 msgstr "เลือกตอบหลายตัวเลือกได้"
 
-#: Doer/TestEditor.php:218
+#: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "ล้างคำตอบเมื่อกดปุ่ม \"Back\""
 
-#: Doer/TestEditor.php:222
+#: Doer/TestEditor.php:252
 msgid "Button caption"
 msgstr "ข้อความปุ่มกด"
 
-#: Doer/TestEditor.php:224 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
 msgstr "ไปสู่ผลลัพธ์"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:271
 msgid "Show scales chart"
 msgstr "แสดงตารางคะแนน"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:275
 msgid "Show scales"
 msgstr "แสดงคะแนนของสเกล"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:279
 msgid "Sort scales by score"
 msgstr "เรียงลำดับสเกลด้วยคะแนน"
 
-#: Doer/TestEditor.php:253
+#: Doer/TestEditor.php:283
 msgid "Show test description"
 msgstr "แสดงคำอธิบายแบบวัด"
 
-#: Doer/TestEditor.php:348
+#: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
 
@@ -139,15 +151,15 @@ msgstr "ตอบไปแล้ว {percentage}%"
 msgid "Next"
 msgstr "ถัดไป"
 
-#: Doer/TestPasserAction/GetResults.php:72
+#: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
 msgstr "ไม่พบผลลัพธ์"
 
-#: Doer/TestPasserAction/GetResults.php:73
+#: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
 msgstr "คุณไม่สามารถพบผลลัพธ์ได้ เนื่องจากไม่มีข้อมูลอยู่"
 
-#: Doer/TestPasserAction/GetResults.php:82
+#: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "ขอโทษด้วย! แต่บราวเซอร์ %s ของคุณไม่เหมาะกับการแสดงผลของชาร์ต"
@@ -225,7 +237,7 @@ msgid ""
 msgstr "เครื่องมือสำหรับวัดคุณลักษณะที่มองไม่เห็น (ตัวแปรแฝง) โดยทั่วไป นี่คือชุดของภาระงานหรือปัญหาที่ผู้ตอบแบบวัดต้องแก้"
 
 #: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
 msgstr "คำตอบ"
 
@@ -499,17 +511,6 @@ msgstr "ทดสอบ \"%s\" ไม่ได้รับการตีพิ�
 msgid "Start Test"
 msgstr "เริ่มทดสอบ"
 
-#: Template/Test/Editor/add-questions.php:5
-#: Template/Test/Editor/add-questions.php:10
-msgid "Quick Fill From Text"
-msgstr "เติมคำถามด่วน"
-
-#: Template/Test/Editor/add-questions.php:9
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
-msgstr "วางคำถามที่นี่ เพื่อจะถูกเติมในช่องด้านล่าง ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
-
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
 msgstr "สูตร"
@@ -554,55 +555,79 @@ msgid ""
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "ใช้ได้ทั้งตัวเลขและเปอร์เซ็นต์ เช่น \"สเกลความสุข\" มีทั้งหมด 30 คะแนน ดังนั้น \"สเกลความสุข > 15\" และ \"สเกลความสุข > 50%\" มีค่าเหมือนกัน"
 
-#: Template/Test/Editor/edit-questions.php:29
-#: Template/Test/Editor/edit-questions.php:67
-msgid "Quick Fill Scores"
-msgstr "เติมคะแนนด่วน"
-
-#: Template/Test/Editor/edit-questions.php:37
-msgid "Scale"
-msgstr "สเกล"
-
-#: Template/Test/Editor/edit-questions.php:38
-msgid "Score"
-msgstr "คะแนน"
-
-#: Template/Test/Editor/edit-questions.php:39
-msgid "Answer"
-msgstr "คำตอบ"
-
-#: Template/Test/Editor/edit-questions.php:40
-msgid "Questions"
-msgstr "คำถาม"
-
-#: Template/Test/Editor/edit-questions.php:88
+#: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
 msgstr "ไม่มีคำถามให้แก้ไข เพิ่มคำถามใหม่เพื่อให้แสดงผลตรงนี้"
 
-#: Template/Test/Editor/edit-questions.php:96
-msgid ""
-"No scores to edit. To edit scores you must have both answers and scales "
-"selected."
-msgstr "ยังไม่สามารถแก้ไขคะแนนได้ คุณต้องเลือกทั้งคำตอบและสเกลเพื่อแก้ไข"
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "เอาคำถาม"
 
-#: Template/Test/Editor/edit-questions.php:155
-msgid "Add Individual Answers"
-msgstr "เพิ่มคำตอบเฉพาะ"
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "เอาคำตอบ"
 
-#: Template/Test/Editor/edit-questions.php:156
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "เพิ่มคำตอบละ"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
 msgstr "— แตกต่างในแต่ละคำถาม หากคุณใช้คำตอบเหมือนกันในทุกคำถาม โปรดใช้ %s"
 
-#: Template/Test/Editor/edit-questions.php:160
+#: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
-"Add here your individual answers as text; after test saving they will be "
-"extracted and created. Numbers and other indexes will be stripped "
-"automatically."
-msgstr "เพิ่มคำตอบเฉพาะในรูปแบบข้อความที่นี่ เมื่อบันทึกแบบวัดแล้ว คำตอบจะถูกสร้างขึ้น ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "วางคำถามที่นี่ เพื่อจะถูกเติมในช่องด้านล่าง ตัวเลขและสัญลักษณ์อื่นจะถูกลบอัตโนมัติ"
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "เพิ่มคำถาม"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "เติมคำถามด่วน"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "คะแนนไม่มีการแก้ไข การแก้ไขคะแนน คุณควรมีคำถาม คำตอบ และเลือกเครื่องชั่ง"
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "สเกล"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "คะแนน"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "คำตอบ"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "คำถาม"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "เพิ่มชุดใหม่"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
@@ -623,7 +648,3 @@ msgstr "IP address"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Browser"
-
-#: Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"

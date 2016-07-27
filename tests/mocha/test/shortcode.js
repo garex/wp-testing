@@ -259,6 +259,7 @@ describe('Shortcode', function() {
 
                 this.clickLabel(' Scale Caption', 'label')
                 this.clickLabel(' Yes', 'label')
+                this.click('#wpt_question_add');
                 this.fillSelectors('form#post', {
                     '#title': 'Test With Caption Shortcodes',
                     '#content': content,

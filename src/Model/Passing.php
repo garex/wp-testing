@@ -244,7 +244,11 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
 
         $scoresByScales = array_fill_keys(array_keys($result), 0);
         foreach ($this->buildAnswersScores() as $score) {
-            $scoresByScales[$score->getScaleId()] += $score->getValue();
+            $scaleId = $score->getScaleId();
+            if (!isset($scoresByScales[$scaleId])) {
+                $scoresByScales[$scaleId] = 0;
+            }
+            $scoresByScales[$scaleId] += $score->getValue();
         }
 
         foreach ($result as $id => $scale) {

@@ -19,6 +19,9 @@ describe('Results with formulas', function() {
             })
             this.click('.__text_tab_here')
 
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
+            this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
                 '#title': 'Test Containing Results',
                 '#content': 'London is the capital of great britan',
@@ -140,7 +143,7 @@ describe('Results with formulas', function() {
         casper.then(function() {
             this.sendKeys('#wpt_formula_source_1', '', {reset: true})
             this.click('#wpt_scale-add-toggle')
-            this.sendKeys('#newwpt_scale', 'свобода')
+            this.sendKeys('#newwpt_scale', 'свобода', {reset: true})
             this.click('#wpt_scale-add-submit')
             this.waitForSelectorTextChange('#wpt_scalechecklist', function() {
                 this.click('#publish')
