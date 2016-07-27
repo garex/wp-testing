@@ -2,6 +2,22 @@
 ## Changelog ##
 
 
+### 0.19 ###
+
+Greatly raise editor interactivity and destroy "low memory" problem
+
+* Interactively edit questions/answers with quick fill
+* Destroy "low server settings" issue
+* Solve huge-scores problem by rendering inputs on mouse enter
+* Add maximize feature to some editor metaboxes
+
+Internals:
+
+* Update intro-video (make it smaller)
+* Auto-update locale (10 new strings). If you will see some strange new phrases in your language, then dont' hesistate to send us correct translations.
+* Fix 3 strings in Dutch locale (thanks to Patrick van de Kerkhof)
+
+
 ### 0.18.9 ###
 
 Make test form compatible with code minifiers
