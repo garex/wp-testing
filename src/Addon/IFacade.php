@@ -1,6 +1,6 @@
 <?php
 
-interface WpTesting_Addon_IFacade
+interface WpTesting_Addon_IFacade extends WpTesting_Facade_IORM
 {
 
     /**
