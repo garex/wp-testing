@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.19.1 ###
+
+Partial fix of Glossary-like plugins incompatibility
+
+* Reported by @Enis regarding Glossary plugin
+
+
 ### 0.19 ###
 
 Greatly raise editor interactivity and destroy "low memory" problem
