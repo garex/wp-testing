@@ -53,7 +53,7 @@ describe('Plugin activation', function() {
 
         casper.waitForSelector('.jetpack-module.active', function() {
             'Fatal'.should.not.be.textInDOM
-        }, null, 60000)
+        }, null, 90000)
 
         casper.thenOpen(server + '/wp-admin/plugins.php', function () {
             expect(/Plugins/).to.matchTitle
@@ -74,6 +74,6 @@ describe('Plugin activation', function() {
         casper.waitForUrl(/activate/, function() {
             'Fatal'.should.not.be.textInDOM
             '#wp-testing .deactivate a,[data-slug=wp-testing] .deactivate a'.should.be.inDOM
-        }, null, 60000)
+        }, null, 90000)
     })
 })

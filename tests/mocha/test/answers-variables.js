@@ -10,7 +10,7 @@ describe('Answers variables', function() {
 
     it('should show empty test as under construction initially', function() {
         casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
-            this.clickLabel('Test With Answers Sorted', '*[@id="posts-filter"]/*//a')
+            this.clickLabel('Sorted Answers', '*[@id="posts-filter"]/*//a')
         })
 
         casper.waitForUrl(/edit/, function() {

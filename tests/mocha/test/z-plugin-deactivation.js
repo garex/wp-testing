@@ -29,16 +29,36 @@ describe('Plugin deactivation', function() {
     })
 
     it('should be deleted', function() {
+        casper.setFilter('page.confirm', function(msg) {
+            return true
+        });
+
        casper.then(function() {
            this.click('#wp-testing .delete a, [data-slug=wp-testing] .delete a')
        })
 
-       casper.waitForUrl(/delete/, function() {
-           this.click('#submit')
-       })
+       var isClickThen = hasDeletedId = false
+       casper.waitFor(function check() {
+           isClickThen = this.evaluate(function() {
+               return document.location.href.indexOf('delete') > -1
+           })
+
+           hasDeletedId = this.evaluate(function() {
+               return document.getElementById('wp-testing-deleted') != null
+           })
+
+           return isClickThen || hasDeletedId
+       }, function then() {
+           isClickThen && this.click('#submit')
+       }, null, 30000)
 
        casper.then(function() {
-           '#wp-testing, [data-slug=wp-testing]'.should.not.be.inDOM
+           if (isClickThen) {
+               '#wp-testing, [data-slug=wp-testing]'.should.not.be.inDOM
+           }
+           if (hasDeletedId) {
+               '#wp-testing-deleted'.should.be.inDOM
+           }
        })
     })
 
