@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.19.2 ###
+
+Welcome WordPress 4.6
+
+* Upgrade autotests
+* No new functionality was added!
+
+
 ### 0.19.1 ###
 
 Partial fix of Glossary-like plugins incompatibility

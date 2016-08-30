@@ -151,9 +151,9 @@ describe('Shortcode', function() {
 
     describe('wpt_test_first_page: two tests updates each own`s percentage in title', function() {
         it('should be added',
-            addShortcodeAndCheckResult('[wpt_test_first_page name=eysencks-personality-inventory-epi-extroversionintroversion]\n[wpt_test_first_page name=test-with-answers-sorted]', function() {
+            addShortcodeAndCheckResult('[wpt_test_first_page name=eysencks-personality-inventory-epi-extroversionintroversion]\n[wpt_test_first_page name=sorted-answers]', function() {
             'The Eysenck Personality Inventory (EPI) measures two pervasive'.should.be.textInDOM
-            'Test With Answers Sorted'.should.be.textInDOM
+            'Sorted Answers'.should.be.textInDOM
         }))
 
         it('should not have percentage initially', function() {

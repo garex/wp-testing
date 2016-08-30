@@ -32,7 +32,7 @@ describe('Diagrams', function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
         })
 
-        casper.then(function() {
+        casper.waitForSelector('#taxonomy-wpt_result .wpt-sortable', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
 

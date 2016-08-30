@@ -138,7 +138,7 @@ describe('Answers2 and Scales2', function() {
         casper.then(function() {
             this.click('#wpt_question_add');
             this.fillSelectors('form#post', {
-                '#title': 'Test With Answers Sorted',
+                '#title': 'Sorted Answers',
                 '#wpt_question_title_0': 'Question 1',
             })
             this.clickLabel(' No', 'label')
@@ -156,7 +156,7 @@ describe('Answers2 and Scales2', function() {
             })
         })
 
-        casper.waitForUrl(/answers-sorted/, function() {
+        casper.waitForUrl(/sorted-answers/, function() {
             'Fatal'.should.not.be.textInDOM
             'jQuery(".question .answer:first").text().trim()'.should.evaluate.to.be.equal('No')
             this.clickLabel('Edit Test')

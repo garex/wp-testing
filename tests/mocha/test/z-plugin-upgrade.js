@@ -17,14 +17,6 @@ describe('Plugin upgrade', function() {
        })
     })
 
-    it('should activate plugin before update', function() {
-        casper.then(function() {
-            this.clickLabel('Activate')
-        })
-
-        casper.waitForText(/Deactivate/)
-    })
-
     it('should select plugin for update', function() {
         casper.then(function() {
             this.evaluate(function() {
@@ -42,16 +34,12 @@ describe('Plugin upgrade', function() {
             this.click('#doaction')
         })
 
-        casper.waitForUrl(/upgrade/)
+        casper.waitForSelector('.updated-message.notice-success')
     })
 
     it('should update site title through DB', function() {
-        casper.withFrame(0, function() {
-            this.waitForText(/All updates have been completed/, function() {
-                this.thenOpen(server + '/', function() {
-                    'Upgraded from plugin'.should.be.textInDOM
-                })
-            })
+        casper.thenOpen(server + '/', function() {
+            'Upgraded from plugin'.should.be.textInDOM
         })
     })
 })

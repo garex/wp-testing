@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_IORM, WpTesting_Facade_ITestPasser
+class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITestPasser
 {
 
     private $doers = array();
