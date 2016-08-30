@@ -36,7 +36,7 @@ matrix:
     - php: 5.3
       env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
     - php: 5.4
-      env: PLUGINS=akismet.3.1.4:jetpack.3.7:wordpress-seo.2.3.5:wordfence.6.0.17:contact-form-7.4.3:google-sitemap-generator.4.0.8
+      env: PLUGINS=akismet.3.1.11:jetpack.4.2.2:wordpress-seo.3.3.4:wordfence.6.1.14:contact-form-7.4.5:google-sitemap-generator.4.0.8
   allow_failures:
     - php: 5.2
       env: WP_VERSION=3.5

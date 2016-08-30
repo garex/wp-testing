@@ -6,7 +6,7 @@ set -e
 HERE=$(dirname $0)
 DB_ENGINE=${DB_ENGINE:-InnoDB}
 DB_CHARSET=${DB_CHARSET:-utf8}
-WP_VERSION=${WP_VERSION:-latest}
+WP_VERSION=${WP_VERSION:-4.6}
 WP_UPGRADE=${WP_UPGRADE:-0}
 WP_LINK_SELF=${WP_LINK_SELF:-0}
 WP_T_SERVER=${WP_T_SERVER:-http://wpti.dev:8000}
@@ -36,7 +36,7 @@ function db {
 function setup_link {
     log 'Setting up symbolic link'
     rm --force --recursive /tmp/wpti
-    cp --recursive $HERE /tmp/wpti
+    cp --preserve=mode,ownership,timestamps --recursive $HERE /tmp/wpti
 }
 
 function start_nginx {
@@ -78,8 +78,8 @@ function install_wp {
     tar --extract --ungzip --file=wordpress-$WP_VERSION.tar.gz --directory=..
     cd ../wordpress
     log '.. clean up plugins'
-    rm --recursive --force wp-content/plugins
-    mkdir --parents wp-content/plugins
+    rm --recursive --force wp-content/plugins wp-content/upgrade
+    mkdir --parents wp-content/plugins wp-content/upgrade
     if [ -f $WP_PATCH ];
     then
         # To create patch use: diff --unified path/to/original.php path/to/fix.php > $WP_PATCH
@@ -93,6 +93,7 @@ function install_wp {
 
 function set_db_engine {
     log "Setting DB engine to $DB_ENGINE"
+    mysql --user=root --execute 'SET GLOBAL sql_mode = "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"'
     mysql --user=root wpti --execute 'SHOW TABLES' | tail -n+2 | xargs -i mysql wpti --execute "ALTER TABLE {} ENGINE=$DB_ENGINE"
 }
 
