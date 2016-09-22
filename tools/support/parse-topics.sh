@@ -11,26 +11,9 @@ function parse_topics {
     done
 }
 
-function parse_date {
-    local file=$1
-    local dateField=$2
-    local result=$(grep --max-count=1 $dateField $file | sed 's/.*"\([0-9][^"]*\)".*/\1/')
-    echo "$result"
-}
-
-function date_year {
-    local date=$1
-    echo $date | egrep -o '^[0-9]{4}'
-}
-
-function date_month {
-    local date=$1
-    echo $date | egrep -o '^[0-9]{4}-[0-9]{2}' | egrep -o '[0-9]{2}$'
-}
-
 function parse_tags_in_file {
     local file=$1
-    egrep --no-filename --only-matching 'https://wordpress.org/tags/wp-testing-[a-z0-9-]+' $file | sed 's/https:\/\/wordpress.org\/tags\/wp-testing-//' | sed 's/\(feature\|bug\|support\)/000-\1/g' | sort | sed 's/000-//g'
+    egrep --no-filename --only-matching 'https://wordpress.org/support/topic-tag/wp-testing-[a-z0-9-]+' $file | sed 's/https:\/\/wordpress.org\/support\/topic-tag\/wp-testing-//' | sed 's/\(feature\|bug\|support\)/000-\1/g' | sort | sed 's/000-//g' | uniq
 }
 
 function parse_url {
@@ -40,22 +23,18 @@ function parse_url {
 
 function parse_title {
     local file=$1
-    egrep --max-count=1 --no-filename --only-matching '<title>.+</title>' $file | sed 's/<title>WordPress &#8250; Support &raquo; //' | sed 's/<\/title>//'
+    egrep --max-count=1 --no-filename --only-matching '<title>.+</title>' $file | sed 's/<title>Topic: //' | sed 's/ &laquo;  WordPress.org Forums<\/title>//' | sed 's/\[Resolved\] //'
 }
 
 function parse_topic {
     local topics=$1
     local file=$2
-    local created=$(parse_date  $file dateCreated)
-    local created_year=$(date_year $created)
-    local created_month=$(date_month $created)
-    local modified=$(parse_date $file dateModified)
     local tags=$(parse_tags_in_file $file | paste -d',' -s | sed 's/,/, /g')
     local url=$(parse_url $file)
     local title=$(parse_title $file)
-    local status=$(grep -o '\[resolved\]' $file > /dev/null && echo resolved || echo new)
+    local status=$(grep -o '\[Resolved\]' $file > /dev/null && echo resolved || echo new)
     local starter=$(grep -o 'Started [0-9 a-z]* ago by [^<]*' $file | sed 's/Started [0-9 a-z]* ago by //')
-    local abstract=$(grep --max-count=1 '<div class="post"><p>' $file | sed 's/<[^>]*>//g' | sed 's/^\s*\(.*\)\s*$/\1/')
+    local abstract=$(egrep -zo --max-count=1 '<div class="bbp-topic-content">\s+<p>[^<]*?</p>' $file | tr '\n' ' ' | sed 's/<[^>]*>//g' | sed 's/^\s*\(.*\)\s*$/\1/')
 
     local status_in_tags=$(extract_status_from_tags "$tags")
     if [ ! -z $status_in_tags ]; then
@@ -63,13 +42,13 @@ function parse_topic {
       local status=$status_in_tags
     fi
 
-    echo -e -n "$created_year\t$created_month\t$status\t$title\t$starter\t$tags\t$url\t$created\t$modified\t" | tee --append $topics
+    echo -e -n "$status\t$title\t$starter\t$tags\t$url\t" | tee --append $topics
     echo "$abstract" | tee --append $topics
 }
 
 function prepare_topics_header {
     local topics=$1
-    echo -e "created_year\tcreated_month\tstatus\ttitle\tstarter\ttags\turl\tcreated\tmodified\tabstract" | tee $topics
+    echo -e "status\ttitle\tstarter\ttags\turl\tabstract" | tee $topics
 }
 
 function prepare_tags_header {
@@ -122,10 +101,9 @@ function remove_status_from_tags {
 
 function main {
     prepare_topics_header topics.txt
-    parse_topics topics.txt './wordpress-support-mirror/wordpress.org/support/topic/*.html'
-
+    parse_topics topics.txt './wordpress-support-mirror/wordpress.org/support/topic/*/*.html'
     prepare_tags_header tags.txt
-    parse_tags tags.txt './wordpress-support-mirror/wordpress.org/support/topic/*.html'
+    parse_tags tags.txt './wordpress-support-mirror/wordpress.org/support/topic/*/*.html'
 
     cat tags.txt | ./generate-markdown-tags.php > TAGS.md
 }

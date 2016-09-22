@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.19.3 ###
+
+Add extension point for long-waited "Redirect addon"
+
+* Minor fix in editor
+
+
 ### 0.19.2 ###
 
 Welcome WordPress 4.6
