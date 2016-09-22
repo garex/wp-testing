@@ -4,7 +4,7 @@
 **Donate link:** https://www.paypal.me/Ustimenko/19.83eur
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
-**Tested up to:** 4.6
+**Tested up to:** 4.6.1
 **Stable tag:** 0.19.2
 **License:** GPLv3
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html
