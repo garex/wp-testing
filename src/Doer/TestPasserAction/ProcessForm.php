@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestPasserAction_ProcessForm extends WpTesting_Doer_TestPasserAction
+class WpTesting_Doer_TestPasserAction_ProcessForm extends WpTesting_Doer_TestPasserAction implements WpTesting_Doer_IRedirector
 {
 
     public function beforeRender(WpTesting_Model_Test $test, WpTesting_Model_Passing $passing = null)
@@ -20,8 +20,11 @@ class WpTesting_Doer_TestPasserAction_ProcessForm extends WpTesting_Doer_TestPas
 
         try {
             $passing->storeAll();
+            $this->wp
+                ->doAction('wp_testing_passer_process_form_passing_saved', $this->passing, $this->test, $this)
+            ;
             $link = $passing->getUrl($this->getCurrentUrl());
-            return $this->redirectAndDie($link);
+            return $this->redirectAnyway($link);
         } catch (fValidationException $e) {
             return $this->dieNotValid($e->getMessage());
         }
@@ -53,7 +56,7 @@ class WpTesting_Doer_TestPasserAction_ProcessForm extends WpTesting_Doer_TestPas
         return key($candidatesCounts);
     }
 
-    private function redirectAndDie($link)
+    public function redirectAnyway($link)
     {
         $this->wp->redirect($link, 302);
         $this->wp->dieMessage(

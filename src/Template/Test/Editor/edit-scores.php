@@ -30,7 +30,7 @@
              <span class="wpt_meta wpt_max" ng-show="scale.maximum != scale.sum">max {{ scale.maximum }}</span>
              <div>{{ scale.title }}</div>
          </th>
-         <th class="bar number wpt_last"><?php echo __('#', 'wp-testing') ?></tdth
+         <th class="bar number wpt_last"><?php echo __('#', 'wp-testing') ?></th>
     </tr>
 </tbody>
 <tbody class="wpt_question" ng-repeat-end ng-mouseenter="isQuestionHovered=true" ng-init="questionIndex = $index; isQuestionHovered = (10 > $index)">
