@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.19.4 ###
+
+Add Arabic language.
+
+* Translated by @memjavad
+
+
 ### 0.19.3 ###
 
 Add extension point for long-waited "Redirect addon"
