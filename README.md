@@ -1,11 +1,11 @@
 # Psychological tests & quizzes #
 
-**Contributors:** ustimenko, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
+**Contributors:** ustimenko, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
 **Donate link:** https://www.paypal.me/Ustimenko/19.83eur
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
 **Tested up to:** 4.6.1
-**Stable tag:** 0.19.3
+**Stable tag:** 0.19.4
 **License:** GPLv3
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,6 +65,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Czech translation thanks to Dalis Dobrota — clubseznamka.cz
 * For Slovak translation thanks to Martin Oravec <oravec@it2core.sk>
 * For Thai translation thanks to Natcha Wiratwattanakul <natchalike@gmail.com>
+* For Arabic translation thanks to Mohammed Jawad <info@researchgate.asia>
 
 ## Installation ##
 

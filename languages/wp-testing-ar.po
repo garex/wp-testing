@@ -1,0 +1,649 @@
+# Copyright (C) 2014 Alexander Ustimenko
+# This file is distrubuted under the GPL-3.0+
+# Translators:
+# Mohammed Jawad <info@researchgate.asia>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: WP testing\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-02 01:49+0600\n"
+"PO-Revision-Date: 2016-11-18 20:37+0000\n"
+"Last-Translator: Mohammed Jawad <info@researchgate.asia> \n"
+"Language-Team: Arabic (http://www.transifex.com/wp-translations/wp-testing/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ../src\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g من ال  %2$g"
+
+#: Doer/Installer.php:38
+msgid "Helps to create psychological tests."
+msgstr "يساعد على إنشاء الاختبارات النفسية."
+
+#: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
+msgid "Respondents’ test results"
+msgstr "نتائج اختبار المستجيبين"
+
+#: Doer/PassingBrowser/Admin.php:78
+msgid "Respondents’ results"
+msgstr "نتائج المستجيبين"
+
+#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "Tests"
+msgstr "الاختبارات"
+
+#: Doer/PassingBrowser/User.php:11
+msgid "My Results"
+msgstr "النتائج"
+
+#: Doer/PassingBrowser/User.php:18
+msgid "My Test Results"
+msgstr "نتائج اختباري"
+
+#: Doer/TestEditor.php:58
+msgid "Maximize"
+msgstr "الحد الأقصى"
+
+#: Doer/TestEditor.php:59
+msgid "Minimize"
+msgstr "الحد الأدنى"
+
+#: Doer/TestEditor.php:66
+msgid "Test Page Options"
+msgstr "صفحة اعدادات الاختبارات"
+
+#: Doer/TestEditor.php:68
+msgid "Result Page Options"
+msgstr "خيارات صفحة النتيجة"
+
+#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "لوحة الأسئلة والأجوبة"
+
+#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "تحرير الدرجات"
+
+#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "تحرير جميع  الدرجات"
+
+#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
+msgid "Edit Formulas"
+msgstr "تحرير الصيغ"
+
+#: Doer/TestEditor.php:215
+msgid "Publish on the home page"
+msgstr "نشر في الصفحة الرئيسية"
+
+#: Doer/TestEditor.php:237
+msgid "Show in title percentage of questions that respondent already answered"
+msgstr "إظهار العنوان كنسبة مئوية من الأسئلة ألتي المستجيب سبق أن أجابه"
+
+#: Doer/TestEditor.php:241
+msgid "Show one question per page"
+msgstr "عرض سؤال واحد في كل صفحة"
+
+#: Doer/TestEditor.php:245
+msgid "Allow multiple answers per question"
+msgstr "السماح بإجابات متعددة للسؤال الواحد"
+
+#: Doer/TestEditor.php:249
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr "إعادة تعيين إجابات المدعي عليها عند الضغط على زر \"الرجوع\""
+
+#: Doer/TestEditor.php:252
+msgid "Button caption"
+msgstr "التسمية التوضيحية للزر"
+
+#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
+msgid "Get Test Results"
+msgstr "الحصول على نتائج الاختبار"
+
+#: Doer/TestEditor.php:271
+msgid "Show scales chart"
+msgstr "إظهار التدريج البياني"
+
+#: Doer/TestEditor.php:275
+msgid "Show scales"
+msgstr "اظهار المقاييس"
+
+#: Doer/TestEditor.php:279
+msgid "Sort scales by score"
+msgstr "فرز المقاييس حسب الدرجات"
+
+#: Doer/TestEditor.php:283
+msgid "Show test description"
+msgstr "إظهار وصف الاختبار"
+
+#: Doer/TestEditor.php:375
+msgid "Test data not saved"
+msgstr "لم يتم حفظ النتيجة"
+
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
+#: Template/Test/Passer/fill-form.php:79
+msgid "Test is under construction"
+msgstr "الاختبار قيد الإنشاء"
+
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:80
+msgid "You can not get any results from it yet."
+msgstr "لا يمكنك أن تحصل أي نتائج منه حتى الآن."
+
+#: Doer/TestPasserAction/FillForm.php:63
+msgid "{percentage}% answered"
+msgstr "{percentage}% تمت الاجابة علية"
+
+#: Doer/TestPasserAction/FillForm.php:72
+msgid "Next"
+msgstr "التالي"
+
+#: Doer/TestPasserAction/GetResults.php:75
+msgid "Test result not found"
+msgstr "لم يتم ايجاد نتيجة الاختبار"
+
+#: Doer/TestPasserAction/GetResults.php:76
+msgid "You can not get anything from nothing."
+msgstr "لا يمكنك أن تحصل على أي نتائج منه حتى الآن."
+
+#: Doer/TestPasserAction/GetResults.php:85
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "آسف ولكن المتصفح غير متوافق %s لعرض المخطط"
+
+#: Doer/TestPasserAction/ProcessForm.php:74
+msgid "Test data not valid"
+msgstr "البيانات غير صالحة."
+
+#: Doer/TestPasserAction/ProcessForm.php:75
+msgid "You passed not valid data to test."
+msgstr "لا يمكنك تمرير بيانات غير صالحة لاختبار."
+
+#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
+#: Widget/PassingTable/User.php:26
+msgid "Test"
+msgstr "اختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:15
+msgctxt "test"
+msgid "Add New"
+msgstr "اضافة اختبار جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:16
+msgid "Add New Test"
+msgstr "اضافة اختبار جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:17
+msgid "Edit Test"
+msgstr "تحرير الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:18
+msgid "View Test"
+msgstr "عرض الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:19
+msgid "Search Tests"
+msgstr "البحث عن الاختبارات"
+
+#: Doer/WordPressEntitiesRegistrator.php:20
+msgid "Parent Test:"
+msgstr "تصنيف الاب :"
+
+#: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
+msgid "All Tests"
+msgstr "جميع الاختبارات"
+
+#: Doer/WordPressEntitiesRegistrator.php:24
+msgid "Update Test"
+msgstr "تحديث الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:25
+msgid "New Test Name"
+msgstr "اسم اختبار الجديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:26
+msgid "Parent Test"
+msgstr "اختبار الاب"
+
+#: Doer/WordPressEntitiesRegistrator.php:28
+msgid "New Test"
+msgstr "اختبار جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:29
+msgid "No Tests found"
+msgstr "لم يتم ايجاد اي اختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:30
+msgid "No Tests found in Trash"
+msgstr "لم يتم ايجاد اي اختبار في المهملات"
+
+#: Doer/WordPressEntitiesRegistrator.php:32
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "أداة لقياس بنيات غير ملحوظة (المتغيرات الكامنة) . عادة  هو سلسلة من المهام أو المشاكل التي مستجيب يجب عليه حلها."
+
+#: Doer/WordPressEntitiesRegistrator.php:63
+#: Template/Test/Editor/edit-questions-answers.php:50
+msgid "Test Answers"
+msgstr "اجابات الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:64
+msgid "Test Answer"
+msgstr "اجابة الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:65
+msgid "Add New Answer"
+msgstr "اضافة اجابات جديدة"
+
+#: Doer/WordPressEntitiesRegistrator.php:66
+msgid "Edit Answer"
+msgstr "تعديل الاجابة"
+
+#: Doer/WordPressEntitiesRegistrator.php:67
+msgid "View Answer"
+msgstr "عرض الاجابة"
+
+#: Doer/WordPressEntitiesRegistrator.php:68
+msgid "Search Answers"
+msgstr "بحث عن الاجابات"
+
+#: Doer/WordPressEntitiesRegistrator.php:69
+msgid "Parent Answer:"
+msgstr "تصنيف الاب للاجابة :"
+
+#: Doer/WordPressEntitiesRegistrator.php:71
+msgid "Answers"
+msgstr "الاجابات"
+
+#: Doer/WordPressEntitiesRegistrator.php:72
+msgid "All Answers"
+msgstr "جميع الاجابات"
+
+#: Doer/WordPressEntitiesRegistrator.php:73
+msgid "Update Answer"
+msgstr "تحديث الاجابات"
+
+#: Doer/WordPressEntitiesRegistrator.php:74
+msgid "New Answer Name"
+msgstr "اسم اجابة جديدة"
+
+#: Doer/WordPressEntitiesRegistrator.php:75
+msgid "Parent Answer"
+msgstr "تصنيف الاب للاجابة"
+
+#: Doer/WordPressEntitiesRegistrator.php:77
+msgid "New Answer"
+msgstr "اجابة جديدة"
+
+#: Doer/WordPressEntitiesRegistrator.php:78
+msgid "No Answers found"
+msgstr "لم يتم ايجاد اجابات"
+
+#: Doer/WordPressEntitiesRegistrator.php:79
+msgid "No Answers found in Trash"
+msgstr "لم يتم ايجاد اجابات في المهملات"
+
+#: Doer/WordPressEntitiesRegistrator.php:84
+msgid "Test Scales"
+msgstr "مقاييس الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:85
+msgid "Test Scale"
+msgstr "مقياس الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:86
+msgid "Add New Scale"
+msgstr "اضافة مقياس جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:87
+msgid "Edit Scale"
+msgstr "تعديل المقياس"
+
+#: Doer/WordPressEntitiesRegistrator.php:88
+msgid "View Scale"
+msgstr "عرض المقياس"
+
+#: Doer/WordPressEntitiesRegistrator.php:89
+msgid "Search Scales"
+msgstr "بحث من المقياس"
+
+#: Doer/WordPressEntitiesRegistrator.php:90
+msgid "Parent Scale:"
+msgstr "تصنيف الاب"
+
+#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
+#: Widget/PassingTable/User.php:27
+msgid "Scales"
+msgstr "مقاييس"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
+msgid "All Scales"
+msgstr "جميع المقاييس"
+
+#: Doer/WordPressEntitiesRegistrator.php:94
+msgid "Update Scale"
+msgstr "تحديث المقياس"
+
+#: Doer/WordPressEntitiesRegistrator.php:95
+msgid "New Scale Name"
+msgstr "اسم مقياس الجديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:96
+msgid "Parent Scale"
+msgstr "تصنيف مقياس الاب"
+
+#: Doer/WordPressEntitiesRegistrator.php:98
+msgid "New Scale"
+msgstr "مقياس جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:99
+msgid "No Scales found"
+msgstr "لم يتم ايجاد اي مقياس"
+
+#: Doer/WordPressEntitiesRegistrator.php:100
+msgid "No Scales found in Trash"
+msgstr "لم يتم ايجاد اي مقياس في المهملات"
+
+#: Doer/WordPressEntitiesRegistrator.php:105
+msgid "Test Results"
+msgstr "نتائج الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:106
+msgid "Test Result"
+msgstr "نتيجة الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:107
+msgid "Add New Result"
+msgstr "اضافة نتيجة جديدة"
+
+#: Doer/WordPressEntitiesRegistrator.php:108
+msgid "Edit Result"
+msgstr "تعديل النتيجة"
+
+#: Doer/WordPressEntitiesRegistrator.php:109
+msgid "View Result"
+msgstr "عرض النتيجة"
+
+#: Doer/WordPressEntitiesRegistrator.php:110
+msgid "Search Results"
+msgstr "نتائج البحث"
+
+#: Doer/WordPressEntitiesRegistrator.php:111
+msgid "Parent Result:"
+msgstr "تصنيف الاب للنتائج"
+
+#: Doer/WordPressEntitiesRegistrator.php:113
+#: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
+#: Widget/PassingTable/User.php:28
+msgid "Results"
+msgstr "النتائج"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
+msgid "All Results"
+msgstr "جميع النتائج"
+
+#: Doer/WordPressEntitiesRegistrator.php:115
+msgid "Update Result"
+msgstr "تحديث النتيجة"
+
+#: Doer/WordPressEntitiesRegistrator.php:116
+msgid "New Result Name"
+msgstr "اسم جديد للنتيجة"
+
+#: Doer/WordPressEntitiesRegistrator.php:117
+msgid "Parent Result"
+msgstr " الاب للنتائج"
+
+#: Doer/WordPressEntitiesRegistrator.php:119
+msgid "New Result"
+msgstr "نتيجة جديدة"
+
+#: Doer/WordPressEntitiesRegistrator.php:120
+msgid "No Results found"
+msgstr "لم يتم ايجاد النتائج"
+
+#: Doer/WordPressEntitiesRegistrator.php:121
+msgid "No Results found in Trash"
+msgstr "لم يتم ايجاد نتائج في المهملات"
+
+#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:134
+msgid "Test Categories"
+msgstr "تصانيف الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:127
+msgid "Test Category"
+msgstr "تصنيف الاختبار"
+
+#: Doer/WordPressEntitiesRegistrator.php:128
+msgid "Add New Category"
+msgstr "اضافة تصنيف جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:129
+msgid "Edit Category"
+msgstr "تعديل التصنيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:130
+msgid "View Category"
+msgstr "عرض التصنيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:131
+msgid "Search Categories"
+msgstr "بحث عن التصانيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:132
+msgid "Parent Category:"
+msgstr "تصنيف الاب :"
+
+#: Doer/WordPressEntitiesRegistrator.php:135
+msgid "All Categories"
+msgstr "جميع التصانيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:136
+msgid "Update Category"
+msgstr "تحديث التصنيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:137
+msgid "New Category Name"
+msgstr "اسم تصنيف الجديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:138
+msgid "Parent Category"
+msgstr "تصنيف الاب"
+
+#: Doer/WordPressEntitiesRegistrator.php:140
+msgid "New Category"
+msgstr "تصنيف جديد"
+
+#: Doer/WordPressEntitiesRegistrator.php:141
+msgid "No Categories found"
+msgstr "لايوجد تصانيف"
+
+#: Doer/WordPressEntitiesRegistrator.php:142
+msgid "No Categories found in Trash"
+msgstr "لايوجد تصنيف على المهملات"
+
+#: Model/Formula.php:246
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "المعادلة لل %s  غير متكاملة لانها تحتوي على الارقام و نسب معاً"
+
+#: Model/Formula.php:259
+#, php-format
+msgid "Formula for %s has error"
+msgstr "المعادلة لل %s فيها بعض الاخطاء"
+
+#: Model/FormulaVariable/ScaleValue.php:18
+msgid "Scale Variable"
+msgstr "متغيرات المقياس"
+
+#: Model/FormulaVariable/SelectedAnswer.php:18
+#: Template/Test/Editor/edit-formulas.php:45
+#, php-format
+msgid "Question %1$s answer %2$s"
+msgstr "فقرة  %1$s اجابة  %2$s"
+
+#: Model/FormulaVariable/SelectedAnswer.php:19
+msgid "Answer Variable"
+msgstr "متغيرات الاجابة"
+
+#: Model/Shortcode/Test.php:19
+#, php-format
+msgid "Test \"%s\" is not published. You can not include it anywhere."
+msgstr "اختبار \"%s\" لم يتم نشرها بعد ، لايمكنك نشرها حاليا"
+
+#: Model/Shortcode/TestReadMore.php:30
+msgid "Start Test"
+msgstr "ابدء الاختبار"
+
+#: Template/Test/Editor/edit-formulas.php:3
+msgid "Formula"
+msgstr "المعادلة"
+
+#: Template/Test/Editor/edit-formulas.php:4
+msgid "Result"
+msgstr "النتيجة"
+
+#: Template/Test/Editor/edit-formulas.php:28
+msgid "No formulas to edit. To edit formulas you must have results selected."
+msgstr "لا توجد معادلات للتعديل ، لتعديل المعادلة يجب ان يكون لديك بعض النتائج"
+
+#: Template/Test/Editor/edit-formulas.php:37
+msgid "Variables"
+msgstr "متغيرات"
+
+#: Template/Test/Editor/edit-formulas.php:38
+msgid "Comparisions"
+msgstr "مقارنات"
+
+#: Template/Test/Editor/edit-formulas.php:39
+msgid "Operators"
+msgstr "مشغلات"
+
+#: Template/Test/Editor/edit-formulas.php:58
+msgid "Comparision"
+msgstr "مقارنة"
+
+#: Template/Test/Editor/edit-formulas.php:64
+msgid "Operator"
+msgstr "المشغل"
+
+#: Template/Test/Editor/edit-formulas.php:72
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
+msgstr "لا توجد متغيرات للصيغ المتوفرة. لاستخدام المتغيرات يجب أن لديك جداول محددة أو لديك سؤال وجواب واحد على الأقل."
+
+#: Template/Test/Editor/edit-formulas.php:81
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "الأرقام والنسب المئوية المسموح به. على سبيل المثال \"مقياس- الشخصية\" على مجموع 30، فان \"مقياس- الشخصية> 15\" و \"مقياس-الشخصية  > 50%\" هي نفسها."
+
+#: Template/Test/Editor/edit-questions-answers.php:7
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "لا توجد أسئلة لتحرير. إضافة أسئلة جديدة وبعد ذلك سوف تظهر هنا."
+
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "حذف الفقرة"
+
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "حذف الاجابة"
+
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "إضافة الإجابة الفردية"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
+#, php-format
+msgid ""
+"— unique to each question. If you have same answers to all test questions, "
+"use the %s"
+msgstr "— فريدة من نوعها لكل سؤال. إذا كان لديك نفس الإجابات على جميع أسئلة الاختبار، استخدام %s"
+
+#: Template/Test/Editor/edit-questions-answers.php:57
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "الصق هنا أسئلتك و سيتم ملء الحقول أدناه تلقائياً"
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "اضافة اسئلة"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "اضافة من ملف نصي"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "لا توجد درجات لتحريرها. يجب عليك تحرير درجات الأسئلة والأجوبة في المقاييس المحددة."
+
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:35
+msgid "Scale"
+msgstr "مقياس"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Score"
+msgstr "درجة"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Answer"
+msgstr "الاجوبة"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "الاسئلة"
+
+#: Template/Test/Editor/quick-fill-scores.php:47
+msgid "Add new combination"
+msgstr "اضافة تشكيلة جديدة"
+
+#: Template/Test/Passer/fill-form.php:55
+msgid "Please select at least one answer."
+msgstr "الرجاء اختيار اجابة واحدة على الاقل"
+
+#: Template/Test/Passer/fill-form.php:56
+msgid "Please choose only one answer."
+msgstr "الرجاء اختيار اجابة واحده فقط"
+
+#: Widget/PassingTable/Admin.php:91
+msgid "Device"
+msgstr "الجهاز"
+
+#: Widget/PassingTable/Admin.php:92
+msgid "IP address"
+msgstr "رقم ال اي بي"
+
+#: Widget/PassingTable/Admin.php:93
+msgid "Browser"
+msgstr "المتصفح"
