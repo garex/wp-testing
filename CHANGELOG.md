@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.19.5 ###
+
+Welcome WordPress 4.7
+
+* Check compatibility
+* No new functionality was added!
+
+
 ### 0.19.4 ###
 
 Add Arabic language.
