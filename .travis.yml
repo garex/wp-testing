@@ -2,7 +2,7 @@ language: php
 
 php:
   - 5.6
-  - 5.3
+  - 5.2
 
 env:
   global:
@@ -29,7 +29,7 @@ matrix:
   include:
     - php: 7.0
       env: WP_VERSION=
-    - php: 5.2
+    - php: 5.3
       env: WP_VERSION=
     - php: 5.4
       env: WP_VERSION=
@@ -41,7 +41,11 @@ matrix:
       env: PLUGINS=akismet.3.1.11:jetpack.4.2.2:wordpress-seo.3.3.4:wordfence.6.1.14:contact-form-7.4.5:google-sitemap-generator.4.0.8
   allow_failures:
     - php: 5.2
-      env: WP_VERSION=
+      env: WP_VERSION=3.5
+    - php: 5.2
+      env: WP_VERSION=3.6
+    - php: 5.2
+      env: WP_VERSION=3.7
 
 sudo: false
 
