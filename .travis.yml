@@ -69,6 +69,10 @@ script:
   - vendor/bin/phpunit-php52
   - cd $TRAVIS_BUILD_DIR/tests/mocha && mocha-casperjs --timeout=360000
 
+after_script:
+  - cd $TRAVIS_BUILD_DIR
+  - tests/integration-environment/shutdown.sh
+
 cache:
   directories:
     - vendor
