@@ -1,11 +1,11 @@
 # Psychological tests & quizzes #
 
-**Contributors:** ustimenko, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
+**Contributors:** ustimenko, mimaes, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
 **Donate link:** https://www.paypal.me/Ustimenko/19.83eur
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
 **Tested up to:** 4.7
-**Stable tag:** 0.19.5
+**Stable tag:** 0.19.6
 **License:** GPLv3
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,7 +42,7 @@ Respondent will get **results** on it's own individual passing page, which will 
 **Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button, allow multiple answers per question, show percentage of answered questions and show one question per page.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
-Wp-testing localized into sixteen languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+Wp-testing localized into eighteen languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
 **Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to 4.4) and PHP (from 5.2 to 7.0) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in [multisite mode](https://circleci.com/gh/garex/wp-testing/tree/develop). So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
@@ -66,6 +66,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Slovak translation thanks to Martin Oravec <oravec@it2core.sk>
 * For Thai translation thanks to Natcha Wiratwattanakul <natchalike@gmail.com>
 * For Arabic translation thanks to Mohammed Jawad <info@researchgate.asia>
+* For Romanian translation thanks to Maria Estela Mihoc <maria_estela_mihoc@yahoo.com>
 
 ## Installation ##
 

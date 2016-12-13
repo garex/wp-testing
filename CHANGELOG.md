@@ -1,6 +1,12 @@
 
 ## Changelog ##
 
+### 0.19.6 ###
+
+Add Romanian language.
+
+* Translated by @mimaes
+
 
 ### 0.19.5 ###
 
