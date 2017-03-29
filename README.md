@@ -1,6 +1,6 @@
 # Psychological tests & quizzes #
 
-**Contributors:** ustimenko, mimaes, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
+**Contributors:** ustimenko, ufukluker, mimaes, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
 **Donate link:** https://www.paypal.me/Ustimenko/19.83eur
 **Tags:** psychological, testing, test, quiz
 **Requires at least:** 3.2
@@ -55,7 +55,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Bulgarian translation thanks to Borry Semerdzhieva <borry.semerdzhieva@gmail.com>
 * For German translation thanks to Sascha <info@newwaystec.com>
 * For Italian translation thanks to Ilaria Rizzo <dott.rizzo.ilaria@gmail.com>
-* For Turkish translation thanks to Islam Kurtuldu
+* For Turkish translation thanks to Islam Kurtuldu and Ufuk Luker — http://ufukluker.com/
 * For Dutch translation thanks to Jacha Heukels <info@orthomanueeldierenarts.nl> and Patrick van de Kerkhof <patrick@metavoor.nl>
 * For French translation thanks to Christophe Peiffer <chris.peiffer@gmail.com>
 * For Chinese translation thanks to Kyle Wang — https://github.com/osfans

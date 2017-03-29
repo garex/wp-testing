@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-06-01 19:50+0000\n"
+"PO-Revision-Date: 2017-03-29 11:31+0200\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/wp-translations/wp-testing/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -15,16 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 2.0\n"
 "X-Poedit-Basepath: ../src\n"
-"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;"
+"__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%2$g üzerinden %1$g"
+msgstr "%2$g / %1$g"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -38,14 +39,13 @@ msgstr "Yanıtlayanların test sonuçları"
 msgid "Respondents’ results"
 msgstr "Yanıtlayanların sonuçları"
 
-#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
-#: Doer/WordPressEntitiesRegistrator.php:22
+#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13 Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
 msgstr "Testler"
 
 #: Doer/PassingBrowser/User.php:11
 msgid "My Results"
-msgstr "Benim-den sonuçlanmak"
+msgstr "Benim sonuçlarım"
 
 #: Doer/PassingBrowser/User.php:18
 msgid "My Test Results"
@@ -57,11 +57,11 @@ msgstr "En üst düzeye çıkarmak"
 
 #: Doer/TestEditor.php:59
 msgid "Minimize"
-msgstr "En aza indirmek"
+msgstr "Asgari düzeye indirmek"
 
 #: Doer/TestEditor.php:66
 msgid "Test Page Options"
-msgstr "Test Sayfası Seçenekleri"
+msgstr "Test sayfası seçenekleri"
 
 #: Doer/TestEditor.php:68
 msgid "Result Page Options"
@@ -69,27 +69,27 @@ msgstr "Sonuç sayfası seçenekleri"
 
 #: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
-msgstr "Sorular ve cevaplar Düzenle"
+msgstr "Soruları ve yanıtları düzenle"
 
 #: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
-msgstr "Puanları Düzenle"
+msgstr "Puanları düzenle"
 
 #: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
-msgstr "Hızlı Doldurma Sonuçları"
+msgstr "Puanları hızlıca doldur"
 
 #: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
-msgstr "Formülleri Düzenle"
+msgstr "Formülleri düzenle"
 
 #: Doer/TestEditor.php:215
 msgid "Publish on the home page"
-msgstr "Ana Sayfada Yayınla"
+msgstr "Ana sayfada yayınla"
 
 #: Doer/TestEditor.php:237
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Başlık bu davalı soruların yüzdesini göstermek zaten cevap"
+msgstr "Başlıkta hali hazırda yanıtlanan soruların yüzdesini göster"
 
 #: Doer/TestEditor.php:241
 msgid "Show one question per page"
@@ -97,204 +97,197 @@ msgstr "Sayfa başına bir soru göster"
 
 #: Doer/TestEditor.php:245
 msgid "Allow multiple answers per question"
-msgstr "Soru başına birden fazla yanıt izin ver"
+msgstr "Sorulara çoklu yanıt verilmesine izin ver"
 
 #: Doer/TestEditor.php:249
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "\"Geri\" butonuna basıldığında davalı cevapları sıfırlayın"
+msgstr "\"Geri\" düğmesine basıldığında yanıtlanan soruları sıfırla"
 
 #: Doer/TestEditor.php:252
 msgid "Button caption"
-msgstr "Düğme başlık"
+msgstr "Düğme başlığı"
 
 #: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
 msgid "Get Test Results"
-msgstr "Test Sonuçlarını Al"
+msgstr "Test sonucunu getir"
 
 #: Doer/TestEditor.php:271
 msgid "Show scales chart"
-msgstr "Ölçekler grafik göster"
+msgstr "Grafikleri ölçek olarak göster"
 
 #: Doer/TestEditor.php:275
 msgid "Show scales"
-msgstr "Ölçekler göster"
+msgstr "Ölçekleri göster"
 
 #: Doer/TestEditor.php:279
 msgid "Sort scales by score"
-msgstr "Puana göre sıralama ölçekler"
+msgstr "Ölçekleri puana göre sırala"
 
 #: Doer/TestEditor.php:283
 msgid "Show test description"
-msgstr "Test açıklama göster"
+msgstr "Test açıklamasını göster"
 
 #: Doer/TestEditor.php:375
 msgid "Test data not saved"
 msgstr "Test verisi kaydedilmedi"
 
-#: Doer/TestPasser/DirectRenderer.php:19
-#: Doer/TestPasser/FilterRenderer.php:105
-#: Template/Test/Passer/fill-form.php:79
+#: Doer/TestPasser/DirectRenderer.php:19 Doer/TestPasser/FilterRenderer.php:105 Template/Test/Passer/fill-form.php:79
 msgid "Test is under construction"
-msgstr "Test Yapım Aşamasındadır"
+msgstr "Test yapım aşamasındadır"
 
-#: Doer/TestPasser/FilterRenderer.php:106
-#: Template/Test/Passer/fill-form.php:80
+#: Doer/TestPasser/FilterRenderer.php:106 Template/Test/Passer/fill-form.php:80
 msgid "You can not get any results from it yet."
-msgstr "Henüz Sonuç Alamazsınız"
+msgstr "Henüz sonuç alamazsınız"
 
 #: Doer/TestPasserAction/FillForm.php:63
 msgid "{percentage}% answered"
-msgstr "{percentage}% yanıtladı"
+msgstr "{percentage}% yanıtlandı"
 
 #: Doer/TestPasserAction/FillForm.php:72
 msgid "Next"
-msgstr "İleri"
+msgstr "Sonraki"
 
 #: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
-msgstr "Test sonuç bulunamadı"
+msgstr "Test sonuçları bulunamadı"
 
 #: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
-msgstr "Sana bir şey hiçbir şey elde edemezsiniz."
+msgstr "Hiçbir şey elde edemezsiniz."
 
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Üzgünüm ama senin kaş %s grafiği görüntülemek için uyumlu değil"
+msgstr "Üzgünüm, tarayıcınız %s grafiği görüntülemek için uyumlu değil"
 
 #: Doer/TestPasserAction/ProcessForm.php:74
 msgid "Test data not valid"
-msgstr "Sınama verileri geçerli değil"
+msgstr "Test verileri geçerli değil"
 
 #: Doer/TestPasserAction/ProcessForm.php:75
 msgid "You passed not valid data to test."
-msgstr "Test için geçerli olmayan veri geçti."
+msgstr "Geçerli olmayan veri geçtiniz."
 
-#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
-#: Widget/PassingTable/User.php:26
+#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87 Widget/PassingTable/User.php:26
 msgid "Test"
 msgstr "Test"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Yeni Ekle"
+msgstr "Yeni ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Yeni Test Ekle"
+msgstr "Yeni test ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Testi Düzenle"
+msgstr "Testi düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Testi Görüntüle"
+msgstr "Testi görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Test Ara"
+msgstr "Test ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Ana Test"
+msgstr "Ana test:"
 
 #: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
 msgid "All Tests"
-msgstr "Tüm Testler"
+msgstr "Tüm testler"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Testi Güncelle"
+msgstr "Testi güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Yeni Test Adı"
+msgstr "Yeni test adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Ana Test"
+msgstr "Ana test"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Yeni Test"
+msgstr "Yeni test"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Test Bulunamadı"
+msgstr "Herhangi bir test bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Çöp Kutusunda Test Bulunamadı"
+msgstr "Çöp kutusunda herhangi bir test bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
-msgid ""
-"Instrument to measure unobserved constructs (latent variables). Typically it"
-" is a series of tasks or problems that the respondent has to solve."
-msgstr "Enstrüman denetlenmediğini yapıları (latent değişkenler) ölçmek için. Genellikle bu görevleri ya da sorunları çözmek için davalı olan bir dizi var."
+msgid "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
+msgstr "Gözlenmemiş yapıları (gizli değişkenler) ölçmek için aygıt. Genellikle, katılımcının çözmesi gereken bir dizi görev ya da sorundur."
 
-#: Doer/WordPressEntitiesRegistrator.php:63
-#: Template/Test/Editor/edit-questions-answers.php:50
+#: Doer/WordPressEntitiesRegistrator.php:63 Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
-msgstr "Test Cevapları"
+msgstr "Test yanıtları"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
-msgstr "Test Cevabı"
+msgstr "Test yanıtı"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
-msgstr "Yeni Cevap Ekle"
+msgstr "Yeni yanıt ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
-msgstr "Cevabı Düzenle"
+msgstr "Yanıtı düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
-msgstr "Cevabı Görüntüle"
+msgstr "Yanıtı görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
-msgstr "Cevapları Ara"
+msgstr "Yanıtları ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
-msgstr "Ana Cevap"
+msgstr "Ana anıt:"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
-msgstr "Cevaplar"
+msgstr "Yanıtlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
-msgstr "Tüm Cevaplar"
+msgstr "Tüm yanıtlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
-msgstr "Cevabı Güncelle"
+msgstr "Yanıtı güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
-msgstr "Yeni Cevap Adı"
+msgstr "Yeni yanıt adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
-msgstr "Ana Cevap"
+msgstr "Ana yanıt"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
-msgstr "Yeni Cevap"
+msgstr "Yeni yanıt"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
-msgstr "Cevap Bulunamadı"
+msgstr "Yanıt bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
-msgstr "Çöp Kutusunda Cevap Bulunamadı"
+msgstr "Çöp kutusunda herhangi bir yanıt bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
@@ -306,26 +299,25 @@ msgstr "Test Ölçeği"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
-msgstr "Yeni Ölçek Ekle"
+msgstr "Yeni Ölçek ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
-msgstr "Ölçeği Düzenle"
+msgstr "Ölçeği düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
-msgstr "Ölçeği Görüntüle"
+msgstr "Ölçeği görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
-msgstr "Ölçekleri Ara"
+msgstr "Ölçekleri ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
-msgstr "Ana Ölçek"
+msgstr "Ana Ölçek:"
 
-#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
-#: Widget/PassingTable/User.php:27
+#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88 Widget/PassingTable/User.php:27
 msgid "Scales"
 msgstr "Ölçekler"
 
@@ -335,15 +327,15 @@ msgstr "Tüm Ölçekler"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
-msgstr "Ölçeği Güncelle"
+msgstr "Ölçeği güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
-msgstr "Yeni Ölçek Adı"
+msgstr "Yeni ölçek adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
-msgstr "Ana Ölçek"
+msgstr "Ana ölçek"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
@@ -351,90 +343,87 @@ msgstr "Yeni Ölçek"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
-msgstr "Ölçek Bulunamadı"
+msgstr "Ölçek bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
-msgstr "Çöp Kutusunda Ölçek Bulunamadı"
+msgstr "Çöp kutusunda ölçek bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
-msgstr "Test Sonuçları"
+msgstr "Test sonuçları"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
-msgstr "Test Sonucu"
+msgstr "Test sonucu"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
-msgstr "Yeni Sonuç Ekle"
+msgstr "Yeni sonuç ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
-msgstr "Sonucu Düzenle"
+msgstr "Sonucu düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
-msgstr "Sonucu Görüntüle"
+msgstr "Sonucu görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
-msgstr "Arama Sonuçları"
+msgstr "Arama sonuçları"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
-msgstr "Ana Sonuç"
+msgstr "Ana sonuç:"
 
-#: Doer/WordPressEntitiesRegistrator.php:113
-#: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
-#: Widget/PassingTable/User.php:28
+#: Doer/WordPressEntitiesRegistrator.php:113 Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89 Widget/PassingTable/User.php:28
 msgid "Results"
 msgstr "Sonuçlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
-msgstr "Tüm Sonuçlar"
+msgstr "Tüm sonuçlar"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
-msgstr "Sonucu Güncelle"
+msgstr "Sonucu güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
-msgstr "Yeni Sonuç Adı"
+msgstr "Yeni sonuç adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
-msgstr "Ana Sonuç"
+msgstr "Ana sonuç"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
-msgstr "Yeni Sonuç"
+msgstr "Yeni sonuç"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
-msgstr "Sonuç Bulunamadı"
+msgstr "Sonuç bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
-msgstr "Çöp Kutusunda Sonuç Bulunamadı"
+msgstr "Çöp kutusunda sonuç bulunamadı"
 
-#: Doer/WordPressEntitiesRegistrator.php:126
-#: Doer/WordPressEntitiesRegistrator.php:134
+#: Doer/WordPressEntitiesRegistrator.php:126 Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
-msgstr "Test Kategorileri"
+msgstr "Test kategorileri"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
-msgstr "Test Kategorisi"
+msgstr "Test kategorisi"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
-msgstr "Yeni Kategori Ekle"
+msgstr "Yeni kategori ekle"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
-msgstr "Kategoriyi Düzenle"
+msgstr "Kategoriyi düzenle"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
@@ -442,7 +431,7 @@ msgstr "Kategoriyi görüntüle"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
-msgstr "Kategorilerde Ara"
+msgstr "Kategorilerde ara"
 
 #: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
@@ -450,15 +439,15 @@ msgstr "Ana kategori:"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
-msgstr "Tüm Kategoriler"
+msgstr "Tüm kategoriler"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
-msgstr "Kategoriyi Güncelle"
+msgstr "Kategoriyi güncelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
-msgstr "Yeni Kategori Adı"
+msgstr "Yeni kategori adı"
 
 #: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
@@ -466,20 +455,19 @@ msgstr "Ana kategori"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
-msgstr "Yeni Kategori"
+msgstr "Yeni kategori"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
-msgstr "Kategori Bulunamadı"
+msgstr "Kategori bulunamadı"
 
 #: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
-msgstr "Çöp Kutusunda Kategori Bulunamadı"
+msgstr "Çöp kutusunda kategori bulunamadı"
 
 #: Model/Formula.php:246
 #, php-format
-msgid ""
-"Formula for %s is incompatible as it contains both numbers and percentages"
+msgid "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "Sayı ve yüzdeler içerdiğinden formül %s için uyumlu değil"
 
 #: Model/Formula.php:259
@@ -489,26 +477,25 @@ msgstr "%s için formül hatası"
 
 #: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
-msgstr "Ölçek Değişkeni"
+msgstr "Ölçek değişkeni"
 
-#: Model/FormulaVariable/SelectedAnswer.php:18
-#: Template/Test/Editor/edit-formulas.php:45
+#: Model/FormulaVariable/SelectedAnswer.php:18 Template/Test/Editor/edit-formulas.php:45
 #, php-format
 msgid "Question %1$s answer %2$s"
 msgstr "Soru %1$s yanıt %2$s"
 
 #: Model/FormulaVariable/SelectedAnswer.php:19
 msgid "Answer Variable"
-msgstr "Cevap Değişken"
+msgstr "Yanıt değişkeni"
 
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "Test \"%s\" yayımlanmıyor. Bunu her yerde dahil edebilirsiniz değil."
+msgstr "Test \"%s\" yayımlanmıyor. Bu testi her yerde kullanamazsınız."
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "Testi Başlat"
+msgstr "Testi başlat"
 
 #: Template/Test/Editor/edit-formulas.php:3
 msgid "Formula"
@@ -520,7 +507,7 @@ msgstr "Sonuç"
 
 #: Template/Test/Editor/edit-formulas.php:28
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Düzenlenecek formül bulunmamaktadır. Formülleri düzenlemek için sonuçları seçmelisiniz"
+msgstr "Düzenlenecek formül bulunmamaktadır. Formülleri düzenlemek için sonuçları seçmelisiniz."
 
 #: Template/Test/Editor/edit-formulas.php:37
 msgid "Variables"
@@ -543,82 +530,65 @@ msgid "Operator"
 msgstr "Operatör"
 
 #: Template/Test/Editor/edit-formulas.php:72
-msgid ""
-"No variables for formulas available. To use variables you must have scales "
-"selected or have at least one question and answer."
-msgstr "Mevcut formüller yok değişkenler. Değişkenleri kullanmak için seçilen ölçekler ya da en azından bir soru ve cevap verilmesi zorunludur."
+msgid "No variables for formulas available. To use variables you must have scales selected or have at least one question and answer."
+msgstr "Formüller için değişken bulunamadı. Değişkenleri kullanmak için ölçekleri seçmelisiniz ya da en azından bir soru ve yanıt bulunması gerekmektedir."
 
 #: Template/Test/Editor/edit-formulas.php:81
-msgid ""
-"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
-"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Sayı ve yüzdeler girebilir. Örneğin \"olcek-bla\" toplam 30, sonra da vardır \"olcek-bla > 15\" ve \"olcek-bla > %50\" aynı."
+msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Sayı ve yüzdeler girebilir. Örneğin \"olcek-bla\" toplam 30 adet, sonra \"olcek-bla > 15\" ve \"olcek-bla > %50\" aynı."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
-msgid ""
-"No questions to edit. Add new questions and then they will appear here."
+msgid "No questions to edit. Add new questions and then they will appear here."
 msgstr "Düzenlenecek soru bulunmuyor. Burada gözükmesi için soru ekleyin"
 
 #: Template/Test/Editor/edit-questions-answers.php:22
 msgid "Remove Question"
-msgstr "Soru kaldırma"
+msgstr "Soru kaldır"
 
 #: Template/Test/Editor/edit-questions-answers.php:39
 msgid "Remove Answer"
-msgstr "Cevap kaldırmak"
+msgstr "Yanıt kaldır"
 
 #: Template/Test/Editor/edit-questions-answers.php:49
 msgid "Add Individual Answer"
-msgstr "Tek tek cevap ekleyin"
+msgstr "Tek tek yanıt ekleyin"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
-msgid ""
-"— unique to each question. If you have same answers to all test questions, "
-"use the %s"
-msgstr "-her soruya özeldir. Eğer tüm sorulara cevabınız aynı ise %s kullanın"
+msgid "— unique to each question. If you have same answers to all test questions, use the %s"
+msgstr "— her soru için özeldir. Eğer tüm sorulara cevabınız aynı ise %s kullanın"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
+msgid "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
 msgstr "Sorularınızı buraya yapıştırınız. Numaralar ve diğer indeksler otomatik olarak ayrılacaktır"
 
 #: Template/Test/Editor/edit-questions-answers.php:62
 msgid "Add Question"
-msgstr "Soru Ekle"
+msgstr "Soru ekle"
 
-#: Template/Test/Editor/edit-questions-answers.php:63
-#: Template/Test/Editor/edit-questions-answers.php:64
+#: Template/Test/Editor/edit-questions-answers.php:63 Template/Test/Editor/edit-questions-answers.php:64
 msgid "Quick Fill From Text"
 msgstr "Metinden hızlı doldurma"
 
-#: Template/Test/Editor/edit-scores.php:8
-#: Template/Test/Editor/quick-fill-scores.php:8
-msgid ""
-"No scores to edit. To edit scores you should have questions, answers and "
-"selected scales."
-msgstr "Düzenlemek için puanları yok. Puanları düzenlemek için sorular, cevaplar ve seçili ölçekler olmalıdır."
+#: Template/Test/Editor/edit-scores.php:8 Template/Test/Editor/quick-fill-scores.php:8
+msgid "No scores to edit. To edit scores you should have questions, answers and selected scales."
+msgstr "Düzenlemek için puan yok. Puanları düzenlemek için sorular, yanıtlar ve seçili ölçekler olmalıdır."
 
-#: Template/Test/Editor/edit-scores.php:23
-#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+#: Template/Test/Editor/edit-scores.php:23 Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
 msgid "#"
 msgstr "#"
 
-#: Template/Test/Editor/quick-fill-scores.php:18
-#: Template/Test/Editor/quick-fill-scores.php:35
+#: Template/Test/Editor/quick-fill-scores.php:18 Template/Test/Editor/quick-fill-scores.php:35
 msgid "Scale"
 msgstr "Ölçeklendir"
 
-#: Template/Test/Editor/quick-fill-scores.php:19
-#: Template/Test/Editor/quick-fill-scores.php:36
+#: Template/Test/Editor/quick-fill-scores.php:19 Template/Test/Editor/quick-fill-scores.php:36
 msgid "Score"
 msgstr "Sonuç"
 
-#: Template/Test/Editor/quick-fill-scores.php:20
-#: Template/Test/Editor/quick-fill-scores.php:37
+#: Template/Test/Editor/quick-fill-scores.php:20 Template/Test/Editor/quick-fill-scores.php:37
 msgid "Answer"
-msgstr "Cevap"
+msgstr "Yanıt"
 
 #: Template/Test/Editor/quick-fill-scores.php:21
 msgid "Questions"
@@ -630,11 +600,11 @@ msgstr "Yeni ekle"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
-msgstr "En az bir cevabı seçiniz."
+msgstr "En az bir yanıt seçiniz."
 
 #: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
-msgstr "Sadece bir cevabı seçiniz."
+msgstr "Sadece bir yanıt seçiniz."
 
 #: Widget/PassingTable/Admin.php:91
 msgid "Device"
