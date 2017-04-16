@@ -101,7 +101,7 @@ class WpTesting_Model_Step
     private function setQuestions($questions)
     {
         if (empty($questions) || count($questions) == 0) {
-            $this->questions = array();
+            $this->questions = fRecordSet::buildFromArray('WpTesting_Model_Question', array());
             return $this;
         }
 
