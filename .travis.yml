@@ -76,6 +76,7 @@ script:
 after_script:
   - cd $TRAVIS_BUILD_DIR
   - tests/integration-environment/shutdown.sh
+  - cat /tmp/fpm-php.www.log
 
 cache:
   directories:
