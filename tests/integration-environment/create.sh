@@ -51,6 +51,8 @@ function php_cgi {
     log 'Configuring php cgi'
     source /etc/profile.d/phpenv.sh
     echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    touch /tmp/fpm-php.www.log
+    chmod 777 /tmp/fpm-php.www.log
     if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]];
     then
         PHP_52=$(phpenv version-name)
@@ -61,6 +63,7 @@ function php_cgi {
         [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf.default ] && mv ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
         echo 'user  = www-data' | tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
         echo 'group = www-data' | tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
+        echo 'php_admin_value[error_log] = /tmp/fpm-php.www.log' | tee --append ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf > /dev/null
         ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
     fi
 }
