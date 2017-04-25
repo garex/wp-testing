@@ -22,10 +22,18 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     );
 
     /**
-     * Values, that are substitutes in formula during comparing
+     * Values, that substituted in formula during comparing
+     *
      * @var array
      */
     private $substituteValues = array();
+
+    /**
+     * Text values, that used in formulas during evaluation
+     *
+     * @var array
+     */
+    private $textValues = array();
 
     /**
      * @return WpTesting_Model_Formula
@@ -33,6 +41,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
     public function resetValues()
     {
         $this->substituteValues = array();
+        $this->textValues = array();
         return $this;
     }
 
@@ -65,13 +74,14 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
             return $this;
         }
 
-        if (!is_numeric($value)) {
-            throw new InvalidArgumentException('Value ' . $name . ' must be numeric. Provided: ' . var_export($value, true));
+        if (is_numeric($value)) {
+            $intValue   = intval($value);
+            $floatValue = floatval($value);
+            $this->substituteValues[$name] = ($intValue == $floatValue) ? $intValue : $floatValue;
+        } else {
+            $this->substituteValues[$name] = '$t[' . count($this->textValues) . ']';
+            $this->textValues[] = $value;
         }
-
-        $intValue   = intval($value);
-        $floatValue = floatval($value);
-        $this->substituteValues[$name] = ($intValue == $floatValue) ? $intValue : $floatValue;
 
         return $this;
     }
@@ -131,6 +141,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
      */
     public function isTrue()
     {
+        $t = $this->textValues;
         $result = @eval('return ' . $this->substitute() . ';');
         return $result;
     }
