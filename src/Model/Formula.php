@@ -177,7 +177,8 @@ class WpTesting_Model_Formula extends WpTesting_Model_AbstractModel
         // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
         $operators = '-+*/<>=&|!';
         $allowed   = $operators . '().% ';
-        $result    = preg_replace('/[^' . preg_quote($allowed, '/') . '\d]+/', '', $result);
+        preg_match_all('/(?:['. preg_quote($allowed, '/') . '\d]+|\$t\[\d+\])/', $result, $allowedMatches);
+        $result    = implode('', $allowedMatches[0]);
 
         // Normalize comparisions
         $result    = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
