@@ -26,7 +26,7 @@ describe('Test', function() {
             }, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             expect('post_title').to.have.fieldValue('Are You Hot or Not?')
@@ -68,7 +68,7 @@ describe('Test', function() {
             this.click('#save-post')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             expect('post_title').to.have.fieldValue('Are You Hot or Not?!')
@@ -100,7 +100,7 @@ describe('Test', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })
@@ -127,7 +127,7 @@ describe('Test', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
 
@@ -146,7 +146,7 @@ describe('Test', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })
@@ -175,7 +175,7 @@ describe('Test', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'Scheduled'.should.not.be.textInDOM

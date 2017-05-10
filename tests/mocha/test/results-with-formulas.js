@@ -39,7 +39,7 @@ describe('Results with formulas', function() {
             this.click('#save-post')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
@@ -55,7 +55,7 @@ describe('Results with formulas', function() {
             this.click('#save-post')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })
@@ -114,7 +114,7 @@ describe('Results with formulas', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
@@ -150,7 +150,7 @@ describe('Results with formulas', function() {
             })
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             this.click('#wpt_formula_source_1')
@@ -162,7 +162,7 @@ describe('Results with formulas', function() {
 
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             'Test data not saved'.should.not.be.textInDOM
             '#message'.should.be.inDOM

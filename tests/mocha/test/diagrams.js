@@ -59,7 +59,7 @@ describe('Diagrams', function() {
 
         casper.then(function() {
             this.fill('form#post', {}, true)
-        }).waitForUrl(/message/, function() {
+        }).waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
 
@@ -75,7 +75,7 @@ describe('Diagrams', function() {
             this.click('#publish')
         }, null, 10000)
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
 
@@ -119,7 +119,7 @@ describe('Diagrams', function() {
         casper.thenOpen(testEditUrl, function() {
             this.click('.misc-pub-wpt-result-page-show-scales-diagram input[type=checkbox]')
             this.click('#publish')
-        }).waitForUrl(/message/)
+        }).waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/)
     })
 
     it('should have diagram after enable', function() {

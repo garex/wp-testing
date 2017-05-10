@@ -28,7 +28,7 @@ describe('Questions', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('To Be?')
@@ -58,7 +58,7 @@ describe('Questions', function() {
             this.fill('form#post', {}, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('Not to Be???')
@@ -85,7 +85,7 @@ describe('Questions', function() {
             this.fill('form#post', {}, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_question_title_2.value'.should.evaluate.to.be.equal('Cool.')

@@ -33,7 +33,7 @@ describe('Answers variables', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })

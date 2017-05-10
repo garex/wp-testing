@@ -29,7 +29,7 @@ describe('Scores', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas input[value="Lie, ∑ 0"]'.should.be.inDOM
@@ -46,7 +46,7 @@ describe('Scores', function() {
             }, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_answer_title_0_1'.should.be.inDOM
@@ -65,7 +65,7 @@ describe('Scores', function() {
             }, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'wpt_score_value_2_1.value'.should.not.evaluate.to.be.equal('3')
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
@@ -91,7 +91,7 @@ describe('Scores', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas input[value^="Lie"]'.should.not.be.inDOM
@@ -102,7 +102,7 @@ describe('Scores', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas input[value="Lie, ∑ 4, max 5"]'.should.be.inDOM
