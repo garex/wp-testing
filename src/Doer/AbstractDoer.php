@@ -82,15 +82,16 @@ abstract class WpTesting_Doer_AbstractDoer
     /**
      * Enqueue plugin's CSS stylesheet.
      * @param string $pluginRelatedPath Can be in full form like "css/bla.css" or in short like "bla"
+     * @param array $dependencies An array of registered style handles this stylesheet depends on. Default empty array.
      * @return self
      */
-    protected function enqueueStyle($pluginRelatedPath)
+    protected function enqueueStyle($pluginRelatedPath, array $dependencies = array())
     {
         if (substr($pluginRelatedPath, -4) != '.css') {
             $pluginRelatedPath = 'css/' . $pluginRelatedPath . '.css';
         }
         $name = $this->getResourceNameFromPluginRelatedPath($pluginRelatedPath, '.css');
-        $this->wp->enqueuePluginStyle($name, $pluginRelatedPath);
+        $this->wp->enqueuePluginStyle($name, $pluginRelatedPath, $dependencies);
         return $this;
     }
 
@@ -201,11 +202,19 @@ abstract class WpTesting_Doer_AbstractDoer
 
         $schema = ($this->wp->isSsl()) ? 'https' : 'http';
         $host   = $schema . '://code.jquery.com/';
+        $stub   = $this->wp->getPluginUrl('js/legacy-jquery-ui-fix.js');
+        $uiVersion = '1.9.2';
         $this->wp
             ->deregisterScript('jquery')
             ->deregisterScript('jquery-ui-core')
-            ->registerScript('jquery',         $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
-            ->registerScript('jquery-ui-core', $host . 'ui/1.9.2/jquery-ui.min.js', array(), '1.9.2')
+            ->deregisterScript('jquery-ui-dialog')
+            ->deregisterScript('jquery-ui-button')
+            ->deregisterScript('jquery-ui-widget')
+            ->registerScript('jquery',           $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
+            ->registerScript('jquery-ui-core',   $host . 'ui/'.$uiVersion.'/jquery-ui.min.js', array(), $uiVersion)
+            ->registerScript('jquery-ui-widget', $stub, array('jquery-ui-core'), $uiVersion)
+            ->registerScript('jquery-ui-button', $stub, array('jquery-ui-core', 'jquery-ui-widget'), $uiVersion)
+            ->registerScript('jquery-ui-dialog', $stub, array('jquery-ui-resizable', 'jquery-ui-draggable', 'jquery-ui-button', 'jquery-ui-position'), $uiVersion)
         ;
 
         return $this;
@@ -246,6 +255,11 @@ abstract class WpTesting_Doer_AbstractDoer
     protected function isPost()
     {
         return fRequest::isPost();
+    }
+
+    protected function isAjax()
+    {
+        return fRequest::isAjax() || (defined('DOING_AJAX') && DOING_AJAX);
     }
 
     protected function getRequestValue($key, $castTo = null)

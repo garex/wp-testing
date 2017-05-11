@@ -41,7 +41,7 @@ function setup_link {
 
 function start_nginx {
     log 'Configuring and reloading nginx'
-    ps ax | grep "[n]ginx -c" && nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;" -s stop
+    ps ax | grep "[n]ginx -c" && nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;" -s stop || echo 'Fail to stop nginx'
     nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;"
 }
 

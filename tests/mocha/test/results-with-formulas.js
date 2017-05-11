@@ -39,7 +39,7 @@ describe('Results with formulas', function() {
             this.click('#save-post')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
@@ -55,7 +55,7 @@ describe('Results with formulas', function() {
             this.click('#save-post')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
         })
@@ -114,7 +114,7 @@ describe('Results with formulas', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_formulas .wpt_result'.should.be.inDOM
@@ -131,11 +131,17 @@ describe('Results with formulas', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/post/, function() {
+        casper.waitForSelector('.error.wpt_test_editor', function() {
             'Fatal'.should.not.be.textInDOM
             'Test data not saved'.should.be.textInDOM
             'Formula for Melancholic has error'.should.be.textInDOM
-            this.clickLabel('« Back')
+            this.clickLabel('OK', 'span')
+        }).waitWhileSelector('.error.wpt_test_editor')
+    })
+
+    it('should not reset formulas on error', function() {
+        casper.then(function() {
+            'wpt_formula_source_0.value'.should.evaluate.to.be.equal('( scale-lie > 14.999 "nothing" )')
         })
     })
 
@@ -150,7 +156,7 @@ describe('Results with formulas', function() {
             })
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             this.click('#wpt_formula_source_1')
@@ -162,7 +168,7 @@ describe('Results with formulas', function() {
 
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             'Test data not saved'.should.not.be.textInDOM
             '#message'.should.be.inDOM

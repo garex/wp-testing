@@ -20,6 +20,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
         $test = $this->createTest($this->getRequestValue('post'));
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
+        $this->wp->enqueueStyle('wp-jquery-ui-dialog');
         $this->registerScripts()
             ->upgradeJqueryForOldWordPress()
             ->enqueueStyle('admin')
@@ -28,6 +29,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
             ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
+            ->enqueueScript('test-edit-ajax-save',  array('jquery', 'jquery-ui-dialog'))
             ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map'))
         ;
         // $this->enqueueScript('vendor/pkaminski/digest-hud')->enqueueScript('app/app.module.debug');
@@ -57,6 +59,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addJsData('locale', array(
                 'maximize' => __('Maximize', 'wp-testing-sections'),
                 'minimize' => __('Minimize', 'wp-testing-sections'),
+                'OK' => $this->wp->translate('OK'),
             ))
         ;
         $this->wp
@@ -371,8 +374,24 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         try {
             $test->storeAll();
-        } catch (fValidationException $e) {
+            if ($this->isAjax()){
+                $message = $this->emulateRedirectMessage($test);
+                $this->jsonResponse(array(
+                    'success' => true,
+                    'redirectTo' => $this->wp->getEditPostLink($test->getId(), 'url') . '&message=' . $message,
+                ));
+            }
+        } catch(fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
+            if ($this->isAjax()) {
+                $this->jsonResponse(array(
+                    'success' => false,
+                    'error' => array(
+                        'title' => $title,
+                        'content' => $e->getMessage(),
+                     )
+                ));
+            }
             $this->wp->dieMessage(
                 $this->render('Test/Editor/admin-message', array(
                     'title'   => $title,
@@ -381,6 +400,38 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 $title,
                 array('back_link' => true)
             );
+        }
+    }
+
+    private function jsonResponse(array $data)
+    {
+        header('Content-type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    /**
+     * Emulate behavior of redirect_post(), that append message=1 to edit url.
+     *
+     * @param WpTesting_Model_Test $test
+     * @return number
+     */
+    private function emulateRedirectMessage(WpTesting_Model_Test $test)
+    {
+        $status = $test->getStatus();
+        $isPublish = $this->getRequestValue('publish', 'boolean');
+
+        if (!$isPublish) {
+            return ('draft' == $status) ? 10 : 1;
+        }
+
+        switch ($status) {
+            case 'pending':
+                return 8;
+            case 'future':
+                return 9;
+            default:
+                return 6;
         }
     }
 
