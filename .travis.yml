@@ -55,7 +55,6 @@ addons:
   apt:
     packages:
       - nginx-light
-      - heirloom-mailx
 
 before_script:
   - tests/integration-environment/composer-update.sh
@@ -86,6 +85,3 @@ cache:
 
 after_failure:
   - free -ltm
-  - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - ./debug-to-mail.sh a@ustimen.co 'Failed build dump' '/tmp/*.dmp'
-  - ./debug-to-mail.sh a@ustimen.co 'Debug screenshots' '/tmp/*.screen.png'
