@@ -508,7 +508,7 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
      *                                       Default 'all'. Accepts media types like 'all', 'print' and 'screen',
      *                                       or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
      */
-    function enqueueStyle($name, $src = false, $dependencies = array(), $version = false, $media = 'all')
+    public function enqueueStyle($name, $src = false, $dependencies = array(), $version = false, $media = 'all')
     {
         wp_enqueue_style($name, $src, $dependencies, $version, $media);
         return $this;

@@ -374,14 +374,14 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         try {
             $test->storeAll();
-            if ($this->isAjax()){
+            if ($this->isAjax()) {
                 $message = $this->emulateRedirectMessage($test);
                 $this->jsonResponse(array(
                     'success' => true,
                     'redirectTo' => $this->wp->getEditPostLink($test->getId(), 'url') . '&message=' . $message,
                 ));
             }
-        } catch(fValidationException $e) {
+        } catch (fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
             if ($this->isAjax()) {
                 $this->jsonResponse(array(

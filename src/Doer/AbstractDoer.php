@@ -91,7 +91,7 @@ abstract class WpTesting_Doer_AbstractDoer
             $pluginRelatedPath = 'css/' . $pluginRelatedPath . '.css';
         }
         $name = $this->getResourceNameFromPluginRelatedPath($pluginRelatedPath, '.css');
-        $this->wp->enqueuePluginStyle($name, $pluginRelatedPath, $dependencies);
+        $this->wp->enqueuePluginStyle($name, $pluginRelatedPath);
         return $this;
     }
 
@@ -103,7 +103,7 @@ abstract class WpTesting_Doer_AbstractDoer
      * @see WpTesting_WordPressFacade::enqueuePluginScript
      *
      * @param string $pluginRelatedPath Can be in full form like "js/do-something.js" or in short like "do-something"
-     * @param array $dependencies
+     * @param string[] $dependencies
      * @param boolean $isInFooter
      * @param string $version
      * @return self
@@ -236,6 +236,13 @@ abstract class WpTesting_Doer_AbstractDoer
         return ob_get_clean();
     }
 
+    /**
+     * @param string $template
+     * @param integer $responseCode
+     * @param array $parameters
+     *
+     * @return self
+     */
     protected function dieMessage($template, $responseCode, $parameters)
     {
         if (!isset($parameters['title'])) {
@@ -252,16 +259,28 @@ abstract class WpTesting_Doer_AbstractDoer
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
     protected function isPost()
     {
         return fRequest::isPost();
     }
 
+    /**
+     * @return boolean
+     */
     protected function isAjax()
     {
         return fRequest::isAjax() || (defined('DOING_AJAX') && DOING_AJAX);
     }
 
+    /**
+     * @param string $key
+     * @param string $castTo
+     *
+     * @return mixed|NULL|string[]|array|string
+     */
     protected function getRequestValue($key, $castTo = null)
     {
         return fRequest::get($key, $castTo);
