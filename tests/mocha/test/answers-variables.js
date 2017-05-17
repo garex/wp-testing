@@ -41,7 +41,7 @@ describe('Answers variables', function() {
 
     it('should add to test question-answer formula', function() {
         casper.then(function() {
-            this.click('.wpt_formulas_helper button.question-answer')
+            this.click('.wpt_formulas_toolbar .button.question-answer')
             this.click('#publish')
         })
     })
