@@ -27,10 +27,9 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueStyle('maximize')
             ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
-            ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
             ->enqueueScript('test-edit-ajax-save',  array('jquery', 'jquery-ui-dialog'))
-            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map'))
+            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map', 'caretaware'))
         ;
         // $this->enqueueScript('vendor/pkaminski/digest-hud')->enqueueScript('app/app.module.debug');
         $this
@@ -51,17 +50,30 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('app/questionsTree/questionTree.model')
             ->enqueueScript('app/questionsTree/questionTree.service')
             ->enqueueScript('app/questionsTree/questionTree.edit.controller')
-
-            ->enqueueScript('app/app.module.run')
+            ->enqueueScript('app/formulas/variableCollection.model')
+            ->enqueueScript('app/formulas/variables.service')
+            ->enqueueScript('app/formulas/formula.toolbar.directive')
+            ->enqueueScript('app/formulas/formula.model')
+            ->enqueueScript('app/formulas/resultCollection.model')
+            ->enqueueScript('app/formulas/results.service')
+            ->enqueueScript('app/formulas/formulas.edit.controller')
             ->addJsData('questions',     $this->toJson($test->buildQuestionsWithAnswers()))
             ->addJsData('globalAnswers', $this->toJson($test->buildGlobalAnswers()))
             ->addJsData('scales',        $this->toJson($test->buildScales()))
+            ->addJsData('results',       $this->toJson($test->buildResults()))
+            ->addJsData('variables',     $this->toJson(array_values($test->buildPublicFormulaVariables())))
             ->addJsData('locale', array(
-                'maximize' => __('Maximize', 'wp-testing-sections'),
-                'minimize' => __('Minimize', 'wp-testing-sections'),
+                'maximize' => __('Maximize', 'wp-testing'),
+                'minimize' => __('Minimize', 'wp-testing'),
                 'OK' => $this->wp->translate('OK'),
+                'comparision' => __('Comparision', 'wp-testing'),
+                'operator'    => __('Operator', 'wp-testing'),
             ))
         ;
+
+        $this->wp->doAction('wp_testing_editor_customize_ui_before_angular_run');
+        $this->enqueueScript('app/app.module.run');
+
         $this->wp
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscOptions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
@@ -324,21 +336,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditFormulas($item)
     {
-        $test                   = $this->createTest($item);
-        $variables              = $test->buildPublicFormulaVariables();
-        $maxQuestionsCount      = $test->getQuestionsCount();
-        $maxAnswersCount        = $test->getMaxAnswersCount();
-        $isShowQuestionAnswer   = ($maxQuestionsCount * $maxAnswersCount > 0);
-        $hasVariables           = (count($variables) > 0 || $isShowQuestionAnswer);
-
-        $this->output('Test/Editor/edit-formulas', array(
-            'results'               => $test->buildResults(),
-            'variables'             => $variables,
-            'maxQuestionsCount'     => $maxQuestionsCount,
-            'maxAnswersCount'       => $maxAnswersCount,
-            'isShowQuestionAnswer'  => $isShowQuestionAnswer,
-            'hasVariables'          => $hasVariables,
-        ));
+        $this->output('Test/Editor/edit-formulas');
     }
 
     /**

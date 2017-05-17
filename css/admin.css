@@ -69,6 +69,7 @@ table.widefat td.actions {
 .wpt_individual_action .note {
 	visibility: hidden;
 	cursor: default;
+	margin: 0px 10px;
 }
 
     .wpt_individual_action button {
@@ -146,7 +147,15 @@ table.wpt_scores .wpt_scales .wpt_max {
     margin-right: 0.5em;
 }
 .wptApp input.ng-invalid {
-    color: red;
+    color: #dc3232;
+    border-bottom-color: #dc3232;
+    border-bottom-width: 2px;
+    margin-bottom: -1px;
+}
+.wptApp .wpt_invalid_message {
+	color: #dc3232;
+	padding: 0px 2px;
+	padding-top: 4px;
 }
 
 table.wpt_scores .wpt_score {
@@ -165,23 +174,55 @@ table.wpt_scores .wpt_score input {
     width: 100%;
 }
 
-table.wpt_formulas,
-table.wpt_formulas_helper {
+.wpt_template {
+    display: none;
+}
+
+table.wpt_formulas {
     margin-top: 1em;
 }
 
-table.wpt_formulas_helper button {
-    padding: 3px 12px;
+table.wpt_formulas .wpt_formulas_toolbars_container {
+    padding-bottom: 0px;
+    border-bottom: 1px solid #e8e8e8;
 }
 
-table.wpt_formulas_helper .question-answer input {
+.wpt_formulas_toolbar *[type=button] {
+    vertical-align: middle;
+}
+
+.wpt_formulas_toolbars {
+    width: 100%;
+}
+
+.wpt_formulas_toolbars td {
+    padding: 0px;
+}
+.wpt_formulas_toolbars th {
+    padding: 0px  10px;
     width: 50px;
+}
+.wpt_formulas_toolbars .howto {
+    padding: 5px 10px;
+}
+
+.wpt_formulas_toolbars .button {
+    display: inline-block;
+    margin-bottom: 6px;
+    margin-right: 3px;
+    height: 32px;
+    min-width: 32px;
+}
+
+.wpt_formulas_toolbars .question-answer input {
+    width: 50px;
+    height: 20px;
     padding: 0px;
     margin: 0px;
     text-align: center;
 }
 
-table.wpt_formulas_helper .operators input {
+.wpt_formulas_toolbars .operators input {
     min-width: 3.5em;
 }
 
@@ -190,7 +231,11 @@ table.wpt_formulas_helper .operators input {
     white-space: nowrap;
 }
 
-.wpt_formulas .wpt_formula input {
+.wpt_formulas .wpt_number {
+    width: 1em;
+}
+
+.wpt_formulas .wpt_formula input[type=text] {
     width: 100%;   
 }
 
