@@ -167,11 +167,12 @@ abstract class WpTesting_Doer_AbstractDoer
             array('samyk_evercookie',  'vendor/samyk/evercookie/js/evercookie.js', array('samyk_swfobject')),
             array('field_selection',   'js/vendor/kof/field-selection.js'),
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
-            array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
+            array('angular',           'js/vendor/google/angular/1.4.0/angular.min.js',  $e, '1.4.0'),
             array('webshim',           'js/vendor/afarkas/webshim/polyfiller.js',  array('jquery'), '1.15.7'),
             array('asevented',         'js/vendor/mkuklis/asevented.min.js',       $e, '0.4.6'),
             array('garex_sorted_map',  'js/vendor/garex/angular-sorted-map.min.js', $e, '2.0.0'),
             array('maximize',          'js/maximize.js',  array('jquery'), '1.0'),
+            array('caretaware',        'js/vendor/leodido/caretaware.min.js',      $e, '0.3.3'),
 
             // Vector graphics for diagramming
             array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),

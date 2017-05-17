@@ -1,6 +1,6 @@
 <?php
 
-abstract class WpTesting_Model_FormulaVariable
+abstract class WpTesting_Model_FormulaVariable implements JsonSerializable
 {
 
     private $title        = '';
@@ -32,6 +32,15 @@ abstract class WpTesting_Model_FormulaVariable
     public function getValueAsRatio()
     {
         return $this->valueAsRatio;
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'title' => $this->getTitle(),
+            'typeLabel' => $this->getTypeLabel(),
+            'source' => $this->getSource(),
+        );
     }
 
     protected function setTitle($value)

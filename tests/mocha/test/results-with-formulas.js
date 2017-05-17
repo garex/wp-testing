@@ -85,8 +85,8 @@ describe('Results with formulas', function() {
 
     it('should add formulas by buttons', function() {
         casper.then(function() {
-            this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
-            this.click('.wpt_formulas_helper input[data-source=">"]')
+            this.click('.wpt_formulas_toolbar input[value^="Lie"]')
+            this.click('.wpt_formulas_toolbar input[value=">"]')
             this.sendKeys('#wpt_formula_source_0', '14.999 "nothing"')
         })
 
@@ -101,7 +101,7 @@ describe('Results with formulas', function() {
         })
 
         casper.then(function() {
-            this.click('.wpt_formulas_helper input[data-source="( {selection} )"]')
+            this.click('.wpt_formulas_toolbar input[value="( ... )"]')
         })
 
         casper.then(function() {
@@ -125,8 +125,8 @@ describe('Results with formulas', function() {
     it('should error when formulas is bad', function() {
         casper.then(function() {
             this.click('#wpt_formula_source_1')
-            this.click('.wpt_formulas_helper input[data-source="scale-lie"]')
-            this.click('.wpt_formulas_helper input[data-source="<="]')
+            this.click('.wpt_formulas_toolbar input[value^="Lie"]')
+            this.click('.wpt_formulas_toolbar input[value="<="]')
             this.sendKeys('#wpt_formula_source_1', '"nothing"')
             this.click('#publish')
         })
@@ -160,8 +160,8 @@ describe('Results with formulas', function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             this.click('#wpt_formula_source_1')
-            this.click('.wpt_formulas_helper input[data-source="свобода"]')
-            this.click('.wpt_formulas_helper input[data-source=">"]')
+            this.click('.wpt_formulas_toolbar input[value^="свобода"]')
+            this.click('.wpt_formulas_toolbar input[value=">"]')
             this.sendKeys('#wpt_formula_source_1', '0')
             'wpt_formula_source_1.value'.should.evaluate.to.be.equal('свобода > 0')
             this.click('#publish')

@@ -6,6 +6,7 @@
  * @method string getSlug() Gets the current value of slug
  * @method string getAbbrOnce() Gets cached value of abbreviration
  * @method string getTitleOnce() Gets cached value of title
+ * @method string getDescriptionOnce() Gets cached value of desription
  */
 abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractModel implements JsonSerializable
 {
@@ -43,6 +44,11 @@ abstract class WpTesting_Model_AbstractTerm extends WpTesting_Model_AbstractMode
             return null;
         }
         return $result->getRecord(0)->getDescription();
+    }
+
+    public function getDescriptionAsTooltip()
+    {
+        return mb_substr(strip_tags($this->getDescriptionOnce()), 0, 1024, 'UTF-8');
     }
 
     /**

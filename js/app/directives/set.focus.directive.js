@@ -8,9 +8,12 @@
             restrict : 'A',
             scope    : {wptSetFocus: '='},
             link     : function(scope, element){
-                if(scope.wptSetFocus) {
-                    element[0].focus();
+                if(!scope.wptSetFocus) {
+                    return;
                 }
+                scope.$evalAsync(function() {
+                    element[0].focus();
+                });
             }
         };
     };
