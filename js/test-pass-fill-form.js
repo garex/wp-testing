@@ -35,6 +35,7 @@ jQuery(document).ready(function($) {
         var form = $(formEl);
 
         Wpt.form.initQuestionAnswered(form);
+        Wpt.form.setupSubmitDisable(form);
         Wpt.form.setupResetAnswers(form);
         Wpt.form.setupProgressMeter($, form);
         Wpt.form.setupQuestionsAnswered($, form);
@@ -65,6 +66,16 @@ Wpt.initEvercookie = function() {
     ec.get('device_uuid', function(best) {
         ec.set('device_uuid', best || uuid.v4());
     }, 1);
+};
+
+Wpt.form.setupSubmitDisable = function(form) {
+    var button = form.find('.button');
+
+    form.bind('test_filled.wpt', function() {
+        button.removeClass('disabled');
+    }).bind('test_unfilled.wpt', function() {
+        button.addClass('disabled');
+    });
 };
 
 Wpt.form.setupResetAnswers = function(form) {
