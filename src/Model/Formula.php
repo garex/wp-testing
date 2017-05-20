@@ -65,7 +65,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
      */
     public function isTrue()
     {
-        return parent::compile();
+        return $this->compile();
     }
 
     /**
