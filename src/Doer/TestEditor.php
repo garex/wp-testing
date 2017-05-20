@@ -20,15 +20,16 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         }
         $test = $this->createTest($this->getRequestValue('post'));
         $this->wp->doAction('wp_testing_editor_customize_ui_before');
+        $this->wp->enqueueStyle('wp-jquery-ui-dialog');
         $this->registerScripts()
             ->upgradeJqueryForOldWordPress()
             ->enqueueStyle('admin')
             ->enqueueStyle('maximize')
             ->enqueueScript('test-edit-maximize-metaboxes', array('maximize'))
             ->enqueueScript('test-edit-fix-styles', array('jquery'))
-            ->enqueueScript('test-edit-formulas',   array('jquery', 'field_selection'))
             ->enqueueScript('test-sort-taxonomies', array('jquery', 'jquery-ui-sortable'))
-            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map'))
+            ->enqueueScript('test-edit-ajax-save',  array('jquery', 'jquery-ui-dialog'))
+            ->enqueueScript('app/app.module',       array('webshim', 'angular', 'garex_sorted_map', 'caretaware'))
         ;
         // $this->enqueueScript('vendor/pkaminski/digest-hud')->enqueueScript('app/app.module.debug');
         $this
@@ -49,16 +50,30 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->enqueueScript('app/questionsTree/questionTree.model')
             ->enqueueScript('app/questionsTree/questionTree.service')
             ->enqueueScript('app/questionsTree/questionTree.edit.controller')
-
-            ->enqueueScript('app/app.module.run')
+            ->enqueueScript('app/formulas/variableCollection.model')
+            ->enqueueScript('app/formulas/variables.service')
+            ->enqueueScript('app/formulas/formula.toolbar.directive')
+            ->enqueueScript('app/formulas/formula.model')
+            ->enqueueScript('app/formulas/resultCollection.model')
+            ->enqueueScript('app/formulas/results.service')
+            ->enqueueScript('app/formulas/formulas.edit.controller')
             ->addJsData('questions',     $this->toJson($test->buildQuestionsWithAnswers()))
             ->addJsData('globalAnswers', $this->toJson($test->buildGlobalAnswers()))
             ->addJsData('scales',        $this->toJson($test->buildScales()))
+            ->addJsData('results',       $this->toJson($test->buildResults()))
+            ->addJsData('variables',     $this->toJson(array_values($test->buildPublicFormulaVariables())))
             ->addJsData('locale', array(
-                'maximize' => __('Maximize', 'wp-testing-sections'),
-                'minimize' => __('Minimize', 'wp-testing-sections'),
+                'maximize' => __('Maximize', 'wp-testing'),
+                'minimize' => __('Minimize', 'wp-testing'),
+                'OK' => $this->wp->translate('OK'),
+                'comparision' => __('Comparision', 'wp-testing'),
+                'operator'    => __('Operator', 'wp-testing'),
             ))
         ;
+
+        $this->wp->doAction('wp_testing_editor_customize_ui_before_angular_run');
+        $this->enqueueScript('app/app.module.run');
+
         $this->wp
             ->addAction('post_submitbox_misc_actions', array($this, 'renderSubmitMiscOptions'))
             ->addAction('media_buttons',               array($this, 'renderContentEditorButtons'))
@@ -321,21 +336,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
      */
     public function renderEditFormulas($item)
     {
-        $test                   = $this->createTest($item);
-        $variables              = $test->buildPublicFormulaVariables();
-        $maxQuestionsCount      = $test->getQuestionsCount();
-        $maxAnswersCount        = $test->getMaxAnswersCount();
-        $isShowQuestionAnswer   = ($maxQuestionsCount * $maxAnswersCount > 0);
-        $hasVariables           = (count($variables) > 0 || $isShowQuestionAnswer);
-
-        $this->output('Test/Editor/edit-formulas', array(
-            'results'               => $test->buildResults(),
-            'variables'             => $variables,
-            'maxQuestionsCount'     => $maxQuestionsCount,
-            'maxAnswersCount'       => $maxAnswersCount,
-            'isShowQuestionAnswer'  => $isShowQuestionAnswer,
-            'hasVariables'          => $hasVariables,
-        ));
+        $this->output('Test/Editor/edit-formulas');
     }
 
     /**
@@ -371,8 +372,24 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
 
         try {
             $test->storeAll();
+            if ($this->isAjax()) {
+                $message = $this->emulateRedirectMessage($test);
+                $this->jsonResponse(array(
+                    'success' => true,
+                    'redirectTo' => $this->wp->getEditPostLink($test->getId(), 'url') . '&message=' . $message,
+                ));
+            }
         } catch (fValidationException $e) {
             $title = __('Test data not saved', 'wp-testing');
+            if ($this->isAjax()) {
+                $this->jsonResponse(array(
+                    'success' => false,
+                    'error' => array(
+                        'title' => $title,
+                        'content' => $e->getMessage(),
+                     )
+                ));
+            }
             $this->wp->dieMessage(
                 $this->render('Test/Editor/admin-message', array(
                     'title'   => $title,
@@ -381,6 +398,38 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 $title,
                 array('back_link' => true)
             );
+        }
+    }
+
+    private function jsonResponse(array $data)
+    {
+        header('Content-type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    /**
+     * Emulate behavior of redirect_post(), that append message=1 to edit url.
+     *
+     * @param WpTesting_Model_Test $test
+     * @return number
+     */
+    private function emulateRedirectMessage(WpTesting_Model_Test $test)
+    {
+        $status = $test->getStatus();
+        $isPublish = $this->getRequestValue('publish', 'boolean');
+
+        if (!$isPublish) {
+            return ('draft' == $status) ? 10 : 1;
+        }
+
+        switch ($status) {
+            case 'pending':
+                return 8;
+            case 'future':
+                return 9;
+            default:
+                return 6;
         }
     }
 

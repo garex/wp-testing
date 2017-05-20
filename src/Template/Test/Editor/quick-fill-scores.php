@@ -44,7 +44,7 @@
             </select></th>
             <td class="score"><input ng-model="newScore" type="number" min="-999.999" max="999.999" step="any" /></td>
             <td class="answer"><input ng-model="newAnswer" type="number" min="1" max="1000" step="1" /></td>
-            <td><button ng-click="tree.addNew(scales[newScaleIndex], newScore, newAnswer)" type="button"><?php echo __('Add new combination', 'wp-testing') ?></button></td>
+            <td><button ng-click="tree.addNew(scales[newScaleIndex], newScore, newAnswer)" type="button" class="button"><?php echo __('Add new combination', 'wp-testing') ?></button></td>
         </tr>
     </tbody>
 </table>

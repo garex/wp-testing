@@ -82,9 +82,10 @@ abstract class WpTesting_Doer_AbstractDoer
     /**
      * Enqueue plugin's CSS stylesheet.
      * @param string $pluginRelatedPath Can be in full form like "css/bla.css" or in short like "bla"
+     * @param array $dependencies An array of registered style handles this stylesheet depends on. Default empty array.
      * @return self
      */
-    protected function enqueueStyle($pluginRelatedPath)
+    protected function enqueueStyle($pluginRelatedPath, array $dependencies = array())
     {
         if (substr($pluginRelatedPath, -4) != '.css') {
             $pluginRelatedPath = 'css/' . $pluginRelatedPath . '.css';
@@ -102,7 +103,7 @@ abstract class WpTesting_Doer_AbstractDoer
      * @see WpTesting_WordPressFacade::enqueuePluginScript
      *
      * @param string $pluginRelatedPath Can be in full form like "js/do-something.js" or in short like "do-something"
-     * @param array $dependencies
+     * @param string[] $dependencies
      * @param boolean $isInFooter
      * @param string $version
      * @return self
@@ -166,11 +167,12 @@ abstract class WpTesting_Doer_AbstractDoer
             array('samyk_evercookie',  'vendor/samyk/evercookie/js/evercookie.js', array('samyk_swfobject')),
             array('field_selection',   'js/vendor/kof/field-selection.js'),
             array('json3',             'js/vendor/bestiejs/json3.min.js'),
-            array('angular',           'js/vendor/google/angular/angular.min.js',  $e, '1.3.15'),
+            array('angular',           'js/vendor/google/angular/1.4.0/angular.min.js',  $e, '1.4.0'),
             array('webshim',           'js/vendor/afarkas/webshim/polyfiller.js',  array('jquery'), '1.15.7'),
             array('asevented',         'js/vendor/mkuklis/asevented.min.js',       $e, '0.4.6'),
             array('garex_sorted_map',  'js/vendor/garex/angular-sorted-map.min.js', $e, '2.0.0'),
             array('maximize',          'js/maximize.js',  array('jquery'), '1.0'),
+            array('caretaware',        'js/vendor/leodido/caretaware.min.js',      $e, '0.3.3'),
 
             // Vector graphics for diagramming
             array('raphael',               'js/vendor/dmitrybaranovskiy/raphael-min.js',   $e, '2.0.2'),
@@ -201,11 +203,19 @@ abstract class WpTesting_Doer_AbstractDoer
 
         $schema = ($this->wp->isSsl()) ? 'https' : 'http';
         $host   = $schema . '://code.jquery.com/';
+        $stub   = $this->wp->getPluginUrl('js/legacy-jquery-ui-fix.js');
+        $uiVersion = '1.9.2';
         $this->wp
             ->deregisterScript('jquery')
             ->deregisterScript('jquery-ui-core')
-            ->registerScript('jquery',         $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
-            ->registerScript('jquery-ui-core', $host . 'ui/1.9.2/jquery-ui.min.js', array(), '1.9.2')
+            ->deregisterScript('jquery-ui-dialog')
+            ->deregisterScript('jquery-ui-button')
+            ->deregisterScript('jquery-ui-widget')
+            ->registerScript('jquery',           $host . 'jquery-1.8.3.min.js',       array(), '1.8.3')
+            ->registerScript('jquery-ui-core',   $host . 'ui/'.$uiVersion.'/jquery-ui.min.js', array(), $uiVersion)
+            ->registerScript('jquery-ui-widget', $stub, array('jquery-ui-core'), $uiVersion)
+            ->registerScript('jquery-ui-button', $stub, array('jquery-ui-core', 'jquery-ui-widget'), $uiVersion)
+            ->registerScript('jquery-ui-dialog', $stub, array('jquery-ui-resizable', 'jquery-ui-draggable', 'jquery-ui-button', 'jquery-ui-position'), $uiVersion)
         ;
 
         return $this;
@@ -227,6 +237,13 @@ abstract class WpTesting_Doer_AbstractDoer
         return ob_get_clean();
     }
 
+    /**
+     * @param string $template
+     * @param integer $responseCode
+     * @param array $parameters
+     *
+     * @return self
+     */
     protected function dieMessage($template, $responseCode, $parameters)
     {
         if (!isset($parameters['title'])) {
@@ -243,11 +260,28 @@ abstract class WpTesting_Doer_AbstractDoer
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
     protected function isPost()
     {
         return fRequest::isPost();
     }
 
+    /**
+     * @return boolean
+     */
+    protected function isAjax()
+    {
+        return fRequest::isAjax() || (defined('DOING_AJAX') && DOING_AJAX);
+    }
+
+    /**
+     * @param string $key
+     * @param string $castTo
+     *
+     * @return mixed|NULL|string[]|array|string
+     */
     protected function getRequestValue($key, $castTo = null)
     {
         return fRequest::get($key, $castTo);

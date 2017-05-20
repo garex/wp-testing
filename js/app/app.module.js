@@ -1,8 +1,9 @@
-(function appModule(angular, webshims, document) {
+(function appModule(angular, webshims, document, locale) {
     'use strict';
 
     webshims.polyfill('es5');
 
     angular.module('wptApp', [
-    ]);
-})(angular, webshims, document);
+        'leodido.caretAware'
+    ]).constant('locale',  locale);
+})(angular, webshims, document, Wpt.locale);

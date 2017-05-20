@@ -532,12 +532,12 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             }
         }
 
-        foreach ($request['wpt_formula_source'] as $key => $value) {
-            $key = $this->decodeSafeUriValue($key);
-            $request[$formulasPrefix . 'test_id']        [$key['i']] = $testId;
-            $request[$formulasPrefix . 'formula_id']     [$key['i']] = $key['formula_id'];
-            $request[$formulasPrefix . 'result_id']      [$key['i']] = $key['result_id'];
-            $request[$formulasPrefix . 'formula_source'] [$key['i']] = $value;
+        $json = json_decode(stripslashes($request['wpt_formulas_json']), $assoc = true);
+        foreach ($json as $resultId => $value) {
+            $request[$formulasPrefix . 'test_id']        [$resultId] = $testId;
+            $request[$formulasPrefix . 'formula_id']     [$resultId] = $value['id'];
+            $request[$formulasPrefix . 'result_id']      [$resultId] = $resultId;
+            $request[$formulasPrefix . 'formula_source'] [$resultId] = $value['source'];
         }
 
         return $this->wp->applyFilters('wp_testing_test_adapt_for_populate', $request, $testId, $this);

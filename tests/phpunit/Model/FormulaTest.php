@@ -35,10 +35,10 @@ class FormulaTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testOnlyNumbersAllowedAsRealValuesOfVars()
+    public function testAnythingAllowedAsRealValuesOfVars()
     {
-        $this->setExpectedException('InvalidArgumentException', 'must be numeric');
-        $this->formula->setSource('-')->addValue('key', 'value');
+        $this->formula->setSource('key > 0')->addValue('key', 'value');
+        $this->assertEquals('$t[0]>0', $this->formula->substitute());
     }
 
     /**
@@ -257,6 +257,16 @@ class FormulaTest extends PHPUnit_Framework_TestCase
             array('( unique-to-each-question + quick-fill-from-text ) / 6 > 0', true, array(
                 array('unique-to-each-question', 6,  1),
                 array('quick-fill-from-text', 6, 1),
+            )),
+
+            array('text-field-1 = text-field-2', true, array(
+                array('text-field-1', 'value',  1),
+                array('text-field-2', 'value',  1),
+            )),
+
+            array('text-field-1 < text-field-2', true, array(
+                array('text-field-1', 'a',  1),
+                array('text-field-2', 'z',  1),
             )),
         );
     }

@@ -38,15 +38,23 @@ module.exports.screenshots = function () {
             return
         }
 
-        var fullName = path + '/' + nextScreenIndex() + '-' + normalizeFilename(getFullTitle(this)) + '.screen.png',
-            options  = {
-                width   : 1280,
-                height  : 850,
-                top     : 0,
-                left    : 0
-            }
-
-        casper.capture(fullName, options)
-        console.log('       ' + casper.getCurrentUrl())
+        module.exports.screenshot(getFullTitle(this));
     })
 }
+
+module.exports.screenshot = function takeScreenshot(fullTitle) {
+    var fullName = path + '/' + nextScreenIndex() + '-' + normalizeFilename(fullTitle) + '.screen.png',
+    maxHeight = casper.evaluate(function() {
+        return (document.getElementById('wpwrap') || document.body).clientHeight;
+    }),
+    options  = {
+        width   : 1280,
+        height  : maxHeight,
+        top     : 0,
+        left    : 0
+    }
+
+    casper.capture(fullName, options)
+    console.log('       Url: ' + casper.getCurrentUrl())
+    console.log('       Screen: ' + fullName)
+};

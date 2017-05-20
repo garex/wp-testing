@@ -46,7 +46,7 @@
         <td></td>
 
         <td colspan="5" class="wpt_individual_action">
-            <button ng-click="question.answers.addNew()" type="button"><?php echo __('Add Individual Answer', 'wp-testing') ?></button>
+            <button ng-click="question.answers.addNew()" type="button" class="button"><?php echo __('Add Individual Answer', 'wp-testing') ?></button>
             <span class="note"><?php echo sprintf(__('— unique to each question. If you have same answers to all test questions, use the %s', 'wp-testing'), '<a href="#wpt_answerdiv" ng-click="highlight(\'#wpt_answerdiv\')">' . __('Test Answers', 'wp-testing') . '</a>') ?></span>
         </td>
     </tr>
@@ -59,10 +59,10 @@
     </tr>
     <tr>
         <td colspan="6">
-            <button ng-hide="visible" ng-click="questions.addNew()" id="wpt_question_add" type="button"><?php echo __('Add Question', 'wp-testing') ?></button>
-            <a      ng-hide="visible" ng-click="toggle()" href="" class="toggle"><?php echo __('Quick Fill From Text', 'wp-testing') ?></a>
-            <button ng-show="visible" ng-click="process(questions)" type="button"><?php echo __('Quick Fill From Text', 'wp-testing') ?></button>
-            <a      ng-show="visible" ng-click="toggle()" href="" class="toggle"><?php echo $this->wp->translate('Cancel') ?></a>
+            <button ng-hide="visible" ng-click="questions.addNew()" id="wpt_question_add" type="button" class="button"><?php echo __('Add Question', 'wp-testing') ?></button>
+            <a      ng-hide="visible" ng-click="toggle()" href="" class="toggle button"><?php echo __('Quick Fill From Text', 'wp-testing') ?></a>
+            <button ng-show="visible" ng-click="process(questions)" type="button" class="button"><?php echo __('Quick Fill From Text', 'wp-testing') ?></button>
+            <a      ng-show="visible" ng-click="toggle()" href="" class="toggle button"><?php echo $this->wp->translate('Cancel') ?></a>
         </td>
     </tr>
 </tfoot>

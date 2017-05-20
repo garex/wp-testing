@@ -1,6 +1,29 @@
 
 ## Changelog ##
 
+### 0.20 ###
+
+Improve formulas editing experience
+
+* Dynamically show formula's toolbair above active formula. Very usable when you have many results.
+* Add result's edit link and tooltip with content.
+* Validate formula errors without page reload. Before when you already entered questions/answers/scores/formulas
+and have some error in formula, all data was lost. Now it's saved by validating before form sending.
+
+Minors:
+
+* Fix misspells in example test
+* Improve CSS for non-standard themes, that omit custom post type
+
+Internals:
+
+* Update TR locale by @ufukluker
+* Fix "next-step" and "passing by reference" warnings on latest PHP versions
+* Improve autotests on legacy PHP versions
+* Allow text values variables and update plugin for "Computed variables" addon
+* Upgrade screenshots
+
+
 ### 0.19.6 ###
 
 Add Romanian language.

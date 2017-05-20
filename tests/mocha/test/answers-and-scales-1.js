@@ -25,7 +25,7 @@ describe('Answers1 and Scales1', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'jQuery("#wpt_answer-all input:checked").length'.should.evaluate.to.equal(1)
@@ -52,7 +52,7 @@ describe('Answers1 and Scales1', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('`5 + 5 is "10?')
@@ -65,7 +65,7 @@ describe('Answers1 and Scales1', function() {
             this.click('#publish')
        })
 
-       casper.waitForUrl(/message/, function() {
+       casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
            'Fatal'.should.not.be.textInDOM
            '#message'.should.be.inDOM
       })
@@ -77,7 +77,7 @@ describe('Answers1 and Scales1', function() {
            '#wpt_score_value_0_1'.should.be.inDOM
             this.click('#publish')
        })
-       casper.waitForUrl(/message/, function() {
+       casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
            'Fatal'.should.not.be.textInDOM
            '#message'.should.be.inDOM
            '#wpt_score_value_0_0'.should.be.inDOM
@@ -116,7 +116,7 @@ describe('Answers1 and Scales1', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             '#wpt_edit_questions .wpt_scale input'.should.not.be.inDOM

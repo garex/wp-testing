@@ -25,7 +25,10 @@
                     return me;
                 }
                 items.forEach(function(item) {
-                    this.push(this.createFromObject(item));
+                    var createdItem = this.createFromObject(item);
+                    this.push(createdItem);
+                    this.trigger('fromArray:add:item', createdItem);
+                    this.trigger('changed:item', createdItem);
                 }, me);
                 return me;
             };
@@ -43,6 +46,7 @@
         BaseCollection.prototype.add = function(item) {
             this.push(item);
             this.trigger('add:item', item);
+            this.trigger('changed:item', item);
             return item;
         };
         BaseCollection.prototype.forEachLive = function(callback) {
@@ -56,6 +60,7 @@
             item.trigger('remove', $index);
             this.trigger('remove:item', item, $index);
             this.splice($index, 1);
+            this.trigger('changed:item', item);
             return this;
         };
         /**

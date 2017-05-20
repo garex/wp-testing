@@ -25,7 +25,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'jQuery("td.wpt_score").length'.should.evaluate.to.equal(4)
@@ -46,7 +46,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'jQuery("td.wpt_score").length'.should.evaluate.to.equal(2)
@@ -76,7 +76,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'No scores to edit'.should.be.textInDOM
@@ -87,7 +87,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'No scores to edit'.should.not.be.textInDOM
@@ -106,7 +106,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'No scores to edit'.should.not.be.textInDOM
@@ -122,7 +122,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_answer_title_0_0.value'.should.evaluate.to.be.equal('"Anoter" answer!')
@@ -146,7 +146,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_answer_title_0_0.title'.should.evaluate.to.be.equal('No')
@@ -194,7 +194,7 @@ describe('Answers2 and Scales2', function() {
             this.click('#publish')
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'wpt_answer_title_0_0.title'.should.evaluate.to.be.equal('Yes')

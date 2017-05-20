@@ -486,19 +486,46 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Enqueue a CSS stylesheet.
+     *
+     * Registers the style if source provided (does NOT overwrite) and enqueues.
+     *
+     * @link https://www.w3.org/TR/CSS2/media.html#media-types List of CSS media types.
+     *
+     * @since 2.6.0
+     *
+     * @param string           $name         Name of the stylesheet. Should be unique.
+     * @param string           $src          Full URL of the stylesheet, or path of the stylesheet relative
+     *                                       to the WordPress root directory.
+     * @param array            $dependencies Optional. An array of registered stylesheet handles this stylesheet
+     *                                       depends on. Default empty array.
+     * @param string|bool|null $version      Optional. String specifying stylesheet version number, if it has one,
+     *                                       which is added to the URL as a query string for cache busting purposes.
+     *                                       If version is set to false, a version number is automatically added equal
+     *                                       to current installed WordPress version.
+     *                                       If set to null, no version is added.
+     * @param string           $media        Optional. The media for which this stylesheet has been defined.
+     *                                       Default 'all'. Accepts media types like 'all', 'print' and 'screen',
+     *                                       or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
+     */
+    public function enqueueStyle($name, $src = false, $dependencies = array(), $version = false, $media = 'all')
+    {
+        wp_enqueue_style($name, $src, $dependencies, $version, $media);
+        return $this;
+    }
+
+    /**
      * Enqueue a CSS stylesheet related to plugin path.
      *
      * @since 2.6.0
      *
      * @param string $name Name of the stylesheet.
      * @param string $pluginRelatedPath
-     * @param array $dependencies An array of registered style handles this stylesheet depends on. Default empty array.
      * @return WpTesting_WordPressFacade
      */
-    public function enqueuePluginStyle($name, $pluginRelatedPath, array $dependencies = array())
+    public function enqueuePluginStyle($name, $pluginRelatedPath)
     {
-        wp_enqueue_style($name, $this->getPluginUrl($pluginRelatedPath), $dependencies);
-        return $this;
+        return $this->enqueueStyle($name, $this->getPluginUrl($pluginRelatedPath));
     }
 
     /**

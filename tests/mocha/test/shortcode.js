@@ -23,9 +23,9 @@ describe('Shortcode', function() {
             }, true)
         })
 
-        casper.waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save', null, null, 10000).waitForUrl(/message/, function() {
             '#message'.should.be.inDOM
-        }, null, 10000)
+        })
 
         casper.thenOpen(server + '/?p=1', thenOnPage1)
     }}
@@ -116,7 +116,7 @@ describe('Shortcode', function() {
                 this.click('#publish')
             })
 
-            casper.waitForUrl(/message/, function() {
+            casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
                 '#message'.should.be.inDOM
             })
         })
@@ -143,7 +143,7 @@ describe('Shortcode', function() {
                 this.click('#publish')
             })
 
-            casper.waitForUrl(/message/, function() {
+            casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
                 '#message'.should.be.inDOM
             })
         })
@@ -207,7 +207,7 @@ describe('Shortcode', function() {
         })
 
         it('should open test for preview', function() {
-            casper.waitForUrl(/message/, function() {
+            casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
                 '#message'.should.be.inDOM
                 this.evaluate(function() {
                     document.location = jQuery('#post-preview').attr('href')
@@ -267,7 +267,7 @@ describe('Shortcode', function() {
                 }, true)
             })
 
-            casper.waitForUrl(/message/, function() {
+            casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
                 'Fatal'.should.not.be.textInDOM
                 '#message'.should.be.inDOM
                 this.fillSelectors('form#post', {
