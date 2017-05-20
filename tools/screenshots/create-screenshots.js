@@ -142,8 +142,11 @@ var screenshots = [
 
             casper.then(function() {
                 this.evaluate(function() {
-                    return jQuery('#wpt_edit_questions.closed').length > 0
-                }) && this.clickLabel('Edit Questions and Scores', 'span') && this.wait(400)
+                    return jQuery('#wpt_edit_questions_answers.closed').length > 0
+                }) && this.clickLabel('Edit Questions and Answers', 'span') && this.wait(400)
+                this.evaluate(function() {
+                    return jQuery('#wpt_edit_scores.closed').length > 0
+                }) && this.clickLabel('Edit Scores', 'span')
             })
         }
     }, {
@@ -192,6 +195,7 @@ var screenshots = [
         }
     },{
         title   : 'Ready test on the home page',
+        offset  : 1700,
         actions : function () {
             casper.thenOpen('http://wpti.dev:8000/wp-login.php?action=logout', function() {
                 this.clickLabel('log out', 'a')
@@ -201,15 +205,15 @@ var screenshots = [
         }
     }, {
         title   : 'The page with the description of the test, questions and answers',
-        offset  : 1150 + 580,
+        offset  : 1150 + 580 - 120,
         actions : function () {
-            casper.then(function() {
-                this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)')
-            }).waitForUrl(/eysencks/)
+            casper
+            .thenOpen('http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/')
+            .waitForUrl(/eysencks/)
         }
     }, {
         title   : 'Unanswered questions are highlighted to respondent',
-        offset  : 7200 + 1100,
+        offset  : 7200 + 1100 + 160,
         actions : function () {
             casper
             .thenOpen('http://wpti.dev:8000/test/eysencks-personality-inventory-epi-extroversionintroversion/')
@@ -228,7 +232,7 @@ var screenshots = [
         }
     }, {
         title   : 'Get test results after all questions are answered',
-        offset  : 7200 + 1100,
+        offset  : 7200 + 1100 + 160,
         actions : function () {
             casper.then(function() {
                 i = 54
@@ -237,7 +241,7 @@ var screenshots = [
         }
     }, {
         title   : 'The result page on it`s own URL contains both the result of the test and the scales that create a result',
-        offset  : 400,
+        offset  : 400 - 20,
         actions : function () {
             casper.then(function() {
                 this.fill('form.wpt_test_form', {}, true)
@@ -251,12 +255,12 @@ var screenshots = [
         }
     }, {
         title   : 'Scale description with "more..." text closed',
-        offset  : 1500 + 600,
+        offset  : 1500 + 600 - 50,
         actions : function () {
         }
     }, {
         title   : 'Scale description with "more..." text opened (after clicking on "more" link)',
-        offset  : 1500 + 600 + 100,
+        offset  : 1500 + 600 - 50,
         actions : function () {
             casper.then(function() {
                 this.clickLabel('more…', 'a')

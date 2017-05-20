@@ -111,6 +111,9 @@ html.js .wpt_text_with_more .text_under_more {
 html.js .wpt_text_with_more .more_link {
     display: inline;
     text-decoration: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     border-bottom: 1px dashed;
 }
 html.js .wpt_text_with_more .more_link.open {
