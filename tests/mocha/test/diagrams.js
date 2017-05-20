@@ -59,7 +59,7 @@ describe('Diagrams', function() {
 
         casper.then(function() {
             this.fill('form#post', {}, true)
-        }).waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
+        }).waitWhileSelector('form#post.wpt-ajax-save', null, null, 10000).waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
 
@@ -73,7 +73,7 @@ describe('Diagrams', function() {
             })
 
             this.click('#publish')
-        }, null, 10000)
+        })
 
         casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM

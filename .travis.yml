@@ -85,3 +85,4 @@ cache:
 
 after_failure:
   - free -ltm
+  - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-transfer.sh '/tmp/*.screen.png'
