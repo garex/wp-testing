@@ -60,15 +60,15 @@
     opacity: 0.5;
 }
 
-.wpt_test .get_results .meter,
-.wpt_test .get_results .meter > span {
+.wpt_test.get_results .meter,
+.wpt_test.get_results .meter > span {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
     position: relative;
 }
-.wpt_test .get_results .meter,
-.wpt_test .get_results .scale.scores {
+.wpt_test.get_results .meter,
+.wpt_test.get_results .scale.scores {
     height: 32px;
     line-height: 32px;
     font-size: 16px;
@@ -78,24 +78,24 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.wpt_test .get_results .meter {
+.wpt_test.get_results .meter {
     margin-bottom: 1em;
     padding: 2px 1px;
     border: 1px solid highlight;
 }
-.wpt_test .get_results .meter > span {
+.wpt_test.get_results .meter > span {
     display: block;
     height: 100%;
     background: highlight;
     overflow: hidden;
 }
-.wpt_test .get_results .scale.scores {
+.wpt_test.get_results .scale.scores {
     padding-left: 7px;
     position: absolute;
     z-index: 1;
 }
 
-.wpt_test .get_results div.description {
+.wpt_test.get_results div.description {
     margin-bottom: 1.6842em;
 }
 
@@ -117,7 +117,7 @@ html.js .wpt_text_with_more .more_link.open {
     color: gray;
 }
 
-.wpt_test .get_results .content {
+.wpt_test.get_results .content {
     color: gray;
 }
 
