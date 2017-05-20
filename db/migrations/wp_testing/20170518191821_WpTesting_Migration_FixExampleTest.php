@@ -20,7 +20,8 @@ class WpTesting_Migration_FixExampleTest extends WpTesting_Migration_UpdateData
             array('knew you', 'knew you'),
             array('toa', 'to a'),
             array('hear?', 'heart?'),
-        ) as list($find, $replace)) {
+        ) as $row) {
+            list($find, $replace) = $row;
             $this->executeSafely("
                 UPDATE $questions SET question_title = REPLACE(question_title, '$find', '$replace')
                 WHERE test_id = $testId AND question_title LIKE '%$find%'
