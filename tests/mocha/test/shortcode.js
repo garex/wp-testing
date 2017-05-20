@@ -23,9 +23,9 @@ describe('Shortcode', function() {
             }, true)
         })
 
-        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save', null, null, 10000).waitForUrl(/message/, function() {
             '#message'.should.be.inDOM
-        }, null, 10000)
+        })
 
         casper.thenOpen(server + '/?p=1', thenOnPage1)
     }}

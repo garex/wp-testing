@@ -175,11 +175,11 @@ describe('Test', function() {
             this.click('#publish')
         })
 
-        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save', null, null, 120000).waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
             'Scheduled'.should.not.be.textInDOM
-        }, null, 120000)
+        })
     })
 
 })
