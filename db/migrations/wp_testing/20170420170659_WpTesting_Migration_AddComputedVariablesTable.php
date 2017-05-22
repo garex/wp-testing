@@ -9,7 +9,9 @@ class WpTesting_Migration_AddComputedVariablesTable extends WpTesting_Migration_
     {
         $this->addForeignKeyToTest($table);
         $table
-            ->addColumnString('computed_variable_name')
+            ->addColumnString('computed_variable_name', array(
+                'limit' => 190,
+            ))
             ->addColumnText('computed_variable_source')
             ->addColumnInteger('computed_variable_sort', array(
                 'default' => 100,
