@@ -1,6 +1,13 @@
 
 ## Changelog ##
 
+### 0.20.1 ###
+
+Fix fatal error when activating plugin
+
+* Applied to plesk hostings or other hostings where default database encoding is utf8mb4
+
+
 ### 0.20 ###
 
 Improve formulas editing experience
