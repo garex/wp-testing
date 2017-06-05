@@ -9,6 +9,7 @@
  * @method integer getTestId() Gets the current value of test id
  * @method WpTesting_Model_Formula setTestId(integer $id) Sets the value for test id
  * @method integer getResultId() Gets the current value of result id
+ * @method integer getResultIdOnce() Gets cached value of result id
  * @method WpTesting_Model_Formula setResultId(integer $id) Sets the value for result id
  * @method string getSource() Gets the current value of source
  */
