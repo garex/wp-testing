@@ -100,31 +100,6 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
         return parent::exists();
     }
 
-    /**
-     * Encode complex value that is safe to pass as a part of URI
-     *
-     * @param mixed $value
-     * @return string
-     */
-    public function encodeSafeUriValue($value)
-    {
-        return strtr(base64_encode(json_encode($value)), '+/', '-_');
-    }
-
-    /**
-     * Decode value, encoded by encodeSafeUriValue
-     *
-     * @see WpTesting_Model_AbstractModel::encodeSafeUriValue
-     *
-     * @param string $encodedValue
-     * @param string $isConvertIntoAssociativeArray
-     * @return array|object
-     */
-    public function decodeSafeUriValue($encodedValue, $isConvertIntoAssociativeArray = true)
-    {
-        return json_decode(base64_decode(strtr($encodedValue, '-_', '+/')), $isConvertIntoAssociativeArray);
-    }
-
     public function equals(WpTesting_Model_AbstractModel $object)
     {
         if (is_null($object)) {
@@ -198,11 +173,11 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
     {
         // Call method only once
         if (strrpos($methodName, 'Once') !== false) {
-            $methodName = str_replace('Once', '', $methodName);
             if (!isset($this->methodCallCache[$methodName])) {
-                $this->methodCallCache[$methodName] = (method_exists($this, $methodName))
-                    ? $this->$methodName($params)
-                    : parent::__call($methodName, $params);
+                $callMethodName = str_replace('Once', '', $methodName);
+                $this->methodCallCache[$methodName] = (method_exists($this, $callMethodName))
+                    ? $this->$callMethodName($params)
+                    : parent::__call($callMethodName, $params);
             }
             return $this->methodCallCache[$methodName];
         }
