@@ -395,3 +395,8 @@ pre.exposed {
 body .wpt_maximizable .wpt_scroll {
     max-height: 40em;
 }
+
+.wpt-ajax-save,
+.wpt-ajax-save * {
+    cursor: progress !important; 
+}
