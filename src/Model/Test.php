@@ -1,6 +1,7 @@
 <?php
 /**
  * @method integer getId() Gets the current value of id
+ * @method integer getIdOnce() Gets cached value of id
  * @method WpTesting_Model_Test setId(integer $id) Sets the value for id
  * @method string getTitle() Gets the current value of title
  * @method WpTesting_Model_Test setTitle(string $title) Sets the value for title
