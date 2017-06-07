@@ -19,16 +19,17 @@ class WpTesting_Model_Result extends WpTesting_Model_AbstractTerm
     public function getFormula()
     {
         $empty = new WpTesting_Model_Formula();
-        $empty->setResultId($this->getId());
+        $empty->setResultId($this->getIdOnce());
         if (is_null($this->test)) {
             return $empty;
         }
-        $empty->setTestId($this->test->getId());
+        $empty->setTestId($this->test->getIdOnce());
 
-        /* @var $formulas fRecordSet */
         $formulas = $this->test->buildFormulasOnce();
-        foreach ($formulas->filter(array('getResultId=' => $this->getId())) as $formula) {
-            return $formula;
+        foreach ($formulas as $formula) {
+            if ($formula->getResultIdOnce() == $this->getIdOnce()) {
+                return $formula;
+            }
         }
 
         return $empty;

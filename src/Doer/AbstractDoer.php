@@ -34,6 +34,7 @@ abstract class WpTesting_Doer_AbstractDoer
         $root = dirname(dirname(__FILE__)) . '/Template/';
         $this->output($root . 'Abstract/js-data.php', array(
             'Wpt' => $this->jsData,
+            'j' => new WpTesting_Component_Json(),
         ));
         $this->jsData = array();
     }

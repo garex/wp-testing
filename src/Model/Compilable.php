@@ -6,7 +6,6 @@
  * Values with percents are replaced for their percentage analogs (when source contains %).
  *
  * @method string getSource() Gets the current value of source
- * @method self setSource(string $source) Sets the value for source
  */
 abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
 {
@@ -31,6 +30,8 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
      */
     private $textValues = array();
 
+    private $source = null;
+
     public function __construct($key = null)
     {
         parent::__construct($key);
@@ -40,6 +41,34 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
         } elseif (function_exists('iconv_strlen')) {
             $this->stringLengthFunction = 'iconv_strlen';
         }
+    }
+
+    /**
+     * Gets the current value of source once.
+     *
+     * @return string
+     */
+    public function getSourceOnce()
+    {
+        if (is_null($this->source)) {
+            $this->source = $this->getSource();
+        }
+
+        return $this->source;
+    }
+
+    /**
+     * Sets the value for source.
+     *
+     * @param string $source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->source = null;
+        parent::setSource($source);
+        return $this;
     }
 
     /**
@@ -67,7 +96,7 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
             throw new InvalidArgumentException('Value ' . $name . ' can not be added twice');
         }
 
-        if (strpos($this->getSource(), '%')) {
+        if (strpos($this->getSourceOnce(), '%')) {
             if (!is_numeric($percentageValue)) {
                 throw new InvalidArgumentException('Percentage value ' . $name . ' must be numeric. Provided: ' . var_export($percentageValue, true));
             }
@@ -85,6 +114,17 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
         }
 
         return $this;
+    }
+
+    public function addVariable(WpTesting_Model_FormulaVariable $variable)
+    {
+        $name = $variable->getSource();
+
+        if (strpos($this->getSourceOnce(), $name) === false) {
+            return $this;
+        }
+
+        return $this->addValue($name, $variable->getValue(), $variable->getValueAsRatio());
     }
 
     /**
@@ -124,7 +164,7 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
      */
     public function substitute()
     {
-        $result = $this->getSource();
+        $result = $this->getSourceOnce();
         if (empty($result)) {
             return 'false';
         }
@@ -228,7 +268,7 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
     protected function hasPercentsAndValues()
     {
         // Check for percents with abs values
-        $source         = $this->getSource();
+        $source         = $this->getSourceOnce();
         $percentRegexp  = '/\d+ ?%/';
         $hasPercents    = preg_match($percentRegexp, $source);
 
@@ -269,7 +309,7 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
      */
     public function isCorrect(array $valueNames = array())
     {
-        $source = $this->getSource();
+        $source = $this->getSourceOnce();
         if (empty($source)) {
             return true;
         }
@@ -279,12 +319,8 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
             $experiment->addValues($this->substituteValues);
         } else {
             foreach (array_unique($valueNames) as $name) {
-                $experiment->addValue($name, 12, 0.34);
+                $experiment->addVariable(new WpTesting_Model_FormulaVariable_NullValue($name));
             }
-        }
-
-        if (empty($experiment->substituteValues)) {
-            throw new InvalidArgumentException('Value names are required when own values are empty');
         }
 
         try {

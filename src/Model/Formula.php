@@ -9,6 +9,7 @@
  * @method integer getTestId() Gets the current value of test id
  * @method WpTesting_Model_Formula setTestId(integer $id) Sets the value for test id
  * @method integer getResultId() Gets the current value of result id
+ * @method integer getResultIdOnce() Gets cached value of result id
  * @method WpTesting_Model_Formula setResultId(integer $id) Sets the value for result id
  * @method string getSource() Gets the current value of source
  */
@@ -29,7 +30,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
     {
         return array(
             'id'     => $this->getId(),
-            'source' => $this->getSource(),
+            'source' => $this->getSourceOnce(),
         );
     }
 
@@ -39,7 +40,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
             throw new InvalidArgumentException('Value ' . $name . ' can not be null');
         }
 
-        if (strpos($this->getSource(), '%') && is_null($percentageValue)) {
+        if (strpos($this->getSourceOnce(), '%') && is_null($percentageValue)) {
             throw new InvalidArgumentException('Percentage value ' . $name . ' can not be null when source contains percentage');
         }
 
@@ -53,7 +54,7 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
      */
     public function isEmpty()
     {
-        return (trim($this->getSource()) == '');
+        return (trim($this->getSourceOnce()) == '');
     }
 
     /**
@@ -78,6 +79,11 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
 
     public function validateSource(WpTesting_Model_Formula $me, &$values, &$oldValues, &$relatedRecords, &$cache, &$validationMessages)
     {
+        if (isset($oldValues['formula_source'][0]) && $oldValues['formula_source'][0] == $values['formula_source']) {
+            // No need to validate not changed values.
+            return;
+        }
+
         if ($me->hasPercentsAndValues()) {
             $validationMessages['formula_source'] = sprintf(__('Formula for %s is incompatible as it contains both numbers and percentages', 'wp-testing'), $me->createResult()->getTitle());
         } elseif (!$me->isCorrectFromTest()) {

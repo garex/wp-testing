@@ -2,6 +2,7 @@
 
 /**
  * @method integer getId() Gets the current value of id
+ * @method integer getIdOnce() Gets cached value of id
  * @method string getTitle() Gets the current value of title
  * @method string getSlug() Gets the current value of slug
  * @method string getAbbrOnce() Gets cached value of abbreviration
