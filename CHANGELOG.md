@@ -1,6 +1,14 @@
 
 ## Changelog ##
 
+### 0.20.2 ###
+
+Optimize formulas processing for huge tests
+
+* Speed up saving time and passing processing time
+* Show saving progress in editor by changing cursor to "progress"
+
+
 ### 0.20.1 ###
 
 Fix fatal error when activating plugin
