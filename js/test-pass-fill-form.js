@@ -111,11 +111,30 @@ Wpt.form.setupQuestionsAnswered = function($, form) {
     form.trigger('init_answers.wpt', [answersInputs])
         .trigger('test_unfilled.wpt');
 
+    function replacePlaceholdersIn(el) {
+        var NODE_TEXT_NODE = 3,
+            RE_PLACEHOLDER = /(_{2,})/g;
+
+        el.add(el.children()).contents().filter(function() {
+            var isText = (this.nodeType == NODE_TEXT_NODE);
+
+            if (!isText) {
+                return false;
+            }
+
+            return RE_PLACEHOLDER.test($(this).text());
+        }).replaceWith(function() {
+            return $(this).text().replace(RE_PLACEHOLDER, '<span class="placeholder">$1</span>');
+        });
+
+        return el;
+    };
+
     form.find('.question').each(function () {
         var question = $(this),
             title    = question.find('.title .title');
 
-        title.html(title.html().replace(/(_{2,})/, '<span class="placeholder">$1</span>'));
+        replacePlaceholdersIn(title);
         var placeholder = title.find('.placeholder');
 
         question.data('isAnswered', false);
