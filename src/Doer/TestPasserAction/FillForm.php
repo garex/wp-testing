@@ -173,10 +173,14 @@ class WpTesting_Doer_TestPasserAction_FillForm extends WpTesting_Doer_TestPasser
     private function stripNewLines($matches)
     {
         $result = $matches[0];
-        $result = preg_replace('/[\n\r\s]+/s', ' ', $result);
-        $result = str_replace('> <', '><', $result);
-        $result = preg_replace('/(>) ([^<])/s', '$1$2', $result);
-        $result = preg_replace('|([^>]) (</)|s', '$1$2', $result);
+        $result = preg_replace('/[\r\n]+\s+/', "\n", $result);
+        $result = preg_replace('/ +/', ' ', $result);
+        $result = preg_replace('/>\n</', '><', $result);
+        $result = preg_replace('/>\n/', '>', $result);
+        $result = preg_replace('/\n</', '<', $result);
+        $result = preg_replace('/\n/', ' ', $result);
+        $result = trim($result);
+
         return $result;
     }
 
