@@ -9,6 +9,7 @@ env:
     - DB_ENGINE=InnoDB
   matrix:
     - WP_VERSION=
+    - WP_VERSION=4.7.5
     - WP_VERSION=4.6.1
     - WP_VERSION=4.5
     - WP_VERSION=4.4.2
