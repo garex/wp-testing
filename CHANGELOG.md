@@ -1,6 +1,15 @@
 
 ## Changelog ##
 
+### 0.20.3 ###
+
+Welcome WordPress 4.8
+
+* Update plugin description
+* Safely replace placeholders in questions on form filling
+* No new functionality was added!
+
+
 ### 0.20.2 ###
 
 Optimize formulas processing for huge tests
