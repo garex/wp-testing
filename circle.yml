@@ -2,7 +2,7 @@ machine:
 
   php:
     version:
-      5.3.3
+      7.0.4
 
   hosts:
     wpti.dev: 127.0.0.1
@@ -28,11 +28,20 @@ dependencies:
     - a2dissite 000-default
     - a2ensite circle.apache2.conf
     - sudo a2enmod rewrite
+    - cat php5.conf | sed 's/php5/php7/' > php7.conf:
+        pwd:
+          ../../../../etc/apache2/mods-enabled
+    - echo 'LoadModule php7_module /home/ubuntu/.phpenv/versions/7.0.4/libexec/apache2/libphp7.so' > php7.load:
+        pwd:
+          ../../../../etc/apache2/mods-enabled
+    - rm php5*:
+        pwd:
+          ../../../../etc/apache2/mods-enabled
     - sudo service apache2 restart
     - rm --recursive --force wordpress:
         pwd:
           tests/integration-environment
-    - wget --no-clobber https://wordpress.org/wordpress-latest.tar.gz:
+    - wget --timestamping https://wordpress.org/wordpress-latest.tar.gz:
         pwd:
           tests/integration-environment/cache
     - tar --extract --ungzip --file=wordpress-latest.tar.gz --directory=..:

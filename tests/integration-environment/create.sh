@@ -37,6 +37,8 @@ function setup_link {
     log 'Setting up symbolic link'
     rm --force --recursive /tmp/wpti
     cp --preserve=mode,ownership,timestamps --recursive $HERE /tmp/wpti
+    rm --force --recursive /tmp/wpti/cache
+    ln --symbolic $HERE/cache /tmp/wpti/cache
 }
 
 function start_nginx {
@@ -77,9 +79,9 @@ function install_wp {
     rm --recursive --force wordpress
     log '.. downloading'
     cd /tmp/wpti/cache
-    wget --no-clobber $WP_LINK
-    tar --extract --ungzip --file=wordpress-$WP_VERSION.tar.gz --directory=..
-    cd ../wordpress
+    wget --timestamping $WP_LINK
+    tar --extract --ungzip --file=wordpress-$WP_VERSION.tar.gz --directory=/tmp/wpti
+    cd /tmp/wpti/wordpress
     log '.. clean up plugins'
     rm --recursive --force wp-content/plugins wp-content/upgrade
     mkdir --parents wp-content/plugins wp-content/upgrade
@@ -146,7 +148,7 @@ function install_other_plugins {
         PLUGIN_URL="https://downloads.wordpress.org/plugin/$PLUGIN_NAME.zip"
         log ".. $PLUGIN_NAME"
 
-        wget --no-clobber $PLUGIN_URL
+        wget --timestamping $PLUGIN_URL
         unzip -oq $PLUGIN_NAME.zip -d /tmp/wpti/wordpress/wp-content/plugins/
     done
 }
