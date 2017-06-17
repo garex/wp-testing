@@ -91,6 +91,7 @@
 }
 .wpt_test.get_results .scale.scores {
     padding-left: 7px;
+    white-space: nowrap;
     position: absolute;
     z-index: 1;
 }
