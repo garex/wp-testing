@@ -101,7 +101,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Arabic translation thanks to Mohammed Jawad <info@researchgate.asia>
 * For Romanian translation thanks to Maria Estela Mihoc <maria_estela_mihoc@yahoo.com>
 
-### Paid add-ons ###
+### Paid add-ons & support ###
 
 There is no single "Pro"/"Premium" version with features, but each [paid add-on](https://docs.google.com/spreadsheets/d/1BrZv6gpIo0QV21p42oJ9KIO5jZzqugOUB1GqQOeQqEY/edit?usp=sharing) has it's own feature.
 
@@ -114,6 +114,8 @@ Implemented and ready to run:
 * **Save Results in PDF**. Respondent will be able to get results in PDF form.
 * **Redirect to Custom Results Page**. Respondent will be redirected to custom built URL(s) where you can pass as params scales, results and result key. URL could be single for whole test or individual for each result.
 * **Computed Variables**. Create computed variables from existing variables and shortcode any variable at results page.
+
+For complex test logic or plugin environment specific issues [paid support](https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing) is available.
 
 
 ## Installation ##
@@ -145,7 +147,7 @@ Try to find there phrases like "Class ... not found" or "Call to undefined funct
 
 ### How to start? Where is documentation? ###
 
-See the video, screenshots and example test. We will not plan to create any documentation. For complex test logic paid support is available.
+See the video, screenshots and example test. We will not plan to create any documentation. For complex test logic [paid support](https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing) is available.
 
 ### Shortcodes? ###
 
