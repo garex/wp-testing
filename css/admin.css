@@ -17,6 +17,25 @@
     overflow: auto;
 }
 
+#wpt_feedback .inside > .wpt-avatar {
+	background-image: url("../img/ustimenko.alexander.jpg");
+	background-repeat: no-repeat;
+	min-height: 96px;
+	padding-right: 112px;
+	margin-top: 12px;
+	background-position: 100% 0px;
+}
+
+#wpt_feedback .inside > .wpt-avatar div {
+	margin-bottom: 12px;
+}
+
+.wpt_footer .separator {
+	color: #cccccc;
+	font-style: normal;
+	margin: 0px 0.50em;
+}
+
 table.wpt_questions {
     width: 100%;
 }

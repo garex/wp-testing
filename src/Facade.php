@@ -76,6 +76,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         }
 
         new WpTesting_Doer_Installer($this->wp, $this);
+        new WpTesting_Doer_Feedbacker($this->wp, new WpTesting_Model_Plugin($this->wp));
 
         $this->wp
             ->addAction('admin_menu',        array($this,  'registerAdminPages'))

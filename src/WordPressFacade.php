@@ -1608,4 +1608,37 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     {
         return _nx($single, $plural, $number, $context, $domain);
     }
+
+    /**
+     * Creates a cryptographic token tied to a specific action, user, user session, and window of time.
+     *
+     * @since 2.0.3
+     * @since 4.0.0 Session tokens were integrated with nonce creation
+     *
+     * @param string|int $action Scalar value to add context to the nonce.
+     *
+     * @return string The token.
+     */
+    public function createNonce($action = -1)
+    {
+        return wp_create_nonce($action);
+    }
+
+    /**
+     * Verifies the Ajax request to prevent processing requests external of the blog.
+     *
+     * @since 2.0.3
+     *
+     * @param int|string   $action        Action nonce.
+     * @param false|string $queryArgument Optional. Key to check for the nonce in `$_REQUEST` (since 2.5). If false,
+     *                                    `$_REQUEST` values will be evaluated for '_ajax_nonce', and '_wpnonce'
+     *                                    (in that order). Default false.
+     * @param bool         $isDieEarly    Optional. Whether to die early when the nonce cannot be verified. Default true.
+     * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
+     *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
+     */
+    public function checkAjaxReferer($action = -1, $queryArgument = false, $isDieEarly = true)
+    {
+        return check_ajax_referer($action, $queryArgument, $isDieEarly);
+    }
 }
