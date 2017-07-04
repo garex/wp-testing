@@ -389,6 +389,33 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieves the URL to the admin area for the current site.
+     *
+     * @since 2.6.0
+     *
+     * @param string $path   Optional path relative to the admin URL.
+     * @param string $scheme The scheme to use. Default is 'admin', which obeys force_ssl_admin() and is_ssl().
+     *                       'http' or 'https' can be passed to force those schemes.
+     * @return string Admin URL link with optional path appended.
+     */
+    public function adminUrl($path = '', $scheme = 'admin')
+    {
+        return admin_url($path, $scheme);
+    }
+
+    /**
+     * Sets admin page title.
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setAdminPageTitle($title)
+    {
+        $GLOBALS['title'] = $title;
+    }
+
+    /**
      * The WordPress version string
      *
      * @return string
