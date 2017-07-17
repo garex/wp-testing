@@ -419,3 +419,29 @@ body .wpt_maximizable .wpt_scroll {
 .wpt-ajax-save * {
     cursor: progress !important; 
 }
+
+.asap-wrap.asap-0 .asap-1,
+.asap-wrap.asap-1 .asap-0 {
+    display: none;	
+}
+
+.text-to-html {
+    white-space: pre-wrap;
+    background: white;
+    padding: 0px 10px;
+    margin-top: 1em;
+}
+
+.text-to-html ul {
+	padding: 0px 3em;
+}
+
+.text-to-html li {
+    list-style: disc;
+    margin: 0px;
+    line-height: 1em;
+}
+
+.text-to-html li > ul {
+    margin-top: 1em;
+} 

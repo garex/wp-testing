@@ -128,11 +128,37 @@ class WpTesting_Doer_Feedbacker extends WpTesting_Doer_AbstractDoer
     public function loadGetSupport()
     {
         $this->wp->setAdminPageTitle(__('Get support', 'wp-testing'));
+
+        $this
+            ->registerScripts()
+            ->enqueueStyle('admin')
+            ->enqueueScript('get-support', array('jquery'))
+        ;
     }
 
     public function renderGetSupport()
     {
-        $this->output('Feedback/get-support');
+        if (!$this->isPost()) {
+            $this->output('Feedback/get-support');
+        } elseif ($this->getRequestValue('environment', 'boolean')) {
+            unset($_POST['environment']);
+            $this->output('Feedback/environment', array(
+                'wp'         => $this->wp,
+                'values'     => $_POST,
+                'parameters' => $this->pluginMeta->getEnvironment(),
+            ));
+        } else {
+            $this->output('Feedback/get-support-finish', array(
+                'asap'          => $this->getRequestValue('asap', 'integer'),
+                'text'          => $this->render('Feedback/get-support-text', array(
+                    'title'         => $this->getRequestValue('title', 'string'),
+                    'details'       => $this->getRequestValue('details', 'string'),
+                    'parameters'    => $this->render('Feedback/environment-finish', array(
+                        'parameters'    => $this->getRequestValue('parameters', 'array'),
+                    ))
+                )),
+            ));
+        }
     }
 
     public function ajaxRateUs()
