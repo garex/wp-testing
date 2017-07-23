@@ -431,6 +431,31 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Check the plugins directory and retrieve all plugin files with plugin data.
+     *
+     * WordPress only supports plugin files in the base plugins directory
+     * (wp-content/plugins) and in one directory above the plugins directory
+     * (wp-content/plugins/my-plugin). The file it looks for has the plugin data
+     * and must be found in those two locations. It is recommended to keep your
+     * plugin files in their own directories.
+     *
+     * The file with the plugin data is the file that will be included and therefore
+     * needs to have the main execution for the plugin. This does not mean
+     * everything must be contained in the file and it is recommended that the file
+     * be split for maintainability. Keep everything in one file for extreme
+     * optimization purposes.
+     *
+     * @since 1.5.0
+     *
+     * @param string $pluginFolder Optional. Relative path to single plugin folder.
+     * @return array Key is the plugin file path and the value is an array of the plugin data.
+     */
+    public function getPlugins($pluginFolder = '')
+    {
+        return get_plugins($pluginFolder);
+    }
+
+    /**
      * Sanitizes a title, or returns a fallback title.
      *
      * Specifically, HTML and PHP tags are stripped. Further actions can be added

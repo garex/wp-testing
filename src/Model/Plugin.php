@@ -4,11 +4,13 @@ class WpTesting_Model_Plugin
 {
     private $baseName;
     private $wp;
+    private $ormAware;
 
-    public function __construct(WpTesting_WordPressFacade $wp)
+    public function __construct(WpTesting_WordPressFacade $wp, WpTesting_Facade_IORM $ormAware)
     {
         $this->baseName = $wp->getPluginBaseName();
         $this->wp = $wp;
+        $this->ormAware = $ormAware;
     }
 
     public function getBaseName()
@@ -53,5 +55,28 @@ class WpTesting_Model_Plugin
     public function markRateUsAsClicked()
     {
         return $this->wp->updateOption('wpt_rateus_clicked', true);
+    }
+
+    /**
+     * @return WpTesting_Model_IEnvironment[]
+     */
+    public function getEnvironment()
+    {
+        $wp = $this->wp;
+        $database = $this->ormAware->setupORM();
+
+        return array(
+            new WpTesting_Model_Environment_Browser(),
+            new WpTesting_Model_Environment_PhpVersion(),
+            new WpTesting_Model_Environment_PhpExtensions(),
+            new WpTesting_Model_Environment_PhpIniValues(),
+            new WpTesting_Model_Environment_MysqlClientVersion(),
+            new WpTesting_Model_Environment_MysqlServerVersion($database),
+            new WpTesting_Model_Environment_MysqlEngines($database),
+            new WpTesting_Model_Environment_MysqlTableStatus($database),
+            new WpTesting_Model_Environment_WordPressVersion($wp),
+            new WpTesting_Model_Environment_Plugins($wp),
+            new WpTesting_Model_Environment_ActiveTheme($wp),
+        );
     }
 }
