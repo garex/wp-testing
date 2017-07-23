@@ -389,6 +389,33 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieves the URL to the admin area for the current site.
+     *
+     * @since 2.6.0
+     *
+     * @param string $path   Optional path relative to the admin URL.
+     * @param string $scheme The scheme to use. Default is 'admin', which obeys force_ssl_admin() and is_ssl().
+     *                       'http' or 'https' can be passed to force those schemes.
+     * @return string Admin URL link with optional path appended.
+     */
+    public function adminUrl($path = '', $scheme = 'admin')
+    {
+        return admin_url($path, $scheme);
+    }
+
+    /**
+     * Sets admin page title.
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setAdminPageTitle($title)
+    {
+        $GLOBALS['title'] = $title;
+    }
+
+    /**
      * The WordPress version string
      *
      * @return string
@@ -428,6 +455,31 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
             $file = $this->pluginFile;
         }
         return plugin_basename($file);
+    }
+
+    /**
+     * Check the plugins directory and retrieve all plugin files with plugin data.
+     *
+     * WordPress only supports plugin files in the base plugins directory
+     * (wp-content/plugins) and in one directory above the plugins directory
+     * (wp-content/plugins/my-plugin). The file it looks for has the plugin data
+     * and must be found in those two locations. It is recommended to keep your
+     * plugin files in their own directories.
+     *
+     * The file with the plugin data is the file that will be included and therefore
+     * needs to have the main execution for the plugin. This does not mean
+     * everything must be contained in the file and it is recommended that the file
+     * be split for maintainability. Keep everything in one file for extreme
+     * optimization purposes.
+     *
+     * @since 1.5.0
+     *
+     * @param string $pluginFolder Optional. Relative path to single plugin folder.
+     * @return array Key is the plugin file path and the value is an array of the plugin data.
+     */
+    public function getPlugins($pluginFolder = '')
+    {
+        return get_plugins($pluginFolder);
     }
 
     /**
@@ -1607,5 +1659,38 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function translatePluralWithContext($single, $plural, $number, $context, $domain = 'default')
     {
         return _nx($single, $plural, $number, $context, $domain);
+    }
+
+    /**
+     * Creates a cryptographic token tied to a specific action, user, user session, and window of time.
+     *
+     * @since 2.0.3
+     * @since 4.0.0 Session tokens were integrated with nonce creation
+     *
+     * @param string|int $action Scalar value to add context to the nonce.
+     *
+     * @return string The token.
+     */
+    public function createNonce($action = -1)
+    {
+        return wp_create_nonce($action);
+    }
+
+    /**
+     * Verifies the Ajax request to prevent processing requests external of the blog.
+     *
+     * @since 2.0.3
+     *
+     * @param int|string   $action        Action nonce.
+     * @param false|string $queryArgument Optional. Key to check for the nonce in `$_REQUEST` (since 2.5). If false,
+     *                                    `$_REQUEST` values will be evaluated for '_ajax_nonce', and '_wpnonce'
+     *                                    (in that order). Default false.
+     * @param bool         $isDieEarly    Optional. Whether to die early when the nonce cannot be verified. Default true.
+     * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
+     *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
+     */
+    public function checkAjaxReferer($action = -1, $queryArgument = false, $isDieEarly = true)
+    {
+        return check_ajax_referer($action, $queryArgument, $isDieEarly);
     }
 }

@@ -29,7 +29,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
 
     private $isWordPressEntitiesRegistered = false;
 
-    private $isOrmSettedUp = false;
+    private $database = null;
 
     /**
      * @var WpTesting_Component_Loader
@@ -76,6 +76,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         }
 
         new WpTesting_Doer_Installer($this->wp, $this);
+        new WpTesting_Doer_Feedbacker($this->wp, new WpTesting_Model_Plugin($this->wp, $this));
 
         $this->wp
             ->addAction('admin_menu',        array($this,  'registerAdminPages'))
@@ -211,8 +212,8 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
 
     public function setupORM()
     {
-        if ($this->isOrmSettedUp) {
-            return;
+        if (!is_null($this->database)) {
+            return $this->database;
         }
         $this->defineConstants();
         $wp0Prefix = $this->wp->getGlobalTablePrefix();
@@ -353,7 +354,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
 
         $this->wp->doAction('wp_testing_orm_setup', $schema, $database, $this);
 
-        $this->isOrmSettedUp = true;
+        return $database;
     }
 
     public function getTablePrefix()

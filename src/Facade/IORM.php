@@ -7,7 +7,7 @@ interface WpTesting_Facade_IORM
 {
 
     /**
-     * @return void
+     * @return fDatabase
      */
     public function setupORM();
 
