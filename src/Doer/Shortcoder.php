@@ -40,6 +40,9 @@ abstract class WpTesting_Doer_Shortcoder extends WpTesting_Doer_AbstractDoer
         } catch (PHPUnit_Framework_Error $e) {
             throw $e;
         } catch (Exception $e) {
+            if (isset($shortcode)) {
+                $this->wp->doAction(sprintf(self::ACTION_RENDER_TEMPLATE, 'after', $uniqueName), $shortcode);
+            }
             return $this->renderException($e, $tag);
         }
     }

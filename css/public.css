@@ -21,6 +21,7 @@
 .wpt_test .answer label {
     display: inline-block;
     width: 100%;
+    font-weight: normal;
 }
 
 .wpt_test .answer input {
@@ -91,6 +92,7 @@
 }
 .wpt_test.get_results .scale.scores {
     padding-left: 7px;
+    white-space: nowrap;
     position: absolute;
     z-index: 1;
 }

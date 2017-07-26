@@ -1662,6 +1662,26 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     }
 
     /**
+     * Retrieve the date in localized format, based on timestamp.
+     *
+     * If the locale specifies the locale month and weekday, then the locale will
+     * take over the format for the date. If it isn't, then the date format string
+     * will be used instead.
+     *
+     * @since 0.71
+     *
+     * @param string   $dateFormat Format to display the date.
+     * @param bool|int $timestamp  Optional. Unix timestamp. Default false.
+     * @param bool     $isUseGmt   Optional. Whether to use GMT timezone. Default false.
+     *
+     * @return string The date, translated if locale specifies it.
+     */
+    public function dateI18n($dateFormat, $timestamp = false, $isUseGmt = false)
+    {
+        return date_i18n($dateFormat, $timestamp, $isUseGmt);
+    }
+
+    /**
      * Creates a cryptographic token tied to a specific action, user, user session, and window of time.
      *
      * @since 2.0.3
