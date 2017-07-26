@@ -17,16 +17,27 @@
     overflow: auto;
 }
 
-#wpt_feedback .inside > .wpt-avatar {
-	background-image: url("../img/ustimenko.alexander.jpg");
-	background-repeat: no-repeat;
-	min-height: 96px;
-	padding-right: 112px;
-	margin-top: 12px;
-	background-position: 100% 0px;
+#wpt_feedback .inside {
+	margint-top: 12px;
 }
 
-#wpt_feedback .inside > .wpt-avatar div {
+#wpt_feedback .inside > div.wpt-avatar {
+	float: left;
+	margin-right: 6px;
+	border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#wpt_feedback .wpt-avatar-image {
+	background-image: url("../img/ustimenko.alexander.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 70px;
+	height: 70px;
+}
+
+#wpt_feedback .inside > div {
 	margin-bottom: 12px;
 }
 
