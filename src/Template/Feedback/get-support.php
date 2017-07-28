@@ -1,7 +1,7 @@
 <div class="wrap">
 <h1><?php echo __('Get support', 'wp-testing')?></h1>
 
-<form method="post">
+<form id="get-support" method="post">
 <table class="form-table"><tbody>
     <tr>
         <th><label for="title"><?php echo __('In short', 'wp-testing') ?></label></th>

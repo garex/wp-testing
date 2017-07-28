@@ -7,9 +7,9 @@
 <h1 class="asap-1"><?php echo __('Get support as soon as possible', 'wp-testing') ?></h1>
 
 <p><label for="Asap">
-    <input name="asap" id="Asap" type="checkbox" value="1" <?php if ($asap): ?>checked="checked"<?php endif ?> />
-    <?php echo __('Paid support', 'wp-testing') ?>
-</label></p>
+    <input name="asap" id="Asap" type="checkbox" value="1" <?php if ($asap): ?>checked="checked"<?php endif ?> /><?php
+    echo __('Paid support', 'wp-testing')
+ ?></label></p>
 
 <p class="description asap-1"><?php echo preg_replace(
     '/{([^}]+)}/', '<a target="_blank" href="https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing">$1</a>',
