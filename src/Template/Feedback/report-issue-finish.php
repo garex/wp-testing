@@ -7,7 +7,7 @@
 /* @var $parameters string */
 ?>
 <div class="wrap">
-<h1><?php echo __('Report issue', 'wp-testing')?></h1>
+<h1><?php echo __('Report the problem', 'wp-testing')?></h1>
 
 <p class="description"><?php echo sprintf(__('Copy this text to create new topic at %s', 'wp-testing'),
     '<a href="https://wordpress.org/support/plugin/wp-testing/#new-post">wordpress.org/support/plugin/wp-testing</a>')

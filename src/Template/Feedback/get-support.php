@@ -1,5 +1,5 @@
 <div class="wrap">
-<h1><?php echo __('Get support', 'wp-testing')?></h1>
+<h1><?php echo __('Get the support', 'wp-testing')?></h1>
 
 <form id="get-support" method="post">
 <table class="form-table"><tbody>
@@ -15,7 +15,7 @@
         </td>
     </tr>
     <tr>
-        <th><?php echo __('Environment', 'wp-testing') ?></th>
+        <th><?php echo __('System information', 'wp-testing') ?></th>
         <td>
             <label for="AttachEnvironment">
                 <input name="environment" id="AttachEnvironment" type="checkbox" value="1" />
