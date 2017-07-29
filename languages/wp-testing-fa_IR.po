@@ -1,15 +1,15 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2017
 # Reza Maleki <rezaa.maleki@gmail.com>, 2015
 # webpaya <crackcmav2@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-06-01 19:50+0000\n"
+"POT-Creation-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2017-07-30 12:25+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/wp-translations/wp-testing/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -27,6 +27,30 @@ msgstr ""
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$g از %2$g"
+
+#: Doer/Feedbacker.php:40
+msgid "Feedback"
+msgstr "بازخورد"
+
+#: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
+msgid "Paid add-ons"
+msgstr "افزونه های پولی"
+
+#: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
+msgid "Paid support"
+msgstr "پشتیبانی پرداخت"
+
+#: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
+#: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
+#: Template/Feedback/report-issue.php:2
+msgid "Report the problem"
+msgstr "گزارش مشکل"
+
+#: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
+#: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
+#: Template/Feedback/get-support.php:2
+msgid "Get the support"
+msgstr "دریافت پشتیبانی"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -53,102 +77,114 @@ msgstr "نتایج من"
 msgid "My Test Results"
 msgstr "نتایج آزمون من"
 
-#: Doer/TestEditor.php:58
+#: Doer/TestEditor.php:66
 msgid "Maximize"
 msgstr "حداکثر رساندن"
 
-#: Doer/TestEditor.php:59
+#: Doer/TestEditor.php:67
 msgid "Minimize"
 msgstr "به حداقل رساندن"
 
-#: Doer/TestEditor.php:66
+#: Doer/TestEditor.php:69
+msgid "Comparision"
+msgstr "مقایسه‌‌گر"
+
+#: Doer/TestEditor.php:70
+msgid "Operator"
+msgstr "عمل‌گر"
+
+#: Doer/TestEditor.php:81
 msgid "Test Page Options"
 msgstr "تنظیمات صفحه سنجه"
 
-#: Doer/TestEditor.php:68
+#: Doer/TestEditor.php:83
 msgid "Result Page Options"
 msgstr "تنظیمات صفحه نتایج"
 
-#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+#: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
 msgstr "ویرایش پرسش و پاسخ"
 
-#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+#: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
 msgstr "ویرایش نمرات"
 
-#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
 msgstr "نمره‌گذاری سریع"
 
-#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
+#: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "ویرایش معادلات"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:230
 msgid "Publish on the home page"
 msgstr "انتشار در صفحه اول خانه"
 
-#: Doer/TestEditor.php:237
+#: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "نمایش درصد گویه‌های پاسخ داده شده توسط مشارکت‌کننده"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:256
 msgid "Show one question per page"
 msgstr "نمایش یک گویه در هر صفحه"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
 msgstr "مشارکت‌کنندگان اجازه انتخاب چند پاسخ را دارد"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "با زدن دکمه \"بازگشت\" پاسخ‌های مشارکت کننده را از نو تنظیم کن"
 
-#: Doer/TestEditor.php:252
+#: Doer/TestEditor.php:267
 msgid "Button caption"
 msgstr "لوح دکمه"
 
-#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
 msgstr "دریافت نتایج"
 
-#: Doer/TestEditor.php:271
+#: Doer/TestEditor.php:286
 msgid "Show scales chart"
 msgstr "نمایش نمودار مقیاس‌ها"
 
-#: Doer/TestEditor.php:275
+#: Doer/TestEditor.php:290
 msgid "Show scales"
 msgstr "نمایش مقیاس‌ها"
 
-#: Doer/TestEditor.php:279
+#: Doer/TestEditor.php:294
 msgid "Sort scales by score"
 msgstr "مقیاس‌ها را براساس نمرات مرتب کن"
 
-#: Doer/TestEditor.php:283
+#: Doer/TestEditor.php:298
 msgid "Show test description"
 msgstr "نمایش توضیحات سنجه"
 
-#: Doer/TestEditor.php:375
+#: Doer/TestEditor.php:383
 msgid "Test data not saved"
 msgstr "اطلاعات سنجه ذخیره نشد"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
-#: Template/Test/Passer/fill-form.php:79
+#: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "این سنجه در حال توسعه است"
 
 #: Doer/TestPasser/FilterRenderer.php:106
-#: Template/Test/Passer/fill-form.php:80
+#: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "هنوز امکان ارایه نتیجه برای شما وجود ندارد"
 
-#: Doer/TestPasserAction/FillForm.php:63
+#: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
 msgstr "{percentage}% پاسخ داده شده است"
 
-#: Doer/TestPasserAction/FillForm.php:72
+#: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
+#: Template/Feedback/get-support-finish.php:32
+#: Template/Feedback/get-support.php:38
+#: Template/Feedback/report-issue-finish.php:59
+#: Template/Feedback/report-issue.php:57
 msgid "Next"
 msgstr "بعدی"
 
@@ -165,11 +201,11 @@ msgstr "اگر پاسخی ندهید نتیجه‌ای دریافت نمی‌ک�
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "متاسفیم ولی مرورگر  %s  شما برای نمایش نمودار متناسب سازی نشده است."
 
-#: Doer/TestPasserAction/ProcessForm.php:74
+#: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
 msgstr "اطلاعات سنجه معتبر نمی‌باشد"
 
-#: Doer/TestPasserAction/ProcessForm.php:75
+#: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
 msgstr "اطلاعات ارایه شده به سنجه معتبر نمی‌باشد"
 
@@ -478,13 +514,13 @@ msgstr "دسته‌ای یافت نشد"
 msgid "No Categories found in Trash"
 msgstr "دسته‌ای در زباله‌دان یافت نشد"
 
-#: Model/Formula.php:246
+#: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "فرمول برای %s ناسازگار است، به عنوان آن شامل تعداد و درصد"
 
-#: Model/Formula.php:259
+#: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
 msgstr "در معادله  %s  خطا وجود دارد."
@@ -494,7 +530,7 @@ msgid "Scale Variable"
 msgstr "متغییر مقیاس"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
-#: Template/Test/Editor/edit-formulas.php:45
+#: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
 msgstr "پاسخ %2$s به سوال %1$s"
@@ -512,49 +548,139 @@ msgstr "آزمون \"%s\" منتشر شده. شما هنوز آن هر نقطه 
 msgid "Start Test"
 msgstr "شروع آزمون"
 
-#: Template/Test/Editor/edit-formulas.php:3
+#: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
+msgid "Add review"
+msgstr "اضافه کردن نظر"
+
+#: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
+msgid "Thank you"
+msgstr "متشکرم"
+
+#: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
+#: Template/Feedback/report-issue.php:46
+msgid "System information"
+msgstr "اطلاعات سیستم"
+
+#: Template/Feedback/get-support-finish.php:7
+#: Template/Feedback/get-support.php:31
+msgid "Get support as soon as possible"
+msgstr "مطلع پشتیبانی در اسرع وقت"
+
+#: Template/Feedback/get-support-finish.php:15
+#, php-format
+msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
+msgstr "با استفاده از این متن به درخواست <a target=\"_blank\" href=\"%s\">پشتیبانی پرداخت می شود</a>"
+
+#: Template/Feedback/get-support-finish.php:23
+#: Template/Feedback/report-issue-finish.php:12
+#, php-format
+msgid "Copy this text to create new topic at %s"
+msgstr "کپی این متن برای ایجاد موضوع جدید در %s"
+
+#: Template/Feedback/get-support.php:7
+msgid "In short"
+msgstr "به اختصار"
+
+#: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
+#: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
+#: Template/Feedback/report-issue.php:42
+msgid "Please use english language"
+msgstr "لطفا زبان انگلیسی با استفاده از"
+
+#: Template/Feedback/get-support.php:11
+msgid "Details"
+msgstr "جزئیات"
+
+#: Template/Feedback/get-support.php:14
+msgid "What do you want to get and why?"
+msgstr "شما چه می خواهید برای به دست آوردن و چرا؟"
+
+#: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
+msgid "Add technical details about your installation"
+msgstr "اضافه کردن جزئیات فنی مربوط به نصب"
+
+#: Template/Feedback/get-support.php:27
+msgid "Priority"
+msgstr "اولویت"
+
+#: Template/Feedback/report-issue.php:7
+msgid "Problem is repeated"
+msgstr "مشکل تکرار شده است"
+
+#: Template/Feedback/report-issue.php:11
+msgid "when you use another hosting"
+msgstr "هنگام استفاده از میزبانی دیگر"
+
+#: Template/Feedback/report-issue.php:15
+msgid "on the local computer"
+msgstr "بر روی کامپیوتر محلی"
+
+#: Template/Feedback/report-issue.php:19
+msgid "with default theme"
+msgstr "با تم پیش فرض"
+
+#: Template/Feedback/report-issue.php:23
+msgid "when all other plugins are disabled"
+msgstr "زمانی که همه از پلاگین های دیگر غیر فعال می باشد"
+
+#: Template/Feedback/report-issue.php:28
+msgid "You expect"
+msgstr "شما انتظار می رود"
+
+#: Template/Feedback/report-issue.php:32
+msgid "Actually you get"
+msgstr "در واقع شما"
+
+#: Template/Feedback/report-issue.php:36
+msgid "URL of the screenshot"
+msgstr "نماگرفت URL"
+
+#: Template/Feedback/report-issue.php:40
+msgid "Steps to repeat the problem"
+msgstr "مراحل به تکرار مشکل"
+
+#: Template/Test/Editor/edit-formulas.php:5
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/edit-formulas.php:6
+#: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
 msgstr "معادله"
 
-#: Template/Test/Editor/edit-formulas.php:4
+#: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
 msgstr "نتیجه"
 
-#: Template/Test/Editor/edit-formulas.php:28
+#: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "معادله‌ای برای ویرایش موجود نیست. معادله‌ای را انتخاب کنید تا امکان ویرایش فراهم گردد."
 
-#: Template/Test/Editor/edit-formulas.php:37
-msgid "Variables"
-msgstr "متغییرها"
-
-#: Template/Test/Editor/edit-formulas.php:38
-msgid "Comparisions"
-msgstr "مقایسه‌گرها"
-
-#: Template/Test/Editor/edit-formulas.php:39
-msgid "Operators"
-msgstr "عمل‌گرها"
-
-#: Template/Test/Editor/edit-formulas.php:58
-msgid "Comparision"
-msgstr "مقایسه‌‌گر"
-
-#: Template/Test/Editor/edit-formulas.php:64
-msgid "Operator"
-msgstr "عمل‌گر"
-
-#: Template/Test/Editor/edit-formulas.php:72
-msgid ""
-"No variables for formulas available. To use variables you must have scales "
-"selected or have at least one question and answer."
-msgstr "متغییری برای فرمول در دسترس نیست. برای استفاده از متغییرها می‌بایست یکی از مقیاس‌ها یا حداقل یکی از گویه‌ها و پاسخ‌ها را انتخاب کنید."
-
-#: Template/Test/Editor/edit-formulas.php:81
+#: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "هم اعداد و هم درصدها، مجاز است. به عنوان مثال مقیاس \"هرچیزی\" با نمره کل 30 را دارید، پس می‌توانید هم از \"هرچیزی>15\" و هم از \"هرچیزی>50%\" استفاده کنید."
+
+#: Template/Test/Editor/edit-formulas.php:53
+msgid "Comparisions"
+msgstr "مقایسه‌گرها"
+
+#: Template/Test/Editor/edit-formulas.php:62
+msgid "Operators"
+msgstr "عمل‌گرها"
+
+#: Template/Test/Editor/edit-formulas.php:73
+msgid "Variables"
+msgstr "متغییرها"
+
+#: Template/Test/Editor/edit-formulas.php:92
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
+msgstr "متغییری برای فرمول در دسترس نیست. برای استفاده از متغییرها می‌بایست یکی از مقیاس‌ها یا حداقل یکی از گویه‌ها و پاسخ‌ها را انتخاب کنید."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
@@ -602,23 +728,18 @@ msgid ""
 "selected scales."
 msgstr "هیچ امتیاز برای ویرایش. برای ویرایش نمرات شما باید پرسش و پاسخ و مقیاس انتخاب شده."
 
-#: Template/Test/Editor/edit-scores.php:23
-#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"
-
 #: Template/Test/Editor/quick-fill-scores.php:18
-#: Template/Test/Editor/quick-fill-scores.php:35
+#: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
 msgstr "مقیاس"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
-#: Template/Test/Editor/quick-fill-scores.php:36
+#: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
 msgstr "نمره‌گذاری"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
-#: Template/Test/Editor/quick-fill-scores.php:37
+#: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
 msgstr "پاسخ"
 
@@ -626,7 +747,7 @@ msgstr "پاسخ"
 msgid "Questions"
 msgstr "گویه‌ها"
 
-#: Template/Test/Editor/quick-fill-scores.php:47
+#: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
 msgstr "اضافه کردن جدید ترکیبی"
 

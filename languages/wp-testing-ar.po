@@ -1,21 +1,22 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2017
 # Mohammed Jawad <info@researchgate.asia>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-11-18 20:37+0000\n"
-"Last-Translator: Mohammed Jawad <info@researchgate.asia> \n"
+"POT-Creation-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2017-07-30 12:03+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/wp-translations/wp-testing/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -25,6 +26,30 @@ msgstr ""
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$g من ال  %2$g"
+
+#: Doer/Feedbacker.php:40
+msgid "Feedback"
+msgstr "ردود الفعل"
+
+#: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
+msgid "Paid add-ons"
+msgstr "دفعت إضافات"
+
+#: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
+msgid "Paid support"
+msgstr "الدعم المدفوع"
+
+#: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
+#: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
+#: Template/Feedback/report-issue.php:2
+msgid "Report the problem"
+msgstr "تقرير المشكلة"
+
+#: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
+#: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
+#: Template/Feedback/get-support.php:2
+msgid "Get the support"
+msgstr "الحصول على الدعم"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -51,102 +76,114 @@ msgstr "النتائج"
 msgid "My Test Results"
 msgstr "نتائج اختباري"
 
-#: Doer/TestEditor.php:58
+#: Doer/TestEditor.php:66
 msgid "Maximize"
 msgstr "الحد الأقصى"
 
-#: Doer/TestEditor.php:59
+#: Doer/TestEditor.php:67
 msgid "Minimize"
 msgstr "الحد الأدنى"
 
-#: Doer/TestEditor.php:66
+#: Doer/TestEditor.php:69
+msgid "Comparision"
+msgstr "مقارنة"
+
+#: Doer/TestEditor.php:70
+msgid "Operator"
+msgstr "المشغل"
+
+#: Doer/TestEditor.php:81
 msgid "Test Page Options"
 msgstr "صفحة اعدادات الاختبارات"
 
-#: Doer/TestEditor.php:68
+#: Doer/TestEditor.php:83
 msgid "Result Page Options"
 msgstr "خيارات صفحة النتيجة"
 
-#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+#: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
 msgstr "لوحة الأسئلة والأجوبة"
 
-#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+#: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
 msgstr "تحرير الدرجات"
 
-#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
 msgstr "تحرير جميع  الدرجات"
 
-#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
+#: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "تحرير الصيغ"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:230
 msgid "Publish on the home page"
 msgstr "نشر في الصفحة الرئيسية"
 
-#: Doer/TestEditor.php:237
+#: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "إظهار العنوان كنسبة مئوية من الأسئلة ألتي المستجيب سبق أن أجابه"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:256
 msgid "Show one question per page"
 msgstr "عرض سؤال واحد في كل صفحة"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
 msgstr "السماح بإجابات متعددة للسؤال الواحد"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "إعادة تعيين إجابات المدعي عليها عند الضغط على زر \"الرجوع\""
 
-#: Doer/TestEditor.php:252
+#: Doer/TestEditor.php:267
 msgid "Button caption"
 msgstr "التسمية التوضيحية للزر"
 
-#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
 msgstr "الحصول على نتائج الاختبار"
 
-#: Doer/TestEditor.php:271
+#: Doer/TestEditor.php:286
 msgid "Show scales chart"
 msgstr "إظهار التدريج البياني"
 
-#: Doer/TestEditor.php:275
+#: Doer/TestEditor.php:290
 msgid "Show scales"
 msgstr "اظهار المقاييس"
 
-#: Doer/TestEditor.php:279
+#: Doer/TestEditor.php:294
 msgid "Sort scales by score"
 msgstr "فرز المقاييس حسب الدرجات"
 
-#: Doer/TestEditor.php:283
+#: Doer/TestEditor.php:298
 msgid "Show test description"
 msgstr "إظهار وصف الاختبار"
 
-#: Doer/TestEditor.php:375
+#: Doer/TestEditor.php:383
 msgid "Test data not saved"
 msgstr "لم يتم حفظ النتيجة"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
-#: Template/Test/Passer/fill-form.php:79
+#: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "الاختبار قيد الإنشاء"
 
 #: Doer/TestPasser/FilterRenderer.php:106
-#: Template/Test/Passer/fill-form.php:80
+#: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "لا يمكنك أن تحصل أي نتائج منه حتى الآن."
 
-#: Doer/TestPasserAction/FillForm.php:63
+#: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
 msgstr "{percentage}% تمت الاجابة علية"
 
-#: Doer/TestPasserAction/FillForm.php:72
+#: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
+#: Template/Feedback/get-support-finish.php:32
+#: Template/Feedback/get-support.php:38
+#: Template/Feedback/report-issue-finish.php:59
+#: Template/Feedback/report-issue.php:57
 msgid "Next"
 msgstr "التالي"
 
@@ -163,11 +200,11 @@ msgstr "لا يمكنك أن تحصل على أي نتائج منه حتى ال�
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "آسف ولكن المتصفح غير متوافق %s لعرض المخطط"
 
-#: Doer/TestPasserAction/ProcessForm.php:74
+#: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
 msgstr "البيانات غير صالحة."
 
-#: Doer/TestPasserAction/ProcessForm.php:75
+#: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
 msgstr "لا يمكنك تمرير بيانات غير صالحة لاختبار."
 
@@ -476,13 +513,13 @@ msgstr "لايوجد تصانيف"
 msgid "No Categories found in Trash"
 msgstr "لايوجد تصنيف على المهملات"
 
-#: Model/Formula.php:246
+#: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "المعادلة لل %s  غير متكاملة لانها تحتوي على الارقام و نسب معاً"
 
-#: Model/Formula.php:259
+#: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
 msgstr "المعادلة لل %s فيها بعض الاخطاء"
@@ -492,7 +529,7 @@ msgid "Scale Variable"
 msgstr "متغيرات المقياس"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
-#: Template/Test/Editor/edit-formulas.php:45
+#: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
 msgstr "فقرة  %1$s اجابة  %2$s"
@@ -510,49 +547,139 @@ msgstr "اختبار \"%s\" لم يتم نشرها بعد ، لايمكنك نش
 msgid "Start Test"
 msgstr "ابدء الاختبار"
 
-#: Template/Test/Editor/edit-formulas.php:3
+#: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
+msgid "Add review"
+msgstr "إضافة مراجعة"
+
+#: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
+msgid "Thank you"
+msgstr "شكرا"
+
+#: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
+#: Template/Feedback/report-issue.php:46
+msgid "System information"
+msgstr "معلومات النظام"
+
+#: Template/Feedback/get-support-finish.php:7
+#: Template/Feedback/get-support.php:31
+msgid "Get support as soon as possible"
+msgstr "الحصول على الدعم في أقرب وقت ممكن"
+
+#: Template/Feedback/get-support-finish.php:15
+#, php-format
+msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
+msgstr "استخدام هذا النص لطلب <a target=\"_blank\" href=\"%s\">الدعم المدفوع</a>"
+
+#: Template/Feedback/get-support-finish.php:23
+#: Template/Feedback/report-issue-finish.php:12
+#, php-format
+msgid "Copy this text to create new topic at %s"
+msgstr "نسخ هذا النص لخلق موضوع جديد في %s"
+
+#: Template/Feedback/get-support.php:7
+msgid "In short"
+msgstr "باختصار"
+
+#: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
+#: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
+#: Template/Feedback/report-issue.php:42
+msgid "Please use english language"
+msgstr "الرجاء استخدام اللغة الانجليزية"
+
+#: Template/Feedback/get-support.php:11
+msgid "Details"
+msgstr "تفاصيل"
+
+#: Template/Feedback/get-support.php:14
+msgid "What do you want to get and why?"
+msgstr "ماذا كنت ترغب في الحصول ولماذا؟"
+
+#: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
+msgid "Add technical details about your installation"
+msgstr "إضافة التفاصيل الفنية حول التثبيت"
+
+#: Template/Feedback/get-support.php:27
+msgid "Priority"
+msgstr "أفضلية"
+
+#: Template/Feedback/report-issue.php:7
+msgid "Problem is repeated"
+msgstr "وتتكرر المشكلة"
+
+#: Template/Feedback/report-issue.php:11
+msgid "when you use another hosting"
+msgstr "عند استخدام استضافة أخرى"
+
+#: Template/Feedback/report-issue.php:15
+msgid "on the local computer"
+msgstr "على الكمبيوتر المحلي"
+
+#: Template/Feedback/report-issue.php:19
+msgid "with default theme"
+msgstr "مع السمة الافتراضية"
+
+#: Template/Feedback/report-issue.php:23
+msgid "when all other plugins are disabled"
+msgstr "عندما يتم تعطيل كافة ملحقات أخرى"
+
+#: Template/Feedback/report-issue.php:28
+msgid "You expect"
+msgstr "أنت تتوقع"
+
+#: Template/Feedback/report-issue.php:32
+msgid "Actually you get"
+msgstr "في الواقع تحصل"
+
+#: Template/Feedback/report-issue.php:36
+msgid "URL of the screenshot"
+msgstr "URL للقطة"
+
+#: Template/Feedback/report-issue.php:40
+msgid "Steps to repeat the problem"
+msgstr "خطوات لتكرار المشكلة"
+
+#: Template/Test/Editor/edit-formulas.php:5
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/edit-formulas.php:6
+#: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
 msgstr "المعادلة"
 
-#: Template/Test/Editor/edit-formulas.php:4
+#: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
 msgstr "النتيجة"
 
-#: Template/Test/Editor/edit-formulas.php:28
+#: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "لا توجد معادلات للتعديل ، لتعديل المعادلة يجب ان يكون لديك بعض النتائج"
 
-#: Template/Test/Editor/edit-formulas.php:37
-msgid "Variables"
-msgstr "متغيرات"
-
-#: Template/Test/Editor/edit-formulas.php:38
-msgid "Comparisions"
-msgstr "مقارنات"
-
-#: Template/Test/Editor/edit-formulas.php:39
-msgid "Operators"
-msgstr "مشغلات"
-
-#: Template/Test/Editor/edit-formulas.php:58
-msgid "Comparision"
-msgstr "مقارنة"
-
-#: Template/Test/Editor/edit-formulas.php:64
-msgid "Operator"
-msgstr "المشغل"
-
-#: Template/Test/Editor/edit-formulas.php:72
-msgid ""
-"No variables for formulas available. To use variables you must have scales "
-"selected or have at least one question and answer."
-msgstr "لا توجد متغيرات للصيغ المتوفرة. لاستخدام المتغيرات يجب أن لديك جداول محددة أو لديك سؤال وجواب واحد على الأقل."
-
-#: Template/Test/Editor/edit-formulas.php:81
+#: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "الأرقام والنسب المئوية المسموح به. على سبيل المثال \"مقياس- الشخصية\" على مجموع 30، فان \"مقياس- الشخصية> 15\" و \"مقياس-الشخصية  > 50%\" هي نفسها."
+
+#: Template/Test/Editor/edit-formulas.php:53
+msgid "Comparisions"
+msgstr "مقارنات"
+
+#: Template/Test/Editor/edit-formulas.php:62
+msgid "Operators"
+msgstr "مشغلات"
+
+#: Template/Test/Editor/edit-formulas.php:73
+msgid "Variables"
+msgstr "متغيرات"
+
+#: Template/Test/Editor/edit-formulas.php:92
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
+msgstr "لا توجد متغيرات للصيغ المتوفرة. لاستخدام المتغيرات يجب أن لديك جداول محددة أو لديك سؤال وجواب واحد على الأقل."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
@@ -600,23 +727,18 @@ msgid ""
 "selected scales."
 msgstr "لا توجد درجات لتحريرها. يجب عليك تحرير درجات الأسئلة والأجوبة في المقاييس المحددة."
 
-#: Template/Test/Editor/edit-scores.php:23
-#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"
-
 #: Template/Test/Editor/quick-fill-scores.php:18
-#: Template/Test/Editor/quick-fill-scores.php:35
+#: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
 msgstr "مقياس"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
-#: Template/Test/Editor/quick-fill-scores.php:36
+#: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
 msgstr "درجة"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
-#: Template/Test/Editor/quick-fill-scores.php:37
+#: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
 msgstr "الاجوبة"
 
@@ -624,7 +746,7 @@ msgstr "الاجوبة"
 msgid "Questions"
 msgstr "الاسئلة"
 
-#: Template/Test/Editor/quick-fill-scores.php:47
+#: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
 msgstr "اضافة تشكيلة جديدة"
 
