@@ -18,7 +18,8 @@ class WpTesting_Doer_Feedbacker extends WpTesting_Doer_AbstractDoer
             ->addFilter('plugin_row_meta', array($this, 'onPluginMeta'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
             ->addAction('admin_menu', array($this, 'addPages'))
             ->addAction('wp_ajax_wpt_rateus', array($this, 'ajaxRateUs'))
-            ->addAction('wp_testing_editor_customize_ui_after', array($this, 'customizeEditor'));
+            ->addAction('wp_testing_editor_customize_ui_after', array($this, 'customizeEditor'))
+            ->addAction('add_meta_boxes_wpt_test', array($this, 'customizeEditorMetaboxes'))
         ;
     }
 
@@ -31,11 +32,13 @@ class WpTesting_Doer_Feedbacker extends WpTesting_Doer_AbstractDoer
             ))
         ;
 
-        $this->wp
-            ->addMetaBox('wpt_feedback', __('Feedback', 'wp-testing'),
-                array($this, 'renderEditorMetabox'), 'wpt_test', 'side', 'core')
-            ->addFilter('admin_footer_text', array($this, 'renderFooter'))
-        ;
+        $this->wp->addFilter('admin_footer_text', array($this, 'renderFooter'));
+    }
+
+    public function customizeEditorMetaboxes()
+    {
+        $this->wp->addMetaBox('wpt_feedback', __('Feedback', 'wp-testing'),
+            array($this, 'renderEditorMetabox'), 'wpt_test', 'side', 'low');
     }
 
     /**

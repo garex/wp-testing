@@ -6,7 +6,7 @@
 <div class="wrap">
 <h1><?php echo __('Environment', 'wp-testing')?></h1>
 
-<form method="post">
+<form id="environment" method="post">
 <?php foreach ($values as $key => $value): ?>
 <?php if (!is_array($value)): ?>
     <input type="hidden" name="<?php echo $key ?>" value="<?php echo htmlentities($value) ?>" />
@@ -24,9 +24,9 @@
     <th><?php echo $parameter->label() ?></th>
     <td>
         <label for="Parameter<?php echo md5($parameter->label()) ?>">
-            <input name="parameters[]" class="parameter" id="Parameter<?php echo md5($parameter->label()) ?>" type="checkbox" value="<?php echo htmlentities('<code>' . $parameter->label(). '</code> ' . $parameter->text()) ?>" />
-            <?php echo $parameter->text() ?>
-        </label>
+            <input name="parameters[]" class="parameter" id="Parameter<?php echo md5($parameter->label()) ?>" type="checkbox" value="<?php echo htmlentities('<code>' . $parameter->label(). '</code> ' . $parameter->text()) ?>" /><?php
+            echo $parameter->text()
+          ?></label>
     </td>
 </tr>
 <?php endforeach ?>
@@ -35,10 +35,9 @@
         <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo __('Next', 'wp-testing') ?>" />
     </th>
     <td>
-         <label for="SelectAll">
-            <input id="SelectAll" type="checkbox" data-select-all=".parameter" />
-            <?php echo $wp->translate('Select All') ?>
-        </label>
+        <label for="SelectAll"><input id="SelectAll" type="checkbox" data-select-all=".parameter" /><?php
+            echo $wp->translate('Select All')
+      ?></label>
     </td>
 </tr>
 </tbody>

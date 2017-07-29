@@ -223,6 +223,49 @@ describe('Shortcode', function() {
         })
     })
 
+    describe('shortcode with exception not tells about include itself', function() {
+        it('should add bad shortcodes to test', function() {
+            casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
+                this.clickLabel('Scale Aggregates')
+            })
+
+            casper.waitForUrl(/edit/, function() {
+                this.fillSelectors('form#post', {
+                    '#content': [
+                        'Before',
+                        '[wpt_test_read_more name=not-existing-test]',
+                        '[wpt_test_read_more name=not-existing-test]',
+                        '[wpt_test_read_more name=not-existing-test]',
+                        'After'
+                    ].join('\n\n'),
+                })
+                this.click('#publish')
+            })
+        })
+
+        it('should open test for preview', function() {
+            casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
+                '#message'.should.be.inDOM
+                this.evaluate(function() {
+                    document.location = jQuery('#post-preview').attr('href')
+                })
+            })
+        })
+
+        it('should not error about itself include', function() {
+            casper.then(function() {
+                'Scale Aggregates'.should.be.textInDOM
+                'includes itself'.should.not.be.textInDOM
+            })
+        })
+
+        it('should error about not found', function() {
+            casper.then(function() {
+                'wpt_test_read_more: Can not find test by id or name'.should.be.textInDOM
+            })
+        })
+    })
+
     describe('not fails other rendering', function() {
         var content = '[caption align="aligncenter" width="300" caption="Caption1"]'
 

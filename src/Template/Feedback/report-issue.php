@@ -1,7 +1,7 @@
 <div class="wrap">
 <h1><?php echo __('Report issue', 'wp-testing')?></h1>
 
-<form method="post">
+<form id="report-issue" method="post">
 <table class="form-table"><tbody>
     <tr>
         <th><?php echo __('Issue repeats', 'wp-testing') ?></th>
