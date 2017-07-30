@@ -5,10 +5,10 @@ describe('Feedback', function() {
         require('../login-as').admin(this)
     })
 
-    describe('Rate us', function() {
-        it('should have rate us link in tests page', function() {
+    describe('Add review', function() {
+        it('should have add review link in tests page', function() {
             casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
-                'Rate us'.should.be.textInDOM
+                'Add review'.should.be.textInDOM
             })
         })
 
@@ -20,13 +20,13 @@ describe('Feedback', function() {
 
         it('should open review page on rate us link', function() {
             casper.then(function() {
-                this.clickLabel('Rate us')
+                this.clickLabel('Add review')
             }).wait(500)
         })
 
         it('should show "thank you" text after reload', function() {
             casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
-                'Rate us'.should.not.be.textInDOM
+                'Add review'.should.not.be.textInDOM
                 'Thank you'.should.be.textInDOM
             })
         })
@@ -46,16 +46,16 @@ describe('Feedback', function() {
         })
     })
 
-    describe('Report issue', function() {
+    describe('Report the problem', function() {
         it('should open in new window', function() {
             casper.then(function() {
-                this.clickLabel('Report issue', '*[@id="wpt_feedback"]//a')
+                this.clickLabel('Report the problem', '*[@id="wpt_feedback"]//a')
             })
 
             casper.waitForPopup(/wpt_feedback_report_issue/)
         })
 
-        it('should fill report issue form with tech details', function() {
+        it('should fill Report the problem form with tech details', function() {
             casper.withPopup(/wpt_feedback_report_issue/, function() {
                 casper.then(function() {
                     'Fatal'.should.not.be.textInDOM
@@ -78,7 +78,7 @@ describe('Feedback', function() {
                 casper.then(function() {
                     'Fatal'.should.not.be.textInDOM
 
-                    'Environment'.should.be.textInIDOM
+                    'System information'.should.be.textInIDOM
                     'PHP version'.should.be.textInIDOM
                     'Active theme stylesheet'.should.be.textInIDOM
                 })
@@ -136,7 +136,7 @@ describe('Feedback', function() {
             })
 
             casper.then(function() {
-                this.clickLabel('Get support', '*[@id="wpt_feedback"]//a')
+                this.clickLabel('Get the support', '*[@id="wpt_feedback"]//a')
             })
 
             casper.waitForPopup(/wpt_feedback_get_support/)
