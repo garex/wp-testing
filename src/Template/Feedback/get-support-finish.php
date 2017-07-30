@@ -3,7 +3,7 @@
 /* @var $text string */
 ?>
 <div class="wrap asap-wrap asap-<?php echo $asap ?>">
-<h1 class="asap-0"><?php echo __('Get support', 'wp-testing')?></h1>
+<h1 class="asap-0"><?php echo __('Get the support', 'wp-testing')?></h1>
 <h1 class="asap-1"><?php echo __('Get support as soon as possible', 'wp-testing') ?></h1>
 
 <p><label for="Asap">
@@ -11,9 +11,10 @@
     echo __('Paid support', 'wp-testing')
  ?></label></p>
 
-<p class="description asap-1"><?php echo preg_replace(
-    '/{([^}]+)}/', '<a target="_blank" href="https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing">$1</a>',
-    __('Use this text to order {paid support}', 'wp-testing')) ?></p>
+<p class="description asap-1"><?php
+    echo sprintf(__('Use this text to order <a target="_blank" href="%s">paid support</a>', 'wp-testing'),
+        'https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing')
+?></p>
 
 <div class="asap-1 text-to-html">
 <?php echo $text?>

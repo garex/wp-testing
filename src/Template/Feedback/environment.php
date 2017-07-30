@@ -4,7 +4,7 @@
 /* @var $parameters WpTesting_Model_IEnvironment[] */
 ?>
 <div class="wrap">
-<h1><?php echo __('Environment', 'wp-testing')?></h1>
+<h1><?php echo __('System information', 'wp-testing')?></h1>
 
 <form id="environment" method="post">
 <?php foreach ($values as $key => $value): ?>

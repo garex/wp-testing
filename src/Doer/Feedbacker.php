@@ -100,7 +100,7 @@ class WpTesting_Doer_Feedbacker extends WpTesting_Doer_AbstractDoer
 
     public function loadReportIssue()
     {
-        $this->wp->setAdminPageTitle(__('Report issue', 'wp-testing'));
+        $this->wp->setAdminPageTitle(__('Report the problem', 'wp-testing'));
     }
 
     public function renderReportIssue()
@@ -130,7 +130,7 @@ class WpTesting_Doer_Feedbacker extends WpTesting_Doer_AbstractDoer
 
     public function loadGetSupport()
     {
-        $this->wp->setAdminPageTitle(__('Get support', 'wp-testing'));
+        $this->wp->setAdminPageTitle(__('Get the support', 'wp-testing'));
 
         $this
             ->registerScripts()

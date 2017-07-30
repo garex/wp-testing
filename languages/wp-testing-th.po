@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2016
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2017
 # Natcha Wiratwattannakul <natchalike@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-06-01 19:50+0000\n"
+"POT-Creation-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2017-07-30 11:38+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/wp-translations/wp-testing/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -26,6 +26,30 @@ msgstr ""
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$s จาก %2$s"
+
+#: Doer/Feedbacker.php:40
+msgid "Feedback"
+msgstr "ผลตอบรับ"
+
+#: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
+msgid "Paid add-ons"
+msgstr "Add-on แบบชำระเงิน"
+
+#: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
+msgid "Paid support"
+msgstr "การสนับสนุนที่เรียกชำระแล้ว"
+
+#: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
+#: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
+#: Template/Feedback/report-issue.php:2
+msgid "Report the problem"
+msgstr "รายงานปัญหา"
+
+#: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
+#: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
+#: Template/Feedback/get-support.php:2
+msgid "Get the support"
+msgstr "ได้รับการสนับสนุน"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -52,102 +76,114 @@ msgstr "ผลของฉัน"
 msgid "My Test Results"
 msgstr "ผลการทดสอบของฉัน"
 
-#: Doer/TestEditor.php:58
+#: Doer/TestEditor.php:66
 msgid "Maximize"
 msgstr "ให้มากที่สุด"
 
-#: Doer/TestEditor.php:59
+#: Doer/TestEditor.php:67
 msgid "Minimize"
 msgstr "ลด"
 
-#: Doer/TestEditor.php:66
+#: Doer/TestEditor.php:69
+msgid "Comparision"
+msgstr "เปรียบเทียบ"
+
+#: Doer/TestEditor.php:70
+msgid "Operator"
+msgstr "คำสั่ง"
+
+#: Doer/TestEditor.php:81
 msgid "Test Page Options"
 msgstr "ปรับแต่งหน้าแบบวัด"
 
-#: Doer/TestEditor.php:68
+#: Doer/TestEditor.php:83
 msgid "Result Page Options"
 msgstr "ปรับแต่งหน้าผลลัพธ์"
 
-#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+#: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
 msgstr "แก้ไขคำถามและคำตอบ"
 
-#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+#: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
 msgstr "แก้ไขคะแนน"
 
-#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
 msgstr "เติมคะแนนด่วน"
 
-#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
+#: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "แก้ไขสูตร"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:230
 msgid "Publish on the home page"
 msgstr "แสดงผลในหน้า home page"
 
-#: Doer/TestEditor.php:237
+#: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "แสดงเปอร์เซ็นต์ของข้อที่ตอบแล้ว"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:256
 msgid "Show one question per page"
 msgstr "แสดงคำถามเดียวต่อหน้า"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
 msgstr "เลือกตอบหลายตัวเลือกได้"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "ล้างคำตอบเมื่อกดปุ่ม \"Back\""
 
-#: Doer/TestEditor.php:252
+#: Doer/TestEditor.php:267
 msgid "Button caption"
 msgstr "ข้อความปุ่มกด"
 
-#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
 msgstr "ไปสู่ผลลัพธ์"
 
-#: Doer/TestEditor.php:271
+#: Doer/TestEditor.php:286
 msgid "Show scales chart"
 msgstr "แสดงตารางคะแนน"
 
-#: Doer/TestEditor.php:275
+#: Doer/TestEditor.php:290
 msgid "Show scales"
 msgstr "แสดงคะแนนของสเกล"
 
-#: Doer/TestEditor.php:279
+#: Doer/TestEditor.php:294
 msgid "Sort scales by score"
 msgstr "เรียงลำดับสเกลด้วยคะแนน"
 
-#: Doer/TestEditor.php:283
+#: Doer/TestEditor.php:298
 msgid "Show test description"
 msgstr "แสดงคำอธิบายแบบวัด"
 
-#: Doer/TestEditor.php:375
+#: Doer/TestEditor.php:383
 msgid "Test data not saved"
 msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
-#: Template/Test/Passer/fill-form.php:79
+#: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "แบบวัดยังไม่สมบูรณ์"
 
 #: Doer/TestPasser/FilterRenderer.php:106
-#: Template/Test/Passer/fill-form.php:80
+#: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "คุณยังไม่สามารถทราบผลลัพธ์ได้ตอนนี้"
 
-#: Doer/TestPasserAction/FillForm.php:63
+#: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
 msgstr "ตอบไปแล้ว {percentage}%"
 
-#: Doer/TestPasserAction/FillForm.php:72
+#: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
+#: Template/Feedback/get-support-finish.php:32
+#: Template/Feedback/get-support.php:38
+#: Template/Feedback/report-issue-finish.php:59
+#: Template/Feedback/report-issue.php:57
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -164,11 +200,11 @@ msgstr "คุณไม่สามารถพบผลลัพธ์ได้
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "ขอโทษด้วย! แต่บราวเซอร์ %s ของคุณไม่เหมาะกับการแสดงผลของชาร์ต"
 
-#: Doer/TestPasserAction/ProcessForm.php:74
+#: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
 msgstr "ข้อมูลแบบวัดไม่ถูกบันทึก"
 
-#: Doer/TestPasserAction/ProcessForm.php:75
+#: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
 msgstr "คุณกรอกข้อมูลแบบวัดไม่ถูกต้อง"
 
@@ -477,13 +513,13 @@ msgstr "ไม่พบหมวดหมู่"
 msgid "No Categories found in Trash"
 msgstr "ไม่พบหมวดหมู่ในถังขยะ"
 
-#: Model/Formula.php:246
+#: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "สูตรสำหรับ %s ไม่สามารถคำนวณได้ เนื่องจากมีทั้งตัวเลขและเปอร์เซ็นต์"
 
-#: Model/Formula.php:259
+#: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
 msgstr "สูตรสำหรับ %s ผิดพลาด"
@@ -493,7 +529,7 @@ msgid "Scale Variable"
 msgstr "ตัวแปรในเสกล"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
-#: Template/Test/Editor/edit-formulas.php:45
+#: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
 msgstr "คำถาม %1$s คำตอบ %2$s"
@@ -511,49 +547,139 @@ msgstr "ทดสอบ \"%s\" ไม่ได้รับการตีพิ�
 msgid "Start Test"
 msgstr "เริ่มทดสอบ"
 
-#: Template/Test/Editor/edit-formulas.php:3
+#: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
+msgid "Add review"
+msgstr "เพิ่มรีวิว"
+
+#: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
+msgid "Thank you"
+msgstr "ขอขอบคุณ"
+
+#: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
+#: Template/Feedback/report-issue.php:46
+msgid "System information"
+msgstr "ข้อมูลระบบ"
+
+#: Template/Feedback/get-support-finish.php:7
+#: Template/Feedback/get-support.php:31
+msgid "Get support as soon as possible"
+msgstr "ได้รับการสนับสนุนโดยเร็วที่สุดเท่าที่เป็นไปได้"
+
+#: Template/Feedback/get-support-finish.php:15
+#, php-format
+msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
+msgstr "ใช้ข้อความนี้เพื่อขอ <a target=\"_blank\" href=\"%s\">การสนับสนุนแบบเสียค่าใช้จ่าย</a>"
+
+#: Template/Feedback/get-support-finish.php:23
+#: Template/Feedback/report-issue-finish.php:12
+#, php-format
+msgid "Copy this text to create new topic at %s"
+msgstr "คัดลอกข้อความนี้ในการสร้างหัวข้อใหม่ที่ %s"
+
+#: Template/Feedback/get-support.php:7
+msgid "In short"
+msgstr "ย่นย่อ"
+
+#: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
+#: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
+#: Template/Feedback/report-issue.php:42
+msgid "Please use english language"
+msgstr "กรุณาใช้ภาษาอังกฤษ"
+
+#: Template/Feedback/get-support.php:11
+msgid "Details"
+msgstr "รายละเอียด"
+
+#: Template/Feedback/get-support.php:14
+msgid "What do you want to get and why?"
+msgstr "สิ่งที่คุณต้องการที่จะได้รับและทำไม?"
+
+#: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
+msgid "Add technical details about your installation"
+msgstr "เพิ่มรายละเอียดทางเทคนิคเกี่ยวกับการติดตั้ง"
+
+#: Template/Feedback/get-support.php:27
+msgid "Priority"
+msgstr "ลำดับความสำคัญ"
+
+#: Template/Feedback/report-issue.php:7
+msgid "Problem is repeated"
+msgstr "ปัญหาคือทำซ้ำ"
+
+#: Template/Feedback/report-issue.php:11
+msgid "when you use another hosting"
+msgstr "เมื่อคุณใช้โฮสติ้งอื่น"
+
+#: Template/Feedback/report-issue.php:15
+msgid "on the local computer"
+msgstr "บนเครื่องคอมพิวเตอร์"
+
+#: Template/Feedback/report-issue.php:19
+msgid "with default theme"
+msgstr "ด้วยรูปแบบเริ่มต้น"
+
+#: Template/Feedback/report-issue.php:23
+msgid "when all other plugins are disabled"
+msgstr "เมื่อปลั๊กอินอื่น ๆ ทั้งหมดถูกปิดใช้งาน"
+
+#: Template/Feedback/report-issue.php:28
+msgid "You expect"
+msgstr "คุณคาดหวัง"
+
+#: Template/Feedback/report-issue.php:32
+msgid "Actually you get"
+msgstr "ที่จริงคุณจะได้รับ"
+
+#: Template/Feedback/report-issue.php:36
+msgid "URL of the screenshot"
+msgstr "URL ของภาพหน้าจอ"
+
+#: Template/Feedback/report-issue.php:40
+msgid "Steps to repeat the problem"
+msgstr "ขั้นตอนในการทำซ้ำปัญหา"
+
+#: Template/Test/Editor/edit-formulas.php:5
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "#"
+
+#: Template/Test/Editor/edit-formulas.php:6
+#: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
 msgstr "สูตร"
 
-#: Template/Test/Editor/edit-formulas.php:4
+#: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
 msgstr "ผลลัพธ์"
 
-#: Template/Test/Editor/edit-formulas.php:28
+#: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "ไม่มีสูตรให้แก้ คุณต้องเลือกผลลัพธ์ก่อนเพื่อแก้สูตร"
 
-#: Template/Test/Editor/edit-formulas.php:37
-msgid "Variables"
-msgstr "ตัวแปร"
-
-#: Template/Test/Editor/edit-formulas.php:38
-msgid "Comparisions"
-msgstr "เปรียบเทียบ"
-
-#: Template/Test/Editor/edit-formulas.php:39
-msgid "Operators"
-msgstr "คำสั่ง"
-
-#: Template/Test/Editor/edit-formulas.php:58
-msgid "Comparision"
-msgstr "เปรียบเทียบ"
-
-#: Template/Test/Editor/edit-formulas.php:64
-msgid "Operator"
-msgstr "คำสั่ง"
-
-#: Template/Test/Editor/edit-formulas.php:72
-msgid ""
-"No variables for formulas available. To use variables you must have scales "
-"selected or have at least one question and answer."
-msgstr "ไม่มีตัวแปรให้เลือก คุณต้องเลือกสเกลหรือมีคำถามและคำตอบอย่างน้อยหนึ่งข้อเพื่อเลือกตัวแปร"
-
-#: Template/Test/Editor/edit-formulas.php:81
+#: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "ใช้ได้ทั้งตัวเลขและเปอร์เซ็นต์ เช่น \"สเกลความสุข\" มีทั้งหมด 30 คะแนน ดังนั้น \"สเกลความสุข > 15\" และ \"สเกลความสุข > 50%\" มีค่าเหมือนกัน"
+
+#: Template/Test/Editor/edit-formulas.php:53
+msgid "Comparisions"
+msgstr "เปรียบเทียบ"
+
+#: Template/Test/Editor/edit-formulas.php:62
+msgid "Operators"
+msgstr "คำสั่ง"
+
+#: Template/Test/Editor/edit-formulas.php:73
+msgid "Variables"
+msgstr "ตัวแปร"
+
+#: Template/Test/Editor/edit-formulas.php:92
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
+msgstr "ไม่มีตัวแปรให้เลือก คุณต้องเลือกสเกลหรือมีคำถามและคำตอบอย่างน้อยหนึ่งข้อเพื่อเลือกตัวแปร"
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
@@ -601,23 +727,18 @@ msgid ""
 "selected scales."
 msgstr "คะแนนไม่มีการแก้ไข การแก้ไขคะแนน คุณควรมีคำถาม คำตอบ และเลือกเครื่องชั่ง"
 
-#: Template/Test/Editor/edit-scores.php:23
-#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "#"
-
 #: Template/Test/Editor/quick-fill-scores.php:18
-#: Template/Test/Editor/quick-fill-scores.php:35
+#: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
 msgstr "สเกล"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
-#: Template/Test/Editor/quick-fill-scores.php:36
+#: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
 msgstr "คะแนน"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
-#: Template/Test/Editor/quick-fill-scores.php:37
+#: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
 msgstr "คำตอบ"
 
@@ -625,7 +746,7 @@ msgstr "คำตอบ"
 msgid "Questions"
 msgstr "คำถาม"
 
-#: Template/Test/Editor/quick-fill-scores.php:47
+#: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
 msgstr "เพิ่มชุดใหม่"
 

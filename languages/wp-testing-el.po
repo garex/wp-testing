@@ -1,20 +1,20 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2015-2017
+# Elektra M. <safiragon@yahoo.gr>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-29 23:59+0700\n"
-"PO-Revision-Date: 2017-07-29 17:39+0000\n"
+"PO-Revision-Date: 2017-07-30 19:21+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/wp-translations/wp-testing/language/tr_TR/)\n"
+"Language-Team: Greek (http://www.transifex.com/wp-translations/wp-testing/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
@@ -24,159 +24,159 @@ msgstr ""
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%2$g / %1$g"
+msgstr "%1$g από %2$g"
 
 #: Doer/Feedbacker.php:40
 msgid "Feedback"
-msgstr "Geri besleme"
+msgstr "Ανάδραση"
 
 #: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
 msgid "Paid add-ons"
-msgstr "Ücretli eklentiler"
+msgstr "Καταβάλλονται add-ons"
 
 #: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
 msgid "Paid support"
-msgstr "Ücretli destek"
+msgstr "Πληρωμένη υποστήριξη"
 
 #: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
 #: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
 #: Template/Feedback/report-issue.php:2
 msgid "Report the problem"
-msgstr "Sorun bildirme"
+msgstr "Αναφορά του προβλήματος"
 
 #: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
 #: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
 #: Template/Feedback/get-support.php:2
 msgid "Get the support"
-msgstr "Destek alın"
+msgstr "Πάρτε την υποστήριξη"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
-msgstr "Psikolojik testler oluşturmanıza yardımcı olur."
+msgstr "Βοηθά στη δημιουργία ψυχολογικών τέστ."
 
 #: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
 msgid "Respondents’ test results"
-msgstr "Yanıtlayanların test sonuçları"
+msgstr "Αποτελέσματα εξέτασης των ερωτηθέντων"
 
 #: Doer/PassingBrowser/Admin.php:78
 msgid "Respondents’ results"
-msgstr "Yanıtlayanların sonuçları"
+msgstr "Αποτελέσματα ερωτηθέντων"
 
 #: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Testler"
+msgstr "Δοκιμές"
 
 #: Doer/PassingBrowser/User.php:11
 msgid "My Results"
-msgstr "Benim sonuçlarım"
+msgstr "Τα αποτελέσματά μου"
 
 #: Doer/PassingBrowser/User.php:18
 msgid "My Test Results"
-msgstr "Test sonuçlarım"
+msgstr "Τα αποτελέσματά μου τεστ"
 
 #: Doer/TestEditor.php:66
 msgid "Maximize"
-msgstr "En üst düzeye çıkarmak"
+msgstr "Μεγιστοποιήστε"
 
 #: Doer/TestEditor.php:67
 msgid "Minimize"
-msgstr "Asgari düzeye indirmek"
+msgstr "Ελαχιστοποιήστε"
 
 #: Doer/TestEditor.php:69
 msgid "Comparision"
-msgstr "Karşılaştırma"
+msgstr "Σύγκριση"
 
 #: Doer/TestEditor.php:70
 msgid "Operator"
-msgstr "Operatör"
+msgstr "Τελεστής"
 
 #: Doer/TestEditor.php:81
 msgid "Test Page Options"
-msgstr "Test sayfası seçenekleri"
+msgstr "Επιλογές σελίδας τεστ"
 
 #: Doer/TestEditor.php:83
 msgid "Result Page Options"
-msgstr "Sonuç sayfası seçenekleri"
+msgstr "Επιλογές σελίδας αποτελεσμάτων"
 
 #: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
-msgstr "Soruları ve yanıtları düzenle"
+msgstr "Επεξεργαστείτε ερωτήσεις και απαντήσεις"
 
 #: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
-msgstr "Puanları düzenle"
+msgstr "Επεξεργασία σκορς"
 
 #: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
-msgstr "Puanları hızlıca doldur"
+msgstr "Γρήγορη συμπλήρωση σκορ"
 
 #: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
-msgstr "Formülleri düzenle"
+msgstr "Επεξεργασία φόρμουλες"
 
 #: Doer/TestEditor.php:230
 msgid "Publish on the home page"
-msgstr "Ana sayfada yayınla"
+msgstr "Δημοσιεύστε στην αρχική σελίδα"
 
 #: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Başlıkta hali hazırda yanıtlanan soruların yüzdesini göster"
+msgstr "Εμφάνιση ποσοστού των ερωτήσεων που έχει απαντήσει ο ερωτώμενος στον τίτλο"
 
 #: Doer/TestEditor.php:256
 msgid "Show one question per page"
-msgstr "Sayfa başına bir soru göster"
+msgstr "Εμφανίστε μία ερώτηση ανά σελίδα"
 
 #: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
-msgstr "Sorulara çoklu yanıt verilmesine izin ver"
+msgstr "Επιτρέψτε πολλαπλές απαντήσεις ανά ερώτηση"
 
 #: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "\"Geri\" düğmesine basıldığında yanıtlanan soruları sıfırla"
+msgstr "Επαναφορά των απαντήσεων του ερωτώμενου όταν πατηθεί το κουμπί \"Πίσω\""
 
 #: Doer/TestEditor.php:267
 msgid "Button caption"
-msgstr "Düğme başlığı"
+msgstr "Κουμπί λεζάντα"
 
 #: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
-msgstr "Test sonucunu getir"
+msgstr "Αποκτήστε τα αποτελέσματα του τεστ"
 
 #: Doer/TestEditor.php:286
 msgid "Show scales chart"
-msgstr "Grafikleri ölçek olarak göster"
+msgstr "Εμφάνιση γραφήματος κλιμάκων"
 
 #: Doer/TestEditor.php:290
 msgid "Show scales"
-msgstr "Ölçekleri göster"
+msgstr "Εμφάνιση κλιμάκων"
 
 #: Doer/TestEditor.php:294
 msgid "Sort scales by score"
-msgstr "Ölçekleri puana göre sırala"
+msgstr "Ταξινόμηση κλιμάκων βάσει βαθμολογίας"
 
 #: Doer/TestEditor.php:298
 msgid "Show test description"
-msgstr "Test açıklamasını göster"
+msgstr "Εμφάνιση περιγραφής τεστ"
 
 #: Doer/TestEditor.php:383
 msgid "Test data not saved"
-msgstr "Test verisi kaydedilmedi"
+msgstr "Τα δεδομένα του τεστ δεν αποθηκεύτηκαν"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
-msgstr "Test yapım aşamasındadır"
+msgstr "Το τεστ βρίσκεται υπό κατασκευή"
 
 #: Doer/TestPasser/FilterRenderer.php:106
 #: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
-msgstr "Henüz sonuç alamazsınız"
+msgstr "Δεν μπορείτε να λάβετε αποτελέσματα ακόμα."
 
 #: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
-msgstr "{percentage}% yanıtlandı"
+msgstr "{percentage}% απαντήθηκε"
 
 #: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
 #: Template/Feedback/get-support-finish.php:32
@@ -184,458 +184,458 @@ msgstr "{percentage}% yanıtlandı"
 #: Template/Feedback/report-issue-finish.php:59
 #: Template/Feedback/report-issue.php:57
 msgid "Next"
-msgstr "Sonraki"
+msgstr "Επόμενες"
 
 #: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
-msgstr "Test sonuçları bulunamadı"
+msgstr "Δεν βρέθηκε αποτέλεσμα του τεστ"
 
 #: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
-msgstr "Hiçbir şey elde edemezsiniz."
+msgstr "Δεν μπορείτε να πάρετε κάτι από το τίποτα."
 
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Üzgünüm, tarayıcınız %s grafiği görüntülemek için uyumlu değil"
+msgstr "Λυπούμαστε αλλά το πρόγραμμα περιήγησής σας %s δεν είναι συμβατό για την εμφάνιση του γραφήματος"
 
 #: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
-msgstr "Test verileri geçerli değil"
+msgstr "Τα δεδομένα τεστ δεν είναι έγκυρα"
 
 #: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
-msgstr "Geçerli olmayan veri geçtiniz."
+msgstr "Περάσατε δεν έγκυρα δεδομένα για τη δοκιμή."
 
 #: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
 #: Widget/PassingTable/User.php:26
 msgid "Test"
-msgstr "Test"
+msgstr "Τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Yeni ekle"
+msgstr "Προσθεσε νεο"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Yeni test ekle"
+msgstr "Προσθήκη νέου τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Testi düzenle"
+msgstr "Επεξεργασία τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Testi görüntüle"
+msgstr "Προβολή του τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Test ara"
+msgstr "Αναζήτηση τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Ana test:"
+msgstr "Γονικό τεστ:"
 
 #: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
 msgid "All Tests"
-msgstr "Tüm testler"
+msgstr "Όλα τα τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Testi güncelle"
+msgstr "Ενημέρωση τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Yeni test adı"
+msgstr "Νέο όνομα τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Ana test"
+msgstr "Γονικό τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Yeni test"
+msgstr "Νέο τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Herhangi bir test bulunamadı"
+msgstr "Δεν βρέθηκαν τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Çöp kutusunda herhangi bir test bulunamadı"
+msgstr "Δεν βρέθηκαν τεστ στον κάδο απορριμμάτων"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Gözlenmemiş yapıları (gizli değişkenler) ölçmek için aygıt. Genellikle, katılımcının çözmesi gereken bir dizi görev ya da sorundur."
+msgstr "Όργανο μέτρησης απαρατήρητων κατασκευών (λανθάνουσες μεταβλητές). Συνήθως πρόκειται για μια σειρά από καθήκοντα ή προβλήματα που ο ερωτώμενος πρέπει να λύσει."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
-msgstr "Test yanıtları"
+msgstr "Απαντήσεις τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
-msgstr "Test yanıtı"
+msgstr "Απάντηση τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
-msgstr "Yeni yanıt ekle"
+msgstr "Προσθήκη νέας απάντησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
-msgstr "Yanıtı düzenle"
+msgstr "Επεξεργασία απάντησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
-msgstr "Yanıtı görüntüle"
+msgstr "Προβολή απάντησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
-msgstr "Yanıtları ara"
+msgstr "Αναζήτηση απαντήσεων"
 
 #: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
-msgstr "Ana anıt:"
+msgstr "Γονική απάντηση:"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
-msgstr "Yanıtlar"
+msgstr "Απαντήσεις"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
-msgstr "Tüm yanıtlar"
+msgstr "Όλες οι απαντήσεις"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
-msgstr "Yanıtı güncelle"
+msgstr "Ενημέρωση απάντησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
-msgstr "Yeni yanıt adı"
+msgstr "Όνομα νέας απάντησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
-msgstr "Ana yanıt"
+msgstr "Γονική απάντηση"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
-msgstr "Yeni yanıt"
+msgstr "Νέα απάντηση"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
-msgstr "Yanıt bulunamadı"
+msgstr "Δεν βρέθηκαν απαντήσεις"
 
 #: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
-msgstr "Çöp kutusunda herhangi bir yanıt bulunamadı"
+msgstr "Δεν βρέθηκαν απαντήσεις στον κάδο απορριμμάτων"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
-msgstr "Test Ölçekleri"
+msgstr "Κλίμακες τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Test Scale"
-msgstr "Test Ölçeği"
+msgstr "Κλίμακα τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
-msgstr "Yeni Ölçek ekle"
+msgstr "Προσθέστε νέα κλίμακα"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
-msgstr "Ölçeği düzenle"
+msgstr "Επεξεργασία κλίμακας"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
-msgstr "Ölçeği görüntüle"
+msgstr "Προβολή κλίμακας"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
-msgstr "Ölçekleri ara"
+msgstr "Αναζήτηση κλιμάκων"
 
 #: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
-msgstr "Ana Ölçek:"
+msgstr "Γονική κλίμακα:"
 
 #: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
 #: Widget/PassingTable/User.php:27
 msgid "Scales"
-msgstr "Ölçekler"
+msgstr "Κλίμακα"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "All Scales"
-msgstr "Tüm Ölçekler"
+msgstr "Όλες οι κλίμακες"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
-msgstr "Ölçeği güncelle"
+msgstr "Ενημέρωση κλίμακας"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
-msgstr "Yeni ölçek adı"
+msgstr "Όνομα νέας κλίμακας"
 
 #: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
-msgstr "Ana ölçek"
+msgstr "Γονική κλίμακα"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
-msgstr "Yeni Ölçek"
+msgstr "Νέα κλίμακα"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
-msgstr "Ölçek bulunamadı"
+msgstr "Δεν βρέθηκαν κλίμακες"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
-msgstr "Çöp kutusunda ölçek bulunamadı"
+msgstr "Δεν βρέθηκαν κλίμακες στον κάδο απορριμμάτων"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
-msgstr "Test sonuçları"
+msgstr "Αποτελέσματα τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
-msgstr "Test sonucu"
+msgstr "Αποτέλεσμα τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
-msgstr "Yeni sonuç ekle"
+msgstr "Προσθήκη νέου αποτελέσματος"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
-msgstr "Sonucu düzenle"
+msgstr "Επεξεργασία αποτελέσματος"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
-msgstr "Sonucu görüntüle"
+msgstr "Προβολή αποτελέσματος"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
-msgstr "Arama sonuçları"
+msgstr "Αποτελέσματα αναζήτησης"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
-msgstr "Ana sonuç:"
+msgstr "Γονικό αποτέλεσμα:"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 #: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
 #: Widget/PassingTable/User.php:28
 msgid "Results"
-msgstr "Sonuçlar"
+msgstr "Αποτελέσματα"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
-msgstr "Tüm sonuçlar"
+msgstr "Όλα τα αποτελέσματα"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
-msgstr "Sonucu güncelle"
+msgstr "Ενημέρωση αποτελεσμάτων"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
-msgstr "Yeni sonuç adı"
+msgstr "Όνομα νέου αποτελέσματος"
 
 #: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
-msgstr "Ana sonuç"
+msgstr "Γονικό αποτέλεσμα"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
-msgstr "Yeni sonuç"
+msgstr "Νέο αποτέλεσμα"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
-msgstr "Sonuç bulunamadı"
+msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
-msgstr "Çöp kutusunda sonuç bulunamadı"
+msgstr "Δεν βρέθηκαν αποτελέσματα στον κάδο απορριμμάτων"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
-msgstr "Test kategorileri"
+msgstr "Κατηγορίες τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
-msgstr "Test kategorisi"
+msgstr "Κατηγορία τεστ"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
-msgstr "Yeni kategori ekle"
+msgstr "Προσθήκη κατηγορίας"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
-msgstr "Kategoriyi düzenle"
+msgstr "Επεξεργασία κατηγορίας"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
-msgstr "Kategoriyi görüntüle"
+msgstr "Προβολή κατηγορίας"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
-msgstr "Kategorilerde ara"
+msgstr "Αναζήτηση κατηγοριών"
 
 #: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
-msgstr "Ana kategori:"
+msgstr "Γονική κατηγορία:"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
-msgstr "Tüm kategoriler"
+msgstr "Όλες οι κατηγορίες"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
-msgstr "Kategoriyi güncelle"
+msgstr "Ενημέρωση κατηγορίας"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
-msgstr "Yeni kategori adı"
+msgstr "Όνομα νέας κατηγορίας"
 
 #: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
-msgstr "Ana kategori"
+msgstr "Γονική κατηγορία"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
-msgstr "Yeni kategori"
+msgstr "Νέα κατηγορία"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
-msgstr "Kategori bulunamadı"
+msgstr "Δεν βρέθηκαν κατηγορίες"
 
 #: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
-msgstr "Çöp kutusunda kategori bulunamadı"
+msgstr "Δεν βρέθηκαν κατηγορίες στον κάδο απορριμμάτων"
 
 #: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
-msgstr "Sayı ve yüzdeler içerdiğinden formül %s için uyumlu değil"
+msgstr "Φόρμουλα για %s είναι ασυμβίβαστη, καθώς περιέχει δύο αριθμούς και ποσοστά"
 
 #: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
-msgstr "%s için formül hatası"
+msgstr "Φόρμουλα για %s έχει σφάλμα"
 
 #: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
-msgstr "Ölçek değişkeni"
+msgstr "Μεταβλητή κλίμακας"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
 #: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
-msgstr "Soru %1$s yanıt %2$s"
+msgstr "Ερώτηση %1$s απάντηση %2$s"
 
 #: Model/FormulaVariable/SelectedAnswer.php:19
 msgid "Answer Variable"
-msgstr "Yanıt değişkeni"
+msgstr "Μεταβλητή απάντησης"
 
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "Test \"%s\" yayımlanmıyor. Bu testi her yerde kullanamazsınız."
+msgstr "To τεστ \"%s\" δεν έχει δημοσιευτεί. Δεν μπορείτε να το συμπεριλάβετε πουθενά."
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "Testi başlat"
+msgstr "Εκκίνηση τεστ"
 
 #: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
 msgid "Add review"
-msgstr "Inceleme ekle"
+msgstr "Προσθήκη κριτικής"
 
 #: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
 msgid "Thank you"
-msgstr "Teşekkürler"
+msgstr "Ευχαριστούμε"
 
 #: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
 #: Template/Feedback/report-issue.php:46
 msgid "System information"
-msgstr "Sistem bilgisi"
+msgstr "Πληροφορίες συστήματος"
 
 #: Template/Feedback/get-support-finish.php:7
 #: Template/Feedback/get-support.php:31
 msgid "Get support as soon as possible"
-msgstr "En kısa sürede destek alın"
+msgstr "Λάβετε υποστήριξη όσο το δυνατόν συντομότερα"
 
 #: Template/Feedback/get-support-finish.php:15
 #, php-format
 msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
-msgstr "<a target=\"_blank\" href=\"%s\">Ücretli destek</a> istemek için bu metni kullanın"
+msgstr "Χρησιμοποιήστε αυτό το κείμενο για να παραγγείλετε <a target=\"_blank\" href=\"%s\">πληρωμένη υποστήριξη</a>"
 
 #: Template/Feedback/get-support-finish.php:23
 #: Template/Feedback/report-issue-finish.php:12
 #, php-format
 msgid "Copy this text to create new topic at %s"
-msgstr "%s yeni bir konu oluşturmak için bu metni kopyalayıp"
+msgstr "Αντιγράψτε αυτό το κείμενο για να δημιουργήσετε νέο θέμα σε %s"
 
 #: Template/Feedback/get-support.php:7
 msgid "In short"
-msgstr "Kısacası"
+msgstr "Εν συντομία"
 
 #: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
 #: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
 #: Template/Feedback/report-issue.php:42
 msgid "Please use english language"
-msgstr "Ingilizce dil kullanın"
+msgstr "Παρακαλούμε χρησιμοποιήστε αγγλική γλώσσα"
 
 #: Template/Feedback/get-support.php:11
 msgid "Details"
-msgstr "Ayrıntılar"
+msgstr "Λεπτομέρειες"
 
 #: Template/Feedback/get-support.php:14
 msgid "What do you want to get and why?"
-msgstr "Ne almak istiyorsun ve neden?"
+msgstr "Τι θέλετε να πετύχετε και γιατί;"
 
 #: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
 msgid "Add technical details about your installation"
-msgstr "Kurulumunuzla ilgili teknik ayrıntıları ekleyin"
+msgstr "Προσθέστε τις τεχνικές λεπτομέρειες σχετικά με την εγκατάσταση"
 
 #: Template/Feedback/get-support.php:27
 msgid "Priority"
-msgstr "Öncelik"
+msgstr "Προτεραιότητα"
 
 #: Template/Feedback/report-issue.php:7
 msgid "Problem is repeated"
-msgstr "Sorun tekrarlanır"
+msgstr "Πρόβλημα επαναλαμβάνεται"
 
 #: Template/Feedback/report-issue.php:11
 msgid "when you use another hosting"
-msgstr "başka bir hosting kullandığınızda"
+msgstr "όταν χρησιμοποιείτε μια άλλη φιλοξενία"
 
 #: Template/Feedback/report-issue.php:15
 msgid "on the local computer"
-msgstr "yerel bilgisayarda"
+msgstr "στον τοπικό υπολογιστή"
 
 #: Template/Feedback/report-issue.php:19
 msgid "with default theme"
-msgstr "varsayılan temayla"
+msgstr "με προεπιλεγμένο θέμα"
 
 #: Template/Feedback/report-issue.php:23
 msgid "when all other plugins are disabled"
-msgstr "ne zaman diğer tüm eklentileri devre dışı bırakılır"
+msgstr "όταν όλες οι άλλες συνδέσεις είναι άτομα με ειδικές ανάγκες"
 
 #: Template/Feedback/report-issue.php:28
 msgid "You expect"
-msgstr "Sen bekliyoruz"
+msgstr "Περιμένεις"
 
 #: Template/Feedback/report-issue.php:32
 msgid "Actually you get"
-msgstr "Aslında alacağınız"
+msgstr "Στην πραγματικότητα παίρνετε"
 
 #: Template/Feedback/report-issue.php:36
 msgid "URL of the screenshot"
-msgstr "Ekran görüntüsünün URL'si"
+msgstr "URL του screenshot"
 
 #: Template/Feedback/report-issue.php:40
 msgid "Steps to repeat the problem"
-msgstr "Adımları sorunu tekrarlamak"
+msgstr "Βήματα για να επαναλάβει το πρόβλημα"
 
 #: Template/Test/Editor/edit-formulas.php:5
 #: Template/Test/Editor/edit-scores.php:23
@@ -646,125 +646,125 @@ msgstr "#"
 #: Template/Test/Editor/edit-formulas.php:6
 #: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
-msgstr "Formül"
+msgstr "Φόρμουλα"
 
 #: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
-msgstr "Sonuç"
+msgstr "Αποτέλεσμα"
 
 #: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Düzenlenecek formül bulunmamaktadır. Formülleri düzenlemek için sonuçları seçmelisiniz."
+msgstr "Δεν υπάρχουν φόρμουλες για να επεξεργαστείτε. Για να επεξεργαστείτε τους φόρμουλες θα πρέπει να έχετε τα αποτελέσματα που επιλέγεται."
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Sayı ve yüzdeler girebilir. Örneğin \"olcek-bla\" toplam 30 adet, sonra \"olcek-bla > 15\" ve \"olcek-bla > %50\" aynı."
+msgstr "Επιτρέπονται τόσο οι αριθμοί όσο και τα ποσοστά . Για παράδειγμα, το \"κλίμακα-τάδε\" έχει σύνολο 30, τότε τα \"κλίμακα-τάδε> 15\" και \"κλίμακα-τάδε> 50%\" είναι ίδια."
 
 #: Template/Test/Editor/edit-formulas.php:53
 msgid "Comparisions"
-msgstr "Karşılaştırmalar"
+msgstr "Συγκρίσεις"
 
 #: Template/Test/Editor/edit-formulas.php:62
 msgid "Operators"
-msgstr "Operatörler"
+msgstr "Τελεστές"
 
 #: Template/Test/Editor/edit-formulas.php:73
 msgid "Variables"
-msgstr "Değişkenler"
+msgstr "Μεταβλητές"
 
 #: Template/Test/Editor/edit-formulas.php:92
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected or have at least one question and answer."
-msgstr "Formüller için değişken bulunamadı. Değişkenleri kullanmak için ölçekleri seçmelisiniz ya da en azından bir soru ve yanıt bulunması gerekmektedir."
+msgstr "Δεν υπάρχουν διαθέσιμες μεταβλητές για φόρμουλες. Για να χρησιμοποιήσετε μεταβλητές πρέπει να έχετε επιλέξει κλίμακες ή να έχετε τουλάχιστον μία ερώτηση και απάντηση."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Düzenlenecek soru bulunmuyor. Burada gözükmesi için soru ekleyin"
+msgstr "Δεν υπάρχουν ερωτήσεις για επεξεργασία. Προσθέστε νέες ερωτήσεις και θα εμφανιστούν εδώ."
 
 #: Template/Test/Editor/edit-questions-answers.php:22
 msgid "Remove Question"
-msgstr "Soru kaldır"
+msgstr "Κατάργηση ερώτησης"
 
 #: Template/Test/Editor/edit-questions-answers.php:39
 msgid "Remove Answer"
-msgstr "Yanıt kaldır"
+msgstr "Κατάργηση απάντησης"
 
 #: Template/Test/Editor/edit-questions-answers.php:49
 msgid "Add Individual Answer"
-msgstr "Tek tek yanıt ekleyin"
+msgstr "Προσθήκη ατομική απάντηση"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— her soru için özeldir. Eğer tüm sorulara cevabınız aynı ise %s kullanın"
+msgstr "— μοναδικό για κάθε ερώτηση. Αν έχετε ίδιες απαντήσεις σε όλες τις ερωτήσεις του τεστ, χρησιμοποιήστε το %s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Sorularınızı buraya yapıştırınız. Numaralar ve diğer indeksler otomatik olarak ayrılacaktır"
+msgstr "Επικολλήστε εδώ τις ερωτήσεις σας και θα συμπληρώσουν τα παρακάτω πεδία. Αριθμοί και άλλοι δείκτες θα αφαιρεθούν αυτόματα."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
 msgid "Add Question"
-msgstr "Soru ekle"
+msgstr "Προσθέστε ερώτηση"
 
 #: Template/Test/Editor/edit-questions-answers.php:63
 #: Template/Test/Editor/edit-questions-answers.php:64
 msgid "Quick Fill From Text"
-msgstr "Metinden hızlı doldurma"
+msgstr "Γρήγορη συμπλήρωση από κείμενο"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
 msgid ""
 "No scores to edit. To edit scores you should have questions, answers and "
 "selected scales."
-msgstr "Düzenlemek için puan yok. Puanları düzenlemek için sorular, yanıtlar ve seçili ölçekler olmalıdır."
+msgstr "Δεν υπάρχουν σκορς για επεξεργασία. Για να επεξεργαστείτε σκορς, πρέπει να έχετε ερωτήσεις, απαντήσεις και επιλεγμένες κλίμακες."
 
 #: Template/Test/Editor/quick-fill-scores.php:18
 #: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
-msgstr "Ölçeklendir"
+msgstr "Κλίμακα"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
 #: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
-msgstr "Sonuç"
+msgstr "Σκορ"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
 #: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
-msgstr "Yanıt"
+msgstr "Απάντηση"
 
 #: Template/Test/Editor/quick-fill-scores.php:21
 msgid "Questions"
-msgstr "Sorular"
+msgstr "Ερωτήσεις"
 
 #: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
-msgstr "Yeni ekle"
+msgstr "Προσθέστε νέο συνδιασμό"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
-msgstr "En az bir yanıt seçiniz."
+msgstr "Παρακαλούμε επιλέξτε τουλάχιστον μία απάντηση."
 
 #: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
-msgstr "Sadece bir yanıt seçiniz."
+msgstr "Παρακαλούμε επιλέξτε μόνο μία απάντηση."
 
 #: Widget/PassingTable/Admin.php:91
 msgid "Device"
-msgstr "Aygıt"
+msgstr "Συσκευή"
 
 #: Widget/PassingTable/Admin.php:92
 msgid "IP address"
-msgstr "IP adresi"
+msgstr "Διεύθυνση IP"
 
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
-msgstr "Tarayıcı"
+msgstr "Φυλλομετρητής"
