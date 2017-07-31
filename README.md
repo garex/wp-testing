@@ -100,7 +100,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Thai translation thanks to Natcha Wiratwattanakul <natchalike@gmail.com>
 * For Arabic translation thanks to Mohammed Jawad <info@researchgate.asia>
 * For Romanian translation thanks to Maria Estela Mihoc <maria_estela_mihoc@yahoo.com>
-* For Greek translation thanks to Elektra M. <safiragon@yahoo.gr>
+* For Greek translation thanks to Elektra Manousis <safiragon@yahoo.gr>
 
 ### Paid add-ons & support ###
 
