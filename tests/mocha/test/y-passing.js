@@ -128,6 +128,12 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         })
     })
 
+    it('should have canonical link same as passing URL and not test', function() {
+        casper.then(function() {
+            'link[rel=canonical]'.should.have.attr('href', resultUrl)
+        })
+    })
+
     it('should show scales sorted by biggest score', function() {
         casper.then(function() {
             'jQuery(".scale-index-0.title").text()'.should.evaluate.to.equal('Lie')
