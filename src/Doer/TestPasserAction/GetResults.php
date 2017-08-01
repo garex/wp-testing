@@ -26,6 +26,8 @@ class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPass
         $this->wp
             ->addFilter('post_type_link', array($this, 'canonicalizePassingUrl'))
             ->addFilter('get_shortlink', array($this, 'disableShortlink'))
+            ->removeAction('wp_head', 'adjacent_posts_rel_link_wp_head')
+            ->removeAction('wp_head', 'wp_oembed_add_discovery_links')
             ->doAction('wp_testing_passer_get_results_before_render', $this->passing, $this->test)
         ;
     }
