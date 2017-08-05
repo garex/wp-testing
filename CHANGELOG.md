@@ -1,6 +1,34 @@
 
 ## Changelog ##
 
+### 0.21 ###
+
+Social sharing of test results and feedback metabox
+
+Now "Social Network Sharing" paid addon becomes cancelled and obsolette.
+Use any of "Social sharing" plugins and they will work with test results pages.
+
+To improve issue reporting and help you get support we added feedback metabox to editor.
+Same actions available from bottom part of test's admin pages.
+
+Both or these actions are some kind of wizards, that helps to structurize issue/support request
+before posting to support forum. Technical details about your installation done as a possible
+step inside them.
+
+Minors:
+
+ * Make answers normal (non-bold) again (under current default theme)
+ * Remove underline in maximize button
+ * Fix example test global answers labels
+ * Correctly process shortcodes with bad parameters
+ * Fix for scales out-of under PDF version
+
+Translations:
+
+* For Greek translation thanks to Elektra M. <safiragon@yahoo.gr>
+* For Polish translation thanks to Maciej Dzierżek — https://bezdechu.pl/
+
+
 ### 0.20.3 ###
 
 Welcome WordPress 4.8

@@ -76,4 +76,22 @@ describe('Plugin activation', function() {
             '#wp-testing .deactivate a,[data-slug=wp-testing] .deactivate a'.should.be.inDOM
         }, null, 90000)
     })
+
+    it('should have paid links', function() {
+        casper.then(function () {
+            'Paid add-ons | Paid support'.should.be.textInDOM
+        })
+    })
+
+    it('should have paid addons link in menu', function() {
+        casper.then(function () {
+            'a[href$=wpt_feedback_paid_addons]'.should.be.inDOM
+        })
+    })
+
+    it('should opens remote url', function() {
+        casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test&page=wpt_feedback_paid_addons', function (response) {
+            response.url.should.contain('spreadsheets')
+        })
+    })
 })

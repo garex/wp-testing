@@ -157,7 +157,7 @@ describe('Test', function() {
         })
     })
 
-    it('should enable disabled by default option for example test', function() {
+    it('should open example test', function() {
         casper.thenOpen(server + '/wp-admin/edit.php?post_type=wpt_test', function() {
             this.clickLabel('Eysenck’s Personality Inventory (EPI) (Extroversion/Introversion)', '*[@id="posts-filter"]/*//a')
         })
@@ -165,7 +165,19 @@ describe('Test', function() {
         casper.then(function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Test'.should.be.inTitle
+        })
+    })
 
+    it('should have placeholders for global answers', function() {
+        casper.then(function() {
+            '#wpt_answer_title_0_0'.should.be.inDOM
+            'wpt_answer_title_0_0.placeholder'.should.evaluate.to.be.equal('Yes')
+            'wpt_answer_title_0_1.placeholder'.should.evaluate.to.be.equal('No')
+        })
+    })
+
+    it('should enable disabled by default option', function() {
+        casper.then(function() {
             this.click('.misc-pub-wpt-result-page-show-test-description input[type=checkbox]')
             this.click('.edit-timestamp')
             this.fill('form#post', {

@@ -1,10 +1,11 @@
 (function(angular, templateEl, __) {
     'use strict';
 
-    var brokenTemplate = '<div class="notice inline notice-warning notice-alt">Formula toolbar is broken!</div>',
-        template = templateEl ? templateEl.innerHTML : brokenTemplate;
-
-    templateEl.innerHTML = '';
+    var template = '<div class="notice inline notice-warning notice-alt">Formula toolbar is broken!</div>';
+    if (templateEl) {
+        template = templateEl.innerHTML
+        templateEl.innerHTML = '';
+    }
 
     angular.module('wptApp').directive('wptFormulas', wptFormulas);
     angular.module('wptApp').directive('wptFormulaToolbar', wptFormulaToolbar);

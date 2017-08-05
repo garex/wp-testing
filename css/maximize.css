@@ -29,6 +29,10 @@ body.wpt_maximize .wpt_maximized {
     position: static;
 }
 
+.wpt_maximizable .button-link {
+	text-decoration: none;
+}
+
 /* Old WP versions */
 .wpt_maximizable .wp_themeSkin {
     padding: 0px;

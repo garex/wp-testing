@@ -128,6 +128,12 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         })
     })
 
+    it('should have canonical link same as passing URL and not test', function() {
+        casper.then(function() {
+            'link[rel=canonical]'.should.have.attr('href', resultUrl)
+        })
+    })
+
     it('should show scales sorted by biggest score', function() {
         casper.then(function() {
             'jQuery(".scale-index-0.title").text()'.should.evaluate.to.equal('Lie')
@@ -284,10 +290,21 @@ describe((isPermalinks ? 'With'       : 'Without') + ' permalinks '
         })
     })
 
-    it('should show scales and test description for existing tests', function() {
+    it('should show scales for existing tests', function() {
         casper.open(resultUrl).waitForUrl(/test.+eysencks.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Fatal'.should.not.be.textInDOM
             'Extraversion/Introversion'.should.be.textInDOM
+        })
+    })
+
+    it('should show scale description for existing tests', function() {
+        casper.then(function() {
+            'Extraversion is characterized'.should.be.textInDOM
+        })
+    })
+
+    it('should show test description for existing tests', function() {
+        casper.then(function() {
             'The Eysenck Personality Inventory (EPI) measures two pervasive'.should.be.textInDOM
         })
     })

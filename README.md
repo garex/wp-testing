@@ -1,6 +1,6 @@
 # Psychological tests & quizzes #
 
-**Contributors:** ustimenko, ufukluker, mimaes, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
+**Contributors:** ustimenko, starlift, ufukluker, mimaes, memjavad, metavoor, natchalike, it2core, champ1on, rezaamaleki, cristipere, osfans, chrispeiffer, jacha, ilariarizzo, borrypsy, coach2talk, ikurtuldu
 
 **Tags:** psychological, testing, test, quiz
 
@@ -8,7 +8,7 @@
 
 **Tested up to:** 4.8
 
-**Stable tag:** 0.20.3
+**Stable tag:** 0.21
 
 **License:** GPLv3
 
@@ -75,7 +75,7 @@ Respondent will get **results** on it's own individual passing page, which will 
 **Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button, allow multiple answers per question, show percentage of answered questions and show one question per page.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
-Plugin localized into many languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+Plugin localized into many languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Polish and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
 **Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to latest) and PHP (from 5.2 to 7.0) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in [multisite mode](https://circleci.com/gh/garex/wp-testing/tree/develop). So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
@@ -100,8 +100,10 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Thai translation thanks to Natcha Wiratwattanakul <natchalike@gmail.com>
 * For Arabic translation thanks to Mohammed Jawad <info@researchgate.asia>
 * For Romanian translation thanks to Maria Estela Mihoc <maria_estela_mihoc@yahoo.com>
+* For Greek translation thanks to Elektra Manousis <safiragon@yahoo.gr>
+* For Polish translation thanks to Maciej Dzierżek — https://bezdechu.pl/
 
-### Paid add-ons ###
+### Paid add-ons & support ###
 
 There is no single "Pro"/"Premium" version with features, but each [paid add-on](https://docs.google.com/spreadsheets/d/1BrZv6gpIo0QV21p42oJ9KIO5jZzqugOUB1GqQOeQqEY/edit?usp=sharing) has it's own feature.
 
@@ -114,6 +116,8 @@ Implemented and ready to run:
 * **Save Results in PDF**. Respondent will be able to get results in PDF form.
 * **Redirect to Custom Results Page**. Respondent will be redirected to custom built URL(s) where you can pass as params scales, results and result key. URL could be single for whole test or individual for each result.
 * **Computed Variables**. Create computed variables from existing variables and shortcode any variable at results page.
+
+For complex test logic or plugin environment specific issues [paid support](https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing) is available.
 
 
 ## Installation ##
@@ -145,7 +149,7 @@ Try to find there phrases like "Class ... not found" or "Call to undefined funct
 
 ### How to start? Where is documentation? ###
 
-See the video, screenshots and example test. We will not plan to create any documentation. For complex test logic paid support is available.
+See the video, screenshots and example test. We will not plan to create any documentation. For complex test logic [paid support](https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing) is available.
 
 ### Shortcodes? ###
 

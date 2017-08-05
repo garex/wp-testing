@@ -27,6 +27,7 @@
             <td class="score">{{ entry.key.scoreValue }}</td>
             <td class="answer">{{ entry.key.answerTitle }}</td>
             <td class="questions"><input
+                type="text"
                 ng-model="entry.value.joinedKeys"
                 pattern="[0-9, ]*"
                 ng-change="tree.onValueChanged(entry)" /></td>

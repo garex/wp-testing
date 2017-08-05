@@ -1,32 +1,56 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2016
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2017
 # coach2talk <info@newwaystec.com>, 2014-2015
 # Tomas Darius Davainis <tomasdd@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 01:49+0600\n"
-"PO-Revision-Date: 2016-06-01 19:50+0000\n"
+"POT-Creation-Date: 2017-07-30 00:00+0700\n"
+"PO-Revision-Date: 2017-07-30 00:01+0700\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/wp-translations/wp-testing/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
 msgstr "%1$g von %2$g"
+
+#: Doer/Feedbacker.php:40
+msgid "Feedback"
+msgstr "Feedback"
+
+#: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
+msgid "Paid add-ons"
+msgstr "Paid Add-ons"
+
+#: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
+msgid "Paid support"
+msgstr "Paid-Unterstützung"
+
+#: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
+#: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
+#: Template/Feedback/report-issue.php:2
+msgid "Report the problem"
+msgstr "Melden Sie das Problem"
+
+#: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
+#: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
+#: Template/Feedback/get-support.php:2
+msgid "Get the support"
+msgstr "Erhalten Sie den Support"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -53,102 +77,112 @@ msgstr "Meine Ergebnisse"
 msgid "My Test Results"
 msgstr "Meine Testergebnisse"
 
-#: Doer/TestEditor.php:58
+#: Doer/TestEditor.php:66
 msgid "Maximize"
 msgstr "Maximieren"
 
-#: Doer/TestEditor.php:59
+#: Doer/TestEditor.php:67
 msgid "Minimize"
 msgstr "Minimieren"
 
-#: Doer/TestEditor.php:66
+#: Doer/TestEditor.php:69
+msgid "Comparision"
+msgstr "Vergleich"
+
+#: Doer/TestEditor.php:70
+msgid "Operator"
+msgstr "Operator"
+
+#: Doer/TestEditor.php:81
 msgid "Test Page Options"
 msgstr "Testseite Optionen"
 
-#: Doer/TestEditor.php:68
+#: Doer/TestEditor.php:83
 msgid "Result Page Options"
 msgstr "Einstellung Ergebnisseite"
 
-#: Doer/TestEditor.php:70 Template/Test/Editor/content-editor-buttons.php:3
+#: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
 msgstr "Fragen und Antworten zu bearbeiten"
 
-#: Doer/TestEditor.php:71 Template/Test/Editor/content-editor-buttons.php:7
+#: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
 msgstr "Bearbeiten von Noten"
 
-#: Doer/TestEditor.php:72 Template/Test/Editor/content-editor-buttons.php:11
+#: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
 msgstr "Füllen schnell Punkte"
 
-#: Doer/TestEditor.php:73 Template/Test/Editor/content-editor-buttons.php:15
+#: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
 msgstr "Bearbeiten von Formeln"
 
-#: Doer/TestEditor.php:215
+#: Doer/TestEditor.php:230
 msgid "Publish on the home page"
 msgstr "Auf der Homepage veröffentlichen"
 
-#: Doer/TestEditor.php:237
+#: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
 msgstr "Karte Titel prozentual Fragen d. Beklagten bereits beantwortet"
 
-#: Doer/TestEditor.php:241
+#: Doer/TestEditor.php:256
 msgid "Show one question per page"
 msgstr "Zeigen Sie eine Frage pro Seite"
 
-#: Doer/TestEditor.php:245
+#: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
 msgstr "Können Sie mehrere Antworten pro Frage"
 
-#: Doer/TestEditor.php:249
+#: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
 msgstr "Zurücksetzen Befragten Antworten, wenn Sie \"Zurück\" Taste gedrückt"
 
-#: Doer/TestEditor.php:252
+#: Doer/TestEditor.php:267
 msgid "Button caption"
 msgstr "Button Beschriftung"
 
-#: Doer/TestEditor.php:254 Doer/TestPasserAction/FillForm.php:69
+#: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
 msgstr "Testergebnisse anzeigen"
 
-#: Doer/TestEditor.php:271
+#: Doer/TestEditor.php:286
 msgid "Show scales chart"
 msgstr "Waage-Chart anzeigen"
 
-#: Doer/TestEditor.php:275
+#: Doer/TestEditor.php:290
 msgid "Show scales"
 msgstr "Zeige Skalen"
 
-#: Doer/TestEditor.php:279
+#: Doer/TestEditor.php:294
 msgid "Sort scales by score"
 msgstr "Art-Scales von score"
 
-#: Doer/TestEditor.php:283
+#: Doer/TestEditor.php:298
 msgid "Show test description"
 msgstr "Testbeschreibung anzeigen"
 
-#: Doer/TestEditor.php:375
+#: Doer/TestEditor.php:383
 msgid "Test data not saved"
 msgstr "Testdaten nicht gespeichert"
 
-#: Doer/TestPasser/DirectRenderer.php:19
-#: Doer/TestPasser/FilterRenderer.php:105
-#: Template/Test/Passer/fill-form.php:79
+#: Doer/TestPasser/DirectRenderer.php:19 Doer/TestPasser/FilterRenderer.php:105
+#: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "Test befindet sich im Aufbau"
 
-#: Doer/TestPasser/FilterRenderer.php:106
-#: Template/Test/Passer/fill-form.php:80
+#: Doer/TestPasser/FilterRenderer.php:106 Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "Ihnen können noch keine Ergebnisse angezeigt werden."
 
-#: Doer/TestPasserAction/FillForm.php:63
+#: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
 msgstr "{percentage}% beantwortet"
 
-#: Doer/TestPasserAction/FillForm.php:72
+#: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
+#: Template/Feedback/get-support-finish.php:32
+#: Template/Feedback/get-support.php:38
+#: Template/Feedback/report-issue-finish.php:59
+#: Template/Feedback/report-issue.php:57
 msgid "Next"
 msgstr "Weiter"
 
@@ -165,11 +199,11 @@ msgstr "Sie können nicht alles aus dem nichts bekommen."
 msgid "Sorry but your browser %s is not compatible to display the chart"
 msgstr "Sorry, aber Ihr Browser %s ist nicht kompatibel zum Anzeigen des Diagramms"
 
-#: Doer/TestPasserAction/ProcessForm.php:74
+#: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
 msgstr "Ungültige Testdaten"
 
-#: Doer/TestPasserAction/ProcessForm.php:75
+#: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
 msgstr "Sie haben keine gültige Daten zum Testen übergeben."
 
@@ -232,9 +266,7 @@ msgid "No Tests found in Trash"
 msgstr "Keine Tests im Papierkorb gefunden"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
-msgid ""
-"Instrument to measure unobserved constructs (latent variables). Typically it"
-" is a series of tasks or problems that the respondent has to solve."
+msgid "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
 msgstr "Als psychologischer Test oder psychologisches Testverfahren wird ein Instrument bezeichnet, welches psychische Merkmale von Personen, Personengruppen oder Organisationen erfassen soll."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
@@ -478,13 +510,12 @@ msgstr "Keine Kategorien gefunden"
 msgid "No Categories found in Trash"
 msgstr "Keine Kategorien im Papierkorb gefunden"
 
-#: Model/Formula.php:246
+#: Model/Formula.php:88
 #, php-format
-msgid ""
-"Formula for %s is incompatible as it contains both numbers and percentages"
+msgid "Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "Formel für %s ist nicht kompatibel, da sie zahlen und Prozentangaben enthalten."
 
-#: Model/Formula.php:259
+#: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
 msgstr "Formel für %s hat Fehler"
@@ -494,7 +525,7 @@ msgid "Scale Variable"
 msgstr "Skala-Variable"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
-#: Template/Test/Editor/edit-formulas.php:45
+#: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
 msgstr "Frage  %1$s Antwort %2$s"
@@ -512,53 +543,138 @@ msgstr "Test \"%s\" wurde nicht veröffentlicht. Sie können nicht überall enth
 msgid "Start Test"
 msgstr "Test starten"
 
-#: Template/Test/Editor/edit-formulas.php:3
+#: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
+msgid "Add review"
+msgstr "Bewertung hinzufügen"
+
+#: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
+msgid "Thank you"
+msgstr "Danke"
+
+#: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
+#: Template/Feedback/report-issue.php:46
+msgid "System information"
+msgstr "System Information"
+
+#: Template/Feedback/get-support-finish.php:7
+#: Template/Feedback/get-support.php:31
+msgid "Get support as soon as possible"
+msgstr "Holen Sie sich Unterstützung so schnell wie möglich"
+
+#: Template/Feedback/get-support-finish.php:15
+#, php-format
+msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
+msgstr "Verwenden Sie diesen Text <a target=\"_blank\" href=\"%s\">bezahlt Unterstützung anzufordern</a>"
+
+#: Template/Feedback/get-support-finish.php:23
+#: Template/Feedback/report-issue-finish.php:12
+#, php-format
+msgid "Copy this text to create new topic at %s"
+msgstr "Kopieren Sie diesen Text neues Thema erstellen bei %s"
+
+#: Template/Feedback/get-support.php:7
+msgid "In short"
+msgstr "Zusamenfassend"
+
+#: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
+#: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
+#: Template/Feedback/report-issue.php:42
+msgid "Please use english language"
+msgstr "Bitte verwenden Sie Englisch Sprache"
+
+#: Template/Feedback/get-support.php:11
+msgid "Details"
+msgstr "Details"
+
+#: Template/Feedback/get-support.php:14
+msgid "What do you want to get and why?"
+msgstr "Was möchten Sie tun bekommen und warum?"
+
+#: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
+msgid "Add technical details about your installation"
+msgstr "In technische Details über Ihre Installation"
+
+#: Template/Feedback/get-support.php:27
+msgid "Priority"
+msgstr "Priorität"
+
+#: Template/Feedback/report-issue.php:7
+msgid "Problem is repeated"
+msgstr "Problem wird wiederholt"
+
+#: Template/Feedback/report-issue.php:11
+msgid "when you use another hosting"
+msgstr "wenn Sie ein anderes Hosting verwenden"
+
+#: Template/Feedback/report-issue.php:15
+msgid "on the local computer"
+msgstr "auf dem lokalen Computer"
+
+#: Template/Feedback/report-issue.php:19
+msgid "with default theme"
+msgstr "mit Standard-Theme"
+
+#: Template/Feedback/report-issue.php:23
+msgid "when all other plugins are disabled"
+msgstr "wenn alle anderen Plug-ins sind deaktiviert"
+
+#: Template/Feedback/report-issue.php:28
+msgid "You expect"
+msgstr "Du erwartest"
+
+#: Template/Feedback/report-issue.php:32
+msgid "Actually you get"
+msgstr "Eigentlich Sie bekommen"
+
+#: Template/Feedback/report-issue.php:36
+msgid "URL of the screenshot"
+msgstr "URL des Screenshots"
+
+#: Template/Feedback/report-issue.php:40
+msgid "Steps to repeat the problem"
+msgstr "Schritte zu wiederholen, das Problem"
+
+#: Template/Test/Editor/edit-formulas.php:5
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "No"
+
+#: Template/Test/Editor/edit-formulas.php:6
+#: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
 msgstr "Formel"
 
-#: Template/Test/Editor/edit-formulas.php:4
+#: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
 msgstr "Ergebnis"
 
-#: Template/Test/Editor/edit-formulas.php:28
+#: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "Formeln können nicht bearbeitet werden. Um Formeln bearbeiten zu können, müssen Ergebnisse ausgewählt werden."
 
-#: Template/Test/Editor/edit-formulas.php:37
-msgid "Variables"
-msgstr "Variablen"
+#: Template/Test/Editor/edit-formulas.php:49
+msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Zahlen und Prozente sind erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
 
-#: Template/Test/Editor/edit-formulas.php:38
+#: Template/Test/Editor/edit-formulas.php:53
 msgid "Comparisions"
 msgstr "Vergleiche"
 
-#: Template/Test/Editor/edit-formulas.php:39
+#: Template/Test/Editor/edit-formulas.php:62
 msgid "Operators"
 msgstr "Operatoren"
 
-#: Template/Test/Editor/edit-formulas.php:58
-msgid "Comparision"
-msgstr "Vergleich"
+#: Template/Test/Editor/edit-formulas.php:73
+msgid "Variables"
+msgstr "Variablen"
 
-#: Template/Test/Editor/edit-formulas.php:64
-msgid "Operator"
-msgstr "Operator"
-
-#: Template/Test/Editor/edit-formulas.php:72
-msgid ""
-"No variables for formulas available. To use variables you must have scales "
-"selected or have at least one question and answer."
+#: Template/Test/Editor/edit-formulas.php:92
+msgid "No variables for formulas available. To use variables you must have scales selected or have at least one question and answer."
 msgstr "Es stehen keine Variablen für Formeln zur Auswahl. Um Variablen verwenden zu können, müssen Sie Skalen ausgewählt haben oder zumindest eine Frage und Antwort."
 
-#: Template/Test/Editor/edit-formulas.php:81
-msgid ""
-"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
-"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Zahlen und Prozente sind erlaubt. Zum Beispiel \"scale-bla\" hat insgesamt 30, dann \"scale-bla > 15\" und \"scale-bla > 50%\" sind gleich."
-
 #: Template/Test/Editor/edit-questions-answers.php:7
-msgid ""
-"No questions to edit. Add new questions and then they will appear here."
+msgid "No questions to edit. Add new questions and then they will appear here."
 msgstr "Es können keine Fragen bearbeitet werden. Füge neue Fragen hinzu und sie werden hier erscheinen."
 
 #: Template/Test/Editor/edit-questions-answers.php:22
@@ -575,15 +691,11 @@ msgstr "Individuelle Antwort hinzufügen"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
-msgid ""
-"— unique to each question. If you have same answers to all test questions, "
-"use the %s"
+msgid "— unique to each question. If you have same answers to all test questions, use the %s"
 msgstr "— einzigartig für jede Frage. Wenn Sie dieselben Antworten auf alle Testfragen haben, verwenden Sie die %s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
-msgid ""
-"Paste here your questions and they will fill fields below. Numbers and other"
-" indexes will be stripped automatically."
+msgid "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
 msgstr "Fügen Sie hier Ihre Fragen ein und die Felder darüber werden ausgefüllt. Zahlen und andere Indizes werden automatisch abgezogen."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
@@ -597,28 +709,21 @@ msgstr "Schnellfüllung aus Text"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
-msgid ""
-"No scores to edit. To edit scores you should have questions, answers and "
-"selected scales."
+msgid "No scores to edit. To edit scores you should have questions, answers and selected scales."
 msgstr "Keine Ergebnisse zu bearbeiten. Um Noten bearbeiten sollten Sie Fragen, Antworten und ausgewählten Skalen haben."
 
-#: Template/Test/Editor/edit-scores.php:23
-#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
-msgid "#"
-msgstr "No"
-
 #: Template/Test/Editor/quick-fill-scores.php:18
-#: Template/Test/Editor/quick-fill-scores.php:35
+#: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
 msgstr "Skalierung"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
-#: Template/Test/Editor/quick-fill-scores.php:36
+#: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
 msgstr "Punkt"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
-#: Template/Test/Editor/quick-fill-scores.php:37
+#: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
 msgstr "Antwort"
 
@@ -626,7 +731,7 @@ msgstr "Antwort"
 msgid "Questions"
 msgstr "Fragen"
 
-#: Template/Test/Editor/quick-fill-scores.php:47
+#: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
 msgstr "Fügen Sie neue Kombination"
 
@@ -649,3 +754,6 @@ msgstr "IP-Adresse"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Browser"
+
+#~ msgid "Rate us"
+#~ msgstr "Bewerten Sie uns"
