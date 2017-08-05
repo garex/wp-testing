@@ -3,6 +3,13 @@ casper.options.viewportSize = {width: 1280, height: 850}
 
 casper.start('http://wpti.dev:8000/')
 
+casper.on('page.error', function(msg, trace) {
+    this.echo('Error:    ' + msg, 'ERROR')
+    this.echo('file:     ' + trace[0].file, 'WARNING')
+    this.echo('line:     ' + trace[	0].line, 'WARNING')
+    this.echo('function: ' + trace[0]['function'], 'WARNING')
+})
+
 function loginAs(who) {
     casper.thenOpen('http://wpti.dev:8000/wp-login.php', {
         method: 'post',
@@ -55,6 +62,12 @@ var screenshots = [
 
            casper.thenOpen('http://wpti.dev:8000/wp-admin/post-new.php?post_type=wpt_test', hideEditorMetaboxes)
 
+           casper.then(function switchEditorToText() {
+               this.evaluate(function() {
+                   switchEditors.go('content', 'toggle')
+               })
+           })
+
            casper.thenOpen('http://wpti.dev:8000/wp-admin/edit.php?post_type=wpt_test', function() {
                this.evaluate(function() {
                    return jQuery('body.folded').length > 0
@@ -75,9 +88,6 @@ var screenshots = [
                try {
                    this.clickLabel('Dismiss')
                } catch(e) {}
-               this.evaluate(function() {
-                   switchEditors.switchto(jQuery('#content-html')[0])
-               })
                this.mouse.move('#wp-admin-bar-view')
                this.wait(400)
            })
