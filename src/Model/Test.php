@@ -24,6 +24,8 @@
  * @method string getType() Gets the current value for type
  * @method WpTesting_Model_Test setName(string $name) Sets the value for name (url unique part)
  * @method string getName() Gets the current value for name (url unique part)
+ * @method integer getAuthorId() Gets the current value for author's id
+ * @method WpTesting_Model_Test setAuthorId(integer $authorId) Sets the current value for author's id
  * @method WpTesting_Model_Scale[] buildScalesWithRangeOnce() Build scales and setup their ranges from test's questions
  * @method WpTesting_Model_Formula[] buildFormulasOnce() @see WpTesting_Model_Test::buildFormulas
  */
@@ -46,6 +48,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
         'excerpt'   => 'post_excerpt',
         'type'      => 'post_type',
         'name'      => 'post_name',
+        'author_id' => 'post_author',
     );
 
     /**

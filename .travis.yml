@@ -50,6 +50,8 @@ matrix:
 
 sudo: false
 
+dist: precise
+
 addons:
   hosts:
     - wpti.dev

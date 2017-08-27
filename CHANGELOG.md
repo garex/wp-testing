@@ -1,6 +1,13 @@
 
 ## Changelog ##
 
+### 0.21.1 ###
+
+Add extension points for Email addon.
+
+* No new functionality was added!
+
+
 ### 0.21 ###
 
 Social sharing of test results and feedback metabox
