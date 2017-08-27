@@ -8,7 +8,7 @@
 
 **Tested up to:** 4.8
 
-**Stable tag:** 0.21
+**Stable tag:** 0.21.1
 
 **License:** GPLv3
 
@@ -116,6 +116,7 @@ Implemented and ready to run:
 * **Save Results in PDF**. Respondent will be able to get results in PDF form.
 * **Redirect to Custom Results Page**. Respondent will be redirected to custom built URL(s) where you can pass as params scales, results and result key. URL could be single for whole test or individual for each result.
 * **Computed Variables**. Create computed variables from existing variables and shortcode any variable at results page.
+* **Email results to Author and Respondent**. Auto-notify author by email about respondent's result and also send it to respondent's email.
 
 For complex test logic or plugin environment specific issues [paid support](https://docs.google.com/document/d/1eHQB69neQJ68xl3vT-x4cHERZTBskq2L0x47AjUPyKM/edit?usp=sharing) is available.
 
