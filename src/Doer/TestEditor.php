@@ -1,6 +1,6 @@
 <?php
 
-class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
+class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractEditor
 {
 
     /**
@@ -86,7 +86,13 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ->addMetaBox('wpt_edit_scores', __('Edit Scores', 'wp-testing'),    array($this, 'renderEditScores'), 'wpt_test')
             ->addMetaBox('wpt_quick_fill_scores', __('Quick Fill Scores', 'wp-testing'),    array($this, 'renderQuickFillScores'), 'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
+            ->addAction('wp_testing_test_store_all_before', array($this, 'updateMetaOptions'))
             ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+        ;
+        $this
+            ->addSubmitMiscOptions()
+            ->addTestPageOptions()
+            ->addResultPageOptions()
         ;
         // Respect metabox sort order
         if ($this->isWordPressAlready('3.4')) {
@@ -95,6 +101,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             $this->wp->addFilter('wp_get_object_terms', array($this, 'filterForceSortObjectTerms'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 4);
         }
         $this->wp->doAction('wp_testing_editor_customize_ui_after');
+
         return $this;
     }
 
@@ -222,7 +229,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
         $this->output('Test/Editor/content-editor-buttons');
     }
 
-    private function getSubmitMiscOptions()
+    private function addSubmitMiscOptions()
     {
         $options = array(
             'wpt_publish_on_home' => array(
@@ -236,15 +243,15 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             unset($options['wpt_publish_on_home']);
         }
 
-        return $this->wp->applyFilters('wpt_test_editor_submit_misc_options', $options);
+        return $this->addMetaOptions('wpt_test_editor_submit_misc_options', $options);
     }
 
     public function renderSubmitMiscOptions()
     {
-        $this->renderMetaboxOptions($this->getSubmitMiscOptions());
+        $this->renderMetaOptions('wpt_test_editor_submit_misc_options');
     }
 
-    private function getTestPageOptions()
+    private function addTestPageOptions()
     {
         $options = array(
             'wpt_test_page_show_progress_meter' => array(
@@ -270,15 +277,15 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
-        return $this->wp->applyFilters('wpt_test_editor_test_page_options', $options);
+        return $this->addMetaOptions('wpt_test_editor_test_page_options', $options);
     }
 
     public function renderTestPageOptions()
     {
-        $this->renderMetaboxOptions($this->getTestPageOptions());
+        $this->renderMetaOptions('wpt_test_editor_test_page_options');
     }
 
-    private function getResultPageOptions()
+    private function addResultPageOptions()
     {
         $options = array(
             'wpt_result_page_show_scales_diagram' => array(
@@ -299,12 +306,12 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
             ),
         );
 
-        return $this->wp->applyFilters('wpt_test_editor_result_page_options', $options);
+        return $this->addMetaOptions('wpt_test_editor_result_page_options', $options);
     }
 
     public function renderResultPageOptions()
     {
-        $this->renderMetaboxOptions($this->getResultPageOptions());
+        $this->renderMetaOptions('wpt_test_editor_result_page_options');
     }
 
     /**
@@ -346,28 +353,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     public function saveTest($id, $item)
     {
         $test = $this->createTest($item);
-        if (!$test->getId()) {
+        $isUpdatable = ($test->getId() && $this->hasMetaOptionsInRequest());
+
+        // Update test only when we have it and at least metaoptions
+        if (!$isUpdatable) {
             return;
-        }
-
-        $metaOptions = array_keys(
-            $this->getSubmitMiscOptions()
-            + $this->getTestPageOptions()
-            + $this->getResultPageOptions()
-        );
-
-        // Update metadata only when we have appropriate keys
-        $isFullEdit      = (!is_null($this->getRequestValue($metaOptions[0])));
-        if (!$isFullEdit) {
-            return;
-        }
-
-        foreach ($metaOptions as $metaOptionKey) {
-            if (isset($metaOptionKey['type']) && $metaOptionKey['type'] == 'header') {
-                continue;
-            }
-            $metaOptionValue = $this->getRequestValue($metaOptionKey);
-            $this->wp->updatePostMeta($test->getId(), $metaOptionKey, $metaOptionValue);
         }
 
         try {
@@ -399,13 +389,6 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
                 array('back_link' => true)
             );
         }
-    }
-
-    private function jsonResponse(array $data)
-    {
-        header('Content-type: application/json');
-        echo json_encode($data);
-        exit;
     }
 
     /**
@@ -469,44 +452,5 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractDoer
     private function isTestTaxonomy()
     {
         return preg_match('/^wpt_/', $this->getRequestValue('taxonomy'));
-    }
-
-    private function renderMetaboxOptions($options)
-    {
-        foreach ($options as $key => $option) {
-            $option += array(
-                'default' => '',
-            );
-            $option['value'] = $this->wp->getCurrentPostMeta($key);
-            if (isset($option['defaultOnAdd']) && $this->isAddAction()) {
-                $option['default'] = $option['defaultOnAdd'];
-            }
-            if ($option['value'] == '') {
-                $option['value'] = $option['default'];
-            }
-            if (empty($option['type'])) {
-                $option['type'] = 'checkbox';
-            }
-            if (empty($option['placeholder'])) {
-                $option['placeholder'] = '';
-            }
-            if (empty($option['break'])) {
-                $option['break'] = false;
-            }
-            $options[$key] = $option;
-        }
-
-        $this->output('Test/Editor/metabox-options', array(
-            'options' => $options,
-        ));
-    }
-
-    private function isAddAction()
-    {
-        $screen = $this->wp->getCurrentScreen();
-        if (!$screen instanceof WP_Screen) {
-            return null;
-        }
-        return 'add' == $screen->action;
     }
 }

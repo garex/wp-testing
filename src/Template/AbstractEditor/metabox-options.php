@@ -1,3 +1,4 @@
+<?php /* @var array $options */ ?>
 <?php $optionsKeys = array_keys($options) ?>
 <?php $lastKey     = end($optionsKeys) ?>
 <?php foreach ($options as $key => $option): ?>
@@ -14,9 +15,12 @@
             echo ($option['value']) ? 'checked="checked"' : '' ?> /> <?php
             echo $option['title']
     ?></label>
-<?php elseif ('text' == $option['type']): ?>
+<?php elseif (in_array($option['type'], array('text', 'email'))): ?>
     <label><?php echo $option['title'] ?></label>
-    <input type="text" name="<?php echo $key ?>" value="<?php echo $option['value'] ?>" placeholder="<?php echo $option['placeholder'] ?>" />
+    <input <?php echo $option['attributes'] ?> type="<?php echo $option['type'] ?>" name="<?php echo $key ?>" value="<?php echo $option['value'] ?>" placeholder="<?php echo $option['placeholder'] ?>" />
+<?php elseif ('textarea' == $option['type']): ?>
+    <label><?php echo $option['title'] ?></label>
+    <textarea <?php echo $option['attributes'] ?> name="<?php echo $key ?>" placeholder="<?php echo $option['placeholder'] ?>"><?php echo $option['value'] ?></textarea>
 <?php elseif ('header' == $option['type']): ?>
     <strong><?php echo $option['title'] ?></strong>
 <?php elseif ('radio' == $option['type']): ?>
