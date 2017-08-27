@@ -5,6 +5,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
     protected $find_items_filter_params = array(
         'test_id',
+        'passing_id',
         'passing_created',
         'user',
         'passing_device_uuid',
@@ -16,7 +17,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
      * Do we in Trash now?
      * @var boolean
      */
-    private $is_trash;
+    private $is_trash = null;
 
     private $bulk_actions = array();
 
@@ -97,12 +98,15 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
     public function prepare_items()
     {
+        if (is_null($this->is_trash)) {
+            $this->is_trash = ('trash' == fRequest::get('passing_status', 'string'));
+            $this->init_templates();
+        }
+
         if ($this->items instanceof fRecordSet) {
             return $this;
         }
 
-        $this->is_trash = ('trash' == fRequest::get('passing_status', 'string'));
-        $this->init_templates();
         return parent::prepare_items();
     }
 
@@ -204,7 +208,7 @@ class WpTesting_Widget_PassingTable_Admin extends WpTesting_Widget_PassingTable
 
             case 'actions':
                 $values = array(
-                    '{{ actionUrl }}' => '?post_type=wpt_test&page=wpt_test_respondents_results&passing_id=' . $item->getId() . '&action=',
+                    '{{ actionUrl }}' => $this->wp->adminUrl('edit.php') . '?post_type=wpt_test&page=wpt_test_respondents_results&passing_id=' . $item->getId() . '&action=',
                     '{{ itemUrl }}'   => $item->getUrl(),
                     '{{ itemSlug }}'  => $item->getSlug($this->wp->getSalt()),
                 );
