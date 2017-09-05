@@ -8,7 +8,7 @@
 
 **Tested up to:** 4.8
 
-**Stable tag:** 0.21.1
+**Stable tag:** 0.21.2
 
 **License:** GPLv3
 
