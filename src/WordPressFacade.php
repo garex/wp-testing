@@ -653,10 +653,6 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
 
     public function loadClass($className)
     {
-        if (class_exists($className, false)) {
-            return false;
-        }
-
         if ('WP_List_Table' == $className) {
             require_once(ABSPATH . 'wp-admin/includes/class-wp-screen.php');
             require_once(ABSPATH . 'wp-admin/includes/template.php');
