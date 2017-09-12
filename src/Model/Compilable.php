@@ -155,7 +155,60 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
         $result = @eval('return ' . $this->substitute() . ';');
         return $result;
     }
+    /** Trims unwanted characters and ensures only legal formula structure
+     *
+     * @throws PHPParser_Error
+     * @return string
+     */
+    public function trimFormula($string)
+    {
+        // Leave only allowed
+        // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
+        $operators = '-+*/<>=&|!?:';
+        $allowed   = $operators . '().% ';
+        preg_match_all('/(?:['. preg_quote($allowed, '/') . '\d]+|\$t\[\d+\])/', $string, $allowedMatches);
+        $string    = implode('', $allowedMatches[0]);
 
+        // Normalize comparisions
+        $string    = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $string);
+
+        // Normalize equalities
+        $string = preg_replace('/=+/', '=', $string);
+        $string = preg_replace('/([^!<>])=([^!<>])/', '$1==$2', $string);
+
+        // Normalize percents
+        $string = preg_replace('/%+/', '%', $string);
+
+        // Convert percents into floats
+        $string = preg_replace_callback('/(\d+) ?%/', array($this, 'transformPercent'), $string);
+
+        // Remove empty brackets
+        $string = preg_replace('/\( *\)/', '', $string);
+
+        // Remove percents without numbers
+        $string = preg_replace('/([^\d])%+/', '$1', $string);
+
+        // Normalize whitespaces
+        $string = preg_replace('/ +/', ' ', trim($string));
+
+        // Remove whitespaces around operators and parentheses
+        $string = preg_replace('/ *([' . preg_quote($operators . '()', '/') . ']+) */', '$1', $string);
+
+        // Add whitespace between values and NOT operator
+        $string = preg_replace('/(\d)(' . preg_quote('!') . '[\d\(])/', '$1 $2', $string);
+
+        // Replace left whitespaces with ands
+        $string = preg_replace('/ +/', '&&', $string);
+
+        // Add whitespaces between doubled operators
+        $string = preg_replace('/([\-\+\*\/])\1/', '$1 $1', $string);
+
+        // Check if there is no parse error
+        $parser = new PHPParser_Parser(new PHPParser_Lexer());
+        $parser->parse('<?php ' . $string . ';');
+
+        return $string;
+    }
     /**
      * Substitutes values inside formula. Cleans up source from forbidden content.
      *
@@ -182,52 +235,9 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
         foreach (array('and' => '&&', 'or' => '||', 'not' => '!') as $from => $to) {
             $result = preg_replace('/([^a-z]?)' . $from . '([^a-z])/', '$1' . $to . '$2', $result);
         }
-
-        // Leave only allowed
-        // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
-        $operators = '-+*/<>=&|!';
-        $allowed   = $operators . '().% ';
-        preg_match_all('/(?:['. preg_quote($allowed, '/') . '\d]+|\$t\[\d+\])/', $result, $allowedMatches);
-        $result    = implode('', $allowedMatches[0]);
-
-        // Normalize comparisions
-        $result    = str_replace(array('><', '<>', '=>', '=<'), array('!=', '!=', '>=', '<='), $result);
-
-        // Normalize equalities
-        $result = preg_replace('/=+/', '=', $result);
-        $result = preg_replace('/([^!<>])=([^!<>])/', '$1==$2', $result);
-
-        // Normalize percents
-        $result = preg_replace('/%+/', '%', $result);
-
-        // Convert percents into floats
-        $result = preg_replace_callback('/(\d+) ?%/', array($this, 'transformPercent'), $result);
-
-        // Remove empty brackets
-        $result = preg_replace('/\( *\)/', '', $result);
-
-        // Remove percents without numbers
-        $result = preg_replace('/([^\d])%+/', '$1', $result);
-
-        // Normalize whitespaces
-        $result = preg_replace('/ +/', ' ', trim($result));
-
-        // Remove whitespaces around operators and parentheses
-        $result = preg_replace('/ *([' . preg_quote($operators . '()', '/') . ']+) */', '$1', $result);
-
-        // Add whitespace between values and NOT operator
-        $result = preg_replace('/(\d)(' . preg_quote('!') . '[\d\(])/', '$1 $2', $result);
-
-        // Replace left whitespaces with ands
-        $result = preg_replace('/ +/', '&&', $result);
-
-        // Add whitespaces between doubled operators
-        $result = preg_replace('/([\-\+\*\/])\1/', '$1 $1', $result);
-
-        // Check if there is no parse error
-        $parser = new PHPParser_Parser(new PHPParser_Lexer());
-        $parser->parse('<?php ' . $result . ';');
-
+        
+        $result = $this->trimFormula($result);
+        
         return $result;
     }
 
@@ -336,3 +346,4 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
      */
     abstract protected function createEmpty();
 }
+

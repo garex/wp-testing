@@ -24,7 +24,7 @@
                 this.runAction = function(action) {
                     var caretCtrl   = activeElement.controller('caretAware'),
                         selection   = caretCtrl ? caretCtrl.getSelection() : {text: '', length: 0},
-                        insertValue = action.getSource().replace('{selection}', selection.text),
+                        insertValue = action.getSource().replace(/\{selection\}/g, selection.text),
                         isSelected  = selection.length > 0;
 
                     if (isSelected) {
@@ -78,14 +78,15 @@
         var actions = [];
 
         sources.forEach(function (source) {
-            var label = source.replace('{selection}', '...');
+	    
+            var label = source.replace(/\{selection\}/g, '...');
             actions.push(new Action(source, label, tooltip));
         });
 
         return actions;
     };
 
-    var comparisions = createActionCollection(['<', '>', '<=', '=>', '<>', '=', 'AND', 'OR', '( {selection} )', 'NOT ( {selection} )'], __.comparision);
+    var comparisions = createActionCollection(['<', '>', '<=', '=>', '<>', '=', 'AND', 'OR', '({selection})?({selection}):({selection})', '( {selection} )', 'NOT ( {selection} )'], __.comparision);
     var operators = createActionCollection(['+', '-', '*', '/'], __.operator);
 
     wptFormulaToolbar.$inject = ['variablesService', 'questionsService'];
