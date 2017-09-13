@@ -4,7 +4,7 @@ class WpTesting_Migration_FixExampleTestAnswers extends WpTesting_Migration_Upda
 {
     public function up()
     {
-        $posts    = $this->globalPrefix . 'posts';
+        $posts    = $this->blogPrefix . 'posts';
         $testSlug = 'eysencks-personality-inventory-epi-extroversionintroversion';
         $testId   = $this->field("SELECT ID FROM $posts WHERE post_type = 'wpt_test' AND post_name = '$testSlug' ORDER BY ID LIMIT 1");
         if (empty($testId)) {
