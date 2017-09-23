@@ -115,14 +115,38 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
 
         return $this;
     }
-
+    /**
+     * Method to retrieve named variable values
+     * 
+     * @param string $name
+     * @return variable value
+     */
+    public function getValue($name)
+    {
+      return $this->substituteValues[$name];
+    }
+    public function getValues()
+    {
+      return $this->substituteValues;
+    }
+    public function getTextValues()
+    {
+      return $this->textValues;
+    }
+    public function debug_to_console($data) {
+      if(is_array($data) || is_object($data))
+	{
+	  echo("<script>console.log('PHP:', JSON.parse('".json_encode($data)."'));</script>");
+	} else {
+	echo("<script>console.log('PHP: ".$data."');</script>");
+      }
+    }
     public function addVariable(WpTesting_Model_FormulaVariable $variable)
     {
         $name = $variable->getSource();
-
-        if (strpos($this->getSourceOnce(), $name) === false) {
-            return $this;
-        }
+        //if (strpos($this->getSourceOnce(), $name) === false) {
+        //    return $this;
+        //}
 
         return $this->addValue($name, $variable->getValue(), $variable->getValueAsRatio());
     }
