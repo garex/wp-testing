@@ -651,6 +651,16 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
         return $GLOBALS['wp_scripts'];
     }
 
+    public function loadClass($className)
+    {
+        if ('WP_List_Table' == $className) {
+            require_once(ABSPATH . 'wp-admin/includes/class-wp-screen.php');
+            require_once(ABSPATH . 'wp-admin/includes/template.php');
+            require_once(ABSPATH . 'wp-admin/includes/screen.php');
+            require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+        }
+    }
+
     /**
      * Determine if SSL is used.
      *
@@ -850,6 +860,24 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function safeRedirect($location, $status = 302)
     {
         return wp_safe_redirect($location, $status);
+    }
+
+    /**
+     * Send mail, similar to PHP's mail
+     *
+     * @since 1.2.1
+     *
+     * @param string|array $to          Array or comma-separated list of email addresses to send message.
+     * @param string       $subject     Email subject
+     * @param string       $message     Message contents
+     * @param string|array $headers     Optional. Additional headers.
+     * @param string|array $attachments Optional. Files to attach.
+     *
+     * @return bool Whether the email contents were sent successfully.
+     */
+    public function mail($to, $subject, $message, $headers = '', $attachments = array())
+    {
+        return wp_mail($to, $subject, $message, $headers, $attachments);
     }
 
     /**
@@ -1679,6 +1707,16 @@ class WpTesting_WordPressFacade implements WpTesting_Addon_IWordPressFacade
     public function dateI18n($dateFormat, $timestamp = false, $isUseGmt = false)
     {
         return date_i18n($dateFormat, $timestamp, $isUseGmt);
+    }
+
+    /**
+     * Loads current admin locale.
+     *
+     * @return boolean
+     */
+    public function loadCurrentAdminLocale()
+    {
+        return load_textdomain('default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo');
     }
 
     /**
