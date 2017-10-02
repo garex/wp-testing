@@ -1,14 +1,15 @@
 <?php
 	class gadget {
-		private $price;
-		private $CPU;
-		private $HD;
-		private $RAM;
-		private $GPU;
-		private $features;
-		private $reviews;
-		private $drives;
-		
+	        public $price;
+		public $CPU;
+		public $HD;
+		public $RAM;
+		public $GPU;
+		public $features;
+		public $reviews;
+		public $drives;
+
+
 		private $priceScore;
 		private $CPUScore;
 		private $HDScore;
@@ -17,19 +18,19 @@
 		private $featuresScore;
 		private $reviewsScore;
 		private $drivesScore;
-		
 		private $score;
-		public function init($valuemap)
-		{
-		  $this->price = $valuemap['price'];
-		  $this->CPU = $valuemap['cpu'];
-		  $this->HD = $valuemap['hd'];
-		  $this->RAM = $valuemap['ram'];
-		  $this->GPU = $valuemap['gpu'];
-		  $this->features = $valuemap['features'];
-		  $this->reviews = $valuemap['reviews'];
-		  $this->drives = $valuemap['drives'];
+
+		function __construct() {
+			        $this->price = 1;
+				$this->CPU = 1;
+				$this->HD = 1;
+				$this->RAM = 1;
+				$this->GPU = 1;
+				$this->features = 1;
+				$this->reviews = 1;
+				$this->drives = 1;
 		}
+
 		public function factorInWeights($weights, $type)
 		{
 		  //this is a dummy just for show
@@ -43,10 +44,6 @@
 			return $priceInput > $priceFromGadget ? 1 : 1 * (1 + $tempPriceResult);
 		}
 		
-		function CalcComponent($componentInput, $componentFromGadget){
-			 $tempComponentResult = ($componentInput - $componentFromGadget) / (($componentInput + $componentFromGadget) / 2);
-			return $componentInput > $componentFromGadget ? 1 : 1 * (1 - $tempComponentResult);
-		}
 		
 		// This calls the user input (which is stored in a gadget) and the weights class
 		// Perhaps the weights class should be static or something
@@ -61,7 +58,7 @@
 			$this->reviewsScore = CalcComponent($inputGadget->reviews, $this->reviews);
 			$this->drivesScore = CalcComponent($inputGadget->drives, $this->drives);
 			
-			 $tempPriceScore = $weights->priceWeight * $this->priceScore;
+		         $tempPriceScore = $weights->priceWeight * $this->priceScore;
 			 $tempCPUScore = $weights->CPUWeight * $this->CPUScore;
 			 $tempHDScore = $weights->HDWeight * $this->HDScore;
 			 $tempRAMScore = $weights->RAMWeight * $this->RAMScore;

@@ -75,16 +75,22 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
     public function isTrue()
     {
         include_once 'GadgetClassAttempt1.php';
+	include_once 'UserInput.php';
+	include_once 'GadgetUICalc.php';
 	//***Can view the output of this in the browser console***
         debug_to_console($this->getValues());
 	debug_to_console($this->createResult()->getTitle());
 	$resultType = $this->createResult()->getSlug();
-	$gadg = new gadget();
-	$gadg->init($this->getValues());
+	$ui = new UserInput($this->getValues());
+	$gadg = new gadget($ui);
+	$calc = new GadgetUICalc($ui, $gadg);
+	
 	// Define some type of interface for weights and handling 
 	// result types
 	$someWeightObject = 0;
-	return $gadg->factorInWeights($someWeightObject, $resultType );
+	debug_to_console($calc->getScore());
+	return $calc->getScore() > 6;
+	//$gadg->factorInWeights($someWeightObject, $resultType );
         //return $this->compile();
     }
 
