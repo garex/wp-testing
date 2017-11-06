@@ -2,6 +2,22 @@
 ## Changelog ##
 
 
+### 0.21.3 ###
+
+Fix links to other posts at results page
+
+Thanks to @bomyras for nice bug report! This update is strongly recommended.
+
+Minors:
+
+* Fix migration in multisite mode
+
+Internals:
+
+* Switch to phpenv 5.4 in travis
+* Show only first megabyte of error logs
+
+
 ### 0.21.2 ###
 
 Minor internal fix.
