@@ -24,7 +24,7 @@ class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPass
         ;
         $this->setupScalesDiagram($this->test, $this->passing);
         $this->wp
-            ->addFilter('post_type_link', array($this, 'canonicalizePassingUrl'))
+            ->addFilter('post_type_link', array($this, 'canonicalizePassingUrl'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
             ->addFilter('get_shortlink', array($this, 'disableShortlink'))
             ->removeAction('wp_head', 'adjacent_posts_rel_link_wp_head')
             ->removeAction('wp_head', 'wp_oembed_add_discovery_links')
@@ -32,8 +32,18 @@ class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPass
         ;
     }
 
-    public function canonicalizePassingUrl($link)
+    /**
+     * @param string $link
+     * @param WP_Post $wpPost
+     *
+     * @return string
+     */
+    public function canonicalizePassingUrl($link, $wpPost)
     {
+        if ($wpPost->ID != $this->test->getId()) {
+            return $link;
+        }
+
         return $this->passing->getUrl($link);
     }
 
