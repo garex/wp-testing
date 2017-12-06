@@ -2,6 +2,17 @@
 ## Changelog ##
 
 
+### 0.21.4 ###
+
+Welcome WordPress 4.9
+
+* Fix missing test issue at "Respondents’ test results" page.
+It concerns you only if your database uses old not recomended database engine
+MyISAM, that is not clean other tables after removing something in main table.
+
+You can check your tables' engine at "Report the problem" under "System information".
+
+
 ### 0.21.3 ###
 
 Fix links to other posts at results page
