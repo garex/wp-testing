@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @method integer getId() Gets the current value of id
  * @method WpTesting_Model_Passing setId(integer $id) Sets the value for id
@@ -275,7 +274,14 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
         }
         return $this->scalesWithRange;
     }
-
+    public function debug_to_console($data) {
+      if(is_array($data) || is_object($data))
+	{
+	  echo("<script>console.log('PHP:', JSON.parse('".json_encode($data)."'));</script>");
+	} else {
+	echo("<script>console.log('PHP: ".$data."');</script>");
+      }
+    }
     /**
      * Prepare results through test, that has true formulas, using current test variables
      *
@@ -290,6 +296,7 @@ class WpTesting_Model_Passing extends WpTesting_Model_AbstractParent
             $formula = $testResult->getFormula();
             $formula->resetValues();
             foreach ($variables as $variable) {
+	      $this->debug_to_console($variable);
                 $formula->addVariable($variable);
             }
             if ($formula->isTrue()) {

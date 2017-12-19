@@ -1,5 +1,13 @@
 <?php
 
+function debug_to_console($data) {
+  if(is_array($data) || is_object($data))
+    {
+      echo("<script>console.log('PHP:', JSON.parse('".json_encode($data)."'));</script>");
+    } else {
+    echo("<script>console.log('PHP: ".$data."');</script>");
+  }
+}
 /**
  * Formula that translates passed values into true or false
  *
@@ -66,7 +74,24 @@ class WpTesting_Model_Formula extends WpTesting_Model_Compilable implements Json
      */
     public function isTrue()
     {
-        return $this->compile();
+        include_once 'GadgetClassAttempt1.php';
+	include_once 'UserInput.php';
+	include_once 'GadgetUICalc.php';
+	//***Can view the output of this in the browser console***
+        debug_to_console($this->getValues());
+	debug_to_console($this->createResult()->getTitle());
+	$resultType = $this->createResult()->getSlug();
+	$ui = new UserInput($this->getValues());
+	$gadg = new gadget($ui);
+	$calc = new GadgetUICalc($ui, $gadg);
+	
+	// Define some type of interface for weights and handling 
+	// result types
+	$someWeightObject = 0;
+	debug_to_console($calc->getScore());
+	return $calc->getScore() > 6;
+	//$gadg->factorInWeights($someWeightObject, $resultType );
+        //return $this->compile();
     }
 
     /**
