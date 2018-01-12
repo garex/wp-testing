@@ -87,7 +87,7 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractEditor
             ->addMetaBox('wpt_quick_fill_scores', __('Quick Fill Scores', 'wp-testing'),    array($this, 'renderQuickFillScores'), 'wpt_test')
             ->addMetaBox('wpt_edit_formulas',  __('Edit Formulas', 'wp-testing'),     array($this, 'renderEditFormulas'),  'wpt_test')
             ->addAction('wp_testing_test_store_all_before', array($this, 'updateMetaOptions'))
-            ->addAction('save_post',     array($this, 'saveTest'), WpTesting_WordPress_IPriority::PRIORITY_DEFAULT, 2)
+            ->addAction('wp_insert_post', array($this, 'saveTest'), 99, 2)
         ;
         $this
             ->addSubmitMiscOptions()
