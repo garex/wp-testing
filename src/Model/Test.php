@@ -64,9 +64,14 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
                 return;
             }
             $postAsArray = (array)$key;
-            unset($postAsArray['ancestors']);
-            unset($postAsArray['filter']);
-            unset($postAsArray['format_content']);
+
+            $columns = $this->getColumnsAsMethodsOnce($this);
+            foreach (array_keys($postAsArray) as $column) {
+                if (!isset($columns[$column])) {
+                    unset($postAsArray[$column]);
+                }
+            }
+
             $key = new ArrayIterator(array($postAsArray));
         }
         parent::__construct($key);
