@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.21.5 ###
+
+Fixup other plugins conflicts
+
+* Clean up test data on save in more reliable way
+* Save test after other plugins, in latest filter
+
+If you use Yoast SEO — you must upgrade to save it's metadata.
+
+
 ### 0.21.4 ###
 
 Welcome WordPress 4.9
