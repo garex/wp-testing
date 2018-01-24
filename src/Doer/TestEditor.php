@@ -15,7 +15,11 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractEditor
      */
     public function customizeUi($screen)
     {
-        if (!$this->isTestScreen($screen)) {
+        $isTestEditor = $this->isTestScreen($screen, 'id');
+        if ($isTestEditor || $this->isTestScreen($screen, 'post_type')) {
+            $this->wp->doAction('wp_testing_editor_tests_screen');
+        }
+        if (!$isTestEditor) {
             return $this;
         }
         $test = $this->createTest($this->getRequestValue('post'));
@@ -420,15 +424,17 @@ class WpTesting_Doer_TestEditor extends WpTesting_Doer_AbstractEditor
      * Do we currently at tests?
      *
      * @param WP_Screen $screen
+     * @param string $attribute When comparing by post_type -- we are at any tests screen, by id -- we are at editor
+     *
      * @return boolean
      */
-    private function isTestScreen($screen)
+    private function isTestScreen($screen, $attribute)
     {
         $id = $this->getRequestValue('post');
         if (is_array($id)) {
             return false;
         }
-        if (!empty($screen->post_type) && $screen->post_type == 'wpt_test') {
+        if (!empty($screen->$attribute) && $screen->$attribute == 'wpt_test') {
             return true;
         }
         if ($this->isWordPressAlready('3.3')) {
