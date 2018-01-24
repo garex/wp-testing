@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.21.6 ###
+
+Avoid running test editor code at respondents results page
+
+* Correctly determine test editor
+
+
 ### 0.21.5 ###
 
 Fixup other plugins conflicts
