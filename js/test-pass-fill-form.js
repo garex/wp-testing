@@ -2,7 +2,7 @@ var Wpt = Wpt || {};
 Wpt.form = Wpt.form || {};
 
 Wpt.initWebshim = function(baseUrl) {
-    if (this.initialized) {
+    if (this.initialized || typeof webshim === 'undefined') {
         return;
     }
     this.initialized = true;
@@ -53,6 +53,10 @@ Wpt.form.initQuestionAnswered = function(form) {
 };
 
 Wpt.initEvercookie = function() {
+    if (typeof evercookie === 'undefined') {
+        return;
+    }
+
     var ec = new evercookie({
         tests           : 3,
         baseurl         : Wpt.evercookieBaseurl,
