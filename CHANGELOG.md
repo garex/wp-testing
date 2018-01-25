@@ -2,6 +2,14 @@
 ## Changelog ##
 
 
+### 0.21.7 ###
+
+Improve compatibility with adblock-like browser extensions
+
+* Such extensions can block some scripts that used on passing fill form step
+* Even when we have such scripts blocked, respondent must be able to proceed with form filling
+
+
 ### 0.21.6 ###
 
 Avoid running test editor code at respondents results page
