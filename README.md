@@ -144,6 +144,8 @@ Most possibly it's a conflict with your current theme or some of other plugin.
 To check it — try to switch theme to default WP theme and see if it helps.
 In case of plugins conflict try to disable other plugins one by one and check. Or disable all of them and check — it will help to understand if problem is on other plugins side.
 
+Another possible source of troubles is mis-configured [mod_security](https://www.modsecurity.org/). Ask your hoster about it. If it could be disabled or reconfigured to avoid false-positives, then your hoster is good. Otherwise it's better to switch to more competent hoster.
+
 ### I see some "Fatal error: bla-bla-bla" ###
 
 Try to find there phrases like "Class ... not found" or "Call to undefined function ...". If it's the case — then your current hoster has disabled some PHP extension. Contact with your hosting company to enable them. Most popular missing extension is "mysqli".
