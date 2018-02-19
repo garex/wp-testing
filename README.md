@@ -8,7 +8,7 @@
 
 **Tested up to:** 4.9
 
-**Stable tag:** 0.21.7
+**Stable tag:** 0.21.8
 
 **License:** GPLv3
 
@@ -143,6 +143,8 @@ For complex test logic or plugin environment specific issues [paid support](http
 Most possibly it's a conflict with your current theme or some of other plugin.
 To check it — try to switch theme to default WP theme and see if it helps.
 In case of plugins conflict try to disable other plugins one by one and check. Or disable all of them and check — it will help to understand if problem is on other plugins side.
+
+Another possible source of troubles is mis-configured [mod_security](https://www.modsecurity.org/). Ask your hoster about it. If it could be disabled or reconfigured to avoid false-positives, then your hoster is good. Otherwise it's better to switch to more competent hoster.
 
 ### I see some "Fatal error: bla-bla-bla" ###
 

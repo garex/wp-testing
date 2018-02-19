@@ -145,6 +145,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
      */
     public function setupTestPasser($template)
     {
+        $this->wp->removeFilter('single_template', array($this, 'setupTestPasser'));
         $this->getTestPasser()->addContentFilter();
         return $template;
     }
