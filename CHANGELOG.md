@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.21.8 ###
+
+Fix compatibility with Flat Bootstrap themes family
+
+* Comment about mod_security issues
+
+
 ### 0.21.7 ###
 
 Improve compatibility with adblock-like browser extensions
