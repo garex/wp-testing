@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.21.9 ###
+
+Update readme to latest plugin directory format.
+
+* Maitenance update.
+
+
 ### 0.21.8 ###
 
 Fix compatibility with Flat Bootstrap themes family
