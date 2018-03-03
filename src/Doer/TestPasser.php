@@ -24,6 +24,11 @@ abstract class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     protected $test = null;
 
     /**
+     * @var string
+     */
+    private $testPassingAction = null;
+
+    /**
      * @var WpTesting_Model_Passing
      */
     private $passing = null;
@@ -80,6 +85,22 @@ abstract class WpTesting_Doer_TestPasser extends WpTesting_Doer_AbstractDoer
     }
 
     private function getTestPassingAction()
+    {
+        if ($this->testPassingAction) {
+            return $this->testPassingAction;
+        }
+
+        $this->testPassingAction = $this->wp->applyFilters(
+            'wp_testing_passer_calculate_action',
+            $this->calculateTestPassingAction(),
+            $this->test,
+            $this->passing
+        );
+
+        return $this->testPassingAction;
+    }
+
+    private function calculateTestPassingAction()
     {
         if ($this->wp->getQuery()->get('wpt_passing_slug')) {
             return self::ACTION_GET_RESULTS;
