@@ -6,6 +6,8 @@ machine:
 
   hosts:
     wpti.dev: 127.0.0.1
+    before.wpti.dev: 127.0.0.1
+    after.wpti.dev: 127.0.0.1
 
   environment:
     WP_T_MULTI_SERVER: http://wpti.dev
