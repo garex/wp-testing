@@ -38,7 +38,7 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
 
     public function getDbCharset()
     {
-        return 'utf-8';
+        return $this->db['charset'];
     }
 
     public function isMultisite()
@@ -154,6 +154,7 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         // Version from 4.3
 
         // Match the new style more links.
+        $matches = array();
         if (preg_match('/<!--more(.*?)?-->/', $post, $matches)) {
             list($main, $extended) = explode($matches[0], $post, 2);
             $more_text = $matches[1];

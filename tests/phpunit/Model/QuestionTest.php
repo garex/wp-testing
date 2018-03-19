@@ -21,8 +21,6 @@ class QuestionTest extends PHPUnit_Framework_TestCase
 
     public function testQuestionSavedInUtfEncoding()
     {
-        $link = $this->db->getConnection();
-
         $question = new WpTesting_Model_Question();
         $question->setTitle('راهنمایی برای ایجاد آزمون های روانشناسی.')->setTestId(1);
         $id = $question->store()->getId();

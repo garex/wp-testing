@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "617c766c15cc0c7a37ad96d17b98cf6c",
-    "content-hash": "a29878b55574f5f4db7e877534d849b9",
+    "hash": "3609284e2b5a713f8a7eb70c8d29e467",
+    "content-hash": "a7d9019a859b7d6219377847c504cb4d",
     "packages": [
         {
             "name": "broofa/node-uuid",
@@ -18,7 +18,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/broofa/node-uuid/archive/v1.4.7.zip",
-                "reference": null,
+                "reference": "309512573ec1c60143c257157479a20f7f1f51cd",
                 "shasum": null
             },
             "type": "library"
@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/garex/flourish-classes",
-                "reference": "0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf"
+                "reference": "c826410c3edb9da885e70c6f05d714b357fb2a4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/garex/flourish-classes/archive/0a5b2536d9736b6fe12d8ab1b8f9ad341d2397bf.zip",
-                "reference": null,
+                "url": "https://github.com/garex/flourish-classes/archive/c826410c3edb9da885e70c6f05d714b357fb2a4a.zip",
+                "reference": "c826410c3edb9da885e70c6f05d714b357fb2a4a",
                 "shasum": null
             },
             "type": "library",
@@ -138,7 +138,7 @@
                     "."
                 ]
             },
-            "time": "2015-09-27 06:52:10"
+            "time": "2018-03-18 16:33:05"
         },
         {
             "name": "nikic/php-parser",
@@ -196,7 +196,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/garex/ruckusing-migrations/archive/issue/avoid-schema-constant.zip",
-                "reference": null,
+                "reference": "issue/avoid-schema-constant",
                 "shasum": null
             },
             "require": {
@@ -224,7 +224,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/samyk/evercookie/archive/977db236367c509ce6b10fb565ed5a75c8d729d5.zip",
-                "reference": null,
+                "reference": "977db236367c509ce6b10fb565ed5a75c8d729d5",
                 "shasum": null
             },
             "type": "library",

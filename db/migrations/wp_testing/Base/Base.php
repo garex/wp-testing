@@ -46,6 +46,8 @@ abstract class WpTesting_Migration_Base
 
     public function execute($query)
     {
+        $this->adaptee->get_adapter()->logger->log(trim($query, ';') . ';');
+
         return $this->adaptee->execute($query);
     }
 

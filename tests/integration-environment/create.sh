@@ -91,7 +91,7 @@ function install_wp {
         log '.. patching wordpress'
         patch -p0 < $WP_PATCH
     fi
-    cp ../wp-config.php wp-config.php
+    cat ../wp-config.php | sed 's/utf8/'$DB_CHARSET'/' > wp-config.php
     log '.. installing'
     wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' $WP_T_SERVER'/wp-admin/install.php?step=2' | grep installed
 }
