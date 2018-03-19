@@ -9,8 +9,8 @@ REPO_ROOT=$(realpath $HERE/../..)
 
 # Prepare environment
 cd $REPO_ROOT
-sudo WP_T_SERVER=http://wpti.dev tests/integration-environment/create.sh
-sudo chown --recursive $USER:$USER /tmp/wpti/wordpress
+sudo WP_T_SERVER=http://wpti.dev WP_VERSION=$WP_VERSION tests/integration-environment/create.sh
+sudo chown --recursive www-data:www-data /tmp/wpti/wordpress
 cd $HERE
 export PATH=$PATH:./node_modules/.bin/
 export TZ="UTC"
