@@ -224,11 +224,21 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         // Extract port from host. See wpdb::db_connect
         $port = null;
         $host = $this->wp->getDbHost();
+        $m = array();
         if (preg_match('/^(.+):(\d+)$/', trim($host), $m)) {
             $host = $m[1];
             $port = $m[2];
         }
-        $database = new fDatabase('mysql', $this->wp->getDbName(), $this->wp->getDbUser(), $this->wp->getDbPassword(), $host, $port);
+        $database = new fDatabase(
+            'mysql',
+            $this->wp->getDbName(),
+            $this->wp->getDbUser(),
+            $this->wp->getDbPassword(),
+            $host,
+            $port,
+            null,
+            $this->wp->getDbCharset()
+        );
         fORMDatabase::attach($database);
 
         fORM::mapClassToTable('WpTesting_Model_Test',          $wpPrefix   . 'posts');

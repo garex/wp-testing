@@ -112,7 +112,8 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
 
     private function upgradeOnBlog()
     {
-        $this->migrateDatabase(array(__FILE__, 'db:migrate'));
+        $this->migrateDatabase(array(__FILE__, 'db:setup',   'env=fixed-charset'));
+        $this->migrateDatabase(array(__FILE__, 'db:migrate', 'env=development'));
         new WpTesting_Doer_WordPressEntitiesRegistrator($this->wp);
         $this->flushRewrite();
     }
@@ -183,11 +184,15 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
                     'pluginPrefix' => $wptPrefix,
                     'schema_version_table_name' => $wptPrefix . 'schema_migrations',
                 ),
+                'fixed-charset' => array(
+                    'charset'  => 'utf8',
+                ),
             ),
             'db_dir'         => $databaseDirectory,
             'migrations_dir' => array('default' => $databaseDirectory . '/migrations'),
             'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
         );
+        $config['db']['fixed-charset'] = array_merge($config['db']['development'], $config['db']['fixed-charset']);
 
         $runner = new Ruckusing_FrameworkRunner($config, $argv);
         restore_error_handler();

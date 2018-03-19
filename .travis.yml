@@ -30,7 +30,7 @@ env:
 matrix:
   include:
     - php: 7.0
-      env: WP_VERSION=
+      env: WP_VERSION= DB_CHARSET=utf8mb4
     - php: 5.3
       env: WP_VERSION=
     - php: 5.4
