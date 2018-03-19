@@ -2,6 +2,21 @@
 ## Changelog ##
 
 
+### 0.21.10 ###
+
+Improve database charset operations
+
+* If your DB_CHARSET was set to utf8mb4, then you could have issues in plugin activation
+* If your DB_CHARSET was set to latin1, then you could have issues with scales showing
+
+To completely clear DB from wp-testing in case of activation issues you can use the script:
+
+  https://github.com/garex/wp-testing/blob/master/db/sql/drop-all.sql
+
+
+This hotfix is mostly for those, who was having troubles with plugin activation.
+
+
 ### 0.21.9 ###
 
 Update readme to latest plugin directory format.
