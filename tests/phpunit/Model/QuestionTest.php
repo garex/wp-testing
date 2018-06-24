@@ -1,5 +1,5 @@
 <?php
-class QuestionTest extends PHPUnit_Framework_TestCase
+class QuestionTest extends WpTesting_Tests_TestCase
 {
 
     /**
@@ -16,7 +16,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        $this->db->translatedExecute('ROLLBACK');
+        $this->db && $this->db->translatedExecute('ROLLBACK');
     }
 
     public function testQuestionSavedInUtfEncoding()

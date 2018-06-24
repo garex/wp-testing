@@ -1,6 +1,6 @@
 <?php
 
-class ScaleTest extends PHPUnit_Framework_TestCase
+class ScaleTest extends WpTesting_Tests_TestCase
 {
 
     /**
