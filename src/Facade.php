@@ -229,7 +229,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
             $host = $m[1];
             $port = $m[2];
         }
-        $database = new fDatabase(
+        $this->database = new fDatabase(
             'mysql',
             $this->wp->getDbName(),
             $this->wp->getDbUser(),
@@ -239,7 +239,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
             null,
             $this->wp->getDbCharset()
         );
-        fORMDatabase::attach($database);
+        fORMDatabase::attach($this->database);
 
         fORM::mapClassToTable('WpTesting_Model_Test',          $wpPrefix   . 'posts');
         fORM::mapClassToTable('WpTesting_Model_Question',      $wptPrefix  . 'questions');
@@ -363,9 +363,9 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         $schema->setKeysOverride(array(), $wptPrefix . 'fields',   'foreign');
         $schema->setKeysOverride(array(), $wptPrefix . 'field_values', 'foreign');
 
-        $this->wp->doAction('wp_testing_orm_setup', $schema, $database, $this);
+        $this->wp->doAction('wp_testing_orm_setup', $schema, $this->database, $this);
 
-        return $database;
+        return $this->database;
     }
 
     public function getTablePrefix()

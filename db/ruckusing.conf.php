@@ -5,7 +5,7 @@ if (!$php53) {
 }
 $local = dirname(__FILE__) . '/ruckusing.conf.local.php';
 if (file_exists($local)) {
-    return require_once $local;
+    return require $local;
 }
 $wp0Prefix = 'wp_';
 $wpPrefix  = 'wp_';

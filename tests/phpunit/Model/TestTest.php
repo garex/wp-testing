@@ -1,6 +1,6 @@
 <?php
 
-class TestTest extends PHPUnit_Framework_TestCase
+class TestTest extends WpTesting_Tests_TestCase
 {
 
     /**
@@ -17,7 +17,7 @@ class TestTest extends PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        $this->db->translatedExecute('ROLLBACK');
+        $this->db && $this->db->translatedExecute('ROLLBACK');
     }
 
     public function testTestCanBeCreatedAndStored()
@@ -111,13 +111,5 @@ class TestTest extends PHPUnit_Framework_TestCase
             ->setPinged('http://localhost/')
             ->setType('wpt_test')
             ->setName('test-' . time());
-    }
-
-    /**
-     * @return WpTesting_WordPressFacade
-     */
-    private function getWpFacade()
-    {
-        return $GLOBALS['wp_facade_mock'];
     }
 }

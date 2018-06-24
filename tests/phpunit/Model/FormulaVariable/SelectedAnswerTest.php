@@ -1,6 +1,6 @@
 <?php
 
-class SelectedAnswerTest extends PHPUnit_Framework_TestCase
+class SelectedAnswerTest extends WpTesting_Tests_TestCase
 {
 
     /**
@@ -17,7 +17,7 @@ class SelectedAnswerTest extends PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        $this->db->translatedExecute('ROLLBACK');
+        $this->db && $this->db->translatedExecute('ROLLBACK');
     }
 
     public function testNoVariablesFromEmptyTest()
@@ -234,13 +234,5 @@ class SelectedAnswerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(fRecordSet::buildFromArray('WpTesting_Model_Answer', $answers)));
 
         return $mock;
-    }
-
-    /**
-     * @return WpTesting_WordPressFacade
-     */
-    private function getWpFacade()
-    {
-        return $GLOBALS['wp_facade_mock'];
     }
 }
