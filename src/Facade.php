@@ -221,24 +221,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         $wpPrefix  = $this->wp->getTablePrefix();
         $wptPrefix = $this->getTablePrefix();
 
-        // Extract port from host. See wpdb::db_connect
-        $port = null;
-        $host = $this->wp->getDbHost();
-        $m = array();
-        if (preg_match('/^(.+):(\d+)$/', trim($host), $m)) {
-            $host = $m[1];
-            $port = $m[2];
-        }
-        $this->database = new fDatabase(
-            'mysql',
-            $this->wp->getDbName(),
-            $this->wp->getDbUser(),
-            $this->wp->getDbPassword(),
-            $host,
-            $port,
-            null,
-            $this->wp->getDbCharset()
-        );
+        $this->database = new WpTesting_Component_Database_FlourishDatabase($this->wp);
         fORMDatabase::attach($this->database);
 
         fORM::mapClassToTable('WpTesting_Model_Test',          $wpPrefix   . 'posts');
