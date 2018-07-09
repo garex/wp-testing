@@ -48,10 +48,13 @@ function start_nginx {
 }
 
 function php_cgi {
-    [ ! -f /etc/profile.d/phpenv.sh ] && return 0
+    [ -z "$TRAVIS_PHP_VERSION" ] && return 0
 
     log 'Configuring php cgi'
-    source /etc/profile.d/phpenv.sh
+    if [ -f /etc/profile.d/phpenv.sh ];
+    then
+        source /etc/profile.d/phpenv.sh
+    fi
     echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     touch /tmp/fpm-php.www.log
     chmod 777 /tmp/fpm-php.www.log
