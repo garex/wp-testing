@@ -2,7 +2,6 @@ language: php
 
 php:
   - 5.6
-  - 5.2
 
 env:
   global:
@@ -29,29 +28,44 @@ env:
 
 matrix:
   include:
-    - php: 7.0
-      env: WP_VERSION= DB_CHARSET=utf8mb4
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=4.8.4
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=4.0.1
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=3.9
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=3.5
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=3.3
+    - php: 5.2
+      dist: precise
+      env: WP_VERSION=3.2
     - php: 5.3
+      dist: precise
       env: WP_VERSION=
     - php: 5.4
       env: WP_VERSION=
     - php: 5.5
       env: WP_VERSION=
-    - php: 5.3
-      env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
     - php: 5.4
+      env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
+    - php: 7.0
+      env: WP_VERSION= DB_CHARSET=utf8mb4
+    - php: 7.0
       env: PLUGINS=akismet.3.1.11:jetpack.4.2.2:wordpress-seo.3.3.4:wordfence.6.1.14:contact-form-7.4.5:google-sitemap-generator.4.0.8
-  allow_failures:
-    - php: 5.2
-      env: WP_VERSION=3.5
-    - php: 5.2
-      env: WP_VERSION=3.6
-    - php: 5.2
-      env: WP_VERSION=3.7
 
 sudo: false
 
-dist: precise
+dist: trusty
 
 addons:
   hosts:
@@ -68,13 +82,19 @@ before_script:
   - cd $TRAVIS_BUILD_DIR
   - tests/integration-environment/create.sh
   - cd $TRAVIS_BUILD_DIR/tests/mocha
+  - nvm install 0.10.36
+  - nvm use 0.10.36
   - npm install
   - cd $TRAVIS_BUILD_DIR
   - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/:$TRAVIS_BUILD_DIR/tests/integration-environment/
+  - if [ $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 1 ]; then
+      sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6';
+    fi
+  - test $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 0
 
 script:
   - vendor/bin/phpunit-php52
-  - cd $TRAVIS_BUILD_DIR/tests/mocha && mocha-casperjs --timeout=360000
+  - cd $TRAVIS_BUILD_DIR/tests/mocha && PHANTOMJS_EXECUTABLE=node_modules/.bin/phantomjs mocha-casperjs --timeout=360000
 
 after_script:
   - cd $TRAVIS_BUILD_DIR
