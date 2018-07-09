@@ -64,6 +64,11 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
         return realpath(dirname(__FILE__) . '/../../..');
     }
 
+    public function getTempDir()
+    {
+        return rtrim(sys_get_temp_dir(), '/').'/';
+    }
+
     public function registerActivationHook($function)
     {
         return $this;
