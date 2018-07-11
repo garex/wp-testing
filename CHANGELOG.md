@@ -2,6 +2,21 @@
 ## Changelog ##
 
 
+### 0.21.11 ###
+
+Allow to use socket and IPv6 in database connection
+
+Make DB-connection compatible with wordpress: allow to use sockets and IPv6.
+It's mostly for new users, who uses non-standard database connection settings.
+If you are existing user, you dont' need this update.
+
+* Improve database-related testing aspects
+* Stabilize auto-tests
+* Upgrade testing environment
+* Parse wordpress's DB_HOST constant in same way as it was introduced in WP 4.9
+with respect to socket and IPv6.
+
+
 ### 0.21.10 ###
 
 Improve database charset operations
