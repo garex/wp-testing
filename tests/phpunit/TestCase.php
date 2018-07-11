@@ -28,12 +28,12 @@ abstract class WpTesting_Tests_TestCase extends PHPUnit_Framework_TestCase
         return self::$facade;
     }
 
-    private static function createWordPressFacade()
+    protected static function createWordPressFacade(array $dbOverride = array())
     {
         $pluginFile = realpath(dirname(__FILE__) . '/../../wp-testing.php');
         $migration = require dirname(__FILE__) . '/../../db/ruckusing.conf.php';
 
-        return new WpTesting_Mock_WordPressFacade($pluginFile, $migration['db']['development']);
+        return new WpTesting_Mock_WordPressFacade($pluginFile, $dbOverride + $migration['db']['development']);
     }
 
     private static function createFacade(WpTesting_WordPressFacade $wp)
