@@ -51,3 +51,9 @@ add_filter('removable_query_args', '_wpt_test_removable_query_args');
 function _wpt_test_removable_query_args() {
     return array();
 }
+
+/**
+ * Completely disable all types of automatic updates
+ * @since 3.7
+ */
+define('AUTOMATIC_UPDATER_DISABLED', true);

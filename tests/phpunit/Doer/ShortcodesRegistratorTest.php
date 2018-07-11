@@ -1,6 +1,6 @@
 <?php
 
-class ShortcodesRegistratorTest extends PHPUnit_Framework_TestCase
+class ShortcodesRegistratorTest extends WpTesting_Tests_TestCase
 {
 
     /**
@@ -10,7 +10,7 @@ class ShortcodesRegistratorTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->doer = new WpTesting_Doer_ShortcodesRegistrator($GLOBALS['wp_facade_mock'], $GLOBALS['facade_mock'], $GLOBALS['facade_mock']);
+        $this->doer = new WpTesting_Doer_ShortcodesRegistrator($this->getWpFacade(), $this->getFacade(), $this->getFacade());
     }
 
     public function testTestsRendered()

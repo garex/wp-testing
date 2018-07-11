@@ -128,9 +128,7 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
         if ($isDropTables) {
             $adapter = $this->migrateDatabase(array(__FILE__,'db:migrate','VERSION=0'));
             $adapter->drop_table($adapter->get_schema_version_table_name());
-            if ($adapter instanceof Ruckusing_Adapter_Base) {
-                $adapter->logger->close();
-            }
+            $adapter->logger->close();
         }
         $this->flushRewrite();
     }
@@ -158,53 +156,10 @@ class WpTesting_Doer_Installer extends WpTesting_Doer_AbstractDoer
      */
     private function migrateDatabase($argv)
     {
-        $wp0Prefix = $this->wp->getGlobalTablePrefix();
-        $wpPrefix  = $this->wp->getTablePrefix();
-        $wptPrefix = $this->ormAware->getTablePrefix();
-
-        $runnerReflection = new ReflectionClass('Ruckusing_FrameworkRunner');
-        defined('RUCKUSING_WORKING_BASE')       || define('RUCKUSING_WORKING_BASE',         dirname(dirname(dirname(__FILE__))));
-        defined('RUCKUSING_BASE')               || define('RUCKUSING_BASE',                 dirname(dirname(dirname($runnerReflection->getFileName()))));
-
-        $databaseDirectory = RUCKUSING_WORKING_BASE . '/db';
-        $dbHostWithPort    = explode(':', $this->wp->getDbHost() . ':3306');
-        $config = array(
-            'db' => array(
-                'development' => array(
-                    'type'     => 'mysql',
-                    'host'     => reset($dbHostWithPort),
-                    'port'     => next($dbHostWithPort),
-                    'database' => $this->wp->getDbName(),
-                    'directory'=> 'wp_testing',
-                    'user'     => $this->wp->getDbUser(),
-                    'password' => $this->wp->getDbPassword(),
-                    'charset'  => $this->wp->getDbCharset(),
-                    'globalPrefix' => $wp0Prefix,
-                    'blogPrefix'   => $wpPrefix,
-                    'pluginPrefix' => $wptPrefix,
-                    'schema_version_table_name' => $wptPrefix . 'schema_migrations',
-                ),
-                'fixed-charset' => array(
-                    'charset'  => 'utf8',
-                ),
-            ),
-            'db_dir'         => $databaseDirectory,
-            'migrations_dir' => array('default' => $databaseDirectory . '/migrations'),
-            'log_dir'        => $this->wp->getTempDir() . 'wp_testing_' . md5(__FILE__),
-        );
-        $config['db']['fixed-charset'] = array_merge($config['db']['development'], $config['db']['fixed-charset']);
-
-        $runner = new Ruckusing_FrameworkRunner($config, $argv);
-        restore_error_handler();
-        restore_exception_handler();
+        $runner = new WpTesting_Component_Database_RuckusingRunner($this->wp, $this->ormAware, $argv);
         $runner->execute();
 
-        /* @var $adapter Ruckusing_Adapter_Base */
-        $adapter = $runner->get_adapter();
-        if ($adapter instanceof Ruckusing_Adapter_Base) {
-            $adapter->logger = new Ruckusing_Util_Logger($config['log_dir'] . '/development.log');
-        }
-        return $adapter;
+        return $runner->get_adapter();
     }
 
     /**

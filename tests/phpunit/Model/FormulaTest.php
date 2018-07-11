@@ -1,6 +1,6 @@
 <?php
 
-class FormulaTest extends PHPUnit_Framework_TestCase
+class FormulaTest extends WpTesting_Tests_TestCase
 {
 
     /**
@@ -22,7 +22,7 @@ class FormulaTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        $this->db->isInsideTransaction() && $this->db->execute('ROLLBACK');
+        $this->db && $this->db->isInsideTransaction() && $this->db->execute('ROLLBACK');
     }
 
     public function testSlugsAndNamesTranslatedIntoValues()
