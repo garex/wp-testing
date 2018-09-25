@@ -186,8 +186,8 @@ abstract class WpTesting_Model_Compilable extends WpTesting_Model_AbstractModel
         // Leave only allowed
         // ustimenko: WARNING "-" should be 1st @see https://bugs.php.net/bug.php?id=47229
         $operators = '-+*/<>=&|!';
-        $allowed   = $operators . '().% ';
-        preg_match_all('/(?:['. preg_quote($allowed, '/') . '\d]+|\$t\[\d+\])/', $result, $allowedMatches);
+        $allowed   = $operators . '().%, ';
+        preg_match_all('/(?:['. preg_quote($allowed, '/') . '\d]+|\$t\[\d+\]|\b(max|round)\b)/', $result, $allowedMatches);
         $result    = implode('', $allowedMatches[0]);
 
         // Normalize comparisions
