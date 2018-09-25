@@ -114,4 +114,38 @@ class ScaleTest extends WpTesting_Tests_TestCase
         $this->assertEquals( 23, $this->scale->getValue());
         $this->assertEquals(100, $this->scale->getMaximum());
     }
+
+    public function testScalesSortedByValueFromMaxToMinIncludingNegative()
+    {
+        $records = fRecordSet::buildFromArray('WpTesting_Model_Scale', array(
+            $this->createScale(0),
+            $this->createScale(-10),
+            $this->createScale(50),
+            $this->createScale(100),
+            $this->createScale(-1000),
+        ));
+
+        $sorted = $records->sortByCallback(array('WpTesting_Model_Scale', 'compareDescending'));
+
+        $values = array();
+        foreach ($sorted as $scale) {
+            $values[] = $scale->getValue();
+        }
+
+        $this->assertEquals(array(100.0, 50.0, 0.0, -10.0, -1000.0), $values);
+    }
+
+    /**
+     * @param int $value
+     *
+     * @return WpTesting_Model_Scale
+     */
+    private function createScale($value)
+    {
+        $scale = new WpTesting_Model_Scale();
+        $scale->setRange(-1000, 1000);
+        $scale->setValue($value);
+
+        return $scale;
+    }
 }
