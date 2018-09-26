@@ -67,6 +67,15 @@ class WpTesting_Model_Scale extends WpTesting_Model_AbstractTerm implements Json
         return $this->value;
     }
 
+    public static function compareDescending(WpTesting_Model_Scale $a, WpTesting_Model_Scale $b)
+    {
+        if ($a->getValue() == $b->getValue()) {
+            return 0;
+        }
+
+        return ($a->getValue() > $b->getValue()) ? -1 : 1;
+    }
+
     /**
      * @return number
      */

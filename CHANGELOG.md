@@ -2,6 +2,15 @@
 ## Changelog ##
 
 
+### 0.21.12 ###
+
+Fix bug with scale sorting.
+
+Negative values was sorted after zero value, but with reverse order: 10, 9, 8, 7, 1, 0, -10, -9, -8, -1. Now it fixed and order is correct: 10, 9, 8, 7, 1, 0, -1, -8, -9, -10.
+
+Bug was hiding from us for almost 3 and half years and was reported by @justtoask2.
+
+
 ### 0.21.11 ###
 
 Allow to use socket and IPv6 in database connection
