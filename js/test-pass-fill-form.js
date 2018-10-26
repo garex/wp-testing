@@ -49,6 +49,10 @@ Wpt.form.initQuestionAnswered = function(form) {
     }).bind('question_unanswered_initially.wpt', function(event, question) {
         question.removeClass('answered');
         question.find('.answer input:first').attr('required', 'required').attr('aria-required', 'true');
+    }).bind('answer_selected.wpt', function (event, answer) {
+        answer.addClass('selected');
+    }).bind('answer_unselected.wpt', function (event, answer) {
+        answer.removeClass('selected');
     });
 };
 
@@ -146,7 +150,19 @@ Wpt.form.setupQuestionsAnswered = function($, form) {
         question.find('.answer').each(function () {
             var answer = $(this);
             answer.find('input').bind('change', function () {
-                if (!$(this).attr('checked')) {
+                answer.data('isSelected', !!$(this).attr('checked'));
+                if (answer.data('isSelected')) {
+                    form.trigger('answer_selected.wpt', [answer]);
+                    questionAnswersInputs.each(function (i, otherInput) {
+                        var $el = $(otherInput);
+                        if ($el.closest('.answer').data('isSelected') != !!$(otherInput).attr('checked')) {
+                            $el.change();
+                        }
+                    });
+                } else {
+                    form.trigger('answer_unselected.wpt', [answer]);
+                }
+                if (!answer.data('isSelected')) {
                     var isAllCheckboxesEmpty = (0 == questionAnswersInputs.filter(':checked').length);
                     if (isAllCheckboxesEmpty) {
                         question.data('isAnswered', false);

@@ -2,6 +2,11 @@
 ## Changelog ##
 
 
+### 0.21.13 ###
+
+Add answer's attribute for CSS styling.
+
+
 ### 0.21.12 ###
 
 Fix bug with scale sorting.
