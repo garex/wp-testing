@@ -18,7 +18,7 @@
 
     <?php foreach ($results as $i => $result): /* @var $result WpTesting_Model_Result */ ?>
 
-        <h3 class="<?php echo $result->getCssClass($i) ?> title"><?php echo $result->getTitle() ?></h4>
+        <h3 class="<?php echo $result->getCssClass($i) ?> title"><?php echo $result->getTitle() ?></h3>
 
         <div class="<?php echo $result->getCssClass($i) ?> description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($result->getDescription())) ?></div>
 
@@ -36,7 +36,7 @@
 
     <?php foreach ($scales as $i => $scale): /* @var $scale WpTesting_Model_Scale */ ?>
 
-        <h3 class="<?php echo $scale->getCssClass($i) ?> title"><?php echo $scale->getTitle() ?></h4>
+        <h3 class="<?php echo $scale->getCssClass($i) ?> title"><?php echo $scale->getTitle() ?></h3>
 
         <div class="<?php echo $scale->getCssClass($i) ?> scores">
             <?php echo $scale->formatValueAsOutOf() ?>
