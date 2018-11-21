@@ -2,6 +2,13 @@
 ## Changelog ##
 
 
+### 0.21.14 ###
+
+Fix headers tags at results' page template.
+
+Bug is ~4 years old and was introduced in version 0.3. Thanks for reporting goes to Erik Thor.
+
+
 ### 0.21.13 ###
 
 Add answer's attribute for CSS styling.
