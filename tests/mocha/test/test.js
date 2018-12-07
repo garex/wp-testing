@@ -52,6 +52,11 @@ describe('Test', function() {
 
     it('should be updated', function() {
         casper.then(function() {
+            this.evaluate(function() {
+                jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
+            })
+            this.click('.__text_tab_here')
+
             this.click('#wpt_question_add')
             this.fillSelectors('form#post', {
                 '#title': 'Are You Hot or Not?!',
