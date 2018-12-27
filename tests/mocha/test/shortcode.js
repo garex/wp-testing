@@ -1,6 +1,9 @@
 describe('Shortcode', function() {
 
-    var server = require('../env').server()
+    var env = require('../env'),
+        server = env.server(),
+        isWp5 = env.isWp5Already()
+
     before(function () {
         require('../login-as').admin(this)
     })
@@ -10,6 +13,10 @@ describe('Shortcode', function() {
             this.evaluateOrDie(function() {
                 return /Edit Post/.test(document.body.innerText)
             })
+
+            if (isWp5) {
+                return;
+            }
 
             this.evaluate(function() {
                 jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
@@ -23,11 +30,30 @@ describe('Shortcode', function() {
             }, true)
         })
 
-        casper.waitWhileSelector('form#post.wpt-ajax-save', null, null, 10000).waitForUrl(/message/, function() {
-            '#message'.should.be.inDOM
-        })
+         if (!isWp5) {
+             casper.waitWhileSelector('form#post.wpt-ajax-save', null, null, 10000).waitForUrl(/message/, function() {
+                '#message'.should.be.inDOM
+             })
 
-        casper.thenOpen(server + '/?p=1', thenOnPage1)
+             casper.thenOpen(server + '/?p=1', thenOnPage1)
+         } else {
+             casper.waitForSelector('#post-title-0', function() {
+                 this.sendKeys('#post-title-0', 'Hi World!', {reset: true});
+                 this.evaluate(function(shortcode) {
+                     wp.data.dispatch('core/editor').resetBlocks([])
+                     wp.data.dispatch('core/editor').insertBlocks(wp.blocks.createBlock('core/paragraph', {
+                         content: 'Hello World!'
+                     }));
+                     wp.data.dispatch('core/editor').insertBlocks(wp.blocks.createBlock('core/shortcode', {
+                         text: shortcode
+                     }));
+                 }, shortcode)
+
+                 this.click('.editor-post-publish-button')
+             })
+
+             casper.waitForSelector('.components-notice__content').thenOpen(server + '/?p=1', thenOnPage1)
+         }
     }}
 
     describe('[wpt_tests reverse=id list=square]', function() {
