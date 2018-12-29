@@ -256,6 +256,11 @@ describe('Shortcode', function() {
             })
 
             casper.waitForUrl(/edit/, function() {
+                this.evaluate(function() {
+                    jQuery('#edButtonHTML,#content-html').addClass('__text_tab_here')
+                })
+                this.click('.__text_tab_here')
+
                 this.fillSelectors('form#post', {
                     '#content': [
                         'Before',
