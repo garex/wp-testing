@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-30 00:02+0700\n"
-"PO-Revision-Date: 2017-07-30 00:02+0700\n"
+"POT-Creation-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2017-09-25 18:15+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-testing/language/it_IT/)\n"
-"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
@@ -164,12 +164,14 @@ msgstr "Mostra descrizione del test"
 msgid "Test data not saved"
 msgstr "Dati del test non salvati"
 
-#: Doer/TestPasser/DirectRenderer.php:19 Doer/TestPasser/FilterRenderer.php:105
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "Test in costruzione"
 
-#: Doer/TestPasser/FilterRenderer.php:106 Template/Test/Passer/fill-form.php:82
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "Non è ancora possibile ottenere tutti i risultati."
 
@@ -265,7 +267,9 @@ msgid "No Tests found in Trash"
 msgstr "Nessun Test nel Cestino"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
-msgid "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
 msgstr "Strumento per misurare costrutti non direttamente osservabili (varianti latenti). Solitamente si tratta di una serie di compiti o problemi che il soggetto deve risolvere."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
@@ -511,7 +515,8 @@ msgstr "Nessuna categoria nel cestino"
 
 #: Model/Formula.php:88
 #, php-format
-msgid "Formula for %s is incompatible as it contains both numbers and percentages"
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "Formula per %s è incompatibile in quanto contiene sia numeri e percentuali"
 
 #: Model/Formula.php:90
@@ -653,7 +658,9 @@ msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "Nessuna formula da modificare. Per modificare le formule è necessario aver selezionato i risultati."
 
 #: Template/Test/Editor/edit-formulas.php:49
-msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "E' possibile creare formule di calcolo sia con i numeri che con le percentuali. Per esempio nel caso di \"scale-bla\" con punteggio totale di 30,le due formule di calcolo \"scale-bla > 15\" e \"scale-bla > 50%\"hanno lo stesso significato e possono essere usate entrambe."
 
 #: Template/Test/Editor/edit-formulas.php:53
@@ -669,11 +676,14 @@ msgid "Variables"
 msgstr "Variabili"
 
 #: Template/Test/Editor/edit-formulas.php:92
-msgid "No variables for formulas available. To use variables you must have scales selected or have at least one question and answer."
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
 msgstr "Nessuna variabile disponibile per creare formule di calcolo. Per usare le variabili è necessario aver selezionato le scale o avere almeno un domanda e risposta."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
-msgid "No questions to edit. Add new questions and then they will appear here."
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
 msgstr "Nessuna domanda da modificare. Aggiungi nuove domande e queste compariranno qui."
 
 #: Template/Test/Editor/edit-questions-answers.php:22
@@ -690,11 +700,15 @@ msgstr "Aggiungi la risposta individuale"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
-msgid "— unique to each question. If you have same answers to all test questions, use the %s"
+msgid ""
+"— unique to each question. If you have same answers to all test questions, "
+"use the %s"
 msgstr "— unico per ogni domanda. Se avete le stesse risposte a tutte le domande del test, utilizza le percentuali %s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
-msgid "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
 msgstr "Incolla qui le tue domande e appariranno in automatico nei campi sottostanti. Numeri e altri indici  verranno rimossi automaticamente."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
@@ -708,7 +722,9 @@ msgstr "Riempimento rapido dal testo"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
-msgid "No scores to edit. To edit scores you should have questions, answers and selected scales."
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
 msgstr "Nessun gol per modificare. Per modificare i punteggi si dovrebbe avere domande, risposte e bilancia selezionata."
 
 #: Template/Test/Editor/quick-fill-scores.php:18
@@ -753,6 +769,3 @@ msgstr "Indirizzo IP"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Browser"
-
-#~ msgid "Rate us"
-#~ msgstr "Aggiungi commento"

@@ -1,26 +1,26 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2016
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2014-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-29 23:59+0700\n"
-"PO-Revision-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2017-10-12 09:29+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/wp-testing/language/ru_RU/)\n"
-"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
@@ -163,12 +163,14 @@ msgstr "Показывать описание теста"
 msgid "Test data not saved"
 msgstr "Данные теста не сохранены"
 
-#: Doer/TestPasser/DirectRenderer.php:19 Doer/TestPasser/FilterRenderer.php:105
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
 msgstr "Тест в процессе разработки"
 
-#: Doer/TestPasser/FilterRenderer.php:106 Template/Test/Passer/fill-form.php:82
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
 msgstr "Пока вы не можете получить из него результаты."
 
@@ -264,7 +266,9 @@ msgid "No Tests found in Trash"
 msgstr "Тестов в корзине не найдено"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
-msgid "Instrument to measure unobserved constructs (latent variables). Typically it is a series of tasks or problems that the respondent has to solve."
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
 msgstr "Стандартизированное задание, по результатам выполнения которого судят о психофизиологических и личностных характеристиках, знаниях, умениях и навыках испытуемого."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
@@ -510,7 +514,8 @@ msgstr "Категорий в корзине не найдено"
 
 #: Model/Formula.php:88
 #, php-format
-msgid "Formula for %s is incompatible as it contains both numbers and percentages"
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
 msgstr "Формула для %s несовместима, поскольку она содержит как цифры, так и проценты"
 
 #: Model/Formula.php:90
@@ -652,7 +657,9 @@ msgid "No formulas to edit. To edit formulas you must have results selected."
 msgstr "Формулы отсутствуют. Чтобы редактировать формулы вы должны выбрать результаты."
 
 #: Template/Test/Editor/edit-formulas.php:49
-msgid "Both numbers and percents allowed. For example \"scale-bla\" has total 30, then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
 msgstr "Разрешены как числа, так и проценты. Например всего по шкале «scale-bla» 30, тогда «scale-bla > 15» и «scale-bla > 50%» будет идентично."
 
 #: Template/Test/Editor/edit-formulas.php:53
@@ -668,11 +675,14 @@ msgid "Variables"
 msgstr "Переменные"
 
 #: Template/Test/Editor/edit-formulas.php:92
-msgid "No variables for formulas available. To use variables you must have scales selected or have at least one question and answer."
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
 msgstr "Переменные для формул не доступны. Чтобы использовать переменные вы должны выбрать шкалы или иметь как минимум один вопрос и ответ."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
-msgid "No questions to edit. Add new questions and then they will appear here."
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
 msgstr "Вопросы отсутствуют. Добавьте новые вопросы и они появятся здесь."
 
 #: Template/Test/Editor/edit-questions-answers.php:22
@@ -689,11 +699,15 @@ msgstr "Добавить индивидуальный ответ"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
-msgid "— unique to each question. If you have same answers to all test questions, use the %s"
+msgid ""
+"— unique to each question. If you have same answers to all test questions, "
+"use the %s"
 msgstr "— уникальны для каждого вопроса. Если у вас одни и те же варианты ответов на все вопросы теста, то используйте %s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
-msgid "Paste here your questions and they will fill fields below. Numbers and other indexes will be stripped automatically."
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
 msgstr "Вставьте сюда ваши вопросы и они появятся в полях ниже. Цифры и прочие индексы будут удалены автоматически."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
@@ -707,7 +721,9 @@ msgstr "Быстро заполнить из текста"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
-msgid "No scores to edit. To edit scores you should have questions, answers and selected scales."
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
 msgstr "Баллы отсутствуют. Чтобы редактировать баллы у вас должны быть вопросы, ответы и выбранные шкалы."
 
 #: Template/Test/Editor/quick-fill-scores.php:18
@@ -752,6 +768,3 @@ msgstr "IP-адрес"
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
 msgstr "Браузер"
-
-#~ msgid "Rate us"
-#~ msgstr "Оцените нас"
