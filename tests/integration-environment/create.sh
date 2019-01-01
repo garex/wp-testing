@@ -9,7 +9,7 @@ DB_CHARSET=${DB_CHARSET:-utf8}
 WP_VERSION=${WP_VERSION:-latest}
 WP_UPGRADE=${WP_UPGRADE:-0}
 WP_LINK_SELF=${WP_LINK_SELF:-0}
-WP_T_SERVER=${WP_T_SERVER:-http://wpti.dev:8000}
+WP_T_MULTI_SERVER=${WP_T_MULTI_SERVER:-http://wpti.dev}
 PLUGINS=${PLUGINS:-}
 
 function init {
@@ -43,8 +43,10 @@ function setup_link {
 
 function start_nginx {
     log 'Configuring and reloading nginx'
-    ps ax | grep "[n]ginx -c" && nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;" -s stop || echo 'Fail to stop nginx'
-    nginx -c /tmp/wpti/nginx.conf -g "error_log /tmp/wpti/error.log;"
+
+    sudo rm -f /etc/nginx/sites-enabled/wpti
+    sudo ln -s $HERE/wpti.nginx.conf /etc/nginx/sites-enabled/wpti
+    sudo service nginx restart
 }
 
 function php_cgi {
@@ -96,7 +98,7 @@ function install_wp {
     fi
     cat ../wp-config.php | sed 's/utf8/'$DB_CHARSET'/' > wp-config.php
     log '.. installing'
-    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' $WP_T_SERVER'/wp-admin/install.php?step=2' | grep installed
+    wget --quiet --output-document=- --post-data='weblog_title=wpti&user_name=wpti&admin_password=wpti&admin_password2=wpti&admin_email=wpti%40wpti.dev&blog_public=1' $WP_T_MULTI_SERVER'/wp-admin/install.php?step=2' | grep installed
 }
 
 function set_db_engine {
