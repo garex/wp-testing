@@ -1,21 +1,20 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2017
-# Maciej Dzierżek <maciej.dzierzek@gmail.com>, 2017
+# נועם לדרמן <noamlederman@yahoo.com>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-29 23:59+0700\n"
-"PO-Revision-Date: 2017-09-21 13:36+0000\n"
-"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/wp-translations/wp-testing/language/pl_PL/)\n"
+"PO-Revision-Date: 2019-01-05 21:03+0000\n"
+"Last-Translator: נועם לדרמן <noamlederman@yahoo.com>\n"
+"Language-Team: Hebrew (Israel) (http://www.transifex.com/wp-translations/wp-testing/language/he_IL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
@@ -25,159 +24,159 @@ msgstr ""
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%1$g z %2$g"
+msgstr "%1$g מתוך %2$g"
 
 #: Doer/Feedbacker.php:40
 msgid "Feedback"
-msgstr "Informacje zwrotne"
+msgstr "משוב"
 
 #: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
 msgid "Paid add-ons"
-msgstr "Płatne dodatki"
+msgstr "תוספות בתשלום"
 
 #: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
 msgid "Paid support"
-msgstr "Płatny wsparcie"
+msgstr "תמיכה טכנית בתשלום"
 
 #: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
 #: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
 #: Template/Feedback/report-issue.php:2
 msgid "Report the problem"
-msgstr "Zgłoś problem"
+msgstr "דיווח על תקלות"
 
 #: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
 #: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
 #: Template/Feedback/get-support.php:2
 msgid "Get the support"
-msgstr "Uzyskaj wsparcie"
+msgstr "צור קשר עם תמיכה טכנית"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
-msgstr "Daje możliwość łatwego tworzenia testów i quizów."
+msgstr "עזור ליצור מבחנים פסיכולוגיים"
 
 #: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
 msgid "Respondents’ test results"
-msgstr "Wyniki testów ankietowanych"
+msgstr "תוצאות המבחנים של המשיבים"
 
 #: Doer/PassingBrowser/Admin.php:78
 msgid "Respondents’ results"
-msgstr "Wyniki ankietowanych"
+msgstr "תוצאות כלליות של המבחנים"
 
 #: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Testy"
+msgstr "שאלונים"
 
 #: Doer/PassingBrowser/User.php:11
 msgid "My Results"
-msgstr "Moje wyniki"
+msgstr "התוצאות שלי"
 
 #: Doer/PassingBrowser/User.php:18
 msgid "My Test Results"
-msgstr "Moje wyniki testów"
+msgstr "תוצאות השאלון שלי"
 
 #: Doer/TestEditor.php:66
 msgid "Maximize"
-msgstr "Maksymalizuj"
+msgstr "הרחב"
 
 #: Doer/TestEditor.php:67
 msgid "Minimize"
-msgstr "Minimalizuj"
+msgstr "צמצם"
 
 #: Doer/TestEditor.php:69
 msgid "Comparision"
-msgstr "Równanie"
+msgstr "השוואה"
 
 #: Doer/TestEditor.php:70
 msgid "Operator"
-msgstr "Operator"
+msgstr "אופרטור"
 
 #: Doer/TestEditor.php:81
 msgid "Test Page Options"
-msgstr "Opcje strony testu"
+msgstr "אפשרויות עיצוב דף שאלון"
 
 #: Doer/TestEditor.php:83
 msgid "Result Page Options"
-msgstr "Opcje strony wyników"
+msgstr "אפשרויות עיצוב דף תשובות"
 
 #: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
-msgstr "Edytuj pytania i odpowiedzi"
+msgstr "עריכת שאלות ותשובות"
 
 #: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
-msgstr "Edytuj punkty"
+msgstr "עריכת ניקוד"
 
 #: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
-msgstr "Szybko wypełnij punkty"
+msgstr "עריכת ניקוד מהירה"
 
 #: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
-msgstr "Edytuj formuły"
+msgstr "ערוך נוסחה"
 
 #: Doer/TestEditor.php:230
 msgid "Publish on the home page"
-msgstr "Publikuj na stronie głównej"
+msgstr "פרסם בדף הבית"
 
 #: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Pokaż w tytule % odpowiedzi na które ankietowany już odpowiedział"
+msgstr "הצג אחוזי השלמת השאלון"
 
 #: Doer/TestEditor.php:256
 msgid "Show one question per page"
-msgstr "Pokazuj jedno pytanie na stronę"
+msgstr "הצג שאלה אחת בעמוד"
 
 #: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
-msgstr "Dopuść wiele odpowiedzi na pytanie"
+msgstr "אפשר ריבוי תשובות לשאלה"
 
 #: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "Resetuj odpowiedzi ankietowanego kiedy wciśnie przycisk \"Wróć\""
+msgstr "איפוס תשובות משיבים כשלוחצים על כפתור \"חזור אחורה\""
 
 #: Doer/TestEditor.php:267
 msgid "Button caption"
-msgstr "Tekst na przycisku"
+msgstr "כיתוב על הכפתור"
 
 #: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
-msgstr "Wyniki testu"
+msgstr "לקבלת תוצאות השאלון"
 
 #: Doer/TestEditor.php:286
 msgid "Show scales chart"
-msgstr "Pokazuj wykres skali"
+msgstr "הצג קנה מידה בגרף"
 
 #: Doer/TestEditor.php:290
 msgid "Show scales"
-msgstr "Pokazuj skale"
+msgstr "הצג קנה מידה"
 
 #: Doer/TestEditor.php:294
 msgid "Sort scales by score"
-msgstr "Sortuj skale wg punktów"
+msgstr "מיין קנה מידה על פי ניקוד"
 
 #: Doer/TestEditor.php:298
 msgid "Show test description"
-msgstr "Pokaż opis testu"
+msgstr "הצג את תיאור השאלון"
 
 #: Doer/TestEditor.php:383
 msgid "Test data not saved"
-msgstr "Dane testu nie zapisane"
+msgstr "נתוני שאלון לא נשמרו"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
-msgstr "Test w trakcie budowy"
+msgstr "שאלון בשלבי בנייה"
 
 #: Doer/TestPasser/FilterRenderer.php:106
 #: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
-msgstr "W tym momencie nie możesz otrzymać wyników testu."
+msgstr "לא ניתן לקבל תשובות לשאלון כרגע"
 
 #: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
-msgstr "{percentage}% odpowiedzi"
+msgstr "{percentage}%  שאלות שנענו"
 
 #: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
 #: Template/Feedback/get-support-finish.php:32
@@ -185,587 +184,587 @@ msgstr "{percentage}% odpowiedzi"
 #: Template/Feedback/report-issue-finish.php:59
 #: Template/Feedback/report-issue.php:57
 msgid "Next"
-msgstr "Następny"
+msgstr "הבא"
 
 #: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
-msgstr "Nie znaleziono wyników testu"
+msgstr "תוצאות השאלון לא נמצאו"
 
 #: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
-msgstr "Nie możesz otrzymać czegoś z niczego."
+msgstr "לא ניתן לקבל שום דבר מכלום"
 
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Przykro nam, ale twoja przeglądarka %s nie obsługuje wyświetlania wykresów"
+msgstr "מצטערים אבל הדפדפן שלך %s אינו תומך בהצגת גרפים"
 
 #: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
-msgstr "Dane testu nie są poprawne"
+msgstr "הנתונים שהוזנו לא חוקיים"
 
 #: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
-msgstr "Nie wprowadzono ważnych danych do testu."
+msgstr "התאריך שהועבר לשאלון אינו חוקי"
 
 #: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
 #: Widget/PassingTable/User.php:26
 msgid "Test"
-msgstr "Test"
+msgstr "שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Dodaj nowy"
+msgstr "הוספת חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Dodaj nowy test"
+msgstr "הוספת שאלון חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Edytuj test"
+msgstr "עריכת שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Zobacz test"
+msgstr "הצג שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Wyszukaj test"
+msgstr "חפש שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Nadrzędny test:"
+msgstr "שאלון אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
 msgid "All Tests"
-msgstr "Wszystkie testy"
+msgstr "כל השאלונים"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Aktualizuj test"
+msgstr "עדכן שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Nazwa nowego testu"
+msgstr "שם לשאלון חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Nadrzędny test"
+msgstr "שאלון אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Nowy test"
+msgstr "שאלון חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Nie znaleziono testów"
+msgstr "לא נמצאו שאלונים"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Nie znaleziono testów w koszu"
+msgstr "לא נמצאו שאלונים בתיקיית זבל"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Narzędzie do mierzenia rzeczy nieoczywistych (ukryte zmienne). Jest to seria zadań lub problemów, które respondent musi rozwiązać."
+msgstr "מכשיר למדידת משתנים חבויים. בדרך כלל זוהי סדרה של משימות או בעיות שהמשיב צריך לפתור."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
-msgstr "Odpowiedzi testu"
+msgstr "תשובות לשאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
-msgstr "Odpowiedź testu"
+msgstr "תשובה לשאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
-msgstr "Dodaj nową odpowiedź"
+msgstr "הוסף תשובה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
-msgstr "Edytuj odpowiedź"
+msgstr "ערוך תשובה"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
-msgstr "Zobacz odpowiedź"
+msgstr "הצג תשובה"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
-msgstr "Szukaj odpowiedzi"
+msgstr "חפש תשובות"
 
 #: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
-msgstr "Nadrzędna odpowiedź:"
+msgstr "תשובת אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
-msgstr "Odpowiedzi"
+msgstr "תשובות"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
-msgstr "Wszystkie odpowiedzi"
+msgstr "כל התשובות"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
-msgstr "Aktualizuj odpowiedź"
+msgstr "עדכן תשובה"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
-msgstr "Nazwa nowej odpowiedzi"
+msgstr "שם תשובה חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
-msgstr "Nadrzędna odpowiedź"
+msgstr "תשובת אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
-msgstr "Nowa odpowiedź"
+msgstr "תשובה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
-msgstr "Nie znaleziono odpowiedzi"
+msgstr "לא נמצאו תשובות"
 
 #: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
-msgstr "Nie znaleziono odpowiedzi w koszu"
+msgstr "לא נמצאו תשובות בתיקיית זבל"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
-msgstr "Skale testu"
+msgstr "מדרג קנה מידה לתוצאות"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Test Scale"
-msgstr "Skala testu"
+msgstr "דרגת קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
-msgstr "Dodaj nową skalę"
+msgstr "הוסף עוד קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
-msgstr "Edytuj skalę"
+msgstr "ערוך קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
-msgstr "Zobacz skalę"
+msgstr "הצג קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
-msgstr "Wyszukaj skalę"
+msgstr "חפש קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
-msgstr "Nadrzędna skala:"
+msgstr "גרף אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
 #: Widget/PassingTable/User.php:27
 msgid "Scales"
-msgstr "Skale"
+msgstr "קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "All Scales"
-msgstr "Wszystkie skale"
+msgstr "כל קני המידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
-msgstr "Aktualizuj skalę"
+msgstr "עדכן קנה מידה"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
-msgstr "Nazwa nowej skali"
+msgstr "שם קנה מידה חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
-msgstr "Nadrzędna skala"
+msgstr "גרף אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
-msgstr "Nowa skala"
+msgstr "קנה מידה חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
-msgstr "Nie znaleziono skali"
+msgstr "לא נמצאו קנה מידה לשאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
-msgstr "Żadne skale nie zostały znalezione w koszu"
+msgstr "לא נמצאו קנה מידה לשאלון בתיקיית זבל"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
-msgstr "Wyniki testu"
+msgstr "תוצאות שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
-msgstr "Wyniki testu"
+msgstr "תוצאת שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
-msgstr "Dodaj nowe wyniki testu"
+msgstr "הוסף תשובה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
-msgstr "Edytuj wynik"
+msgstr "עדכן תשובה"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
-msgstr "Zobacz wynik"
+msgstr "הצג תוצאה"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
-msgstr "Wyszukaj wyniki"
+msgstr "תוצאות חיפוש"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
-msgstr "Nadrzędny wynik:"
+msgstr "תוצאת אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 #: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
 #: Widget/PassingTable/User.php:28
 msgid "Results"
-msgstr "Wyniki"
+msgstr "תוצאות"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
-msgstr "Wszystkie wyniki"
+msgstr "כל התוצאות"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
-msgstr "Aktualizuj wynik"
+msgstr "עדכן תוצאה"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
-msgstr "Nazwa nowego wyniku"
+msgstr "שם תוצאה חדש"
 
 #: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
-msgstr "Nadrzędny wynik"
+msgstr "תוצאת אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
-msgstr "Nowy wynik"
+msgstr "תוצאה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
-msgstr "Nie znaleziono wyników"
+msgstr "לא נמצאה תוצאה"
 
 #: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
-msgstr "Nie znaleziono wyników w koszu"
+msgstr "לא נמצאה תוצאה בתיקיית זבל"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
-msgstr "Kategorie testów"
+msgstr "קטגוריות שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
-msgstr "Kategoria testu"
+msgstr "קטגוריית שאלון"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
-msgstr "Dodaj nową kategorię"
+msgstr "הוספת קטגוריה"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
-msgstr "Edytuj kategorię"
+msgstr "עריכת קטגוריה"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
-msgstr "Zobacz kategorię"
+msgstr "הצג קטגוריה"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
-msgstr "Szukaj kategorii"
+msgstr "חיפוש קטגוריות"
 
 #: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
-msgstr "Nadrzędna kategoria:"
+msgstr "קטגוריות אב:"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
-msgstr "Wszystkie kategorie"
+msgstr "כל הקטגוריות"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
-msgstr "Aktualizuj kategorię"
+msgstr "עדכון קטגוריה"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
-msgstr "Nazwa nowej kategorii"
+msgstr "שם קטגוריה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
-msgstr "Nadrzędna kategoria"
+msgstr "קטגורית אב"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
-msgstr "Nowa kategoria"
+msgstr "קטגוריה חדשה"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
-msgstr "Nie zaleziono kategorii"
+msgstr "לא נמצאו קטגוריות"
 
 #: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
-msgstr "Nie znaleziono kategorii w koszu"
+msgstr "לא נמצאו קטגוריות בתיקיית זבל"
 
 #: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
-msgstr "Formuła %s jest niekompatybilna ponieważ zawiera zarówno liczby jak i procenty"
+msgstr "נוסחה עבור %s לא מושלמת בגלל שהיא כוללת גם מספרים וגם אחוזים"
 
 #: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
-msgstr "Formuła %s zawiera błąd"
+msgstr "בנוסחה %s יש טעות"
 
 #: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
-msgstr "Zmienna skali"
+msgstr "שינוי קנה מידה"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
 #: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
-msgstr "Pytanie %1$s odpowiedź %2$s"
+msgstr "שאלה %1$s תשובה %2$s"
 
 #: Model/FormulaVariable/SelectedAnswer.php:19
 msgid "Answer Variable"
-msgstr "Zmienna odpowiedzi"
+msgstr "שינוי תשובה"
 
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "Test \"%s\" nie jest opublikowany. Nie możesz go nigdzie wstawić."
+msgstr "שאלון 1%s  לא פורסם. לא ניתן להכילו בשום מקום"
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "Zacznij test"
+msgstr "התחל את השאלון"
 
 #: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
 msgid "Add review"
-msgstr "Dodaj opinię"
+msgstr "הוסף תגובה"
 
 #: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
 msgid "Thank you"
-msgstr "Dziękuję"
+msgstr "תודה רבה"
 
 #: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
 #: Template/Feedback/report-issue.php:46
 msgid "System information"
-msgstr "Informacje o systemie"
+msgstr "מידע מערכת"
 
 #: Template/Feedback/get-support-finish.php:7
 #: Template/Feedback/get-support.php:31
 msgid "Get support as soon as possible"
-msgstr "Uzyskaj wsparcie jak najszybciej"
+msgstr "קבל תמיכה בהקדם האפשרי"
 
 #: Template/Feedback/get-support-finish.php:15
 #, php-format
 msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
-msgstr "Użyj tego tekstu, aby zamówić <a target=\"_blank\" href=\"%s\">płatne wsparcie</a>"
+msgstr "השתמש בטקסט זה בכדי להזמין %s תמיכה טכנית ששולמה"
 
 #: Template/Feedback/get-support-finish.php:23
 #: Template/Feedback/report-issue-finish.php:12
 #, php-format
 msgid "Copy this text to create new topic at %s"
-msgstr "Skopiuj ten tekst, aby utworzyć nowy wątek na %s"
+msgstr "העתק טקסט זה בכדי ליצור נושא חדש את %s"
 
 #: Template/Feedback/get-support.php:7
 msgid "In short"
-msgstr "W skrócie"
+msgstr "בקצרה"
 
 #: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
 #: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
 #: Template/Feedback/report-issue.php:42
 msgid "Please use english language"
-msgstr "Proszę używać języka angielskiego"
+msgstr "בבקשה השתמש באנגלית"
 
 #: Template/Feedback/get-support.php:11
 msgid "Details"
-msgstr "Detale"
+msgstr "פרטים"
 
 #: Template/Feedback/get-support.php:14
 msgid "What do you want to get and why?"
-msgstr "Co chcesz dostać i dlaczego?"
+msgstr "מה אתה רוצה לקבל ולמה?"
 
 #: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
 msgid "Add technical details about your installation"
-msgstr "Dodaj szczegóły techniczne na temat instalacji"
+msgstr "הכנס מידע טכני על תהליך ההתקנה שלך"
 
 #: Template/Feedback/get-support.php:27
 msgid "Priority"
-msgstr "Priorytet"
+msgstr "דחיפות"
 
 #: Template/Feedback/report-issue.php:7
 msgid "Problem is repeated"
-msgstr "Problem się powtarza"
+msgstr "בעיה חוזרת"
 
 #: Template/Feedback/report-issue.php:11
 msgid "when you use another hosting"
-msgstr "podczas korzystania z innego hostingu"
+msgstr "כאשר אתה משתמש בשרת אחר"
 
 #: Template/Feedback/report-issue.php:15
 msgid "on the local computer"
-msgstr "na komputerze lokalnym"
+msgstr "במחשב הפרטי"
 
 #: Template/Feedback/report-issue.php:19
 msgid "with default theme"
-msgstr "z domyślnym motywem"
+msgstr "עם נושא ברירת המחדל"
 
 #: Template/Feedback/report-issue.php:23
 msgid "when all other plugins are disabled"
-msgstr "gdy wszystkie inne wtyczki są wyłączone"
+msgstr "כשכל התוספים האחרים לא בשימוש"
 
 #: Template/Feedback/report-issue.php:28
 msgid "You expect"
-msgstr "Oczekujesz"
+msgstr "אתה מצפה ל"
 
 #: Template/Feedback/report-issue.php:32
 msgid "Actually you get"
-msgstr "Właściwie masz"
+msgstr "למעשה קיבלת"
 
 #: Template/Feedback/report-issue.php:36
 msgid "URL of the screenshot"
-msgstr "Adres URL do zrzutu ekranu"
+msgstr "ה-URL של שומר המסך"
 
 #: Template/Feedback/report-issue.php:40
 msgid "Steps to repeat the problem"
-msgstr "Kroki do powtórzenia problemu"
+msgstr "צעדים כדי לחזור על הבעיה"
 
 #: Template/Test/Editor/edit-formulas.php:5
 #: Template/Test/Editor/edit-scores.php:23
 #: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
 msgid "#"
-msgstr "#"
+msgstr "מס'"
 
 #: Template/Test/Editor/edit-formulas.php:6
 #: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
-msgstr "Formuła"
+msgstr "נוסחה"
 
 #: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
-msgstr "Wynik"
+msgstr "תוצאה"
 
 #: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Brak formuł do edycji. Aby edytować formuły musz mieć wybrane wyniki."
+msgstr "אין נוסחאות לעריכה. כדי לערוך נוסחאות חייבים לבחור תשובות"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Zarówno liczby jak i procenty są dopuszczone. Na przykład \"scale-bla\" ma w sumie 30, wtedy \"scale-bla > 15\" oraz \"scale-bla > 50%\" oznacza to samo."
+msgstr "ניתן להשתמש גם במספרים וגם באחוזים. לדוגמא  \"scale-bla\" יש סך הכל 30 וגם \"scale-bla\" >15 וגם \"scale-bla\" < 50% "
 
 #: Template/Test/Editor/edit-formulas.php:53
 msgid "Comparisions"
-msgstr "Równania"
+msgstr "השוואות"
 
 #: Template/Test/Editor/edit-formulas.php:62
 msgid "Operators"
-msgstr "Operatory"
+msgstr "אופרטורים"
 
 #: Template/Test/Editor/edit-formulas.php:73
 msgid "Variables"
-msgstr "Zmienne"
+msgstr "משתנים"
 
 #: Template/Test/Editor/edit-formulas.php:92
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected or have at least one question and answer."
-msgstr "Zmienne nie są dostępne w formułach. Aby używać zmiennych musisz mieć wybraną skalę i mieć przynajmniej jedno pytanie i odpowiedź."
+msgstr "משתנים של נוסחאות אינם קיימים. כדי להשתמש במשתנים, חייבים שיהיו קני מידה או לפחות שאלה ותשובה אחת"
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Brak pytań do edycji. Dodaj nowe pytania, wtedy się tutaj pojawią."
+msgstr "אין שאלות לעריכה. הוסף שאלות חדשות ואז הן תופענה כאן"
 
 #: Template/Test/Editor/edit-questions-answers.php:22
 msgid "Remove Question"
-msgstr "Usuń pytanie"
+msgstr "הסר שאלה"
 
 #: Template/Test/Editor/edit-questions-answers.php:39
 msgid "Remove Answer"
-msgstr "Usuń odpowiedź"
+msgstr "הסר תשובה"
 
 #: Template/Test/Editor/edit-questions-answers.php:49
 msgid "Add Individual Answer"
-msgstr "Dodaj indywidualną odpowiedź"
+msgstr "הוסף תשובה אישית"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— unikalne dla każdego pytania. Jeśli masz te same odpowiedzi dla wszystkich pytań użyj %s"
+msgstr "מזהה חד ערכי לכל שאלה. אם יש את אותן התשבות לכל השאלות, השתמש ב-%s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Wstaw tu pytania i pola poniżej się wypełnią. Numery i inne indeksy zostaną usunięte automatycznie."
+msgstr "הדבק כאן את השאלות שלך והן ימלאו שדות למטה. מספרים ואינדקסים אחרים יוסרו באופן אוטומטי."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
 msgid "Add Question"
-msgstr "Dodaj pytanie"
+msgstr "הוסף שאלה"
 
 #: Template/Test/Editor/edit-questions-answers.php:63
 #: Template/Test/Editor/edit-questions-answers.php:64
 msgid "Quick Fill From Text"
-msgstr "Wypełnij szybko z tekstu"
+msgstr "מילוי מהיר של טקסט"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
 msgid ""
 "No scores to edit. To edit scores you should have questions, answers and "
 "selected scales."
-msgstr "Brak punktów do edycji. Aby edytować punty musisz mieć pytania, odpowiedzi i wybraną skalę."
+msgstr "אין ניקוד לעריכה. לערוך ניקוד נדרשות שאלות, תשובות וקנה מידה נבחר"
 
 #: Template/Test/Editor/quick-fill-scores.php:18
 #: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
-msgstr "Skala"
+msgstr "קנה מידה"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
 #: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
-msgstr "Punkt"
+msgstr "ניקוד"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
 #: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
-msgstr "Odpowiedź"
+msgstr "תשובה"
 
 #: Template/Test/Editor/quick-fill-scores.php:21
 msgid "Questions"
-msgstr "Pytanie"
+msgstr "שאלה"
 
 #: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
-msgstr "Dodaj nową kombinację"
+msgstr "הוסף תנאי חדש"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
-msgstr "Wybierz przynajmniej jedną odpowiedź."
+msgstr "יש לבחור לפחות תשובה אחת"
 
 #: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
-msgstr "Wybierz tylko jedną odpowiedź."
+msgstr "יש לבחור רק תשובה אחת"
 
 #: Widget/PassingTable/Admin.php:91
 msgid "Device"
-msgstr "Urządzenie"
+msgstr "סוג מכשיר"
 
 #: Widget/PassingTable/Admin.php:92
 msgid "IP address"
-msgstr "Adres IP"
+msgstr "כתובת IP:"
 
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
-msgstr "Przeglądarka"
+msgstr "דפדפן"

@@ -8,6 +8,7 @@ env:
     - DB_ENGINE=InnoDB
   matrix:
     - WP_VERSION=
+    - WP_VERSION=4.9.9
     - WP_VERSION=4.8.4
     - WP_VERSION=4.7.5
     - WP_VERSION=4.6.1
@@ -62,19 +63,24 @@ matrix:
       env: WP_VERSION= DB_CHARSET=utf8mb4
     - php: 7.0
       env: PLUGINS=akismet.3.1.11:jetpack.4.2.2:wordpress-seo.3.3.4:wordfence.6.1.14:contact-form-7.4.5:google-sitemap-generator.4.0.8
-
-sudo: false
+    - php: 7.0
+      env: WP_VERSION= WP_T_MULTI_SERVER=http://wpti.dev WP_T_SERVER=http://after.wpti.dev WP_T_MULTISITE=1
 
 dist: trusty
 
 addons:
   hosts:
     - wpti.dev
+    - before.wpti.dev
+    - after.wpti.dev
   apt:
     packages:
       - nginx-light
 
 before_script:
+  - phpenv config-rm xdebug.ini || true
+  - echo 'always_populate_raw_post_data=-1' > /tmp/custom.ini
+  - phpenv config-add /tmp/custom.ini
   - tests/integration-environment/composer-update.sh
   - mysql -e 'create database wordpress;'
   - cd db
@@ -87,10 +93,6 @@ before_script:
   - npm install
   - cd $TRAVIS_BUILD_DIR
   - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/:$TRAVIS_BUILD_DIR/tests/integration-environment/
-  - if [ $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 1 ]; then
-      sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6';
-    fi
-  - test $(cat /proc/sys/net/ipv6/conf/all/disable_ipv6) -eq 0
 
 script:
   - vendor/bin/phpunit-php52
@@ -108,5 +110,4 @@ cache:
     - tests/mocha/node_modules
 
 after_failure:
-  - free -ltm
   - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-transfer.sh '/tmp/*.screen.png'

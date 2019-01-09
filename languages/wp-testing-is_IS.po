@@ -1,21 +1,20 @@
 # Copyright (C) 2014 Alexander Ustimenko
 # This file is distrubuted under the GPL-3.0+
 # Translators:
-# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2017
-# Maciej Dzierżek <maciej.dzierzek@gmail.com>, 2017
+# Gunnar Geir Johannsson <gunnargj@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-29 23:59+0700\n"
-"PO-Revision-Date: 2017-09-21 13:36+0000\n"
+"PO-Revision-Date: 2019-01-01 17:36+0000\n"
 "Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/wp-translations/wp-testing/language/pl_PL/)\n"
+"Language-Team: Icelandic (Iceland) (http://www.transifex.com/wp-translations/wp-testing/language/is_IS/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: is_IS\n"
+"Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
@@ -25,159 +24,159 @@ msgstr ""
 
 #: Component/StepStrategy.php:119 Model/Scale.php:84
 msgid "%1$g out of %2$g"
-msgstr "%1$g z %2$g"
+msgstr "%1$g af %2$g"
 
 #: Doer/Feedbacker.php:40
 msgid "Feedback"
-msgstr "Informacje zwrotne"
+msgstr "Endurgjöf"
 
 #: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
 msgid "Paid add-ons"
-msgstr "Płatne dodatki"
+msgstr "Greidd viðbót"
 
 #: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
 msgid "Paid support"
-msgstr "Płatny wsparcie"
+msgstr "Greidd aðstoð"
 
 #: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
 #: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
 #: Template/Feedback/report-issue.php:2
 msgid "Report the problem"
-msgstr "Zgłoś problem"
+msgstr "Tilkynna vandamál"
 
 #: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
 #: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
 #: Template/Feedback/get-support.php:2
 msgid "Get the support"
-msgstr "Uzyskaj wsparcie"
+msgstr "Fá aðstoð"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
-msgstr "Daje możliwość łatwego tworzenia testów i quizów."
+msgstr "Hjálpar til við að búa til sálfræðileg próf."
 
 #: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
 msgid "Respondents’ test results"
-msgstr "Wyniki testów ankietowanych"
+msgstr "Svarprófniðurstöður"
 
 #: Doer/PassingBrowser/Admin.php:78
 msgid "Respondents’ results"
-msgstr "Wyniki ankietowanych"
+msgstr "Svarniðurstöður"
 
 #: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
 #: Doer/WordPressEntitiesRegistrator.php:22
 msgid "Tests"
-msgstr "Testy"
+msgstr "Próf"
 
 #: Doer/PassingBrowser/User.php:11
 msgid "My Results"
-msgstr "Moje wyniki"
+msgstr "Mínar niðurstöður"
 
 #: Doer/PassingBrowser/User.php:18
 msgid "My Test Results"
-msgstr "Moje wyniki testów"
+msgstr "Mínar prófunarniðurstöður"
 
 #: Doer/TestEditor.php:66
 msgid "Maximize"
-msgstr "Maksymalizuj"
+msgstr "Stækka"
 
 #: Doer/TestEditor.php:67
 msgid "Minimize"
-msgstr "Minimalizuj"
+msgstr "Minnka"
 
 #: Doer/TestEditor.php:69
 msgid "Comparision"
-msgstr "Równanie"
+msgstr "Samanburður"
 
 #: Doer/TestEditor.php:70
 msgid "Operator"
-msgstr "Operator"
+msgstr "Virki"
 
 #: Doer/TestEditor.php:81
 msgid "Test Page Options"
-msgstr "Opcje strony testu"
+msgstr "Prófunarsíðu valkostir"
 
 #: Doer/TestEditor.php:83
 msgid "Result Page Options"
-msgstr "Opcje strony wyników"
+msgstr "Niðurstöðusíðu valkostir"
 
 #: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
-msgstr "Edytuj pytania i odpowiedzi"
+msgstr "Breyta spurningum og svörum"
 
 #: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
-msgstr "Edytuj punkty"
+msgstr "Breyta stigum"
 
 #: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
-msgstr "Szybko wypełnij punkty"
+msgstr "Fylla fljótt út stig"
 
 #: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
 msgid "Edit Formulas"
-msgstr "Edytuj formuły"
+msgstr "Breyta formúlum"
 
 #: Doer/TestEditor.php:230
 msgid "Publish on the home page"
-msgstr "Publikuj na stronie głównej"
+msgstr "Birta á forsíðu"
 
 #: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "Pokaż w tytule % odpowiedzi na które ankietowany już odpowiedział"
+msgstr "Sýna í titli, prósentur af spurningum sem hafa nú þegar verið svarað"
 
 #: Doer/TestEditor.php:256
 msgid "Show one question per page"
-msgstr "Pokazuj jedno pytanie na stronę"
+msgstr "Sýna eina spurningu á síðu"
 
 #: Doer/TestEditor.php:260
 msgid "Allow multiple answers per question"
-msgstr "Dopuść wiele odpowiedzi na pytanie"
+msgstr "Leyfa mörg svör við spurningu"
 
 #: Doer/TestEditor.php:264
 msgid "Reset respondent answers when \"Back\" button pressed"
-msgstr "Resetuj odpowiedzi ankietowanego kiedy wciśnie przycisk \"Wróć\""
+msgstr "Endurstilla svarniðurstöðum þegar \"Til baka\" hnappur er valinn"
 
 #: Doer/TestEditor.php:267
 msgid "Button caption"
-msgstr "Tekst na przycisku"
+msgstr "Titill hnapps"
 
 #: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
-msgstr "Wyniki testu"
+msgstr "Fá prófunarniðurstöður"
 
 #: Doer/TestEditor.php:286
 msgid "Show scales chart"
-msgstr "Pokazuj wykres skali"
+msgstr "Sýna skala á riti"
 
 #: Doer/TestEditor.php:290
 msgid "Show scales"
-msgstr "Pokazuj skale"
+msgstr "Sýna skala"
 
 #: Doer/TestEditor.php:294
 msgid "Sort scales by score"
-msgstr "Sortuj skale wg punktów"
+msgstr "Flokka kvarða eftir stigum"
 
 #: Doer/TestEditor.php:298
 msgid "Show test description"
-msgstr "Pokaż opis testu"
+msgstr "Sýna prófunarlýsingu"
 
 #: Doer/TestEditor.php:383
 msgid "Test data not saved"
-msgstr "Dane testu nie zapisane"
+msgstr "Prófunargögn ekki vistuð"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
-msgstr "Test w trakcie budowy"
+msgstr "Próf er í vinnslu"
 
 #: Doer/TestPasser/FilterRenderer.php:106
 #: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
-msgstr "W tym momencie nie możesz otrzymać wyników testu."
+msgstr "Þú getur ekki fengið neinar niðurstöður ennþá."
 
 #: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
-msgstr "{percentage}% odpowiedzi"
+msgstr "{percentage}% svarað"
 
 #: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
 #: Template/Feedback/get-support-finish.php:32
@@ -185,458 +184,458 @@ msgstr "{percentage}% odpowiedzi"
 #: Template/Feedback/report-issue-finish.php:59
 #: Template/Feedback/report-issue.php:57
 msgid "Next"
-msgstr "Następny"
+msgstr "Áfram"
 
 #: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
-msgstr "Nie znaleziono wyników testu"
+msgstr "Prófunarniðurstöður fundust ekki"
 
 #: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
-msgstr "Nie możesz otrzymać czegoś z niczego."
+msgstr "Þú getur ekki fengið allt fyrir ekkert."
 
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Przykro nam, ale twoja przeglądarka %s nie obsługuje wyświetlania wykresów"
+msgstr "Því miður styður vafrinn þinn %s ekki að birta grafið"
 
 #: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
-msgstr "Dane testu nie są poprawne"
+msgstr "Prófunargögn ekki gild"
 
 #: Doer/TestPasserAction/ProcessForm.php:78
 msgid "You passed not valid data to test."
-msgstr "Nie wprowadzono ważnych danych do testu."
+msgstr "Þú ert ekki með gild gögn til að prófa."
 
 #: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
 #: Widget/PassingTable/User.php:26
 msgid "Test"
-msgstr "Test"
+msgstr "Próf"
 
 #: Doer/WordPressEntitiesRegistrator.php:15
 msgctxt "test"
 msgid "Add New"
-msgstr "Dodaj nowy"
+msgstr "Bæta við"
 
 #: Doer/WordPressEntitiesRegistrator.php:16
 msgid "Add New Test"
-msgstr "Dodaj nowy test"
+msgstr "Bæta við nýju prófi"
 
 #: Doer/WordPressEntitiesRegistrator.php:17
 msgid "Edit Test"
-msgstr "Edytuj test"
+msgstr "Breyta prófi"
 
 #: Doer/WordPressEntitiesRegistrator.php:18
 msgid "View Test"
-msgstr "Zobacz test"
+msgstr "Skoða próf"
 
 #: Doer/WordPressEntitiesRegistrator.php:19
 msgid "Search Tests"
-msgstr "Wyszukaj test"
+msgstr "Leita að prófum"
 
 #: Doer/WordPressEntitiesRegistrator.php:20
 msgid "Parent Test:"
-msgstr "Nadrzędny test:"
+msgstr "Yfirpróf:"
 
 #: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
 msgid "All Tests"
-msgstr "Wszystkie testy"
+msgstr "Öll próf"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
-msgstr "Aktualizuj test"
+msgstr "Uppfæra próf"
 
 #: Doer/WordPressEntitiesRegistrator.php:25
 msgid "New Test Name"
-msgstr "Nazwa nowego testu"
+msgstr "Nýtt prófunarnafn"
 
 #: Doer/WordPressEntitiesRegistrator.php:26
 msgid "Parent Test"
-msgstr "Nadrzędny test"
+msgstr "Yfirpróf"
 
 #: Doer/WordPressEntitiesRegistrator.php:28
 msgid "New Test"
-msgstr "Nowy test"
+msgstr "Nýtt próf"
 
 #: Doer/WordPressEntitiesRegistrator.php:29
 msgid "No Tests found"
-msgstr "Nie znaleziono testów"
+msgstr "Engin próf fundust"
 
 #: Doer/WordPressEntitiesRegistrator.php:30
 msgid "No Tests found in Trash"
-msgstr "Nie znaleziono testów w koszu"
+msgstr "Engin próf fundust í ruslinu"
 
 #: Doer/WordPressEntitiesRegistrator.php:32
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Narzędzie do mierzenia rzeczy nieoczywistych (ukryte zmienne). Jest to seria zadań lub problemów, które respondent musi rozwiązać."
+msgstr "Tæki til að mæla ósönnuð byggingar (duldar breytur). Venjulega er það röð verkefna eða vandamál sem svarandinn þarf að leysa."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions-answers.php:50
 msgid "Test Answers"
-msgstr "Odpowiedzi testu"
+msgstr "Prófunarsvör"
 
 #: Doer/WordPressEntitiesRegistrator.php:64
 msgid "Test Answer"
-msgstr "Odpowiedź testu"
+msgstr "Prófunarsvar"
 
 #: Doer/WordPressEntitiesRegistrator.php:65
 msgid "Add New Answer"
-msgstr "Dodaj nową odpowiedź"
+msgstr "Bæta við svari"
 
 #: Doer/WordPressEntitiesRegistrator.php:66
 msgid "Edit Answer"
-msgstr "Edytuj odpowiedź"
+msgstr "Breyta svari"
 
 #: Doer/WordPressEntitiesRegistrator.php:67
 msgid "View Answer"
-msgstr "Zobacz odpowiedź"
+msgstr "Skoða svar"
 
 #: Doer/WordPressEntitiesRegistrator.php:68
 msgid "Search Answers"
-msgstr "Szukaj odpowiedzi"
+msgstr "Leita að svörum"
 
 #: Doer/WordPressEntitiesRegistrator.php:69
 msgid "Parent Answer:"
-msgstr "Nadrzędna odpowiedź:"
+msgstr "Yfirsvar:"
 
 #: Doer/WordPressEntitiesRegistrator.php:71
 msgid "Answers"
-msgstr "Odpowiedzi"
+msgstr "Svör"
 
 #: Doer/WordPressEntitiesRegistrator.php:72
 msgid "All Answers"
-msgstr "Wszystkie odpowiedzi"
+msgstr "Öll svör"
 
 #: Doer/WordPressEntitiesRegistrator.php:73
 msgid "Update Answer"
-msgstr "Aktualizuj odpowiedź"
+msgstr "Uppfæra svar"
 
 #: Doer/WordPressEntitiesRegistrator.php:74
 msgid "New Answer Name"
-msgstr "Nazwa nowej odpowiedzi"
+msgstr "Nýtt nafn á svari"
 
 #: Doer/WordPressEntitiesRegistrator.php:75
 msgid "Parent Answer"
-msgstr "Nadrzędna odpowiedź"
+msgstr "Yfirsvar"
 
 #: Doer/WordPressEntitiesRegistrator.php:77
 msgid "New Answer"
-msgstr "Nowa odpowiedź"
+msgstr "Nýtt svar"
 
 #: Doer/WordPressEntitiesRegistrator.php:78
 msgid "No Answers found"
-msgstr "Nie znaleziono odpowiedzi"
+msgstr "Engin svör fundust"
 
 #: Doer/WordPressEntitiesRegistrator.php:79
 msgid "No Answers found in Trash"
-msgstr "Nie znaleziono odpowiedzi w koszu"
+msgstr "Engin svör fundust í ruslinu"
 
 #: Doer/WordPressEntitiesRegistrator.php:84
 msgid "Test Scales"
-msgstr "Skale testu"
+msgstr "Prófunarkvarðar"
 
 #: Doer/WordPressEntitiesRegistrator.php:85
 msgid "Test Scale"
-msgstr "Skala testu"
+msgstr "Prófunarkvarði"
 
 #: Doer/WordPressEntitiesRegistrator.php:86
 msgid "Add New Scale"
-msgstr "Dodaj nową skalę"
+msgstr "Bæta við kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
-msgstr "Edytuj skalę"
+msgstr "Breyta kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
-msgstr "Zobacz skalę"
+msgstr "Skoða kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
-msgstr "Wyszukaj skalę"
+msgstr "Leita að kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:90
 msgid "Parent Scale:"
-msgstr "Nadrzędna skala:"
+msgstr "Yfirkvarði:"
 
 #: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
 #: Widget/PassingTable/User.php:27
 msgid "Scales"
-msgstr "Skale"
+msgstr "Kvarðar"
 
 #: Doer/WordPressEntitiesRegistrator.php:93
 msgid "All Scales"
-msgstr "Wszystkie skale"
+msgstr "Alli kvarðar"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
-msgstr "Aktualizuj skalę"
+msgstr "Uppfæra kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
-msgstr "Nazwa nowej skali"
+msgstr "Nýtt nafn á kvarða"
 
 #: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
-msgstr "Nadrzędna skala"
+msgstr "Yfirkvarði"
 
 #: Doer/WordPressEntitiesRegistrator.php:98
 msgid "New Scale"
-msgstr "Nowa skala"
+msgstr "Nýr kvarði"
 
 #: Doer/WordPressEntitiesRegistrator.php:99
 msgid "No Scales found"
-msgstr "Nie znaleziono skali"
+msgstr "Engir kvarðar fundust"
 
 #: Doer/WordPressEntitiesRegistrator.php:100
 msgid "No Scales found in Trash"
-msgstr "Żadne skale nie zostały znalezione w koszu"
+msgstr "Engir kvarðar fundust í ruslinu"
 
 #: Doer/WordPressEntitiesRegistrator.php:105
 msgid "Test Results"
-msgstr "Wyniki testu"
+msgstr "Prófunarniðurstöður"
 
 #: Doer/WordPressEntitiesRegistrator.php:106
 msgid "Test Result"
-msgstr "Wyniki testu"
+msgstr "Prófunarniðurstaða"
 
 #: Doer/WordPressEntitiesRegistrator.php:107
 msgid "Add New Result"
-msgstr "Dodaj nowe wyniki testu"
+msgstr "Bæta við nýrri niðurstöðu"
 
 #: Doer/WordPressEntitiesRegistrator.php:108
 msgid "Edit Result"
-msgstr "Edytuj wynik"
+msgstr "Breyta niðurstöðu"
 
 #: Doer/WordPressEntitiesRegistrator.php:109
 msgid "View Result"
-msgstr "Zobacz wynik"
+msgstr "Skoða niðurstöðu"
 
 #: Doer/WordPressEntitiesRegistrator.php:110
 msgid "Search Results"
-msgstr "Wyszukaj wyniki"
+msgstr "Leitarniðurstöður"
 
 #: Doer/WordPressEntitiesRegistrator.php:111
 msgid "Parent Result:"
-msgstr "Nadrzędny wynik:"
+msgstr "Yfirprófunarniðurstaða:"
 
 #: Doer/WordPressEntitiesRegistrator.php:113
 #: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
 #: Widget/PassingTable/User.php:28
 msgid "Results"
-msgstr "Wyniki"
+msgstr "Niðurstöður"
 
 #: Doer/WordPressEntitiesRegistrator.php:114
 msgid "All Results"
-msgstr "Wszystkie wyniki"
+msgstr "Allar niðurstöður"
 
 #: Doer/WordPressEntitiesRegistrator.php:115
 msgid "Update Result"
-msgstr "Aktualizuj wynik"
+msgstr "Uppfæra niðurstöðu"
 
 #: Doer/WordPressEntitiesRegistrator.php:116
 msgid "New Result Name"
-msgstr "Nazwa nowego wyniku"
+msgstr "Nýtt nafn á niðurstöðu"
 
 #: Doer/WordPressEntitiesRegistrator.php:117
 msgid "Parent Result"
-msgstr "Nadrzędny wynik"
+msgstr "Yfirniðurstaða"
 
 #: Doer/WordPressEntitiesRegistrator.php:119
 msgid "New Result"
-msgstr "Nowy wynik"
+msgstr "Ný niðurstaða"
 
 #: Doer/WordPressEntitiesRegistrator.php:120
 msgid "No Results found"
-msgstr "Nie znaleziono wyników"
+msgstr "Engar niðurstöður fundust"
 
 #: Doer/WordPressEntitiesRegistrator.php:121
 msgid "No Results found in Trash"
-msgstr "Nie znaleziono wyników w koszu"
+msgstr "Engar niðurstöður fundust í ruslinu"
 
 #: Doer/WordPressEntitiesRegistrator.php:126
 #: Doer/WordPressEntitiesRegistrator.php:134
 msgid "Test Categories"
-msgstr "Kategorie testów"
+msgstr "Prófunarflokkar"
 
 #: Doer/WordPressEntitiesRegistrator.php:127
 msgid "Test Category"
-msgstr "Kategoria testu"
+msgstr "Prófunarflokkur"
 
 #: Doer/WordPressEntitiesRegistrator.php:128
 msgid "Add New Category"
-msgstr "Dodaj nową kategorię"
+msgstr "Bæta við nýjum flokki"
 
 #: Doer/WordPressEntitiesRegistrator.php:129
 msgid "Edit Category"
-msgstr "Edytuj kategorię"
+msgstr "Breyta flokki"
 
 #: Doer/WordPressEntitiesRegistrator.php:130
 msgid "View Category"
-msgstr "Zobacz kategorię"
+msgstr "Skoða flokk"
 
 #: Doer/WordPressEntitiesRegistrator.php:131
 msgid "Search Categories"
-msgstr "Szukaj kategorii"
+msgstr "Leita í flokkum"
 
 #: Doer/WordPressEntitiesRegistrator.php:132
 msgid "Parent Category:"
-msgstr "Nadrzędna kategoria:"
+msgstr "Yfirflokkur:"
 
 #: Doer/WordPressEntitiesRegistrator.php:135
 msgid "All Categories"
-msgstr "Wszystkie kategorie"
+msgstr "Allir flokkar"
 
 #: Doer/WordPressEntitiesRegistrator.php:136
 msgid "Update Category"
-msgstr "Aktualizuj kategorię"
+msgstr "Uppfæra flokk"
 
 #: Doer/WordPressEntitiesRegistrator.php:137
 msgid "New Category Name"
-msgstr "Nazwa nowej kategorii"
+msgstr "Heiti á nýjum flokki"
 
 #: Doer/WordPressEntitiesRegistrator.php:138
 msgid "Parent Category"
-msgstr "Nadrzędna kategoria"
+msgstr "Yfirflokkur"
 
 #: Doer/WordPressEntitiesRegistrator.php:140
 msgid "New Category"
-msgstr "Nowa kategoria"
+msgstr "Nýr flokkur"
 
 #: Doer/WordPressEntitiesRegistrator.php:141
 msgid "No Categories found"
-msgstr "Nie zaleziono kategorii"
+msgstr "Engir flokkar fundust"
 
 #: Doer/WordPressEntitiesRegistrator.php:142
 msgid "No Categories found in Trash"
-msgstr "Nie znaleziono kategorii w koszu"
+msgstr "Engir flokkar fundust í ruslinu"
 
 #: Model/Formula.php:88
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
-msgstr "Formuła %s jest niekompatybilna ponieważ zawiera zarówno liczby jak i procenty"
+msgstr "Formúla fyrir %s virkar ekki þar sem hún inniheldur bæði tölur og prósentur"
 
 #: Model/Formula.php:90
 #, php-format
 msgid "Formula for %s has error"
-msgstr "Formuła %s zawiera błąd"
+msgstr "Formúla fyrir %s er með villu"
 
 #: Model/FormulaVariable/ScaleValue.php:18
 msgid "Scale Variable"
-msgstr "Zmienna skali"
+msgstr "Kvarðabreyta"
 
 #: Model/FormulaVariable/SelectedAnswer.php:18
 #: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
-msgstr "Pytanie %1$s odpowiedź %2$s"
+msgstr "Spurning %1$s svar %2$s"
 
 #: Model/FormulaVariable/SelectedAnswer.php:19
 msgid "Answer Variable"
-msgstr "Zmienna odpowiedzi"
+msgstr "Breytusvar"
 
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "Test \"%s\" nie jest opublikowany. Nie możesz go nigdzie wstawić."
+msgstr "Próf \"%s\" hefur ekki verið sett í loftið. Þú getur ekki ennþá notað það."
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "Zacznij test"
+msgstr "Byrja próf"
 
 #: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
 msgid "Add review"
-msgstr "Dodaj opinię"
+msgstr "Bæta við rýni"
 
 #: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
 msgid "Thank you"
-msgstr "Dziękuję"
+msgstr "Takk fyrir"
 
 #: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
 #: Template/Feedback/report-issue.php:46
 msgid "System information"
-msgstr "Informacje o systemie"
+msgstr "Kerfisupplýsingar"
 
 #: Template/Feedback/get-support-finish.php:7
 #: Template/Feedback/get-support.php:31
 msgid "Get support as soon as possible"
-msgstr "Uzyskaj wsparcie jak najszybciej"
+msgstr "Fáðu aðstoð eins fljótt og auðið er"
 
 #: Template/Feedback/get-support-finish.php:15
 #, php-format
 msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
-msgstr "Użyj tego tekstu, aby zamówić <a target=\"_blank\" href=\"%s\">płatne wsparcie</a>"
+msgstr "Notaðu þennan texta til að panta <a target=\"_blank\" href=\"%s\">greidda aðstoð</a>"
 
 #: Template/Feedback/get-support-finish.php:23
 #: Template/Feedback/report-issue-finish.php:12
 #, php-format
 msgid "Copy this text to create new topic at %s"
-msgstr "Skopiuj ten tekst, aby utworzyć nowy wątek na %s"
+msgstr "Afritaðu þennan texta til að búa til nýtt efni á %s"
 
 #: Template/Feedback/get-support.php:7
 msgid "In short"
-msgstr "W skrócie"
+msgstr "Í stuttu máli"
 
 #: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
 #: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
 #: Template/Feedback/report-issue.php:42
 msgid "Please use english language"
-msgstr "Proszę używać języka angielskiego"
+msgstr "Vinsamlegast skrifaðu á ensku"
 
 #: Template/Feedback/get-support.php:11
 msgid "Details"
-msgstr "Detale"
+msgstr "Lýsing"
 
 #: Template/Feedback/get-support.php:14
 msgid "What do you want to get and why?"
-msgstr "Co chcesz dostać i dlaczego?"
+msgstr "Hvað viltu fá og afhverju?"
 
 #: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
 msgid "Add technical details about your installation"
-msgstr "Dodaj szczegóły techniczne na temat instalacji"
+msgstr "Bættu við tæknilegum upplýsingum um þitt install"
 
 #: Template/Feedback/get-support.php:27
 msgid "Priority"
-msgstr "Priorytet"
+msgstr "Forgangur"
 
 #: Template/Feedback/report-issue.php:7
 msgid "Problem is repeated"
-msgstr "Problem się powtarza"
+msgstr "Vandamál er endurtekið"
 
 #: Template/Feedback/report-issue.php:11
 msgid "when you use another hosting"
-msgstr "podczas korzystania z innego hostingu"
+msgstr "þegar þú notar aðra hýsingu"
 
 #: Template/Feedback/report-issue.php:15
 msgid "on the local computer"
-msgstr "na komputerze lokalnym"
+msgstr "á local tölvu"
 
 #: Template/Feedback/report-issue.php:19
 msgid "with default theme"
-msgstr "z domyślnym motywem"
+msgstr "með sjálfgefið þema"
 
 #: Template/Feedback/report-issue.php:23
 msgid "when all other plugins are disabled"
-msgstr "gdy wszystkie inne wtyczki są wyłączone"
+msgstr "þegar allar aðrar viðbætur eru óvirkar"
 
 #: Template/Feedback/report-issue.php:28
 msgid "You expect"
-msgstr "Oczekujesz"
+msgstr "Þú býst við"
 
 #: Template/Feedback/report-issue.php:32
 msgid "Actually you get"
-msgstr "Właściwie masz"
+msgstr "En færð"
 
 #: Template/Feedback/report-issue.php:36
 msgid "URL of the screenshot"
-msgstr "Adres URL do zrzutu ekranu"
+msgstr "URL á skjáskoti"
 
 #: Template/Feedback/report-issue.php:40
 msgid "Steps to repeat the problem"
-msgstr "Kroki do powtórzenia problemu"
+msgstr "Skref til að endurframkalla vandamálið"
 
 #: Template/Test/Editor/edit-formulas.php:5
 #: Template/Test/Editor/edit-scores.php:23
@@ -647,125 +646,125 @@ msgstr "#"
 #: Template/Test/Editor/edit-formulas.php:6
 #: Template/Test/Editor/edit-formulas.php:22
 msgid "Formula"
-msgstr "Formuła"
+msgstr "Formúla"
 
 #: Template/Test/Editor/edit-formulas.php:7
 msgid "Result"
-msgstr "Wynik"
+msgstr "Niðurstaða"
 
 #: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "Brak formuł do edycji. Aby edytować formuły musz mieć wybrane wyniki."
+msgstr "Engar formúlur til að breyta. Til að breyta formúlu þú verður að hafa niðurstöður valdar."
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "Zarówno liczby jak i procenty są dopuszczone. Na przykład \"scale-bla\" ma w sumie 30, wtedy \"scale-bla > 15\" oraz \"scale-bla > 50%\" oznacza to samo."
+msgstr "Bæði tölur og prósentur leyfðar. Til dæmis 'scale-bla' hefur samtals 30, þá \"scale-bla > 15\" og \"scale-bla > 50%\" er það sama. "
 
 #: Template/Test/Editor/edit-formulas.php:53
 msgid "Comparisions"
-msgstr "Równania"
+msgstr "Samanburður"
 
 #: Template/Test/Editor/edit-formulas.php:62
 msgid "Operators"
-msgstr "Operatory"
+msgstr "Virkjar"
 
 #: Template/Test/Editor/edit-formulas.php:73
 msgid "Variables"
-msgstr "Zmienne"
+msgstr "Breytur"
 
 #: Template/Test/Editor/edit-formulas.php:92
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected or have at least one question and answer."
-msgstr "Zmienne nie są dostępne w formułach. Aby używać zmiennych musisz mieć wybraną skalę i mieć przynajmniej jedno pytanie i odpowiedź."
+msgstr "Engar breytur fyrir formúlur í boði. Til að nota breytur verður þú að hafa kvarða valinn eða hafa amk. eina spurningu og svar."
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
 "No questions to edit. Add new questions and then they will appear here."
-msgstr "Brak pytań do edycji. Dodaj nowe pytania, wtedy się tutaj pojawią."
+msgstr "Engar spurningar til að breyta. Bættu við nýjum spurningum, þá munu þær birtast hér."
 
 #: Template/Test/Editor/edit-questions-answers.php:22
 msgid "Remove Question"
-msgstr "Usuń pytanie"
+msgstr "Fjarlægja spurningu"
 
 #: Template/Test/Editor/edit-questions-answers.php:39
 msgid "Remove Answer"
-msgstr "Usuń odpowiedź"
+msgstr "Fjarlægja svar"
 
 #: Template/Test/Editor/edit-questions-answers.php:49
 msgid "Add Individual Answer"
-msgstr "Dodaj indywidualną odpowiedź"
+msgstr "Bæta við svari"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
 msgid ""
 "— unique to each question. If you have same answers to all test questions, "
 "use the %s"
-msgstr "— unikalne dla każdego pytania. Jeśli masz te same odpowiedzi dla wszystkich pytań użyj %s"
+msgstr "— einstakt fyrir hverja spurningu. Ef þú hefur sama svar í öllum spurningum, notaðu þá %s"
 
 #: Template/Test/Editor/edit-questions-answers.php:57
 msgid ""
 "Paste here your questions and they will fill fields below. Numbers and other"
 " indexes will be stripped automatically."
-msgstr "Wstaw tu pytania i pola poniżej się wypełnią. Numery i inne indeksy zostaną usunięte automatycznie."
+msgstr "Settu inn spurningar hér fyrir neðan og þær munu fylla svæðin. Númer og aðrir vísar munu verða fjarlægðir sjálfkrafa."
 
 #: Template/Test/Editor/edit-questions-answers.php:62
 msgid "Add Question"
-msgstr "Dodaj pytanie"
+msgstr "Bæta við spurningu"
 
 #: Template/Test/Editor/edit-questions-answers.php:63
 #: Template/Test/Editor/edit-questions-answers.php:64
 msgid "Quick Fill From Text"
-msgstr "Wypełnij szybko z tekstu"
+msgstr "Fylla fljótt út frá texta"
 
 #: Template/Test/Editor/edit-scores.php:8
 #: Template/Test/Editor/quick-fill-scores.php:8
 msgid ""
 "No scores to edit. To edit scores you should have questions, answers and "
 "selected scales."
-msgstr "Brak punktów do edycji. Aby edytować punty musisz mieć pytania, odpowiedzi i wybraną skalę."
+msgstr "Engin stig að breyta. Til að breyta stigum verður þú að hafa spurningar, svör og valdan kvarða."
 
 #: Template/Test/Editor/quick-fill-scores.php:18
 #: Template/Test/Editor/quick-fill-scores.php:36
 msgid "Scale"
-msgstr "Skala"
+msgstr "Kvarða"
 
 #: Template/Test/Editor/quick-fill-scores.php:19
 #: Template/Test/Editor/quick-fill-scores.php:37
 msgid "Score"
-msgstr "Punkt"
+msgstr "Stig"
 
 #: Template/Test/Editor/quick-fill-scores.php:20
 #: Template/Test/Editor/quick-fill-scores.php:38
 msgid "Answer"
-msgstr "Odpowiedź"
+msgstr "Svar"
 
 #: Template/Test/Editor/quick-fill-scores.php:21
 msgid "Questions"
-msgstr "Pytanie"
+msgstr "Spurningar"
 
 #: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
-msgstr "Dodaj nową kombinację"
+msgstr "Bæta við nýrri samsetningu"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
-msgstr "Wybierz przynajmniej jedną odpowiedź."
+msgstr "Vinsamlegast veldu amk. eitt svar."
 
 #: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
-msgstr "Wybierz tylko jedną odpowiedź."
+msgstr "Vinsamlegast veldu aðeins eitt svar."
 
 #: Widget/PassingTable/Admin.php:91
 msgid "Device"
-msgstr "Urządzenie"
+msgstr "Tæki"
 
 #: Widget/PassingTable/Admin.php:92
 msgid "IP address"
-msgstr "Adres IP"
+msgstr "IP tala"
 
 #: Widget/PassingTable/Admin.php:93
 msgid "Browser"
-msgstr "Przeglądarka"
+msgstr "Vafri"

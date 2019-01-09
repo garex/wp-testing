@@ -6,9 +6,9 @@
 
 **Requires at least:** 3.2
 
-**Tested up to:** 4.9
+**Tested up to:** 5.0
 
-**Stable tag:** 0.21.14
+**Stable tag:** 0.21.15
 
 **License:** GPLv3
 
@@ -75,9 +75,9 @@ Respondent will get **results** on it's own individual passing page, which will 
 **Test** page can be customized: reset answers on "Back" button, use your own caption for "Get Test Result" button, allow multiple answers per question, show percentage of answered questions and show one question per page.
 **Results** page also can be customized: when you need to show/hide scales or test description on it; when you want to show scales chart or sort scales by scores sum.
 
-Plugin localized into many languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Polish and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
+Plugin localized into many languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Icelandic, Hebrew and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Polish, Icelandic, Hebrew and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
-**Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to latest) and PHP (from 5.2 to 7.0) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in [multisite mode](https://circleci.com/gh/garex/wp-testing/tree/develop). So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
+**Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to latest) and PHP (from 5.2 to 7.0) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in multisite mode. So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 
@@ -102,6 +102,8 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Romanian translation thanks to Maria Estela Mihoc <maria_estela_mihoc@yahoo.com>
 * For Greek translation thanks to Elektra Manousis <safiragon@yahoo.gr>
 * For Polish translation thanks to Maciej Dzierżek — https://bezdechu.pl/
+* For Icelandic translation thanks to Gunnar Geir Johannsson <gunnargj@gmail.com>
+* For Hebrew translation thanks to Noam Lederman <noaml@noamlederman.co.il>
 
 ### Paid add-ons & support ###
 

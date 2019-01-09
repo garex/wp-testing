@@ -2,6 +2,8 @@ if (!require('../env').multisite()) {
     return
 }
 
+require('../after-fail').screenshots()
+
 describe('Multisite', function() {
 
     var server          = require('../env').multiServer(),

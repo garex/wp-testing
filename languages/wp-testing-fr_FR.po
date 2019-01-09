@@ -5,15 +5,15 @@
 # Christophe PEIFFER <chris.peiffer@gmail.com>, 2015
 # Franck, 2015
 # Franck, 2015
-# FX Bénard <fxb@wp-translations.org>, 2015
+# FX Bénard <fxb@wp-translations.org>, 2015,2018
 # FX Bénard <fxb@wp-translations.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP testing\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-29 23:59+0700\n"
-"PO-Revision-Date: 2017-07-29 18:41+0000\n"
-"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"PO-Revision-Date: 2018-01-16 08:08+0000\n"
+"Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: French (France) (http://www.transifex.com/wp-translations/wp-testing/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,11 +33,11 @@ msgstr "%1$g sur %2$g"
 
 #: Doer/Feedbacker.php:40
 msgid "Feedback"
-msgstr "Retour d'information"
+msgstr "Retour"
 
 #: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
 msgid "Paid add-ons"
-msgstr "Extensions payants"
+msgstr "Modules payants"
 
 #: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
 msgid "Paid support"
@@ -47,13 +47,13 @@ msgstr "Support payant"
 #: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
 #: Template/Feedback/report-issue.php:2
 msgid "Report the problem"
-msgstr "Signalez le problème"
+msgstr "Signaler le problème"
 
 #: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
 #: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
 #: Template/Feedback/get-support.php:2
 msgid "Get the support"
-msgstr "Obtenir du support"
+msgstr "Obtenir de l’aide"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -78,7 +78,7 @@ msgstr "Mes résultats"
 
 #: Doer/PassingBrowser/User.php:18
 msgid "My Test Results"
-msgstr "Mes résultats de Test"
+msgstr "Mes résultats du test"
 
 #: Doer/TestEditor.php:66
 msgid "Maximize"
@@ -106,11 +106,11 @@ msgstr "Options de la page de résultat"
 
 #: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
 msgid "Edit Questions and Answers"
-msgstr "Modifier questions et réponses"
+msgstr "Modifier les questions et les réponses"
 
 #: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
 msgid "Edit Scores"
-msgstr "Éditer des partitions"
+msgstr "Modifier les scores"
 
 #: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
 msgid "Quick Fill Scores"
@@ -122,7 +122,7 @@ msgstr "Modifier les formules"
 
 #: Doer/TestEditor.php:230
 msgid "Publish on the home page"
-msgstr "Publier sur la page d'accueil"
+msgstr "Publier sur la page d’accueil"
 
 #: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
@@ -166,7 +166,7 @@ msgstr "Montrer la description du test"
 
 #: Doer/TestEditor.php:383
 msgid "Test data not saved"
-msgstr "Les données du test n'on pas été sauvegardées"
+msgstr "Les données du test n’ont pas été enregistrées"
 
 #: Doer/TestPasser/DirectRenderer.php:19
 #: Doer/TestPasser/FilterRenderer.php:105
@@ -202,7 +202,7 @@ msgstr "Vous ne pouvez pas obtenir quelque chose à partir de rien"
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
 msgid "Sorry but your browser %s is not compatible to display the chart"
-msgstr "Désolé, votre navigateur %s n'est pas compatible pour afficher le graphique"
+msgstr "Désolé, mais votre navigateur %s n’est pas compatible pour afficher le graphique"
 
 #: Doer/TestPasserAction/ProcessForm.php:77
 msgid "Test data not valid"
@@ -274,7 +274,7 @@ msgstr "Aucun test trouvé dans la corbeille"
 msgid ""
 "Instrument to measure unobserved constructs (latent variables). Typically it"
 " is a series of tasks or problems that the respondent has to solve."
-msgstr "Instruments de mesure non adaptés (variables latentes). C'est typiquement le cas d'une série de tâches ou de problèmes que la personne interrogée doit résoudre."
+msgstr "Instruments de mesure non adaptés (variables latentes). C’est typiquement le cas d’une série de tâches ou de problèmes que la personne interrogée doit résoudre."
 
 #: Doer/WordPressEntitiesRegistrator.php:63
 #: Template/Test/Editor/edit-questions-answers.php:50
@@ -351,11 +351,11 @@ msgstr "Ajouter une nouvelle échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:87
 msgid "Edit Scale"
-msgstr "Modifier l'échelle"
+msgstr "Modifier l’échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:88
 msgid "View Scale"
-msgstr "Voir l'échelle"
+msgstr "Voir l’échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:89
 msgid "Search Scales"
@@ -376,11 +376,11 @@ msgstr "Toutes les échelles"
 
 #: Doer/WordPressEntitiesRegistrator.php:94
 msgid "Update Scale"
-msgstr "Mettre à jour l'échelle"
+msgstr "Mettre à jour l’échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:95
 msgid "New Scale Name"
-msgstr "Nouveau nom d'échelle"
+msgstr "Nouveau nom d’échelle"
 
 #: Doer/WordPressEntitiesRegistrator.php:96
 msgid "Parent Scale"
@@ -521,7 +521,7 @@ msgstr "Aucune catégorie trouvée dans la corbeille"
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
-msgstr "Formule pour %s n'est pas compatible car il contient des chiffres et des pourcentages"
+msgstr "La formule pour %s n’est pas compatible car elle contient des chiffres et des pourcentages"
 
 #: Model/Formula.php:90
 #, php-format
@@ -545,15 +545,15 @@ msgstr "Réponse variable"
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "Test «%s» n'est pas publié. Vous ne pouvez pas inclure ce n'importe où."
+msgstr "Le test «%s» n’est pas publié. Vous ne pouvez l’inclure nul part."
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "Essai de démarrage"
+msgstr "Lancer le test"
 
 #: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
 msgid "Add review"
-msgstr "Ajouter un avis"
+msgstr "Laisser un avis"
 
 #: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
 msgid "Thank you"
@@ -567,18 +567,18 @@ msgstr "Informations système"
 #: Template/Feedback/get-support-finish.php:7
 #: Template/Feedback/get-support.php:31
 msgid "Get support as soon as possible"
-msgstr "Obtenir du support le plus tôt possible"
+msgstr "Recevoir de l’aide le plus tôt possible"
 
 #: Template/Feedback/get-support-finish.php:15
 #, php-format
 msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
-msgstr "Utilisez ce texte pour demander un <a target=\"_blank\" href=\"%s\">support payant</a>"
+msgstr "Utilisez ce texte pour commander un <a target=\"_blank\" href=\"%s\">support payant</a>"
 
 #: Template/Feedback/get-support-finish.php:23
 #: Template/Feedback/report-issue-finish.php:12
 #, php-format
 msgid "Copy this text to create new topic at %s"
-msgstr "Copiez ce texte pour créer un nouveau sujet %s"
+msgstr "Copiez ce texte pour créer un nouveau sujet sur %s"
 
 #: Template/Feedback/get-support.php:7
 msgid "In short"
@@ -588,7 +588,7 @@ msgstr "En bref"
 #: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
 #: Template/Feedback/report-issue.php:42
 msgid "Please use english language"
-msgstr "S'il vous plaît utiliser la langue anglaise"
+msgstr "Veuillez rédiger en anglais"
 
 #: Template/Feedback/get-support.php:11
 msgid "Details"
@@ -596,11 +596,11 @@ msgstr "Détails"
 
 #: Template/Feedback/get-support.php:14
 msgid "What do you want to get and why?"
-msgstr "Que voulez-vous obtenir et pourquoi?"
+msgstr "Que voulez-vous obtenir et pourquoi ?"
 
 #: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
 msgid "Add technical details about your installation"
-msgstr "Ajouter des détails techniques sur l'installation"
+msgstr "Ajouter des détails techniques sur l’installation"
 
 #: Template/Feedback/get-support.php:27
 msgid "Priority"
@@ -608,7 +608,7 @@ msgstr "Priorité"
 
 #: Template/Feedback/report-issue.php:7
 msgid "Problem is repeated"
-msgstr "Le problème est répété"
+msgstr "Le problème se répète"
 
 #: Template/Feedback/report-issue.php:11
 msgid "when you use another hosting"
@@ -616,7 +616,7 @@ msgstr "lorsque vous utilisez un autre hébergement"
 
 #: Template/Feedback/report-issue.php:15
 msgid "on the local computer"
-msgstr "sur l'ordinateur local"
+msgstr "sur l’ordinateur en local"
 
 #: Template/Feedback/report-issue.php:19
 msgid "with default theme"
@@ -624,11 +624,11 @@ msgstr "avec le thème par défaut"
 
 #: Template/Feedback/report-issue.php:23
 msgid "when all other plugins are disabled"
-msgstr "lorsque tous les autres plug-ins sont désactivées"
+msgstr "lorsque tous les autres extensions sont désactivées"
 
 #: Template/Feedback/report-issue.php:28
 msgid "You expect"
-msgstr "Vous vous attendez"
+msgstr "Vous vous attendez à"
 
 #: Template/Feedback/report-issue.php:32
 msgid "Actually you get"
@@ -636,7 +636,7 @@ msgstr "En fait, vous obtenez"
 
 #: Template/Feedback/report-issue.php:36
 msgid "URL of the screenshot"
-msgstr "URL de la capture d'écran"
+msgstr "URL de la capture d’écran"
 
 #: Template/Feedback/report-issue.php:40
 msgid "Steps to repeat the problem"
@@ -692,7 +692,7 @@ msgstr "Aucune question à modifier. Ajoutez de nouvelles questions et elles app
 
 #: Template/Test/Editor/edit-questions-answers.php:22
 msgid "Remove Question"
-msgstr "Supprimer la Question"
+msgstr "Supprimer la question"
 
 #: Template/Test/Editor/edit-questions-answers.php:39
 msgid "Remove Answer"
@@ -717,7 +717,7 @@ msgstr "Collez ici vos questions et elles rempliront les champs ci-dessous. Les 
 
 #: Template/Test/Editor/edit-questions-answers.php:62
 msgid "Add Question"
-msgstr "Ajouter Question"
+msgstr "Ajouter une question"
 
 #: Template/Test/Editor/edit-questions-answers.php:63
 #: Template/Test/Editor/edit-questions-answers.php:64
@@ -729,7 +729,7 @@ msgstr "Remplissage rapide du texte"
 msgid ""
 "No scores to edit. To edit scores you should have questions, answers and "
 "selected scales."
-msgstr "Aucun des scores d’éditer. Pour éditer des partitions, vous devriez avoir des questions, des réponses et des échelles choisies."
+msgstr "Aucun score à modifier. Pour modifier des scores, vous devez avoir sélectionné des questions, des réponses et des échelles."
 
 #: Template/Test/Editor/quick-fill-scores.php:18
 #: Template/Test/Editor/quick-fill-scores.php:36
@@ -752,15 +752,15 @@ msgstr "Questions"
 
 #: Template/Test/Editor/quick-fill-scores.php:48
 msgid "Add new combination"
-msgstr "Ajouter nouvelle combinaison"
+msgstr "Ajouter une nouvelle combinaison"
 
 #: Template/Test/Passer/fill-form.php:55
 msgid "Please select at least one answer."
-msgstr "S'il vous plaît sélectionner au moins une réponse."
+msgstr "Veuillez sélectionner au moins une réponse."
 
 #: Template/Test/Passer/fill-form.php:56
 msgid "Please choose only one answer."
-msgstr "S'il vous plaît choisir une seule réponse."
+msgstr "Veuillez choisir une seule réponse."
 
 #: Widget/PassingTable/Admin.php:91
 msgid "Device"
