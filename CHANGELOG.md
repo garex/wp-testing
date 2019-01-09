@@ -2,6 +2,21 @@
 ## Changelog ##
 
 
+### 0.21.15 ###
+
+Welcome WordPress 5.0 and two new locales
+
+Translations:
+
+* For Icelandic translation thanks to Gunnar Geir Johannsson <gunnargj@gmail.com>
+* For Hebrew translation thanks to Noam Lederman <noaml@noamlederman.co.il>
+
+Internals:
+
+* Update compatibility testing to make sure latest WP 5.0 is compatible. Nothing changed in functionality.
+* Avoid circle-ci and move multisite testing to travis.
+
+
 ### 0.21.14 ###
 
 Fix headers tags at results' page template.
