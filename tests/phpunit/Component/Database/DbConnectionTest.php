@@ -7,7 +7,7 @@ abstract class DbConnectionTest extends WpTesting_Tests_TestCase
      */
     public function testConnected($dbHost, $skipIfExceptionText = null)
     {
-        $wp = self::createWordPressFacade(array('host' => $dbHost));
+        $wp = self::createWordPressFacade(array('host:port' => $dbHost));
 
         try {
             $result = $this->connectToDbAndQueryOne($wp);

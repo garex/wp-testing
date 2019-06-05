@@ -8,6 +8,8 @@ env:
     - DB_ENGINE=InnoDB
   matrix:
     - WP_VERSION=
+    - WP_VERSION=5.1
+    - WP_VERSION=5.0
     - WP_VERSION=4.9.9
     - WP_VERSION=4.8.4
     - WP_VERSION=4.7.5
@@ -31,7 +33,7 @@ matrix:
   include:
     - php: 5.2
       dist: precise
-      env: WP_VERSION=
+      env: WP_VERSION=5.1
     - php: 5.2
       dist: precise
       env: WP_VERSION=4.8.4
@@ -52,13 +54,19 @@ matrix:
       env: WP_VERSION=3.2
     - php: 5.3
       dist: precise
-      env: WP_VERSION=
+      env: WP_VERSION=5.1
     - php: 5.4
-      env: WP_VERSION=
+      env: WP_VERSION=5.1
     - php: 5.5
-      env: WP_VERSION=
-    - php: 5.4
+      env: WP_VERSION=5.1
+    - php: 5.6
       env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
+    - php: 7.1
+      env: WP_VERSION=
+    - php: 7.2
+      env: WP_VERSION=
+    - php: 7.3
+      env: WP_VERSION=
     - php: 7.0
       env: WP_VERSION= DB_CHARSET=utf8mb4
     - php: 7.0
