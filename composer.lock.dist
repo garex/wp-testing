@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3609284e2b5a713f8a7eb70c8d29e467",
-    "content-hash": "a7d9019a859b7d6219377847c504cb4d",
+    "content-hash": "3bc84bc44a634d3908bce2efd2733c91",
     "packages": [
         {
             "name": "broofa/node-uuid",
@@ -116,7 +115,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-02-18 17:17:01"
+            "time": "2015-02-18T17:17:01+00:00"
         },
         {
             "name": "flourish/flourish",
@@ -124,12 +123,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/garex/flourish-classes",
-                "reference": "c826410c3edb9da885e70c6f05d714b357fb2a4a"
+                "reference": "74d2d6af476ffe34171e807fa9517b69eda7ab2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/garex/flourish-classes/archive/c826410c3edb9da885e70c6f05d714b357fb2a4a.zip",
-                "reference": "c826410c3edb9da885e70c6f05d714b357fb2a4a",
+                "url": "https://github.com/garex/flourish-classes/archive/74d2d6af476ffe34171e807fa9517b69eda7ab2e.zip",
+                "reference": "74d2d6af476ffe34171e807fa9517b69eda7ab2e",
                 "shasum": null
             },
             "type": "library",
@@ -138,7 +137,7 @@
                     "."
                 ]
             },
-            "time": "2018-03-18 16:33:05"
+            "time": "2019-06-23T15:30:32+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -183,7 +182,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-07-23 18:24:17"
+            "time": "2014-07-23T18:24:17+00:00"
         },
         {
             "name": "ruckusing/ruckusing-migrations",
@@ -228,7 +227,7 @@
                 "shasum": null
             },
             "type": "library",
-            "time": "2015-01-18 22:12:29"
+            "time": "2015-01-18T22:12:29+00:00"
         },
         {
             "name": "xrstf/composer-php52",
@@ -259,7 +258,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-04-16 21:52:24"
+            "time": "2016-04-16T21:52:24+00:00"
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
@@ -298,7 +297,7 @@
                 "plugin updates",
                 "wordpress"
             ],
-            "time": "2015-07-28 10:43:46"
+            "time": "2015-07-28T10:43:46+00:00"
         }
     ],
     "packages-dev": [
@@ -355,7 +354,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2012-09-19 00:00:00"
+            "time": "2012-09-19T00:00:00+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -400,7 +399,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2012-09-22 00:00:00"
+            "time": "2012-09-22T00:00:00+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -444,7 +443,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2012-09-23 00:00:00"
+            "time": "2012-09-23T00:00:00+00:00"
         },
         {
             "name": "phpunit/php-timer",
@@ -488,7 +487,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2012-09-23 00:00:00"
+            "time": "2012-09-23T00:00:00+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -533,7 +532,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2012-09-23 00:00:00"
+            "time": "2012-09-23T00:00:00+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects-php52",
@@ -558,7 +557,7 @@
             "include-path": [
                 ""
             ],
-            "time": "2014-10-02 18:21:59"
+            "time": "2014-10-02T18:21:59+00:00"
         },
         {
             "name": "phpunit/phpunit-php52",
@@ -566,7 +565,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/garex/phpunit",
-                "reference": "4404e114481a4557b0481be6ded530df3b66b2f3"
+                "reference": "96cd6cf307d82a4458f0c0bf8fb695d21b1a6072"
             },
             "require": {
                 "ext-dom": "*",
@@ -606,7 +605,7 @@
                     "xrstf\\Composer52\\Generator::onPostInstallCmd"
                 ]
             },
-            "time": "2014-10-19 21:02:13"
+            "time": "2019-06-23T16:06:23+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -655,7 +654,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-01 11:25:50"
+            "time": "2015-07-01T11:25:50+00:00"
         }
     ],
     "aliases": [],
