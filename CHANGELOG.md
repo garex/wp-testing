@@ -2,6 +2,16 @@
 ## Changelog ##
 
 
+### 0.21.16 ###
+
+Welcome WordPress 5.2, PHP 7.3 and Chinese locale update
+
+Internals:
+
+* Update compatibility testing to make sure latest WP 5.2 is compatible. Nothing changed in functionality.
+* Fix PHP 7.3 compatibility warning in dependencies.
+
+
 ### 0.21.15 ###
 
 Welcome WordPress 5.0 and two new locales

@@ -6,9 +6,9 @@
 
 **Requires at least:** 3.2
 
-**Tested up to:** 5.0
+**Tested up to:** 5.2
 
-**Stable tag:** 0.21.15
+**Stable tag:** 0.21.16
 
 **License:** GPLv3
 
@@ -77,7 +77,7 @@ Respondent will get **results** on it's own individual passing page, which will 
 
 Plugin localized into many languages: English, German, French, Dutch, Swedish, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Icelandic, Hebrew and Russian. English, French, Dutch, Bulgarian, Italian, Turkish, Chinese, Brazilian, Spanish, Persian, Czech, Slovak, Thai, Arabic, Romanian, Greek, Polish, Icelandic, Hebrew and Russian have good quality (native speakers) — others need review. You can easily add your language through excellent [Transifiex](https://www.transifex.com/projects/p/wp-testing/) service. **Translators** and *reviewers* are kindly welcome! See http://wp-translations.org/join/ for instructions.
 
-**Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to latest) and PHP (from 5.2 to 7.0) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in multisite mode. So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
+**Quality** and **compatibility** are taken really seriously. Plugin tested on [more than 30 combinations](https://travis-ci.org/garex/wp-testing) of WordPress (from 3.2 to latest) and PHP (from 5.2 to 7.3) plus three custom combinations: for old MySQL storage engine (MyISAM), with few popular plugins and in multisite mode. So you can be sure, that it will just work, even if you don't have the latest WordPress or your hosting doesn't have the latest versions of PHP/MySQL. [Build status image](https://travis-ci.org/garex/wp-testing.svg?branch=develop) is available.
 
 [![Build Status](https://travis-ci.org/garex/wp-testing.svg?branch=develop)](https://travis-ci.org/garex/wp-testing)
 
@@ -135,7 +135,7 @@ For complex test logic or plugin environment specific issues [paid support](http
 ## Requirements ##
 
 * WordPress version **3.2** or higher.
-* PHP version **5.2.4** or higher (including **7.0** !).
+* PHP version **5.2.4** or higher (including **7.3** !).
 * MySQL version **5.0** or higher.
 
 ## Frequently Asked Questions ##

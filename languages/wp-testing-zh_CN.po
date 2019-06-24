@@ -34,7 +34,7 @@ msgstr "反馈"
 
 #: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
 msgid "Paid add-ons"
-msgstr "付费的附加组件"
+msgstr "付费插件"
 
 #: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
 msgid "Paid support"
@@ -50,7 +50,7 @@ msgstr "报告问题"
 #: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
 #: Template/Feedback/get-support.php:2
 msgid "Get the support"
-msgstr "得到支持"
+msgstr "获取支持"
 
 #: Doer/Installer.php:38
 msgid "Helps to create psychological tests."
@@ -79,7 +79,7 @@ msgstr "我的测试结果"
 
 #: Doer/TestEditor.php:66
 msgid "Maximize"
-msgstr "最大限度地"
+msgstr "最大化"
 
 #: Doer/TestEditor.php:67
 msgid "Minimize"
@@ -119,11 +119,11 @@ msgstr "编辑公式"
 
 #: Doer/TestEditor.php:230
 msgid "Publish on the home page"
-msgstr "在首页发布"
+msgstr "发布到首页"
 
 #: Doer/TestEditor.php:252
 msgid "Show in title percentage of questions that respondent already answered"
-msgstr "在标题中显示答题进度"
+msgstr "在标题中显示受访者的答题进度"
 
 #: Doer/TestEditor.php:256
 msgid "Show one question per page"
@@ -139,7 +139,7 @@ msgstr "按返回键时重置答案"
 
 #: Doer/TestEditor.php:267
 msgid "Button caption"
-msgstr "按键标题"
+msgstr "按钮标题"
 
 #: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
 msgid "Get Test Results"
@@ -169,16 +169,16 @@ msgstr "测试数据未保存"
 #: Doer/TestPasser/FilterRenderer.php:105
 #: Template/Test/Passer/fill-form.php:81
 msgid "Test is under construction"
-msgstr "测试尚在开发"
+msgstr "测试仍在开发中"
 
 #: Doer/TestPasser/FilterRenderer.php:106
 #: Template/Test/Passer/fill-form.php:82
 msgid "You can not get any results from it yet."
-msgstr "您暂时无法得到结果。"
+msgstr "您暂时无法获取任何结果。"
 
 #: Doer/TestPasserAction/FillForm.php:64
 msgid "{percentage}% answered"
-msgstr "回答了 {percentage}%"
+msgstr "已回答 {percentage}%"
 
 #: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
 #: Template/Feedback/get-support-finish.php:32
@@ -190,11 +190,11 @@ msgstr "下一步"
 
 #: Doer/TestPasserAction/GetResults.php:75
 msgid "Test result not found"
-msgstr "未发现测试结果"
+msgstr "未找到测试结果"
 
 #: Doer/TestPasserAction/GetResults.php:76
 msgid "You can not get anything from nothing."
-msgstr "您不能不劳而获。"
+msgstr "您无法获取任何信息。"
 
 #: Doer/TestPasserAction/GetResults.php:85
 #, php-format
@@ -241,7 +241,7 @@ msgstr "父测试："
 
 #: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
 msgid "All Tests"
-msgstr "全部测试"
+msgstr "所有测试"
 
 #: Doer/WordPressEntitiesRegistrator.php:24
 msgid "Update Test"
@@ -518,7 +518,7 @@ msgstr "回收站未发现分类"
 #, php-format
 msgid ""
 "Formula for %s is incompatible as it contains both numbers and percentages"
-msgstr "为 %s 的公式是不兼容的因为它包含数字和百分比"
+msgstr "%s 的公式不兼容，因为它同时包含数字和百分比"
 
 #: Model/Formula.php:90
 #, php-format
@@ -533,20 +533,20 @@ msgstr "指标变量"
 #: Template/Test/Editor/edit-formulas.php:79
 #, php-format
 msgid "Question %1$s answer %2$s"
-msgstr "问题%1$s答案%2$s"
+msgstr "问题 %1$s 答案 %2$s"
 
 #: Model/FormulaVariable/SelectedAnswer.php:19
 msgid "Answer Variable"
-msgstr "答案變"
+msgstr "答案变量"
 
 #: Model/Shortcode/Test.php:19
 #, php-format
 msgid "Test \"%s\" is not published. You can not include it anywhere."
-msgstr "不公布测试\"%s\"。你可以在任何地方不包括它。"
+msgstr "测试“%s”未发布。您不能在任何地方使用它。"
 
 #: Model/Shortcode/TestReadMore.php:30
 msgid "Start Test"
-msgstr "启动测试"
+msgstr "开始测试"
 
 #: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
 msgid "Add review"
@@ -559,12 +559,12 @@ msgstr "谢谢"
 #: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
 #: Template/Feedback/report-issue.php:46
 msgid "System information"
-msgstr "有关系统的信息"
+msgstr "系统信息"
 
 #: Template/Feedback/get-support-finish.php:7
 #: Template/Feedback/get-support.php:31
 msgid "Get support as soon as possible"
-msgstr "尽快获得支持"
+msgstr "尽快获取支持"
 
 #: Template/Feedback/get-support-finish.php:15
 #, php-format
@@ -575,29 +575,29 @@ msgstr "使用此文本请求<a target=\"_blank\" href=\"%s\">付费支持</a>"
 #: Template/Feedback/report-issue-finish.php:12
 #, php-format
 msgid "Copy this text to create new topic at %s"
-msgstr "复制这个文本创建于%s新主题"
+msgstr "复制此文本以在 %s 创建新主题"
 
 #: Template/Feedback/get-support.php:7
 msgid "In short"
-msgstr "简而言之"
+msgstr "概览"
 
 #: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
 #: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
 #: Template/Feedback/report-issue.php:42
 msgid "Please use english language"
-msgstr "请使用英语语言"
+msgstr "请使用英语"
 
 #: Template/Feedback/get-support.php:11
 msgid "Details"
-msgstr "细节"
+msgstr "详细信息"
 
 #: Template/Feedback/get-support.php:14
 msgid "What do you want to get and why?"
-msgstr "你想得到什么结果，为什么？"
+msgstr "您想要得到什么，为什么？"
 
 #: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
 msgid "Add technical details about your installation"
-msgstr "添加有关安装的技术细节"
+msgstr "添加有关您的安装的技术详情"
 
 #: Template/Feedback/get-support.php:27
 msgid "Priority"
@@ -605,11 +605,11 @@ msgstr "优先"
 
 #: Template/Feedback/report-issue.php:7
 msgid "Problem is repeated"
-msgstr "问题是重复"
+msgstr "问题在以下情况下重复出现："
 
 #: Template/Feedback/report-issue.php:11
 msgid "when you use another hosting"
-msgstr "当你使用的是其他托管"
+msgstr "使用另一台主机时"
 
 #: Template/Feedback/report-issue.php:15
 msgid "on the local computer"
@@ -625,19 +625,19 @@ msgstr "当所有其他插件被禁用"
 
 #: Template/Feedback/report-issue.php:28
 msgid "You expect"
-msgstr "你期待"
+msgstr "您的预期"
 
 #: Template/Feedback/report-issue.php:32
 msgid "Actually you get"
-msgstr "其实你得到"
+msgstr "实际结果"
 
 #: Template/Feedback/report-issue.php:36
 msgid "URL of the screenshot"
-msgstr "屏幕截图的URL"
+msgstr "屏幕截图的 URL"
 
 #: Template/Feedback/report-issue.php:40
 msgid "Steps to repeat the problem"
-msgstr "步骤重复问题"
+msgstr "重现问题的步骤"
 
 #: Template/Test/Editor/edit-formulas.php:5
 #: Template/Test/Editor/edit-scores.php:23
@@ -656,13 +656,13 @@ msgstr "结果"
 
 #: Template/Test/Editor/edit-formulas.php:35
 msgid "No formulas to edit. To edit formulas you must have results selected."
-msgstr "无公式可编辑。请选择结果后，再编辑公式。"
+msgstr "没有可以编辑的公式。要编辑公式，您必须选择结果。"
 
 #: Template/Test/Editor/edit-formulas.php:49
 msgid ""
 "Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
 "then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
-msgstr "数字或百分比均可。比如 \"scale-bla\" 总分30分，那麼\"scale-bla > 15\" 或 \"scale-bla > 50%\" 都可以。"
+msgstr "允许数字和百分比。例如，如果“scale-bla”总计为 30，那么“scale-bla > 15”与“scale-bla > 50%”相同。"
 
 #: Template/Test/Editor/edit-formulas.php:53
 msgid "Comparisions"
@@ -680,7 +680,7 @@ msgstr "变量"
 msgid ""
 "No variables for formulas available. To use variables you must have scales "
 "selected or have at least one question and answer."
-msgstr "沒有變量可用公式。要使用變量，你必須選擇鱗片或至少有一個問題和答案。"
+msgstr "公式没有可用的变量。要使用变量，您必须选择指标或至少有一个问题和答案。"
 
 #: Template/Test/Editor/edit-questions-answers.php:7
 msgid ""
@@ -697,7 +697,7 @@ msgstr "删除答案"
 
 #: Template/Test/Editor/edit-questions-answers.php:49
 msgid "Add Individual Answer"
-msgstr "添加单个答案"
+msgstr "添加各个答案"
 
 #: Template/Test/Editor/edit-questions-answers.php:50
 #, php-format
