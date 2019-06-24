@@ -13,7 +13,11 @@ class WpTesting_Mock_WordPressFacade extends WpTesting_WordPressFacade
 
     public function getDbHost()
     {
-        return $this->db['host'];
+        if (isset($this->db['host:port'])) {
+            return $this->db['host:port'];
+        }
+
+        return $this->db['host'].':'.$this->db['port'];
     }
 
     public function getDbName()

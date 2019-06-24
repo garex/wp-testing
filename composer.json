@@ -149,10 +149,10 @@
                 "source": {
                     "url": "https://github.com/garex/flourish-classes",
                     "type": "git",
-                    "reference": "c826410c3edb9da885e70c6f05d714b357fb2a4a"
+                    "reference": "74d2d6af476ffe34171e807fa9517b69eda7ab2e"
                 },
                 "dist": {
-                    "url": "https://github.com/garex/flourish-classes/archive/c826410c3edb9da885e70c6f05d714b357fb2a4a.zip",
+                    "url": "https://github.com/garex/flourish-classes/archive/74d2d6af476ffe34171e807fa9517b69eda7ab2e.zip",
                     "type": "zip"
                 }
             }
