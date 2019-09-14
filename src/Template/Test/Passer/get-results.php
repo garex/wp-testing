@@ -42,7 +42,7 @@
             <?php echo $scale->formatValueAsOutOf() ?>
         </div>
         <div class="<?php echo $scale->getCssClass($i) ?> meter">
-            <span style="width: <?php echo $scale->getValueAsRatio()*100 ?>%"></span>
+            <span style="width: <?php echo max(0, $scale->getValueAsRatio())*100 ?>%"></span>
         </div>
 
         <div class="<?php echo $scale->getCssClass($i) ?> description"><?php echo $renderer->renderWithMoreSplitted($renderer->renderTextAsHtml($scale->getDescription())) ?></div>
