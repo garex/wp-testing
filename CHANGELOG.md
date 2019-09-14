@@ -1,6 +1,10 @@
 
 ## Changelog ##
 
+### 0.21.17 ###
+
+Fix negative scale width issue
+
 
 ### 0.21.16 ###
 
