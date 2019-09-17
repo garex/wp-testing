@@ -1,6 +1,11 @@
 
 ## Changelog ##
 
+### 0.21.18 ###
+
+Bump plugin version to have pervious fix published.
+
+
 ### 0.21.17 ###
 
 Fix negative scale width issue
