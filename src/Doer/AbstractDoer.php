@@ -68,7 +68,7 @@ abstract class WpTesting_Doer_AbstractDoer
 
     /**
      * Adds multiple data values to Wpt global object from values array
-     * @see addJsData
+     * @see WpTesting_Doer_AbstractDoer::addJsData
      * @param array $values [key1 => value1, keyN => valueN]
      * @return self
      */

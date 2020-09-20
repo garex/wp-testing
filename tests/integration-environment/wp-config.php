@@ -20,7 +20,7 @@ define('NONCE_SALT',       '%w5[454qdnpFZNV&-)%i[/YR[0v4enFp69bI[Xr1:]qMYV|a8N51
 
 $table_prefix = 'wp_';
 
-if ( !defined('ABSPATH') )
+if ($table_prefix && !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
 
 defined('JETPACK_DEV_DEBUG') or define('JETPACK_DEV_DEBUG', true);

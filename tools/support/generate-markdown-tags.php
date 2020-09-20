@@ -3,11 +3,11 @@
 $file = file('php://stdin');
 array_shift($file);
 
-$tags = [
-    'feature' => [],
-    'bug'     => [],
-    'support' => [],
-];
+$tags = array(
+    'feature' => array(),
+    'bug'     => array(),
+    'support' => array(),
+);
 
 // Create tags
 foreach ($file as $line) {
@@ -21,7 +21,7 @@ foreach ($tags as $category => &$categoryTags) {
     arsort($categoryTags);
     $popularIndex = round(count($categoryTags) * 0.2);
     $counter = 0;
-    foreach ($categoryTags as $tag => $topicsCount) {
+    foreach (array_keys($categoryTags) as $tag) {
         $categoryTags[$tag] = ($counter < $popularIndex);
         $counter++;
     }

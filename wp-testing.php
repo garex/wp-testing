@@ -14,3 +14,5 @@
 require_once dirname(__FILE__) . '/src/bootstrap.php';
 
 $WpTesting_Facade = new WpTesting_Facade(new WpTesting_WordPressFacade(__FILE__));
+
+$WpTesting_Facade instanceof WpTesting_Addon_IFacade; // To suppress IDE warn var not used.

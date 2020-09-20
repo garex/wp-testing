@@ -31,7 +31,7 @@ class WpTesting_WordPress_Value_DbHost extends WpTesting_WordPress_Value_Base
         }
 
         $matches = array();
-        $result = preg_match($pattern, $value, $matches);
+        preg_match($pattern, $value, $matches);
 
         if (!empty($matches['host'])) {
             $this->host = $matches['host'];

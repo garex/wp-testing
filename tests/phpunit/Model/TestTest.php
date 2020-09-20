@@ -76,7 +76,7 @@ class TestTest extends WpTesting_Tests_TestCase
         ;
         $test->store(true);
         foreach ($test->buildQuestions() as $question) { /* @var $question WpTesting_Model_Question */
-            foreach (array(1,2) as $i) {
+            for ($i = 2; $i; --$i) {
                 $answer = new WpTesting_Model_Answer();
                 $answer->setQuestionId($question->getId());
                 $question->associateAnswers($question->buildAnswers()->merge($answer));

@@ -44,7 +44,7 @@ class WpTesting_Model_Shortcode_Tests extends WpTesting_Model_Shortcode
     protected function initAttributes()
     {
         $attributes = array(
-            $class   = new WpTesting_Model_Shortcode_Attribute('class',    'cssClass'),
+                       new WpTesting_Model_Shortcode_Attribute('class',    'cssClass'),
             $sort    = new WpTesting_Model_Shortcode_Attribute('sort',     'orderBy'),
             $reverse = new WpTesting_Model_Shortcode_Attribute('reverse',  'reverseBy'),
             $max     = new WpTesting_Model_Shortcode_Attribute('max',      'limit'),
