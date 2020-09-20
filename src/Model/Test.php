@@ -520,7 +520,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             'wpt_formula_source' => array(),
         );
 
-        $json = json_decode(stripslashes($request['wpt_questions_answers_json']), $assoc = true);
+        $json = json_decode(stripslashes($request['wpt_questions_answers_json']), true);
         foreach ($json as $q => $question) {
             $request[$questionsPrefix . 'question_id']    [$q] = $question['id'];
             $request[$questionsPrefix . 'question_title'] [$q] = $question['title'];
@@ -541,7 +541,7 @@ class WpTesting_Model_Test extends WpTesting_Model_AbstractParent
             }
         }
 
-        $json = json_decode(stripslashes($request['wpt_formulas_json']), $assoc = true);
+        $json = json_decode(stripslashes($request['wpt_formulas_json']), true);
         foreach ($json as $resultId => $value) {
             $request[$formulasPrefix . 'test_id']        [$resultId] = $testId;
             $request[$formulasPrefix . 'formula_id']     [$resultId] = $value['id'];

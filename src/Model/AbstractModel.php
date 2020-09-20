@@ -85,7 +85,7 @@ abstract class WpTesting_Model_AbstractModel extends fActiveRecord
             $schema = fORMSchema::retrieve($class);
             $table  = fORM::tablize($class);
             self::$columnsAsMethodsCache[$class] = array();
-            foreach ($schema->getColumnInfo($table) as $column => $info) {
+            foreach (array_keys($schema->getColumnInfo($table)) as $column) {
                 self::$columnsAsMethodsCache[$class][$column] = 'set' . fGrammar::camelize($column, true);
             }
         }

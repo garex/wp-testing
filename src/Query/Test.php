@@ -101,7 +101,7 @@ class WpTesting_Query_Test extends WpTesting_Query_AbstractQuery
     {
         $result = fRecordSet::build($this->modelName, array(
             'post_type='    => 'wpt_test',
-        ) + $where, $orderBy, $limit = 1);
+        ) + $where, $orderBy, 1);
         return $result->getRecord(0);
     }
 }
