@@ -1,14 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 cd vendor
-rm --force --recursive ruckusing/ruckusing-migrations/tests
-rm --force --recursive nikic/php-parser/grammar
-rm --force --recursive nikic/php-parser/test
-rm --force --recursive nikic/php-parser/test_old
-rm --force --recursive samyk/evercookie/assets/evercookie_sl
-rm --force             samyk/evercookie/assets/evercookie.jar
-rm --force             samyk/evercookie/assets/evercookie.jnlp
-rm --force             samyk/evercookie/assets/*.java
-rm --force --recursive broofa/node-uuid/benchmark
-rm --force --recursive broofa/node-uuid/bin
-rm --force --recursive broofa/node-uuid/test
+rm -rf ruckusing/ruckusing-migrations/tests
+rm -rf nikic/php-parser/grammar
+rm -rf nikic/php-parser/test
+rm -rf nikic/php-parser/test_old
+rm -rf samyk/evercookie/assets/evercookie_sl
+rm -f  samyk/evercookie/assets/evercookie.jar
+rm -f  samyk/evercookie/assets/evercookie.jnlp
+rm -f  samyk/evercookie/assets/*.java
+rm -rf broofa/node-uuid/benchmark
+rm -rf broofa/node-uuid/bin
+rm -rf broofa/node-uuid/test
+rm -rf $(find -iname 'test?' -type d)

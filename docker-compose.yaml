@@ -1,0 +1,55 @@
+version: '3.2'
+
+volumes:
+    var_lib_mysql: {}
+
+services:
+    db:
+        container_name: wpt_db
+        hostname: wpt_db
+        image: mysql:5.7
+        restart: always
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+        volumes:
+            - var_lib_mysql:/var/lib/mysql:rw
+
+    back:
+        container_name: wpt_back
+        domainname: wpt.localhost
+        hostname: wpt.localhost
+        build:
+            context: ./tools/docker/php
+        image: wpt_php:latest
+        restart: always
+        ports:
+            - 80:80
+        depends_on:
+            - db
+        working_dir: /var/www/wordpress
+        command: 'php -S 0.0.0.0:80'
+        volumes:
+            - ./:/var/www:rw
+            - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+
+    starter:
+        container_name: wpt_starter
+        hostname: wpt_starter
+        build:
+            context: ./tools/docker/php
+        links:
+          - "back:wpt.localhost"
+        image: wpt_php:latest
+        restart: on-failure
+        depends_on:
+            - back
+        working_dir: /var/www
+        command: 'tools/docker/starter/run.php'
+        volumes:
+            - ./:/var/www:rw
+            - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
