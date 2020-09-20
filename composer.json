@@ -20,6 +20,16 @@
         , "yahnis-elsts/plugin-update-checker": "^2.0"
     },
     "scripts": {
+        "go": [
+            "docker-compose up -d --build",
+            "tools/docker/waitForContainerSetup.sh",
+            "docker-compose logs -f starter mocha2"
+        ],
+        "rego" : [
+            "docker-compose down --remove-orphans",
+            "docker volume rm $(docker volume ls | grep -o wpt.*) || true",
+            "@go"
+        ],
         "post-install-cmd": [
             "xrstf\\Composer52\\Generator::onPostInstallCmd",
             "tools/deploy/clean-up-vendor.sh",
@@ -35,7 +45,8 @@
         ]
     },
     "config": {
-        "autoloader-suffix": "WpTestingF039FAC91B306FBDD13CF04E7AC62DF9"
+        "autoloader-suffix": "WpTestingF039FAC91B306FBDD13CF04E7AC62DF9",
+        "discard-changes": true
     },
     "autoload": {
         "classmap": [

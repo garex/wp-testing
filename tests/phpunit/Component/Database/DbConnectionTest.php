@@ -26,22 +26,30 @@ abstract class DbConnectionTest extends WpTesting_Tests_TestCase
 
     public function dataForConnected()
     {
-        return array(
-            array('localhost'),
-            array('127.0.0.1'),
-            array(''),
-            array('localhost:3306'),
-            array('127.0.0.1:3306'),
-            array(':3306'),
+        $dbIp = explode(' ', trim(shell_exec('getent hosts db')));
+        $dbIp = reset($dbIp);
+        $dbIp6 = self::ipv4ToIpv6($dbIp);
 
-            array('0000:0000:0000:0000:0000:0000:0000:0001', 'connect'),
-            array('::1', 'connect'),
-            array('[::1]', 'connect'),
+        return array(
+            array('db'),
+            array($dbIp),
+            array('db:3306'),
+            array($dbIp.':3306'),
+
+            array($dbIp6, 'connect'),
+            array('['.$dbIp6.']', 'connect'),
 
             array(':/var/run/mysqld/mysqld.sock'),
-            array('localhost:/var/run/mysqld/mysqld.sock'),
-            array('127.0.0.1:3306:/var/run/mysqld/mysqld.sock'),
-            array('[::1]:3306:/var/run/mysqld/mysqld.sock'),
+            array('db:/var/run/mysqld/mysqld.sock'),
+            array($dbIp.':3306:/var/run/mysqld/mysqld.sock'),
+            array('['.$dbIp6.']:3306:/var/run/mysqld/mysqld.sock'),
         );
+    }
+
+    private static function ipv4ToIpv6($ip)
+    {
+        $bytes = array_map('dechex', explode('.', $ip));
+
+        return vsprintf('0:0:0:0:0:ffff:%02s%02s:%02s%02s', $bytes);
     }
 }

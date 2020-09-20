@@ -1,0 +1,87 @@
+version: '3.2'
+
+volumes:
+    var_lib_mysql: {}
+    var_run_mysqld: {}
+
+services:
+    db:
+        container_name: wpt_db
+        hostname: wpt_db
+        image: mysql:5.7
+        restart: always
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+        volumes:
+            - var_lib_mysql:/var/lib/mysql:rw
+            - var_run_mysqld:/var/run/mysqld:rw
+
+    back:
+        container_name: wpt_back
+        domainname: wpt.docker
+        hostname: wpt.docker
+        build:
+            context: ./tools/docker/php
+        image: garex/wpt_php:latest
+        restart: always
+        ports:
+            - 80:80
+        depends_on:
+            - db
+        working_dir: /var/www/wordpress
+        environment:
+            - DEVELOPER_ID
+        command: 'sh -c "chown -R developer:developer . && php -S 0.0.0.0:80"'
+        volumes:
+            - ./:/var/www:rw
+            - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+
+    starter:
+        container_name: wpt_starter
+        hostname: wpt_starter
+        build:
+            context: ./tools/docker/php
+        links:
+          - "back:wpt.docker"
+        image: garex/wpt_php:latest
+        restart: on-failure
+        depends_on:
+            - back
+        working_dir: /var/www
+        environment:
+            - DEVELOPER_ID
+            - WP_VERSION
+        command: 'tools/docker/starter/run.php'
+        user: developer
+        volumes:
+            - ./:/var/www:rw
+            - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+            - var_run_mysqld:/var/run/mysqld:rw
+
+    mocha2:
+        container_name: wpt_mocha2
+        hostname: wpt_mocha2
+        links:
+          - "back:wpt.docker"
+        image: zenika/alpine-chrome:86-with-node-12
+        restart: always
+        depends_on:
+            - back
+        working_dir: /home/chrome
+        environment:
+            - WP_VERSION
+            - WP_T_DELETE
+            - DISPLAY=unix:0
+            - TRAVIS_CHROME
+            - NO_UPDATE_NOTIFIER=true
+        user: chrome
+        volumes:
+            - ./tools/docker/mocha2:/home/chrome:rw
+            - /tmp/.X11-unix:/tmp/.X11-unix:ro
+        entrypoint: chromium-browser
+        command: [$TRAVIS_CHROME, "--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-port=9222", "--window-size=1960,1080"]

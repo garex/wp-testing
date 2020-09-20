@@ -17,12 +17,12 @@ return array(
     'db' => array(
         'development' => array(
             'type'     => 'mysql',
-            'host'     => 'localhost',
+            'host'     => 'db',
             'port'     => 3306,
             'database' => 'wordpress',
             'directory'=> 'wp_testing',
             'user'     => 'root',
-            'password' => '',
+            'password' => '123456',
             'charset'  => 'utf8',
             'globalPrefix' => $wp0Prefix,
             'blogPrefix'   => $wpPrefix,

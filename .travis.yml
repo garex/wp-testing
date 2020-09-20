@@ -1,121 +1,37 @@
-language: php
+dist: xenial
 
-php:
-  - 5.6
+os: linux
+
+language: shell
 
 env:
-  global:
-    - DB_ENGINE=InnoDB
-  matrix:
-    - WP_VERSION=
-    - WP_VERSION=5.1
-    - WP_VERSION=5.0
-    - WP_VERSION=4.9.9
-    - WP_VERSION=4.8.4
-    - WP_VERSION=4.7.5
-    - WP_VERSION=4.6.1
-    - WP_VERSION=4.5
-    - WP_VERSION=4.4.2
-    - WP_VERSION=4.3.1
-    - WP_VERSION=4.2.4
-    - WP_VERSION=4.1.5
-    - WP_VERSION=4.0.1
-    - WP_VERSION=3.9
-    - WP_VERSION=3.8
-    - WP_VERSION=3.7
-    - WP_VERSION=3.6
-    - WP_VERSION=3.5
-    - WP_VERSION=3.4
-    - WP_VERSION=3.3
-    - WP_VERSION=3.2
+    global:
+        - WP_T_DELETE=1
+        - TRAVIS_CHROME=--headless
+        - DISPLAY=
+    jobs:
+        - WP_VERSION=
 
-matrix:
-  include:
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=5.1
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=4.8.4
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=4.0.1
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=3.9
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=3.5
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=3.3
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=3.2
-    - php: 5.3
-      dist: precise
-      env: WP_VERSION=5.1
-    - php: 5.4
-      env: WP_VERSION=5.1
-    - php: 5.5
-      env: WP_VERSION=5.1
-    - php: 5.6
-      env: DB_ENGINE=MyISAM DB_CHARSET=latin1 WP_UPGRADE=1
-    - php: 7.1
-      env: WP_VERSION=
-    - php: 7.2
-      env: WP_VERSION=
-    - php: 7.3
-      env: WP_VERSION=
-    - php: 7.0
-      env: WP_VERSION= DB_CHARSET=utf8mb4
-    - php: 7.0
-      env: PLUGINS=akismet.3.1.11:jetpack.4.2.2:wordpress-seo.3.3.4:wordfence.6.1.14:contact-form-7.4.5:google-sitemap-generator.4.0.8
-    - php: 7.0
-      env: WP_VERSION= WP_T_MULTI_SERVER=http://wpti.dev WP_T_SERVER=http://after.wpti.dev WP_T_MULTISITE=1
+services:
+    - docker
 
-dist: trusty
-
-addons:
-  hosts:
-    - wpti.dev
-    - before.wpti.dev
-    - after.wpti.dev
-  apt:
-    packages:
-      - nginx-light
-
-before_script:
-  - phpenv config-rm xdebug.ini || true
-  - echo 'always_populate_raw_post_data=-1' > /tmp/custom.ini
-  - phpenv config-add /tmp/custom.ini
-  - tests/integration-environment/composer-update.sh
-  - mysql -e 'create database wordpress;'
-  - cd db
-  - $TRAVIS_BUILD_DIR/vendor/bin/ruckus.php db:migrate
-  - cd $TRAVIS_BUILD_DIR
-  - tests/integration-environment/create.sh
-  - cd $TRAVIS_BUILD_DIR/tests/mocha
-  - nvm install 0.10.36
-  - nvm use 0.10.36
-  - npm install
-  - cd $TRAVIS_BUILD_DIR
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR/tests/mocha/node_modules/.bin/:$TRAVIS_BUILD_DIR/tests/integration-environment/
+before_install:
+#     - docker-compose build --build-arg DEVELOPER_ID=2000
+    - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    - docker-compose pull --quiet
+    - docker-compose up --no-build --detach
+    - tools/docker/waitForContainerSetup.sh
+    - docker-compose logs mocha2
+    - docker-compose logs --follow starter
 
 script:
-  - vendor/bin/phpunit-php52
-  - cd $TRAVIS_BUILD_DIR/tests/mocha && PHANTOMJS_EXECUTABLE=node_modules/.bin/phantomjs mocha-casperjs --timeout=360000
+#    - docker-compose run --rm starter vendor/bin/phpunit-php52
+#    - docker-compose run --rm mocha mocha-casperjs --timeout=360000
+    - docker-compose exec mocha2 npm t
 
-after_script:
-  - cd $TRAVIS_BUILD_DIR
-  - tests/integration-environment/shutdown.sh
-  - head --bytes=1M /tmp/fpm-php.www.log
+addons:
+    hosts:
+        - wpt.docker
 
-cache:
-  directories:
-    - vendor
-    - tests/integration-environment/cache
-    - tests/mocha/node_modules
-
-after_failure:
-  - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-transfer.sh '/tmp/*.screen.png'
+# after_failure:
+#     - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-file-io.sh 'tests/mocha/screens/*.screen.png'
