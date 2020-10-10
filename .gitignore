@@ -1,7 +1,12 @@
+/.buildpath
+/.externalToolBuilders
+/.project
+/.settings
 /composer.lock
 /db/log/*.log
-/db/ruckusing.conf.local.php
+/db/*.local.php
 /db/sql/*.bak
+/docker-compose.override.yaml
 /js/vendor/evercookie
 /js/vendor/uuid-js
 /phpunit.xml
@@ -31,3 +36,4 @@
 /tools/support/*.txt
 /tools/support/wordpress-support-mirror/
 /vendor/
+/wordpress/
