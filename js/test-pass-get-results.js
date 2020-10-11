@@ -1,22 +1,4 @@
-Wpt.initWebshim = function(baseUrl) {
-    if (this.initialized || typeof webshim === 'undefined') {
-        return;
-    }
-    this.initialized = true;
-    webshim.setOptions({
-        waitReady : true,
-        basePath  : baseUrl
-    });
-    webshims.polyfill('es5');
-};
-
-if (Wpt.webshimBaseurl) {
-    Wpt.initWebshim(Wpt.webshimBaseurl);
-}
-
 jQuery(document).ready(function($) {
-	Wpt.initWebshim(Wpt.webshimBaseurl);
-
     // Integrating line diagram
     var wrapper = $('.scales.diagram');
     if(typeof Wpt === 'undefined' || wrapper.length == 0) {
