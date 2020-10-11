@@ -84,6 +84,8 @@ if (file_exists($PLUGIN)) {
     symlink('../../..', $PLUGIN);
 }
 
+log('Remove other plugins');
+echo shell_exec('rm -rf wordpress/wp-content/plugins/akismet wordpress/wp-content/plugins/hello.php');
 
 function log($message) {
     $now = date(DATE_ATOM);
