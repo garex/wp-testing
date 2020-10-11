@@ -20,7 +20,7 @@ Wpt.initWebshim = function(baseUrl) {
             }
         }
     });
-    webshims.polyfill('forms forms-ext es5');
+    webshims.polyfill('forms forms-ext');
 };
 
 if (Wpt.webshimBaseurl) {
