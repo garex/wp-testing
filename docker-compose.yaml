@@ -32,6 +32,8 @@ services:
         depends_on:
             - db
         working_dir: /var/www/wordpress
+        environment:
+            - DEVELOPER_ID
         command: 'php -S 0.0.0.0:80'
         volumes:
             - ./:/var/www:rw
@@ -50,6 +52,7 @@ services:
             - back
         working_dir: /var/www
         environment:
+            - DEVELOPER_ID
             - WP_VERSION
         command: 'tools/docker/starter/run.php'
         user: developer

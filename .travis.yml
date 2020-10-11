@@ -1,11 +1,17 @@
-language: minimal
+dist: xenial
+
+os: linux
+
+language: shell
 
 services:
     - docker
 
+env:
+    - DEVELOPER_ID=2000
+
 before_install:
-    - id
-    - docker-compose up -d
+    - docker-compose up -d --build
     - tools/docker/waitForContainerSetup.sh
     - docker-compose logs -f starter mocha
 

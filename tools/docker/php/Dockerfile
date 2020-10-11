@@ -12,4 +12,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN docker-php-ext-install mysqli
 
-RUN addgroup -S developer -g 1000 && adduser -S -G developer -u 1000 developer
+ARG DEVELOPER_ID=1000
+
+RUN addgroup -S developer -g $DEVELOPER_ID && adduser -S -G developer -u $DEVELOPER_ID developer
