@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "casperjs": "^1.1.0",
-    "mocha": "^2.2.4",
     "casper-chai": "^0.2.1",
+    "casperjs": "^1.1.0",
     "chai": "^2.2.0",
+    "mocha": "^2.2.4",
     "mocha-casperjs": "^0.5.3",
     "mocha-phantomjs": "^3.5.3",
-    "phantomjs": "1.9.8"
+    "phantomjs-prebuilt": "^2.1.16"
   }
 }
