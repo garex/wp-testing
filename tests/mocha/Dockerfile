@@ -14,4 +14,4 @@ RUN npm config set user 0
 
 RUN npm config set unsafe-perm true
 
-RUN npm install -g phantomjs casperjs mocha-casperjs casper-chai
+RUN npm install -g phantomjs-prebuilt@2 casperjs@1 mocha@2 chai@2 mocha-casperjs casper-chai
