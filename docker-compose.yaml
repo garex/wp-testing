@@ -53,3 +53,17 @@ services:
         volumes:
             - ./:/var/www:rw
             - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+
+    mocha:
+        container_name: wpt_mocha
+        hostname: wpt_mocha
+        build:
+            context: ./tests/mocha
+        links:
+          - "back:wpt.localhost"
+        image: wpt_mocha:latest
+        depends_on:
+            - back
+        working_dir: /home/mocha
+        volumes:
+            - ./tests/mocha:/home/mocha:rw
