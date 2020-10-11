@@ -1,5 +1,5 @@
 var env         = require('system').env,
-    server      = env.WP_T_SERVER || 'http://wpti.dev',
+    server      = env.WP_T_SERVER || 'http://wpt.localhost',
     multiServer = env.WP_T_MULTI_SERVER || server,
     screenshots = env.CIRCLE_ARTIFACTS || '/tmp',
     multisite   = env.WP_T_MULTISITE == 1 || false,
@@ -14,7 +14,7 @@ module.exports.server = function () {
 }
 
 module.exports.anotherServer = function (name) {
-    return multiServer.replace('wpti.dev', name + '.wpti.dev')
+    return multiServer.replace('wpt.localhost', name + '.wpt.localhost')
 }
 
 module.exports.screenshots = function () {
