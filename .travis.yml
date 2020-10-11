@@ -4,6 +4,11 @@ os: linux
 
 language: shell
 
+env:
+  matrix:
+#    - WP_VERSION=
+    - WP_VERSION=5.1
+
 services:
     - docker
 
