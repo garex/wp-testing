@@ -34,7 +34,7 @@ services:
         working_dir: /var/www/wordpress
         environment:
             - DEVELOPER_ID
-        command: 'sh -c "php -S 0.0.0.0:80 && chown -R developer:developer ."'
+        command: 'sh -c "chown -R developer:developer . && php -S 0.0.0.0:80"'
         volumes:
             - ./:/var/www:rw
             - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
