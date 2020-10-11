@@ -52,6 +52,7 @@ services:
         environment:
             - WP_VERSION
         command: 'tools/docker/starter/run.php'
+        user: developer
         volumes:
             - ./:/var/www:rw
             - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
