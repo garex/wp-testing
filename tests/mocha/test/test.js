@@ -5,6 +5,12 @@ describe('Test', function() {
         require('../login-as').admin(this)
     })
 
+    it('tests menu should exists', function() {
+        casper.thenOpen(server + '/wp-admin/', function() {
+            '#menu-posts-wpt_test'.should.be.inDOM
+        })
+    })
+
     it('should be created without questions, answers and taxonomies', function() {
         casper.then(function() {
             this.clickLabel('Add New', '*[@id="menu-posts-wpt_test"]/*//a')
@@ -26,12 +32,12 @@ describe('Test', function() {
             }, true)
         })
 
-        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
+        casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function () {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('post_title').to.have.fieldValue('Are You Hot or Not?')
-            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth')
-            expect('wpt_test_page_submit_button_caption').to.have.fieldValue('Gimme Gimme')
+            expect('[name="post_title"]').to.have.fieldValue('Are You Hot or Not?')
+            expect('[name="content"]').to.have.fieldValue('Allow others to rate the vacuum on the Earth')
+            expect('[name="wpt_test_page_submit_button_caption"]').to.have.fieldValue('Gimme Gimme')
         })
     })
 
@@ -76,8 +82,8 @@ describe('Test', function() {
         casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
-            expect('post_title').to.have.fieldValue('Are You Hot or Not?!')
-            expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth!')
+            expect('[name="post_title"]').to.have.fieldValue('Are You Hot or Not?!')
+            expect('[name="content"]').to.have.fieldValue('Allow others to rate the vacuum on the Earth!')
             this.fillSelectors('form#post', {
                 '#wpt_score_value_0_0': '5',
                 '#wpt_score_value_0_1': '25',

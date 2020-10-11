@@ -99,16 +99,20 @@ describe('Taxonomies', function() {
             this.fill('form#addtag', {
                 'tag-name'    : 'Hot',
                 'description' : 'Sun'
-            }, true)
+            }, true).waitForText('Sun')
+        })
 
-            this.waitForText('Sun')
+        casper.then(function() {
+            this.clickLabel('Results', '*[@id="menu-posts-wpt_test"]/*//a')
+        })
+
+        casper.then(function() {
+            'Results'.should.be.inTitle
 
             this.fill('form#addtag', {
                 'tag-name'    : 'Cold',
                 'description' : 'Ice'
-            }, true)
-
-            this.waitForText('Ice')
+            }, true).waitForText('Ice')
         })
     })
 

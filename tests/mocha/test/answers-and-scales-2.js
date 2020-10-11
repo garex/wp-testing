@@ -52,8 +52,8 @@ describe('Answers2 and Scales2', function() {
             'jQuery("td.wpt_score").length'.should.evaluate.to.equal(2)
             'wpt_score_value_0_0.value'.should.evaluate.to.be.equal('3')
             'wpt_score_value_1_0.value'.should.evaluate.to.be.equal('4')
-            'wpt_score_value_0_1.value'.should.evaluate.to.be.equal(null)
-            'wpt_score_value_1_1.value'.should.evaluate.to.be.equal(null)
+            'typeof wpt_score_value_0_1'.should.evaluate.to.be.equal('undefined')
+            'typeof wpt_score_value_1_1'.should.evaluate.to.be.equal('undefined')
         })
     })
 

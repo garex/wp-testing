@@ -2,6 +2,7 @@ describe('Plugin deactivation', function() {
 
     var env         = require('../env'),
         multisite   = env.multisite(),
+        isDelete    = env.isDelete(),
         server      = multisite ? env.multiServer() : env.server()
 
     before(function () {
@@ -29,6 +30,10 @@ describe('Plugin deactivation', function() {
     })
 
     it('should be deleted', function() {
+        if (!isDelete) {
+            this.skip()
+        }
+
         casper.setFilter('page.confirm', function(msg) {
             return true
         });

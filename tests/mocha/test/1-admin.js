@@ -7,6 +7,31 @@ describe('Admin', function() {
         require('../login-as').admin(this)
     })
 
+    describe('Disable visual editing', function() {
+        it('should open own profile', function () {
+            casper.thenOpen(server + '/wp-admin/profile.php')
+            casper.waitForUrl(/profile.php/)
+        })
+
+        it('disable visual checkbox', function () {
+            casper.then(function () {
+                this.evaluate(function() {
+                    jQuery('#rich_editing').attr('checked', true)
+                })
+            })
+        })
+
+        it('should submit form', function() {
+            casper.then(function() {
+                this.evaluate(function() {
+                    jQuery('#submit').click()
+                })
+            })
+
+            casper.waitForUrl(/updated/)
+        })
+    })
+
     describe('Create default user in subscriber role', function() {
 
         it('should fill new user form', function() {
