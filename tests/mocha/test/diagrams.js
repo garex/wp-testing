@@ -1,7 +1,6 @@
 describe('Diagrams', function() {
 
     var server = require('../env').server()
-	var utils = require('utils')
     var testEditUrl =
         testViewUrl =
         resultUrl   = null
@@ -10,9 +9,8 @@ describe('Diagrams', function() {
         require('../login-as').admin(this)
         // casper.viewport(400, 1000)
 
-	    casper.on('page.error', function(msg, trace) {
+	    casper.on('page.error', function(msg) {
 	        this.echo("Error: " + msg, "ERROR")
-			this.echo(utils.dump(trace))
 	    });
     })
 
