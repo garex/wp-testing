@@ -150,12 +150,12 @@ Wpt.form.setupQuestionsAnswered = function($, form) {
         question.find('.answer').each(function () {
             var answer = $(this);
             answer.find('input').on('change', function () {
-                answer.data('isSelected', !!$(this).attr('checked'));
+                answer.data('isSelected', !!$(this).is(':checked'));
                 if (answer.data('isSelected')) {
                     form.trigger('answer_selected.wpt', [answer]);
                     questionAnswersInputs.each(function (i, otherInput) {
                         var $el = $(otherInput);
-                        if ($el.closest('.answer').data('isSelected') != !!$(otherInput).attr('checked')) {
+                        if ($el.closest('.answer').data('isSelected') != !!$(otherInput).is(':checked')) {
                             $el.change();
                         }
                     });
