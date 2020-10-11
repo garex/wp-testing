@@ -4,6 +4,7 @@ services:
     - docker
 
 before_install:
+    - id
     - docker-compose up -d
     - tools/docker/waitForContainerSetup.sh
     - docker-compose logs -f starter mocha
