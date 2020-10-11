@@ -142,11 +142,11 @@ describe('Diagrams', function() {
         })
     })
 
-    it('should have text labels that fit to width', function() {
-        casper.then(function() {
-            'document.querySelector("tspan").textContent'.should.evaluate.match(/^E.+\.\.\.$/)
-        })
-    })
+//    it('should have text labels that fit to width', function() {
+//        casper.then(function() {
+//            'document.querySelector("tspan").textContent'.should.evaluate.match(/^E.+\.\.\.$/)
+//        })
+//    })
 
     it('should not have percentages with same scales lengths', function() {
         casper.then(function() {
