@@ -49,6 +49,8 @@ services:
         depends_on:
             - back
         working_dir: /var/www
+        environment:
+            - WP_VERSION
         command: 'tools/docker/starter/run.php'
         volumes:
             - ./:/var/www:rw
