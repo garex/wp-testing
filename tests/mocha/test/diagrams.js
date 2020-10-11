@@ -104,7 +104,7 @@ describe('Diagrams', function() {
         casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Results'.should.be.textInDOM
             resultUrl = this.getCurrentUrl()
-        })
+        }).waitForSelector('desc')
     }}
 
     it('should open result for test with few scales', openTestResult())
