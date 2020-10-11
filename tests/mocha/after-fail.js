@@ -1,3 +1,15 @@
+casper.on('page.error', function(msg, trace) {
+	this.echo('Error: ' + msg, 'ERROR')
+	var msgStack = [];
+	if (trace && trace.length) {
+		trace.forEach(function(t) {
+			msgStack.push(' -> ' + t.file + ': ' + t.line + (t.function ? ' (in function "' + t.function +'")' : ''))
+		});
+	}
+
+	this.echo(msgStack.join('\n'), 'INFO')
+});
+
 function getFullTitle(from) {
     var title       = [],
         currentTest = from.currentTest

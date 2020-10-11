@@ -7,11 +7,6 @@ describe('Diagrams', function() {
 
     before(function () {
         require('../login-as').admin(this)
-        // casper.viewport(400, 1000)
-
-	    casper.on('page.error', function(msg) {
-	        this.echo("Error: " + msg, "ERROR")
-	    });
     })
 
     afterEach(function() {
