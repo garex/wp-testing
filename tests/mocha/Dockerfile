@@ -14,7 +14,11 @@ RUN npm config set user 0
 
 RUN npm config set unsafe-perm true
 
-RUN npm install -g phantomjs@1.9.18 casperjs mocha chai mocha-casperjs mocha-phantomjs casper-chai
+RUN mkdir /tmp/phantomjs && cd /tmp/phantomjs && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
+
+RUN npm install -g phantomjs@1.9.18
+
+RUN npm install -g casperjs mocha chai mocha-casperjs mocha-phantomjs casper-chai
 
 # RUN npm install -g phantomjs-prebuilt@2 casperjs@1 mocha@2 chai@2 mocha-casperjs casper-chai
 
