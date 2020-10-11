@@ -43,15 +43,15 @@ jQuery(document).ready(function($) {
 });
 
 Wpt.form.initQuestionAnswered = function(form) {
-    form.bind('question_answered_initially.wpt', function(event, question) {
+    form.on('question_answered_initially.wpt', function(event, question) {
         question.addClass('answered');
         question.find('.answer input:first').removeAttr('required').removeAttr('aria-required');
-    }).bind('question_unanswered_initially.wpt', function(event, question) {
+    }).on('question_unanswered_initially.wpt', function(event, question) {
         question.removeClass('answered');
         question.find('.answer input:first').attr('required', 'required').attr('aria-required', 'true');
-    }).bind('answer_selected.wpt', function (event, answer) {
+    }).on('answer_selected.wpt', function (event, answer) {
         answer.addClass('selected');
-    }).bind('answer_unselected.wpt', function (event, answer) {
+    }).on('answer_unselected.wpt', function (event, answer) {
         answer.removeClass('selected');
     });
 };
@@ -79,9 +79,9 @@ Wpt.initEvercookie = function() {
 Wpt.form.setupSubmitDisable = function(form) {
     var button = form.find('.button');
 
-    form.bind('test_filled.wpt', function() {
+    form.on('test_filled.wpt', function() {
         button.removeClass('disabled');
-    }).bind('test_unfilled.wpt', function() {
+    }).on('test_unfilled.wpt', function() {
         button.addClass('disabled');
     });
 };
@@ -90,7 +90,7 @@ Wpt.form.setupResetAnswers = function(form) {
     if (!form.data('settings').isResetAnswersOnBack) {
         return;
     }
-    form.bind('init_answers.wpt', function(event, answersInputs) {
+    form.on('init_answers.wpt', function(event, answersInputs) {
         answersInputs.attr('checked', false);
     });
 };
@@ -104,7 +104,7 @@ Wpt.form.setupProgressMeter = function($, form) {
         separator    = Wpt.titleSeparator,
         template     = Wpt.percentsAnswered;
 
-    $(document).bind('percentage_change.wpt', function(event, percent) {
+    $(document).on('percentage_change.wpt', function(event, percent) {
         document.title = template.replace('{percentage}', percent) +  ' ' + separator + ' ' + initialTitle;
     });
 };
@@ -149,13 +149,13 @@ Wpt.form.setupQuestionsAnswered = function($, form) {
         var questionAnswersInputs = question.find('.answer input');
         question.find('.answer').each(function () {
             var answer = $(this);
-            answer.find('input').bind('change', function () {
-                answer.data('isSelected', !!$(this).attr('checked'));
+            answer.find('input').on('change', function () {
+                answer.data('isSelected', !!$(this).is(':checked'));
                 if (answer.data('isSelected')) {
                     form.trigger('answer_selected.wpt', [answer]);
                     questionAnswersInputs.each(function (i, otherInput) {
                         var $el = $(otherInput);
-                        if ($el.closest('.answer').data('isSelected') != !!$(otherInput).attr('checked')) {
+                        if ($el.closest('.answer').data('isSelected') != !!$(otherInput).is(':checked')) {
                             $el.change();
                         }
                     });
@@ -191,8 +191,8 @@ Wpt.form.setupQuestionsAnswered = function($, form) {
             form.trigger('test_unfilled.wpt');
         }
     };
-    form.bind('question_answered_initially.wpt',   calculateAnswersPercentage)
-        .bind('question_unanswered_initially.wpt', calculateAnswersPercentage);
+    form.on('question_answered_initially.wpt',   calculateAnswersPercentage)
+        .on('question_unanswered_initially.wpt', calculateAnswersPercentage);
 
     if (questionsAnswered > 0) {
         calculateAnswersPercentage({}, form.find('.question:first'), questionsAnswered, questionsTotal, questionsMinFilled);

@@ -20,7 +20,8 @@ class WpTesting_Doer_TestPasserAction_GetResults extends WpTesting_Doer_TestPass
         }
         $this
             ->enqueueScript('render-text-with-more', array('detect-javascript', 'jquery'))
-            ->enqueueScript('test-pass-get-results', array('jquery'))
+            ->addJsData('webshimBaseurl', $this->wp->getPluginUrl('js/vendor/afarkas/webshim/shims/'))
+            ->enqueueScript('test-pass-get-results', array('jquery', 'webshim'))
         ;
         $this->setupScalesDiagram($this->test, $this->passing);
         $this->wp

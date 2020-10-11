@@ -30,7 +30,7 @@
         scrollable.addClass('wpt_scroll');
 
         toggleButton
-            .bind('click', toggleMaximize)
+            .on('click', toggleMaximize)
             .attr('type', 'button').addClass('handlediv button-link qt-dfw')
             .insertBefore(maximizable.find('.handlediv:first'))
         ;
