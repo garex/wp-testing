@@ -69,5 +69,6 @@ services:
             - back
         working_dir: /home/mocha
         command: 'npm i'
+        user: developer
         volumes:
             - ./tests/mocha:/home/mocha:rw
