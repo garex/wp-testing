@@ -1,7 +1,7 @@
 {
   "dependencies": {
-	"casperjs": "^1.1.0",
-	"mocha": "^2.2.4",
+    "casperjs": "^1.1.0",
+    "mocha": "^2.2.4",
     "casper-chai": "^0.2.1",
     "chai": "^2.2.0",
     "mocha-casperjs": "^0.5.3",
