@@ -104,7 +104,7 @@ describe('Diagrams', function() {
         casper.waitForUrl(/test.+[a-z0-9]+[a-f0-9]{32}/, function() {
             'Results'.should.be.textInDOM
             resultUrl = this.getCurrentUrl()
-        }).waitForSelector('desc')
+        })
     }}
 
     it('should open result for test with few scales', openTestResult())
@@ -125,7 +125,7 @@ describe('Diagrams', function() {
     it('should have diagram after enable', function() {
         casper.thenOpen(resultUrl, function() {
             '.scales.diagram'.should.be.inDOM
-        })
+        }).waitForSelector('desc')
     })
 
     it('should have nice diagram`s height', function() {
@@ -164,7 +164,7 @@ describe('Diagrams', function() {
     it('should open result for test with different scales lengths', openTestResult())
 
     it('should have percentages when different scales lengths', function() {
-        casper.then(function() {
+	    casper.waitForSelector('desc').then(function() {
             '80%'.should.be.textInDOM
         })
     })
