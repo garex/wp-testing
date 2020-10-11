@@ -173,7 +173,7 @@ describe('Diagrams', function() {
         casper.then(function() {
             'Neuroticism or emotionality is characterized by high levels of negative affect'.should.not.be.textInDOM
             this.mouse.move('.scales.diagram')
-            '5 out of 5'.should.be.textInDOM
+            ' out of '.should.be.textInDOM
         })
     })
 })
