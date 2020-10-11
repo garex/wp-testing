@@ -6,7 +6,7 @@ services:
 before_install:
     - docker-compose up -d
     - tools/docker/waitForContainerSetup.sh
-    - docker-compose logs -f starter
+    - docker-compose logs -f starter mocha
 
 script:
     - docker-compose run --rm mocha mocha-casperjs --timeout=360000 --bail
