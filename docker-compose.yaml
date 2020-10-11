@@ -67,7 +67,6 @@ services:
         depends_on:
             - back
         working_dir: /home/mocha
-        user: node
         command: 'npm i'
         volumes:
             - ./tests/mocha:/home/mocha:rw

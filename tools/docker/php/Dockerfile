@@ -11,3 +11,7 @@ RUN apk add --no-cache git
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN docker-php-ext-install mysqli
+
+RUN addgroup -S developer -g 1000 && adduser -S -G developer -u 1000 developer
+
+USER developer
