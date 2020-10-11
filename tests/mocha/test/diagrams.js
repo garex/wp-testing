@@ -170,7 +170,7 @@ describe('Diagrams', function() {
     })
 
     it('should show annotations on mouse hover', function() {
-        casper.then(function() {
+        casper.wait(1000, function() {
             'Neuroticism or emotionality is characterized by high levels of negative affect'.should.not.be.textInDOM
             this.mouse.move('.scales.diagram')
             ' out of '.should.be.textInDOM
