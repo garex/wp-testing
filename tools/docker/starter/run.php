@@ -81,7 +81,7 @@ if (file_exists($PLUGIN)) {
         exit(2);
     }
 } else {
-    symlink('../../..', $PLUGIN);
+    symlink('/var/www', $PLUGIN);
 }
 
 log('Remove other plugins');
