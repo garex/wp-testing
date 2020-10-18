@@ -1,8 +1,16 @@
+require('../after-fail').screenshots()
+
 describe('Test', function() {
 
     var server = require('../env').server()
     before(function () {
         require('../login-as').admin(this)
+    })
+
+    it('tests menu should exists', function() {
+        casper.thenOpen(server + '/wp-admin/', function() {
+            '#menu-posts-wpt_test'.should.be.inDOM
+        })
     })
 
     it('should be created without questions, answers and taxonomies', function() {
@@ -29,11 +37,14 @@ describe('Test', function() {
         casper.waitWhileSelector('form#post.wpt-ajax-save').waitForUrl(/message/, function() {
             'Fatal'.should.not.be.textInDOM
             '#message'.should.be.inDOM
+            this.waitForText('Are You Hot or Not?')
             expect('post_title').to.have.fieldValue('Are You Hot or Not?')
             expect('content').to.have.fieldValue('Allow others to rate the vacuum on the Earth')
             expect('wpt_test_page_submit_button_caption').to.have.fieldValue('Gimme Gimme')
         })
     })
+
+    return
 
     it('should have page options just below "Publish" metabox', function() {
         casper.then(function() {
