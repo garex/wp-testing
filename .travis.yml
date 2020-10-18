@@ -6,8 +6,7 @@ language: shell
 
 env:
   matrix:
-#    - WP_VERSION=
-    - WP_VERSION=5.1
+    - WP_VERSION=
 
 services:
     - docker

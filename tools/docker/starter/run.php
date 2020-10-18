@@ -9,7 +9,7 @@ define('ROOT', realpath(__DIR__.'/../../../'));
 
 $DB_ENGINE = getenv('DB_ENGINE') ?: 'InnoDB';
 $DB_CHARSET = getenv('DB_CHARSET') ?: 'utf8';
-$WP_VERSION = getenv('WP_VERSION') ?: 'latest';
+$WP_VERSION = getenv('WP_VERSION') ?: '5.1';
 $WP_T_MULTI_SERVER = getenv('WP_T_MULTI_SERVER') ?: 'http://wpt.localhost';
 $PLUGIN = ROOT.'/wordpress/wp-content/plugins/wp-testing';
 
