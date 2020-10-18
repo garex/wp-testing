@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 casper.on('page.initialized', function (page) {
 	page.evaluate(function() {
 		if (!Function.prototype.bind) (function(){
@@ -96,6 +98,21 @@ function nextScreenIndex() {
 
 var path        = require('./env').screenshots(),
     screenIndex = 0;
+
+module.exports.innerHtml = function () {
+	afterEach('Save innerHtml', function () {
+        if (this.currentTest.state != 'failed') {
+            return
+        }
+
+		var fullName = path + '/' + nextScreenIndex() + '-' + normalizeFilename(getFullTitle(this)) + '.html',
+		var innerHtml = casper.evaluate(function() {
+			return document.body.innerHTML;
+		});
+
+		fs.writeFile(fullName, innerHtml)
+    })
+}
 
 module.exports.screenshots = function () {
     casper.options.viewportSize = {width: 1280, height: 850}
