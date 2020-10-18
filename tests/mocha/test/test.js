@@ -44,8 +44,6 @@ describe('Test', function() {
         })
     })
 
-    return
-
     it('should have page options just below "Publish" metabox', function() {
         casper.then(function() {
             var boxIds = this.evaluate(function() {
