@@ -59,6 +59,12 @@ casper.on('page.error', function(msg, trace) {
     if ("TypeError: 'undefined' is not a function (evaluating 'n.contains(r)')" == msg) {
         return;
     }
+    if ("TypeError: 'undefined' is not an object (evaluating 'r.createObjectURL')" == msg) {
+        return;
+    }
+    if ("TypeError: '[object BlobConstructor]' is not a constructor (evaluating 'new Blob(e,{type:\"multipart/form-data; boundary=\"+c})')" == msg) {
+        return;
+    }
     this.echo('Error: ' + msg, 'ERROR')
     var msgStack = [];
     if (trace && trace.length) {
