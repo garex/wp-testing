@@ -71,7 +71,7 @@ casper.on('page.error', function(msg, trace) {
 });
 
 casper.on('remote.message', function(msg) {
-    if (/(JQMIGRATE)/.test(msg)) {
+    if (/(JQMIGRATE|main not allowed inside of)/.test(msg)) {
         return;
     }
     this.echo('Console: ' + msg);
