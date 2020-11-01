@@ -56,7 +56,7 @@ casper.on('page.initialized', function (page) {
 });
 
 casper.on('page.error', function(msg, trace) {
-    if ("TypeError: 'undefined' is not a function (evaluating 'd1.contains(d2)')" == msg) {
+    if ("TypeError: 'undefined' is not a function (evaluating 'n.contains(r)')" == msg) {
         return;
     }
     this.echo('Error: ' + msg, 'ERROR')
