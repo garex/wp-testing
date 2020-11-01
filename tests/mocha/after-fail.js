@@ -56,16 +56,26 @@ casper.on('page.initialized', function (page) {
 });
 
 casper.on('page.error', function(msg, trace) {
-	this.echo('Error: ' + msg, 'ERROR')
-	var msgStack = [];
-	if (trace && trace.length) {
-		trace.forEach(function(t) {
-			msgStack.push(' -> ' + t.file + ': ' + t.line + (t.function ? ' (in function "' + t.function +'")' : ''))
-		});
-	}
+    if ("TypeError: 'undefined' is not a function (evaluating 'd1.contains(d2)')" == msg) {
+        return;
+    }
+    this.echo('Error: ' + msg, 'ERROR')
+    var msgStack = [];
+    if (trace && trace.length) {
+        trace.forEach(function(t) {
+            msgStack.push(' -> ' + t.file + ': ' + t.line + (t.function ? ' (in function "' + t.function +'")' : ''))
+        });
+    }
 
-	this.echo(msgStack.join('\n'), 'INFO')
+    this.echo(msgStack.join('\n'), 'INFO')
 });
+
+casper.on('remote.message', function(msg) {
+    if (/(JQMIGRATE)/.match(msg)) {
+        return;
+    }
+    this.echo('Console: ' + msg);
+})
 
 function getFullTitle(from) {
     var title       = [],
