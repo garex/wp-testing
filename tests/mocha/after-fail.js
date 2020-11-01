@@ -52,6 +52,12 @@ casper.on('page.initialized', function (page) {
 				return !!(el.compareDocumentPosition(this) & el.DOCUMENT_POSITION_CONTAINS);
 			};
 		}
+
+        if (!URL.createObjectURL) {
+            URL.createObjectURL = function () {
+                return "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+            };
+        }
 	});
 });
 
