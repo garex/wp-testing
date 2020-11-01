@@ -33,7 +33,7 @@ describe('Questions', function() {
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('To Be?')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('Not to Be?')
-            'wpt_question_title_2.value'.should.evaluate.to.be.equal(null)
+            'typeof wpt_question_title_2'.should.evaluate.to.be.equal('undefined')
         })
     })
 
@@ -63,7 +63,7 @@ describe('Questions', function() {
             '#message'.should.be.inDOM
             'wpt_question_title_0.value'.should.evaluate.to.be.equal('Not to Be???')
             'wpt_question_title_1.value'.should.evaluate.to.be.equal('But Why?')
-            'wpt_question_title_2.value'.should.evaluate.to.be.equal(null)
+            'typeof wpt_question_title_2'.should.evaluate.to.be.equal('undefined')
         })
     })
 
@@ -91,7 +91,7 @@ describe('Questions', function() {
             'wpt_question_title_2.value'.should.evaluate.to.be.equal('Cool.')
             'wpt_question_title_3.value'.should.evaluate.to.be.equal('"Quick"')
             'wpt_question_title_4.value'.should.evaluate.to.be.equal('Question')
-            'wpt_question_title_5.value'.should.evaluate.to.be.equal(null)
+            'typeof wpt_question_title_5'.should.evaluate.to.be.equal('undefined')
         })
     })
 
