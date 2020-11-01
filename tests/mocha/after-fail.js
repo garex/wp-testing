@@ -71,7 +71,7 @@ casper.on('page.error', function(msg, trace) {
 });
 
 casper.on('remote.message', function(msg) {
-    if (/(JQMIGRATE)/.match(msg)) {
+    if (/(JQMIGRATE)/.test(msg)) {
         return;
     }
     this.echo('Console: ' + msg);
