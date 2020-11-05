@@ -36,3 +36,11 @@ module.exports.isWp5Already = function () {
 
     return toVersion(wpVersion) >= toVersion('5.0.0');
 }
+
+module.exports.isWp53Already = function () {
+    if (wpVersion == 'latest') {
+        return true;
+    }
+
+    return toVersion(wpVersion) >= toVersion('5.3.0');
+}

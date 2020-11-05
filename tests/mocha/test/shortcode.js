@@ -2,7 +2,8 @@ describe('Shortcode', function() {
 
     var env = require('../env'),
         server = env.server(),
-        isWp5 = env.isWp5Already()
+        isWp5 = env.isWp5Already(),
+        isWp53 = env.isWp53Already()
 
     before(function () {
         require('../login-as').admin(this)
@@ -39,15 +40,15 @@ describe('Shortcode', function() {
          } else {
              casper.waitForSelector('#post-title-0', function() {
                  this.sendKeys('#post-title-0', 'Hi World!', {reset: true});
-                 this.evaluate(function(shortcode) {
-                     wp.data.dispatch('core/editor').resetBlocks([])
-                     wp.data.dispatch('core/editor').insertBlocks(wp.blocks.createBlock('core/paragraph', {
+                 this.evaluate(function(shortcode, coreEditor) {
+                     wp.data.dispatch(coreEditor).resetBlocks([])
+                     wp.data.dispatch(coreEditor).insertBlocks(wp.blocks.createBlock('core/paragraph', {
                          content: 'Hello World!'
                      }));
-                     wp.data.dispatch('core/editor').insertBlocks(wp.blocks.createBlock('core/shortcode', {
+                     wp.data.dispatch(coreEditor).insertBlocks(wp.blocks.createBlock('core/shortcode', {
                          text: shortcode
                      }));
-                 }, shortcode)
+                 }, shortcode, isWp53 ? 'core/block-editor' : 'core/editor')
 
                  this.click('.editor-post-publish-button')
              })

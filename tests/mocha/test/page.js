@@ -2,7 +2,8 @@ describe('Page', function() {
 
     var env = require('../env'),
         server = env.server(),
-        isWp5 = env.isWp5Already()
+        isWp5 = env.isWp5Already(),
+        isWp53 = env.isWp53Already()
 
     before(function () {
         require('../login-as').admin(this)
@@ -42,9 +43,9 @@ describe('Page', function() {
         } else {
             casper.waitForSelector('#post-title-0', function() {
                 this.sendKeys('#post-title-0', 'Simple Page That Not Disappear!');
-                this.evaluate(function() {
-                    wp.data.dispatch('core/editor').insertBlocks(wp.blocks.createBlock('core/paragraph', {content: 'Because some plugin have bug somedays ago.'}));
-                })
+                this.evaluate(function(coreEditor) {
+                    wp.data.dispatch(coreEditor).insertBlocks(wp.blocks.createBlock('core/paragraph', {content: 'Because some plugin have bug somedays ago.'}));
+                }, isWp53 ? 'core/block-editor' : 'core/editor')
 
                 this.click('.editor-post-publish-panel__toggle')
                 this.click('.editor-post-publish-button')
