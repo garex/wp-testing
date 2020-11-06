@@ -14,6 +14,12 @@ describe('Page', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Page'.should.be.inTitle
 
+            if (isWp53) {
+                this.evaluate(function () {
+                    // https://wordpress.stackexchange.com/questions/334559/deactivate-gutenberg-tips-forever-not-gutenberg
+                    wp.data.dispatch('core/nux').disableTips()
+                })
+            }
             if (isWp5) {
                 return;
             }
