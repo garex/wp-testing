@@ -1,5 +1,3 @@
-// require('../after-fail').screenshots()
-
 describe('Diagrams', function() {
 
     var server = require('../env').server()
@@ -164,10 +162,8 @@ describe('Diagrams', function() {
 
     it('should open result for test with different scales lengths', openTestResult())
 
-	resultUrl = 'http://wpt.localhost/?wpt_test=diagram-with-different-length-scales-uses-percents&wpt_passing_slug=34bcda1a76c667cf3662f228220ad6351';
-
     it('should have percentages when different scales lengths', function() {
-		casper.open(resultUrl).waitForUrl(/test/)
+        casper.open(resultUrl).waitForUrl(/test/)
 
 	    casper.waitForSelector('desc').then(function() {
             '80%'.should.be.textInDOM
@@ -175,10 +171,14 @@ describe('Diagrams', function() {
     })
 
     it('should show annotations on mouse hover', function() {
+        casper.evaluate(function () {
+            // Fix svg {height: auto}
+            jQuery('.scales.diagram svg').css('height', '100%')
+        })
+
         casper.wait(1000, function() {
             'Neuroticism or emotionality is characterized by high levels of negative affect'.should.not.be.textInDOM
             this.mouse.move('.scales.diagram', 50, 50)
-        }).wait(250, function () {
             ' out of '.should.be.textInDOM
         })
     })
