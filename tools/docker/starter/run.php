@@ -76,14 +76,10 @@ while($row = $result->fetch_object()){
 
 log('Installing plugin');
 
-if (file_exists($PLUGIN)) {
-    if (!is_link($PLUGIN)) {
-        log("Plugin $PLUGIN is not link!");
-        exit(2);
-    }
-} else {
-    symlink('/var/www', $PLUGIN);
-}
+echo shell_exec('rm -rf '.$PLUGIN);
+echo shell_exec('mkdir --parents '.$PLUGIN);
+echo shell_exec('git checkout-index --all --force --prefix='.$PLUGIN.'/');
+echo shell_exec('cd '.$PLUGIN.' && ln -s composer.lock.dist composer.lock && composer install --no-dev --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist');
 
 log('Remove other plugins');
 echo shell_exec('rm -rf wordpress/wp-content/plugins/akismet wordpress/wp-content/plugins/hello.php');
