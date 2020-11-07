@@ -81,11 +81,11 @@ describe('Page', function() {
         })
     })
 
-//    it('should be searchable', function() {
-//        casper.thenOpen(server + '/?s=Disappear', function() {
-//            'Fatal'.should.not.be.textInDOM
-//            'Sorry'.should.not.be.textInDOM
-//            'Simple Page That Not Disappear!'.should.be.textInDOM
-//        })
-//    })
+    it('should be searchable', function() {
+        casper.thenOpen(server + '/?s=Disappear', function() {
+            'Fatal'.should.not.be.textInDOM
+            'Sorry'.should.not.be.textInDOM
+            'Simple Page That Not Disappear!'.should.be.textInDOM
+        })
+    })
 })
