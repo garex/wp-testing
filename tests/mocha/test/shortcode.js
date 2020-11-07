@@ -53,7 +53,7 @@ describe('Shortcode', function() {
                  this.click('.editor-post-publish-button')
              })
 
-             casper.waitForSelector('.components-notice__content').thenOpen(server + '/?p=1', thenOnPage1)
+             casper.waitForSelector('.components-notice__content,.components-snackbar__content').thenOpen(server + '/?p=1', thenOnPage1)
          }
     }}
 
