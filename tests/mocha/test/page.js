@@ -57,6 +57,13 @@ describe('Page', function() {
                 this.click('.editor-post-publish-button')
             })
 
+            if (isWp53) {
+                casper.waitForSelector('.is-opened .post-publish-panel__postpublish-buttons').evaluate(function () {
+                    document.location = jQuery('.is-opened .post-publish-panel__postpublish-buttons a:first').attr('href')
+                })
+
+                return
+            }
             casper.waitForSelector('.components-button.components-notice__action.is-link', function() {
                 'Fatal'.should.not.be.textInDOM
                 '#message,.components-notice__content'.should.be.inDOM
