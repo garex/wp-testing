@@ -15,7 +15,7 @@ $PLUGIN = ROOT.'/wordpress/wp-content/plugins/wp-testing';
 
 log('Installing vendors');
 symlink('composer.lock.dist', 'composer.lock');
-echo shell_exec('composer install --no-dev --ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist');
+echo shell_exec('composer install --ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist');
 
 // echo shell_exec('cd db && ../vendor/bin/ruckus.php db:migrate');
 
