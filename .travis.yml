@@ -5,8 +5,10 @@ os: linux
 language: shell
 
 env:
-  matrix:
-    - WP_VERSION=
+    global:
+        - WP_T_DELETE=1
+    matrix:
+        - WP_VERSION=
 
 services:
     - docker
