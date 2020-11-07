@@ -25,4 +25,4 @@ addons:
         - wpt.localhost
 
 after_failure:
-    - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-transfer.sh 'tests/mocha/screens/*.screen.png'
+    - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-file-io.sh 'tests/mocha/screens/*.screen.png'
