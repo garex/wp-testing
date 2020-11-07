@@ -20,6 +20,7 @@ before_install:
     - docker-compose logs -f starter mocha
 
 script:
+    - docker-compose run --rm starter vendor/bin/phpunit-php52
     - docker-compose run --rm mocha mocha-casperjs --timeout=360000
 
 addons:
