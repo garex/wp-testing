@@ -18,9 +18,6 @@ before_install:
     - docker-compose up -d
     - tools/docker/waitForContainerSetup.sh
     - docker-compose logs -f starter mocha
-    - ls -la vendor
-    - docker-compose run --rm starter php -v
-    - docker-compose run --rm starter composer --version
 
 script:
     - docker-compose run --rm mocha mocha-casperjs --timeout=360000
