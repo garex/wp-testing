@@ -2,6 +2,7 @@ version: '3.2'
 
 volumes:
     var_lib_mysql: {}
+    var_run_mysqld: {}
 
 services:
     db:
@@ -18,6 +19,7 @@ services:
             MYSQL_PASSWORD: wordpress
         volumes:
             - var_lib_mysql:/var/lib/mysql:rw
+            - var_run_mysqld:/var/run/mysqld:rw
 
     back:
         container_name: wpt_back
@@ -59,6 +61,7 @@ services:
         volumes:
             - ./:/var/www:rw
             - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+            - var_run_mysqld:/var/run/mysqld:rw
 
     mocha:
         container_name: wpt_mocha
