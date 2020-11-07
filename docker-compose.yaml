@@ -73,6 +73,7 @@ services:
         working_dir: /home/mocha
         environment:
             - WP_VERSION
+            - WP_T_DELETE
         command: 'npm i'
         user: developer
         volumes:
