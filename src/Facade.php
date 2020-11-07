@@ -371,7 +371,7 @@ class WpTesting_Facade implements WpTesting_Addon_IFacade, WpTesting_Facade_ITes
         $isModern         = version_compare(PHP_VERSION, '5.3', '>=');
         $composerFullName = null;
         if ($isModern) {
-            foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir()))) as $path) {
+            foreach (array($this->wp->getAbsPath(), dirname(dirname($this->wp->getPluginDir())), dirname(dirname(__FILE__))) as $path) {
                 $candidateFile = $path . '/composer.json';
                 if (file_exists($candidateFile)) {
                     $composerFullName = $candidateFile;
