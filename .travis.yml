@@ -19,7 +19,7 @@ before_install:
     - ls -la vendor
 
 script:
-    - docker-compose run --rm mocha mocha-casperjs --timeout=360000 --bail
+    - docker-compose run --rm mocha mocha-casperjs --timeout=360000
 
 addons:
     hosts:
