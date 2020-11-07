@@ -3,6 +3,7 @@ var env         = require('system').env,
     multiServer = env.WP_T_MULTI_SERVER || server,
     screenshots = env.CIRCLE_ARTIFACTS || '/home/mocha/screens',
     multisite   = env.WP_T_MULTISITE == 1 || false,
+    isDelete    = env.WP_T_DELETE == 1 || false,
     wpVersion   = env.WP_VERSION || 'latest'
 
 module.exports.multiServer = function () {
@@ -23,6 +24,10 @@ module.exports.screenshots = function () {
 
 module.exports.multisite = function () {
     return multisite
+}
+
+module.exports.isDelete = function () {
+    return isDelete
 }
 
 function toVersion(version) {
