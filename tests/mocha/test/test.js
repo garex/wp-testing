@@ -1,6 +1,3 @@
-require('../after-fail').screenshots()
-require('../after-fail').innerHtml()
-
 describe('Test', function() {
 
     var server = require('../env').server()
