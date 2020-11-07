@@ -10,7 +10,7 @@ ENV TZ=Asia/Krasnoyarsk
 
 RUN apk add --no-cache git
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.10
 
 RUN docker-php-ext-install mysqli
 
