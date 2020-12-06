@@ -17,7 +17,10 @@ describe('Page', function() {
             if (isWp53) {
                 this.evaluate(function () {
                     // https://wordpress.stackexchange.com/questions/334559/deactivate-gutenberg-tips-forever-not-gutenberg
-                    wp.data.dispatch('core/nux').disableTips()
+                    var nux = wp.data.dispatch('core/nux');
+                    if (null !== nux) {
+                        nux.disableTips()
+                    }
                 })
             }
             if (isWp5) {
