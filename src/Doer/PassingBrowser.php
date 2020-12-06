@@ -23,7 +23,7 @@ abstract class WpTesting_Doer_PassingBrowser extends WpTesting_Doer_AbstractDoer
         $this->addMenuPages();
         $this->wp
             ->addAction('load-' . $this->screenHook, array($this, 'loadPassingsPage'))
-            ->addFilter('manage_' . $this->screenHook . '_columns', array($this, 'managePassingsPageColumns'))
+            ->addFilter('load-' . $this->screenHook, array($this, 'managePassingsPageColumns'))
         ;
         $this->enqueueStyle('admin');
         return $this;
