@@ -23,7 +23,7 @@
         "go": [
             "docker-compose up -d --build",
             "tools/docker/waitForContainerSetup.sh",
-			"docker-compose logs -f starter mocha"
+            "docker-compose logs -f starter mocha"
         ],
         "rego" : [
             "docker-compose down --remove-orphans",
@@ -46,7 +46,7 @@
     },
     "config": {
         "autoloader-suffix": "WpTestingF039FAC91B306FBDD13CF04E7AC62DF9",
-		"discard-changes": true
+        "discard-changes": true
     },
     "autoload": {
         "classmap": [
