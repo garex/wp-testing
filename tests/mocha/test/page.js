@@ -21,8 +21,7 @@ describe('Page', function() {
                         wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
                     }
                 })
-            }
-            if (isWp53) {
+            } else if (isWp53) {
                 this.evaluate(function () {
                     // https://wordpress.stackexchange.com/questions/334559/deactivate-gutenberg-tips-forever-not-gutenberg
                     wp.data.dispatch('core/nux').disableTips();
