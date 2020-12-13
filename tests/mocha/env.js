@@ -43,9 +43,13 @@ module.exports.isWp5Already = function () {
 }
 
 module.exports.isWp53Already = function () {
+    return toVersion(wpVersion) >= toVersion('5.3.0');
+}
+
+module.exports.isWp54Already = function () {
     if (wpVersion == 'latest') {
         return true;
     }
 
-    return toVersion(wpVersion) >= toVersion('5.3.0');
+    return toVersion(wpVersion) >= toVersion('5.4.0');
 }

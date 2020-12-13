@@ -3,7 +3,8 @@ describe('Page', function() {
     var env = require('../env'),
         server = env.server(),
         isWp5 = env.isWp5Already(),
-        isWp53 = env.isWp53Already()
+        isWp53 = env.isWp53Already(),
+        isWp54 = env.isWp54Already()
 
     before(function () {
         require('../login-as').admin(this)
@@ -14,13 +15,17 @@ describe('Page', function() {
             'Fatal'.should.not.be.textInDOM
             'Add New Page'.should.be.inTitle
 
+            if (isWp54) {
+                this.evaluate(function () {
+                    if (wp.data.select('core/edit-post').isFeatureActive('welcomeGuide')) {
+                        wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
+                    }
+                })
+            }
             if (isWp53) {
                 this.evaluate(function () {
                     // https://wordpress.stackexchange.com/questions/334559/deactivate-gutenberg-tips-forever-not-gutenberg
-                    var nux = wp.data.dispatch('core/nux');
-                    if (null !== nux) {
-                        nux.disableTips()
-                    }
+                    wp.data.dispatch('core/nux').disableTips();
                 })
             }
             if (isWp5) {
