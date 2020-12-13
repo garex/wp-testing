@@ -1,3 +1,5 @@
+require('../after-fail').screenshots()
+
 describe('Page', function() {
 
     var env = require('../env'),
