@@ -131,11 +131,12 @@ module.exports.innerHtml = function () {
 }
 
 module.exports.screenshots = function () {
+    casper.options.viewportSize = {width: 1280, height: 850}
+
     afterEach('Take a screenshot', function () {
         if (this.currentTest.state != 'failed') {
             return
         }
-        casper.options.viewportSize = {width: 1280, height: 850}
 
         module.exports.screenshot(getFullTitle(this));
     })
