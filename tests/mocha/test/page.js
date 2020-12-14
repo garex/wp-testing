@@ -8,10 +8,6 @@ describe('Page', function() {
 
     before(function () {
         require('../login-as').admin(this)
-        casper.options.viewportSize = {}
-    })
-    after(function () {
-        casper.options.viewportSize = {width: 1280, height: 850}
     })
 
     it('should not disappear when plugin activated', function() {
