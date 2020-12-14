@@ -16,8 +16,7 @@ describe('Admin', function() {
         it('disable visual checkbox', function () {
             casper.then(function () {
                 this.evaluate(function() {
-                    $=jQuery
-                    $('#rich_editing').attr('checked', true)
+                    jQuery('#rich_editing').attr('checked', true)
                 })
             })
         })
@@ -25,7 +24,7 @@ describe('Admin', function() {
         it('should submit form', function() {
             casper.then(function() {
                 this.evaluate(function() {
-                    $('#your-profile').submit()
+                    jQuery('#your-profile').submit()
                 })
             })
 
