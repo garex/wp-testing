@@ -24,7 +24,7 @@ describe('Admin', function() {
         it('should submit form', function() {
             casper.then(function() {
                 this.evaluate(function() {
-                    jQuery('#your-profile').submit()
+                    jQuery('#submit').click()
                 })
             })
 
