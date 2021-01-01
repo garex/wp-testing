@@ -89,7 +89,7 @@ services:
         links:
           - "back:wpt.docker"
         image: zenika/alpine-chrome:86
-        command: [chromium-browser, "--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage"]
+        command: [chromium-browser, "--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--window-size=1280,720"]
         ports:
             - 9222:9222
         depends_on:
