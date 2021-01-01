@@ -23,8 +23,8 @@ services:
 
     back:
         container_name: wpt_back
-        domainname: wpt.localhost
-        hostname: wpt.localhost
+        domainname: wpt.docker
+        hostname: wpt.docker
         build:
             context: ./tools/docker/php
         image: wpt_php:latest
@@ -47,7 +47,7 @@ services:
         build:
             context: ./tools/docker/php
         links:
-          - "back:wpt.localhost"
+          - "back:wpt.docker"
         image: wpt_php:latest
         restart: on-failure
         depends_on:
@@ -69,7 +69,7 @@ services:
         build:
             context: ./tests/mocha
         links:
-          - "back:wpt.localhost"
+          - "back:wpt.docker"
         image: wpt_mocha:latest
         depends_on:
             - back
@@ -87,7 +87,7 @@ services:
         container_name: wpt_chrome
         hostname: wpt_chrome
         links:
-          - "back:wpt.localhost"
+          - "back:wpt.docker"
         image: zenika/alpine-chrome:86
         command: [chromium-browser, "--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage"]
         ports:
