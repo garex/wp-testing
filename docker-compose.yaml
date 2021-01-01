@@ -82,3 +82,15 @@ services:
         volumes:
             - ./tests/mocha:/home/mocha:rw
             - /tmp:/tmp:rw
+
+    chrome:
+        container_name: wpt_chrome
+        hostname: wpt_chrome
+        links:
+          - "back:wpt.localhost"
+        image: zenika/alpine-chrome:86
+        command: [chromium-browser, "--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage"]
+        ports:
+            - 9222:9222
+        depends_on:
+            - back
