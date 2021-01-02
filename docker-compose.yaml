@@ -105,12 +105,12 @@ services:
         image: wpt_mocha2:latest
         depends_on:
             - back
-        working_dir: /home/node
+        working_dir: /home/developer
         environment:
             - WP_VERSION
             - WP_T_DELETE
         command: 'npm ci'
-        user: node
+        user: developer
         volumes:
-            - ./tools/docker/mocha2:/home/node:rw
+            - ./tools/docker/mocha2:/home/developer:rw
             - /tmp:/tmp:rw
