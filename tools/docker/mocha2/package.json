@@ -23,6 +23,9 @@
             "ecmaVersion": 12
         }
     },
+    "mocha": {
+        "timeout": 360000
+    },
     "dependencies": {
         "chai": "^4.2.0",
         "mocha": "^8.2.1",
