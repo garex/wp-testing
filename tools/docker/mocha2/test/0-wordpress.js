@@ -19,8 +19,6 @@ describe('WordPress', () => {
       await page.close();
     });
 
-    [1, 2, 3].indexOf(4).should.be.equal(-1);
-
     const page = await browser.newPage();
 
     await page.goto('http://wpt.docker/');
