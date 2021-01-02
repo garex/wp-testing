@@ -23,7 +23,7 @@
         "go": [
             "docker-compose up -d --build",
             "tools/docker/waitForContainerSetup.sh",
-            "docker-compose logs -f starter mocha"
+            "docker-compose logs -f starter mocha2"
         ],
         "rego" : [
             "docker-compose down --remove-orphans",
