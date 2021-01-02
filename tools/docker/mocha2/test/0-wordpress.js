@@ -1,7 +1,7 @@
-var assert = require('assert');
+require('chai').should()
 
 describe('WordPress', function() {
     it('should be installed', function() {
-        assert.equal([1, 2, 3].indexOf(4), -1);
-    });
-});
+        [1, 2, 3].indexOf(4).should.be.equal(-1)
+    })
+})
