@@ -4,7 +4,7 @@
   "description": "End to end tests for wp-testing WordPress plugin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "a@ustimen.co",
   "license": "MIT",
