@@ -24,7 +24,8 @@
         }
     },
     "mocha": {
-        "timeout": 360000
+        "timeout": 360000,
+        "slow": 5000
     },
     "dependencies": {
         "@types/puppeteer-core": "^5.4.0",
