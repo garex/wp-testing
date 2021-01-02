@@ -15,9 +15,9 @@ services:
 
 before_install:
 #     - docker-compose build --build-arg DEVELOPER_ID=2000
-    - docker-compose up -d
+    - docker-compose up --detach --quiet-pull
     - tools/docker/waitForContainerSetup.sh
-    - docker-compose logs -f starter mocha2
+    - docker-compose logs --follow starter mocha2
 
 script:
 #    - docker-compose run --rm starter vendor/bin/phpunit-php52
