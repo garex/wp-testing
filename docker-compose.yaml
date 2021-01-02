@@ -112,5 +112,5 @@ services:
         command: 'npm ci'
         user: developer
         volumes:
-            - ./tools/docker/mocha2/test:/home/developer/test:r
+            - ./tools/docker/mocha2/test:/home/developer/test:ro
             - /tmp:/tmp:rw
