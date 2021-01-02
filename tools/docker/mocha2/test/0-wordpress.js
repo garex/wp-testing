@@ -14,10 +14,7 @@ describe('WordPress', () => {
       },
     });
 
-    const pages = await browser.pages();
-    pages.forEach(async (page) => {
-      await page.close();
-    });
+    (await browser.pages()).forEach(async (page) => { await page.close(); });
 
     const page = await browser.newPage();
 
