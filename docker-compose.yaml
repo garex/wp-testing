@@ -63,25 +63,25 @@ services:
             - ./tools/docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
             - var_run_mysqld:/var/run/mysqld:rw
 
-    mocha:
-        container_name: wpt_mocha
-        hostname: wpt_mocha
-        build:
-            context: ./tests/mocha
-        links:
-          - "back:wpt.docker"
-        image: wpt_mocha:latest
-        depends_on:
-            - back
-        working_dir: /home/mocha
-        environment:
-            - WP_VERSION
-            - WP_T_DELETE
-        command: 'npm i'
-        user: developer
-        volumes:
-            - ./tests/mocha:/home/mocha:rw
-            - /tmp:/tmp:rw
+#     mocha:
+#         container_name: wpt_mocha
+#         hostname: wpt_mocha
+#         build:
+#             context: ./tests/mocha
+#         links:
+#           - "back:wpt.docker"
+#         image: wpt_mocha:latest
+#         depends_on:
+#             - back
+#         working_dir: /home/mocha
+#         environment:
+#             - WP_VERSION
+#             - WP_T_DELETE
+#         command: 'npm i'
+#         user: developer
+#         volumes:
+#             - ./tests/mocha:/home/mocha:rw
+#             - /tmp:/tmp:rw
 
     chrome:
         container_name: wpt_chrome
@@ -112,5 +112,5 @@ services:
         command: 'npm ci'
         user: developer
         volumes:
-            - ./tools/docker/mocha2:/home/developer:rw
+            - ./tools/docker/mocha2/test:/home/developer/test:r
             - /tmp:/tmp:rw
