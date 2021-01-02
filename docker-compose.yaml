@@ -98,6 +98,8 @@ services:
     mocha2:
         container_name: wpt_mocha2
         hostname: wpt_mocha2
+        links:
+          - "chrome:chrome.localhost"
         build:
             context: ./tools/docker/mocha2
         image: wpt_mocha2:latest
