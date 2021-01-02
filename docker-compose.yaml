@@ -27,7 +27,7 @@ services:
         hostname: wpt.docker
         build:
             context: ./tools/docker/php
-        image: wpt_php:latest
+        image: garex/wpt_php:latest
         restart: always
         ports:
             - 80:80
@@ -48,7 +48,7 @@ services:
             context: ./tools/docker/php
         links:
           - "back:wpt.docker"
-        image: wpt_php:latest
+        image: garex/wpt_php:latest
         restart: on-failure
         depends_on:
             - back
@@ -102,7 +102,7 @@ services:
           - "chrome:chrome.localhost"
         build:
             context: ./tools/docker/mocha2
-        image: wpt_mocha2:latest
+        image: garex/wpt_mocha2:latest
         depends_on:
             - back
         working_dir: /home/developer
