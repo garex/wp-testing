@@ -17,15 +17,16 @@ before_install:
     - docker-compose build --build-arg DEVELOPER_ID=2000
     - docker-compose up -d
     - tools/docker/waitForContainerSetup.sh
-    - docker-compose logs -f starter mocha
+    - docker-compose logs -f starter mocha2
 
 script:
     - docker-compose run --rm starter vendor/bin/phpunit-php52
-    - docker-compose run --rm mocha mocha-casperjs --timeout=360000
+#    - docker-compose run --rm mocha mocha-casperjs --timeout=360000
+    - docker-compose run --rm mocha2 npm t
 
 addons:
     hosts:
         - wpt.docker
 
-after_failure:
-    - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-file-io.sh 'tests/mocha/screens/*.screen.png'
+# after_failure:
+#     - $TRAVIS_BUILD_DIR/tests/mocha/debug-to-file-io.sh 'tests/mocha/screens/*.screen.png'
