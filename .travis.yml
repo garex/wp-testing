@@ -15,8 +15,7 @@ services:
 
 before_install:
 #     - docker-compose build --build-arg DEVELOPER_ID=2000
-    - docker-compose pull --quiet
-    - docker-compose up --no-build --detach
+    - docker-compose up --no-build --detach --quiet-pull
     - tools/docker/waitForContainerSetup.sh
     - docker-compose logs --follow starter mocha2
 
