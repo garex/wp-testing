@@ -1,0 +1,45 @@
+{
+    "name": "wpt-e2e",
+    "version": "1.0.0",
+    "description": "End to end tests for wp-testing WordPress plugin",
+    "main": "index.js",
+    "scripts": {
+        "pretest": "eslint test --fix",
+        "test": "mocha"
+    },
+    "author": "a@ustimen.co",
+    "license": "MIT",
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "commonjs": true,
+            "es2021": true,
+            "mocha": true
+        },
+        "extends": [
+            "airbnb-base",
+            "plugin:chai-friendly/recommended"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 12
+        },
+        "plugins": [
+          "chai-friendly"
+        ]
+    },
+    "mocha": {
+        "timeout": 360000,
+        "slow": 5000,
+        "require": "test/_.js"
+    },
+    "dependencies": {
+        "@types/puppeteer-core": "^5.4.0",
+        "chai": "^4.2.0",
+        "eslint": "^7.17.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-chai-friendly": "^0.6.0",
+        "eslint-plugin-import": "^2.22.1",
+        "mocha": "^8.2.1",
+        "puppeteer-core": "^5.5.0"
+    }
+}
