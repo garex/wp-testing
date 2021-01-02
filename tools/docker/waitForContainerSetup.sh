@@ -28,3 +28,4 @@ function waitUntilServiceIsReady() {
 
 waitUntilServiceIsReady back "Development Server started"
 waitUntilServiceIsReady db "port: 3306  MySQL Community Server (GPL)"
+waitUntilServiceIsReady chrome "DevTools listening"
