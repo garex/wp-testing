@@ -6,4 +6,4 @@ WORKDIR /home/developer
 
 ARG DEVELOPER_ID
 
-RUN userdel node && addgroup --gid $DEVELOPER_ID developer && adduser --uid $DEVELOPER_ID --gid $DEVELOPER_ID --disabled-password --gecos "" developer
+RUN deluser --remove-home node && addgroup --gid $DEVELOPER_ID developer && adduser -u $DEVELOPER_ID -G developer -S -g "" developer
