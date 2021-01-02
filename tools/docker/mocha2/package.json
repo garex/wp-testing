@@ -1,0 +1,16 @@
+{
+  "name": "wpt-e2e",
+  "version": "1.0.0",
+  "description": "End to end tests for wp-testing WordPress plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "a@ustimen.co",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "puppeteer-core": "^5.5.0"
+  }
+}
