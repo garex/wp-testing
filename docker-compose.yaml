@@ -25,8 +25,8 @@ services:
         container_name: wpt_back
         domainname: wpt.docker
         hostname: wpt.docker
-#         build:
-#             context: ./tools/docker/php
+        build:
+            context: ./tools/docker/php
         image: garex/wpt_php:latest
         restart: always
         ports:
@@ -44,8 +44,8 @@ services:
     starter:
         container_name: wpt_starter
         hostname: wpt_starter
-#         build:
-#             context: ./tools/docker/php
+        build:
+            context: ./tools/docker/php
         links:
           - "back:wpt.docker"
         image: garex/wpt_php:latest
@@ -100,8 +100,8 @@ services:
         hostname: wpt_mocha2
         links:
           - "chrome:chrome.localhost"
-#         build:
-#             context: ./tools/docker/mocha2
+        build:
+            context: ./tools/docker/mocha2
         image: garex/wpt_mocha2:latest
         depends_on:
             - back
