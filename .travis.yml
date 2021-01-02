@@ -7,7 +7,7 @@ language: shell
 env:
     global:
         - WP_T_DELETE=1
-    matrix:
+    jobs:
         - WP_VERSION=
 
 services:
