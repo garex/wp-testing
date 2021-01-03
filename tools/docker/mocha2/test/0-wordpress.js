@@ -1,22 +1,10 @@
 require('chai').should();
-const puppeteer = require('puppeteer-core');
+
+const _ = require('./_');
 
 describe('WordPress', () => {
   it('should be installed', async () => {
-    const browser = await puppeteer.connect({
-      browserURL: 'http://chrome.localhost:9222/',
-      defaultViewport: {
-        width: 1280,
-        height: 720,
-        hasTouch: false,
-        isMobile: false,
-        isLandscape: true,
-      },
-    });
-
-    (await browser.pages()).forEach(async (page) => { await page.close(); });
-
-    const page = await browser.newPage();
+    const page = await _.page();
 
     await page.goto('http://wpt.docker/');
 
@@ -25,6 +13,6 @@ describe('WordPress', () => {
     title.should.contain('wpti');
 
     page.close();
-    page.browser.disconnect();
+    page.browser().disconnect();
   });
 });
