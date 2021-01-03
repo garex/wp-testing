@@ -25,7 +25,6 @@ describe('WordPress', () => {
     title.should.contain('wpti');
 
     page.close();
-
-    browser.disconnect();
+    page.browser.disconnect();
   });
 });
