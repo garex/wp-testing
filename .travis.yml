@@ -15,6 +15,7 @@ services:
 
 before_install:
 #     - docker-compose build --build-arg DEVELOPER_ID=2000
+    - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME password-stdin
     - docker-compose pull --quiet
     - docker-compose up --no-build --detach
     - tools/docker/waitForContainerSetup.sh
