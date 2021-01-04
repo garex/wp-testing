@@ -12,7 +12,7 @@ describe('WordPress', () => {
 
     title.should.contain('wpti');
 
-    page.close();
+    //    page.close();
     page.browser().disconnect();
   });
 });

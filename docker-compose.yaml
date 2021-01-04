@@ -83,15 +83,23 @@ services:
 #             - ./tests/mocha:/home/mocha:rw
 #             - /tmp:/tmp:rw
 
+    # docker-compose exec --user=root chrome sh -c 'apk add socat && socat tcp-listen:9223,fork,reuseaddr TCP:0.0.0.0:9222'
+
     chrome:
         container_name: wpt_chrome
         hostname: wpt_chrome
         links:
           - "back:wpt.docker"
         image: zenika/alpine-chrome:86
-        command: [chromium-browser, "--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--window-size=1280,720"]
+        environment:
+            - DISPLAY=unix$DISPLAY
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix:ro
+        entrypoint: chromium-browser
+        command: ["--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-pipe", "--window-size=1960,1080"]
         ports:
             - 9222:9222
+            - 9223:9223
         depends_on:
             - back
 
