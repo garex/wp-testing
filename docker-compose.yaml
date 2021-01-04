@@ -69,6 +69,7 @@ services:
         links:
           - "back:wpt.docker"
         image: zenika/alpine-chrome:86-with-node-12
+        restart: always
         depends_on:
             - back
         working_dir: /home/chrome
