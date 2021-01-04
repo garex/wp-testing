@@ -4,15 +4,8 @@ const puppeteer = require('puppeteer-core');
 
 module.exports.page = async () => {
   const browser = await puppeteer.connect({
-    browserURL: 'http://chrome.localhost:9223/',
+    browserURL: 'http://localhost:9222/',
     defaultViewport: null,
-    //    defaultViewport: {
-    //      width: 1920,
-    //      height: 1080,
-    //      hasTouch: false,
-    //      isMobile: false,
-    //      isLandscape: true,
-    //    },
     slowMo: 10,
   });
 
