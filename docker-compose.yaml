@@ -85,40 +85,40 @@ services:
 
     # docker-compose exec --user=root chrome sh -c 'apk add socat && socat tcp-listen:9223,fork,reuseaddr TCP:0.0.0.0:9222'
 
-    chrome:
-        container_name: wpt_chrome
-        hostname: wpt_chrome
-        links:
-          - "back:wpt.docker"
-        image: zenika/alpine-chrome:86
-        environment:
-            - DISPLAY=unix$DISPLAY
-        volumes:
-            - /tmp/.X11-unix:/tmp/.X11-unix:ro
-        entrypoint: chromium-browser
-        command: ["--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-pipe", "--window-size=1960,1080"]
-        ports:
-            - 9222:9222
-            - 9223:9223
-        depends_on:
-            - back
-
-    mocha2:
-        container_name: wpt_mocha2
-        hostname: wpt_mocha2
-        links:
-          - "chrome:chrome.localhost"
-        build:
-            context: ./tools/docker/mocha2
-        image: garex/wpt_mocha2:latest
-        depends_on:
-            - back
-        working_dir: /home/developer
-        environment:
-            - WP_VERSION
-            - WP_T_DELETE
-        command: 'npm ci'
-        user: developer
-        volumes:
-            - ./tools/docker/mocha2/test:/home/developer/test:rw
-            - /tmp:/tmp:rw
+#     chrome:
+#         container_name: wpt_chrome
+#         hostname: wpt_chrome
+#         links:
+#           - "back:wpt.docker"
+#         image: zenika/alpine-chrome:86
+#         environment:
+#             - DISPLAY=unix$DISPLAY
+#         volumes:
+#             - /tmp/.X11-unix:/tmp/.X11-unix:ro
+#         entrypoint: chromium-browser
+#         command: ["--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-pipe", "--window-size=1960,1080"]
+#         ports:
+#             - 9222:9222
+#             - 9223:9223
+#         depends_on:
+#             - back
+#
+#     mocha2:
+#         container_name: wpt_mocha2
+#         hostname: wpt_mocha2
+#         links:
+#           - "chrome:chrome.localhost"
+#         build:
+#             context: ./tools/docker/mocha2
+#         image: garex/wpt_mocha2:latest
+#         depends_on:
+#             - back
+#         working_dir: /home/developer
+#         environment:
+#             - WP_VERSION
+#             - WP_T_DELETE
+#         command: 'npm ci'
+#         user: developer
+#         volumes:
+#             - ./tools/docker/mocha2/test:/home/developer/test:rw
+#             - /tmp:/tmp:rw
