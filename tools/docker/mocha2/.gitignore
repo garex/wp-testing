@@ -1,4 +1,5 @@
 /.ash_history
+/.cache
 /.config
 /.npm
-/node_modules
+/.pki

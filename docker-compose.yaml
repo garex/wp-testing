@@ -71,14 +71,14 @@ services:
         image: zenika/alpine-chrome:86-with-node-12
         depends_on:
             - back
-        working_dir: /home/node
+        working_dir: /home/chrome
         environment:
             - WP_VERSION
             - WP_T_DELETE
             - DISPLAY=unix$DISPLAY
-        user: node
+        user: chrome
         volumes:
-            - ./tools/docker/mocha2:/home/node:rw
+            - ./tools/docker/mocha2:/home/chrome:rw
             - /tmp/.X11-unix:/tmp/.X11-unix:ro
         entrypoint: chromium-browser
         command: ["--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-pipe", "--window-size=1960,1080"]
