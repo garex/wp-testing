@@ -3,16 +3,19 @@ require('chai').should();
 const _ = require('./_');
 
 describe('WordPress', () => {
-  it('should be installed', async () => {
+  it('should be installed', async (done) => {
     const page = await _.page();
 
-    await page.goto('http://wpt.docker/');
+    try {
+      await page.goto('http://wpt.docker/');
 
-    const title = await page.title();
+      const title = await page.title();
 
-    title.should.contain('wpti');
-
-    //    page.close();
-    page.browser().disconnect();
+      title.should.contain('wpti');
+    } catch (e) {
+      done(e);
+    } finally {
+      page.browser().disconnect();
+    }
   });
 });
