@@ -77,6 +77,7 @@ services:
             - WP_VERSION
             - WP_T_DELETE
 #             - DISPLAY=unix$DISPLAY
+            - TRAVIS_CHROME
         user: chrome
         volumes:
             - ./tools/docker/mocha2:/home/chrome:rw
