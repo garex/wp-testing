@@ -82,4 +82,4 @@ services:
             - ./tools/docker/mocha2:/home/chrome:rw
             - /tmp/.X11-unix:/tmp/.X11-unix:ro
         entrypoint: chromium-browser
-        command: ["--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-port=9222", "--window-size=1960,1080"]
+        command: [$TRAVIS_CHROME, "--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-port=9222", "--window-size=1960,1080"]
