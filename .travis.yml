@@ -24,7 +24,7 @@ before_install:
 script:
 #    - docker-compose run --rm starter vendor/bin/phpunit-php52
 #    - docker-compose run --rm mocha mocha-casperjs --timeout=360000
-    - docker-compose run --rm --no-deps mocha2 npm t
+    - docker-compose exec mocha2 npm t
 
 addons:
     hosts:
