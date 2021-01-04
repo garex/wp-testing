@@ -10,7 +10,6 @@ describe('Plugin activation', () => {
 
     (await page.content()).should.contains('Plugins');
 
-    //    page.close();
     page.browser().disconnect();
   });
 });
