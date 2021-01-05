@@ -16,7 +16,6 @@ services:
 
 before_install:
 #     - docker-compose build --build-arg DEVELOPER_ID=2000
-    - chown -R 1000:1000 ./tools/docker/mocha2
     - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     - docker-compose pull --quiet
     - docker-compose up --no-build --detach
