@@ -20,8 +20,8 @@ before_install:
     - docker-compose pull --quiet
     - docker-compose up --no-build --detach
     - tools/docker/waitForContainerSetup.sh
-    - docker-compose logs starter
     - docker-compose logs mocha2
+    - docker-compose logs --follow starter
 
 script:
 #    - docker-compose run --rm starter vendor/bin/phpunit-php52
