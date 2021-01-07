@@ -14,7 +14,7 @@ describe('Plugin activation', () => {
     (await page.$eval('body', (body) => body.innerText)).should.contains('Wp-testing');
   });
 
-  it('should activate main plugin and others', async function shouldActivateMainPlugin() {
+  it('should activate main plugin and others', async function () { // eslint-disable-line func-names
     const deactivateSelector = '#wp-testing .deactivate a,[data-slug=wp-testing] .deactivate a';
     if ((await page.$(deactivateSelector)) !== null) {
       this.skip();
