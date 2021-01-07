@@ -1,5 +1,4 @@
 require('chai').should();
-
 const _ = require('./_');
 
 describe('Plugin activation', () => {

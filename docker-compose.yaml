@@ -82,7 +82,7 @@ services:
         volumes:
             - ./tools/docker/mocha2/node_modules:/home/chrome/node_modules:ro
             - ./tools/docker/mocha2/package.json:/home/chrome/package.json:ro
-            - ./tools/docker/mocha2/test:/home/chrome/test:ro
+            - ./tools/docker/mocha2/test:/home/chrome/test:rw
             - /tmp/.X11-unix:/tmp/.X11-unix:ro
         entrypoint: chromium-browser
         command: [$TRAVIS_CHROME, "--no-sandbox", "--disable-gpu", "--use-gl=swiftshader", "--disable-software-rasterizer", "--disable-dev-shm-usage", "--remote-debugging-port=9222", "--window-size=1960,1080"]

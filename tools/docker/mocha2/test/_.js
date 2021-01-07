@@ -1,9 +1,16 @@
 require('chai').should();
-
 const puppeteer = require('puppeteer-core');
 
+let browser;
+
+module.exports.mochaHooks = {
+  afterEach: () => {
+    browser.disconnect();
+  },
+};
+
 module.exports.page = async () => {
-  const browser = await puppeteer.connect({
+  browser = await puppeteer.connect({
     browserURL: 'http://localhost:9222/',
     defaultViewport: null,
     slowMo: 10,
