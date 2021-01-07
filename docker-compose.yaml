@@ -78,6 +78,7 @@ services:
             - WP_T_DELETE
             - DISPLAY=unix:1
             - TRAVIS_CHROME
+            - NO_UPDATE_NOTIFIER=true
         user: chrome
         volumes:
             - ./tools/docker/mocha2:/home/chrome:rw
