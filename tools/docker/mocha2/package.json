@@ -17,11 +17,15 @@
             "mocha": true
         },
         "extends": [
-            "airbnb-base"
+            "airbnb-base",
+            "plugin:chai-friendly/recommended"
         ],
         "parserOptions": {
             "ecmaVersion": 12
-        }
+        },
+        "plugins": [
+          "chai-friendly"
+        ]
     },
     "mocha": {
         "timeout": 360000,
