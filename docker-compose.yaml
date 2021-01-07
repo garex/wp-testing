@@ -76,7 +76,7 @@ services:
         environment:
             - WP_VERSION
             - WP_T_DELETE
-            - DISPLAY=unix$DISPLAY
+            - DISPLAY=unix:1
             - TRAVIS_CHROME
         user: chrome
         volumes:

@@ -8,6 +8,7 @@ env:
     global:
         - WP_T_DELETE=1
         - TRAVIS_CHROME=--headless
+        - DISPLAY=
     jobs:
         - WP_VERSION=
 
