@@ -32,4 +32,20 @@ describe('Plugin activation', () => {
     const el = await page.$(deactivateSelector);
     el.should.be.not.null;
   });
+
+  it('should have paid links', async () => {
+    (await page.$eval('body', (body) => body.innerText)).should.contains('Paid add-ons | Paid support');
+  });
+
+  it('should have paid addons link in menu', async () => {
+    const el = await page.$('a[href$=wpt_feedback_paid_addons]');
+    el.should.be.not.null;
+  });
+
+  it('should opens remote url', async () => {
+    await Promise.all([
+      page.goto('http://wpt.docker/wp-admin/edit.php?post_type=wpt_test&page=wpt_feedback_paid_addons', { waitUntil: 'domcontentloaded' }),
+      page.waitForRequest((response) => response.url().includes('spreadsheets')),
+    ]);
+  });
 });
