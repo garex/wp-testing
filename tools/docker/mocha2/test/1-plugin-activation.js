@@ -7,8 +7,6 @@ describe('Plugin activation', () => {
 
     await page.goto('http://wpt.docker/wp-admin/plugins.php');
 
-    (await page.content()).should.contains('Plugins');
-
-    page.browser().disconnect();
+    (await page.$eval('body', (body) => body.innerText)).should.contains('Wp-testing');
   });
 });
