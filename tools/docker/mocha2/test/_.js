@@ -27,7 +27,10 @@ module.exports.page = async () => {
 module.exports.adminPage = async () => {
   const page = await this.page();
 
-  await page.goto('http://wpt.docker/wp-login.php');
+  await Promise.all([
+    page.goto('http://wpt.docker/wp-login.php'),
+    page.waitForNavigation(),
+  ]);
 
   await page.click('input[name=log]', { clickCount: 3 });
   await page.type('input[name=log]', 'wpti');
