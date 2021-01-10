@@ -28,57 +28,52 @@ describe('Admin', () => {
     ]);
   });
 
-  describe('Create default user in subscriber role', () => {
-    let isExists = false;
+  it('should create default user in subscriber role', async function () { // eslint-disable-line func-names
+    // check if user exists already
+    await Promise.all([
+      page.goto('http://wpt.docker/wp-admin/users.php'),
+      page.waitForNavigation(),
+    ]);
 
-    it('should check if user exists already', async () => {
-      await Promise.all([
-        page.goto('http://wpt.docker/wp-admin/users.php'),
-        page.waitForNavigation(),
-      ]);
+    const isExists = (await page.$eval('body', (body) => body.innerText)).includes('user@wpti.dev');
+    if (isExists) {
+      this.skip();
+    }
 
-      isExists = (await page.$eval('body', (body) => body.innerText)).includes('user@wpti.dev');
-    });
+    // should fill new user form
+    if (isExists) {
+      this.skip();
+    }
+    await Promise.all([
+      page.goto('http://wpt.docker/wp-admin/user-new.php'),
+      page.waitForNavigation(),
+    ]);
 
-    it('should fill new user form', async function () { // eslint-disable-line func-names
-      if (isExists) {
-        this.skip();
+    await page.evaluate(() => {
+      /* eslint-disable no-undef */
+      user_login.value = 'user';
+      email.value = 'user@wpti.dev';
+      pass1.value = 'Fx2T8fGG7WPQ2vV';
+      pass1.setAttribute('data-pw', pass1.value);
+      const pass1Text = document.querySelector('#pass1-text');
+      if (pass1Text !== null) {
+        pass1Text.value = pass1.value;
       }
-      await Promise.all([
-        page.goto('http://wpt.docker/wp-admin/user-new.php'),
-        page.waitForNavigation(),
-      ]);
-
-      await page.evaluate(() => {
-        /* eslint-disable no-undef */
-        user_login.value = 'user';
-        email.value = 'user@wpti.dev';
-        pass1.value = 'Fx2T8fGG7WPQ2vV';
-        pass1.setAttribute('data-pw', pass1.value);
-        const pass1Text = document.querySelector('#pass1-text');
-        if (pass1Text !== null) {
-          pass1Text.value = pass1.value;
-        }
-        pass2.value = pass1.value;
-        if (typeof noconfirmation !== 'undefined') {
-          noconfirmation.checked = true;
-        }
-        /* eslint-enable no-undef */
-      });
-    });
-
-    it('should submit form and check that user added', async function () { // eslint-disable-line func-names
-      if (isExists) {
-        this.skip();
+      pass2.value = pass1.value;
+      if (typeof noconfirmation !== 'undefined') {
+        noconfirmation.checked = true;
       }
-
-      await Promise.all([
-        page.click('input[type=submit]'),
-        page.waitForNavigation(),
-        page.waitForResponse((response) => response.url().includes('update')),
-      ]);
-
-      (await page.$eval('body', (body) => body.innerText)).should.contains('user@wpti.dev');
+      /* eslint-enable no-undef */
     });
+
+    // should submit form and check that user added
+
+    await Promise.all([
+      page.click('input[type=submit]'),
+      page.waitForNavigation(),
+      page.waitForResponse((response) => response.url().includes('update')),
+    ]);
+
+    (await page.$eval('body', (body) => body.innerText)).should.contains('user@wpti.dev');
   });
 });
