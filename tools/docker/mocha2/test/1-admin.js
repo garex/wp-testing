@@ -28,54 +28,57 @@ describe('Admin', () => {
     ]);
   });
 
-//  describe('Create default user in subscriber role', () => {
-//    it('should fill new user form', () => {
-//      casper.thenOpen(`${server}/wp-admin/user-new.php`, function () {
-//        this.evaluate(() => {
-//          $ = jQuery;
-//          $('#user_login').val('user');
-//          $('#email').val('user@wpti.dev');
-//          $('#pass1').data('pw', 'user').val('user');
-//          $('#pass1-text').val('user');
-//          $('#pass2').val('user');
-//          $('#noconfirmation').attr('checked', true);
-//        });
-//      });
-//    });
-//
-//    it('should submit form and check that user added', () => {
-//      casper.then(function () {
-//        this.evaluate(() => {
-//          $('#createuser').submit();
-//        });
-//      });
-//
-//      casper.waitForUrl(/update/, () => {
-//        if (multisite) {
-//          'User has been added to your site.'.should.be.textInDOM;
-//        } else {
-//          'user@wpti.dev'.should.be.textInDOM;
-//        }
-//      });
-//    });
-//
-//    if (!multisite) {
-//      return;
-//    }
-//
-//    it('should change user password to known one', () => {
-//      casper.thenOpen(`${server}/wp-admin/user-edit.php?user_id=2`, function () {
-//        this.evaluate(() => {
-//          $ = jQuery;
-//          $('#pass1').val('user');
-//          $('#pass2').val('user');
-//          $('#submit').click();
-//        });
-//      });
-//
-//      casper.waitForUrl(/updated/, () => {
-//        'User updated.'.should.be.textInDOM;
-//      });
-//    });
-//  });
+  describe('Create default user in subscriber role', () => {
+    let isExists = false;
+
+    it('should check if user exists already', async () => {
+      await Promise.all([
+        page.goto('http://wpt.docker/wp-admin/users.php'),
+        page.waitForNavigation(),
+      ]);
+
+      isExists = (await page.$eval('body', (body) => body.innerText)).includes('user@wpti.dev');
+    });
+
+    it('should fill new user form', async function () { // eslint-disable-line func-names
+      if (isExists) {
+        this.skip();
+      }
+      await Promise.all([
+        page.goto('http://wpt.docker/wp-admin/user-new.php'),
+        page.waitForNavigation(),
+      ]);
+
+      await page.evaluate(() => {
+        /* eslint-disable no-undef */
+        user_login.value = 'user';
+        email.value = 'user@wpti.dev';
+        pass1.value = 'Fx2T8fGG7WPQ2vV';
+        pass1.setAttribute('data-pw', pass1.value);
+        const pass1Text = document.querySelector('#pass1-text');
+        if (pass1Text !== null) {
+          pass1Text.value = pass1.value;
+        }
+        pass2.value = pass1.value;
+        if (typeof noconfirmation !== 'undefined') {
+          noconfirmation.checked = true;
+        }
+        /* eslint-enable no-undef */
+      });
+    });
+
+    it('should submit form and check that user added', async function () { // eslint-disable-line func-names
+      if (isExists) {
+        this.skip();
+      }
+
+      await Promise.all([
+        page.click('input[type=submit]'),
+        page.waitForNavigation(),
+        page.waitForResponse((response) => response.url().includes('update')),
+      ]);
+
+      (await page.$eval('body', (body) => body.innerText)).should.contains('user@wpti.dev');
+    });
+  });
 });
