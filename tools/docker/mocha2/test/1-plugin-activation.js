@@ -9,7 +9,10 @@ describe('Plugin activation', () => {
   it('should open plugins page', async () => {
     page = await _.adminPage();
 
-    await page.goto('http://wpt.docker/wp-admin/plugins.php');
+    await Promise.all([
+      page.goto('http://wpt.docker/wp-admin/plugins.php'),
+      page.waitForNavigation(),
+    ]);
 
     (await page.$eval('body', (body) => body.innerText)).should.contains('Wp-testing');
   });
