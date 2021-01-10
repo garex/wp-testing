@@ -32,9 +32,13 @@ module.exports.adminPage = async () => {
     page.waitForNavigation(),
   ]);
 
-  await page.click('input[name=log]', { clickCount: 3 });
-  await page.type('input[name=log]', 'wpti');
-  await page.type('input[name=pwd]', 'wpti');
+  await page.evaluate(() => {
+    document.querySelector('input[name=log]').value = 'wpti';
+    const password = document.querySelector('input[name=pwd]');
+    password.setAttribute('id', 'passQwerty'); // To disable manual empty from WP`s jQuery
+    password.value = 'wpti';
+  });
+
   await Promise.all([
     page.click('input[type=submit]'),
     page.waitForNavigation(),
