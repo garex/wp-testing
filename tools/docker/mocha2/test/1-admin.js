@@ -66,14 +66,14 @@ describe('Admin', () => {
       /* eslint-enable no-undef */
     });
 
-    // should submit form and check that user added
-
+    // should submit form
     await Promise.all([
       page.click('input[type=submit]'),
       page.waitForNavigation(),
       page.waitForResponse((response) => response.url().includes('update')),
     ]);
 
+    // and check that user added
     (await page.$eval('body', (body) => body.innerText)).should.contains('user@wpti.dev');
   });
 });
