@@ -105,12 +105,12 @@ module.exports.innerHtml = function () {
             return
         }
 
-		var fullName = path + '/' + nextScreenIndex() + '-' + normalizeFilename(getFullTitle(this)) + '.html',
+		var fullName = path + '/' + nextScreenIndex() + '-' + normalizeFilename(getFullTitle(this)) + '.html'
 		var innerHtml = casper.evaluate(function() {
 			return document.body.innerHTML;
 		});
 
-		fs.writeFile(fullName, innerHtml)
+		fs.write(fullName, innerHtml)
     })
 }
 
