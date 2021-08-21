@@ -2,8 +2,9 @@
 host = https://www.transifex.com
 
 [wp-testing.wp-testing]
-file_filter  = languages/wp-testing-<lang>.po
-source_file  = languages/wp-testing.pot
-source_lang  = en
-type         = PO
+file_filter = languages/wp-testing-<lang>.po
 minimum_perc = 80
+source_file = languages/wp-testing.pot
+source_lang = en
+type = PO
+

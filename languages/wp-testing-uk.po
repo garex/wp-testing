@@ -1,0 +1,770 @@
+# Copyright (C) 2014 Alexander Ustimenko
+# This file is distrubuted under the GPL-3.0+
+# Translators:
+# Alexander Ustimenko <ustimenko.alexander@gmail.com>, 2021
+msgid ""
+msgstr ""
+"Project-Id-Version: WP testing\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-29 23:59+0700\n"
+"PO-Revision-Date: 2021-08-21 15:59+0000\n"
+"Last-Translator: Alexander Ustimenko <ustimenko.alexander@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/wp-translations/wp-testing/language/uk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ../src\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+
+#: Component/StepStrategy.php:119 Model/Scale.php:84
+msgid "%1$g out of %2$g"
+msgstr "%1$g з %2$g"
+
+#: Doer/Feedbacker.php:40
+msgid "Feedback"
+msgstr "Зворотній зв'язок"
+
+#: Doer/Feedbacker.php:56 Doer/Feedbacker.php:65 Doer/Feedbacker.php:66
+msgid "Paid add-ons"
+msgstr "Платні доповнення"
+
+#: Doer/Feedbacker.php:57 Template/Feedback/get-support-finish.php:11
+msgid "Paid support"
+msgstr "Платна підтримка"
+
+#: Doer/Feedbacker.php:103 Template/Feedback/editor-metabox.php:6
+#: Template/Feedback/footer.php:2 Template/Feedback/report-issue-finish.php:10
+#: Template/Feedback/report-issue.php:2
+msgid "Report the problem"
+msgstr "Повідомити про проблему"
+
+#: Doer/Feedbacker.php:133 Template/Feedback/editor-metabox.php:9
+#: Template/Feedback/footer.php:4 Template/Feedback/get-support-finish.php:6
+#: Template/Feedback/get-support.php:2
+msgid "Get the support"
+msgstr "Отримати підтримку"
+
+#: Doer/Installer.php:38
+msgid "Helps to create psychological tests."
+msgstr "Допомагає створювати психологічні тести."
+
+#: Doer/PassingBrowser/Admin.php:77 Doer/PassingBrowser/Admin.php:84
+msgid "Respondents’ test results"
+msgstr "Результати тестування респондентів"
+
+#: Doer/PassingBrowser/Admin.php:78
+msgid "Respondents’ results"
+msgstr "Результати респондентів"
+
+#: Doer/PassingBrowser/User.php:10 Doer/WordPressEntitiesRegistrator.php:13
+#: Doer/WordPressEntitiesRegistrator.php:22
+msgid "Tests"
+msgstr "Тести"
+
+#: Doer/PassingBrowser/User.php:11
+msgid "My Results"
+msgstr "Мої результати"
+
+#: Doer/PassingBrowser/User.php:18
+msgid "My Test Results"
+msgstr "Мої результати тестів"
+
+#: Doer/TestEditor.php:66
+msgid "Maximize"
+msgstr "Максимізувати"
+
+#: Doer/TestEditor.php:67
+msgid "Minimize"
+msgstr "Мінімізувати"
+
+#: Doer/TestEditor.php:69
+msgid "Comparision"
+msgstr "Порівняння"
+
+#: Doer/TestEditor.php:70
+msgid "Operator"
+msgstr "Оператор"
+
+#: Doer/TestEditor.php:81
+msgid "Test Page Options"
+msgstr "Налаштування сторінки тесту"
+
+#: Doer/TestEditor.php:83
+msgid "Result Page Options"
+msgstr "Налаштування сторінки результатів"
+
+#: Doer/TestEditor.php:85 Template/Test/Editor/content-editor-buttons.php:3
+msgid "Edit Questions and Answers"
+msgstr "Редагувати питання і відповіді"
+
+#: Doer/TestEditor.php:86 Template/Test/Editor/content-editor-buttons.php:7
+msgid "Edit Scores"
+msgstr "Редагувати бали"
+
+#: Doer/TestEditor.php:87 Template/Test/Editor/content-editor-buttons.php:11
+msgid "Quick Fill Scores"
+msgstr "Швидко заповнити бали"
+
+#: Doer/TestEditor.php:88 Template/Test/Editor/content-editor-buttons.php:15
+msgid "Edit Formulas"
+msgstr "Редагувати формули"
+
+#: Doer/TestEditor.php:230
+msgid "Publish on the home page"
+msgstr "Опублікувати на початковій сторінці"
+
+#: Doer/TestEditor.php:252
+msgid "Show in title percentage of questions that respondent already answered"
+msgstr "Показувати в заголовку відсоток питань на які респондент вже відповів"
+
+#: Doer/TestEditor.php:256
+msgid "Show one question per page"
+msgstr "Показувати одне питання на сторінку"
+
+#: Doer/TestEditor.php:260
+msgid "Allow multiple answers per question"
+msgstr "Дозволити кілька відповідей на кожне питання"
+
+#: Doer/TestEditor.php:264
+msgid "Reset respondent answers when \"Back\" button pressed"
+msgstr "Скидання відповідей респондента при натисканні кнопки «Назад»"
+
+#: Doer/TestEditor.php:267
+msgid "Button caption"
+msgstr "Підпис кнопки"
+
+#: Doer/TestEditor.php:269 Doer/TestPasserAction/FillForm.php:70
+msgid "Get Test Results"
+msgstr "Дізнатися результати"
+
+#: Doer/TestEditor.php:286
+msgid "Show scales chart"
+msgstr "Показати діаграму шкал"
+
+#: Doer/TestEditor.php:290
+msgid "Show scales"
+msgstr "Показувати шкали"
+
+#: Doer/TestEditor.php:294
+msgid "Sort scales by score"
+msgstr "Сортувати шкали по балам"
+
+#: Doer/TestEditor.php:298
+msgid "Show test description"
+msgstr "Показувати опис тесту"
+
+#: Doer/TestEditor.php:383
+msgid "Test data not saved"
+msgstr "Дані тесту не збережені"
+
+#: Doer/TestPasser/DirectRenderer.php:19
+#: Doer/TestPasser/FilterRenderer.php:105
+#: Template/Test/Passer/fill-form.php:81
+msgid "Test is under construction"
+msgstr "Тест в процесі розробки"
+
+#: Doer/TestPasser/FilterRenderer.php:106
+#: Template/Test/Passer/fill-form.php:82
+msgid "You can not get any results from it yet."
+msgstr "Поки ви не можете отримати з нього результати."
+
+#: Doer/TestPasserAction/FillForm.php:64
+msgid "{percentage}% answered"
+msgstr "{percentage}% відповіли"
+
+#: Doer/TestPasserAction/FillForm.php:73 Template/Feedback/environment.php:35
+#: Template/Feedback/get-support-finish.php:32
+#: Template/Feedback/get-support.php:38
+#: Template/Feedback/report-issue-finish.php:59
+#: Template/Feedback/report-issue.php:57
+msgid "Next"
+msgstr "Далі"
+
+#: Doer/TestPasserAction/GetResults.php:75
+msgid "Test result not found"
+msgstr "Результат тесту не знайдено"
+
+#: Doer/TestPasserAction/GetResults.php:76
+msgid "You can not get anything from nothing."
+msgstr "Ви не можете отримати що-небудь з нічого."
+
+#: Doer/TestPasserAction/GetResults.php:85
+#, php-format
+msgid "Sorry but your browser %s is not compatible to display the chart"
+msgstr "Вибачте, але ваш браузер %s несумісний для відображення діаграми"
+
+#: Doer/TestPasserAction/ProcessForm.php:77
+msgid "Test data not valid"
+msgstr "Дані тесту неправильні"
+
+#: Doer/TestPasserAction/ProcessForm.php:78
+msgid "You passed not valid data to test."
+msgstr "Ви відправили неправильні дані."
+
+#: Doer/WordPressEntitiesRegistrator.php:14 Widget/PassingTable/Admin.php:87
+#: Widget/PassingTable/User.php:26
+msgid "Test"
+msgstr "Тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:15
+msgctxt "test"
+msgid "Add New"
+msgstr "Додати новий"
+
+#: Doer/WordPressEntitiesRegistrator.php:16
+msgid "Add New Test"
+msgstr "Додати новий тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:17
+msgid "Edit Test"
+msgstr "Редагувати тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:18
+msgid "View Test"
+msgstr "Переглянути тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:19
+msgid "Search Tests"
+msgstr "Пошук тестів"
+
+#: Doer/WordPressEntitiesRegistrator.php:20
+msgid "Parent Test:"
+msgstr "Батьківський тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:23 Widget/PassingTable.php:84
+msgid "All Tests"
+msgstr "Всі тести"
+
+#: Doer/WordPressEntitiesRegistrator.php:24
+msgid "Update Test"
+msgstr "Оновити тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:25
+msgid "New Test Name"
+msgstr "Ім'я нового тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:26
+msgid "Parent Test"
+msgstr "Батьківський тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:28
+msgid "New Test"
+msgstr "Новий тест"
+
+#: Doer/WordPressEntitiesRegistrator.php:29
+msgid "No Tests found"
+msgstr "Тестів не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:30
+msgid "No Tests found in Trash"
+msgstr "Тестів в кошику не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:32
+msgid ""
+"Instrument to measure unobserved constructs (latent variables). Typically it"
+" is a series of tasks or problems that the respondent has to solve."
+msgstr "Стандартизоване завдання за результатами виконання якого судять про психофізіологічні та особистісні характеристики, знаннях, уміннях і навичках того хто проходить тест."
+
+#: Doer/WordPressEntitiesRegistrator.php:63
+#: Template/Test/Editor/edit-questions-answers.php:50
+msgid "Test Answers"
+msgstr "Відповіді тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:64
+msgid "Test Answer"
+msgstr "Відповідь тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:65
+msgid "Add New Answer"
+msgstr "Додати нову відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:66
+msgid "Edit Answer"
+msgstr "Редагувати відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:67
+msgid "View Answer"
+msgstr "Переглянути відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:68
+msgid "Search Answers"
+msgstr "Пошук відповідей"
+
+#: Doer/WordPressEntitiesRegistrator.php:69
+msgid "Parent Answer:"
+msgstr "Батьківська відповідь:"
+
+#: Doer/WordPressEntitiesRegistrator.php:71
+msgid "Answers"
+msgstr "Відповіді"
+
+#: Doer/WordPressEntitiesRegistrator.php:72
+msgid "All Answers"
+msgstr "Всі відповіді"
+
+#: Doer/WordPressEntitiesRegistrator.php:73
+msgid "Update Answer"
+msgstr "Оновити відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:74
+msgid "New Answer Name"
+msgstr "Ім'я нової відповіді"
+
+#: Doer/WordPressEntitiesRegistrator.php:75
+msgid "Parent Answer"
+msgstr "Батьківська відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:77
+msgid "New Answer"
+msgstr "Нова відповідь"
+
+#: Doer/WordPressEntitiesRegistrator.php:78
+msgid "No Answers found"
+msgstr "Відповідей не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:79
+msgid "No Answers found in Trash"
+msgstr "Відповідей в кошику не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:84
+msgid "Test Scales"
+msgstr "Шкали тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:85
+msgid "Test Scale"
+msgstr "Шкала тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:86
+msgid "Add New Scale"
+msgstr "Добавити нову шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:87
+msgid "Edit Scale"
+msgstr "Редагувати шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:88
+msgid "View Scale"
+msgstr "Переглянути шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:89
+msgid "Search Scales"
+msgstr "Пошук шкал"
+
+#: Doer/WordPressEntitiesRegistrator.php:90
+msgid "Parent Scale:"
+msgstr "Батьківська шкала:"
+
+#: Doer/WordPressEntitiesRegistrator.php:92 Widget/PassingTable/Admin.php:88
+#: Widget/PassingTable/User.php:27
+msgid "Scales"
+msgstr "Шкали"
+
+#: Doer/WordPressEntitiesRegistrator.php:93
+msgid "All Scales"
+msgstr "Всі шкали"
+
+#: Doer/WordPressEntitiesRegistrator.php:94
+msgid "Update Scale"
+msgstr "Оновити шкалу"
+
+#: Doer/WordPressEntitiesRegistrator.php:95
+msgid "New Scale Name"
+msgstr "Ім'я нової шкали"
+
+#: Doer/WordPressEntitiesRegistrator.php:96
+msgid "Parent Scale"
+msgstr "Батьківська шкала"
+
+#: Doer/WordPressEntitiesRegistrator.php:98
+msgid "New Scale"
+msgstr "Нова шкала"
+
+#: Doer/WordPressEntitiesRegistrator.php:99
+msgid "No Scales found"
+msgstr "Шкал не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:100
+msgid "No Scales found in Trash"
+msgstr "Шкал в кошику, не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:105
+msgid "Test Results"
+msgstr "Результати тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:106
+msgid "Test Result"
+msgstr "Результат тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:107
+msgid "Add New Result"
+msgstr "Добавити новий результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:108
+msgid "Edit Result"
+msgstr "Редагувати результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:109
+msgid "View Result"
+msgstr "Переглянути результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:110
+msgid "Search Results"
+msgstr "Пошук результатів"
+
+#: Doer/WordPressEntitiesRegistrator.php:111
+msgid "Parent Result:"
+msgstr "Батьківський результат:"
+
+#: Doer/WordPressEntitiesRegistrator.php:113
+#: Template/Test/Passer/get-results.php:17 Widget/PassingTable/Admin.php:89
+#: Widget/PassingTable/User.php:28
+msgid "Results"
+msgstr "Результати"
+
+#: Doer/WordPressEntitiesRegistrator.php:114
+msgid "All Results"
+msgstr "Всі результати"
+
+#: Doer/WordPressEntitiesRegistrator.php:115
+msgid "Update Result"
+msgstr "Оновити результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:116
+msgid "New Result Name"
+msgstr "Ім'я нового результату"
+
+#: Doer/WordPressEntitiesRegistrator.php:117
+msgid "Parent Result"
+msgstr "Батьківський результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:119
+msgid "New Result"
+msgstr "Новий результат"
+
+#: Doer/WordPressEntitiesRegistrator.php:120
+msgid "No Results found"
+msgstr "Результатів не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:121
+msgid "No Results found in Trash"
+msgstr "Результатів в кошику, не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:126
+#: Doer/WordPressEntitiesRegistrator.php:134
+msgid "Test Categories"
+msgstr "Категорії тестів"
+
+#: Doer/WordPressEntitiesRegistrator.php:127
+msgid "Test Category"
+msgstr "Категорія тесту"
+
+#: Doer/WordPressEntitiesRegistrator.php:128
+msgid "Add New Category"
+msgstr "Добавити нову категорію"
+
+#: Doer/WordPressEntitiesRegistrator.php:129
+msgid "Edit Category"
+msgstr "Редагувати категорію"
+
+#: Doer/WordPressEntitiesRegistrator.php:130
+msgid "View Category"
+msgstr "Переглянути категорію"
+
+#: Doer/WordPressEntitiesRegistrator.php:131
+msgid "Search Categories"
+msgstr "Пошук категорій"
+
+#: Doer/WordPressEntitiesRegistrator.php:132
+msgid "Parent Category:"
+msgstr "Батьківська категорія:"
+
+#: Doer/WordPressEntitiesRegistrator.php:135
+msgid "All Categories"
+msgstr "Всі категорії"
+
+#: Doer/WordPressEntitiesRegistrator.php:136
+msgid "Update Category"
+msgstr "Оновити категорію"
+
+#: Doer/WordPressEntitiesRegistrator.php:137
+msgid "New Category Name"
+msgstr "Ім'я нової категорії"
+
+#: Doer/WordPressEntitiesRegistrator.php:138
+msgid "Parent Category"
+msgstr "Батьківська категорія"
+
+#: Doer/WordPressEntitiesRegistrator.php:140
+msgid "New Category"
+msgstr "Нова категорія"
+
+#: Doer/WordPressEntitiesRegistrator.php:141
+msgid "No Categories found"
+msgstr "Категорій не знайдено"
+
+#: Doer/WordPressEntitiesRegistrator.php:142
+msgid "No Categories found in Trash"
+msgstr "Категорій в кошику, не знайдено"
+
+#: Model/Formula.php:88
+#, php-format
+msgid ""
+"Formula for %s is incompatible as it contains both numbers and percentages"
+msgstr "Формула для %s несумісна, оскільки вона містить як цифри, так і відсотки"
+
+#: Model/Formula.php:90
+#, php-format
+msgid "Formula for %s has error"
+msgstr "Формула для %s містить помилку"
+
+#: Model/FormulaVariable/ScaleValue.php:18
+msgid "Scale Variable"
+msgstr "Змінна з шкали"
+
+#: Model/FormulaVariable/SelectedAnswer.php:18
+#: Template/Test/Editor/edit-formulas.php:79
+#, php-format
+msgid "Question %1$s answer %2$s"
+msgstr "Питання %1$s відповідь %2$s"
+
+#: Model/FormulaVariable/SelectedAnswer.php:19
+msgid "Answer Variable"
+msgstr "Змінна з відповіді"
+
+#: Model/Shortcode/Test.php:19
+#, php-format
+msgid "Test \"%s\" is not published. You can not include it anywhere."
+msgstr "Тест \"%s\" не опублікований. Ви ніде не можете його використати."
+
+#: Model/Shortcode/TestReadMore.php:30
+msgid "Start Test"
+msgstr "Почати тест"
+
+#: Template/Feedback/editor-metabox.php:13 Template/Feedback/footer.php:7
+msgid "Add review"
+msgstr "Добавити відгук"
+
+#: Template/Feedback/editor-metabox.php:15 Template/Feedback/footer.php:9
+msgid "Thank you"
+msgstr "Дякую"
+
+#: Template/Feedback/environment.php:7 Template/Feedback/get-support.php:18
+#: Template/Feedback/report-issue.php:46
+msgid "System information"
+msgstr "Системна інформація"
+
+#: Template/Feedback/get-support-finish.php:7
+#: Template/Feedback/get-support.php:31
+msgid "Get support as soon as possible"
+msgstr "Отримати підтримку якомога швидше"
+
+#: Template/Feedback/get-support-finish.php:15
+#, php-format
+msgid "Use this text to order <a target=\"_blank\" href=\"%s\">paid support</a>"
+msgstr "Використовуйте цей текст для замовлення <a target=\"_blank\" href=\"%s\"> платної підтримки</a>"
+
+#: Template/Feedback/get-support-finish.php:23
+#: Template/Feedback/report-issue-finish.php:12
+#, php-format
+msgid "Copy this text to create new topic at %s"
+msgstr "Скопіюйте цей текст, щоб створити нову тему в %s"
+
+#: Template/Feedback/get-support.php:7
+msgid "In short"
+msgstr "Коротко"
+
+#: Template/Feedback/get-support.php:8 Template/Feedback/get-support.php:13
+#: Template/Feedback/report-issue.php:29 Template/Feedback/report-issue.php:33
+#: Template/Feedback/report-issue.php:42
+msgid "Please use english language"
+msgstr "Будь ласка, використовуйте англійську мову"
+
+#: Template/Feedback/get-support.php:11
+msgid "Details"
+msgstr "Деталі"
+
+#: Template/Feedback/get-support.php:14
+msgid "What do you want to get and why?"
+msgstr "Що ви хочете отримати і чому?"
+
+#: Template/Feedback/get-support.php:22 Template/Feedback/report-issue.php:50
+msgid "Add technical details about your installation"
+msgstr "Добавити технічні деталі щодо встановлення"
+
+#: Template/Feedback/get-support.php:27
+msgid "Priority"
+msgstr "Пріоритет"
+
+#: Template/Feedback/report-issue.php:7
+msgid "Problem is repeated"
+msgstr "Проблема повторюється"
+
+#: Template/Feedback/report-issue.php:11
+msgid "when you use another hosting"
+msgstr "коли ви використовуєте інший хостинг"
+
+#: Template/Feedback/report-issue.php:15
+msgid "on the local computer"
+msgstr "на локальному комп'ютері"
+
+#: Template/Feedback/report-issue.php:19
+msgid "with default theme"
+msgstr "з темою за замовчуванням"
+
+#: Template/Feedback/report-issue.php:23
+msgid "when all other plugins are disabled"
+msgstr "коли всі інші плагіни відключені"
+
+#: Template/Feedback/report-issue.php:28
+msgid "You expect"
+msgstr "Ви очікуєте"
+
+#: Template/Feedback/report-issue.php:32
+msgid "Actually you get"
+msgstr "Насправді ви отримуєте"
+
+#: Template/Feedback/report-issue.php:36
+msgid "URL of the screenshot"
+msgstr "URL скріншота"
+
+#: Template/Feedback/report-issue.php:40
+msgid "Steps to repeat the problem"
+msgstr "Кроки для повторення проблеми"
+
+#: Template/Test/Editor/edit-formulas.php:5
+#: Template/Test/Editor/edit-scores.php:23
+#: Template/Test/Editor/edit-scores.php:33 Widget/PassingTable/User.php:24
+msgid "#"
+msgstr "№"
+
+#: Template/Test/Editor/edit-formulas.php:6
+#: Template/Test/Editor/edit-formulas.php:22
+msgid "Formula"
+msgstr "Формула"
+
+#: Template/Test/Editor/edit-formulas.php:7
+msgid "Result"
+msgstr "Результат"
+
+#: Template/Test/Editor/edit-formulas.php:35
+msgid "No formulas to edit. To edit formulas you must have results selected."
+msgstr "Немає формул для редагування. Для редагування формул необхідно вибрати результати."
+
+#: Template/Test/Editor/edit-formulas.php:49
+msgid ""
+"Both numbers and percents allowed. For example \"scale-bla\" has total 30, "
+"then \"scale-bla > 15\" and \"scale-bla > 50%\" are same."
+msgstr "Дозволені як числа, так і відсотки. Наприклад всього за шкалою «scale-bla» 30, тоді «scale-bla > 15» і «scale-bla > 50%» буде ідентично."
+
+#: Template/Test/Editor/edit-formulas.php:53
+msgid "Comparisions"
+msgstr "Порівняння"
+
+#: Template/Test/Editor/edit-formulas.php:62
+msgid "Operators"
+msgstr "Оператори"
+
+#: Template/Test/Editor/edit-formulas.php:73
+msgid "Variables"
+msgstr "Змінні"
+
+#: Template/Test/Editor/edit-formulas.php:92
+msgid ""
+"No variables for formulas available. To use variables you must have scales "
+"selected or have at least one question and answer."
+msgstr "Змінні для формул не доступні. Щоб використовувати змінні ви повинні вибрати шкали або мати як мінімум одне питання і відповідь."
+
+#: Template/Test/Editor/edit-questions-answers.php:7
+msgid ""
+"No questions to edit. Add new questions and then they will appear here."
+msgstr "Питання відсутні. Додайте нові питання і вони з'являться тут."
+
+#: Template/Test/Editor/edit-questions-answers.php:22
+msgid "Remove Question"
+msgstr "Видалити питання"
+
+#: Template/Test/Editor/edit-questions-answers.php:39
+msgid "Remove Answer"
+msgstr "Видалити відповідь"
+
+#: Template/Test/Editor/edit-questions-answers.php:49
+msgid "Add Individual Answer"
+msgstr "Додати індивідуальну відповідь"
+
+#: Template/Test/Editor/edit-questions-answers.php:50
+#, php-format
+msgid ""
+"— unique to each question. If you have same answers to all test questions, "
+"use the %s"
+msgstr "— унікальні для кожного питання. Якщо у вас одні й ті ж варіанти відповідей на всі питання тесту, то використовуйте %s"
+
+#: Template/Test/Editor/edit-questions-answers.php:57
+msgid ""
+"Paste here your questions and they will fill fields below. Numbers and other"
+" indexes will be stripped automatically."
+msgstr "Вставте сюди ваші питання і вони з'являться в полях нижче. Цифри та інші індекси будуть видалені автоматично."
+
+#: Template/Test/Editor/edit-questions-answers.php:62
+msgid "Add Question"
+msgstr "Додати питання"
+
+#: Template/Test/Editor/edit-questions-answers.php:63
+#: Template/Test/Editor/edit-questions-answers.php:64
+msgid "Quick Fill From Text"
+msgstr "Швидко заповнити з тексту"
+
+#: Template/Test/Editor/edit-scores.php:8
+#: Template/Test/Editor/quick-fill-scores.php:8
+msgid ""
+"No scores to edit. To edit scores you should have questions, answers and "
+"selected scales."
+msgstr "Бали відсутні. Щоб редагувати бали у вас повинні бути питання, відповіді та обрані шкали."
+
+#: Template/Test/Editor/quick-fill-scores.php:18
+#: Template/Test/Editor/quick-fill-scores.php:36
+msgid "Scale"
+msgstr "Шкала"
+
+#: Template/Test/Editor/quick-fill-scores.php:19
+#: Template/Test/Editor/quick-fill-scores.php:37
+msgid "Score"
+msgstr "Бал"
+
+#: Template/Test/Editor/quick-fill-scores.php:20
+#: Template/Test/Editor/quick-fill-scores.php:38
+msgid "Answer"
+msgstr "Відповідь"
+
+#: Template/Test/Editor/quick-fill-scores.php:21
+msgid "Questions"
+msgstr "Питання"
+
+#: Template/Test/Editor/quick-fill-scores.php:48
+msgid "Add new combination"
+msgstr "Додати нову комбінацію"
+
+#: Template/Test/Passer/fill-form.php:55
+msgid "Please select at least one answer."
+msgstr "Будь ласка, виберіть хоча б одну відповідь."
+
+#: Template/Test/Passer/fill-form.php:56
+msgid "Please choose only one answer."
+msgstr "Будь ласка, виберіть одину відповідь."
+
+#: Widget/PassingTable/Admin.php:91
+msgid "Device"
+msgstr "Пристрій"
+
+#: Widget/PassingTable/Admin.php:92
+msgid "IP address"
+msgstr "IP-адреса"
+
+#: Widget/PassingTable/Admin.php:93
+msgid "Browser"
+msgstr "Браузер"

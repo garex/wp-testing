@@ -8,7 +8,7 @@
 
 **Tested up to:** 5.2
 
-**Stable tag:** 0.21.18
+**Stable tag:** 0.21.19
 
 **License:** GPLv3
 
@@ -104,6 +104,7 @@ PS: **If something broken or doesn't work**, pls create new topic in ["Support" 
 * For Polish translation thanks to Maciej Dzierżek — https://bezdechu.pl/
 * For Icelandic translation thanks to Gunnar Geir Johannsson <gunnargj@gmail.com>
 * For Hebrew translation thanks to Noam Lederman <noaml@noamlederman.co.il>
+* For Ukranian translation thanks to Hanich Andriy <anganvas24@gmail.com>
 
 ### Paid add-ons & support ###
 

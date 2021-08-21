@@ -1,6 +1,11 @@
 
 ## Changelog ##
 
+### 0.21.19 ###
+
+For Ukranian translation thanks to Hanich Andriy <anganvas24@gmail.com>
+
+
 ### 0.21.18 ###
 
 Bump plugin version to have pervious fix published.
